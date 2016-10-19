@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>PROS - Tasks and Multithreading</title>
+    <meta name="generator" content="Hugo 0.17" />
+
+    
+    <meta name="description" content="An open source programming environment for the VEX EDR Platform">
+    
+    <link rel="canonical" href="http://pros.cs.purdue.edu/tutorials/tasks/">
+    
+    <meta name="author" content="purduesigbots">
+    
+
+    <meta property="og:url" content="http://pros.cs.purdue.edu/tutorials/tasks/">
+    <meta property="og:title" content="PROS">
+    <meta property="og:image" content="http://pros.cs.purdue.edu/images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="PROS">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://pros.cs.purdue.edu/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="http://pros.cs.purdue.edu/images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('http://pros.cs.purdue.edu/fonts/icon.eot?52m981');
+        src: url('http://pros.cs.purdue.edu/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+             url('http://pros.cs.purdue.edu/fonts/icon.woff?52m981')
+               format('woff'),
+             url('http://pros.cs.purdue.edu/fonts/icon.ttf?52m981')
+               format('truetype'),
+             url('http://pros.cs.purdue.edu/fonts/icon.svg?52m981#icon')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://pros.cs.purdue.edu/stylesheets/application.css">
+    <link rel="stylesheet" href="http://pros.cs.purdue.edu/stylesheets/temporary.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="http://pros.cs.purdue.edu/stylesheets/api.css">
+    
+    <script src="http://pros.cs.purdue.edu/javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body>
+
+
+
+	
+	
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Tasks and Multithreading
+      </div>
+    </div>
+
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/purduesigbots" title="@purduesigbots on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="https://github.com/purduesigbots/pros" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="http://pros.cs.purdue.edu/images/logo.png">
+        </div>
+      
+      <div class="name">
+        <strong>PROS <span class="version">2.11.0</span></strong>
+        
+          <br>
+          purduesigbots/pros
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            <a href="https://github.com/purduesigbots/pros/releases" target="_blank" title="Download" data-action="download">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/purduesigbots/pros/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Home" href="http://pros.cs.purdue.edu/">
+	
+	Home
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Download" href="http://pros.cs.purdue.edu/download/">
+	
+	Download
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Getting started" href="http://pros.cs.purdue.edu/getting-started/">
+	
+	Getting started
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Tutorials" href="http://pros.cs.purdue.edu/tutorials/">
+	
+	Tutorials
+</a>
+
+
+
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Debugging" href="http://pros.cs.purdue.edu/tutorials/debugging/">
+	
+	Debugging
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Encoders" href="http://pros.cs.purdue.edu/tutorials/encoders/">
+	
+	Encoders
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Digital Input" href="http://pros.cs.purdue.edu/tutorials/digitalRead/">
+	
+	Digital Input
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Analog Sensors" href="http://pros.cs.purdue.edu/tutorials/analog/">
+	
+	Analog Sensors
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Pneumatics" href="http://pros.cs.purdue.edu/tutorials/pneumatics/">
+	
+	Pneumatics
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Ultrasonic" href="http://pros.cs.purdue.edu/tutorials/ultrasonic/">
+	
+	Ultrasonic
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a class="current" title="Tasks/Multithreading" href="http://pros.cs.purdue.edu/tutorials/tasks/">
+	
+	Tasks/Multithreading
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+      
+        
+        
+
+
+
+<a  title="I2C Communication" href="http://pros.cs.purdue.edu/tutorials/i2c/">
+	
+	I2C Communication
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Coding FAQ" href="http://pros.cs.purdue.edu/tutorials/coding-faq/">
+	
+	Coding FAQ
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="API" href="http://pros.cs.purdue.edu/api/">
+	
+	API
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Known Issues" href="http://pros.cs.purdue.edu/known-issues/">
+	
+	Known Issues
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="License" href="http://pros.cs.purdue.edu/license/">
+	
+	License
+</a>
+
+
+
+  
+</li>
+
+
+        </ul>
+        
+
+        
+        <hr>
+        <span class="section">Get in touch</span>
+
+        <ul>
+          
+
+          
+          <li>
+            <a href="https://github.com/purduesigbots" target="_blank" title="@purduesigbots on GitHub">
+              @purduesigbots on GitHub
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="mailto:pros_development@cs.purdue.edu%20%20" title="Email of pros_development@cs.purdue.edu  ">
+              Contact via email
+            </a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Tasks and Multithreading </h1>
+
+			
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Tasks are a great tool to do multiple things at once, but they can be difficult
+to use properly. Each task has a <em>priority</em> and a <em>stack size</em>. The higher the
+priority, the more crucial the task is considered, and more CPU time will be
+awarded to the task. Tasks of higher priority will <em>always</em> run in preference to
+lower priority tasks, unless the higher priority task is using <code>delay()</code> or some
+other waiting action.</p>
+
+<p>Tasks are creating using <code>taskCreate()</code>, which invokes a user function in the new
+task:</p>
+
+<pre><code class="language-c">void myFirstTask(void * parameter) {
+  while(true) {
+    printf(&quot;Hello from another task!\n&quot;);
+    delay(500);
+  }
+}
+
+void initialize() { // or some other function
+  TaskHandle firstTaskHandle = taskCreate(myFirstTask, TASK_DEFAULT_STACK_SIZE, NULL, TASK_PRIORITY_DEFAULT);
+  delay(20000); // or doing anything else
+  taskDelete(firstTaskHandle); // stop running the task
+}
+</code></pre>
+
+<h3 id="periodic-functions">Periodic functions</h3>
+
+<p>If you want a function to run every <em>n</em> milliseconds, you can use <code>taskRunLoop</code>.
+The example above can be implemented slightly differently and receive the same effect:</p>
+
+<pre><code class="language-c">void myFirstRunLoop() {
+  printf(&quot;Hello from another task!\n&quot;);
+}
+
+void initialize() {
+  TaskHandle secondTaskHandle = taskRunLoop(myFirstRunLoop, 500);
+  delay(20000); // or doing anything else
+  taskDelete(secondTaskHandle);
+}
+</code></pre>
+
+<h2 id="best-task-practices">Best Task Practices</h2>
+
+<ul>
+<li>Limit the number of tasks; five medium sized tasks will run quicker than ten tiny ones. There is also a limit of twelve tasks running at once.</li>
+<li>Tasks are usually not automatically stopped if the robot is disabled, unlike <code>operatorControl</code> and <code>autonomous</code>. Tasks running while disabled cannot use the VEX Joystick or VEX Motors. If the task should stop when the robot is disabled, use the <code>isOnline</code> and/or the <code>isAutonomous</code> function to control the program accordingly. If <code>taskRunLoop</code> is used, the task will automatically be cancelled if the robot is disabled or switched between driver and autonomous.</li>
+<li>Most tasks should have a priority from <code>TASK_PRIORITY_LOWEST + 1</code> to <code>TASK_PRIORITY_HIGHEST - 1</code>. Tasks of the lowest or highest priority may cause unexpected behavior.</li>
+<li>Tasks should wait when there is no work to do so other tasks can run. If a task, especially a high-priority one, does not occasionally use delay or similar, other tasks may not run or run very slowly. Since hardware such as the VEX LCD and Integrated Motor Encoders is also updated by tasks, a run away task can cause unexpected behavior.</li>
+<li>The Cortex Microcontroller is very fast. It is unlikely that any repetitive task will gain from running continuously. Even in the fastest scenarios, <code>delay(2)</code> will probably make no noticable difference, but will prevent future task starvation issues.</li>
+<li>Tasks using motors or joysticks should use <code>delay(20)</code> as the motors and joysticks are only updated every 20 ms.</li>
+</ul>
+
+<h2 id="synchronization">Synchronization</h2>
+
+<p>One problem which one often runs into when dealing with tasks is the problem of
+synchronization. If two tasks try to read the same sensor or control the same
+motor at the same time, unexpected behavior may occur since two tasks are trying
+to read/write to the same piece of data.</p>
+
+<p>Tasks can be designed to never conflict over motors or sensors: (division of responsibility)</p>
+
+<pre><code class="language-c">void Task1(void * ignore) {
+  // update motors 2 and 4
+}
+
+void Task2(void * ignore) {
+  // update motors 5 and 6
+}
+</code></pre>
+
+<p>Sometimes this is impossible: suppose you wanted to write a PID controller on its own task and
+you wanted to change the target of the controller. PROS features two types of synchronization
+structures, <em>mutexes</em> and <em>semaphores</em> that can be used to coordinate tasks. Mutexes stand for
+mutual exclusion; only one task can hold a mutex at any given time. Other tasks must wait for the
+first task to finish (and release the mutex) before they may continue.</p>
+
+<pre><code class="language-c">Mutex mutex = mutexCreate();
+
+// Acquire the mutex; other tasks using this command will wait until the mutex is released
+// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever
+// If the timeout expires, &quot;false&quot; will be rturned, otherwise &quot;true&quot;
+mutexTake(mutex, timeout);
+// do some work
+// Release the mutex for other tasks
+mutexGive(mutex);
+</code></pre>
+
+<p>Semaphores are like signals - one task can take a semaphore to wait for a coordination signal
+from another task which gives the semaphore. Multiple tasks may wait for a semaphore; if this
+is the case, the highest priority task will continue per signal given.</p>
+
+<pre><code class="language-c">// Create a semaphore
+Semaphore semaphore = semaphoreCreate();
+
+// Waits for the semaphore to be signalled
+// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever
+// If the timeout expires, &quot;false&quot; will be rturned, otherwise &quot;true&quot;
+semaphoreTake(semaphore);
+// do something
+// Signal the semaphore
+semaphoreGive(semaphore);
+</code></pre>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2016 Released under the MPL 2.0 license &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme. <br/>
+				Contribute to PROS documentation on <a href="http://github.com/purduesigbots/pros-docs">GitHub</a>!
+			</aside>
+
+			<footer class="footer">
+				
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = 'http:\/\/pros.cs.purdue.edu\/';
+      var repo_id  = 'purduesigbots\/pros';
+    
+    </script>
+
+    <script src="http://pros.cs.purdue.edu/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+            
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+        
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+      <script>
+        (function(i,s,o,g,r,a,m){
+          i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
+          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
+          m.parentNode.insertBefore(a,m)
+        })(window, document,
+          'script', '//www.google-analytics.com/analytics.js', 'ga');
+         
+        ga('create', 'UA-84548828-3', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+         
+        var buttons = document.querySelectorAll('a');
+        Array.prototype.map.call(buttons, function(item) {
+          if (item.host != document.location.host) {
+            item.addEventListener('click', function() {
+              var action = item.getAttribute('data-action') || 'follow';
+              ga('send', 'event', 'outbound', action, item.href);
+            });
+          }
+        });
+         
+        var query = document.querySelector('.query');
+        query.addEventListener('blur', function() {
+          if (this.value) {
+            var path = document.location.pathname;
+            ga('send', 'pageview', path + '?q=' + this.value);
+          }
+        });
+      </script>
+    
+
+    <script src="//gohugo.io/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

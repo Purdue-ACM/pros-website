@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Known-issues-rsses on PROS</title>
+    <link>http://pros.cs.purdue.edu/known-issues/index.xml</link>
+    <description>Recent content in Known-issues-rsses on PROS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MPL 2.0 license</copyright>
+    <atom:link href="http://pros.cs.purdue.edu/known-issues/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Known Issues</title>
+      <link>http://pros.cs.purdue.edu/known-issues/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/known-issues/</guid>
+      <description>
+
+&lt;h2 id=&#34;cannot-find-libstdc-a&#34;&gt;Cannot find libstdc++.a&lt;/h2&gt;
+
+&lt;p&gt;On Ubuntu 14.04 it is a &lt;a href=&#34;https://bugs.launchpad.net/ubuntu/+source/gcc-arm-none-eabi/+bug/1293024&#34;&gt;known bug&lt;/a&gt; that libstdc++-arm-none-eabi-newlib package is missing from the repositories and fails to install with arm-none-eabi-gcc. This can lead to the following error when trying to compile your PROS project:
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/img/ubuntu-error.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The easiest solution to this issue is to upgrade to 16.04 LTS.&lt;/p&gt;
+
+&lt;h2 id=&#34;ghostCOM&#34;&gt;Ghost COM ports&lt;/h2&gt;
+
+&lt;p&gt;During normal operation of the serial COM ports on windows errors may occur when hardware is disconnected causing them to not close. This results in high COM port numbers (e.g. COM17). We recommend following &lt;a href=&#34;http://theitbros.com/how-to-delete-com-ports-in-use/&#34;&gt;these instructions&lt;/a&gt; to clean up any COM ports that are left in limbo.&lt;/p&gt;
+
+&lt;h2 id=&#34;linuxAA&#34;&gt;Linux A-A Tethering&lt;/h2&gt;
+
+&lt;p&gt;When utilizing PROS in your Linux environment you cannot interact with or flash your cortex via direct A-A Tethering to your computer. This is due to the fact that VEX does not provide Linux drivers for this feature that is readily available on Windows. However, this does not mean that you cannot interact with or flash your cortex. To do so you must utilize the &lt;a href=&#34;http://www.vexrobotics.com/276-2186.html&#34;&gt;programming hardware kit&lt;/a&gt; and a &lt;a href=&#34;http://www.vexrobotics.com/276-2186.html&#34;&gt;joystick&lt;/a&gt; connected as follows:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/img/wiring-diagram.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        
+        
+            Diagram courtesy of VEX Robotics
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Both wired and wirless (VEXnet 1.0 &amp;amp; 2.0) are supported.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

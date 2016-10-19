@@ -1,0 +1,4317 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PROS</title>
+    <link>http://pros.cs.purdue.edu/index.xml</link>
+    <description>Recent content on PROS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MPL 2.0 license</copyright>
+    <atom:link href="http://pros.cs.purdue.edu/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title></title>
+      <link>http://pros.cs.purdue.edu/download/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/download/</guid>
+      <description>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script src=&#34;../js/jquery-1.11.0.min.js&#34;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    tag = $.getJSON(&#39;https://api.github.com/repos/purduesigbots/pros/releases/latest&#39;, function(data) {
+    baseUrl = &#34;https://github.com/purduesigbots/pros/releases/download/&#34; + data.tag_name;
+    anchor = $(&#34;#pros-dl-link&#34;);
+    if(navigator.platform.startsWith(&#34;Win&#34;)) {
+      window.location = baseUrl + &#34;/pros-win.exe&#34;;
+    }
+    else if(navigator.platform.startsWith(&#34;Mac&#34;)) {
+      window.location = baseUrl + &#34;/pros-macOS.pkg&#34;;
+    }
+    else {
+      window.location = &#34;https://github.com/purduesigbots/pros/releases/latest&#34;
+    }
+  });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>API</title>
+      <link>http://pros.cs.purdue.edu/api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/api/</guid>
+      <description>&lt;div class=&#34;api&#34;&gt;
+This document serves as a quick reference for API.h functions.&lt;/p&gt;
+
+&lt;h1 id=&#34;functions&#34;&gt;Functions&lt;/h1&gt;
+
+&lt;h2 id=&#34;analogCalibrate&#34;&gt;analogCalibrate&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int analogCalibrate ( unsigned char  channel )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Calibrates the analog sensor on the specified channel.&lt;/p&gt;
+
+&lt;p&gt;This method assumes that the true sensor value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the analogReadCalibrated() and analogReadCalibratedHR() functions. These functions will return the difference between this value and the current sensor value when called.&lt;/p&gt;
+
+&lt;p&gt;Do not use this function in initializeIO(), or when the sensor value might be unstable (gyro rotation, accelerometer movement).&lt;/p&gt;
+
+&lt;p&gt;This function may not work properly if the VEX Cortex is tethered to a PC using the orange USB A to A cable and has no VEX 7.2V Battery connected and powered on, as the VEX Battery provides power to sensors.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;channel&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the channel to calibrate from 1-8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the average sensor value computed by this function&lt;/p&gt;
+
+&lt;h2 id=&#34;analogRead&#34;&gt;analogRead&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int analogRead ( unsigned char  channel )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Reads an analog input channel and returns the 12-bit value.&lt;/p&gt;
+
+&lt;p&gt;The value returned is undefined if the analog pin has been switched to a different mode. This function is Wiring-compatible with the exception of the larger output range. The meaning of the returned value varies depending on the sensor attached.&lt;/p&gt;
+
+&lt;p&gt;This function may not work properly if the VEX Cortex is tethered to a PC using the orange USB A to A cable and has no VEX 7.2V Battery connected and powered on, as the VEX Battery provides power to sensors.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;channel&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the channel to read from 1-8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the analog sensor value, where a value of 0 reflects an input voltage of nearly 0 V and a value of 4095 reflects an input voltage of nearly 5 V&lt;/p&gt;
+
+&lt;h2 id=&#34;analogReadCalibrated&#34;&gt;analogReadCalibrated&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int analogReadCalibrated ( unsigned char  channel )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Reads the calibrated value of an analog input channel.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;#analogCalibrate&#34;&gt;analogCalibrate()&lt;/a&gt; function must be run first on that channel. This function is inappropriate for sensor values intended for integration, as round-off error can accumulate causing drift over time. Use &lt;a href=&#34;#analogReadCalibratedHR&#34;&gt;analogReadCalibratedHR()&lt;/a&gt; instead.&lt;/p&gt;
+
+&lt;p&gt;This function may not work properly if the VEX Cortex is tethered to a PC using the orange USB A to A cable and has no VEX 7.2V Battery connected and powered on, as the VEX Battery provides power to sensors.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;channel&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the channel to read from 1-8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the difference of the sensor value from its calibrated default value from -4095 to 4095&lt;/p&gt;
+
+&lt;h2 id=&#34;analogReadCalibratedHR&#34;&gt;analogReadCalibratedHR&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int analogReadCalibratedHR ( unsigned char  channel )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Reads the calibrated value of an analog input channel 1-8 with enhanced precision.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;#analogCalibrate&#34;&gt;analogCalibrate()&lt;/a&gt; function must be run first. This is intended for integrated sensor values such as gyros and accelerometers to reduce drift due to round-off, and should not be used on a sensor such as a line tracker or potentiometer.&lt;/p&gt;
+
+&lt;p&gt;The value returned actually has 16 bits of &amp;ldquo;precision&amp;rdquo;, even though the ADC only reads 12 bits, so that errors induced by the average value being between two values come out in the wash when integrated over time. Think of the value as the true value times 16.&lt;/p&gt;
+
+&lt;p&gt;This function may not work properly if the VEX Cortex is tethered to a PC using the orange USB A to A cable and has no VEX 7.2V Battery connected and powered on, as the VEX Battery provides power to sensors.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;channel&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the channel to read from 1-8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the difference of the sensor value from its calibrated default from -16384 to 16384&lt;/p&gt;
+
+&lt;h2 id=&#34;delay&#34;&gt;delay&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void delay ( const unsigned long  time)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wiring-compatible alias of &lt;a href=&#34;#taskDelay&#34;&gt;taskDelay()&lt;/a&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;time&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the duration of the delay in milliseconds (1000 milliseconds per second)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;delayMicroseconds&#34;&gt;delayMicroseconds&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void delayMicroseconds ( const unsigned long us )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Wait for approximately the given number of microseconds.&lt;/p&gt;
+
+&lt;p&gt;The method used for delaying this length of time may vary depending on the argument. The current task will always be delayed by at least the specified period, but possibly much more depending on CPU load. In general, this function is less reliable than &lt;a href=&#34;#delay&#34;&gt;delay()&lt;/a&gt;. Using this function in a loop may hog processing time from other tasks.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;us&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the duration of the delay in microseconds (1,000,000 microseconds per second)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;digitalRead&#34;&gt;digitalRead&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool digitalRead ( unsigned char pin )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gets the digital value (1 or 0) of a pin configured as a digital input.&lt;/p&gt;
+
+&lt;p&gt;If the pin is configured as some other mode, the digital value which reflects the current state of the pin is returned, which may or may not differ from the currently set value. The return value is undefined for pins configured as Analog inputs, or for ports in use by a Communications interface. This function is Wiring-compatible.&lt;/p&gt;
+
+&lt;p&gt;This function may not work properly if the VEX Cortex is tethered to a PC using the orange USB A to A cable and has no VEX 7.2V Battery connected and powered on, as the VEX Battery provides power to sensors.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;pin&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the pin to read from 1-26&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if the pin is HIGH or false if it is LOW&lt;/p&gt;
+
+&lt;h2 id=&#34;digitalWrite&#34;&gt;digitalWrite&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void digitalWrite ( unsigned char pin,
+                    bool value
+                  )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sets the digital value (1 or 0) of a pin configured as a digital output.&lt;/p&gt;
+
+&lt;p&gt;If the pin is configured as some other mode, behavior is undefined. This function is Wiring-compatible.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;pin&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the pin to read from 1-26&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;value&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;an expression evaluating to &amp;ldquo;true&amp;rdquo; or &amp;ldquo;false&amp;rdquo; to set the output to HIGH or LOW respectively, or the constants HIGH or LOW themselves&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;encoderGet&#34;&gt;encoderGet&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int encoderGet ( Encoder enc )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gets the number of ticks recorded by the encoder.&lt;/p&gt;
+
+&lt;p&gt;There are 360 ticks in one revolution.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;enc&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the Encoder object from &lt;a href=&#34;#encoderInit&#34;&gt;encoderInit()&lt;/a&gt; to read&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the signed and cumulative number of counts since the last start or reset&lt;/p&gt;
+
+&lt;h2 id=&#34;encoderInit&#34;&gt;encoderInit&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int encoderInit ( unsigned char portTop,
+                  unsigned char portBottom,
+                  bool reverse
+                )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Initializes and enables a quadrature encoder on two digital ports.&lt;/p&gt;
+
+&lt;p&gt;Neither the top port nor the bottom port can be digital port 10. NULL will be returned if either port is invalid or the encoder is already in use. Initializing an encoder implicitly resets its count.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;portTop&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the &amp;ldquo;top&amp;rdquo; wire from the encoder sensor with the removable cover side UP&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;portBottom&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the &amp;ldquo;bottom&amp;rdquo; wire from the encoder sensor&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;reverse&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;if &amp;ldquo;true&amp;rdquo;, the sensor will count in the opposite direction&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; an Encoder object to be stored and used for later calls to encoder functions&lt;/p&gt;
+
+&lt;h2 id=&#34;encoderReset&#34;&gt;encoderReset&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void encoderReset ( Encoder enc )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Resets the encoder to zero.&lt;/p&gt;
+
+&lt;p&gt;It is safe to use this method while an encoder is enabled. It is not necessary to call this method before stopping or starting an encoder.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;enc&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the Encoder object from &lt;a href=&#34;#encoderInit&#34;&gt;encoderInit()&lt;/a&gt; to read&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;encoderShutdown&#34;&gt;encoderShutdown&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void encoderShutdown ( Encoder enc )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Stops and disables the encoder.&lt;/p&gt;
+
+&lt;p&gt;Encoders use processing power, so disabling unused encoders increases code performance. The encoder&amp;rsquo;s count will be retained.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;enc&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the Encoder object from &lt;a href=&#34;#encoderInit&#34;&gt;encoderInit()&lt;/a&gt; to read&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;fclose&#34;&gt;fclose&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void fclose( FILE * stream )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Closes the specified file descriptor.&lt;/p&gt;
+
+&lt;p&gt;This function does not work on communication ports; use &lt;a href=&#34;#usartShutdown&#34;&gt;usartShutdown()&lt;/a&gt; instead.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the file descriptor to close from &lt;a href=&#34;#fopen&#34;&gt;fopen()&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;fcount&#34;&gt;fcount&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void fcount ( FILE * stream )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Returns the number of characters that can be read without blocking (the number of characters available) from the specified stream.&lt;/p&gt;
+
+&lt;p&gt;This only works for communication ports and files in Read mode; for files in Write mode, 0 is always returned.&lt;/p&gt;
+
+&lt;p&gt;This function may underestimate, but will not overestimate, the number of characters which meet this criterion.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the stream to read (stdin, uart1, uart2, or an open file in Read mode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the number of characters which meet this criterion; if this number cannot be determined, returns 0&lt;/p&gt;
+
+&lt;h2 id=&#34;fdelete&#34;&gt;fdelete&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int fdelete ( const char * file )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Delete the specified file if it exists and is not currently open.&lt;/p&gt;
+
+&lt;p&gt;The file will actually be erased from memory on the next re-boot. A physical power cycle is required to purge deleted files and free their allocated space for new files to be written. Deleted files are still considered inaccessible to &lt;a href=&#34;#fopen&#34;&gt;fopen()&lt;/a&gt; in Read mode.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;file&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the file name to erase&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the number of characters which meet this criterion; if this number cannot be determined, returns 0&lt;/p&gt;
+
+&lt;h2 id=&#34;feof&#34;&gt;feof&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int feof ( FILE * stream )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Checks to see if the specified stream is at its end.&lt;/p&gt;
+
+&lt;p&gt;This only works for communication ports and files in Read mode; for files in Write mode, 1 is always returned.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the stream to read (stdin, uart1, uart2, or an open file in Read mode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; 0 if the stream is not at EOF, or 1 otherwise.&lt;/p&gt;
+
+&lt;h2 id=&#34;fflush&#34;&gt;fflush&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int fflush ( FILE * stream )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Flushes the data on the specified file channel open in Write mode.&lt;/p&gt;
+
+&lt;p&gt;This function has no effect on a communication port or a file in Read mode, as these streams are always flushed as quickly as possible by the kernel.&lt;/p&gt;
+
+&lt;p&gt;Successful completion of an fflush function on a file in Write mode cannot guarantee that the file is vaild until &lt;a href=&#34;#fclose&#34;&gt;fclose()&lt;/a&gt; is used on that file descriptor.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the channel to flush (an open file in Write mode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; 0 if the data was successfully flushed, EOF otherwise&lt;/p&gt;
+
+&lt;h2 id=&#34;fgetc&#34;&gt;fgetc&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int fgetc ( FILE * stream )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Reads and returns one character from the specified stream, blocking until complete.&lt;/p&gt;
+
+&lt;p&gt;Do not use &lt;a href=&#34;#fgetc&#34;&gt;fgetc()&lt;/a&gt; on a VEX LCD port; deadlock may occur.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the stream to read (stdin, uart1, uart2, or an open file in Read mode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the next character from 0 to 255, or -1 if no character can be read&lt;/p&gt;
+
+&lt;h2 id=&#34;fgets&#34;&gt;fgets&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;char * fgets ( char * str,
+               int num,
+               FILE * stream
+             )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Reads a string from the specified stream, storing the characters into the memory at str.&lt;/p&gt;
+
+&lt;p&gt;Characters will be read until the specified limit is reached, a new line is found, or the end of file is reached.&lt;/p&gt;
+
+&lt;p&gt;If the stream is already at end of file (for files in Read mode), NULL will be returned; otherwise, at least one character will be read and stored into str.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;str&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the location where the characters read will be stored&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;num&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the maximum number of characters to store; at most (num - 1) characters will be read, with a null terminator (&amp;rsquo;\0&amp;rsquo;) automatically appended&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the stream to read (stdin, uart1, uart2, or an open file in Read mode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; str, or NULL if zero characters could be read&lt;/p&gt;
+
+&lt;h2 id=&#34;fopen&#34;&gt;fopen&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;FILE * fopen ( const char * file,
+               const char * mode
+             )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Opens the given file in the specified mode.&lt;/p&gt;
+
+&lt;p&gt;The file name is truncated to eight characters. Only four files can be in use simultaneously in any given time, with at most one of those files in Write mode. This function does not work on communication ports; use &lt;a href=&#34;#usartInit&#34;&gt;usartInit()&lt;/a&gt; instead.&lt;/p&gt;
+
+&lt;p&gt;mode can be &amp;ldquo;r&amp;rdquo; or &amp;ldquo;w&amp;rdquo;. Due to the nature of the VEX Cortex memory, the &amp;ldquo;r+&amp;rdquo;, &amp;ldquo;w+&amp;rdquo;, and &amp;ldquo;a&amp;rdquo; modes are not supported by the file system.&lt;/p&gt;
+
+&lt;p&gt;Opening a file that does not exist in Read mode will fail and return NULL, but opening a new file in Write mode will create it if there is space. Opening a file that already exists in Write mode will destroy the contents and create a new blank file if space is available.&lt;/p&gt;
+
+&lt;p&gt;There are important considerations when using of the file system on the VEX Cortex. Reading from files is safe, but writing to files should only be performed when robot actuators have been stopped. PROS will attempt to continue to handle events during file writes, but most user tasks cannot execute during file writing. Powering down the VEX Cortex mid-write may cause file system corruption.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;file&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the file name&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;mode&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the file mode&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; a file descriptor pointing to the new file, or NULL if the file could not be opened&lt;/p&gt;
+
+&lt;h2 id=&#34;fprint&#34;&gt;fprint&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void fprint ( const char * string,
+              FILE * stream
+            )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Prints the simple string to the specified stream.&lt;/p&gt;
+
+&lt;p&gt;This method is much, much faster than &lt;a href=&#34;#fprintf&#34;&gt;fprintf()&lt;/a&gt; and does not add a new line like &lt;a href=&#34;#fputs&#34;&gt;fputs()&lt;/a&gt;. Do not use &lt;a href=&#34;#fprint&#34;&gt;fprint()&lt;/a&gt; on a VEX LCD port. Use &lt;a href=&#34;#lcdSetText&#34;&gt;lcdSetText()&lt;/a&gt; instead.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the string to write&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the stream to write (stdout, uart1, uart2, or an open file in Write mode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;fprintf&#34;&gt;fprintf&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int fprintf ( FILE * stream,
+              const char * formatString,
+              ...
+            )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Prints the formatted string to the specified output stream.&lt;/p&gt;
+
+&lt;p&gt;The specifiers supported by this minimalistic printf() function are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;%d: Signed integer in base 10 (int)&lt;/li&gt;
+&lt;li&gt;%u: Unsigned integer in base 10 (unsigned int)&lt;/li&gt;
+&lt;li&gt;%x, %X: Integer in base 16 (unsigned int, int)&lt;/li&gt;
+&lt;li&gt;%p: Pointer (void *, int *, &amp;hellip;)&lt;/li&gt;
+&lt;li&gt;%c: Character (char)&lt;/li&gt;
+&lt;li&gt;%s: Null-terminated string (char *)&lt;/li&gt;
+&lt;li&gt;%%: Single literal percent sign&lt;/li&gt;
+&lt;li&gt;%f: Floating-point number&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Specifiers can be modified with:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;0: Zero-pad, instead of space-pad&lt;/li&gt;
+&lt;li&gt;a.b: Make the field at least &amp;ldquo;a&amp;rdquo; characters wide. If &amp;ldquo;b&amp;rdquo; is specified for &amp;ldquo;%f&amp;rdquo;, changes the number of digits after the decimal point&lt;/li&gt;
+&lt;li&gt;-: Left-align, instead of right-align&lt;/li&gt;
+&lt;li&gt;+: Always display the sign character (displays a leading &amp;ldquo;+&amp;rdquo; for positive numbers)&lt;/li&gt;
+&lt;li&gt;l: Ignored for compatibility&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Invalid format specifiers, or mismatched parameters to specifiers, cause undefined behavior. Other characters are written out verbatim. Do not use &lt;a href=&#34;#fprintf&#34;&gt;fprintf()&lt;/a&gt; on a VEX LCD port. Use &lt;a href=&#34;#lcdPrint&#34;&gt;lcdPrint()&lt;/a&gt; instead.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the stream to write (stdout, uart1, uart2, or an open file in Write mode)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;formatString&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the format string as specified above&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the number of characters written&lt;/p&gt;
+
+&lt;h2 id=&#34;fputc&#34;&gt;fputc&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int fputc ( int value,
+            FILE * stream
+          )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Writes one character to the specified stream.&lt;/p&gt;
+
+&lt;p&gt;Do not use &lt;a href=&#34;#fputc&#34;&gt;fputc()&lt;/a&gt; on a VEX LCD port. Use &lt;a href=&#34;#lcdSetText&#34;&gt;lcdSetText()&lt;/a&gt; instead.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;value&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the character to write (a value of type &amp;ldquo;char&amp;rdquo; can be used)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the stream to write (stdout, uart1, uart2, or an open file in Write mode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the character written&lt;/p&gt;
+
+&lt;h2 id=&#34;fputs&#34;&gt;fputs&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int fputs ( const char * string,
+            FILE * stream
+          )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Behaves the same as the &amp;ldquo;fprint&amp;rdquo; function, and appends a trailing newline (&amp;rdquo;\n&amp;rdquo;).&lt;/p&gt;
+
+&lt;p&gt;Do not use &lt;a href=&#34;#fputs&#34;&gt;fputs()&lt;/a&gt; on a VEX LCD port. Use &lt;a href=&#34;#lcdSetText&#34;&gt;lcdSetText()&lt;/a&gt; instead.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;string&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the string to write&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the stream to write (stdout, uart1, uart2, or an open file in Write mode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the number of characters written, excluding the new line&lt;/p&gt;
+
+&lt;h2 id=&#34;fread&#34;&gt;fread&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;size_t fread ( void * ptr,
+               size_t size,
+               size_t count,
+               FILE * stream
+             )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Reads data from a stream into memory.&lt;/p&gt;
+
+&lt;p&gt;If the memory at ptr cannot store (size * count) bytes, undefined behavior occurs.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;ptr&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;a pointer to where the data will be stored&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;size&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the size of each data element to read in bytes&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;count&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the number of data elements to read&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the stream to read (stdout, uart1, uart2, or an open file in Read mode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the number of bytes successfully read&lt;/p&gt;
+
+&lt;h2 id=&#34;fseek&#34;&gt;fseek&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int fseek ( FILE * stream,
+            long int offset,
+            int origin
+          )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Seeks within a file open in Read mode.&lt;/p&gt;
+
+&lt;p&gt;This function will fail when used on a file in Write mode or on any communications port.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the stream to seek within&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;offset&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the location within the stream to seek&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;origin&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the reference location for offest: SEEK_CUR, SEEK_SET, or SEEK_END&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; 0 if the seek was successful, or 1 otherwise&lt;/p&gt;
+
+&lt;h2 id=&#34;ftell&#34;&gt;ftell&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;long int ftell ( FILE * stream )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Returns the current position of the stream.&lt;/p&gt;
+
+&lt;p&gt;This function works on files in either Read or Write mode, but will fail on communications ports.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the stream to check&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the offset of the stream, or -1 if the offset could not be determined&lt;/p&gt;
+
+&lt;h2 id=&#34;fwrite&#34;&gt;fwrite&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;size_t fwrite ( const void * ptr,
+                size_t size,
+                size_t count,
+                FILE * stream
+              )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Writes data from memory to a stream.&lt;/p&gt;
+
+&lt;p&gt;Returns the number of bytes thus written.&lt;/p&gt;
+
+&lt;p&gt;If the memory at ptr is not as long as (size * count) bytes, undefined behavior occurs.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;ptr&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;a pointer to the data to write&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;size&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the size of each data element to write in bytes&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;count&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the number of data elements to write&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stream&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the stream to write (stdout, uart1, uart2 or an open file in Write mode)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the number of bytes successfully written&lt;/p&gt;
+
+&lt;h2 id=&#34;getchar&#34;&gt;getchar&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int getchar ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Reads and returns one character from &amp;ldquo;stdin&amp;rdquo;, which is the PC debug terminal.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the next character from 0 to 255, or -1 if no character can be read&lt;/p&gt;
+
+&lt;h2 id=&#34;gyroGet&#34;&gt;gyroGet&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int gyroGet ( Gyro gyro )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gets the current gyro angle in degrees, rounded to the nearest degree.&lt;/p&gt;
+
+&lt;p&gt;There are 360 degrees in a circle.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;gyro&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the Gyro object from &lt;a href=&#34;#gyroInit&#34;&gt;gyroInit()&lt;/a&gt; to read&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the signed and cumulative number of degrees rotated around the gyro&amp;rsquo;s vertical axis since the last start or reset&lt;/p&gt;
+
+&lt;h2 id=&#34;gyroinit&#34;&gt;gyroInit&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;Gyro gyroInit ( unsigned char port,
+                unsigned short multiplier
+              )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Initializes and enables a gyro on an analog port.&lt;/p&gt;
+
+&lt;p&gt;NULL will be returned if the port is invalid or the gyro is already in use. Initializing a gyro implicitly calibrates it and resets its count. Do not move the robot while the gyro is being calibrated. It is suggested to call this function in initialize() and to place the robot in its final position before powering it on.&lt;/p&gt;
+
+&lt;p&gt;The multiplier parameter can tune the gyro to adapt to specific sensors. The default value at this time is 196; higher values will increase the number of degrees reported for a fixed actual rotation, while lower values will decrease the number of degrees reported. If your robot is consistently turning too far, increase the multiplier, and if it is not turning far enough, decrease the multiplier.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;port&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the analog port to use from 1-8&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;multiplier&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;an optional constant to tune the gyro readings; use 0 for the default value&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; a Gyro object to be stored and used for later calls to gyro functions&lt;/p&gt;
+
+&lt;h2 id=&#34;gyroReset&#34;&gt;gyroReset&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void gyroReset ( Gyro gyro )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Resets the gyro to zero.&lt;/p&gt;
+
+&lt;p&gt;It is safe to use this method while a gyro is enabled. It is not necessary to call this method before stopping or starting a gyro.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;gyro&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the Gyro object from &lt;a href=&#34;#gyroInit&#34;&gt;gyroInit()&lt;/a&gt; to reset&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;gyroShutdown&#34;&gt;gyroShutdown&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void gyroShutdown ( Gyro gyro )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Stops and disables the gyro.&lt;/p&gt;
+
+&lt;p&gt;Gyros use processing power, so disabling unused gyros increases code performance. The gyro&amp;rsquo;s position will be retained.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;gyro&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the Gyro object from &lt;a href=&#34;#gyroInit&#34;&gt;gyroInit()&lt;/a&gt; to stop&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;i2cRead&#34;&gt;i2cRead&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool i2cRead ( uint8_t addr,
+               uint8_t * data,
+               uint16_t count
+             )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Included in PROS API since 2.11.0&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Reads the specified number of data bytes from the specified 7-bit I2C address. The bytes will be stored at the specified location.&lt;/p&gt;
+
+&lt;p&gt;The I2C address should be right-aligned; the R/W bit is automatically supplied.&lt;/p&gt;
+
+&lt;p&gt;Since most I2C devices use an 8-bit register architecture, this method has limited usefulness. Consider &lt;a href=&#34;#i2cReadRegister&#34;&gt;i2cReadRegister()&lt;/a&gt; instead for the vast majority of applications.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;addr&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;address to read&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;data&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;a pointer to the location where the value will be stored&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;count&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;number of bytes to read&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if successful or false if failed. If only some bytes could be read, false is still returned.&lt;/p&gt;
+
+&lt;h2 id=&#34;i2cReadRegister&#34;&gt;i2cReadRegister&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool i2cReadRegister ( uint8_t addr,
+                       uint8_t reg,
+                       uint8_t * value,
+                       uint16_t count
+                     )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Included in PROS API since 2.11.0&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Reads the specified amount of data from the given register address on the specified 7-bit I2C address.&lt;/p&gt;
+
+&lt;p&gt;The I2C address should be right-aligned; the R/W bit is automatically supplied.&lt;/p&gt;
+
+&lt;p&gt;Most I2C devices support an auto-increment address feature, so using this method to read more than one byte will usually read a block of sequential registers. Try to merge reads to separate registers into a larger read using this function whenever possible to improve code reliability, even if a few intermediate values need to be thrown away.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;addr&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;register address to read&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;reg&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;register address to be written to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;value&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;a pointer to the location where the value will be stored&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;count&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;number of bytes to read&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if successful or false if failed. If only some bytes could be read, false is still returned.&lt;/p&gt;
+
+&lt;h2 id=&#34;i2cWrite&#34;&gt;i2cWrite&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool i2cWrite ( uint8_t addr,
+                uint8_t * data,
+                uint16_t count
+              )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Included in PROS API since 2.11.0&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Writes the specified number of data bytes to the specified 7-bit I2C address.&lt;/p&gt;
+
+&lt;p&gt;The I2C address should be right-aligned; the R/W bit is automatically supplied.&lt;/p&gt;
+
+&lt;p&gt;Since most I2C devices use an 8-bit register architecture, this method is mostly useful for setting the register position (most devices remember the last-used address) or writing a sequence of bytes to one register address using an auto-increment feature. In these cases, the first byte written from the data buffer should have the register address to use.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;addr&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;address to write to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;data&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;a pointer to the data to be written&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;count&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;number of bytes to write&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if successful or false if failed. If only some bytes could be written, false is still returned.&lt;/p&gt;
+
+&lt;h2 id=&#34;i2cWriteRegister&#34;&gt;i2cWriteRegister&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool i2cWriteRegister ( uint8_t addr,
+                        uint8_t reg,
+                        uint16_t value
+                      )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Included in PROS API since 2.11.0&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Writes the specified data byte to a register address on the specified 7-bit I2C address.&lt;/p&gt;
+
+&lt;p&gt;The I2C address should be right-aligned; the R/W bit is automatically supplied.&lt;/p&gt;
+
+&lt;p&gt;Only one byte can be written to each register address using this method. While useful for the vast majority of I2C operations, writing multiple bytes requires the i2cWrite method.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;addr&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;base address of i2c device&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;reg&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;register address to be written to&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;value&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;byte to write to register&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if successful or false if failed&lt;/p&gt;
+
+&lt;h2 id=&#34;imeGet&#34;&gt;imeGet&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool imeGet ( unsigned char address,
+              int * value
+            )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gets the current 32-bit count of the specified IME.&lt;/p&gt;
+
+&lt;p&gt;Much like the count for a quadrature encoder, the tick count is signed and cumulative. The value reflects total counts since the last reset. Different VEX Motor Encoders have a different number of counts per revolution:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;240.448 for the 269 IME&lt;/li&gt;
+&lt;li&gt;627.2 for the 393 IME in high torque mode (factory default)&lt;/li&gt;
+&lt;li&gt;392 for the 393 IME in high speed mode&lt;/li&gt;
+&lt;li&gt;261.333 for the 393 IME in turbo mode&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If the IME address is invalid, or the IME has not been reset or initialized, the value stored in *value is undefined.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;address&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the IME address to fetch from 0 to IME_ADDR_MAX&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;value&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;a pointer to the location where the value will be stored (obtained using the &amp;ldquo;&amp;amp;&amp;rdquo; operator on the target variable name e.g. imeGet(2, &amp;amp;counts))&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if the count was successfully read and the value stored in *value is valid; false otherwise&lt;/p&gt;
+
+&lt;h2 id=&#34;imeGetVelocity&#34;&gt;imeGetVelocity&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool imeGetVelocity ( unsigned char address,
+                      int * value
+                    )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gets the current rotational velocity of the specified IME.&lt;/p&gt;
+
+&lt;p&gt;In this version of PROS, the velocity is positive if the IME count is increasing and negative if the IME count is decreasing. The velocity is in RPM of the internal encoder wheel. Since checking the IME for its type cannot reveal whether the motor gearing is high speed or high torque (in the 2-Wire Motor 393 case), the user must divide the return value by the number of output revolutions per encoder revolution:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;30.056 for the 269 IME&lt;/li&gt;
+&lt;li&gt;39.2 for the 393 IME in high torque mode (factory default)&lt;/li&gt;
+&lt;li&gt;24.5 for the 393 IME in high speed mode&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If the IME address is invalid, or the IME has not been reset or initialized, the value stored in *value is undefined.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;address&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the IME address to fetch from 0 to IME_ADDR_MAX&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;value&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;a pointer to the location where the value will be stored (obtained using the &amp;ldquo;&amp;amp;&amp;rdquo; operator on the target variable name e.g. imeGet(imeGetVelocity, &amp;amp;counts))&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Returns&lt;/strong&gt;&lt;/em&gt; true if the velocity was successfully read and the value stored in *value is valid; false otherwise&lt;/p&gt;
+
+&lt;h2 id=&#34;imeinitializeall&#34;&gt;imeInitializeAll&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;unsigned int imeInitializeAll ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Initializes all IMEs.&lt;/p&gt;
+
+&lt;p&gt;IMEs are assigned sequential incrementing addresses, beginning with the first IME on the chain (closest to the VEX Cortex I2C port). Therefore, a given configuration of IMEs will always have the same ID assigned to each encoder. The addresses range from 0 to IME_ADDR_MAX, so the first encoder gets 0, the second gets 1, &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;This function should most likely be used in initialize(). Do not use it in initializeIO() or at any other time when the scheduler is paused (like an interrupt). Checking the return value of this function is important to ensure that all IMEs are plugged in and responding as expected.&lt;/p&gt;
+
+&lt;p&gt;This function, unlike the other IME functions, is not thread safe. If using imeInitializeAll to re-initialize encoders, calls to other IME functions might behave unpredictably during this function&amp;rsquo;s execution.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the number of IMEs successfully initialized&lt;/p&gt;
+
+&lt;h2 id=&#34;imereset&#34;&gt;imeReset&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool imeReset ( unsigned char address )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Resets the specified IME&amp;rsquo;s counters to zero.&lt;/p&gt;
+
+&lt;p&gt;This method can be used while the IME is rotating.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;address&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the IME address to fetch from 0 to IME_ADDR_MAX&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if the reset succeeded; false otherwise&lt;/p&gt;
+
+&lt;h2 id=&#34;imeshutdown&#34;&gt;imeShutdown&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void imeShutdown ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Shuts down all IMEs on the chain; their addresses return to the default and the stored counts and velocities are lost.&lt;/p&gt;
+
+&lt;p&gt;This function, unlike the other IME functions, is not thread safe.&lt;/p&gt;
+
+&lt;p&gt;To use the IME chain again, wait at least 0.25 seconds before using imeInitializeAll again.&lt;/p&gt;
+
+&lt;h2 id=&#34;ioclearinterrupt&#34;&gt;ioClearInterrupt&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void ioClearInterrupt ( unsigned char pin )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Disables interrupts on the specified pin.&lt;/p&gt;
+
+&lt;p&gt;Disabling interrupts on interrupt pins which are not in use conserves processing time.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;pin&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the pin on which to reset interrupts from 1-9,11-12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;ioSetInterrupt&#34;&gt;ioSetInterrupt&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void ioSetInterrupt( unsigned char    pin,
+                     unsigned char    edges,
+                     InterruptHandler handler
+                   )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sets up an interrupt to occur on the specified pin, and resets any counters or timers associated with the pin.&lt;/p&gt;
+
+&lt;p&gt;Each time the specified change occurs, the function pointer passed in will be called with the pin that changed as an argument. Enabling pin-change interrupts consumes processing time, so it is best to only enable necessary interrupts and to keep the InterruptHandler function short. Pin change interrupts can only be enabled on pins 1-9 and 11-12.&lt;/p&gt;
+
+&lt;p&gt;Do not use API functions such as &lt;a href=&#34;#delay&#34;&gt;delay()&lt;/a&gt; inside the handler function, as the function will run in an ISR where the scheduler is paused and no other interrupts can execute. It is best to quickly update some state and allow a task to perform the work.&lt;/p&gt;
+
+&lt;p&gt;Do not use this function on pins that are also being used by the built-in ultrasonic or shaft encoder drivers, or on pins which have been switched to output mode.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;pin&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the pin on which to enable interrupts from 1-9,11-12&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;edges&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;one of INTERRUPT_EDGE_RISING, INTERRUPT_EDGE_FALLING, or INTERRUPT_EDGE_BOTH&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;handler&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the function to call when the condition is satisfied&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;isAutonomous&#34;&gt;isAutonomous&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool isAutonomous ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;While in autonomous mode, joystick inputs will return a neutral value, but serial port communications (even over VEXnet) will still work properly.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if the robot is in autonomous mode, or false otherwise.&lt;/p&gt;
+
+&lt;h2 id=&#34;isEnabled&#34;&gt;isEnabled&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool isEnabled ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;While disabled via the VEX Competition Switch or VEX Field Controller, motors will not function. However, the digital I/O ports can still be changed, which may indirectly affect the robot state (e.g. solenoids). Avoid performing externally visible actions while disabled (the kernel should take care of this most of the time).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if the robot is enabled, or false otherwise.&lt;/p&gt;
+
+&lt;h2 id=&#34;isJoystickConnected&#34;&gt;isJoystickConnected&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool isJoystickConnected ( unsigned char joystick )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Useful for automatically merging joysticks for one operator, or splitting for two. This function does not work properly during initialize() or initializeIO() and can return false positives. It should be checked once and stored at the beginning of operatorControl().&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;joystick&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the joystick slot to check&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if a joystick is connected to the specified slot number (1 or 2), or false otherwise.&lt;/p&gt;
+
+&lt;h2 id=&#34;isOnline&#34;&gt;isOnline&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool isOnline ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When in online mode, the switching between autonomous() and operatorControl() tasks is managed by the PROS kernel.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if a VEX field controller or Competition switch is connected, or false otherwise&lt;/p&gt;
+
+&lt;h2 id=&#34;joystickGetAnalog&#34;&gt;joystickGetAnalog&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int joystickGetAnalog ( unsigned char joystick,
+                        unsigned char axis
+                      )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gets the value of a control axis on the VEX joystick.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;joystick&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the joystick slot to check&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;axis&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;one of the 1, 2, 3, 4, ACCEL_X, or ACCEL_Y anaglog channels on a VEX joystick&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the value from -127 to 127, or 0 if no joystick is connected to the requested slot.&lt;/p&gt;
+
+&lt;h2 id=&#34;joystickGetDigital&#34;&gt;joystickGetDigital&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int joystickGetDigital ( unsigned char joystick,
+                         unsigned char buttonGroup,
+                         unsigned char button
+                       )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gets the value of a button on the VEX joystick.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;joystick&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the joystick slot to check&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;buttonGroup&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;one of 5, 6, 7, or 8 to request that button as labelled on the joystick&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;button&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;one of JOY_UP, JOY_DOWN, JOY_LEFT, or JOY_RIGHT; requesting JOY_LEFT or JOY_RIGHT for groups 5 or 6 will cause an undefined value to be returned&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if that button is pressed, or false otherwise. If no joystick is connected to the requested slot, returns false.&lt;/p&gt;
+
+&lt;h2 id=&#34;lcdClear&#34;&gt;lcdClear&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void lcdClear ( FILE * lcdPort )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Clears the LCD screen on the specified port.&lt;/p&gt;
+
+&lt;p&gt;Printing to a line implicitly overwrites the contents, so clearing should only be required at startup.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;lcdPort&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the LCD to clear, either uart1 or uart2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;lcdInit&#34;&gt;lcdInit&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void lcdInit ( FILE * lcdPort )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Initializes the LCD port, but does not change the text or settings.&lt;/p&gt;
+
+&lt;p&gt;If the LCD was not initialized before, the text currently on the screen will be undefined. The port will not be usable with standard serial port functions until the LCD is stopped.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;lcdPort&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the LCD to clear, either uart1 or uart2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;lcdPrint&#34;&gt;lcdPrint&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void lcdPrint ( FILE * lcdPort,
+                unsigned char line,
+                const char * formatString,
+                ...
+              )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Prints the formatted string to the attached LCD.&lt;/p&gt;
+
+&lt;p&gt;The output string will be truncated as necessary to fit on the LCD screen, 16 characters wide. It is probably better to generate the string in a local buffer and use &lt;a href=&#34;#lcdSetText&#34;&gt;lcdSetText()&lt;/a&gt; but this method is provided for convenience.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;lcdPort&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the LCD to clear, either uart1 or uart2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;line&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the LCD line to write, either 1 or 2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;formatString&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the format string as specified in &lt;a href=&#34;#fprintf&#34;&gt;fprintf()&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;lcdReadButtons&#34;&gt;lcdReadButtons&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;unsigned int lcdReadButtons (FILE * lcdPort )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Reads the user button status from the LCD display.&lt;/p&gt;
+
+&lt;p&gt;For example, if the left and right buttons are pushed, (1 | 4) = 5 will be returned. 0 is returned if no buttons are pushed&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;lcdPort&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the LCD to clear, either uart1 or uart2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the buttons pressed as a bit mask&lt;/p&gt;
+
+&lt;h2 id=&#34;lcdSetBacklight&#34;&gt;lcdSetBacklight&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void lcdSetBacklight ( FILE * lcdPort,
+                       bool backlight
+                     )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sets the specified LCD backlight to be on or off.&lt;/p&gt;
+
+&lt;p&gt;Turning it off will save power but may make it more difficult to read in dim conditions.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;lcdPort&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the LCD to clear, either uart1 or uart2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;backlight&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;true to turn the backlight on, or false to turn it off&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;lcdSetText&#34;&gt;lcdSetText&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void lcdSetText ( FILE * lcdPort,
+                  unsigned char line,
+                  const char * buffer
+                )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Prints the string buffer to the attached LCD.&lt;/p&gt;
+
+&lt;p&gt;The output string will be truncated as necessary to fit on the LCD screen, 16 characters wide. This function, like &lt;a href=&#34;#fprintf&#34;&gt;fprint()&lt;/a&gt;, is much, much faster than a formatted routine such as &lt;a href=&#34;#lcdPrint&#34;&gt;lcdPrint()&lt;/a&gt; and consumes less memory.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;lcdPort&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the LCD to clear, either uart1 or uart2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;line&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the LCD line to write, either 1 or 2&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;buffer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the string to write&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;lcdShutdown&#34;&gt;lcdShutdown&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void lcdShutdown ( FILE * lcdPort )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Shut down the specified LCD port.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;lcdPort&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the LCD to clear, either uart1 or uart2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;micros&#34;&gt;micros&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;unsigned long micros ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are 10^6 microseconds in a second, so as a 32-bit integer, this will overflow and wrap back to zero every two hours or so.&lt;/p&gt;
+
+&lt;p&gt;This function is Wiring-compatible.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the number of microseconds since the Cortex was turned on or the last overflow&lt;/p&gt;
+
+&lt;h2 id=&#34;millis&#34;&gt;millis&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;unsigned long millis ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are 1000 milliseconds in a second, so as a 32-bit integer, this will not overflow for 50 days.&lt;/p&gt;
+
+&lt;p&gt;This function is Wiring-compatible.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt;  the number of milliseconds since Cortex power-up.&lt;/p&gt;
+
+&lt;h2 id=&#34;motorGet&#34;&gt;motorGet&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int motorGet ( unsigned char channel )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gets the last set speed of the specified motor channel.&lt;/p&gt;
+
+&lt;p&gt;This speed may have been set by any task or the PROS kernel itself. This is not guaranteed to be the speed that the motor is actually running at, or even the speed currently being sent to the motor, due to latency in the Motor Controller 29 protocol and physical loading. To measure actual motor shaft revolution speed, attach a VEX Integrated Motor Encoder or VEX Quadrature Encoder and use the velocity functions associated with each.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;channel&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;channel   the motor channel to fetch from 1-10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the speed last sent to this channel; -127 is full reverse and 127 is full forward, with 0 being off&lt;/p&gt;
+
+&lt;h2 id=&#34;motorset&#34;&gt;motorSet&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void motorSet ( unsigned char channel,
+                int speed
+              )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sets the speed of the specified motor channel.&lt;/p&gt;
+
+&lt;p&gt;Do not use &lt;a href=&#34;#motorSet&#34;&gt;motorSet()&lt;/a&gt; with the same channel argument from two different tasks. It is safe to use &lt;a href=&#34;#motorSet&#34;&gt;motorSet()&lt;/a&gt; with different channel arguments from different tasks.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;channel&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;channel   the motor channel to fetch from 1-10&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;speed&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the new signed speed; -127 is full reverse and 127 is full forward, with 0 being off&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;motorStop&#34;&gt;motorStop&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void motorStop ( unsigned char channel )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Stops the motor on the specified channel, equivalent to calling &lt;a href=&#34;#motorSet&#34;&gt;motorSet()&lt;/a&gt; with an argument of zero.&lt;/p&gt;
+
+&lt;p&gt;This performs a coasting stop, not an active brake. Since motorStop is similar to motorSet(0), see the note for &lt;a href=&#34;#motorSet&#34;&gt;motorSet()&lt;/a&gt; about use from multiple tasks.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;channel&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;channel   the motor channel to fetch from 1-10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;mutexCreate&#34;&gt;mutexCreate&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;Mutex mutexCreate ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Creates a mutex intended to allow only one task to use a resource at a time.&lt;/p&gt;
+
+&lt;p&gt;For signalling and synchronization, try using semaphores.&lt;/p&gt;
+
+&lt;p&gt;Mutexes created using this function can be accessed using the &lt;a href=&#34;#mutexTake&#34;&gt;mutexTake()&lt;/a&gt; and [mutexGive()]](#mutexGive) functions. The semaphore functions must not be used on objects of this type.&lt;/p&gt;
+
+&lt;p&gt;This type of object uses a priority inheritance mechanism so a task &amp;lsquo;taking&amp;rsquo; a mutex MUST ALWAYS &amp;lsquo;give&amp;rsquo; the mutex back once the mutex is no longer required.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; a handle to the created mutex&lt;/p&gt;
+
+&lt;h2 id=&#34;mutexDelete&#34;&gt;mutexDelete&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void mutexDelete ( Mutex mutex )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Deletes the specified mutex.&lt;/p&gt;
+
+&lt;p&gt;This function can be dangerous; deleting semaphores being waited on by a task may cause deadlock or a crash.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;mutex&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the mutex to destroy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;mutexGive&#34;&gt;mutexGive&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool mutexGive ( Mutex mutex )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Relinquishes a mutex so that other tasks can use the resource it guards.&lt;/p&gt;
+
+&lt;p&gt;The mutex must be held by the current task using a corresponding call to &lt;a href=&#34;#mutexTake&#34;&gt;mutexTake()&lt;/a&gt;.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;mutex&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the mutex to release&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if the mutex was released, or false if the mutex was not already held&lt;/p&gt;
+
+&lt;h2 id=&#34;mutexTake&#34;&gt;mutexTake&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool mutexTake ( Mutex mutex,
+                 const unsigned long blockTime
+               )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Requests a mutex so that other tasks cannot simultaneously use the resource it guards.&lt;/p&gt;
+
+&lt;p&gt;The mutex must not already be held by the current task. If another task already holds the mutex, the function will wait for the mutex to be released. Other tasks can run during this time.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;mutex&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the mutex to request&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;blocktime&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the maximum time to wait for the mutex to be available, where -1 specifies an infinite timeout&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if the mutex was successfully taken, or false if the timeout expired&lt;/p&gt;
+
+&lt;h2 id=&#34;pinMode&#34;&gt;pinMode&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void pinMode ( unsigned char pin,
+               unsigned char mode
+             )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Configures the pin as an input or output with a variety of settings.&lt;/p&gt;
+
+&lt;p&gt;Do note that INPUT by default turns on the pull-up resistor, as most VEX sensors are open-drain active low. It should not be a big deal for most push-pull sources. This function is Wiring-compatible.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;pin&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the pin to read from 1-26&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;mode&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;one of INPUT, INPUT_ANALOG, INPUT_FLOATING, OUTPUT, or OUTPUT_OD&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;powerLevelBackup&#34;&gt;powerLevelBackup&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;unsigned int powerLevelBackup ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the backup battery voltage in millivolts. If no backup battery is connected, returns 0&lt;/p&gt;
+
+&lt;h2 id=&#34;powerLevelMain&#34;&gt;powerLevelMain&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;unsigned int powerLevelMain ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In rare circumstances, this method might return 0. Check the output value for reasonability before blindly blasting the user.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the main battery voltage in millivolts&lt;/p&gt;
+
+&lt;h2 id=&#34;print&#34;&gt;print&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void print ( const char * string )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Prints the simple string to the debug terminal without formatting.&lt;/p&gt;
+
+&lt;p&gt;This method is much, much faster than &lt;a href=&#34;#printf&#34;&gt;printf()&lt;/a&gt;.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;string&lt;/code&gt; the string to write&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;printf&#34;&gt;printf&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int printf ( const char * formatString,
+             ...
+           )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Prints the formatted string to the debug stream (the PC terminal).&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;formatString&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the format string as specified in &lt;a href=&#34;#fprintf&#34;&gt;fprintf()&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the number of characters written&lt;/p&gt;
+
+&lt;h2 id=&#34;putchar&#34;&gt;putchar&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int putchar ( int value )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Writes one character to &amp;ldquo;stdout&amp;rdquo;, which is the PC debug terminal, and returns the input value.&lt;/p&gt;
+
+&lt;p&gt;When using a wireless connection, one may need to press the spacebar before the input is visible on the terminal.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;value&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the character to write (a value of type &amp;ldquo;char&amp;rdquo; can be used)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the number of characters writen, excluding the new line&lt;/p&gt;
+
+&lt;h2 id=&#34;semaphoreCreate&#34;&gt;semaphoreCreate&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;Semaphore semaphoreCreate ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Creates a semaphore intended for synchronizing tasks.&lt;/p&gt;
+
+&lt;p&gt;To prevent some critical code from simultaneously modifying a shared resource, use mutexes instead.&lt;/p&gt;
+
+&lt;p&gt;Semaphores created using this function can be accessed using the &lt;a href=&#34;#semaphoreTake&#34;&gt;semaphoreTake()&lt;/a&gt; and &lt;a href=&#34;#semaphoreGive&#34;&gt;semaphoreGive()&lt;/a&gt; functions. The mutex functions must not be used on objects of this type.&lt;/p&gt;
+
+&lt;p&gt;This type of object does not need to have balanced take and give calls, so priority inheritance is not used. Semaphores can be signalled by an interrupt routine.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; a handle to the created semaphore&lt;/p&gt;
+
+&lt;h2 id=&#34;semaphoreDelete&#34;&gt;semaphoreDelete&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void semaphoreDelete ( Semaphore semaphore )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Deletes the specified semaphore.&lt;/p&gt;
+
+&lt;p&gt;This function can be dangerous; deleting semaphores being waited on by a task may cause deadlock or a crash.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;semaphore&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the semaphore to destroy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;semaphoreGive&#34;&gt;semaphoreGive&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool semaphoreGive (Semaphore semaphore )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Signals a semaphore.&lt;/p&gt;
+
+&lt;p&gt;Tasks waiting for a signal using &lt;a href=&#34;#semaphoreTake&#34;&gt;semaphoreTake()&lt;/a&gt; will be unblocked by this call and can continue execution.&lt;/p&gt;
+
+&lt;p&gt;Slow processes can give semaphores when ready, and fast processes waiting to take the semaphore will continue at that point.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;semaphore&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the semaphore to destroy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if the semaphore was successfully given, or false if the semaphore was not taken since the last give&lt;/p&gt;
+
+&lt;h2 id=&#34;semaphoreTake&#34;&gt;semaphoreTake&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;bool semaphoreTake ( Semaphore semaphore,
+                     const unsigned long blockTime
+                   )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Waits on a semaphore.&lt;/p&gt;
+
+&lt;p&gt;If the semaphore is already in the &amp;ldquo;taken&amp;rdquo; state, the current task will wait for the semaphore to be signaled. Other tasks can run during this time.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;semaphore&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the semaphore to wait&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;blockTime&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the maximum time to wait for the semaphore to be given, where -1 specifies an infinite timeout&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; true if the semaphore was successfully taken, or false if the timeout expired&lt;/p&gt;
+
+&lt;h2 id=&#34;setTeamName&#34;&gt;setTeamName&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void setTeamName ( const char * name )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sets the team name displayed to the VEX field control and VEX Firmware Upgrade.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;a string containing the team name; only the first eight characters will be shown&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;snprintf&#34;&gt;snprintf&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int snprintf ( char * buffer,
+               size_t limit,
+               const char * formatString,
+               ...
+             )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Prints the formatted string to the string buffer with the specified length limit.&lt;/p&gt;
+
+&lt;p&gt;The length limit, as per the C standard, includes the trailing null character, so an argument of 256 will cause a maximum of 255 non-null characters to be printed, and one null terminator in all cases.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;buffer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the string buffer where characters can be placed&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;limit&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the maximum number of characters to write&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;formatString&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the format string as specified in &lt;a href=&#34;#fprintf&#34;&gt;fprintf()&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the number of characters stored&lt;/p&gt;
+
+&lt;h2 id=&#34;speakerInit&#34;&gt;speakerInit&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void speakerInit ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Initializes VEX speaker support.&lt;/p&gt;
+
+&lt;p&gt;The VEX speaker is not thread safe; it can only be used from one task at a time. Using the VEX speaker may impact robot performance. Teams may benefit from an if statement that only enables sound if &lt;a href=&#34;#isOnline&#34;&gt;isOnline()&lt;/a&gt; returns false.&lt;/p&gt;
+
+&lt;h2 id=&#34;speakerPlayArray&#34;&gt;speakerPlayArray&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void speakerPlayArray ( const char ** songs )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Plays up to three RTTTL (Ring Tone Text Transfer Language) songs simultaneously over the VEX speaker.&lt;/p&gt;
+
+&lt;p&gt;The audio is mixed to allow polyphonic sound to be played. Many simple songs are available in RTTTL format online, or compose your own.&lt;/p&gt;
+
+&lt;p&gt;The song must not be NULL, but unused tracks within the song can be set to NULL. If any of the three song tracks is invalid, the result of this function is undefined.&lt;/p&gt;
+
+&lt;p&gt;The VEX speaker is not thread safe; it can only be used from one task at a time. Using the VEX speaker may impact robot performance. Teams may benefit from an if statement that only enables sound if &lt;a href=&#34;#isOnline&#34;&gt;isOnline()&lt;/a&gt; returns false.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;songs&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;an array of up to three (3) RTTTL songs as string values to play&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;speakerPlayRtttl&#34;&gt;speakerPlayRtttl&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void speakerPlayRtttl ( const char * song )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Plays an RTTTL (Ring Tone Text Transfer Language) song over the VEX speaker.&lt;/p&gt;
+
+&lt;p&gt;Many simple songs are available in RTTTL format online, or compose your own.&lt;/p&gt;
+
+&lt;p&gt;The song must not be NULL. If an invalid song is specified, the result of this function is undefined.&lt;/p&gt;
+
+&lt;p&gt;The VEX speaker is not thread safe; it can only be used from one task at a time. Using the VEX speaker may impact robot performance. Teams may benefit from an if statement that only enables sound if &lt;a href=&#34;#isOnline&#34;&gt;isOnline()&lt;/a&gt; returns false.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;song&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the RTTTL song as a string value to play&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;speakerShutdown&#34;&gt;speakerShutdown&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void speakerShutdown ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Powers down and disables the VEX speaker.&lt;/p&gt;
+
+&lt;p&gt;If a song is currently being played in another task, the behavior of this function is undefined, since the VEX speaker is not thread safe.&lt;/p&gt;
+
+&lt;h2 id=&#34;sprintf&#34;&gt;sprintf&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int sprintf ( char * buffer,
+               const char * formatString,
+               ...
+             )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Prints the formatted string to the string buffer.&lt;/p&gt;
+
+&lt;p&gt;If the buffer is not big enough to contain the complete formatted output, undefined behavior occurs. See &lt;a href=&#34;#snprintf&#34;&gt;snprintf()&lt;/a&gt; for a safer version of this function.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;buffer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the string buffer where characters can be placed&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;formatString&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the format string as specified in &lt;a href=&#34;#fprintf&#34;&gt;fprintf()&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the number of characters stored&lt;/p&gt;
+
+&lt;h2 id=&#34;taskCreate&#34;&gt;taskCreate&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;TaskHandle taskCreate ( TaskCode taskCode,
+                        const unsigned int stackDepth,
+                        void * parameters,
+                        const unsigned int priority
+                      )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Creates a new task and add it to the list of tasks that are ready to run.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;taskCode&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the function to execute in its own task&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;stackDepth&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the number of variables available on the stack (4 * stackDepth bytes will be allocated on the Cortex)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;parameters&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;an argument passed to the taskCode function&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;priority&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;a value from TASK_PRIORITY_LOWEST to TASK_PRIORITY_HIGHEST determining the initial priority of the task&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; a handle to the created task, or NULL if an error occurred&lt;/p&gt;
+
+&lt;h2 id=&#34;taskDelay&#34;&gt;taskDelay&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void taskDelay ( const unsigned long msToDelay )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Delays the current task for a given number of milliseconds.&lt;/p&gt;
+
+&lt;p&gt;Delaying for a period of zero will force a reschedule, where tasks of equal priority may be scheduled if available. The calling task will still be available for immediate rescheduling once the other tasks have had their turn or if nothing of equal or higher priority is available to be scheduled.&lt;/p&gt;
+
+&lt;p&gt;This is not the best method to have a task execute code at predefined intervals, as the delay time is measured from when the delay is requested. To delay cyclically, use &lt;a href=&#34;#taskDelayUntil&#34;&gt;taskDelayUntil()&lt;/a&gt;.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;msToDelay&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the number of milliseconds to wait, with 1000 milliseconds per second&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;taskDelayUntil&#34;&gt;taskDelayUntil&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void taskDelayUntil ( unsigned long * previousWakeTime,
+                      const unsigned long cycleTime
+                    )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Delays the current task until a specified time.&lt;/p&gt;
+
+&lt;p&gt;The task will be unblocked at the time *previousWakeTime + cycleTime, and *previousWakeTime will be changed to reflect the time at which the task will unblock.&lt;/p&gt;
+
+&lt;p&gt;If the target time is in the past, no delay occurs, but a reschedule is forced, as if &lt;a href=&#34;#taskDelay&#34;&gt;taskDelay()&lt;/a&gt; was called with an argument of zero. If the sum of cycleTime and *previousWakeTime overflows or underflows, undefined behavior occurs.&lt;/p&gt;
+
+&lt;p&gt;This function should be used by cyclical tasks to ensure a constant execution frequency. While &lt;a href=&#34;#taskDelay&#34;&gt;taskDelay()&lt;/a&gt; specifies a wake time relative to the time at which the function is called, &lt;a href=&#34;#taskDelayUntil&#34;&gt;taskDelayUntil()&lt;/a&gt; specifies the absolute future time at which it wishes to unblock. Calling &lt;a href=&#34;#taskDelayUntil&#34;&gt;taskDelayUntil()&lt;/a&gt; with the same cycleTime parameter value in a loop, with previousWakeTime referring to a local variable initialized to &lt;a href=&#34;#millis&#34;&gt;millis()&lt;/a&gt;, will cause the loop to execute with a fixed period.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;previousWakeTime&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;a pointer to the location storing the last unblock time, obtained by using the &amp;ldquo;&amp;amp;&amp;rdquo; operator on a variable (e.g. &amp;ldquo;taskDelayUntil(&amp;amp;now, 50);&amp;ldquo;)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;cycleTime&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the number of milliseconds to wait, with 1000 milliseconds per second&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;taskDelete&#34;&gt;taskDelete&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void taskDelete ( TaskHandle taskToDelete )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Kills and removes the specified task from the kernel task list.&lt;/p&gt;
+
+&lt;p&gt;Deleting the last task will end the program, possibly leading to undesirable states as some outputs may remain in their last set configuration.&lt;/p&gt;
+
+&lt;p&gt;NOTE: The idle task is responsible for freeing the kernel allocated memory from tasks that have been deleted. It is therefore important that the idle task is not starved of processing time. Memory allocated by the task code is not automatically freed, and should be freed before the task is deleted.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;taskToDelete&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the task to kill; passing NULL kills the current task&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;taskGetCount&#34;&gt;taskGetCount&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;unsigned int taskGetCount ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Determines the number of tasks that are currently being managed.&lt;/p&gt;
+
+&lt;p&gt;This includes all ready, blocked and suspended tasks. A task that has been deleted but not yet freed by the idle task will also be included in the count. Tasks recently created may take one context switch to be counted.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the number of tasks that are currently running, waiting, or suspended&lt;/p&gt;
+
+&lt;h2 id=&#34;taskGetState&#34;&gt;taskGetState&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;unsigned int taskGetState ( TaskHandle task )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Retrieves the state of the specified task.&lt;/p&gt;
+
+&lt;p&gt;Note that the state of tasks which have died may be re-used for future tasks, causing the value returned by this function to reflect a different task than possibly intended in this case.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;task&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Handle to the task to query. Passing NULL will query the current task status (which will, by definition, be TASK_RUNNING if this call returns)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; A value reflecting the task&amp;rsquo;s status, one of the constants TASK_DEAD, TASK_RUNNING, TASK_RUNNABLE, TASK_SLEEPING, or TASK_SUSPENDED&lt;/p&gt;
+
+&lt;h2 id=&#34;taskPriorityGet&#34;&gt;taskPriorityGet&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;unsigned int taskPriorityGet ( const TaskHandle task )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Obtains the priority of the specified task.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;task&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the task to check; passing NULL checks the current task&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the priority of that task from 0 to TASK_MAX_PRIORITIES&lt;/p&gt;
+
+&lt;h2 id=&#34;taskPrioritySet&#34;&gt;taskPrioritySet&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void taskPrioritySet ( TaskHandle task,
+                       const unsigned int newPriority
+                     )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sets the priority of the specified task.&lt;/p&gt;
+
+&lt;p&gt;A context switch may occur before the function returns if the priority being set is higher than the currently executing task and the task being mutated is available to be scheduled.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;task&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the task to change; passing NULL changes the current task&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;newPriority&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;a value between TASK_PRIORITY_LOWEST and TASK_PRIORITY_HIGHEST inclusive indicating the new task priority&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;taskResume&#34;&gt;taskResume&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void taskResume ( TaskHandle taskToResume )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Resumes the specified task.&lt;/p&gt;
+
+&lt;p&gt;A task that has been suspended by one or more calls to &lt;a href=&#34;#taskSuspend&#34;&gt;taskSuspend()&lt;/a&gt; will be made available for scheduling again by a call to &lt;a href=&#34;#taskResume&#34;&gt;taskResume()&lt;/a&gt;. If the task was not suspended at the time of the call to &lt;a href=&#34;#taskResume&#34;&gt;taskResume()&lt;/a&gt;, undefined behavior occurs.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;taskToResume&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the task to change; passing NULL is not allowed as the current task cannot be suspended (it is obviously running if this function is called)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;taskRunLoop&#34;&gt;taskRunLoop&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;TaskHandle taskRunLoop ( void(*)(void) fn,
+                         const unsigned long increment
+                       )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Starts a task which will periodically call the specified function.&lt;/p&gt;
+
+&lt;p&gt;Intended for use as a quick-start skeleton for cyclic tasks with higher priority than the &amp;ldquo;main&amp;rdquo; tasks. The created task will have priority TASK_PRIORITY_DEFAULT + 1 with the default stack size. To customize behavior, create a task manually with the specified function.&lt;/p&gt;
+
+&lt;p&gt;This task will automatically terminate after one further function invocation when the robot is disabled or when the robot mode is switched.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;fn&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the function to call in this loop&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;increment&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the delay between successive calls in milliseconds; the &lt;a href=&#34;#taskDelayUntil&#34;&gt;taskDelayUntil()&lt;/a&gt; function is used for accurate cycle timing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; a handle to the task, or NULL if an error occurred&lt;/p&gt;
+
+&lt;h2 id=&#34;taskSuspend&#34;&gt;taskSuspend&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void taskSuspend ( TaskHandle taskToSuspend )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Suspends the specified task.&lt;/p&gt;
+
+&lt;p&gt;When suspended a task will not be scheduled, regardless of whether it might be otherwise available to run.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;taskToSuspend&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the task to suspend; passing NULL suspends the current task&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;ultrasonicGet&#34;&gt;ultrasonicGet&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;int ultrasonicGet ( ultrasonic ult )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Gets the current ultrasonic sensor value in centimeters.&lt;/p&gt;
+
+&lt;p&gt;If no object was found, zero is returned. If the ultrasonic sensor was never started, the return value is undefined. Round and fluffy objects can cause inaccurate values to be returned.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;ult&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the Ultrasonic object from &lt;a href=&#34;#ultrasonicInit&#34;&gt;ultrasonicInit()&lt;/a&gt; to read&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; the distance to the nearest object in centimeters&lt;/p&gt;
+
+&lt;h2 id=&#34;ultrasonicInit&#34;&gt;ultrasonicInit&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;Ultrasonic ultrasonicInit ( unsigned char portEcho,
+                            unsigned char portPing
+                          )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Initializes an ultrasonic sensor on the specified digital ports.&lt;/p&gt;
+
+&lt;p&gt;The ultrasonic sensor will be polled in the background in concert with the other sensors registered using this method. NULL will be returned if either port is invalid or the ultrasonic sensor port is already in use.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;portEcho&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the port connected to the orange cable from 1-9,11-12&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;portPing&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the port connected to the yellow cable from 1-12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;Returns&lt;/strong&gt; an Ultrasonic object to be stored and used for later calls to ultrasonic functions&lt;/p&gt;
+
+&lt;h2 id=&#34;ultrasonicShutdown&#34;&gt;ultrasonicShutdown&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void ultrasonicShutdown ( Ultrasonic ult )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Stops and disables the ultrasonic sensor.&lt;/p&gt;
+
+&lt;p&gt;The last distance it had before stopping will be retained. One more ping operation may occur before the sensor is fully disabled.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;ult&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the Ultrasonic object from &lt;a href=&#34;#ultrasonicInit&#34;&gt;ultrasonicInit()&lt;/a&gt; to stop&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;usartInit&#34;&gt;usartInit&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void usartInit ( FILE * usart,
+                 unsigned int baud,
+                 unsigned int flags
+               )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Initialize the specified serial interface with the given connection parameters.&lt;/p&gt;
+
+&lt;p&gt;I/O to the port is accomplished using the &amp;ldquo;standard&amp;rdquo; I/O functions such as &lt;a href=&#34;#fputs&#34;&gt;fputs()&lt;/a&gt;, &lt;a href=&#34;#fprintf&#34;&gt;fprintf()&lt;/a&gt;, and &lt;a href=&#34;#fputc&#34;&gt;fputc()&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Re-initializing an open port may cause loss of data in the buffers. This routine may be safely called from initializeIO() or when the scheduler is paused. If I/O is attempted on a serial port which has never been opened, the behavior will be the same as if the port had been disabled.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;usart&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the port to open, either &amp;ldquo;uart1&amp;rdquo; or &amp;ldquo;uart2&amp;rdquo;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;baud&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the baud rate to use from 2400 to 1000000 baud&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;flags&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;a bit mask combination of the SERIAL_* flags specifying parity, stop, and data bits&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;usartShutdown&#34;&gt;usartShutdown&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void usartShutdown ( FILE * usart )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Disables the specified USART interface.&lt;/p&gt;
+
+&lt;p&gt;Any data in the transmit and receive buffers will be lost. Attempts to read from the port when it is disabled will deadlock, and attempts to write to it may deadlock depending on the state of the buffer.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;usart&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the port to close, either &amp;ldquo;uart1&amp;rdquo; or &amp;ldquo;uart2&amp;rdquo;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;wait&#34;&gt;wait&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void wait ( const unsigned long time )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Alias of &lt;a href=&#34;#taskDelay&#34;&gt;taskDelay()&lt;/a&gt; intended to help EasyC users.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;time&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the duration of the delay in milliseconds (1 000 milliseconds per second)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;waitUntil&#34;&gt;waitUntil&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void waitUntil ( unsigned long * previousWakeTime,
+                 const unsigned long time
+               )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Alias of &lt;a href=&#34;#taskDelayUntil&#34;&gt;taskDelayUntil()&lt;/a&gt; intended to help EasyC users.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;previousWakeTime&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;a pointer to the last wakeup time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;time&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the duration of the delay in milliseconds (1 000 milliseconds per second)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;macros&#34;&gt;Macros&lt;/h2&gt;
+
+&lt;h3 id=&#34;define-accel-x-5&#34;&gt;#define ACCEL_X  5&lt;/h3&gt;
+
+&lt;p&gt;Analog axis for the X acceleration from the VEX joystick.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-accel-y-6&#34;&gt;#define ACCEL_Y  6&lt;/h3&gt;
+
+&lt;p&gt;Analog axis for the Y acceleration from the VEX Joystick.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-board-nr-adc-pins-8&#34;&gt;#define     BOARD_NR_ADC_PINS   8&lt;/h3&gt;
+
+&lt;p&gt;There are 8 available analog I/O on the Cortex.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-board-nr-gpio-pins-27&#34;&gt;#define     BOARD_NR_GPIO_PINS   27&lt;/h3&gt;
+
+&lt;p&gt;There are 27 available I/O on the Cortex that can be used for digital communication.&lt;/p&gt;
+
+&lt;p&gt;This excludes the crystal ports but includes the Communications, Speaker, and Analog ports.&lt;/p&gt;
+
+&lt;p&gt;The motor ports are not on the Cortex and are thus excluded from this count. Pin 0 is the Speaker port, pins 1-12 are the standard Digital I/O, 13-20 are the Analog I/O, 21+22 are UART1, 23+24 are UART2, and 25+26 are the I2C port.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-eof-int-1&#34;&gt;#define     EOF   ((int)-1)&lt;/h3&gt;
+
+&lt;p&gt;EOF is a value evaluating to -1.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-high-1&#34;&gt;#define HIGH   1&lt;/h3&gt;
+
+&lt;p&gt;Used for digitalWrite() to specify a logic HIGH state to output.&lt;/p&gt;
+
+&lt;p&gt;In reality, using any non-zero expression or &amp;ldquo;true&amp;rdquo; will work to set a pin to HIGH.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-ime-addr-max-0x1f&#34;&gt;#define     IME_ADDR_MAX   0x1F&lt;/h3&gt;
+
+&lt;p&gt;IME addresses end at 0x1F.&lt;/p&gt;
+
+&lt;p&gt;Actually using more than 10 (address 0x1A) encoders will cause unreliable communications.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-input-0x0a&#34;&gt;#define     INPUT   0x0A&lt;/h3&gt;
+
+&lt;p&gt;pinMode() state for digital input, with pullup.&lt;/p&gt;
+
+&lt;p&gt;This is the default state for the 12 Digital pins. The pullup causes the input to read as &amp;ldquo;HIGH&amp;rdquo; when unplugged, but is fairly weak and can safely be driven by most sources. Many VEX digital sensors rely on this behavior and cannot be used with INPUT_FLOATING.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-input-analog-0x00&#34;&gt;#define INPUT_ANALOG   0x00&lt;/h3&gt;
+
+&lt;p&gt;pinMode() state for analog inputs.&lt;/p&gt;
+
+&lt;p&gt;This is the default state for the 8 Analog pins and the Speaker port. This only works on pins with analog input capabilities; use anywhere else results in undefined behavior.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-input-floating-0x04&#34;&gt;#define INPUT_FLOATING   0x04&lt;/h3&gt;
+
+&lt;p&gt;pinMode() state for digital input, without pullup.&lt;/p&gt;
+
+&lt;p&gt;Beware of power consumption, as digital inputs left &amp;ldquo;floating&amp;rdquo; may switch back and forth and cause spurious interrupts.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-interrupt-edge-both-3&#34;&gt;#define     INTERRUPT_EDGE_BOTH   3&lt;/h3&gt;
+
+&lt;p&gt;When used in ioSetInterrupt(), triggers an interrupt on both rising and falling edges (LOW to HIGH or HIGH to LOW).&lt;/p&gt;
+
+&lt;h3 id=&#34;define-interrupt-edge-falling-2&#34;&gt;#define     INTERRUPT_EDGE_FALLING   2&lt;/h3&gt;
+
+&lt;p&gt;When used in ioSetInterrupt(), triggers an interrupt on falling edges (HIGH to LOW).&lt;/p&gt;
+
+&lt;h3 id=&#34;define-interrupt-edge-rising-1&#34;&gt;#define     INTERRUPT_EDGE_RISING   1&lt;/h3&gt;
+
+&lt;p&gt;When used in ioSetInterrupt(), triggers an interrupt on rising edges (LOW to HIGH).&lt;/p&gt;
+
+&lt;h3 id=&#34;define-joy-down-1&#34;&gt;#define     JOY_DOWN   1&lt;/h3&gt;
+
+&lt;p&gt;DOWN button (valid on channels 5, 6, 7, 8)&lt;/p&gt;
+
+&lt;h3 id=&#34;define-joy-left-2&#34;&gt;#define     JOY_LEFT   2&lt;/h3&gt;
+
+&lt;p&gt;LEFT button (valid on channels 7, 8)&lt;/p&gt;
+
+&lt;h3 id=&#34;define-joy-right-8&#34;&gt;#define     JOY_RIGHT   8&lt;/h3&gt;
+
+&lt;p&gt;RIGHT button (valid on channels 7, 8)&lt;/p&gt;
+
+&lt;h3 id=&#34;define-joy-up-4&#34;&gt;#define     JOY_UP   4&lt;/h3&gt;
+
+&lt;p&gt;UP button (valid on channels 5, 6, 7, 8)&lt;/p&gt;
+
+&lt;h3 id=&#34;define-lcd-btn-center-2&#34;&gt;#define     LCD_BTN_CENTER   2&lt;/h3&gt;
+
+&lt;p&gt;CENTER button on LCD for use with lcdReadButtons()&lt;/p&gt;
+
+&lt;h3 id=&#34;define-lcd-btn-left-1&#34;&gt;#define     LCD_BTN_LEFT   1&lt;/h3&gt;
+
+&lt;p&gt;LEFT button on LCD for use with lcdReadButtons()&lt;/p&gt;
+
+&lt;h3 id=&#34;define-lcd-btn-right-4&#34;&gt;#define     LCD_BTN_RIGHT   4&lt;/h3&gt;
+
+&lt;p&gt;RIGHT button on LCD for use with lcdReadButtons()&lt;/p&gt;
+
+&lt;h3 id=&#34;define-low-0&#34;&gt;#define LOW   0&lt;/h3&gt;
+
+&lt;p&gt;Used for digitalWrite() to specify a logic LOW state to output.&lt;/p&gt;
+
+&lt;p&gt;In reality, using a zero expression or &amp;ldquo;false&amp;rdquo; will work to set a pin to LOW.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-output-0x01&#34;&gt;#define OUTPUT   0x01&lt;/h3&gt;
+
+&lt;p&gt;pinMode() state for digital output, push-pull.&lt;/p&gt;
+
+&lt;p&gt;This is the mode which should be used to output a digital HIGH or LOW value from the Cortex. This mode is useful for pneumatic solenoid valves and VEX LEDs.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-output-od-0x05&#34;&gt;#define OUTPUT_OD   0x05&lt;/h3&gt;
+
+&lt;p&gt;pinMode() state for open-drain outputs.&lt;/p&gt;
+
+&lt;p&gt;This is useful in a few cases for external electronics and should not be used for the VEX solenoid or LEDs.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-seek-cur-1&#34;&gt;#define     SEEK_CUR   1&lt;/h3&gt;
+
+&lt;p&gt;SEEK_CUR is used in fseek() to denote an relative position in bytes from the current file location.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-seek-end-2&#34;&gt;#define SEEK_END   2&lt;/h3&gt;
+
+&lt;p&gt;SEEK_END is used in fseek() to denote an absolute position in bytes from the end of the file.&lt;/p&gt;
+
+&lt;p&gt;The offset will most likely be negative in this case.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-seek-set-0&#34;&gt;#define     SEEK_SET   0&lt;/h3&gt;
+
+&lt;p&gt;SEEK_SET is used in fseek() to denote an absolute position in bytes from the start of the file.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-serial-8n1-0x0000&#34;&gt;#define     SERIAL_8N1   0x0000&lt;/h3&gt;
+
+&lt;p&gt;Specifies the default serial settings when used in usartInit()&lt;/p&gt;
+
+&lt;h3 id=&#34;define-serial-databits-8-0x0000&#34;&gt;#define     SERIAL_DATABITS_8   0x0000&lt;/h3&gt;
+
+&lt;p&gt;Bit mask for usartInit() for 8 data bits (typical)&lt;/p&gt;
+
+&lt;h3 id=&#34;define-serial-databits-9-0x1000&#34;&gt;#define     SERIAL_DATABITS_9   0x1000&lt;/h3&gt;
+
+&lt;p&gt;Bit mask for usartInit() for 9 data bits.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-serial-parity-even-0x0400&#34;&gt;#define     SERIAL_PARITY_EVEN   0x0400&lt;/h3&gt;
+
+&lt;p&gt;Bit mask for usartInit() for Even parity.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-serial-parity-none-0x0000&#34;&gt;#define     SERIAL_PARITY_NONE   0x0000&lt;/h3&gt;
+
+&lt;p&gt;Bit mask for usartInit() for No parity (typical)&lt;/p&gt;
+
+&lt;h3 id=&#34;define-serial-parity-odd-0x0600&#34;&gt;#define     SERIAL_PARITY_ODD   0x0600&lt;/h3&gt;
+
+&lt;p&gt;Bit mask for usartInit() for Odd parity.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-serial-stopbits-1-0x0000&#34;&gt;#define     SERIAL_STOPBITS_1   0x0000&lt;/h3&gt;
+
+&lt;p&gt;Bit mask for usartInit() for 1 stop bit (typical)&lt;/p&gt;
+
+&lt;h3 id=&#34;define-serial-stopbits-2-0x2000&#34;&gt;#define     SERIAL_STOPBITS_2   0x2000&lt;/h3&gt;
+
+&lt;p&gt;Bit mask for usartInit() for 2 stop bits.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-stdin-file-3&#34;&gt;#define     stdin   ((FILE *)3)&lt;/h3&gt;
+
+&lt;p&gt;The standard input stream uses the PC debug terminal.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-stdout-file-3&#34;&gt;#define     stdout   ((FILE *)3)&lt;/h3&gt;
+
+&lt;p&gt;The standard output stream uses the PC debug terminal.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-task-dead-0&#34;&gt;#define     TASK_DEAD   0&lt;/h3&gt;
+
+&lt;p&gt;Constant returned from taskGetState() when the task is dead or nonexistant.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-task-default-stack-size-512&#34;&gt;#define     TASK_DEFAULT_STACK_SIZE   512&lt;/h3&gt;
+
+&lt;p&gt;The recommended stack size for a new task that does an average amount of work.&lt;/p&gt;
+
+&lt;p&gt;This stack size is used for default tasks such as autonomous().&lt;/p&gt;
+
+&lt;p&gt;This is probably OK for 4-5 levels of function calls and the use of printf() with several arguments. Tasks requiring deep recursion or large local buffers will need a bigger stack.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-task-max-16&#34;&gt;#define     TASK_MAX   16&lt;/h3&gt;
+
+&lt;p&gt;Only this many tasks can exist at once.&lt;/p&gt;
+
+&lt;p&gt;Attempts to create further tasks will not succeed until tasks end or are destroyed, AND the idle task cleans them up.&lt;/p&gt;
+
+&lt;p&gt;Changing this value will not change the limit without a kernel recompile. The idle task and VEX daemon task count against the limit. The user autonomous() or teleop() also counts against the limit, so 12 tasks usually remain for other uses.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-task-max-priorities-6&#34;&gt;#define     TASK_MAX_PRIORITIES   6&lt;/h3&gt;
+
+&lt;p&gt;The maximum number of available task priorities, which run from 0 to 5.&lt;/p&gt;
+
+&lt;p&gt;Changing this value will not change the priority count without a kernel recompile.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-task-minimal-stack-size-64&#34;&gt;#define TASK_MINIMAL_STACK_SIZE   64&lt;/h3&gt;
+
+&lt;p&gt;The minimum stack depth for a task.&lt;/p&gt;
+
+&lt;p&gt;Scheduler state is stored on the stack, so even if the task never uses the stack, at least this much space must be allocated.&lt;/p&gt;
+
+&lt;p&gt;Function calls and other seemingly innocent constructs may place information on the stack. Err on the side of a larger stack when possible.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-task-priority-default-2&#34;&gt;#define TASK_PRIORITY_DEFAULT   2&lt;/h3&gt;
+
+&lt;p&gt;The default task priority, which should be used for most tasks.&lt;/p&gt;
+
+&lt;p&gt;Default tasks such as autonomous() inherit this priority.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-task-priority-highest-task-max-priorities-1&#34;&gt;#define TASK_PRIORITY_HIGHEST   (TASK_MAX_PRIORITIES - 1)&lt;/h3&gt;
+
+&lt;p&gt;The highest priority that can be assigned to a task.&lt;/p&gt;
+
+&lt;p&gt;Unlike the lowest priority, this priority can be safely used without hampering interrupts. Beware of deadlock.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-task-priority-lowest-0&#34;&gt;#define TASK_PRIORITY_LOWEST   0&lt;/h3&gt;
+
+&lt;p&gt;The lowest priority that can be assigned to a task, which puts it on a level with the idle task.&lt;/p&gt;
+
+&lt;p&gt;This may cause severe performance problems and is generally not recommended.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-task-runnable-2&#34;&gt;#define     TASK_RUNNABLE   2&lt;/h3&gt;
+
+&lt;p&gt;Constant returned from taskGetState() when the task is exists and is available to run, but not currently running.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-task-running-1&#34;&gt;#define     TASK_RUNNING   1&lt;/h3&gt;
+
+&lt;p&gt;Constant returned from taskGetState() when the task is actively executing.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-task-sleeping-3&#34;&gt;#define     TASK_SLEEPING   3&lt;/h3&gt;
+
+&lt;p&gt;Constant returned from taskGetState() when the task is delayed or blocked waiting for a semaphore, mutex, or I/O operation.&lt;/p&gt;
+
+&lt;h3 id=&#34;define-task-suspended-4&#34;&gt;#define     TASK_SUSPENDED   4&lt;/h3&gt;
+
+&lt;p&gt;Constant returned from taskGetState() when the task is suspended using taskSuspend().&lt;/p&gt;
+
+&lt;h3 id=&#34;define-uart1-file-1&#34;&gt;#define     uart1   ((FILE *)1)&lt;/h3&gt;
+
+&lt;p&gt;UART 1 on the Cortex; must be opened first using usartInit().&lt;/p&gt;
+
+&lt;h3 id=&#34;define-uart2-file-2&#34;&gt;#define     uart2   ((FILE *)2)&lt;/h3&gt;
+
+&lt;p&gt;UART 2 on the Cortex; must be opened first using usartInit().
+&lt;/div&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Analog Sensors</title>
+      <link>http://pros.cs.purdue.edu/tutorials/analog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/tutorials/analog/</guid>
+      <description>
+
+&lt;p&gt;While computers, microcontrollers, and other devices that interface with VEX robots are digital systems, most of the real world operates as analog components, where a range of possible values exist instead of simply an arrangement of 1s and 0s. To communicate with these analog real-world systems, analog sensors like potentiometers and line trackers are used. These sensors return a number within a preset range of values in accordance with their input, as opposed to a digit sensor which simply returns an on or off state.&lt;/p&gt;
+
+&lt;p&gt;To take these analog inputs and convert them to information that the Cortex can actually use, ADCs (Analog to Digital Converters) are used on each of the Analog In ports to convert the analog input signals (varying voltage signals) to 12 bit integers. As a result, the range of all analog sensors when used with the Cortex is 0 to 4095 (the range of a 12 bit unsigned integer).&lt;/p&gt;
+
+&lt;h2 id=&#34;initialization&#34;&gt;Initialization&lt;/h2&gt;
+
+&lt;p&gt;Unlike many of the other VEX sensors, no initialization process is needed in the &lt;code&gt;initializeIO()&lt;/code&gt; or &lt;code&gt;initialize()&lt;/code&gt; functions. However, it is often worthwhile to calibrate analog sensors before using them, which would take place in the &lt;code&gt;initialize()&lt;/code&gt; function. The &lt;a href=&#34;http://pros.cs.purdue.edu/api/#analogCalibrate&#34;&gt;&lt;code&gt;analogCalibrate()&lt;/code&gt;&lt;/a&gt; function collects approximately 500 data samples over a period of half a second and returns the average value received over the sampling period. This average value can be used to account for variations like gyroscope orientation or ambient light for line trackers.&lt;/p&gt;
+
+&lt;h2 id=&#34;potentiometer&#34;&gt;Potentiometer&lt;/h2&gt;
+
+&lt;p&gt;Potentiometers measure angular position and can be used to determine the direction of rotation of its input. Potentiometers are best used in applications such as lifts where the sensor is not at risk of being rotated beyond its 250-degree physical constraint. Potentiometers typically do not need to be calibrated, although it may be desired to find the actual range of the potentiometer due to its mechanical stops as that range may be closer to 5-4090 instead of 0-4095. If the potentiometer is not calibrated, the &lt;a href=&#34;http://pros.cs.purdue.edu/api/#analogRead&#34;&gt;&lt;code&gt;analogRead()&lt;/code&gt;&lt;/a&gt; function may be used to obtain the raw input value of the potentiometer. If the sensor was calibrated, the &lt;a href=&#34;http://pros.cs.purdue.edu/api/#analogCalibrateHR&#34;&gt;&lt;code&gt;analogReadCalibratedHR()&lt;/code&gt;&lt;/a&gt; function should be used, as it will account for the sensor&amp;rsquo;s calibration and return more accurate results. The input to both of these functions is the channel number of the sensor, and an integer is returned.&lt;/p&gt;
+
+&lt;p&gt;Thus an example of use on a lift would look like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#define POTENTIOMETER_PORT 1
+#define LIFT_MOTOR 1
+
+//while the potentiometer is not at its maximum position
+while(analogRead(POTENTIOMETER_PORT) &amp;lt; 4095)
+{
+  motorSet(1,127); //activate the lift
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;line-tracker&#34;&gt;Line Tracker&lt;/h2&gt;
+
+&lt;p&gt;VEX Line Trackers operate by measuring the amount of light reflected to the sensor and determining the existence of lines from the difference in light reflected by the white tape and the dark tiles. The Line Trackers return a value between 0 and 405, with 0 being the lightest reading and 4095 the darkest. It is recommended that Line Trackers be calibrated to account for changes in ambient light.&lt;/p&gt;
+
+&lt;p&gt;An example of Line Tracker use:&lt;/p&gt;
+
+&lt;p&gt;main.h:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#define LINE_TRACKER_PORT 1
+#define DRIVE_MOTOR_LEFT 1
+#define DRIVE_MOTOR_RIGHT 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;init.c:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;main.h&amp;quot;
+
+void initialize() {
+  analogCalibrate(LINE_TRACKER_PORT);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;opcontrol.c:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;main.h&amp;quot;
+
+//2000 arbitrarily set as cutoff between light and dark
+while(analogReadCalibratedHR(LINE_TRACKER_PORT) &amp;lt; 2000)
+{
+  // drive forward until a line is hit
+  motorSet(DRIVE_MOTOR_LEFT,127);
+  motorSet(DRIVE_MOTOR_RIGHT,127);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;gyroscope&#34;&gt;Gyroscope&lt;/h2&gt;
+
+&lt;p&gt;One of the most powerful sensors available for the VEX Cortex is the VEX Yaw Rate Gyro. Through proper utilization of this sensors you can consistently make your robot perform precise turns.&lt;/p&gt;
+
+&lt;h4 id=&#34;warning&#34;&gt;Warning&lt;/h4&gt;
+
+&lt;p&gt;The VEX Yaw Rate Gyro is an analog sensor which means that it is very susceptible to analog noise during its operation. When utilizing this sensor, pay special attention to the connection wires between cortex and the gyro and keep them far away from motors.&lt;/p&gt;
+
+&lt;p&gt;PROS provides a gyro library to simplify using it. A sample usage would be as follows:&lt;/p&gt;
+
+&lt;p&gt;main.h:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// Analog port number gyro is plugged into
+#define GYRO_PORT 1
+
+// Multiple gyros can be declared
+Gyro gyro;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;init.c:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void initialize(){
+    // ... Other sensor initialization and port configuration
+    // If gyro reads inaccurately, change &amp;quot;0&amp;quot; to desired sensitivity
+    // See documentation on gyroInit() for up-to-date sensitivity details
+    gyro = gyroInit(GYRO_PORT, 0);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;opcontrol.c or auto.c:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void myFunction(){
+    // ... Do work
+    // Get gyro reading in degrees
+    int heading = gyroGet(gyro);
+
+    // ... Do other work
+    // Reset the gyro to zero
+    gyroReset(gyro);
+
+    // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;accelerometer&#34;&gt;Accelerometer&lt;/h2&gt;
+
+&lt;p&gt;The VEX Accelerometer measures acceleration on the x, y, and z axes simultaneously. Accelerometers can be used to infer velocity and displacement, but due to the error induced by such integration it is recommended that simply the acceleration data be used. By design of the VEX Accelerometer each axis is treated as its own analog sensors. Due to this the VEX Accelerometer requires three analog input ports on the Cortex.&lt;/p&gt;
+
+&lt;p&gt;Example accelerometer use:&lt;/p&gt;
+
+&lt;p&gt;main.h:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#define ACCELEROMETER_X 1
+#define ACCELEROMETER_Y 2
+#define ACCELEROMETER_Z 3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;init.c:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;main.h&amp;quot;
+
+void initialize() {
+  analogCalibrate(ACCELEROMETER_X); //calibrates the x axis input
+  analogCalibrate(ACCELEROMETER_Y); //calibrates the y axis input
+  analogCalibrate(ACCELEROMETER_Z); //calibrates the z axis input
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;opcontrol.c:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;main.h&amp;quot;
+
+//Read the acceleration data for each axis
+int x_acc = analogReadCalibratedHR(ACCELEROMETER_X);
+int y_acc = analogReadCalibratedHR(ACCELEROMETER_Y);
+int z_acc = analogReadCalibratedHR(ACCELEROMETER_Z);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Buttons and digitalRead</title>
+      <link>http://pros.cs.purdue.edu/tutorials/digitalRead/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/tutorials/digitalRead/</guid>
+      <description>&lt;p&gt;Buttons such as the limit switch that VEX provides are digital sensors. These sensors are generally used as triggers for various events such as a robot hitting an object or the wall. One special difference from other sensors is that you need to configure the pin they are connected to as an input. PROS provides a simple interface to perform such tasks that is as follows:&lt;/p&gt;
+
+&lt;p&gt;main.h:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// digital port number limit switch is plugged into
+#define LIMIT_SWITCH 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;init.c:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void initializeIO(){
+    // configure the pin that the limit swith is plugged into as an input
+    pinMode(LIMIT_SWITCH, INPUT);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;opcontrol.c or auto.c:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void myFunction(){
+    // ... Do work
+    // digitalRead() will return LOW if PRESSED and HIGH if RELEASED
+    if (digitalRead(LIMIT_SWITCH) == LOW){
+        // ...
+    }
+
+    // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Coding FAQ</title>
+      <link>http://pros.cs.purdue.edu/tutorials/coding-faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/tutorials/coding-faq/</guid>
+      <description>
+
+&lt;h2 id=&#34;compile-time&#34;&gt;Compile-Time Issues&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;undefined reference to ...&lt;/code&gt; or &lt;code&gt;implicit declaration of function ...&lt;/code&gt;: &lt;br/&gt;
+A function name is spelled incorrectly, or the function was incorrectly declared in a header file. Custom headers must be included in &lt;code&gt;main.h&lt;/code&gt; or in the file in which they are used.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;format ... expects argument of type ..., but argument has type ...&lt;/code&gt;: &lt;br/&gt;
+The value provided to a function like &lt;a href=&#34;http://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;http://pros.cs.purdue.edu/api/#lcdPrint&#34;&gt;&lt;code&gt;lcdPrint()&lt;/code&gt;&lt;/a&gt; does not match the expected type inferred from the format string. Some instances of this warning can be safely ignored, but crashes can occur if types &lt;code&gt;double&lt;/code&gt; or &lt;code&gt;long long&lt;/code&gt; are mixed with other types.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;assignment makes pointer from integer without a cast&lt;/code&gt;: &lt;br/&gt;
+Typically caused when a C pointer has the wrong number of asterisks to &lt;a href=&#34;http://stackoverflow.com/a/4955297/3681958&#34;&gt;dereference&lt;/a&gt; it, or when assigning a constant to &lt;code&gt;pointer&lt;/code&gt; (instead of &lt;code&gt;*pointer&lt;/code&gt;).&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;run-time-issues&#34;&gt;Run-Time Issues&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Some tasks are running, others are not:&lt;/strong&gt; &lt;br/&gt;
+A task is not waiting using &lt;a href=&#34;http://pros.cs.purdue.edu/api/#delay&#34;&gt;&lt;code&gt;delay()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;http://pros.cs.purdue.edu/api/#taskDelayUntil&#34;&gt;&lt;code&gt;taskDelayUntil()&lt;/code&gt;&lt;/a&gt;. Due to the fact that PROS utilizes a priority based non-preemptive scheduler, tasks of higher or equal priority to the blocking task will still run while lower priority tasks will not. This scenario is also known as &lt;a href=&#34;https://en.wikipedia.org/wiki/Starvation_(computer_science)&#34;&gt;starvation&lt;/a&gt;. See &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/tasks/&#34;&gt;Tasks/Multithreading&lt;/a&gt; for more information.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;VEX LCD updates very slowly or is &amp;ldquo;frozen&amp;rdquo;:&lt;/strong&gt; &lt;br/&gt;
+A task is not waiting using &lt;a href=&#34;http://pros.cs.purdue.edu/api/#delay&#34;&gt;&lt;code&gt;delay()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;http://pros.cs.purdue.edu/api/#taskDelayUntil&#34;&gt;&lt;code&gt;taskDelayUntil()&lt;/code&gt;&lt;/a&gt;. From the kernel&amp;rsquo;s perspective, updating the LCD is usually less important than how well the robot is running, so PROS prioritizes user tasks over the LCD. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;The LCD is only updated if all other tasks are waiting.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Neither autonomous nor driver control code starts:&lt;/strong&gt; &lt;br/&gt;
+The &lt;code&gt;initialize()&lt;/code&gt; function may still be running. Some tasks such as &lt;a href=&#34;http://pros.cs.purdue.edu/api/#gyroInit&#34;&gt;&lt;code&gt;gyroInit()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;http://pros.cs.purdue.edu/api/#analogCalibrate&#34;&gt;&lt;code&gt;analogCalibrate()&lt;/code&gt;&lt;/a&gt; take time.&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;If the &lt;code&gt;initialize()&lt;/code&gt; function implements some type of loop or autonomous selection routine, verify that it actually has a means of ending.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Code restarts unexpectedly:&lt;/strong&gt; &lt;br/&gt;
+A run-time error has caused the program to crash. &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/debugging/&#34;&gt;Debugging&lt;/a&gt; may reveal the cause of the error. Examine any newly added code for possible logical errors. Some common error messages include:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Segmentation Fault:&lt;/strong&gt; &lt;br/&gt;
+Indicates that an invalid C pointer has been used. Check for confusion between pointers and regular variables and that an invalid pointer has not been passed to a PROS API function.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Stack Overflow:&lt;/strong&gt; &lt;br/&gt;
+Often indicates infinite recursion, or that the stack size for a custom task is too small. Calling many layers of functions and declaring large local variables can require large amounts of space on the stack. If this error occurs in a default task like &lt;code&gt;autonomous()&lt;/code&gt;, consider changing code to reduce the stack requirements, or creating a new task with a larger stack size using &lt;a href=&#34;http://pros.cs.purdue.edu/api/#taskCreate&#34;&gt;&lt;code&gt;taskCreate()&lt;/code&gt;&lt;/a&gt; to handle large jobs. Large arrays declared inside functions can usually be declared globally to alleviate pressure on stack space.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;System Task Failure:&lt;/strong&gt; &lt;br/&gt;
+Too many tasks were running for the system to start a new one. Disable or merge unnecessary tasks to eliminate this error.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Cortex blinking red light after upload:&lt;/strong&gt; &lt;br/&gt;
+Turn the Cortex microcontroller off and on again. This usually resolves the problem, and it is generally good practice to re-initialize the robot to simulate conditions at most competitions. If the error persists, see the &amp;ldquo;&lt;strong&gt;Code restarts unexpectedly&lt;/strong&gt;&amp;rdquo; section above.&lt;br/&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt; doesn&amp;rsquo;t work&lt;/strong&gt;: &lt;br/&gt;
+&lt;a href=&#34;http://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt; prints information over a serial connection (see &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/debugging/&#34;&gt;Debugging&lt;/a&gt;), not to the VEX LCD. To print to the LCD, use &lt;a href=&#34;http://pros.cs.purdue.edu/api/#lcdPrint&#34;&gt;&lt;code&gt;lcdPrint()&lt;/code&gt;&lt;/a&gt; instead.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Dank Memes</title>
+      <link>http://pros.cs.purdue.edu/prospoganda/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/prospoganda/</guid>
+      <description>&lt;p&gt;
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://i.imgur.com/SAlZyt9.gif&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://i.imgur.com/qt6Cymh.gif&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Debugging in PROS</title>
+      <link>http://pros.cs.purdue.edu/tutorials/debugging/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/tutorials/debugging/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;http://pros.cs.purdue.edu/api/&#34;&gt;PROS API&lt;/a&gt; provides various functions, like &lt;a href=&#34;http://pros.cs.purdue.edu/api/#print&#34;&gt;&lt;code&gt;print()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;http://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt;, that allow your robot to output information to a connected serial console during operation.&lt;/p&gt;
+
+&lt;p&gt;To view a robot&amp;rsquo;s output, there are two officially supported methods:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Through the PROS CLI: &lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;Running &lt;code&gt;pros terminal&lt;/code&gt; on the command line will open an output stream from a robot connected over direct USB connection, VEXnet, or &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/jinx/&#34;&gt;JINX&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;From within Atom: &lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;Click the button labeled &amp;ldquo;Open cortex serial output&amp;rdquo;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/open-cortex.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;A terminal panel will open at the bottom of the screen containing the output of a connected robot.&lt;br/&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/terminal-platformio.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Encoders</title>
+      <link>http://pros.cs.purdue.edu/tutorials/encoders/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/tutorials/encoders/</guid>
+      <description>
+
+&lt;h2 id=&#34;quad-encoder&#34;&gt;Quad Encoder&lt;/h2&gt;
+
+&lt;p&gt;Quadrature encoders can measure the rotation of the attached axle on your robot. Most common uses of this sensor type are to track distance traveled by attaching them to your robots drivetrain and monitoring how much the axle spins.&lt;/p&gt;
+
+&lt;p&gt;With these sensors 1 measured tick is 1 degree of revolution.&lt;/p&gt;
+
+&lt;p&gt;PROS provides a simple quadrature library to utilize these sensors. A sample usage would be as follows:&lt;/p&gt;
+
+&lt;p&gt;main.h:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// Digital port number for top and bottom port of quad encoder
+#define QUAD_TOP_PORT 1
+#define QUAD_BOTTOM_PORT 2
+
+// Multiple encoders can be declared
+Encoder encoder;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;init.c:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void initialize() {
+    // ...
+    encoder = encoderInit(QUAD_TOP_PORT, QUAD_BOTTOM_PORT, is_reversed);
+    // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;opcontrol.c or auto.c:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void myFunction(){
+    // ... Do work
+    // Get encoder reading in degrees
+    int counts = encoderGet(encoder);
+
+    // ... Do other work
+    // Reset encoder to zero
+    encoderReset(encoder);
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>I2C Communication</title>
+      <link>http://pros.cs.purdue.edu/tutorials/i2c/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/tutorials/i2c/</guid>
+      <description>
+
+&lt;p&gt;Inter-Integrated Circuit or I2C communications is but one of the common embedded communications protocols found commonly in robotics at large.  It sports a master-slave configuration as well as a unified bus allowing devices to be daisy-chained together in series if so desired.  A standard I2C bus consists of two signals seen by all devices - Serial Data (SDA) and Serial Clock (SCL).  These two signals are found alongisde +5V and GND power rails in the VEX Cortex I2C port to supply power to any attached I2C slave devices.&lt;/p&gt;
+
+&lt;p&gt;The primary I2C device encountered in VEX is the &lt;a href=&#34;http://www.vexrobotics.com/encoder-modules.html&#34;&gt;Integrated Motor Encoder (IME)&lt;/a&gt;; VEX U teams or hobbyists may feel so inclined to connect third-party I2C sensors to their robots such as gyroscopes or lidars.  This tutorial aims to cover writing to and reading from I2C slave devices, a rundown of the IME-specific functions provided, and transisition into topics such as device initialization and polling tasks for managing multiple I2C slaves at once.&lt;/p&gt;
+
+&lt;p&gt;In a future update this tutorial will strive to provide a brief summary of the I2C protocol itself, but in lieu of our own take on the subject please review the excellent rundown provided by SparkFun located &lt;a href=&#34;https://learn.sparkfun.com/tutorials/i2c&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;writing-to-an-i2c-slave&#34;&gt;Writing to an I2C Slave&lt;/h2&gt;
+
+&lt;p&gt;PROS low-level and initialization functions establish the VEX Cortex as an I2C master device, thus the primary I2C action it will perform is writing to I2C slave devices attached to it.  During I2C slave initialization and operation it is common to modify single byte registers in non-sequential locations of the slave&amp;rsquo;s memory.  In these cases PROS provides the &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cWriteRegister&#34;&gt;i2cWriteRegister()&lt;/a&gt;.  A sister function &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cWrite&#34;&gt;i2cWrite()&lt;/a&gt; is better used when writing to sequential bytes of an I2C slave such as providing full 32-bit integer parameters.  When using &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cWrite&#34;&gt;i2cWrite()&lt;/a&gt; the first byte of the data argument should be the first register of the slave being written to.  Shown below is a short example of initializing and configuring a fictional I2C slave sensor.&lt;/p&gt;
+
+&lt;p&gt;main.h&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// 7-bit address of the slave I2C device, right aligned
+#define I2C_SLAVE_ADDR         0x4A
+// Ficitonal &amp;quot;enable&amp;quot; register for the device
+#define I2C_SLAVE_REG_ENABLE   0x38
+// Fictional 32-bit &amp;quot;parameters&amp;quot; buffer for the device, 0x6D-0x6F
+#define I2C_SLAVE_BUF_PARAMS   0x6D
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;init.c&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;main.h&amp;quot;
+
+void initialize() {
+    // Note the address of the first register of the buffer is first in the message
+    uint8_t params[5] = {I2C_SLAVE_BUF_PARAMS, 0x50, 0x52, 0x79, 0x53};
+
+    // Send the slave some parameters
+    if (i2cWrite(I2C_SLAVE_ADDR, params, 5)) {
+        printf(&amp;quot;Parameters sent successfully!\n&amp;quot;);
+    }
+    else {
+        printf(&amp;quot;ERROR: Failed to send parameters to I2C slave!\n&amp;quot;);
+    }
+
+    // And then enable the device
+    if (i2cWriteRegister(I2C_SLAVE_ADDR, I2C_I2C_SLAVE_REG_ENABLE, 0x01)) {
+        printf(&amp;quot;I2C slave enabled!\n&amp;quot;);
+    }
+    else {
+        printf(&amp;quot;ERROR: Failed to enable the I2C slave!\n&amp;quot;);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;reading-from-an-i2c-slave&#34;&gt;Reading from an I2C Slave&lt;/h2&gt;
+
+&lt;p&gt;As the vast majority of I2C slave devices serve as sensors, PROS provides both &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cRead&#34;&gt;i2cRead()&lt;/a&gt; and &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cReadRegister&#34;&gt;i2cReadRegister()&lt;/a&gt; to receive data from them.  Since I2C slave devices do not emit data onto the bus without the request of the master device, &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cRead&#34;&gt;i2cRead()&lt;/a&gt; is limited in its usefulness.  To that extent, below is an example showing how to read from data from a fictional sensor using the more typical &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cReadRegister&#34;&gt;i2cReadRegister()&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;main.h&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// 7-bit address of the slave I2C device, right aligned
+#define I2C_SLAVE_ADDR       0x4A
+// Fictional 32-bit data buffer for the device, 0x30-0x34
+#define I2C_SLAVE_BUF_DATA   0x30
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;auto.c&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;main.h&amp;quot;
+
+void autonomous() {
+    uint8_t dataIn[4];
+    int32_t reading = -1;
+
+    while (1) {
+        if (i2cReadRegister(I2C_SLAVE_ADDR, I2C_SLAVE_BUF_DATA, data_in, 4)) {
+            // Combine the 8-bit incoming values by extending them and bitwise-oring them together
+            //
+            // NOTE: Extension to 32-bits is done using uint32_t even though reading is int32_t
+            //       This is done to prevent &amp;quot;sign extension,&amp;quot; a common problem in these scenarios
+            //
+            // NOTE: This implementation assumes incoming data is big-endian with the order (0, 1, 2, 3)
+            //       If your I2C slave emits data as little-endian, the order needs to be reversed
+            reading = (((uint32_t)dataIn[0]) &amp;lt;&amp;lt; 24) |
+                      (((uint32_t)dataIn[1]) &amp;lt;&amp;lt; 16) |
+                      (((uint32_t)dataIn[2]) &amp;lt;&amp;lt;  8) |
+                      (((uint32_t)dataIn[3]));
+
+            printf(&amp;quot;Read in a value of %d from slave.\n&amp;quot;, reading);
+        }
+        else {
+            reading = -1;
+            printf(&amp;quot;ERROR: Failed to read sensor data from slave!\n&amp;quot;);
+        }
+
+        // Use the sensor value in some way here
+
+        delay(20);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;vex-integrated-motor-encoder-ime&#34;&gt;VEX Integrated Motor Encoder (IME)&lt;/h2&gt;
+
+&lt;p&gt;IMEs function a lot like the quadrature encoders except they are directly attached to the motor rather than mounted to a mechanism on your robot. In addition these sensors utilize the I2C bus on the cortex and can be daisy chained together on your robot.&lt;/p&gt;
+
+&lt;h3 id=&#34;advance-user-warning&#34;&gt;Advance User Warning&lt;/h3&gt;
+
+&lt;p&gt;When utilizing IMEs and 3rd party sensors on your I2C bus it is recommended that you write your own task to handle all the I2C communication to prevent resource thrashing. See the &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/i2c/#pollingTask&#34;&gt;I2C Polling Task&lt;/a&gt; for more details.&lt;/p&gt;
+
+&lt;p&gt;PROS provides a simple library for interacting with your IMEs. A sample usage would be as follows:&lt;/p&gt;
+
+&lt;p&gt;main.h:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#define IME_LEFT_MOTOR 0
+#define IME_RIGHT_MOTOR 1
+#define NUMBER_OF_IME 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;init.c:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void initialize(){
+    // ...
+    // Check count to ensure all IMEs are plugged in!
+    int IMECount = imeInitializeAll();
+    if(IMECount != NUMBER_OF_IME){
+        // something has gone wrong
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;opcontrolc or auto.c:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void myFunction(){
+    // ... do work
+    // Get IME tick count in the &amp;quot;counts&amp;quot; variable
+    // (conversion to rotations varies depending on the motor type in use)
+    int counts;
+    imeGet(0, &amp;amp;counts);
+
+    // Or if #define was used:
+    imeGet(IME_LEFT_MOTOR, &amp;amp;counts);
+
+    // ... Do other work
+    // Reset IME to zero
+    imeReset(IME_RIGHT_MOTOR);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;third-party-i2c-devices&#34;&gt;Third-Party I2C Devices&lt;/h2&gt;
+
+&lt;!--- TODO mention consulting datasheets --&gt;
+
+&lt;p&gt;Writing to and reading from third-party I2C devices with the Cortex using PROS is a relatively painless process with the techniques described earlier in this tutorial.  PROS essentially only requires the 7-bit I2C address of the target slave and a register you wish to interact with if any.  These can all be found in the third-party device&amp;rsquo;s datasheet.&lt;/p&gt;
+
+&lt;p&gt;The great deal of effort in connecting a third-party I2C slave comes in scouring its datasheet and synthesizing its instructions into a device driver.  A critical aspect of this driver is its initialization routine.  Since I2C slave sensors often have their own microprocessors present, they may require several registers to be configured and an enable register to be set before they will even begin collecting data.  It is recommended that a &lt;code&gt;Xinit()&lt;/code&gt; function be created for sensor X (e.g. lidarInit, gyroInit, etc) so that it may be called from different locations in the robot code rather than hard-coding the setup protocol into &lt;code&gt;init.c&lt;/code&gt;.  This way if the device were to ever lose power or disconnect a reconnection attempt is feasible.  This &lt;code&gt;Xinit()&lt;/code&gt; function will contain several calls to &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cWriteRegister&#34;&gt;i2cWriteRegister()&lt;/a&gt; and &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cReadRegister&#34;&gt;i2cReadRegister()&lt;/a&gt; that follow the datasheet&amp;rsquo;s instructions to bring the sensor up and running.&lt;/p&gt;
+
+&lt;p&gt;In addition to an initialization routine for the third-party sensor, it is good practice to group multiple sequential write/read operations into routines as well.  This can drastically improve code readability and portability to future robots.  A simple device driver for a fictional lidar is given below.&lt;/p&gt;
+
+&lt;p&gt;lidar.h&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// The 7-bit I2C address of the lidar sensor
+// Found in its manufacturer datasheet
+#define LIDAR_ADDR              0x67
+#define LIDAR_REG_CFG_ADDR      0x10
+#define LIDAR_BUF_VALUE_ADDR    0x4C
+
+// Allowed values for the PVAL bits of the CFG register on the lidar
+enum {
+    SQ = 0x00,
+    LQ = 0x01,
+    MQ = 0x02,
+    HQ = 0x03
+} LIDAR_REG_CFG_PVAL;
+
+// Allowed values for the EN bit of the CFG register on the lidar
+enum {
+    DISABLE = 0x00,
+    ENABLE = 0x01
+} LIDAR_REG_CFG_EN;
+
+// Allowed values for the ITR bit of the CFG register on the lidar
+enum {
+    DISABLE = 0x00,
+    ENABLE = 0x01
+} LIDAR_REG_CFG_ITR;
+
+// Global union with convenient structure for accessing bitfields
+// rather than defining a gazillion bitmasks
+union {
+    struct {
+        uint8_t PVAL0  : 2;
+        uint8_t unused : 1;
+        uint8_t PVAL1  : 2;
+        uint8_t unused : 1;
+        uint8_t EN     : 1;
+        uint8_t ITR    : 1;
+    } field;
+    uint8_t all;
+} LIDAR_REG_CFG = {.all = 0};
+
+// Global union for accessing the individual bytes of a 32-bit int sensor reading
+union {
+    uint8_t byte[4];
+    int32_t value;
+} LIDAR_BUF_VALUE {.value = 0};
+
+// Function declarations
+bool lidarInit();
+bool lidarSetLowRes();
+bool lidarSetHighRes();
+bool lidarReadValue();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;lidar.c&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;
+bool lidarInit() {
+    // Initialize with PVAL0 high quality, PVAL1 standard quality, enable, no interrupt
+    LIDAR_REG_CFG.field.PVAL0 = LIDAR_REG_CFG_PVAL.HQ;
+    LIDAR_REG_CFG.field.PVAL1 = LIDAR_REG_CFG_PVAL.SQ;
+    LIDAR_REG_CFG.field.EN    = LIDAR_REG_CFG_EN.ENABLE;
+    LIDAR_REG_CFG.field.ITR   = LIDAR_REG_CFG_ITR.DISABLE;
+
+    // Write the desired configuration to the appropraite register on the lidar
+    if (!i2cWriteRegister(LIDAR_ADDR, LIDAR_REG_CFG_ADDR, LIDAR_REG_CFG)) {
+        // Return if we failed
+        return FALSE;
+    }
+
+    // Enable was a success, let&#39;s adjust the PVALs to finish
+    LIDAR_REG_CFG.field.PVAL0 = LIDAR_REG_CFG_PVAL.MQ;
+    LIDAR_REG_CFG.field.PVAL1 = LIDAR_REG_CFG_PVAL.HQ;
+
+    return i2cWriteRegister(LIDAR_ADDR, LIDAR_REG_CFG_ADDR, LIDAR_REG_CFG);
+}
+
+bool lidarSetLowRes() {
+    LIDAR_REG_CFG.field.PVAL0 = LIDAR_REG_CFG_PVAL.LQ;
+    LIDAR_REG_CFG.field.PVAL1 = LIDAR_REG_CFG_PVAL.LQ;
+
+    return i2cWriteRegister(LIDAR_ADDR, LIDAR_REG_CFG_ADDR, LIDAR_REG_CFG);
+}
+
+bool lidarSetHighRes() {
+    LIDAR_REG_CFG.field.PVAL0 = LIDAR_REG_CFG_PVAL.HQ;
+    LIDAR_REG_CFG.field.PVAL1 = LIDAR_REG_CFG_PVAL.HQ;
+
+    return i2cWriteRegister(LIDAR_ADDR, LIDAR_REG_CFG_ADDR, LIDAR_REG_CFG);
+}
+
+bool lidarReadValue() {
+    return i2cReadRegister(LIDAR_ADDR, LIDAR_BUF_VALUE_ADDR, LIDAR_BUF_VALUE.byte, 4);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;auto.c&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;lidar.h&amp;quot;
+
+void autonomous() {
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;pollingTask&#34;&gt;I2C Polling Tasks&lt;/h2&gt;
+
+&lt;h2 id=&#34;debugging-tips-and-tricks&#34;&gt;Debugging Tips and Tricks&lt;/h2&gt;
+
+&lt;!---
+Sign extension
+union/struct method
+endianness
+--&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>JINX</title>
+      <link>http://pros.cs.purdue.edu/tutorials/jinx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/tutorials/jinx/</guid>
+      <description>
+
+&lt;div class=&#34;admonition warning&#34;&gt;
+&lt;p class=&#34;admonition-title&#34;&gt;JINX is in Beta&lt;/p&gt;
+&lt;p&gt;JINX is in active development and could change at any time. This document is
+intended to introduce JINX to advanced PROS users who may wish to experiment with JINX.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;JINX is the graphical debugger and interactive data visualization tool for PROS. With JINX, you get to graph data, generate CSV files, send commands back to the cortex, and more, all from the browser of choice. JINX works by using a computer connected to the cortex via serial as the central hub enabling other computers and mobile devices on the network to connect as clients and enjoy the use of the interactive features.&lt;/p&gt;
+
+&lt;p&gt;Before you can run JINX there are some required setup tasks.&lt;/p&gt;
+
+&lt;h2 id=&#34;jinx-installation-requirements&#34;&gt;JINX Installation Requirements&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.python.org/downloads/&#34;&gt;Python 3.4.3+&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://pyserial.readthedocs.io/en/latest/pyserial.html&#34;&gt;pySerial 3.2.1+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once you have python3 installed on your machine you can easily install pySerial from the command line via:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;pip3 install pyserial&lt;/code&gt; or &lt;code&gt;pip3 install --upgrade pyserial&lt;/code&gt; to upgrade to the latest if a previous instance is already installed.&lt;/p&gt;
+
+&lt;h2 id=&#34;jinx-installation&#34;&gt;JINX Installation&lt;/h2&gt;
+
+&lt;p&gt;Release 0.1: &lt;a href=&#34;https://github.com/purduesigbots/JINX/releases/tag/v0.1&#34;&gt;https://github.com/purduesigbots/JINX/releases/tag/v0.1&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;debugging-with-jinx&#34;&gt;Debugging with JINX&lt;/h2&gt;
+
+&lt;p&gt;To utilize the power of JINX simply:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Connect your desired host computer to the VEX Cortex&lt;/li&gt;
+&lt;li&gt;Upload JINX enabled code&lt;/li&gt;
+&lt;li&gt;Start the JINX server on your host computer with &lt;code&gt;python3 JINX.py&lt;/code&gt;&lt;br /&gt;
+You must run this command in the JINX directory for the server to work correctly.&lt;/li&gt;
+&lt;li&gt;Navigate to the JINX Dashboard by connecting to &lt;code&gt;http://localhost:9001/views/combined.html&lt;/code&gt; on your host computer and watch the information flow&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If at any point in time you want to stop the JINX server simply type &lt;code&gt;q&lt;/code&gt; in the active terminal used to launch JINX or send a keyboard interrupt via &lt;code&gt;ctrl + c&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;:
+Since JINX is a network application not everyone has to crowd around a single machine to observe the data feed. If you are on the same local network you can navigate to the IP address of the JINX host machine to get access to the dashboard as well. For example, if the IP address of the JINX host machine is &lt;code&gt;192.168.1.105&lt;/code&gt; you would navigate to &lt;a href=&#34;http://192.168.1.105:9001/views/combined.html&#34;&gt;http://192.168.1.105:9001/views/combined.html&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;initJINX&#34;&gt;initJINX&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void initJINX ( FILE * port )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Initializes and enables JINX on the specified port.&lt;br /&gt;
+This should be called in &lt;code&gt;initialize()&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This call prints an error message over stdout if unable to initialize and set port.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;port&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the port to open, either stdout, UART1, or UART2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;writeJINXSerial&#34;&gt;writeJINXSerial&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void writeJINXSerial ( const char *  message )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sends a simple string to the JINX host with appropriate header and terminator.&lt;/p&gt;
+
+&lt;p&gt;This function only takes one character pointer, and does &lt;strong&gt;not&lt;/strong&gt; work like &lt;code&gt;printf()&lt;/code&gt;. Therefore, it is advised that users calling this function directly use &lt;code&gt;sprintf(char \*src, const char \*formatString, ...)&lt;/code&gt; to compose their message before calling this.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;message&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;The message to send&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;writeJINXData&#34;&gt;writeJINXData&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void writeJINXData ( const char *  name
+const char *  value
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sends a name/value pair of data to to the JINX host.&lt;/p&gt;
+
+&lt;p&gt;If &lt;code&gt;value&lt;/code&gt; is strictly numeric (as defined by javascript&amp;rsquo;s &lt;code&gt;isNaN&lt;/code&gt; then the variable can be graphed. Otherwise, the name/value pair will be displayed in the terminal.&lt;/p&gt;
+
+&lt;p&gt;This function does not allow for string formatting. Therefore, it is advised that users calling this function directly use &lt;code&gt;sprintf(char \*src, const char \*formatString, ...)&lt;/code&gt; to compose both &lt;code&gt;name&lt;/code&gt; and &lt;code&gt;value&lt;/code&gt; before calling this.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;name&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;The identifier key sent to the GUI.&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;value&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;The value to be graphed or displayed in the GUI&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;writeJINXMessage&#34;&gt;writeJINXMessage&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void writeJINXMessage ( const char *  message )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Simple wrapper function for &lt;code&gt;writeJINXData&lt;/code&gt; with &lt;code&gt;name&lt;/code&gt; as &amp;ldquo;msg&amp;rdquo; and &lt;code&gt;value&lt;/code&gt; set to &lt;code&gt;message&lt;/code&gt;.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;Parameters&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;code&gt;message&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;The message to send&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;JINX_Reader&#34;&gt;JINX Reader&lt;/h2&gt;
+
+&lt;p&gt;The read task is started by calling&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;taskCreate(JINXRun, TASK_DEFAULT_STACK_SIZE, NULL, (TASK_PRIORITY_DEFAULT));
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;in &lt;code&gt;initialize()&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;parseMessage&#34;&gt;parseMessage&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void parseMessage ( JINX *  inStr )  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Automatically called by whenever a message is sent to the cortex. The user should implement the body of this function to call their method of choice based on the incoming message. See below for an example.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;//Example parse. User can and should replace with own body.
+void parseMessage(JINX * inStr) {
+  //Echo entire recieved message
+  writeJINXMessage(inStr-&amp;gt;command);
+  //Set inStr-&amp;gt;token to first token (space-delimated word)
+  getToken(inStr, 0);   
+
+  if (strcmp(inStr-&amp;gt;token, &amp;quot;Option_1&amp;quot;) == 0) {
+    //Do option 1
+    writeJINXMessage(&amp;quot;Option 1 chosen.&amp;quot;);
+  } else if(strcmp(inStr-&amp;gt;token, &amp;quot;get&amp;quot;) == 0) {
+    //Call another function to handle &amp;quot;get&amp;quot;
+    handleGet(inStr);
+  } else {
+    //Do default
+    writeJINXMessage(&amp;quot;No comparison found&amp;quot;);
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and &lt;code&gt;handleGet()&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;  //Example of user defined JINX helper function.  
+  //Since it is at the top of this file, it can be called from anywhere   else in this file.  
+  //Good practice is to put its prototype in JINX.h, though.  
+  void handleGet(JINX * inStr) {  
+  //Get the first token from the sent command  
+  getToken(inStr, 1);
+
+  //Host outgoing messages
+  char * message = (char *)malloc(sizeof(char) * (strlen(inStr-&amp;gt;token) + 30));
+  if (strcmp(inStr-&amp;gt;token, &amp;quot;DEBUG_JINX&amp;quot;) == 0) {
+    writeJINXMessage(&amp;quot;Asked for Debug&amp;quot;);
+    sprintf(message, &amp;quot;%s, %d&amp;quot;, inStr-&amp;gt;token, DEBUG_JINX);
+  } else {
+    sprintf(message, &amp;quot;%s %s&amp;quot;, inStr-&amp;gt;token, &amp;quot; was unable to be gotten.&amp;quot;);
+  }
+
+  //Free malloc&#39;d string
+  writeJINXMessage(message);
+  free(message);
+  message = NULL;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;getToken&#34;&gt;getToken&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int getToken ( JINX *  inStr
+  int     tokenNum
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sets &lt;code&gt;inStr-&amp;gt;token&lt;/code&gt; to the &lt;code&gt;tokenNum&lt;/code&gt;th + 1 space-delimated word within &lt;code&gt;inStr-&amp;gt;command&lt;/code&gt;
+&lt;code&gt;tokenNum&lt;/code&gt; is 0-based, so 0 will get the 1st token, 1 will get the 2nd token&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Known Issues</title>
+      <link>http://pros.cs.purdue.edu/known-issues/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/known-issues/</guid>
+      <description>
+
+&lt;h2 id=&#34;cannot-find-libstdc-a&#34;&gt;Cannot find libstdc++.a&lt;/h2&gt;
+
+&lt;p&gt;On Ubuntu 14.04 it is a &lt;a href=&#34;https://bugs.launchpad.net/ubuntu/+source/gcc-arm-none-eabi/+bug/1293024&#34;&gt;known bug&lt;/a&gt; that libstdc++-arm-none-eabi-newlib package is missing from the repositories and fails to install with arm-none-eabi-gcc. This can lead to the following error when trying to compile your PROS project:
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/img/ubuntu-error.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The easiest solution to this issue is to upgrade to 16.04 LTS.&lt;/p&gt;
+
+&lt;h2 id=&#34;ghostCOM&#34;&gt;Ghost COM ports&lt;/h2&gt;
+
+&lt;p&gt;During normal operation of the serial COM ports on windows errors may occur when hardware is disconnected causing them to not close. This results in high COM port numbers (e.g. COM17). We recommend following &lt;a href=&#34;http://theitbros.com/how-to-delete-com-ports-in-use/&#34;&gt;these instructions&lt;/a&gt; to clean up any COM ports that are left in limbo.&lt;/p&gt;
+
+&lt;h2 id=&#34;linuxAA&#34;&gt;Linux A-A Tethering&lt;/h2&gt;
+
+&lt;p&gt;When utilizing PROS in your Linux environment you cannot interact with or flash your cortex via direct A-A Tethering to your computer. This is due to the fact that VEX does not provide Linux drivers for this feature that is readily available on Windows. However, this does not mean that you cannot interact with or flash your cortex. To do so you must utilize the &lt;a href=&#34;http://www.vexrobotics.com/276-2186.html&#34;&gt;programming hardware kit&lt;/a&gt; and a &lt;a href=&#34;http://www.vexrobotics.com/276-2186.html&#34;&gt;joystick&lt;/a&gt; connected as follows:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/img/wiring-diagram.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        
+        
+            Diagram courtesy of VEX Robotics
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Both wired and wirless (VEXnet 1.0 &amp;amp; 2.0) are supported.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Pneumatics</title>
+      <link>http://pros.cs.purdue.edu/tutorials/pneumatics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/tutorials/pneumatics/</guid>
+      <description>&lt;p&gt;Pneumatics in VEX provide two-state linear actuation. They differ from other
+digital sensors in that they are output signals. Therefore, the default digital
+sensor configuration is insufficient.&lt;/p&gt;
+
+&lt;p&gt;init.c:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void initializeIO() {
+  pinMode(solenoid_pin, OUTPUT);
+  digitalWrite(solenoid_pin, LOW);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;opcontrol.c, auto.c, etc.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void myFunction() {
+  // ...
+  digitalWrite(solenoid_pin, new_value);
+  // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Project Structure</title>
+      <link>http://pros.cs.purdue.edu/tutorials/project-structure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/tutorials/project-structure/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;PROS projects are internally composed of three parts: the &lt;em&gt;user code&lt;/em&gt;, the PROS &lt;em&gt;library&lt;/em&gt; and the &lt;em&gt;header&lt;/em&gt; files.&lt;/p&gt;
+
+&lt;p&gt;The PROS library is a single file containing the core PROS routines. This file does not need to be changed. If there appears to be an issue with a core PROS function, please file an issue on &lt;a href=&#34;https://github.com/purduesigbots/pros/issues&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;em&gt;header&lt;/em&gt; files are all found in the &lt;code&gt;include&lt;/code&gt; directory. One header file, &lt;a href=&#34;http://pros.cs.purdue.edu/api/&#34;&gt;API.h&lt;/a&gt;, is required to declare the PROS library functions, and also serves as a quick reference. The other file, &lt;code&gt;main.h&lt;/code&gt;, is intended for declaring functions and variables shared between the user code files. New header files can be created in the include directory, as long as the name ends with .h.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;User code&lt;/code&gt; has the actual sequential instructions that govern the robot&amp;rsquo;s behavior. PROS by default splits the user code up into autonomous (&lt;code&gt;auto.c&lt;/code&gt;), driver control (&lt;code&gt;opcontrol.c&lt;/code&gt;), and initialization (&lt;code&gt;init.c&lt;/code&gt;) files. Code in one file can talk to code in another file using declarations in the header files. New user code files can be created in the &lt;code&gt;src&lt;/code&gt; directory, as long as the name ends with .c it will be compiled with the others.&lt;/p&gt;
+
+&lt;p&gt;All user code files should start with:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;main.h&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will ensure that the PROS API and other critical definitions are available in each file.&lt;/p&gt;
+
+&lt;p&gt;While more complicated than some environments, splitting up code grants powerful modularity and code reusability, especially when combined with source control.&lt;/p&gt;
+
+&lt;h2 id=&#34;declaring-functions-and-variables&#34;&gt;Declaring Functions and Variables&lt;/h2&gt;
+
+&lt;p&gt;Functions and variables must be declared before use. Functions and variables can be declared in the typical C manner:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;int sensorValue;
+
+void DoIt(int x) {
+   motorSet(5, x);
+}
+
+int getSensorValue(void) {
+     DoIt(127);
+     return sensorValue;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Doing so will make the variables and functions local to the file in which they exist.&lt;/p&gt;
+
+&lt;p&gt;Some functions and variables are useful in more than one location (e.g. a function to use &lt;a href=&#34;http://pros.cs.purdue.edu/api/#motorset&#34;&gt;motorSet&lt;/a&gt; on all the robot&amp;rsquo;s drive motors with the same value). Such functions can be declared in any of the three files (or a custom file in the &lt;code&gt;src&lt;/code&gt; directory). To make them accessible to any other user code file, prototype the function in &lt;code&gt;main.h&lt;/code&gt; or in another header file.&lt;/p&gt;
+
+&lt;p&gt;Functions can be prototyped by copying the function&amp;rsquo;s declaration line into &lt;code&gt;main.h&lt;/code&gt; and replacing the function code with &lt;code&gt;;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// Prototype the &amp;quot;getSensorValue()&amp;quot; function declared above (in main.h)
+int getSensorValue(void);
+
+// Prototype the &amp;quot;DoIt()&amp;quot; function declared above (in main.h)
+void DoIt(int x);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For pieces of code intended for frequent reuse, it may be better to create a separate header file with the related declarations, and to include that file in main.h. Therefore, large pieces of code involving look-up tables, control algorithms, or other complex structures can be quickly ported between projects by copying one .c user code file and one .h header file.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tasks and Multithreading</title>
+      <link>http://pros.cs.purdue.edu/tutorials/tasks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/tutorials/tasks/</guid>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Tasks are a great tool to do multiple things at once, but they can be difficult
+to use properly. Each task has a &lt;em&gt;priority&lt;/em&gt; and a &lt;em&gt;stack size&lt;/em&gt;. The higher the
+priority, the more crucial the task is considered, and more CPU time will be
+awarded to the task. Tasks of higher priority will &lt;em&gt;always&lt;/em&gt; run in preference to
+lower priority tasks, unless the higher priority task is using &lt;code&gt;delay()&lt;/code&gt; or some
+other waiting action.&lt;/p&gt;
+
+&lt;p&gt;Tasks are creating using &lt;code&gt;taskCreate()&lt;/code&gt;, which invokes a user function in the new
+task:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void myFirstTask(void * parameter) {
+  while(true) {
+    printf(&amp;quot;Hello from another task!\n&amp;quot;);
+    delay(500);
+  }
+}
+
+void initialize() { // or some other function
+  TaskHandle firstTaskHandle = taskCreate(myFirstTask, TASK_DEFAULT_STACK_SIZE, NULL, TASK_PRIORITY_DEFAULT);
+  delay(20000); // or doing anything else
+  taskDelete(firstTaskHandle); // stop running the task
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;periodic-functions&#34;&gt;Periodic functions&lt;/h3&gt;
+
+&lt;p&gt;If you want a function to run every &lt;em&gt;n&lt;/em&gt; milliseconds, you can use &lt;code&gt;taskRunLoop&lt;/code&gt;.
+The example above can be implemented slightly differently and receive the same effect:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void myFirstRunLoop() {
+  printf(&amp;quot;Hello from another task!\n&amp;quot;);
+}
+
+void initialize() {
+  TaskHandle secondTaskHandle = taskRunLoop(myFirstRunLoop, 500);
+  delay(20000); // or doing anything else
+  taskDelete(secondTaskHandle);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;best-task-practices&#34;&gt;Best Task Practices&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Limit the number of tasks; five medium sized tasks will run quicker than ten tiny ones. There is also a limit of twelve tasks running at once.&lt;/li&gt;
+&lt;li&gt;Tasks are usually not automatically stopped if the robot is disabled, unlike &lt;code&gt;operatorControl&lt;/code&gt; and &lt;code&gt;autonomous&lt;/code&gt;. Tasks running while disabled cannot use the VEX Joystick or VEX Motors. If the task should stop when the robot is disabled, use the &lt;code&gt;isOnline&lt;/code&gt; and/or the &lt;code&gt;isAutonomous&lt;/code&gt; function to control the program accordingly. If &lt;code&gt;taskRunLoop&lt;/code&gt; is used, the task will automatically be cancelled if the robot is disabled or switched between driver and autonomous.&lt;/li&gt;
+&lt;li&gt;Most tasks should have a priority from &lt;code&gt;TASK_PRIORITY_LOWEST + 1&lt;/code&gt; to &lt;code&gt;TASK_PRIORITY_HIGHEST - 1&lt;/code&gt;. Tasks of the lowest or highest priority may cause unexpected behavior.&lt;/li&gt;
+&lt;li&gt;Tasks should wait when there is no work to do so other tasks can run. If a task, especially a high-priority one, does not occasionally use delay or similar, other tasks may not run or run very slowly. Since hardware such as the VEX LCD and Integrated Motor Encoders is also updated by tasks, a run away task can cause unexpected behavior.&lt;/li&gt;
+&lt;li&gt;The Cortex Microcontroller is very fast. It is unlikely that any repetitive task will gain from running continuously. Even in the fastest scenarios, &lt;code&gt;delay(2)&lt;/code&gt; will probably make no noticable difference, but will prevent future task starvation issues.&lt;/li&gt;
+&lt;li&gt;Tasks using motors or joysticks should use &lt;code&gt;delay(20)&lt;/code&gt; as the motors and joysticks are only updated every 20 ms.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;synchronization&#34;&gt;Synchronization&lt;/h2&gt;
+
+&lt;p&gt;One problem which one often runs into when dealing with tasks is the problem of
+synchronization. If two tasks try to read the same sensor or control the same
+motor at the same time, unexpected behavior may occur since two tasks are trying
+to read/write to the same piece of data.&lt;/p&gt;
+
+&lt;p&gt;Tasks can be designed to never conflict over motors or sensors: (division of responsibility)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void Task1(void * ignore) {
+  // update motors 2 and 4
+}
+
+void Task2(void * ignore) {
+  // update motors 5 and 6
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sometimes this is impossible: suppose you wanted to write a PID controller on its own task and
+you wanted to change the target of the controller. PROS features two types of synchronization
+structures, &lt;em&gt;mutexes&lt;/em&gt; and &lt;em&gt;semaphores&lt;/em&gt; that can be used to coordinate tasks. Mutexes stand for
+mutual exclusion; only one task can hold a mutex at any given time. Other tasks must wait for the
+first task to finish (and release the mutex) before they may continue.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;Mutex mutex = mutexCreate();
+
+// Acquire the mutex; other tasks using this command will wait until the mutex is released
+// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever
+// If the timeout expires, &amp;quot;false&amp;quot; will be rturned, otherwise &amp;quot;true&amp;quot;
+mutexTake(mutex, timeout);
+// do some work
+// Release the mutex for other tasks
+mutexGive(mutex);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Semaphores are like signals - one task can take a semaphore to wait for a coordination signal
+from another task which gives the semaphore. Multiple tasks may wait for a semaphore; if this
+is the case, the highest priority task will continue per signal given.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;// Create a semaphore
+Semaphore semaphore = semaphoreCreate();
+
+// Waits for the semaphore to be signalled
+// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever
+// If the timeout expires, &amp;quot;false&amp;quot; will be rturned, otherwise &amp;quot;true&amp;quot;
+semaphoreTake(semaphore);
+// do something
+// Signal the semaphore
+semaphoreGive(semaphore);
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tutorials</title>
+      <link>http://pros.cs.purdue.edu/tutorials/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/tutorials/</guid>
+      <description>&lt;p&gt;Learning a new coding platform is often a rather daunting task. For this reason we prepared some small tutorials with examples on how to interact with core components of PROS on your VEX Cortex. Select from the menu on the left to learn about everything from &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/analog&#34;&gt;analog sensors&lt;/a&gt; to &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/tasks&#34;&gt;tasks/multithreading&lt;/a&gt; and communicating with 3rd party sensors via &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/i2c&#34;&gt;I2C&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>PROS - JINX</title>
+    <meta name="generator" content="Hugo 0.17" />
+
+    
+    <meta name="description" content="An open source programming environment for the VEX EDR Platform">
+    
+    <link rel="canonical" href="http://pros.cs.purdue.edu/tutorials/jinx/">
+    
+    <meta name="author" content="purduesigbots">
+    
+
+    <meta property="og:url" content="http://pros.cs.purdue.edu/tutorials/jinx/">
+    <meta property="og:title" content="PROS">
+    <meta property="og:image" content="http://pros.cs.purdue.edu/images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="PROS">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://pros.cs.purdue.edu/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="http://pros.cs.purdue.edu/images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('http://pros.cs.purdue.edu/fonts/icon.eot?52m981');
+        src: url('http://pros.cs.purdue.edu/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+             url('http://pros.cs.purdue.edu/fonts/icon.woff?52m981')
+               format('woff'),
+             url('http://pros.cs.purdue.edu/fonts/icon.ttf?52m981')
+               format('truetype'),
+             url('http://pros.cs.purdue.edu/fonts/icon.svg?52m981#icon')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://pros.cs.purdue.edu/stylesheets/application.css">
+    <link rel="stylesheet" href="http://pros.cs.purdue.edu/stylesheets/temporary.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="http://pros.cs.purdue.edu/stylesheets/api.css">
+    
+    <script src="http://pros.cs.purdue.edu/javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body>
+
+
+
+	
+	
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        JINX
+      </div>
+    </div>
+
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/purduesigbots" title="@purduesigbots on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="https://github.com/purduesigbots/pros" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="http://pros.cs.purdue.edu/images/logo.png">
+        </div>
+      
+      <div class="name">
+        <strong>PROS <span class="version">2.11.0</span></strong>
+        
+          <br>
+          purduesigbots/pros
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            <a href="https://github.com/purduesigbots/pros/releases" target="_blank" title="Download" data-action="download">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/purduesigbots/pros/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Home" href="http://pros.cs.purdue.edu/">
+	
+	Home
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Download" href="http://pros.cs.purdue.edu/download/">
+	
+	Download
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Getting started" href="http://pros.cs.purdue.edu/getting-started/">
+	
+	Getting started
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Tutorials" href="http://pros.cs.purdue.edu/tutorials/">
+	
+	Tutorials
+</a>
+
+
+
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Debugging" href="http://pros.cs.purdue.edu/tutorials/debugging/">
+	
+	Debugging
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Encoders" href="http://pros.cs.purdue.edu/tutorials/encoders/">
+	
+	Encoders
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Digital Input" href="http://pros.cs.purdue.edu/tutorials/digitalRead/">
+	
+	Digital Input
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Analog Sensors" href="http://pros.cs.purdue.edu/tutorials/analog/">
+	
+	Analog Sensors
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Pneumatics" href="http://pros.cs.purdue.edu/tutorials/pneumatics/">
+	
+	Pneumatics
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Ultrasonic" href="http://pros.cs.purdue.edu/tutorials/ultrasonic/">
+	
+	Ultrasonic
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Tasks/Multithreading" href="http://pros.cs.purdue.edu/tutorials/tasks/">
+	
+	Tasks/Multithreading
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="I2C Communication" href="http://pros.cs.purdue.edu/tutorials/i2c/">
+	
+	I2C Communication
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Coding FAQ" href="http://pros.cs.purdue.edu/tutorials/coding-faq/">
+	
+	Coding FAQ
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="API" href="http://pros.cs.purdue.edu/api/">
+	
+	API
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Known Issues" href="http://pros.cs.purdue.edu/known-issues/">
+	
+	Known Issues
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="License" href="http://pros.cs.purdue.edu/license/">
+	
+	License
+</a>
+
+
+
+  
+</li>
+
+
+        </ul>
+        
+
+        
+        <hr>
+        <span class="section">Get in touch</span>
+
+        <ul>
+          
+
+          
+          <li>
+            <a href="https://github.com/purduesigbots" target="_blank" title="@purduesigbots on GitHub">
+              @purduesigbots on GitHub
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="mailto:pros_development@cs.purdue.edu%20%20" title="Email of pros_development@cs.purdue.edu  ">
+              Contact via email
+            </a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>JINX </h1>
+
+			
+
+<div class="admonition warning">
+<p class="admonition-title">JINX is in Beta</p>
+<p>JINX is in active development and could change at any time. This document is
+intended to introduce JINX to advanced PROS users who may wish to experiment with JINX.</p>
+</div>
+
+<p>JINX is the graphical debugger and interactive data visualization tool for PROS. With JINX, you get to graph data, generate CSV files, send commands back to the cortex, and more, all from the browser of choice. JINX works by using a computer connected to the cortex via serial as the central hub enabling other computers and mobile devices on the network to connect as clients and enjoy the use of the interactive features.</p>
+
+<p>Before you can run JINX there are some required setup tasks.</p>
+
+<h2 id="jinx-installation-requirements">JINX Installation Requirements</h2>
+
+<ul>
+<li><a href="https://www.python.org/downloads/">Python 3.4.3+</a></li>
+<li><a href="http://pyserial.readthedocs.io/en/latest/pyserial.html">pySerial 3.2.1+</a></li>
+</ul>
+
+<p>Once you have python3 installed on your machine you can easily install pySerial from the command line via:</p>
+
+<p><code>pip3 install pyserial</code> or <code>pip3 install --upgrade pyserial</code> to upgrade to the latest if a previous instance is already installed.</p>
+
+<h2 id="jinx-installation">JINX Installation</h2>
+
+<p>Release 0.1: <a href="https://github.com/purduesigbots/JINX/releases/tag/v0.1">https://github.com/purduesigbots/JINX/releases/tag/v0.1</a></p>
+
+<h2 id="debugging-with-jinx">Debugging with JINX</h2>
+
+<p>To utilize the power of JINX simply:</p>
+
+<ol>
+<li>Connect your desired host computer to the VEX Cortex</li>
+<li>Upload JINX enabled code</li>
+<li>Start the JINX server on your host computer with <code>python3 JINX.py</code><br />
+You must run this command in the JINX directory for the server to work correctly.</li>
+<li>Navigate to the JINX Dashboard by connecting to <code>http://localhost:9001/views/combined.html</code> on your host computer and watch the information flow</li>
+</ol>
+
+<p>If at any point in time you want to stop the JINX server simply type <code>q</code> in the active terminal used to launch JINX or send a keyboard interrupt via <code>ctrl + c</code>.</p>
+
+<p><strong>Note</strong>:
+Since JINX is a network application not everyone has to crowd around a single machine to observe the data feed. If you are on the same local network you can navigate to the IP address of the JINX host machine to get access to the dashboard as well. For example, if the IP address of the JINX host machine is <code>192.168.1.105</code> you would navigate to <a href="http://192.168.1.105:9001/views/combined.html">http://192.168.1.105:9001/views/combined.html</a>.</p>
+
+<h2 id="initJINX">initJINX</h2>
+
+<pre><code class="language-c">void initJINX ( FILE * port )
+</code></pre>
+
+<p>Initializes and enables JINX on the specified port.<br />
+This should be called in <code>initialize()</code></p>
+
+<p>This call prints an error message over stdout if unable to initialize and set port.</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Parameters</th>
+<th align="left"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right"><code>port</code></td>
+<td align="left">the port to open, either stdout, UART1, or UART2</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="writeJINXSerial">writeJINXSerial</h2>
+
+<pre><code class="language-c">void writeJINXSerial ( const char *  message )
+</code></pre>
+
+<p>Sends a simple string to the JINX host with appropriate header and terminator.</p>
+
+<p>This function only takes one character pointer, and does <strong>not</strong> work like <code>printf()</code>. Therefore, it is advised that users calling this function directly use <code>sprintf(char \*src, const char \*formatString, ...)</code> to compose their message before calling this.</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Parameters</th>
+<th align="left"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right"><code>message</code></td>
+<td align="left">The message to send</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="writeJINXData">writeJINXData</h2>
+
+<pre><code class="language-c">void writeJINXData ( const char *  name
+const char *  value
+)
+</code></pre>
+
+<p>Sends a name/value pair of data to to the JINX host.</p>
+
+<p>If <code>value</code> is strictly numeric (as defined by javascript&rsquo;s <code>isNaN</code> then the variable can be graphed. Otherwise, the name/value pair will be displayed in the terminal.</p>
+
+<p>This function does not allow for string formatting. Therefore, it is advised that users calling this function directly use <code>sprintf(char \*src, const char \*formatString, ...)</code> to compose both <code>name</code> and <code>value</code> before calling this.</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Parameters</th>
+<th align="left"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right"><code>name</code></td>
+<td align="left">The identifier key sent to the GUI.</td>
+</tr>
+
+<tr>
+<td align="right"><code>value</code></td>
+<td align="left">The value to be graphed or displayed in the GUI</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="writeJINXMessage">writeJINXMessage</h2>
+
+<pre><code class="language-c">void writeJINXMessage ( const char *  message )
+</code></pre>
+
+<p>Simple wrapper function for <code>writeJINXData</code> with <code>name</code> as &ldquo;msg&rdquo; and <code>value</code> set to <code>message</code>.</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">Parameters</th>
+<th align="left"></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right"><code>message</code></td>
+<td align="left">The message to send</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="JINX_Reader">JINX Reader</h2>
+
+<p>The read task is started by calling</p>
+
+<pre><code class="language-c">taskCreate(JINXRun, TASK_DEFAULT_STACK_SIZE, NULL, (TASK_PRIORITY_DEFAULT));
+</code></pre>
+
+<p>in <code>initialize()</code></p>
+
+<h2 id="parseMessage">parseMessage</h2>
+
+<pre><code class="language-c">void parseMessage ( JINX *  inStr )  
+</code></pre>
+
+<p>Automatically called by whenever a message is sent to the cortex. The user should implement the body of this function to call their method of choice based on the incoming message. See below for an example.</p>
+
+<pre><code class="language-c">//Example parse. User can and should replace with own body.
+void parseMessage(JINX * inStr) {
+  //Echo entire recieved message
+  writeJINXMessage(inStr-&gt;command);
+  //Set inStr-&gt;token to first token (space-delimated word)
+  getToken(inStr, 0);   
+
+  if (strcmp(inStr-&gt;token, &quot;Option_1&quot;) == 0) {
+    //Do option 1
+    writeJINXMessage(&quot;Option 1 chosen.&quot;);
+  } else if(strcmp(inStr-&gt;token, &quot;get&quot;) == 0) {
+    //Call another function to handle &quot;get&quot;
+    handleGet(inStr);
+  } else {
+    //Do default
+    writeJINXMessage(&quot;No comparison found&quot;);
+  }
+}
+</code></pre>
+
+<p>and <code>handleGet()</code></p>
+
+<pre><code class="language-c">  //Example of user defined JINX helper function.  
+  //Since it is at the top of this file, it can be called from anywhere   else in this file.  
+  //Good practice is to put its prototype in JINX.h, though.  
+  void handleGet(JINX * inStr) {  
+  //Get the first token from the sent command  
+  getToken(inStr, 1);
+
+  //Host outgoing messages
+  char * message = (char *)malloc(sizeof(char) * (strlen(inStr-&gt;token) + 30));
+  if (strcmp(inStr-&gt;token, &quot;DEBUG_JINX&quot;) == 0) {
+    writeJINXMessage(&quot;Asked for Debug&quot;);
+    sprintf(message, &quot;%s, %d&quot;, inStr-&gt;token, DEBUG_JINX);
+  } else {
+    sprintf(message, &quot;%s %s&quot;, inStr-&gt;token, &quot; was unable to be gotten.&quot;);
+  }
+
+  //Free malloc'd string
+  writeJINXMessage(message);
+  free(message);
+  message = NULL;
+}
+</code></pre>
+
+<h2 id="getToken">getToken</h2>
+
+<pre><code class="language-c">int getToken ( JINX *  inStr
+  int     tokenNum
+)
+</code></pre>
+
+<p>Sets <code>inStr-&gt;token</code> to the <code>tokenNum</code>th + 1 space-delimated word within <code>inStr-&gt;command</code>
+<code>tokenNum</code> is 0-based, so 0 will get the 1st token, 1 will get the 2nd token&hellip;</p>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2016 Released under the MPL 2.0 license &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme. <br/>
+				Contribute to PROS documentation on <a href="http://github.com/purduesigbots/pros-docs">GitHub</a>!
+			</aside>
+
+			<footer class="footer">
+				
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = 'http:\/\/pros.cs.purdue.edu\/';
+      var repo_id  = 'purduesigbots\/pros';
+    
+    </script>
+
+    <script src="http://pros.cs.purdue.edu/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+            
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+        
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+      <script>
+        (function(i,s,o,g,r,a,m){
+          i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
+          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
+          m.parentNode.insertBefore(a,m)
+        })(window, document,
+          'script', '//www.google-analytics.com/analytics.js', 'ga');
+         
+        ga('create', 'UA-84548828-3', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+         
+        var buttons = document.querySelectorAll('a');
+        Array.prototype.map.call(buttons, function(item) {
+          if (item.host != document.location.host) {
+            item.addEventListener('click', function() {
+              var action = item.getAttribute('data-action') || 'follow';
+              ga('send', 'event', 'outbound', action, item.href);
+            });
+          }
+        });
+         
+        var query = document.querySelector('.query');
+        query.addEventListener('blur', function() {
+          if (this.value) {
+            var path = document.location.pathname;
+            ga('send', 'pageview', path + '?q=' + this.value);
+          }
+        });
+      </script>
+    
+
+    <script src="//gohugo.io/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

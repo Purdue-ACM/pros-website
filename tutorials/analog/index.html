@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>PROS - Analog Sensors</title>
+    <meta name="generator" content="Hugo 0.17" />
+
+    
+    <meta name="description" content="An open source programming environment for the VEX EDR Platform">
+    
+    <link rel="canonical" href="http://pros.cs.purdue.edu/tutorials/analog/">
+    
+    <meta name="author" content="purduesigbots">
+    
+
+    <meta property="og:url" content="http://pros.cs.purdue.edu/tutorials/analog/">
+    <meta property="og:title" content="PROS">
+    <meta property="og:image" content="http://pros.cs.purdue.edu/images/logo.png">
+    <meta name="apple-mobile-web-app-title" content="PROS">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://pros.cs.purdue.edu/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="http://pros.cs.purdue.edu/images/favicon.ico">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('http://pros.cs.purdue.edu/fonts/icon.eot?52m981');
+        src: url('http://pros.cs.purdue.edu/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+             url('http://pros.cs.purdue.edu/fonts/icon.woff?52m981')
+               format('woff'),
+             url('http://pros.cs.purdue.edu/fonts/icon.ttf?52m981')
+               format('truetype'),
+             url('http://pros.cs.purdue.edu/fonts/icon.svg?52m981#icon')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://pros.cs.purdue.edu/stylesheets/application.css">
+    <link rel="stylesheet" href="http://pros.cs.purdue.edu/stylesheets/temporary.css">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700|Ubuntu&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Ubuntu Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <link rel="stylesheet" href="http://pros.cs.purdue.edu/stylesheets/api.css">
+    
+    <script src="http://pros.cs.purdue.edu/javascripts/modernizr.js"></script>
+
+    
+
+  </head>
+  <body>
+
+
+
+	
+	
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Analog Sensors
+      </div>
+    </div>
+
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/purduesigbots" title="@purduesigbots on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="https://github.com/purduesigbots/pros" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="http://pros.cs.purdue.edu/images/logo.png">
+        </div>
+      
+      <div class="name">
+        <strong>PROS <span class="version">2.11.0</span></strong>
+        
+          <br>
+          purduesigbots/pros
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+        <ul class="repo">
+          <li class="repo-download">
+            <a href="https://github.com/purduesigbots/pros/releases" target="_blank" title="Download" data-action="download">
+              <i class="icon icon-download"></i> Download
+            </a>
+          </li>
+          <li class="repo-stars">
+            <a href="https://github.com/purduesigbots/pros/stargazers" target="_blank" title="Stargazers" data-action="star">
+              <i class="icon icon-star"></i> Stars
+              <span class="count">&ndash;</span>
+            </a>
+          </li>
+        </ul>
+        <hr>
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Home" href="http://pros.cs.purdue.edu/">
+	
+	Home
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Download" href="http://pros.cs.purdue.edu/download/">
+	
+	Download
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Getting started" href="http://pros.cs.purdue.edu/getting-started/">
+	
+	Getting started
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Tutorials" href="http://pros.cs.purdue.edu/tutorials/">
+	
+	Tutorials
+</a>
+
+
+
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Debugging" href="http://pros.cs.purdue.edu/tutorials/debugging/">
+	
+	Debugging
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Encoders" href="http://pros.cs.purdue.edu/tutorials/encoders/">
+	
+	Encoders
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Digital Input" href="http://pros.cs.purdue.edu/tutorials/digitalRead/">
+	
+	Digital Input
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a class="current" title="Analog Sensors" href="http://pros.cs.purdue.edu/tutorials/analog/">
+	
+	Analog Sensors
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+      
+        
+        
+
+
+
+<a  title="Pneumatics" href="http://pros.cs.purdue.edu/tutorials/pneumatics/">
+	
+	Pneumatics
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Ultrasonic" href="http://pros.cs.purdue.edu/tutorials/ultrasonic/">
+	
+	Ultrasonic
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Tasks/Multithreading" href="http://pros.cs.purdue.edu/tutorials/tasks/">
+	
+	Tasks/Multithreading
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="I2C Communication" href="http://pros.cs.purdue.edu/tutorials/i2c/">
+	
+	I2C Communication
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Coding FAQ" href="http://pros.cs.purdue.edu/tutorials/coding-faq/">
+	
+	Coding FAQ
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="API" href="http://pros.cs.purdue.edu/api/">
+	
+	API
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Known Issues" href="http://pros.cs.purdue.edu/known-issues/">
+	
+	Known Issues
+</a>
+
+
+
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="License" href="http://pros.cs.purdue.edu/license/">
+	
+	License
+</a>
+
+
+
+  
+</li>
+
+
+        </ul>
+        
+
+        
+        <hr>
+        <span class="section">Get in touch</span>
+
+        <ul>
+          
+
+          
+          <li>
+            <a href="https://github.com/purduesigbots" target="_blank" title="@purduesigbots on GitHub">
+              @purduesigbots on GitHub
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="mailto:pros_development@cs.purdue.edu%20%20" title="Email of pros_development@cs.purdue.edu  ">
+              Contact via email
+            </a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Analog Sensors </h1>
+
+			
+
+<p>While computers, microcontrollers, and other devices that interface with VEX robots are digital systems, most of the real world operates as analog components, where a range of possible values exist instead of simply an arrangement of 1s and 0s. To communicate with these analog real-world systems, analog sensors like potentiometers and line trackers are used. These sensors return a number within a preset range of values in accordance with their input, as opposed to a digit sensor which simply returns an on or off state.</p>
+
+<p>To take these analog inputs and convert them to information that the Cortex can actually use, ADCs (Analog to Digital Converters) are used on each of the Analog In ports to convert the analog input signals (varying voltage signals) to 12 bit integers. As a result, the range of all analog sensors when used with the Cortex is 0 to 4095 (the range of a 12 bit unsigned integer).</p>
+
+<h2 id="initialization">Initialization</h2>
+
+<p>Unlike many of the other VEX sensors, no initialization process is needed in the <code>initializeIO()</code> or <code>initialize()</code> functions. However, it is often worthwhile to calibrate analog sensors before using them, which would take place in the <code>initialize()</code> function. The <a href="http://pros.cs.purdue.edu/api/#analogCalibrate"><code>analogCalibrate()</code></a> function collects approximately 500 data samples over a period of half a second and returns the average value received over the sampling period. This average value can be used to account for variations like gyroscope orientation or ambient light for line trackers.</p>
+
+<h2 id="potentiometer">Potentiometer</h2>
+
+<p>Potentiometers measure angular position and can be used to determine the direction of rotation of its input. Potentiometers are best used in applications such as lifts where the sensor is not at risk of being rotated beyond its 250-degree physical constraint. Potentiometers typically do not need to be calibrated, although it may be desired to find the actual range of the potentiometer due to its mechanical stops as that range may be closer to 5-4090 instead of 0-4095. If the potentiometer is not calibrated, the <a href="http://pros.cs.purdue.edu/api/#analogRead"><code>analogRead()</code></a> function may be used to obtain the raw input value of the potentiometer. If the sensor was calibrated, the <a href="http://pros.cs.purdue.edu/api/#analogCalibrateHR"><code>analogReadCalibratedHR()</code></a> function should be used, as it will account for the sensor&rsquo;s calibration and return more accurate results. The input to both of these functions is the channel number of the sensor, and an integer is returned.</p>
+
+<p>Thus an example of use on a lift would look like:</p>
+
+<pre><code class="language-c">#define POTENTIOMETER_PORT 1
+#define LIFT_MOTOR 1
+
+//while the potentiometer is not at its maximum position
+while(analogRead(POTENTIOMETER_PORT) &lt; 4095)
+{
+  motorSet(1,127); //activate the lift
+}
+</code></pre>
+
+<h2 id="line-tracker">Line Tracker</h2>
+
+<p>VEX Line Trackers operate by measuring the amount of light reflected to the sensor and determining the existence of lines from the difference in light reflected by the white tape and the dark tiles. The Line Trackers return a value between 0 and 405, with 0 being the lightest reading and 4095 the darkest. It is recommended that Line Trackers be calibrated to account for changes in ambient light.</p>
+
+<p>An example of Line Tracker use:</p>
+
+<p>main.h:</p>
+
+<pre><code class="language-c">#define LINE_TRACKER_PORT 1
+#define DRIVE_MOTOR_LEFT 1
+#define DRIVE_MOTOR_RIGHT 2
+</code></pre>
+
+<p>init.c:</p>
+
+<pre><code class="language-c">#include &quot;main.h&quot;
+
+void initialize() {
+  analogCalibrate(LINE_TRACKER_PORT);
+}
+</code></pre>
+
+<p>opcontrol.c:</p>
+
+<pre><code class="language-c">#include &quot;main.h&quot;
+
+//2000 arbitrarily set as cutoff between light and dark
+while(analogReadCalibratedHR(LINE_TRACKER_PORT) &lt; 2000)
+{
+  // drive forward until a line is hit
+  motorSet(DRIVE_MOTOR_LEFT,127);
+  motorSet(DRIVE_MOTOR_RIGHT,127);
+}
+</code></pre>
+
+<h2 id="gyroscope">Gyroscope</h2>
+
+<p>One of the most powerful sensors available for the VEX Cortex is the VEX Yaw Rate Gyro. Through proper utilization of this sensors you can consistently make your robot perform precise turns.</p>
+
+<h4 id="warning">Warning</h4>
+
+<p>The VEX Yaw Rate Gyro is an analog sensor which means that it is very susceptible to analog noise during its operation. When utilizing this sensor, pay special attention to the connection wires between cortex and the gyro and keep them far away from motors.</p>
+
+<p>PROS provides a gyro library to simplify using it. A sample usage would be as follows:</p>
+
+<p>main.h:</p>
+
+<pre><code class="language-c">// Analog port number gyro is plugged into
+#define GYRO_PORT 1
+
+// Multiple gyros can be declared
+Gyro gyro;
+</code></pre>
+
+<p>init.c:</p>
+
+<pre><code class="language-c">void initialize(){
+    // ... Other sensor initialization and port configuration
+    // If gyro reads inaccurately, change &quot;0&quot; to desired sensitivity
+    // See documentation on gyroInit() for up-to-date sensitivity details
+    gyro = gyroInit(GYRO_PORT, 0);
+}
+</code></pre>
+
+<p>opcontrol.c or auto.c:</p>
+
+<pre><code class="language-c">void myFunction(){
+    // ... Do work
+    // Get gyro reading in degrees
+    int heading = gyroGet(gyro);
+
+    // ... Do other work
+    // Reset the gyro to zero
+    gyroReset(gyro);
+
+    // ...
+}
+</code></pre>
+
+<h2 id="accelerometer">Accelerometer</h2>
+
+<p>The VEX Accelerometer measures acceleration on the x, y, and z axes simultaneously. Accelerometers can be used to infer velocity and displacement, but due to the error induced by such integration it is recommended that simply the acceleration data be used. By design of the VEX Accelerometer each axis is treated as its own analog sensors. Due to this the VEX Accelerometer requires three analog input ports on the Cortex.</p>
+
+<p>Example accelerometer use:</p>
+
+<p>main.h:</p>
+
+<pre><code class="language-c">#define ACCELEROMETER_X 1
+#define ACCELEROMETER_Y 2
+#define ACCELEROMETER_Z 3
+</code></pre>
+
+<p>init.c:</p>
+
+<pre><code class="language-c">#include &quot;main.h&quot;
+
+void initialize() {
+  analogCalibrate(ACCELEROMETER_X); //calibrates the x axis input
+  analogCalibrate(ACCELEROMETER_Y); //calibrates the y axis input
+  analogCalibrate(ACCELEROMETER_Z); //calibrates the z axis input
+}
+</code></pre>
+
+<p>opcontrol.c:</p>
+
+<pre><code class="language-c">#include &quot;main.h&quot;
+
+//Read the acceleration data for each axis
+int x_acc = analogReadCalibratedHR(ACCELEROMETER_X);
+int y_acc = analogReadCalibratedHR(ACCELEROMETER_Y);
+int z_acc = analogReadCalibratedHR(ACCELEROMETER_Z);
+</code></pre>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2016 Released under the MPL 2.0 license &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme. <br/>
+				Contribute to PROS documentation on <a href="http://github.com/purduesigbots/pros-docs">GitHub</a>!
+			</aside>
+
+			<footer class="footer">
+				
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = 'http:\/\/pros.cs.purdue.edu\/';
+      var repo_id  = 'purduesigbots\/pros';
+    
+    </script>
+
+    <script src="http://pros.cs.purdue.edu/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+            
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+        
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+      <script>
+        (function(i,s,o,g,r,a,m){
+          i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
+          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
+          m.parentNode.insertBefore(a,m)
+        })(window, document,
+          'script', '//www.google-analytics.com/analytics.js', 'ga');
+         
+        ga('create', 'UA-84548828-3', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+         
+        var buttons = document.querySelectorAll('a');
+        Array.prototype.map.call(buttons, function(item) {
+          if (item.host != document.location.host) {
+            item.addEventListener('click', function() {
+              var action = item.getAttribute('data-action') || 'follow';
+              ga('send', 'event', 'outbound', action, item.href);
+            });
+          }
+        });
+         
+        var query = document.querySelector('.query');
+        query.addEventListener('blur', function() {
+          if (this.value) {
+            var path = document.location.pathname;
+            ga('send', 'pageview', path + '?q=' + this.value);
+          }
+        });
+      </script>
+    
+
+    <script src="//gohugo.io/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

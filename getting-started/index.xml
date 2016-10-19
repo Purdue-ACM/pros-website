@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Getting-started-rsses on PROS</title>
+    <link>http://pros.cs.purdue.edu/getting-started/index.xml</link>
+    <description>Recent content in Getting-started-rsses on PROS</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Released under the MPL 2.0 license</copyright>
+    <atom:link href="http://pros.cs.purdue.edu/getting-started/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Getting Started</title>
+      <link>http://pros.cs.purdue.edu/getting-started/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/getting-started/</guid>
+      <description>&lt;p&gt;Getting started with PROS is simple. Download the installer for your platform from &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/latest&#34;&gt;GitHub&lt;/a&gt;. You may also choose to manually install each of the components required for PROS. You can view detailed installation instructions for &lt;a href=&#34;./windows&#34;&gt;Windows&lt;/a&gt;, &lt;a href=&#34;./os-x&#34;&gt;OS X&lt;/a&gt;, and &lt;a href=&#34;./debian-linux&#34;&gt;Debian-based Linux&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once you&amp;rsquo;ve installed PROS, open Atom. Click PROS -&amp;gt; Create New Project to create your first PROS project.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;PROS Menu on Atom&lt;/em&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/menu-create-new.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Creating a new project in Atom&lt;/em&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/window-create-new.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Pick a directory to create the new project in and click Create. The PROS CLI will now copy the latest kernel template into the specified directory and Atom will open it.
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/proj-brand-new.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s write a simple operator control for a 4-motor robot. Notice that as you type, the Atom Linter is checking your syntax.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void operatorControl() {
+    int leftJoystick, rightJoystick;
+    while (1) {
+        leftJoystick = joystickGetAnalog(1, 2);
+        rightJoystick = joystickGetAnalog(1, 3);
+        motorSet(1, leftJoystick); // Front Left Motor
+        motorSet(2, -leftJoystick); // Rear Left Motor
+        motorSet(3, rightJoystick); // Front Right Motor
+        motorSet(4, -rightJoystick); // Rear Right Motor
+        delay(20);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once you are complete your &lt;code&gt;opcontrol.c&lt;/code&gt; file should look like this:
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/first-program.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Now that you have written code, you will need to translate your source into a
+format that the microcontroller can understand. This process is called &lt;em&gt;compilation&lt;/em&gt;.
+To compile your project, press the &lt;code&gt;F9&lt;/code&gt; key.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/build.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Now that your project has been built, you can upload it to the Cortex by clicking upload.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/upload.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Congratulations you have completed your first PROS program!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installing on Windows</title>
+      <link>http://pros.cs.purdue.edu/getting-started/windows/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/getting-started/windows/</guid>
+      <description>
+
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;PROS for Atom is the new best way to program for VEX Robotics. Getting started with PROS is easy on Windows.&lt;/p&gt;
+
+&lt;p&gt;To begin, &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/latest&#34;&gt;download&lt;/a&gt; and run the installer. Please note
+that an Internet connection is required throughout the installation process.&lt;/p&gt;
+
+&lt;p&gt;Most users will wish to complete the typical installation process, which will install the PROS Core components
+(the PROS CLI and GCC toolchain) and Atom with Clang and the PROS plugin. If you already have Atom installed, then
+the installer will simply add the PROS plugin to your existing Atom environment.&lt;/p&gt;
+
+&lt;p&gt;If VEX drivers haven&amp;rsquo;t previously been installed, you will be prompted to install the official drivers released
+by VEX.&lt;/p&gt;
+
+&lt;p&gt;Once the installation is completed, Atom can be started via the Start Menu or Desktop shortcut.&lt;/p&gt;
+
+&lt;h2 id=&#34;issues-and-notes-about-installation&#34;&gt;Issues and Notes about Installation&lt;/h2&gt;
+
+&lt;h3 id=&#34;apm-failure&#34;&gt;APM Failure&lt;/h3&gt;
+
+&lt;p&gt;During some installations, Atom may not install correctly. This is best diagnosed by there not being shortcuts to
+Atom after installation, or if &lt;code&gt;apm&lt;/code&gt; isn&amp;rsquo;t on PATH. If this is the case, you may need to manually install Atom by visiting
+&lt;a href=&#34;https://atom.io/download/windows&#34;&gt;https://atom.io/download/windows&lt;/a&gt;. Once installed and Atom appears, you will be able to install the PROS plugin by pressing
+&lt;strong&gt;Win&lt;/strong&gt;+&lt;strong&gt;R&lt;/strong&gt; and entering &lt;code&gt;apm install file-icons linter tool-bar tool-bar-main busy build platformio-ide-terminal pros&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;installing-alongside-pros-for-eclipse&#34;&gt;Installing alongside PROS for Eclipse&lt;/h3&gt;
+
+&lt;p&gt;It is possible to install Atom alongside Eclipse, if you have previously installed Eclipse. However, the uninstall utility for
+PROS for Eclipse will remove all the contents in &lt;code&gt;C:\Program Files\PROS&lt;/code&gt;, so the new version of PROS will also be affected.
+If you decide to remove Eclipse but want to keep the PROS Core components, either run the PROS for Eclipse uninstall utility and
+reinstall/repair the new version of PROS or manually delete all files/folders in &lt;code&gt;C:\Program Files\PROS&lt;/code&gt; except: &lt;code&gt;C:\Program Files\PROS\cli-64&lt;/code&gt;
+(or just &lt;code&gt;cli&lt;/code&gt; if x86), &lt;code&gt;C:\Program Files\PROS\toolchain&lt;/code&gt;, &lt;code&gt;C:\Program Files\PROS\updater.exe&lt;/code&gt;, and &lt;code&gt;C:\Program Files\PROS\updater.ini&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installing on macOS</title>
+      <link>http://pros.cs.purdue.edu/getting-started/os-x/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/getting-started/os-x/</guid>
+      <description>
+
+&lt;p&gt;//TODO Get minimum macOS version
+//TODO check with josh about what he means in step 4 with xcode and llvm&lt;/p&gt;
+
+&lt;h2 id=&#34;installation-instructions&#34;&gt;Installation Instructions&lt;/h2&gt;
+
+&lt;p&gt;Installing PROS on macOS could not be easier with our custom built installer! Just follow these instructions:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install &lt;a href=&#34;https://www.python.org/downloads/&#34;&gt;Python 3&lt;/a&gt;(Version 3.4 or higher) for macOS.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Download the &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/tag/2.11.0&#34;&gt;PROS installer&lt;/a&gt; and run it. You will need to input an administrator&amp;rsquo;s password, and must remain connected to the internet for the duration of installation. The installer will download Atom.app and the ARM toolchain to /Applications/PROS_2.0, and will use pip3 to install the command line interface. You will be able to see the progress of the installer in a Terminal window automatically openned by the installer.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Open Atom (/Applications/PROS_2.0/Atom.app) and verify that PROS appears in the menu (Likely next to Help).&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Congratulations! You have successfully installed PROS for macOS. For advanced syntax checking and code completion within Atom, consider downloading &lt;a href=&#34;https://developer.apple.com/xcode/&#34;&gt;Xcode&lt;/a&gt; or &lt;a href=&#34;http://llvm.org&#34;&gt;LLVM&lt;/a&gt;. Note that Xcode is likely easier to install than LLVM, though it must be opened at least once and the command line tools must be installed.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installing on Linux</title>
+      <link>http://pros.cs.purdue.edu/getting-started/debian-linux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pros.cs.purdue.edu/getting-started/debian-linux/</guid>
+      <description>
+
+&lt;h2 id=&#34;easy-install-scripts&#34;&gt;Easy Install Scripts&lt;/h2&gt;
+
+&lt;p&gt;If you are installing on Ubuntu or Arch linux there are install scripts available which should handle most of the process. The scripts can be downloaded from Github:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ubuntu:&lt;/strong&gt; &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/download/2.11.0/pros-install_ubuntu.sh&#34;&gt;pros-install_ubuntu.sh&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Arch Linux:&lt;/strong&gt; &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/download/2.11.0/pros-install_arch.sh&#34;&gt;pros-install_arch.sh&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; When using PROS for linux you cannot program or interact with a cortex directly tethered via A-A. This is a &lt;a href=&#34;http://pros.cs.purdue.edu/known-issues/#linuxAA&#34;&gt;known issue&lt;/a&gt; with a simple solution.&lt;/p&gt;
+
+&lt;h2 id=&#34;other-distro-installation-requirements&#34;&gt;Other Distro Installation Requirements&lt;/h2&gt;
+
+&lt;p&gt;To follows these instructions you need an operating system on your machine which is not Windows. We recommend the latest version of Ubuntu LTS. If you choose to not use Ubuntu LTS be sure that the flavor of linux you are using has support for the following packages:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://atom.io/&#34;&gt;Atom 1.10.x+&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/downloads&#34;&gt;git 2.x&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://llvm.org/releases/download.html&#34;&gt;clang 3.9.0+&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://launchpad.net/gcc-arm-embedded/+download&#34;&gt;gcc-arm-none-eabi 4.7.1+&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.python.org/downloads/&#34;&gt;python3 3.5+&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;python3-pip&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once you have downloaded and install all those packages type the following command to install the PROS atom plugins:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apm install file-icons linter tool-bar tool-bar-main busy build pros
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Upon completion open Atom and it will finish the setup process. Now you are all set to use PROS!!!&lt;/p&gt;
+
+&lt;p&gt;If you have any issues with these instructions be sure to report the issues on our &lt;a href=&#34;https://github.com/purduesigbots/pros-atom&#34;&gt;github project&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

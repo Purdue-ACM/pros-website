@@ -50,7 +50,19 @@
   </url>
   
   <url>
+    <loc>http://pros.cs.purdue.edu/tutorials/lcd/</loc>
+  </url>
+  
+  <url>
     <loc>http://pros.cs.purdue.edu/tutorials/pneumatics/</loc>
+  </url>
+  
+  <url>
+    <loc>http://pros.cs.purdue.edu/getting-started/</loc>
+  </url>
+  
+  <url>
+    <loc>http://pros.cs.purdue.edu/tutorials/clawbot/</loc>
   </url>
   
   <url>
@@ -67,10 +79,6 @@
   
   <url>
     <loc>http://pros.cs.purdue.edu/tutorials/ultrasonic/</loc>
-  </url>
-  
-  <url>
-    <loc>http://pros.cs.purdue.edu/getting-started/</loc>
   </url>
   
   <url>

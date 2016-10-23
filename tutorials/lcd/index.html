@@ -9,18 +9,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>PROS - Encoders</title>
+    <title>PROS - LCD Screen</title>
     <meta name="generator" content="Hugo 0.17" />
 
     
     <meta name="description" content="An open source programming environment for the VEX EDR Platform">
     
-    <link rel="canonical" href="http://pros.cs.purdue.edu/tutorials/encoders/">
+    <link rel="canonical" href="http://pros.cs.purdue.edu/tutorials/lcd/">
     
     <meta name="author" content="purduesigbots">
     
 
-    <meta property="og:url" content="http://pros.cs.purdue.edu/tutorials/encoders/">
+    <meta property="og:url" content="http://pros.cs.purdue.edu/tutorials/lcd/">
     <meta property="og:title" content="PROS">
     <meta property="og:image" content="http://pros.cs.purdue.edu/images/logo.png">
     <meta name="apple-mobile-web-app-title" content="PROS">
@@ -101,7 +101,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Encoders
+        LCD Screen
       </div>
     </div>
 
@@ -265,14 +265,11 @@
 
 
 
-<a class="current" title="Encoders" href="http://pros.cs.purdue.edu/tutorials/encoders/">
+<a  title="Encoders" href="http://pros.cs.purdue.edu/tutorials/encoders/">
 	
 	Encoders
 </a>
 
-
-<ul id="scrollspy">
-</ul>
 
 
       
@@ -333,11 +330,14 @@
 
 
 
-<a  title="LCD Screen" href="http://pros.cs.purdue.edu/tutorials/lcd/">
+<a class="current" title="LCD Screen" href="http://pros.cs.purdue.edu/tutorials/lcd/">
 	
 	LCD Screen
 </a>
 
+
+<ul id="scrollspy">
+</ul>
 
 
       
@@ -475,53 +475,29 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>Encoders </h1>
+			<h1>LCD Screen </h1>
 
-			
-
-<h2 id="quad-encoder">Quad Encoder</h2>
-
-<p>Quadrature encoders can measure the rotation of the attached axle on your robot. Most common uses of this sensor type are to track distance traveled by attaching them to your robots drivetrain and monitoring how much the axle spins.</p>
-
-<p>With these sensors 1 measured tick is 1 degree of revolution.</p>
-
-<p>PROS provides a simple quadrature library to utilize these sensors. A sample usage would be as follows:</p>
-
-<p>main.h:</p>
-
-<pre><code class="language-c">// Digital port number for top and bottom port of quad encoder
-#define QUAD_TOP_PORT 1
-#define QUAD_BOTTOM_PORT 2
-
-// Multiple encoders can be declared
-Encoder encoder;
-</code></pre>
-
-<p>init.c:</p>
+			<p>The LCD screen communicates to the Cortex Microcontroller via a UART cable. This communication needs to be initialized in <code>init.c</code>:</p>
 
 <pre><code class="language-c">void initialize() {
-    // ...
-    encoder = encoderInit(QUAD_TOP_PORT, QUAD_BOTTOM_PORT, is_reversed);
-    // ...
+  // ...
+  // Select &quot;uart1&quot; or &quot;uart2&quot; as appropriate
+  lcdInit(uart1);
+  lcdClear(uart1);
+  // ...
 }
 </code></pre>
 
-<p>opcontrol.c or auto.c:</p>
+<p>And in any function you can do the following:</p>
 
-<pre><code class="language-c">void myFunction(){
-    // ... Do work
-    // Get encoder reading in degrees
-    int counts = encoderGet(encoder);
-
-    // ... Do other work
-    // Reset encoder to zero
-    encoderReset(encoder);
-}
+<pre><code class="language-c">//...
+// Print formatted text to LCD (line #1) like printf
+// supposing that &quot;x&quot; is an existing integer variable
+lcdPrint(uart1, 1, &quot;X is %d&quot;, x);
+// Print plain text to LCD (much faster than lcdPrint)
+lcdSetText(uart1, 2, &quot;Hello World&quot;);
+// ...
 </code></pre>
-
-<h2 id="wiring-notes">Wiring Notes</h2>
-
-<p>One important thing to note with the use of encoders is that they should <strong>not</strong> be plugged into digital <strong>port 10</strong> on the Cortex. This is not unique to PROS, it is simply a result of the way that <a href="http://users.ece.utexas.edu/~valvano/Volume1/E-Book/C12_Interrupts.htm">digital interrupts</a> are configured for the Cortex. Other types of sensors may be used on port 10 with no effect on their performance, but encoders cannot.</p>
 
 
 			<aside class="copyright" role="note">

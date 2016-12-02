@@ -278,10 +278,10 @@ This document serves as a quick reference for API.h functions.&lt;/p&gt;
 
 &lt;h2 id=&#34;encoderInit&#34;&gt;encoderInit&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;int encoderInit ( unsigned char portTop,
-                  unsigned char portBottom,
-                  bool reverse
-                )
+&lt;pre&gt;&lt;code&gt;Encoder encoderInit ( unsigned char portTop,
+                      unsigned char portBottom,
+                      bool reverse
+                    )
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Initializes and enables a quadrature encoder on two digital ports.&lt;/p&gt;

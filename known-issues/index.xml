@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Known-issues-rsses on PROS</title>
+    <title>Known-issues on PROS</title>
     <link>http://pros.cs.purdue.edu/known-issues/index.xml</link>
-    <description>Recent content in Known-issues-rsses on PROS</description>
+    <description>Recent content in Known-issues on PROS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MPL 2.0 license</copyright>
@@ -63,6 +63,12 @@
 
 &lt;p&gt;This issue may occur when install PROS from within the Atom GUI. The current cause of the issue is
 unknown. You can get the dependency installed by manually installing &lt;code&gt;platformio-ide-terminal&lt;/code&gt; by going to settings (&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;,&lt;/code&gt;), click &lt;code&gt;Install&lt;/code&gt;, then search for and install &lt;code&gt;platformio-ide-terminal&lt;/code&gt;. In some instances, restarting Atom will allow the plugin to install.&lt;/p&gt;
+
+&lt;p&gt;Another workaround for this issue is to clone the &lt;a href=&#34;https://github.com/platformio/platformio-atom-ide-terminal/&#34;&gt;&lt;code&gt;platformio-atom-ide-terminal&lt;/code&gt;&lt;/a&gt; repository and set up a &lt;a href=&#34;https://en.wikipedia.org/wiki/Symbolic_link&#34;&gt;symlink&lt;/a&gt; using the Atom package manager:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git clone https://github.com/platformio/platformio-atom-ide-terminal.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;apm link &amp;lt;path to cloned repository&amp;gt;&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
     

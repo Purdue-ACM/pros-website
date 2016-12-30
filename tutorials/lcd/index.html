@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>PROS - LCD Screen</title>
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.18" />
 
     
     <meta name="description" content="An open source programming environment for the VEX EDR Platform">
@@ -71,8 +71,6 @@
     <link rel="stylesheet" href="http://pros.cs.purdue.edu/stylesheets/api.css">
     
     <script src="http://pros.cs.purdue.edu/javascripts/modernizr.js"></script>
-
-    
 
   </head>
   <body>
@@ -372,6 +370,19 @@
 
 
 
+<a  title="VEX Speaker" href="http://pros.cs.purdue.edu/tutorials/speaker/">
+	
+	VEX Speaker
+</a>
+
+
+
+      
+        
+        
+
+
+
 <a  title="Coding FAQ" href="http://pros.cs.purdue.edu/tutorials/coding-faq/">
 	
 	Coding FAQ
@@ -496,6 +507,8 @@
 lcdPrint(uart1, 1, &quot;X is %d&quot;, x);
 // Print plain text to LCD (much faster than lcdPrint)
 lcdSetText(uart1, 2, &quot;Hello World&quot;);
+// Print current battery voltage
+lcdPrint(uart1, 1, &quot;Batt: %1.3f V&quot;, (double)powerLevelMain() / 1000);
 // ...
 </code></pre>
 

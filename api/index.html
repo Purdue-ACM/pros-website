@@ -9,8 +9,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>PROS - API</title>
-    <meta name="generator" content="Hugo 0.17" />
+    <title>PROS - Apis</title>
+    <meta name="generator" content="Hugo 0.18" />
 
     
     <meta name="description" content="An open source programming environment for the VEX EDR Platform">
@@ -72,15 +72,8 @@
     
     <script src="http://pros.cs.purdue.edu/javascripts/modernizr.js"></script>
 
-    
-
   </head>
   <body>
-
-
-
-	
-	
 
 
 <div class="backdrop">
@@ -101,7 +94,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        API
+        Apis
       </div>
     </div>
 
@@ -143,9 +136,6 @@
       
       <div class="name">
         <strong>PROS <span class="version">2.11.0</span></strong>
-        
-          <br>
-          purduesigbots/pros
         
       </div>
     </div>
@@ -342,110 +332,130 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>API </h1>
+			<h1>Pages in Api</h1>
 
-			<div class="api">
-This document serves as a quick reference for API.h functions.</p>
+			
+			<a href="http://pros.cs.purdue.edu/api/" title="API">
+				<h2>API</h2>
+			</a>
 
-<h1 id="functions">Functions</h1>
+			<br>
+			This document serves as a quick reference for API.h functions.
+Functions analogCalibrate int analogCalibrate ( unsigned char channel )  Calibrates the analog sensor on the specified channel.
+This method assumes that the true sensor value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the analogReadCalibrated() and analogReadCalibratedHR() functions.
 
-<h2 id="analogCalibrate">analogCalibrate</h2>
+			<hr>
+			
 
-<pre><code>int analogCalibrate ( unsigned char  channel )
-</code></pre>
+			<aside class="copyright" role="note">
+				
+				&copy; 2016 Released under the MPL 2.0 license &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+		</div>
+	</article>
 
-<p>Calibrates the analog sensor on the specified channel.</p>
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
 
-<p>This method assumes that the true sensor value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the analogReadCalibrated() and analogReadCalibratedHR() functions. These functions will return the difference between this value and the current sensor value when called.</p>
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
 
-<p>Do not use this function in initializeIO(), or when the sensor value might be unstable (gyro rotation, accelerometer movement).</p>
+    <script src="http://pros.cs.purdue.edu/javascripts/application.js"></script>
+    
 
-<p>This function may not work properly if the VEX Cortex is tethered to a PC using the orange USB A to A cable and has no VEX 7.2V Battery connected and powered on, as the VEX Battery provides power to sensors.</p>
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
 
-<table>
-<thead>
-<tr>
-<th align="right">Parameters</th>
-<th align="left"></th>
-</tr>
-</thead>
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
 
-<tbody>
-<tr>
-<td align="right"><code>channel</code></td>
-<td align="left">the channel to calibrate from 1-8</td>
-</tr>
-</tbody>
-</table>
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+            
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+        
 
-<p><strong>Returns</strong> the average sensor value computed by this function</p>
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
 
-<h2 id="analogRead">analogRead</h2>
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "#";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
 
-<pre><code>int analogRead ( unsigned char  channel )
-</code></pre>
+    
+      <script>
+        (function(i,s,o,g,r,a,m){
+          i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
+          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
+          m.parentNode.insertBefore(a,m)
+        })(window, document,
+          'script', '//www.google-analytics.com/analytics.js', 'ga');
+         
+        ga('create', 'UA-84548828-3', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+         
+        var buttons = document.querySelectorAll('a');
+        Array.prototype.map.call(buttons, function(item) {
+          if (item.host != document.location.host) {
+            item.addEventListener('click', function() {
+              var action = item.getAttribute('data-action') || 'follow';
+              ga('send', 'event', 'outbound', action, item.href);
+            });
+          }
+        });
+         
+        var query = document.querySelector('.query');
+        query.addEventListener('blur', function() {
+          if (this.value) {
+            var path = document.location.pathname;
+            ga('send', 'pageview', path + '?q=' + this.value);
+          }
+        });
+      </script>
+    
 
-<p>Reads an analog input channel and returns the 12-bit value.</p>
-
-<p>The value returned is undefined if the analog pin has been switched to a different mode. This function is Wiring-compatible with the exception of the larger output range. The meaning of the returned value varies depending on the sensor attached.</p>
-
-<p>This function may not work properly if the VEX Cortex is tethered to a PC using the orange USB A to A cable and has no VEX 7.2V Battery connected and powered on, as the VEX Battery provides power to sensors.</p>
-
-<table>
-<thead>
-<tr>
-<th align="right">Parameters</th>
-<th align="left"></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="right"><code>channel</code></td>
-<td align="left">the channel to read from 1-8</td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>Returns</strong> the analog sensor value, where a value of 0 reflects an input voltage of nearly 0 V and a value of 4095 reflects an input voltage of nearly 5 V</p>
-
-<h2 id="analogReadCalibrated">analogReadCalibrated</h2>
-
-<pre><code>int analogReadCalibrated ( unsigned char  channel )
-</code></pre>
-
-<p>Reads the calibrated value of an analog input channel.</p>
-
-<p>The <a href="#analogCalibrate">analogCalibrate()</a> function must be run first on that channel. This function is inappropriate for sensor values intended for integration, as round-off error can accumulate causing drift over time. Use <a href="#analogReadCalibratedHR">analogReadCalibratedHR()</a> instead.</p>
-
-<p>This function may not work properly if the VEX Cortex is tethered to a PC using the orange USB A to A cable and has no VEX 7.2V Battery connected and powered on, as the VEX Battery provides power to sensors.</p>
-
-<table>
-<thead>
-<tr>
-<th align="right">Parameters</th>
-<th align="left"></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="right"><code>channel</code></td>
-<td align="left">the channel to read from 1-8</td>
-</tr>
-</tbody>
-</table>
-
-<p><strong>Returns</strong> the difference of the sensor value from its calibrated default value from -4095 to 4095</p>
-
-<h2 id="analogReadCalibratedHR">analogReadCalibratedHR</h2>
-
-<pre><code>int analogReadCalibratedHR ( unsigned char  channel )
-</code></pre>
-
-<p>Reads the calibrated value of an analog input channel 1-8 with enhanced precision.</p>
-
-<p>The <a href="#analogCalibrate">analogCalibrate()</a> function must be run first. This is intended for integrated sensor values such as gyros and accelerometers to reduce drift due to round-off, and should not be used on a sensor such as a line tracker or potentiometer.</p>
+    <script src="//gohugo.io/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+d-off, and should not be used on a sensor such as a line tracker or potentiometer.</p>
 
 <p>The value returned actually has 16 bits of &ldquo;precision&rdquo;, even though the ADC only reads 12 bits, so that errors induced by the average value being between two values come out in the wash when integrated over time. Think of the value as the true value times 16.</p>
 

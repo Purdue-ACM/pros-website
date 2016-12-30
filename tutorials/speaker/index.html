@@ -9,18 +9,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>PROS - Buttons and digitalRead</title>
+    <title>PROS - VEX Speaker</title>
     <meta name="generator" content="Hugo 0.18" />
 
     
     <meta name="description" content="An open source programming environment for the VEX EDR Platform">
     
-    <link rel="canonical" href="http://pros.cs.purdue.edu/tutorials/digitalRead/">
+    <link rel="canonical" href="http://pros.cs.purdue.edu/tutorials/speaker/">
     
     <meta name="author" content="purduesigbots">
     
 
-    <meta property="og:url" content="http://pros.cs.purdue.edu/tutorials/digitalRead/">
+    <meta property="og:url" content="http://pros.cs.purdue.edu/tutorials/speaker/">
     <meta property="og:title" content="PROS">
     <meta property="og:image" content="http://pros.cs.purdue.edu/images/logo.png">
     <meta name="apple-mobile-web-app-title" content="PROS">
@@ -99,7 +99,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Buttons and digitalRead
+        VEX Speaker
       </div>
     </div>
 
@@ -276,14 +276,11 @@
 
 
 
-<a class="current" title="Digital Input" href="http://pros.cs.purdue.edu/tutorials/digitalRead/">
+<a  title="Digital Input" href="http://pros.cs.purdue.edu/tutorials/digitalRead/">
 	
 	Digital Input
 </a>
 
-
-<ul id="scrollspy">
-</ul>
 
 
       
@@ -370,11 +367,14 @@
 
 
 
-<a  title="VEX Speaker" href="http://pros.cs.purdue.edu/tutorials/speaker/">
+<a class="current" title="VEX Speaker" href="http://pros.cs.purdue.edu/tutorials/speaker/">
 	
 	VEX Speaker
 </a>
 
+
+<ul id="scrollspy">
+</ul>
 
 
       
@@ -486,34 +486,48 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>Buttons and digitalRead </h1>
+			<h1>VEX Speaker </h1>
 
-			<p>Buttons such as the limit switch that VEX provides are digital sensors. These sensors are generally used as triggers for various events such as a robot hitting an object or the wall. One special difference from other sensors is that you need to configure the pin they are connected to as an input. PROS provides a simple interface to perform such tasks that is as follows:</p>
-
-<p>main.h:</p>
-
-<pre><code class="language-c">// digital port number limit switch is plugged into
-#define LIMIT_SWITCH 1
-</code></pre>
+			<p>PROS supports playing Ring Tone Text Transfer Language (RTTTL) tones on the VEX Speaker as demonstrated below:</p>
 
 <p>init.c:</p>
 
-<pre><code class="language-c">void initializeIO(){
-    // configure the pin that the limit swith is plugged into as an input
-    pinMode(LIMIT_SWITCH, INPUT);
+<pre><code class="language-c">void initialize() {
+  speakerInit();
 }
 </code></pre>
 
 <p>opcontrol.c or auto.c:</p>
 
-<pre><code class="language-c">void myFunction(){
-    // ... Do work
-    // digitalRead() will return LOW if PRESSED and HIGH if RELEASED
-    if (digitalRead(LIMIT_SWITCH) == LOW){
-        // ...
-    }
-
-    // ...
+<pre><code class="language-c">void ...() {
+  // Play a tune on the speaker
+  speakerPlayRtttl(&quot;Super Mario:d=4,o=5,b=100:16e6,16e6,32p,8e6,16c6,8e6,8g6,8p,8g,8p,&quot;
+   &quot;8c6,16p,8g,16p,8e,16p,8a,8b,16a#,8a,16g.,16e6,16g6,8a6,16f6,8g6,8e6,16c6,16d6,8b,16p,&quot;
+   &quot;8c6,16p,8g,16p,8e,16p,8a,8b,16a#,8a,16g.,16e6,16g6,8a6,16f6,8g6,8e6,16c6,16d6,8b,16p,&quot;
+   &quot;8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16g#,16a,16c6,16p,16a,16c6,16d6,&quot;
+   &quot;8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16c7,16p,16c7,16c7,8p.,&quot;
+   &quot;8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16g#,16a,16c6,16p,16a,16c6,16d6,&quot; &quot;8p,16d#6,8p,16d6,8p,16c6&quot;);
+  // Play a polyphonic tune on the speaker with 2 tracks
+  const char* rtttl[] = {
+    &quot;Super Mario:d=4,o=5,b=100:&quot;
+      &quot;16e6,16e6,32p,8e6,16c6,8e6,8g6,8p,8g,8p,&quot;
+      &quot;8c6,16p,8g,16p,8e,16p,8a,8b,16a#,8a,16g.,16e6,16g6,8a6,16f6,8g6,8e6,16c6,16d6,8b,16p,&quot;
+      &quot;8c6,16p,8g,16p,8e,16p,8a,8b,16a#,8a,16g.,16e6,16g6,8a6,16f6,8g6,8e6,16c6,16d6,8b,16p,&quot;
+      &quot;8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16g#,16a,16c6,16p,16a,16c6,16d6,&quot;
+      &quot;8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16c7,16p,16c7,16c7,8p.,&quot;
+      &quot;8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16g#,16a,16c6,16p,16a,16c6,16d6,&quot;
+      &quot;8p,16d#6,8p,16d6,8p,16c6&quot;,
+    &quot;Super Mario:d=4,o=4,b=100:&quot;
+      &quot;16d,16d,32p,8d,16d,8d,8g5,8p,8g,8p,&quot;
+      &quot;8g5,16p,8e,16p,8c,16p,8f,8g,16f#,8f,16e.,16c5,16e5,8f5,16d5,8e5,8c5,16a,16b,8g,16p,&quot;
+      &quot;8g5,16p,8e,16p,8c,16p,8f,8g,16f#,8f,16e.,16c5,16e5,8f5,16d5,8e5,8c5,16a,16b,8g,16p,&quot;
+      &quot;8c,16p,16g,8p,8c5,8f,16p,16c5,16c5,16c5,8f,&quot;
+      &quot;8c,16p,16e,8p,16g,16c5,p.,8g,&quot;
+      &quot;8c,16p,16g,8p,8c5,8f,16p,16c5,16c5,16c5,8f,&quot;
+      &quot;8c,16g#,8p,16a#,8p,16c5&quot;,
+    NULL
+  };
+  speakerPlayArray(rtttl);
 }
 </code></pre>
 

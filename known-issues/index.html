@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>PROS - Known Issues</title>
-    <meta name="generator" content="Hugo 0.17" />
+    <meta name="generator" content="Hugo 0.18" />
 
     
     <meta name="description" content="An open source programming environment for the VEX EDR Platform">
@@ -71,8 +71,6 @@
     <link rel="stylesheet" href="http://pros.cs.purdue.edu/stylesheets/api.css">
     
     <script src="http://pros.cs.purdue.edu/javascripts/modernizr.js"></script>
-
-    
 
   </head>
   <body>
@@ -392,6 +390,12 @@
 
 <p>This issue may occur when install PROS from within the Atom GUI. The current cause of the issue is
 unknown. You can get the dependency installed by manually installing <code>platformio-ide-terminal</code> by going to settings (<code>Ctrl</code>+<code>,</code>), click <code>Install</code>, then search for and install <code>platformio-ide-terminal</code>. In some instances, restarting Atom will allow the plugin to install.</p>
+
+<p>Another workaround for this issue is to clone the <a href="https://github.com/platformio/platformio-atom-ide-terminal/"><code>platformio-atom-ide-terminal</code></a> repository and set up a <a href="https://en.wikipedia.org/wiki/Symbolic_link">symlink</a> using the Atom package manager:</p>
+
+<p><code>git clone https://github.com/platformio/platformio-atom-ide-terminal.git</code></p>
+
+<p><code>apm link &lt;path to cloned repository&gt;</code></p>
 
 
 			<aside class="copyright" role="note">

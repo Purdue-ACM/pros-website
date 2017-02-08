@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tutorials on PROS</title>
+    <title>Tutorials-rsses on PROS</title>
     <link>http://pros.cs.purdue.edu/tutorials/index.xml</link>
-    <description>Recent content in Tutorials on PROS</description>
+    <description>Recent content in Tutorials-rsses on PROS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MPL 2.0 license</copyright>
@@ -27,7 +27,7 @@
 
 &lt;h2 id=&#34;potentiometer&#34;&gt;Potentiometer&lt;/h2&gt;
 
-&lt;p&gt;Potentiometers measure angular position and can be used to determine the direction of rotation of its input. Potentiometers are best used in applications such as lifts where the sensor is not at risk of being rotated beyond its 250-degree physical constraint. Potentiometers typically do not need to be calibrated, although it may be desired to find the actual range of the potentiometer due to its mechanical stops as that range may be closer to 5-4090 instead of 0-4095. If the potentiometer is not calibrated, the &lt;a href=&#34;http://pros.cs.purdue.edu/api/#analogRead&#34;&gt;&lt;code&gt;analogRead()&lt;/code&gt;&lt;/a&gt; function may be used to obtain the raw input value of the potentiometer. If the sensor was calibrated, the &lt;a href=&#34;http://pros.cs.purdue.edu/api/#analogCalibrateHR&#34;&gt;&lt;code&gt;analogReadCalibratedHR()&lt;/code&gt;&lt;/a&gt; function should be used, as it will account for the sensor&amp;rsquo;s calibration and return more accurate results. The input to both of these functions is the channel number of the sensor, and an integer is returned.&lt;/p&gt;
+&lt;p&gt;Potentiometers measure angular position and can be used to determine the direction of rotation of its input. Potentiometers are best used in applications such as lifts where the sensor is not at risk of being rotated beyond its 250-degree physical constraint. Potentiometers typically do not need to be calibrated, although it may be desired as it helps account for possible shifting in the potentiometer mounting and to find the actual range of the potentiometer due to its mechanical stops as that range may be closer to 5-4090 instead of 0-4095. If the potentiometer is not calibrated, the &lt;a href=&#34;http://pros.cs.purdue.edu/api/#analogRead&#34;&gt;&lt;code&gt;analogRead()&lt;/code&gt;&lt;/a&gt; function may be used to obtain the raw input value of the potentiometer. If the sensor was calibrated, the &lt;a href=&#34;http://pros.cs.purdue.edu/api/#analogCalibrate&#34;&gt;&lt;code&gt;analogReadCalibrated()&lt;/code&gt;&lt;/a&gt; function should be used, as it will account for the sensor&amp;rsquo;s calibration and return more accurate results. The input to both of these functions is the channel number of the sensor, and an integer is returned.&lt;/p&gt;
 
 &lt;p&gt;Thus an example of use on a lift would look like:&lt;/p&gt;
 
@@ -68,7 +68,7 @@ void initialize() {
 &lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;main.h&amp;quot;
 
 //2000 arbitrarily set as cutoff between light and dark
-while(analogReadCalibratedHR(LINE_TRACKER_PORT) &amp;lt; 2000)
+while(analogReadCalibrated(LINE_TRACKER_PORT) &amp;lt; 2000)
 {
   // drive forward until a line is hit
   motorSet(DRIVE_MOTOR_LEFT,127);
@@ -261,7 +261,7 @@ Turn the Cortex microcontroller off and on again. This usually resolves the prob
       <guid>http://pros.cs.purdue.edu/tutorials/debugging/</guid>
       <description>&lt;p&gt;The &lt;a href=&#34;http://pros.cs.purdue.edu/api/&#34;&gt;PROS API&lt;/a&gt; provides various functions, like &lt;a href=&#34;http://pros.cs.purdue.edu/api/#print&#34;&gt;&lt;code&gt;print()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;http://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt;, that allow your robot to output information to a connected serial console during operation.&lt;/p&gt;
 
-&lt;p&gt;To view a robot&amp;rsquo;s output, there are two officially supported methods:&lt;/p&gt;
+&lt;p&gt;###To view a robot&amp;rsquo;s output, there are two officially supported methods:&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Through the PROS CLI: &lt;br/&gt;&lt;/p&gt;
@@ -270,7 +270,7 @@ Turn the Cortex microcontroller off and on again. This usually resolves the prob
 
 &lt;li&gt;&lt;p&gt;From within Atom: &lt;br/&gt;&lt;/p&gt;
 
-&lt;p&gt;Click the button labeled &amp;ldquo;Open cortex serial output&amp;rdquo;
+&lt;p&gt;Click the button labeled &amp;ldquo;Open cortex serial output&amp;rdquo;&lt;br /&gt;
 
 &lt;figure &gt;
     
@@ -290,6 +290,16 @@ Turn the Cortex microcontroller off and on again. This usually resolves the prob
 &lt;/figure&gt;
 &lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;p&gt;###Alternate method: &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Use the serial communication monitor of your choice (such as &lt;a href=&#34;http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html&#34;&gt;PuTTY&lt;/a&gt;, &lt;a href=&#34;http://freeware.the-meiers.org/&#34;&gt;CoolTerm&lt;/a&gt; or &lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=EgorGrushko.SerialMonitor&#34;&gt;this plugin for Visual Studio&lt;/a&gt; if using Visual Studio) with the following settings: &lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Serial Port:&lt;/strong&gt; May vary; unplugging and replugging the VEXnet device from the computer should allow you to determine the correct port.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Baud Rate:&lt;/strong&gt; &lt;em&gt;115200&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Encoding:&lt;/strong&gt; &lt;em&gt;28591 - ISO-8859-1 - Western European (ISO)&lt;/em&gt; or equivalent&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
@@ -341,9 +351,13 @@ Encoder encoder;
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;wiring-notes&#34;&gt;Wiring Notes&lt;/h2&gt;
+&lt;h3 id=&#34;wiring-notes&#34;&gt;Wiring Notes&lt;/h3&gt;
 
 &lt;p&gt;One important thing to note with the use of encoders is that they should &lt;strong&gt;not&lt;/strong&gt; be plugged into digital &lt;strong&gt;port 10&lt;/strong&gt; on the Cortex. This is not unique to PROS, it is simply a result of the way that &lt;a href=&#34;http://users.ece.utexas.edu/~valvano/Volume1/E-Book/C12_Interrupts.htm&#34;&gt;digital interrupts&lt;/a&gt; are configured for the Cortex. Other types of sensors may be used on port 10 with no effect on their performance, but encoders cannot.&lt;/p&gt;
+
+&lt;h2 id=&#34;integrated-motor-encoders-imes&#34;&gt;Integrated Motor Encoders (IMEs)&lt;/h2&gt;
+
+&lt;p&gt;See the &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/i2c.md/#vex-integrated-motor-encoder-ime&#34;&gt;I2C Communication&lt;/a&gt; page.&lt;/p&gt;
 </description>
     </item>
     
@@ -1311,9 +1325,9 @@ void operatorControl() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Depending on your motor, you may notice that the arm falls back down when stopped mid-raise. This can be alleviated by applying some power to the motor when no buttons are pressed (instead of 0), or by using a control system such as PID.&lt;/p&gt;
+&lt;p&gt;Depending on your motor, you may notice that the arm falls back down when stopped mid-raise. This can be alleviated by applying some power to the motor when no buttons are pressed (instead of 0), or by using a feedback control system such as PID.&lt;/p&gt;
 
-&lt;p&gt;Congratulations you have completed your first PROS program!&lt;/p&gt;
+&lt;p&gt;-Congratulations, you have completed your first PROS program!&lt;/p&gt;
 </description>
     </item>
     

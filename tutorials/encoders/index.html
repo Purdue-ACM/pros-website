@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>PROS - Encoders</title>
-    <meta name="generator" content="Hugo 0.18" />
+    <meta name="generator" content="Hugo 0.17" />
 
     
     <meta name="description" content="An open source programming environment for the VEX EDR Platform">
@@ -530,14 +530,18 @@ Encoder encoder;
 }
 </code></pre>
 
-<h2 id="wiring-notes">Wiring Notes</h2>
+<h3 id="wiring-notes">Wiring Notes</h3>
 
 <p>One important thing to note with the use of encoders is that they should <strong>not</strong> be plugged into digital <strong>port 10</strong> on the Cortex. This is not unique to PROS, it is simply a result of the way that <a href="http://users.ece.utexas.edu/~valvano/Volume1/E-Book/C12_Interrupts.htm">digital interrupts</a> are configured for the Cortex. Other types of sensors may be used on port 10 with no effect on their performance, but encoders cannot.</p>
+
+<h2 id="integrated-motor-encoders-imes">Integrated Motor Encoders (IMEs)</h2>
+
+<p>See the <a href="http://pros.cs.purdue.edu/tutorials/i2c.md/#vex-integrated-motor-encoder-ime">I2C Communication</a> page.</p>
 
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2016 Released under the MPL 2.0 license &ndash;
+				&copy; 2017 Released under the MPL 2.0 license &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>

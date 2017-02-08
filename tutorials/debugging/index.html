@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>PROS - Debugging in PROS</title>
-    <meta name="generator" content="Hugo 0.18" />
+    <meta name="generator" content="Hugo 0.17" />
 
     
     <meta name="description" content="An open source programming environment for the VEX EDR Platform">
@@ -490,7 +490,7 @@
 
 			<p>The <a href="http://pros.cs.purdue.edu/api/">PROS API</a> provides various functions, like <a href="http://pros.cs.purdue.edu/api/#print"><code>print()</code></a> or <a href="http://pros.cs.purdue.edu/api/#printf"><code>printf()</code></a>, that allow your robot to output information to a connected serial console during operation.</p>
 
-<p>To view a robot&rsquo;s output, there are two officially supported methods:</p>
+<p>###To view a robot&rsquo;s output, there are two officially supported methods:</p>
 
 <ol>
 <li><p>Through the PROS CLI: <br/></p>
@@ -499,7 +499,7 @@
 
 <li><p>From within Atom: <br/></p>
 
-<p>Click the button labeled &ldquo;Open cortex serial output&rdquo;
+<p>Click the button labeled &ldquo;Open cortex serial output&rdquo;<br />
 
 <figure >
     
@@ -520,10 +520,20 @@
 </p></li>
 </ol>
 
+<p>###Alternate method: <br /></p>
+
+<p>Use the serial communication monitor of your choice (such as <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY</a>, <a href="http://freeware.the-meiers.org/">CoolTerm</a> or <a href="https://marketplace.visualstudio.com/items?itemName=EgorGrushko.SerialMonitor">this plugin for Visual Studio</a> if using Visual Studio) with the following settings: <br /></p>
+
+<ul>
+<li><strong>Serial Port:</strong> May vary; unplugging and replugging the VEXnet device from the computer should allow you to determine the correct port.</li>
+<li><strong>Baud Rate:</strong> <em>115200</em></li>
+<li><strong>Encoding:</strong> <em>28591 - ISO-8859-1 - Western European (ISO)</em> or equivalent</li>
+</ul>
+
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2016 Released under the MPL 2.0 license &ndash;
+				&copy; 2017 Released under the MPL 2.0 license &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>

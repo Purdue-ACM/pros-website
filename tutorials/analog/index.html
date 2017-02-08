@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>PROS - Analog Sensors</title>
-    <meta name="generator" content="Hugo 0.18" />
+    <meta name="generator" content="Hugo 0.17" />
 
     
     <meta name="description" content="An open source programming environment for the VEX EDR Platform">
@@ -500,7 +500,7 @@
 
 <h2 id="potentiometer">Potentiometer</h2>
 
-<p>Potentiometers measure angular position and can be used to determine the direction of rotation of its input. Potentiometers are best used in applications such as lifts where the sensor is not at risk of being rotated beyond its 250-degree physical constraint. Potentiometers typically do not need to be calibrated, although it may be desired to find the actual range of the potentiometer due to its mechanical stops as that range may be closer to 5-4090 instead of 0-4095. If the potentiometer is not calibrated, the <a href="http://pros.cs.purdue.edu/api/#analogRead"><code>analogRead()</code></a> function may be used to obtain the raw input value of the potentiometer. If the sensor was calibrated, the <a href="http://pros.cs.purdue.edu/api/#analogCalibrateHR"><code>analogReadCalibratedHR()</code></a> function should be used, as it will account for the sensor&rsquo;s calibration and return more accurate results. The input to both of these functions is the channel number of the sensor, and an integer is returned.</p>
+<p>Potentiometers measure angular position and can be used to determine the direction of rotation of its input. Potentiometers are best used in applications such as lifts where the sensor is not at risk of being rotated beyond its 250-degree physical constraint. Potentiometers typically do not need to be calibrated, although it may be desired as it helps account for possible shifting in the potentiometer mounting and to find the actual range of the potentiometer due to its mechanical stops as that range may be closer to 5-4090 instead of 0-4095. If the potentiometer is not calibrated, the <a href="http://pros.cs.purdue.edu/api/#analogRead"><code>analogRead()</code></a> function may be used to obtain the raw input value of the potentiometer. If the sensor was calibrated, the <a href="http://pros.cs.purdue.edu/api/#analogCalibrate"><code>analogReadCalibrated()</code></a> function should be used, as it will account for the sensor&rsquo;s calibration and return more accurate results. The input to both of these functions is the channel number of the sensor, and an integer is returned.</p>
 
 <p>Thus an example of use on a lift would look like:</p>
 
@@ -541,7 +541,7 @@ void initialize() {
 <pre><code class="language-c">#include &quot;main.h&quot;
 
 //2000 arbitrarily set as cutoff between light and dark
-while(analogReadCalibratedHR(LINE_TRACKER_PORT) &lt; 2000)
+while(analogReadCalibrated(LINE_TRACKER_PORT) &lt; 2000)
 {
   // drive forward until a line is hit
   motorSet(DRIVE_MOTOR_LEFT,127);
@@ -630,7 +630,7 @@ int z_acc = analogReadCalibratedHR(ACCELEROMETER_Z);
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2016 Released under the MPL 2.0 license &ndash;
+				&copy; 2017 Released under the MPL 2.0 license &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>

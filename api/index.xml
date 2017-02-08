@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Apis on PROS</title>
+    <title>Api-rsses on PROS</title>
     <link>http://pros.cs.purdue.edu/api/index.xml</link>
-    <description>Recent content in Apis on PROS</description>
+    <description>Recent content in Api-rsses on PROS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MPL 2.0 license</copyright>
@@ -1463,7 +1463,7 @@ This document serves as a quick reference for API.h functions.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;bool isJoystickConnected ( unsigned char joystick )
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Useful for automatically merging joysticks for one operator, or splitting for two. This function does not work properly during initialize() or initializeIO() and can return false positives. It should be checked once and stored at the beginning of operatorControl().&lt;/p&gt;
+&lt;p&gt;Useful for automatically merging joysticks for one operator, or splitting for two. This function does not work properly during initialize() or initializeIO() and can return false positives. It should be checked once and stored at the beginning of operatorControl(). Valid values for the joystick parameter are 1 and 2 for the master and partner joysticks, respectively.&lt;/p&gt;
 
 &lt;table&gt;
 &lt;thead&gt;
@@ -1476,7 +1476,7 @@ This document serves as a quick reference for API.h functions.&lt;/p&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td align=&#34;right&#34;&gt;&lt;code&gt;joystick&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;the joystick slot to check&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the joystick slot to check (1, 2)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1499,7 +1499,7 @@ This document serves as a quick reference for API.h functions.&lt;/p&gt;
                       )
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Gets the value of a control axis on the VEX joystick.&lt;/p&gt;
+&lt;p&gt;Gets the value of a control axis on the VEX joystick. Valid values for the joystick parameter are 1 and 2 for the master and partner joysticks, respectively.&lt;/p&gt;
 
 &lt;table&gt;
 &lt;thead&gt;
@@ -1512,7 +1512,7 @@ This document serves as a quick reference for API.h functions.&lt;/p&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td align=&#34;right&#34;&gt;&lt;code&gt;joystick&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;the joystick slot to check&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the joystick slot to check (1, 2)&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
@@ -1532,7 +1532,7 @@ This document serves as a quick reference for API.h functions.&lt;/p&gt;
                        )
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Gets the value of a button on the VEX joystick.&lt;/p&gt;
+&lt;p&gt;Gets the value of a button on the VEX joystick. Valid values for the joystick are 1 and 2 for the master and partner joysticks, respectively.&lt;/p&gt;
 
 &lt;table&gt;
 &lt;thead&gt;
@@ -1545,7 +1545,7 @@ This document serves as a quick reference for API.h functions.&lt;/p&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td align=&#34;right&#34;&gt;&lt;code&gt;joystick&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;the joystick slot to check&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;the joystick slot to check (1,2)&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
@@ -1656,7 +1656,7 @@ This document serves as a quick reference for API.h functions.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;unsigned int lcdReadButtons (FILE * lcdPort )
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Reads the user button status from the LCD display.&lt;/p&gt;
+&lt;p&gt;Reads the user button status from the LCD display. The value returned is a 3 bit integer where &lt;code&gt;1 0 0&lt;/code&gt; indicates the left button being pressed, &lt;code&gt;0 1 0&lt;/code&gt; indicates the center button being pressed, and &lt;code&gt;0 0 1&lt;/code&gt; indicates the right button being pressed.&lt;/p&gt;
 
 &lt;p&gt;For example, if the left and right buttons are pushed, (1 | 4) = 5 will be returned. 0 is returned if no buttons are pushed&lt;/p&gt;
 

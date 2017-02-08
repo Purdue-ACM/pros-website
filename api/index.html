@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>PROS - API</title>
-    <meta name="generator" content="Hugo 0.18" />
+    <meta name="generator" content="Hugo 0.17" />
 
     
     <meta name="description" content="An open source programming environment for the VEX EDR Platform">
@@ -1790,7 +1790,7 @@ This document serves as a quick reference for API.h functions.</p>
 <pre><code>bool isJoystickConnected ( unsigned char joystick )
 </code></pre>
 
-<p>Useful for automatically merging joysticks for one operator, or splitting for two. This function does not work properly during initialize() or initializeIO() and can return false positives. It should be checked once and stored at the beginning of operatorControl().</p>
+<p>Useful for automatically merging joysticks for one operator, or splitting for two. This function does not work properly during initialize() or initializeIO() and can return false positives. It should be checked once and stored at the beginning of operatorControl(). Valid values for the joystick parameter are 1 and 2 for the master and partner joysticks, respectively.</p>
 
 <table>
 <thead>
@@ -1803,7 +1803,7 @@ This document serves as a quick reference for API.h functions.</p>
 <tbody>
 <tr>
 <td align="right"><code>joystick</code></td>
-<td align="left">the joystick slot to check</td>
+<td align="left">the joystick slot to check (1, 2)</td>
 </tr>
 </tbody>
 </table>
@@ -1826,7 +1826,7 @@ This document serves as a quick reference for API.h functions.</p>
                       )
 </code></pre>
 
-<p>Gets the value of a control axis on the VEX joystick.</p>
+<p>Gets the value of a control axis on the VEX joystick. Valid values for the joystick parameter are 1 and 2 for the master and partner joysticks, respectively.</p>
 
 <table>
 <thead>
@@ -1839,7 +1839,7 @@ This document serves as a quick reference for API.h functions.</p>
 <tbody>
 <tr>
 <td align="right"><code>joystick</code></td>
-<td align="left">the joystick slot to check</td>
+<td align="left">the joystick slot to check (1, 2)</td>
 </tr>
 
 <tr>
@@ -1859,7 +1859,7 @@ This document serves as a quick reference for API.h functions.</p>
                        )
 </code></pre>
 
-<p>Gets the value of a button on the VEX joystick.</p>
+<p>Gets the value of a button on the VEX joystick. Valid values for the joystick are 1 and 2 for the master and partner joysticks, respectively.</p>
 
 <table>
 <thead>
@@ -1872,7 +1872,7 @@ This document serves as a quick reference for API.h functions.</p>
 <tbody>
 <tr>
 <td align="right"><code>joystick</code></td>
-<td align="left">the joystick slot to check</td>
+<td align="left">the joystick slot to check (1,2)</td>
 </tr>
 
 <tr>
@@ -1983,7 +1983,7 @@ This document serves as a quick reference for API.h functions.</p>
 <pre><code>unsigned int lcdReadButtons (FILE * lcdPort )
 </code></pre>
 
-<p>Reads the user button status from the LCD display.</p>
+<p>Reads the user button status from the LCD display. The value returned is a 3 bit integer where <code>1 0 0</code> indicates the left button being pressed, <code>0 1 0</code> indicates the center button being pressed, and <code>0 0 1</code> indicates the right button being pressed.</p>
 
 <p>For example, if the left and right buttons are pushed, (1 | 4) = 5 will be returned. 0 is returned if no buttons are pushed</p>
 
@@ -3478,7 +3478,7 @@ This document serves as a quick reference for API.h functions.</p>
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2016 Released under the MPL 2.0 license &ndash;
+				&copy; 2017 Released under the MPL 2.0 license &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>

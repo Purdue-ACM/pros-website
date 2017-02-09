@@ -10,3 +10,4 @@ MD5 = 56f3d6189f197b598a1aa9a3fa2c2df8
 ServerFileName = pros-win.exe
 RegistryKey = HKUD\Software\Purdue ACM SIGBots\PROS\Version
 Version = 2.4.3.0
+

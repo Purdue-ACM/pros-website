@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tutorials-rsses on PROS</title>
+    <title>Tutorials on PROS</title>
     <link>http://pros.cs.purdue.edu/tutorials/index.xml</link>
-    <description>Recent content in Tutorials-rsses on PROS</description>
+    <description>Recent content in Tutorials on PROS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MPL 2.0 license</copyright>

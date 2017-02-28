@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Getting-started-rsses on PROS</title>
+    <title>Getting-starteds on PROS</title>
     <link>http://pros.cs.purdue.edu/getting-started/index.xml</link>
-    <description>Recent content in Getting-started-rsses on PROS</description>
+    <description>Recent content in Getting-starteds on PROS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MPL 2.0 license</copyright>
@@ -509,18 +509,29 @@ reinstall/repair the new version of PROS or manually delete all files/folders in
       <guid>http://pros.cs.purdue.edu/getting-started/os-x/</guid>
       <description>
 
-&lt;p&gt;//TODO Get minimum macOS version
-//TODO check with josh about what he means in step 4 with xcode and llvm&lt;/p&gt;
-
 &lt;h2 id=&#34;installation-instructions&#34;&gt;Installation Instructions&lt;/h2&gt;
 
 &lt;p&gt;Installing PROS on macOS could not be easier with our custom built installer! Just follow these instructions:&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Install &lt;a href=&#34;https://www.python.org/downloads/&#34;&gt;Python 3&lt;/a&gt;(Version 3.4 or higher) for macOS.&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Download the &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/tag/2.11.0&#34;&gt;PROS installer&lt;/a&gt; and run it. You will need to input an administrator&amp;rsquo;s password, and must remain connected to the internet for the duration of installation. The installer will download Atom.app and the ARM toolchain to /Applications/PROS_2.0, and will use pip3 to install the command line interface. You will be able to see the progress of the installer in a Terminal window automatically openned by the installer.&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Open Atom (/Applications/PROS_2.0/Atom.app) and verify that PROS appears in the menu (Likely next to Help).&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Congratulations! You have successfully installed PROS for macOS. If you want the Atom to be able to autocomplete your code, download either &lt;a href=&#34;https://itunes.apple.com/us/app/xcode/id497799835?mt=12#&#34;&gt;Xcode&lt;/a&gt; or &lt;a href=&#34;http://llvm.org&#34;&gt;LLVM&lt;/a&gt;. Xcode is easier to install than LLVM, but you must open the application at least once and its command line tools must be installed.&lt;/li&gt;
+&lt;li&gt;Download the &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/tag/2.11.0&#34;&gt;PROS installer&lt;/a&gt; and run it. You will need to input an administrator&amp;rsquo;s password, and must remain connected to the internet for the duration of installation. The installer will download Atom.app and the ARM toolchain to &lt;code&gt;/Applications/PROS_2.0&lt;/code&gt;, and will use pip3 to install the command line interface. You will be able to see the progress of the installer in a Terminal window automatically openned by the installer.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Open Atom (&lt;code&gt;/Applications/PROS_2.0/Atom.app&lt;/code&gt;) and verify that PROS appears in the menu (Likely next to Help).&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Congratulations! You have successfully installed PROS for macOS. If you want autocomlete functionality within Atom for your PROS code, download either &lt;a href=&#34;https://itunes.apple.com/us/app/xcode/id497799835?mt=12#&#34;&gt;Xcode&lt;/a&gt; or &lt;a href=&#34;http://llvm.org&#34;&gt;LLVM&lt;/a&gt;. Xcode is easier to install than LLVM, but you must open the application at least once and its command line tools must be installed.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;requirements&#34;&gt;Requirements&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Minimum OS version:     10.8&lt;/li&gt;
+&lt;li&gt;Minimum Python Version:     3.4&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;known-issues&#34;&gt;Known issues&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Downloading code to the cortex must be done through the programming kit. You cannot download code through a direct tether.&lt;/li&gt;
+&lt;li&gt;Atom may be unable to update itself when saved in &lt;code&gt;/Applications&lt;/code&gt;. If this is the case, move it to &lt;code&gt;~/Desktop&lt;/code&gt;, &lt;code&gt;~/Applications&lt;/code&gt;, or any other folder owned by your current user.&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

@@ -2902,6 +2902,17 @@ This document serves as a quick reference for API.h functions.&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+&lt;h2 id=&#34;watchdogInit&#34;&gt;watchdogInit&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void watchdogInit ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enables IWDG watchdog timer that will reset the Cortex if static shock or a misbehaving task cause the Cortex to lock up. This reset will prevent undefined behavior from the motors if the Cortex locks up.&lt;/p&gt;
+
+&lt;p&gt;It is highly recommended that users enable the watchdog if using IMEs, as the Cortex is particularly vulnerable to static shock through the I2C line.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Should be called once in initializeIO().&lt;/strong&gt; Calling the function multiple times or anywhere besides initializeIO() will have no effect.&lt;/p&gt;
+
 &lt;h2 id=&#34;macros&#34;&gt;Macros&lt;/h2&gt;
 
 &lt;h3 id=&#34;define-accel-x-5&#34;&gt;#define ACCEL_X  5&lt;/h3&gt;

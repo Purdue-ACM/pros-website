@@ -415,7 +415,7 @@ void initialize() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;reading-from-an-i2c-slave&#34;&gt;Reading from an I2C Slave&lt;/h2&gt;
+&lt;h2 id=&#34;readingI2CSlave&#34;&gt;Reading from an I2C Slave&lt;/h2&gt;
 
 &lt;p&gt;As the vast majority of I2C slave devices serve as sensors, PROS provides both &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cRead&#34;&gt;i2cRead()&lt;/a&gt; and &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cReadRegister&#34;&gt;i2cReadRegister()&lt;/a&gt; to receive data from them.  Since I2C slave devices do not emit data onto the bus without the request of the master device, &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cRead&#34;&gt;i2cRead()&lt;/a&gt; is limited in its usefulness.  To that extent, below is an example showing how to read from data from a fictional sensor using the more typical &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cReadRegister&#34;&gt;i2cReadRegister()&lt;/a&gt;.&lt;/p&gt;
 
@@ -510,7 +510,7 @@ void autonomous() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;third-party-i2c-devices&#34;&gt;Third-Party I2C Devices&lt;/h2&gt;
+&lt;h2 id=&#34;thirdPartyI2CDevices&#34;&gt;Third-Party I2C Devices&lt;/h2&gt;
 
 &lt;!--- TODO mention consulting datasheets --&gt;
 
@@ -627,13 +627,82 @@ void autonomous() {
 
 &lt;h2 id=&#34;pollingTask&#34;&gt;I2C Polling Tasks&lt;/h2&gt;
 
+&lt;p&gt;A dedicated I2C polling task is necessary when using multiple I2C devices at once to ensure that they are all read properly. It is recommended that this task be run at a high priority (TASK_PRIORITY_DEFAULT + 2 should work well) to ensure that the task runs at very consistent intervals and it is never starved for processing resources. The I2C line updates at 4KHz in PROS, but it is typically unnecessary to read any faster than once per millisecond.&lt;/p&gt;
+
+&lt;p&gt;The I2C polling task can be run like any other task. It is highly recommended that the &lt;code&gt;taskDelayUntil()&lt;/code&gt; function be used instead of &lt;code&gt;delay()&lt;/code&gt; to set the loop frequency to prevent even-odd jitter.&lt;/p&gt;
+
+&lt;p&gt;i2cTask.c&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;#include &amp;quot;third_party_gyro.h&amp;quot; //custom gyro
+
+#define NUM_IMES 2 //using two IMEs on the robot
+#define IME_LEFT 0
+#define IME_RIGHT 1
+
+#define CYCLE_TIME 2 //loop delay in milliseconds
+
+volatile int32_t leftIME, rightIME;
+
+static void i2cHandler(void* ignore) {  
+  gyroInit(); //initialization for custom gyro
+  int num_IMEs_initialized = imeInitializeAll();
+  if (num_IMEs_initialized != NUM_IMES) {
+    printf(&amp;quot;ERROR: INCORRECT NUMBER OF IMEs INITIALIZED\n&amp;quot;);
+    break;
+  }
+
+  uint32_t now = millis();
+  while(true) {
+    gyroIntegrate(); //summing third party gyro&#39;s readings
+    imeGet(IME_LEFT, &amp;amp;leftIME);
+    imeGet(IME_RIGHT, &amp;amp;rightIME);
+
+    taskDelayUntil(&amp;amp;now, CYCLE_TIME);
+  }
+}
+
+void i2cTaskStart() {
+  taskCreate(i2cHandler, TASK_DEFAULT_STACK_SIZE, NULL, (TASK_PRIORITY_DEFAULT + 2));
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;init.c&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void initialize() {
+  i2cTaskStart();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;debugging-tips-and-tricks&#34;&gt;Debugging Tips and Tricks&lt;/h2&gt;
 
-&lt;!---
-Sign extension
-union/struct method
-endianness
---&gt;
+&lt;p&gt;As with most advanced topics, a lot of debugging is typically needed when working with the I2C bus, both for beginners and experienced users. It can sometimes be difficult to know where to start with debugging any issues that arise, but here are few good places to start looking.&lt;/p&gt;
+
+&lt;h3 id=&#34;cortex-crashes&#34;&gt;Cortex Crashes&lt;/h3&gt;
+
+&lt;p&gt;The Cortex&amp;rsquo;s I2C line is particularly vulnerable to static shock, which can cause the Cortex to reset or other undefined behavior. This issue is often seen when using IMEs, as they are typically used in locations on the robot that are prime candidates for static discharge from the field.&lt;/p&gt;
+
+&lt;p&gt;To help prevent this issue, a watchdog is available with PROS to monitor the status of the Cortex and perform a reset in the case of a static shock. The watchdog is a feature that is implemented in the Cortex M3 chip itself, and PROS simply provides a wrapper for this.&lt;/p&gt;
+
+&lt;p&gt;To enable the watchdog, it must be started in &lt;code&gt;initalizeIO()&lt;/code&gt;. Calling the watchdog anywhere else will not have an effect.&lt;/p&gt;
+
+&lt;p&gt;init.c&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void initializeIO() {
+  watchdogInit();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;sign-extension&#34;&gt;Sign Extension&lt;/h3&gt;
+
+&lt;p&gt;It is very important to keep track of the size of the data being read from or written to your I2C device. Sign Extension occurs when casting a signed value with a smaller number of bytes to a signed value with a larger number of bytes. In this case, the sign bit is copied to all of the additional bits, which can cause readings to be different than their intended values.&lt;/p&gt;
+
+&lt;h3 id=&#34;endianness&#34;&gt;Endianness&lt;/h3&gt;
+
+&lt;p&gt;Endianness is the direction in which bytes are arranged when being output from a device. A device is either big-endian or little-endian, with these two options being the opposite of one another. A big-endian device will arrange bytes with the most significant (highest order) byte first, and little-endian arranges bytes with the least significant byte first. An example of reading a big-endian device can be found in &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/i2c/#readingI2CSlave&#34;&gt;Reading from an I2C Slave&lt;/a&gt;. If an I2C reading is an unexpected value, try reading in the opposite endianness.&lt;/p&gt;
+
+&lt;h3 id=&#34;union-struct-method&#34;&gt;Union/Struct method&lt;/h3&gt;
+
+&lt;p&gt;One solution to reading a collection of bits from a device is to use a struct wrapped in a union as seen in the &lt;code&gt;LIDAR_REG_CFG&lt;/code&gt; union in &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/i2c/#thirdPartyI2CDevices&#34;&gt;Third-Party I2C Devices&lt;/a&gt;. The union contains a value that contains the reading from the sensor, and the struct contains each significant bit as an individual value. Write to the union&amp;rsquo;s value, and then read individual bits from the struct. If you are not familiar with unions and structs, reading an &lt;a href=&#34;https://www.codingunit.com/c-tutorial-structures-unions-typedef&#34;&gt;Online C Tutorial&lt;/a&gt; about the subject is recommended.&lt;/p&gt;
 </description>
     </item>
     

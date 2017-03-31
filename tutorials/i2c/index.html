@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>PROS - I2C Communication</title>
-    <meta name="generator" content="Hugo 0.18" />
+    <meta name="generator" content="Hugo 0.19" />
 
     
     <meta name="description" content="An open source programming environment for the VEX EDR Platform">
@@ -173,24 +173,6 @@
         <ul>
           
 
-
-
-
-<li>
-  
-    
-
-
-
-<a  title="Home" href="http://pros.cs.purdue.edu/">
-	
-	Home
-</a>
-
-
-
-  
-</li>
 
 
 
@@ -450,6 +432,24 @@
 </li>
 
 
+
+<li>
+  
+    
+
+
+
+<a  title="Home" href="http://pros.cs.purdue.edu/">
+	
+	Home
+</a>
+
+
+
+  
+</li>
+
+
         </ul>
         
 
@@ -536,7 +536,7 @@ void initialize() {
 }
 </code></pre>
 
-<h2 id="reading-from-an-i2c-slave">Reading from an I2C Slave</h2>
+<h2 id="readingI2CSlave">Reading from an I2C Slave</h2>
 
 <p>As the vast majority of I2C slave devices serve as sensors, PROS provides both <a href="http://pros.cs.purdue.edu/api/#i2cRead">i2cRead()</a> and <a href="http://pros.cs.purdue.edu/api/#i2cReadRegister">i2cReadRegister()</a> to receive data from them.  Since I2C slave devices do not emit data onto the bus without the request of the master device, <a href="http://pros.cs.purdue.edu/api/#i2cRead">i2cRead()</a> is limited in its usefulness.  To that extent, below is an example showing how to read from data from a fictional sensor using the more typical <a href="http://pros.cs.purdue.edu/api/#i2cReadRegister">i2cReadRegister()</a>.</p>
 
@@ -631,7 +631,7 @@ void autonomous() {
 }
 </code></pre>
 
-<h2 id="third-party-i2c-devices">Third-Party I2C Devices</h2>
+<h2 id="thirdPartyI2CDevices">Third-Party I2C Devices</h2>
 
 <!--- TODO mention consulting datasheets -->
 
@@ -748,13 +748,82 @@ void autonomous() {
 
 <h2 id="pollingTask">I2C Polling Tasks</h2>
 
+<p>A dedicated I2C polling task is necessary when using multiple I2C devices at once to ensure that they are all read properly. It is recommended that this task be run at a high priority (TASK_PRIORITY_DEFAULT + 2 should work well) to ensure that the task runs at very consistent intervals and it is never starved for processing resources. The I2C line updates at 4KHz in PROS, but it is typically unnecessary to read any faster than once per millisecond.</p>
+
+<p>The I2C polling task can be run like any other task. It is highly recommended that the <code>taskDelayUntil()</code> function be used instead of <code>delay()</code> to set the loop frequency to prevent even-odd jitter.</p>
+
+<p>i2cTask.c</p>
+
+<pre><code class="language-c">#include &quot;third_party_gyro.h&quot; //custom gyro
+
+#define NUM_IMES 2 //using two IMEs on the robot
+#define IME_LEFT 0
+#define IME_RIGHT 1
+
+#define CYCLE_TIME 2 //loop delay in milliseconds
+
+volatile int32_t leftIME, rightIME;
+
+static void i2cHandler(void* ignore) {  
+  gyroInit(); //initialization for custom gyro
+  int num_IMEs_initialized = imeInitializeAll();
+  if (num_IMEs_initialized != NUM_IMES) {
+    printf(&quot;ERROR: INCORRECT NUMBER OF IMEs INITIALIZED\n&quot;);
+    break;
+  }
+
+  uint32_t now = millis();
+  while(true) {
+    gyroIntegrate(); //summing third party gyro's readings
+    imeGet(IME_LEFT, &amp;leftIME);
+    imeGet(IME_RIGHT, &amp;rightIME);
+
+    taskDelayUntil(&amp;now, CYCLE_TIME);
+  }
+}
+
+void i2cTaskStart() {
+  taskCreate(i2cHandler, TASK_DEFAULT_STACK_SIZE, NULL, (TASK_PRIORITY_DEFAULT + 2));
+}
+</code></pre>
+
+<p>init.c</p>
+
+<pre><code class="language-c">void initialize() {
+  i2cTaskStart();
+}
+</code></pre>
+
 <h2 id="debugging-tips-and-tricks">Debugging Tips and Tricks</h2>
 
-<!---
-Sign extension
-union/struct method
-endianness
--->
+<p>As with most advanced topics, a lot of debugging is typically needed when working with the I2C bus, both for beginners and experienced users. It can sometimes be difficult to know where to start with debugging any issues that arise, but here are few good places to start looking.</p>
+
+<h3 id="cortex-crashes">Cortex Crashes</h3>
+
+<p>The Cortex&rsquo;s I2C line is particularly vulnerable to static shock, which can cause the Cortex to reset or other undefined behavior. This issue is often seen when using IMEs, as they are typically used in locations on the robot that are prime candidates for static discharge from the field.</p>
+
+<p>To help prevent this issue, a watchdog is available with PROS to monitor the status of the Cortex and perform a reset in the case of a static shock. The watchdog is a feature that is implemented in the Cortex M3 chip itself, and PROS simply provides a wrapper for this.</p>
+
+<p>To enable the watchdog, it must be started in <code>initalizeIO()</code>. Calling the watchdog anywhere else will not have an effect.</p>
+
+<p>init.c</p>
+
+<pre><code class="language-c">void initializeIO() {
+  watchdogInit();
+}
+</code></pre>
+
+<h3 id="sign-extension">Sign Extension</h3>
+
+<p>It is very important to keep track of the size of the data being read from or written to your I2C device. Sign Extension occurs when casting a signed value with a smaller number of bytes to a signed value with a larger number of bytes. In this case, the sign bit is copied to all of the additional bits, which can cause readings to be different than their intended values.</p>
+
+<h3 id="endianness">Endianness</h3>
+
+<p>Endianness is the direction in which bytes are arranged when being output from a device. A device is either big-endian or little-endian, with these two options being the opposite of one another. A big-endian device will arrange bytes with the most significant (highest order) byte first, and little-endian arranges bytes with the least significant byte first. An example of reading a big-endian device can be found in <a href="http://pros.cs.purdue.edu/tutorials/i2c/#readingI2CSlave">Reading from an I2C Slave</a>. If an I2C reading is an unexpected value, try reading in the opposite endianness.</p>
+
+<h3 id="union-struct-method">Union/Struct method</h3>
+
+<p>One solution to reading a collection of bits from a device is to use a struct wrapped in a union as seen in the <code>LIDAR_REG_CFG</code> union in <a href="http://pros.cs.purdue.edu/tutorials/i2c/#thirdPartyI2CDevices">Third-Party I2C Devices</a>. The union contains a value that contains the reading from the sensor, and the struct contains each significant bit as an individual value. Write to the union&rsquo;s value, and then read individual bits from the struct. If you are not familiar with unions and structs, reading an <a href="https://www.codingunit.com/c-tutorial-structures-unions-typedef">Online C Tutorial</a> about the subject is recommended.</p>
 
 
 			<aside class="copyright" role="note">

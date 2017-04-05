@@ -4284,6 +4284,26 @@ void parseMessage(JINX * inStr) {
       <guid>http://pros.cs.purdue.edu/known-issues/</guid>
       <description>
 
+&lt;p&gt;If you&amp;rsquo;re running into issues, the first thing you should do is check whether you are running the very latest version of PROS. To do so with Atom, you will need to open the PROS Welcome Page. If it&amp;rsquo;s not already open, you can open it by toggling the Command Palette (&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;P&lt;/code&gt; or &lt;code&gt;⌘&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;P&lt;/code&gt;) and searching for the pros welcome page
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/open-welcome.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;With the PROS screen welcome, you can see what version you&amp;rsquo;re running. If you&amp;rsquo;ve kept the PROS plugin up to date, you will get a notification to upgrade PROS if there
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/welcome-page-updater-split.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
 &lt;h2 id=&#34;cannot-find-libstdc-a&#34;&gt;Cannot find libstdc++.a&lt;/h2&gt;
 
 &lt;p&gt;On Ubuntu 14.04 it is a &lt;a href=&#34;https://bugs.launchpad.net/ubuntu/+source/gcc-arm-none-eabi/+bug/1293024&#34;&gt;known bug&lt;/a&gt; that libstdc++-arm-none-eabi-newlib package is missing from the repositories and fails to install with arm-none-eabi-gcc. This can lead to the following error when trying to compile your PROS project:

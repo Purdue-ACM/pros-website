@@ -516,14 +516,15 @@
 
 			
 
-<p>The PROS uploading utility allows you to flash compiled binaries to your VEX microcontroller. There are a variety of different ways to flash code:
-- USB A-A (Windows only)
-- Programming module w/USB between Joystick and Microcontroller
-- Programming module w/VEXnet between Joystick and Microcontroller</p>
+<p>The PROS uploading utility allows you to flash compiled binaries to your VEX microcontroller. There are a variety of different ways to flash code:</p>
+
+<ul>
+<li>USB A-A (Windows only)</li>
+<li>Programming module w/USB between Joystick and Microcontroller</li>
+<li>Programming module w/VEXnet between Joystick and Microcontroller</li>
+</ul>
 
 <p>Within Atom, click the &lsquo;Upload to Cortex&rsquo; button in Atom. This process will upload the binary the compilation process created (<code>bin/output.bin</code>) to the Cortex and begin running it.</p>
-
-<p>If you followed these instructions correctly, you can connect a joystick to the clawbot and drive it using arcade controls!</p>
 
 
 <figure >
@@ -534,12 +535,16 @@
 </figure>
 
 
+<p>Using just the terminal, this can be done by navigating to the directory (or subdirectory) of the PROS project and invoking <code>pros upload</code>. You can get all of the command options by running <code>pros upload --help</code>. Some additional commands you may find helpful is <code>pros mu</code>, which runs the default Make target (forks and calls <code>make</code>) and then uploads your code, and <code>pros mut</code>, which does the same but also opens the PROS terminal after uploading.</p>
+
 <h2 id="issues">Having issues flashing?</h2>
 
 <div class="admonition warning">
 <p class="admonition-title">PROS CLI 2.5.0 Available</p>
 <p>We fixed a number of issues flashing code onto the VEX Cortex. Make sure you&rsquo;ve <a href="https://github.com/purduesigbots/pros-cli/releases/latest">updated PROS to at least 2.5.0</a>.</p>
 </div>
+
+<p>Before trying these solutions, make sure you have built your project! If there&rsquo;s nothing to upload, the flasher will throw an error!</p>
 
 <h3 id="issues-use-usb">Use USB</h3>
 

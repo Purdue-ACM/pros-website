@@ -9,18 +9,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>PROS - Encoders</title>
+    <title>PROS - Uploading PROS Projects</title>
     <meta name="generator" content="Hugo 0.19" />
 
     
     <meta name="description" content="An open source programming environment for the VEX EDR Platform">
     
-    <link rel="canonical" href="http://pros.cs.purdue.edu/tutorials/encoders/">
+    <link rel="canonical" href="http://pros.cs.purdue.edu/tutorials/uploading/">
     
     <meta name="author" content="purduesigbots">
     
 
-    <meta property="og:url" content="http://pros.cs.purdue.edu/tutorials/encoders/">
+    <meta property="og:url" content="http://pros.cs.purdue.edu/tutorials/uploading/">
     <meta property="og:title" content="PROS">
     <meta property="og:image" content="http://pros.cs.purdue.edu/images/logo.png">
     <meta name="apple-mobile-web-app-title" content="PROS">
@@ -99,7 +99,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Encoders
+        Uploading PROS Projects
       </div>
     </div>
 
@@ -245,11 +245,14 @@
 
 
 
-<a  title="Uploading" href="http://pros.cs.purdue.edu/tutorials/uploading/">
+<a class="current" title="Uploading" href="http://pros.cs.purdue.edu/tutorials/uploading/">
 	
 	Uploading
 </a>
 
+
+<ul id="scrollspy">
+</ul>
 
 
       
@@ -271,14 +274,11 @@
 
 
 
-<a class="current" title="Encoders" href="http://pros.cs.purdue.edu/tutorials/encoders/">
+<a  title="Encoders" href="http://pros.cs.purdue.edu/tutorials/encoders/">
 	
 	Encoders
 </a>
 
-
-<ul id="scrollspy">
-</ul>
 
 
       
@@ -512,57 +512,50 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>Encoders </h1>
+			<h1>Uploading PROS Projects </h1>
 
 			
 
-<h2 id="quad-encoder">Quad Encoder</h2>
+<p>The PROS uploading utility allows you to flash compiled binaries to your VEX microcontroller. There are a variety of different ways to flash code:
+- USB A-A (Windows only)
+- Programming module w/USB between Joystick and Microcontroller
+- Programming module w/VEXnet between Joystick and Microcontroller</p>
 
-<p>Quadrature encoders can measure the rotation of the attached axle on your robot. Most common uses of this sensor type are to track distance traveled by attaching them to your robots drivetrain and monitoring how much the axle spins.</p>
+<p>Within Atom, click the &lsquo;Upload to Cortex&rsquo; button in Atom. This process will upload the binary the compilation process created (<code>bin/output.bin</code>) to the Cortex and begin running it.</p>
 
-<p>With these sensors 1 measured tick is 1 degree of revolution.</p>
+<p>If you followed these instructions correctly, you can connect a joystick to the clawbot and drive it using arcade controls!</p>
 
-<p>PROS provides a simple quadrature library to utilize these sensors. A sample usage would be as follows:</p>
 
-<p>main.h:</p>
+<figure >
+    
+        <img src="http://pros.cs.purdue.edu/images/atom/upload.png" />
+    
+    
+</figure>
 
-<pre><code class="language-c">// Digital port number for top and bottom port of quad encoder
-#define QUAD_TOP_PORT 1
-#define QUAD_BOTTOM_PORT 2
 
-// Multiple encoders can be declared
-Encoder encoder;
-</code></pre>
+<h2 id="issues">Having issues flashing?</h2>
 
-<p>init.c:</p>
+<div class="admonition warning">
+<p class="admonition-title">PROS CLI 2.5.0 Available</p>
+<p>We fixed a number of issues flashing code onto the VEX Cortex. Make sure you&rsquo;ve <a href="https://github.com/purduesigbots/pros-cli/releases/latest">updated PROS to at least 2.5.0</a>.</p>
+</div>
 
-<pre><code class="language-c">void initialize() {
-    // ...
-    encoder = encoderInit(QUAD_TOP_PORT, QUAD_BOTTOM_PORT, is_reversed);
-    // ...
-}
-</code></pre>
+<h3 id="issues-use-usb">Use USB</h3>
 
-<p>opcontrol.c or auto.c:</p>
+<p>First, try putting the fewest amount of electronics between the Cortex and computer. If you&rsquo;re on Windows, try flashing using only a USB A-A cable. If you&rsquo;re on a Unix-like OS, flash using a programming module with a USB cable between the Joystick and microcontroller. Sometimes commands to upload your code are dropped when flashing wirelessly, especially when the distance between the joystick and microcontroller is large.</p>
 
-<pre><code class="language-c">void myFunction(){
-    // ... Do work
-    // Get encoder reading in degrees
-    int counts = encoderGet(encoder);
+<h3 id="issues-no-poll">Don&rsquo;t poll</h3>
 
-    // ... Do other work
-    // Reset encoder to zero
-    encoderReset(encoder);
-}
-</code></pre>
+<p>Next, try using the <code>--no-poll</code> option. This limits communication between the Cortex and your computer to just what&rsquo;s vitally important to flashing. Polling allows us to determine what connection type you&rsquo;re using and also allows you to check what firmware version you&rsquo;re running. Sometimes when printing a lot of data to the console, responses from the Cortex about system information gets intertwined with your data, preventing us from parsing it. Using <code>--no-poll</code> may allow you to bypass this issue.</p>
 
-<h3 id="wiring-notes">Wiring Notes</h3>
+<h3 id="issues-updates">Check for updates</h3>
 
-<p>One important thing to note with the use of encoders is that they should <strong>not</strong> be plugged into digital <strong>port 10</strong> on the Cortex. This is not unique to PROS, it is simply a result of the way that <a href="http://users.ece.utexas.edu/~valvano/Volume1/E-Book/C12_Interrupts.htm">digital interrupts</a> are configured for the Cortex. Other types of sensors may be used on port 10 with no effect on their performance, but encoders cannot.</p>
+<p>There may be updates for the CLI which improves flasher reliability. If you keep Atom up to date, we&rsquo;ll notify you about updates. Otherwise, check <a href="https://github.com/purduesigbots/pros-cli/releases">Releases</a> for the latest version.</p>
 
-<h2 id="integrated-motor-encoders-imes">Integrated Motor Encoders (IMEs)</h2>
+<h3 id="issues-debug">Open an issue on GitHub and include debug output</h3>
 
-<p>See the <a href="http://pros.cs.purdue.edu/tutorials/i2c.md/#vex-integrated-motor-encoder-ime">I2C Communication</a> page.</p>
+<p>You&rsquo;ve tried everything you can and flashing still isn&rsquo;t working. Use the <code>-vd</code> option to print out all of the microcontroller&rsquo;s responses to the flasher&rsquo;s commands. Please copy the output of the program output and <a href="https://github.com/purduesigbots/pros-cli/issues/new">open an issue</a> or shoot us an email at pros_development@cs.purdue.edu .</p>
 
 
 			<aside class="copyright" role="note">

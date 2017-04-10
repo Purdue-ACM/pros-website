@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Getting-starteds on PROS</title>
-    <link>http://pros.cs.purdue.edu/getting-started/index.xml</link>
+    <link>https://pros.cs.purdue.edu/getting-started/index.xml</link>
     <description>Recent content in Getting-starteds on PROS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MPL 2.0 license</copyright>
-    <atom:link href="http://pros.cs.purdue.edu/getting-started/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://pros.cs.purdue.edu/getting-started/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Programming the Clawbot</title>
-      <link>http://pros.cs.purdue.edu/getting-started/</link>
+      <link>https://pros.cs.purdue.edu/getting-started/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/getting-started/</guid>
+      <guid>https://pros.cs.purdue.edu/getting-started/</guid>
       <description>
 
 &lt;h4 id=&#34;objective&#34;&gt;Objective:&lt;/h4&gt;
@@ -42,7 +42,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/tuts/clawbot1.jpg&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/tuts/clawbot1.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -105,7 +105,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/menu-create-new.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/menu-create-new.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -116,7 +116,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/window-create-new.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/window-create-new.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -126,7 +126,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/proj-brand-new.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/proj-brand-new.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -239,7 +239,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/build.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/build.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -254,7 +254,7 @@
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/upload.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/upload.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -380,7 +380,7 @@ void operatorControl() {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/tuts/clawbot-atom.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/tuts/clawbot-atom.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -454,16 +454,16 @@ void autonomous() {
 
 &lt;p&gt;Congratulations you have completed your first PROS program!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://pros.cs.purdue.edu/clawbot.zip&#34;&gt;Complete source code is available here.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://pros.cs.purdue.edu/clawbot.zip&#34;&gt;Complete source code is available here.&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Installing on Windows</title>
-      <link>http://pros.cs.purdue.edu/getting-started/windows/</link>
+      <link>https://pros.cs.purdue.edu/getting-started/windows/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/getting-started/windows/</guid>
+      <guid>https://pros.cs.purdue.edu/getting-started/windows/</guid>
       <description>
 
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
@@ -503,10 +503,10 @@ reinstall/repair the new version of PROS or manually delete all files/folders in
     
     <item>
       <title>Installing on macOS</title>
-      <link>http://pros.cs.purdue.edu/getting-started/os-x/</link>
+      <link>https://pros.cs.purdue.edu/getting-started/os-x/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/getting-started/os-x/</guid>
+      <guid>https://pros.cs.purdue.edu/getting-started/os-x/</guid>
       <description>
 
 &lt;h2 id=&#34;installation-instructions&#34;&gt;Installation Instructions&lt;/h2&gt;
@@ -538,10 +538,10 @@ reinstall/repair the new version of PROS or manually delete all files/folders in
     
     <item>
       <title>Installing on Linux</title>
-      <link>http://pros.cs.purdue.edu/getting-started/debian-linux/</link>
+      <link>https://pros.cs.purdue.edu/getting-started/debian-linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/getting-started/debian-linux/</guid>
+      <guid>https://pros.cs.purdue.edu/getting-started/debian-linux/</guid>
       <description>
 
 &lt;h2 id=&#34;easy-install-scripts&#34;&gt;Easy Install Scripts&lt;/h2&gt;
@@ -553,7 +553,7 @@ reinstall/repair the new version of PROS or manually delete all files/folders in
 &lt;li&gt;&lt;strong&gt;Arch Linux:&lt;/strong&gt; &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/download/2.11.0/pros-install_arch.sh&#34;&gt;pros-install_arch.sh&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; When using PROS for linux you cannot program or interact with a cortex directly tethered via A-A. This is a &lt;a href=&#34;http://pros.cs.purdue.edu/known-issues/#linuxAA&#34;&gt;known issue&lt;/a&gt; with a simple solution.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; When using PROS for linux you cannot program or interact with a cortex directly tethered via A-A. This is a &lt;a href=&#34;https://pros.cs.purdue.edu/known-issues/#linuxAA&#34;&gt;known issue&lt;/a&gt; with a simple solution.&lt;/p&gt;
 
 &lt;h2 id=&#34;other-distro-installation-requirements&#34;&gt;Other Distro Installation Requirements&lt;/h2&gt;
 

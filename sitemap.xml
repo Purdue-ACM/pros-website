@@ -2,123 +2,123 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://pros.cs.purdue.edu/getting-started/windows/</loc>
+    <loc>https://pros.cs.purdue.edu/getting-started/windows/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/getting-started/os-x/</loc>
+    <loc>https://pros.cs.purdue.edu/getting-started/os-x/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/getting-started/debian-linux/</loc>
+    <loc>https://pros.cs.purdue.edu/getting-started/debian-linux/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/download/</loc>
+    <loc>https://pros.cs.purdue.edu/download/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/api/</loc>
+    <loc>https://pros.cs.purdue.edu/api/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/analog/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/analog/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/api/</loc>
+    <loc>https://pros.cs.purdue.edu/api/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/digitalRead/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/digitalRead/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/coding-faq/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/coding-faq/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/prospoganda/</loc>
+    <loc>https://pros.cs.purdue.edu/prospoganda/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/debugging/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/debugging/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/encoders/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/encoders/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/getting-started/</loc>
+    <loc>https://pros.cs.purdue.edu/getting-started/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/i2c/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/i2c/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/jinx/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/jinx/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/known-issues/</loc>
+    <loc>https://pros.cs.purdue.edu/known-issues/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/lcd/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/lcd/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/</loc>
+    <loc>https://pros.cs.purdue.edu/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/pneumatics/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/pneumatics/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/getting-started/</loc>
+    <loc>https://pros.cs.purdue.edu/getting-started/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/clawbot/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/clawbot/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/project-structure/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/project-structure/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/tasks/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/tasks/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/ultrasonic/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/ultrasonic/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/upgrading/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/upgrading/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/uploading/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/uploading/</loc>
   </url>
   
   <url>
-    <loc>http://pros.cs.purdue.edu/tutorials/speaker/</loc>
+    <loc>https://pros.cs.purdue.edu/tutorials/speaker/</loc>
   </url>
   
 </urlset>

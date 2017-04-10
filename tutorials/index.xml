@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tutorials on PROS</title>
-    <link>http://pros.cs.purdue.edu/tutorials/index.xml</link>
+    <link>https://pros.cs.purdue.edu/tutorials/index.xml</link>
     <description>Recent content in Tutorials on PROS</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Released under the MPL 2.0 license</copyright>
-    <atom:link href="http://pros.cs.purdue.edu/tutorials/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://pros.cs.purdue.edu/tutorials/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Analog Sensors</title>
-      <link>http://pros.cs.purdue.edu/tutorials/analog/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/analog/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/analog/</guid>
+      <guid>https://pros.cs.purdue.edu/tutorials/analog/</guid>
       <description>
 
 &lt;p&gt;While computers, microcontrollers, and other devices that interface with VEX robots are digital systems, most of the real world operates as analog components, where a range of possible values exist instead of simply an arrangement of 1s and 0s. To communicate with these analog real-world systems, analog sensors like potentiometers and line trackers are used. These sensors return a number within a preset range of values in accordance with their input, as opposed to a digit sensor which simply returns an on or off state.&lt;/p&gt;
@@ -23,11 +23,11 @@
 
 &lt;h2 id=&#34;initialization&#34;&gt;Initialization&lt;/h2&gt;
 
-&lt;p&gt;Unlike many of the other VEX sensors, no initialization process is needed in the &lt;code&gt;initializeIO()&lt;/code&gt; or &lt;code&gt;initialize()&lt;/code&gt; functions. However, it is often worthwhile to calibrate analog sensors before using them, which would take place in the &lt;code&gt;initialize()&lt;/code&gt; function. The &lt;a href=&#34;http://pros.cs.purdue.edu/api/#analogCalibrate&#34;&gt;&lt;code&gt;analogCalibrate()&lt;/code&gt;&lt;/a&gt; function collects approximately 500 data samples over a period of half a second and returns the average value received over the sampling period. This average value can be used to account for variations like gyroscope orientation or ambient light for line trackers.&lt;/p&gt;
+&lt;p&gt;Unlike many of the other VEX sensors, no initialization process is needed in the &lt;code&gt;initializeIO()&lt;/code&gt; or &lt;code&gt;initialize()&lt;/code&gt; functions. However, it is often worthwhile to calibrate analog sensors before using them, which would take place in the &lt;code&gt;initialize()&lt;/code&gt; function. The &lt;a href=&#34;https://pros.cs.purdue.edu/api/#analogCalibrate&#34;&gt;&lt;code&gt;analogCalibrate()&lt;/code&gt;&lt;/a&gt; function collects approximately 500 data samples over a period of half a second and returns the average value received over the sampling period. This average value can be used to account for variations like gyroscope orientation or ambient light for line trackers.&lt;/p&gt;
 
 &lt;h2 id=&#34;potentiometer&#34;&gt;Potentiometer&lt;/h2&gt;
 
-&lt;p&gt;Potentiometers measure angular position and can be used to determine the direction of rotation of its input. Potentiometers are best used in applications such as lifts where the sensor is not at risk of being rotated beyond its 250-degree physical constraint. Potentiometers typically do not need to be calibrated, although it may be desired as it helps account for possible shifting in the potentiometer mounting and to find the actual range of the potentiometer due to its mechanical stops as that range may be closer to 5-4090 instead of 0-4095. If the potentiometer is not calibrated, the &lt;a href=&#34;http://pros.cs.purdue.edu/api/#analogRead&#34;&gt;&lt;code&gt;analogRead()&lt;/code&gt;&lt;/a&gt; function may be used to obtain the raw input value of the potentiometer. If the sensor was calibrated, the &lt;a href=&#34;http://pros.cs.purdue.edu/api/#analogCalibrate&#34;&gt;&lt;code&gt;analogReadCalibrated()&lt;/code&gt;&lt;/a&gt; function should be used, as it will account for the sensor&amp;rsquo;s calibration and return more accurate results. The input to both of these functions is the channel number of the sensor, and an integer is returned.&lt;/p&gt;
+&lt;p&gt;Potentiometers measure angular position and can be used to determine the direction of rotation of its input. Potentiometers are best used in applications such as lifts where the sensor is not at risk of being rotated beyond its 250-degree physical constraint. Potentiometers typically do not need to be calibrated, although it may be desired as it helps account for possible shifting in the potentiometer mounting and to find the actual range of the potentiometer due to its mechanical stops as that range may be closer to 5-4090 instead of 0-4095. If the potentiometer is not calibrated, the &lt;a href=&#34;https://pros.cs.purdue.edu/api/#analogRead&#34;&gt;&lt;code&gt;analogRead()&lt;/code&gt;&lt;/a&gt; function may be used to obtain the raw input value of the potentiometer. If the sensor was calibrated, the &lt;a href=&#34;https://pros.cs.purdue.edu/api/#analogCalibrate&#34;&gt;&lt;code&gt;analogReadCalibrated()&lt;/code&gt;&lt;/a&gt; function should be used, as it will account for the sensor&amp;rsquo;s calibration and return more accurate results. The input to both of these functions is the channel number of the sensor, and an integer is returned.&lt;/p&gt;
 
 &lt;p&gt;Thus an example of use on a lift would look like:&lt;/p&gt;
 
@@ -158,10 +158,10 @@ int z_acc = analogReadCalibratedHR(ACCELEROMETER_Z);
     
     <item>
       <title>Buttons and digitalRead</title>
-      <link>http://pros.cs.purdue.edu/tutorials/digitalRead/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/digitalRead/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/digitalRead/</guid>
+      <guid>https://pros.cs.purdue.edu/tutorials/digitalRead/</guid>
       <description>&lt;p&gt;Buttons such as the limit switch that VEX provides are digital sensors. These sensors are generally used as triggers for various events such as a robot hitting an object or the wall. One special difference from other sensors is that you need to configure the pin they are connected to as an input. PROS provides a simple interface to perform such tasks that is as follows:&lt;/p&gt;
 
 &lt;p&gt;main.h:&lt;/p&gt;
@@ -195,10 +195,10 @@ int z_acc = analogReadCalibratedHR(ACCELEROMETER_Z);
     
     <item>
       <title>Coding FAQ</title>
-      <link>http://pros.cs.purdue.edu/tutorials/coding-faq/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/coding-faq/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/coding-faq/</guid>
+      <guid>https://pros.cs.purdue.edu/tutorials/coding-faq/</guid>
       <description>
 
 &lt;h2 id=&#34;compile-time&#34;&gt;Compile-Time Issues&lt;/h2&gt;
@@ -208,7 +208,7 @@ int z_acc = analogReadCalibratedHR(ACCELEROMETER_Z);
 A function name is spelled incorrectly, or the function was incorrectly declared in a header file. Custom headers must be included in &lt;code&gt;main.h&lt;/code&gt; or in the file in which they are used.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;code&gt;format ... expects argument of type ..., but argument has type ...&lt;/code&gt;: &lt;br/&gt;
-The value provided to a function like &lt;a href=&#34;http://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;http://pros.cs.purdue.edu/api/#lcdPrint&#34;&gt;&lt;code&gt;lcdPrint()&lt;/code&gt;&lt;/a&gt; does not match the expected type inferred from the format string. Some instances of this warning can be safely ignored, but crashes can occur if types &lt;code&gt;double&lt;/code&gt; or &lt;code&gt;long long&lt;/code&gt; are mixed with other types.&lt;/p&gt;&lt;/li&gt;
+The value provided to a function like &lt;a href=&#34;https://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;https://pros.cs.purdue.edu/api/#lcdPrint&#34;&gt;&lt;code&gt;lcdPrint()&lt;/code&gt;&lt;/a&gt; does not match the expected type inferred from the format string. Some instances of this warning can be safely ignored, but crashes can occur if types &lt;code&gt;double&lt;/code&gt; or &lt;code&gt;long long&lt;/code&gt; are mixed with other types.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;code&gt;assignment makes pointer from integer without a cast&lt;/code&gt;: &lt;br/&gt;
 Typically caused when a C pointer has the wrong number of asterisks to &lt;a href=&#34;http://stackoverflow.com/a/4955297/3681958&#34;&gt;dereference&lt;/a&gt; it, or when assigning a constant to &lt;code&gt;pointer&lt;/code&gt; (instead of &lt;code&gt;*pointer&lt;/code&gt;).&lt;/p&gt;&lt;/li&gt;
@@ -218,27 +218,27 @@ Typically caused when a C pointer has the wrong number of asterisks to &lt;a hre
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Some tasks are running, others are not:&lt;/strong&gt; &lt;br/&gt;
-A task is not waiting using &lt;a href=&#34;http://pros.cs.purdue.edu/api/#delay&#34;&gt;&lt;code&gt;delay()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;http://pros.cs.purdue.edu/api/#taskDelayUntil&#34;&gt;&lt;code&gt;taskDelayUntil()&lt;/code&gt;&lt;/a&gt;. Due to the fact that PROS utilizes a priority based non-preemptive scheduler, tasks of higher or equal priority to the blocking task will still run while lower priority tasks will not. This scenario is also known as &lt;a href=&#34;https://en.wikipedia.org/wiki/Starvation_(computer_science)&#34;&gt;starvation&lt;/a&gt;. See &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/tasks/&#34;&gt;Tasks/Multithreading&lt;/a&gt; for more information.&lt;/p&gt;&lt;/li&gt;
+A task is not waiting using &lt;a href=&#34;https://pros.cs.purdue.edu/api/#delay&#34;&gt;&lt;code&gt;delay()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;https://pros.cs.purdue.edu/api/#taskDelayUntil&#34;&gt;&lt;code&gt;taskDelayUntil()&lt;/code&gt;&lt;/a&gt;. Due to the fact that PROS utilizes a priority based non-preemptive scheduler, tasks of higher or equal priority to the blocking task will still run while lower priority tasks will not. This scenario is also known as &lt;a href=&#34;https://en.wikipedia.org/wiki/Starvation_(computer_science)&#34;&gt;starvation&lt;/a&gt;. See &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/tasks/&#34;&gt;Tasks/Multithreading&lt;/a&gt; for more information.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;VEX LCD updates very slowly or is &amp;ldquo;frozen&amp;rdquo;:&lt;/strong&gt; &lt;br/&gt;
-A task is not waiting using &lt;a href=&#34;http://pros.cs.purdue.edu/api/#delay&#34;&gt;&lt;code&gt;delay()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;http://pros.cs.purdue.edu/api/#taskDelayUntil&#34;&gt;&lt;code&gt;taskDelayUntil()&lt;/code&gt;&lt;/a&gt;. From the kernel&amp;rsquo;s perspective, updating the LCD is usually less important than how well the robot is running, so PROS prioritizes user tasks over the LCD. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+A task is not waiting using &lt;a href=&#34;https://pros.cs.purdue.edu/api/#delay&#34;&gt;&lt;code&gt;delay()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;https://pros.cs.purdue.edu/api/#taskDelayUntil&#34;&gt;&lt;code&gt;taskDelayUntil()&lt;/code&gt;&lt;/a&gt;. From the kernel&amp;rsquo;s perspective, updating the LCD is usually less important than how well the robot is running, so PROS prioritizes user tasks over the LCD. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
 
 &lt;p&gt;The LCD is only updated if all other tasks are waiting.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Neither autonomous nor driver control code starts:&lt;/strong&gt; &lt;br/&gt;
-The &lt;code&gt;initialize()&lt;/code&gt; function may still be running. Some tasks such as &lt;a href=&#34;http://pros.cs.purdue.edu/api/#gyroInit&#34;&gt;&lt;code&gt;gyroInit()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;http://pros.cs.purdue.edu/api/#analogCalibrate&#34;&gt;&lt;code&gt;analogCalibrate()&lt;/code&gt;&lt;/a&gt; take time.&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
+The &lt;code&gt;initialize()&lt;/code&gt; function may still be running. Some tasks such as &lt;a href=&#34;https://pros.cs.purdue.edu/api/#gyroInit&#34;&gt;&lt;code&gt;gyroInit()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;https://pros.cs.purdue.edu/api/#analogCalibrate&#34;&gt;&lt;code&gt;analogCalibrate()&lt;/code&gt;&lt;/a&gt; take time.&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;
 
 &lt;p&gt;If the &lt;code&gt;initialize()&lt;/code&gt; function implements some type of loop or autonomous selection routine, verify that it actually has a means of ending.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Code restarts unexpectedly:&lt;/strong&gt; &lt;br/&gt;
-A run-time error has caused the program to crash. &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/debugging/&#34;&gt;Debugging&lt;/a&gt; may reveal the cause of the error. Examine any newly added code for possible logical errors. Some common error messages include:&lt;/p&gt;
+A run-time error has caused the program to crash. &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/debugging/&#34;&gt;Debugging&lt;/a&gt; may reveal the cause of the error. Examine any newly added code for possible logical errors. Some common error messages include:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Segmentation Fault:&lt;/strong&gt; &lt;br/&gt;
 Indicates that an invalid C pointer has been used. Check for confusion between pointers and regular variables and that an invalid pointer has not been passed to a PROS API function.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Stack Overflow:&lt;/strong&gt; &lt;br/&gt;
-Often indicates infinite recursion, or that the stack size for a custom task is too small. Calling many layers of functions and declaring large local variables can require large amounts of space on the stack. If this error occurs in a default task like &lt;code&gt;autonomous()&lt;/code&gt;, consider changing code to reduce the stack requirements, or creating a new task with a larger stack size using &lt;a href=&#34;http://pros.cs.purdue.edu/api/#taskCreate&#34;&gt;&lt;code&gt;taskCreate()&lt;/code&gt;&lt;/a&gt; to handle large jobs. Large arrays declared inside functions can usually be declared globally to alleviate pressure on stack space.&lt;/p&gt;&lt;/li&gt;
+Often indicates infinite recursion, or that the stack size for a custom task is too small. Calling many layers of functions and declaring large local variables can require large amounts of space on the stack. If this error occurs in a default task like &lt;code&gt;autonomous()&lt;/code&gt;, consider changing code to reduce the stack requirements, or creating a new task with a larger stack size using &lt;a href=&#34;https://pros.cs.purdue.edu/api/#taskCreate&#34;&gt;&lt;code&gt;taskCreate()&lt;/code&gt;&lt;/a&gt; to handle large jobs. Large arrays declared inside functions can usually be declared globally to alleviate pressure on stack space.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;System Task Failure:&lt;/strong&gt; &lt;br/&gt;
 Too many tasks were running for the system to start a new one. Disable or merge unnecessary tasks to eliminate this error.&lt;/p&gt;&lt;/li&gt;
@@ -247,26 +247,26 @@ Too many tasks were running for the system to start a new one. Disable or merge 
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Cortex blinking red light after upload:&lt;/strong&gt; &lt;br/&gt;
 Turn the Cortex microcontroller off and on again. This usually resolves the problem, and it is generally good practice to re-initialize the robot to simulate conditions at most competitions. If the error persists, see the &amp;ldquo;&lt;strong&gt;Code restarts unexpectedly&lt;/strong&gt;&amp;rdquo; section above.&lt;br/&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt; doesn&amp;rsquo;t work&lt;/strong&gt;: &lt;br/&gt;
-&lt;a href=&#34;http://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt; prints information over a serial connection (see &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/debugging/&#34;&gt;Debugging&lt;/a&gt;), not to the VEX LCD. To print to the LCD, use &lt;a href=&#34;http://pros.cs.purdue.edu/api/#lcdPrint&#34;&gt;&lt;code&gt;lcdPrint()&lt;/code&gt;&lt;/a&gt; instead.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;https://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt; doesn&amp;rsquo;t work&lt;/strong&gt;: &lt;br/&gt;
+&lt;a href=&#34;https://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt; prints information over a serial connection (see &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/debugging/&#34;&gt;Debugging&lt;/a&gt;), not to the VEX LCD. To print to the LCD, use &lt;a href=&#34;https://pros.cs.purdue.edu/api/#lcdPrint&#34;&gt;&lt;code&gt;lcdPrint()&lt;/code&gt;&lt;/a&gt; instead.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
     
     <item>
       <title>Debugging in PROS</title>
-      <link>http://pros.cs.purdue.edu/tutorials/debugging/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/debugging/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/debugging/</guid>
-      <description>&lt;p&gt;The &lt;a href=&#34;http://pros.cs.purdue.edu/api/&#34;&gt;PROS API&lt;/a&gt; provides various functions, like &lt;a href=&#34;http://pros.cs.purdue.edu/api/#print&#34;&gt;&lt;code&gt;print()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;http://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt;, that allow your robot to output information to a connected serial console during operation.&lt;/p&gt;
+      <guid>https://pros.cs.purdue.edu/tutorials/debugging/</guid>
+      <description>&lt;p&gt;The &lt;a href=&#34;https://pros.cs.purdue.edu/api/&#34;&gt;PROS API&lt;/a&gt; provides various functions, like &lt;a href=&#34;https://pros.cs.purdue.edu/api/#print&#34;&gt;&lt;code&gt;print()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;https://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt;, that allow your robot to output information to a connected serial console during operation.&lt;/p&gt;
 
 &lt;p&gt;###To view a robot&amp;rsquo;s output, there are two officially supported methods:&lt;/p&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Through the PROS CLI: &lt;br/&gt;&lt;/p&gt;
 
-&lt;p&gt;Running &lt;code&gt;pros terminal&lt;/code&gt; on the command line will open an output stream from a robot connected over direct USB connection, VEXnet, or &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/jinx/&#34;&gt;JINX&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;Running &lt;code&gt;pros terminal&lt;/code&gt; on the command line will open an output stream from a robot connected over direct USB connection, VEXnet, or &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/jinx/&#34;&gt;JINX&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;From within Atom: &lt;br/&gt;&lt;/p&gt;
 
@@ -274,7 +274,7 @@ Turn the Cortex microcontroller off and on again. This usually resolves the prob
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/open-cortex.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/open-cortex.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -284,7 +284,7 @@ Turn the Cortex microcontroller off and on again. This usually resolves the prob
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/terminal-platformio.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/terminal-platformio.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -305,10 +305,10 @@ Turn the Cortex microcontroller off and on again. This usually resolves the prob
     
     <item>
       <title>Encoders</title>
-      <link>http://pros.cs.purdue.edu/tutorials/encoders/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/encoders/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/encoders/</guid>
+      <guid>https://pros.cs.purdue.edu/tutorials/encoders/</guid>
       <description>
 
 &lt;h2 id=&#34;quad-encoder&#34;&gt;Quad Encoder&lt;/h2&gt;
@@ -357,16 +357,16 @@ Encoder encoder;
 
 &lt;h2 id=&#34;integrated-motor-encoders-imes&#34;&gt;Integrated Motor Encoders (IMEs)&lt;/h2&gt;
 
-&lt;p&gt;See the &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/i2c.md/#vex-integrated-motor-encoder-ime&#34;&gt;I2C Communication&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;See the &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/i2c.md/#vex-integrated-motor-encoder-ime&#34;&gt;I2C Communication&lt;/a&gt; page.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>I2C Communication</title>
-      <link>http://pros.cs.purdue.edu/tutorials/i2c/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/i2c/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/i2c/</guid>
+      <guid>https://pros.cs.purdue.edu/tutorials/i2c/</guid>
       <description>
 
 &lt;p&gt;Inter-Integrated Circuit or I2C communications is but one of the common embedded communications protocols found commonly in robotics at large.  It sports a master-slave configuration as well as a unified bus allowing devices to be daisy-chained together in series if so desired.  A standard I2C bus consists of two signals seen by all devices - Serial Data (SDA) and Serial Clock (SCL).  These two signals are found alongisde +5V and GND power rails in the VEX Cortex I2C port to supply power to any attached I2C slave devices.&lt;/p&gt;
@@ -377,7 +377,7 @@ Encoder encoder;
 
 &lt;h2 id=&#34;writing-to-an-i2c-slave&#34;&gt;Writing to an I2C Slave&lt;/h2&gt;
 
-&lt;p&gt;PROS low-level and initialization functions establish the VEX Cortex as an I2C master device, thus the primary I2C action it will perform is writing to I2C slave devices attached to it.  During I2C slave initialization and operation it is common to modify single byte registers in non-sequential locations of the slave&amp;rsquo;s memory.  In these cases PROS provides the &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cWriteRegister&#34;&gt;i2cWriteRegister()&lt;/a&gt;.  A sister function &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cWrite&#34;&gt;i2cWrite()&lt;/a&gt; is better used when writing to sequential bytes of an I2C slave such as providing full 32-bit integer parameters.  When using &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cWrite&#34;&gt;i2cWrite()&lt;/a&gt; the first byte of the data argument should be the first register of the slave being written to.  Shown below is a short example of initializing and configuring a fictional I2C slave sensor.&lt;/p&gt;
+&lt;p&gt;PROS low-level and initialization functions establish the VEX Cortex as an I2C master device, thus the primary I2C action it will perform is writing to I2C slave devices attached to it.  During I2C slave initialization and operation it is common to modify single byte registers in non-sequential locations of the slave&amp;rsquo;s memory.  In these cases PROS provides the &lt;a href=&#34;https://pros.cs.purdue.edu/api/#i2cWriteRegister&#34;&gt;i2cWriteRegister()&lt;/a&gt;.  A sister function &lt;a href=&#34;https://pros.cs.purdue.edu/api/#i2cWrite&#34;&gt;i2cWrite()&lt;/a&gt; is better used when writing to sequential bytes of an I2C slave such as providing full 32-bit integer parameters.  When using &lt;a href=&#34;https://pros.cs.purdue.edu/api/#i2cWrite&#34;&gt;i2cWrite()&lt;/a&gt; the first byte of the data argument should be the first register of the slave being written to.  Shown below is a short example of initializing and configuring a fictional I2C slave sensor.&lt;/p&gt;
 
 &lt;p&gt;main.h&lt;/p&gt;
 
@@ -417,7 +417,7 @@ void initialize() {
 
 &lt;h2 id=&#34;readingI2CSlave&#34;&gt;Reading from an I2C Slave&lt;/h2&gt;
 
-&lt;p&gt;As the vast majority of I2C slave devices serve as sensors, PROS provides both &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cRead&#34;&gt;i2cRead()&lt;/a&gt; and &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cReadRegister&#34;&gt;i2cReadRegister()&lt;/a&gt; to receive data from them.  Since I2C slave devices do not emit data onto the bus without the request of the master device, &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cRead&#34;&gt;i2cRead()&lt;/a&gt; is limited in its usefulness.  To that extent, below is an example showing how to read from data from a fictional sensor using the more typical &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cReadRegister&#34;&gt;i2cReadRegister()&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As the vast majority of I2C slave devices serve as sensors, PROS provides both &lt;a href=&#34;https://pros.cs.purdue.edu/api/#i2cRead&#34;&gt;i2cRead()&lt;/a&gt; and &lt;a href=&#34;https://pros.cs.purdue.edu/api/#i2cReadRegister&#34;&gt;i2cReadRegister()&lt;/a&gt; to receive data from them.  Since I2C slave devices do not emit data onto the bus without the request of the master device, &lt;a href=&#34;https://pros.cs.purdue.edu/api/#i2cRead&#34;&gt;i2cRead()&lt;/a&gt; is limited in its usefulness.  To that extent, below is an example showing how to read from data from a fictional sensor using the more typical &lt;a href=&#34;https://pros.cs.purdue.edu/api/#i2cReadRegister&#34;&gt;i2cReadRegister()&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;main.h&lt;/p&gt;
 
@@ -469,7 +469,7 @@ void autonomous() {
 
 &lt;h3 id=&#34;advance-user-warning&#34;&gt;Advance User Warning&lt;/h3&gt;
 
-&lt;p&gt;When utilizing IMEs and 3rd party sensors on your I2C bus it is recommended that you write your own task to handle all the I2C communication to prevent resource thrashing. See the &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/i2c/#pollingTask&#34;&gt;I2C Polling Task&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;When utilizing IMEs and 3rd party sensors on your I2C bus it is recommended that you write your own task to handle all the I2C communication to prevent resource thrashing. See the &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/i2c/#pollingTask&#34;&gt;I2C Polling Task&lt;/a&gt; for more details.&lt;/p&gt;
 
 &lt;p&gt;PROS provides a simple library for interacting with your IMEs. A sample usage would be as follows:&lt;/p&gt;
 
@@ -516,7 +516,7 @@ void autonomous() {
 
 &lt;p&gt;Writing to and reading from third-party I2C devices with the Cortex using PROS is a relatively painless process with the techniques described earlier in this tutorial.  PROS essentially only requires the 7-bit I2C address of the target slave and a register you wish to interact with if any.  These can all be found in the third-party device&amp;rsquo;s datasheet.&lt;/p&gt;
 
-&lt;p&gt;The great deal of effort in connecting a third-party I2C slave comes in scouring its datasheet and synthesizing its instructions into a device driver.  A critical aspect of this driver is its initialization routine.  Since I2C slave sensors often have their own microprocessors present, they may require several registers to be configured and an enable register to be set before they will even begin collecting data.  It is recommended that a &lt;code&gt;Xinit()&lt;/code&gt; function be created for sensor X (e.g. lidarInit, gyroInit, etc) so that it may be called from different locations in the robot code rather than hard-coding the setup protocol into &lt;code&gt;init.c&lt;/code&gt;.  This way if the device were to ever lose power or disconnect a reconnection attempt is feasible.  This &lt;code&gt;Xinit()&lt;/code&gt; function will contain several calls to &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cWriteRegister&#34;&gt;i2cWriteRegister()&lt;/a&gt; and &lt;a href=&#34;http://pros.cs.purdue.edu/api/#i2cReadRegister&#34;&gt;i2cReadRegister()&lt;/a&gt; that follow the datasheet&amp;rsquo;s instructions to bring the sensor up and running.&lt;/p&gt;
+&lt;p&gt;The great deal of effort in connecting a third-party I2C slave comes in scouring its datasheet and synthesizing its instructions into a device driver.  A critical aspect of this driver is its initialization routine.  Since I2C slave sensors often have their own microprocessors present, they may require several registers to be configured and an enable register to be set before they will even begin collecting data.  It is recommended that a &lt;code&gt;Xinit()&lt;/code&gt; function be created for sensor X (e.g. lidarInit, gyroInit, etc) so that it may be called from different locations in the robot code rather than hard-coding the setup protocol into &lt;code&gt;init.c&lt;/code&gt;.  This way if the device were to ever lose power or disconnect a reconnection attempt is feasible.  This &lt;code&gt;Xinit()&lt;/code&gt; function will contain several calls to &lt;a href=&#34;https://pros.cs.purdue.edu/api/#i2cWriteRegister&#34;&gt;i2cWriteRegister()&lt;/a&gt; and &lt;a href=&#34;https://pros.cs.purdue.edu/api/#i2cReadRegister&#34;&gt;i2cReadRegister()&lt;/a&gt; that follow the datasheet&amp;rsquo;s instructions to bring the sensor up and running.&lt;/p&gt;
 
 &lt;p&gt;In addition to an initialization routine for the third-party sensor, it is good practice to group multiple sequential write/read operations into routines as well.  This can drastically improve code readability and portability to future robots.  A simple device driver for a fictional lidar is given below.&lt;/p&gt;
 
@@ -700,20 +700,20 @@ void i2cTaskStart() {
 
 &lt;h3 id=&#34;endianness&#34;&gt;Endianness&lt;/h3&gt;
 
-&lt;p&gt;Endianness is the direction in which bytes are arranged when being output from a device. A device is either big-endian or little-endian, with these two options being the opposite of one another. A big-endian device will arrange bytes with the most significant (highest order) byte first, and little-endian arranges bytes with the least significant byte first. An example of reading a big-endian device can be found in &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/i2c/#readingI2CSlave&#34;&gt;Reading from an I2C Slave&lt;/a&gt;. If an I2C reading is an unexpected value, try reading in the opposite endianness.&lt;/p&gt;
+&lt;p&gt;Endianness is the direction in which bytes are arranged when being output from a device. A device is either big-endian or little-endian, with these two options being the opposite of one another. A big-endian device will arrange bytes with the most significant (highest order) byte first, and little-endian arranges bytes with the least significant byte first. An example of reading a big-endian device can be found in &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/i2c/#readingI2CSlave&#34;&gt;Reading from an I2C Slave&lt;/a&gt;. If an I2C reading is an unexpected value, try reading in the opposite endianness.&lt;/p&gt;
 
 &lt;h3 id=&#34;union-struct-method&#34;&gt;Union/Struct method&lt;/h3&gt;
 
-&lt;p&gt;One solution to reading a collection of bits from a device is to use a struct wrapped in a union as seen in the &lt;code&gt;LIDAR_REG_CFG&lt;/code&gt; union in &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/i2c/#thirdPartyI2CDevices&#34;&gt;Third-Party I2C Devices&lt;/a&gt;. The union contains a value that contains the reading from the sensor, and the struct contains each significant bit as an individual value. Write to the union&amp;rsquo;s value, and then read individual bits from the struct. If you are not familiar with unions and structs, reading an &lt;a href=&#34;https://www.codingunit.com/c-tutorial-structures-unions-typedef&#34;&gt;Online C Tutorial&lt;/a&gt; about the subject is recommended.&lt;/p&gt;
+&lt;p&gt;One solution to reading a collection of bits from a device is to use a struct wrapped in a union as seen in the &lt;code&gt;LIDAR_REG_CFG&lt;/code&gt; union in &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/i2c/#thirdPartyI2CDevices&#34;&gt;Third-Party I2C Devices&lt;/a&gt;. The union contains a value that contains the reading from the sensor, and the struct contains each significant bit as an individual value. Write to the union&amp;rsquo;s value, and then read individual bits from the struct. If you are not familiar with unions and structs, reading an &lt;a href=&#34;https://www.codingunit.com/c-tutorial-structures-unions-typedef&#34;&gt;Online C Tutorial&lt;/a&gt; about the subject is recommended.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>JINX</title>
-      <link>http://pros.cs.purdue.edu/tutorials/jinx/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/jinx/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/jinx/</guid>
+      <guid>https://pros.cs.purdue.edu/tutorials/jinx/</guid>
       <description>
 
 &lt;div class=&#34;admonition warning&#34;&gt;
@@ -941,10 +941,10 @@ void parseMessage(JINX * inStr) {
     
     <item>
       <title>LCD Screen</title>
-      <link>http://pros.cs.purdue.edu/tutorials/lcd/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/lcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/lcd/</guid>
+      <guid>https://pros.cs.purdue.edu/tutorials/lcd/</guid>
       <description>&lt;p&gt;The LCD screen communicates to the Cortex Microcontroller via a UART cable. This communication needs to be initialized in &lt;code&gt;init.c&lt;/code&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void initialize() {
@@ -973,10 +973,10 @@ lcdPrint(uart1, 1, &amp;quot;Batt: %1.3f V&amp;quot;, (double)powerLevelMain() /
     
     <item>
       <title>Pneumatics</title>
-      <link>http://pros.cs.purdue.edu/tutorials/pneumatics/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/pneumatics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/pneumatics/</guid>
+      <guid>https://pros.cs.purdue.edu/tutorials/pneumatics/</guid>
       <description>&lt;p&gt;Pneumatics in VEX provide two-state linear actuation. They differ from other
 digital sensors in that they are output signals. Therefore, the default digital
 sensor configuration is insufficient.&lt;/p&gt;
@@ -1002,10 +1002,10 @@ sensor configuration is insufficient.&lt;/p&gt;
     
     <item>
       <title>Programming the Clawbot</title>
-      <link>http://pros.cs.purdue.edu/tutorials/clawbot/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/clawbot/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/clawbot/</guid>
+      <guid>https://pros.cs.purdue.edu/tutorials/clawbot/</guid>
       <description>
 
 &lt;h4 id=&#34;objective&#34;&gt;Objective:&lt;/h4&gt;
@@ -1033,7 +1033,7 @@ sensor configuration is insufficient.&lt;/p&gt;
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/tuts/clawbot1.jpg&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/tuts/clawbot1.jpg&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -1096,7 +1096,7 @@ sensor configuration is insufficient.&lt;/p&gt;
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/menu-create-new.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/menu-create-new.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -1107,7 +1107,7 @@ sensor configuration is insufficient.&lt;/p&gt;
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/window-create-new.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/window-create-new.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -1117,7 +1117,7 @@ sensor configuration is insufficient.&lt;/p&gt;
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/proj-brand-new.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/proj-brand-new.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -1230,7 +1230,7 @@ sensor configuration is insufficient.&lt;/p&gt;
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/build.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/build.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -1245,7 +1245,7 @@ sensor configuration is insufficient.&lt;/p&gt;
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/upload.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/upload.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -1404,10 +1404,10 @@ void operatorControl() {
     
     <item>
       <title>Project Structure</title>
-      <link>http://pros.cs.purdue.edu/tutorials/project-structure/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/project-structure/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/project-structure/</guid>
+      <guid>https://pros.cs.purdue.edu/tutorials/project-structure/</guid>
       <description>
 
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
@@ -1416,7 +1416,7 @@ void operatorControl() {
 
 &lt;p&gt;The PROS library is a single file containing the core PROS routines. This file does not need to be changed. If there appears to be an issue with a core PROS function, please file an issue on &lt;a href=&#34;https://github.com/purduesigbots/pros/issues&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;The &lt;em&gt;header&lt;/em&gt; files are all found in the &lt;code&gt;include&lt;/code&gt; directory. One header file, &lt;a href=&#34;http://pros.cs.purdue.edu/api/&#34;&gt;API.h&lt;/a&gt;, is required to declare the PROS library functions, and also serves as a quick reference. The other file, &lt;code&gt;main.h&lt;/code&gt;, is intended for declaring functions and variables shared between the user code files. New header files can be created in the include directory, as long as the name ends with .h.&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;header&lt;/em&gt; files are all found in the &lt;code&gt;include&lt;/code&gt; directory. One header file, &lt;a href=&#34;https://pros.cs.purdue.edu/api/&#34;&gt;API.h&lt;/a&gt;, is required to declare the PROS library functions, and also serves as a quick reference. The other file, &lt;code&gt;main.h&lt;/code&gt;, is intended for declaring functions and variables shared between the user code files. New header files can be created in the include directory, as long as the name ends with .h.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;User code&lt;/code&gt; has the actual sequential instructions that govern the robot&amp;rsquo;s behavior. PROS by default splits the user code up into autonomous (&lt;code&gt;auto.c&lt;/code&gt;), driver control (&lt;code&gt;opcontrol.c&lt;/code&gt;), and initialization (&lt;code&gt;init.c&lt;/code&gt;) files. Code in one file can talk to code in another file using declarations in the header files. New user code files can be created in the &lt;code&gt;src&lt;/code&gt; directory, as long as the name ends with .c it will be compiled with the others.&lt;/p&gt;
 
@@ -1447,7 +1447,7 @@ int getSensorValue(void) {
 
 &lt;p&gt;Doing so will make the variables and functions local to the file in which they exist.&lt;/p&gt;
 
-&lt;p&gt;Some functions and variables are useful in more than one location (e.g. a function to use &lt;a href=&#34;http://pros.cs.purdue.edu/api/#motorset&#34;&gt;motorSet&lt;/a&gt; on all the robot&amp;rsquo;s drive motors with the same value). Such functions can be declared in any of the three files (or a custom file in the &lt;code&gt;src&lt;/code&gt; directory). To make them accessible to any other user code file, prototype the function in &lt;code&gt;main.h&lt;/code&gt; or in another header file.&lt;/p&gt;
+&lt;p&gt;Some functions and variables are useful in more than one location (e.g. a function to use &lt;a href=&#34;https://pros.cs.purdue.edu/api/#motorset&#34;&gt;motorSet&lt;/a&gt; on all the robot&amp;rsquo;s drive motors with the same value). Such functions can be declared in any of the three files (or a custom file in the &lt;code&gt;src&lt;/code&gt; directory). To make them accessible to any other user code file, prototype the function in &lt;code&gt;main.h&lt;/code&gt; or in another header file.&lt;/p&gt;
 
 &lt;p&gt;Functions can be prototyped by copying the function&amp;rsquo;s declaration line into &lt;code&gt;main.h&lt;/code&gt; and replacing the function code with &lt;code&gt;;&lt;/code&gt;.&lt;/p&gt;
 
@@ -1464,10 +1464,10 @@ void DoIt(int x);
     
     <item>
       <title>Tasks and Multithreading</title>
-      <link>http://pros.cs.purdue.edu/tutorials/tasks/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/tasks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/tasks/</guid>
+      <guid>https://pros.cs.purdue.edu/tutorials/tasks/</guid>
       <description>
 
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
@@ -1578,20 +1578,20 @@ semaphoreGive(semaphore);
     
     <item>
       <title>Tutorials</title>
-      <link>http://pros.cs.purdue.edu/tutorials/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/</guid>
-      <description>&lt;p&gt;Learning a new coding platform is often a rather daunting task. For this reason we prepared some small tutorials with examples on how to interact with core components of PROS on your VEX Cortex. Select from the menu on the left to learn about everything from &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/analog&#34;&gt;analog sensors&lt;/a&gt; to &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/tasks&#34;&gt;tasks/multithreading&lt;/a&gt; and communicating with 3rd party sensors via &lt;a href=&#34;http://pros.cs.purdue.edu/tutorials/i2c&#34;&gt;I2C&lt;/a&gt;.&lt;/p&gt;
+      <guid>https://pros.cs.purdue.edu/tutorials/</guid>
+      <description>&lt;p&gt;Learning a new coding platform is often a rather daunting task. For this reason we prepared some small tutorials with examples on how to interact with core components of PROS on your VEX Cortex. Select from the menu on the left to learn about everything from &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/analog&#34;&gt;analog sensors&lt;/a&gt; to &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/tasks&#34;&gt;tasks/multithreading&lt;/a&gt; and communicating with 3rd party sensors via &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/i2c&#34;&gt;I2C&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Ultrasonic Sensors</title>
-      <link>http://pros.cs.purdue.edu/tutorials/ultrasonic/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/ultrasonic/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/ultrasonic/</guid>
+      <guid>https://pros.cs.purdue.edu/tutorials/ultrasonic/</guid>
       <description>&lt;p&gt;The ultrasonic sensor enables robots to measure distance. Ultrasonic sensors accomplish
 by taking advantage of echoes. Sound echoes off of most materials and speed travels at a
 reasonably consistent speed, so measuring the amount of time for the sound to be transmitted
@@ -1635,10 +1635,10 @@ void myFunction() {
     
     <item>
       <title>Upgrading PROS Projects</title>
-      <link>http://pros.cs.purdue.edu/tutorials/upgrading/</link>
+      <link>https://pros.cs.purdue.edu/tutorials/upgrading/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://pros.cs.purdue.edu/tutorials/upgrading/</guid>
+      <guid>https://pros.cs.purdue.edu/tutorials/upgrading/</guid>
       <description>
 
 &lt;h2 id=&#34;hey-i-heard-there-was-a-new-release-of-the-pros-kernel-how-do-i-upgrade-my-project&#34;&gt;Hey! I heard there was a new release of the PROS kernel&amp;ndash; How do I upgrade my project?&lt;/h2&gt;
@@ -1661,7 +1661,7 @@ void myFunction() {
 &lt;p&gt;
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/open-conductor.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/open-conductor.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -1671,7 +1671,7 @@ void myFunction() {
 &lt;p&gt;
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/conductor-gui.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/conductor-gui.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -1681,7 +1681,7 @@ void myFunction() {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/conductor-gui-zoom.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/conductor-gui-zoom.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -1698,7 +1698,7 @@ void myFunction() {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/download-complete.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/download-complete.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -1717,7 +1717,7 @@ void myFunction() {
 &lt;p&gt;
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/upgrade-menu.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/upgrade-menu.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -1727,7 +1727,7 @@ void myFunction() {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/upgrade-project.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/upgrade-project.png&#34; /&gt;
     
     
 &lt;/figure&gt;
@@ -1742,7 +1742,7 @@ void myFunction() {
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;http://pros.cs.purdue.edu/images/atom/upgrade-success.png&#34; /&gt;
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/upgrade-success.png&#34; /&gt;
     
     
 &lt;/figure&gt;

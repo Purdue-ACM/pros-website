@@ -555,6 +555,16 @@ You must run this command in the JINX directory for the server to work correctly
 <p><strong>Note</strong>:
 Since JINX is a network application not everyone has to crowd around a single machine to observe the data feed. If you are on the same local network you can navigate to the IP address of the JINX host machine to get access to the dashboard as well. For example, if the IP address of the JINX host machine is <code>192.168.1.105</code> you would navigate to <a href="http://192.168.1.105:9001/views/combined.html">http://192.168.1.105:9001/views/combined.html</a>.</p>
 
+<h3 id="sending-data-from-the-cortex">Sending data from the Cortex</h3>
+
+<ol>
+<li>Create a &ldquo;large enough&rdquo; char array, 20 characters or so should work.</li>
+<li>Use <code>sprintf(destination, formatString, dataToSend)</code> to save data.</li>
+<li>Use <code>writeJINXData(&quot;DataID&quot;, char_array)</code> to send data.</li>
+</ol>
+
+<p>Alternatively, use <code>writeJINXMessage(&quot;Message&quot;)</code> to send a message with no data value.</p>
+
 <h2 id="initJINX">initJINX</h2>
 
 <pre><code class="language-c">void initJINX ( FILE * port )

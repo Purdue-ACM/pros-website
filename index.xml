@@ -40,7 +40,24 @@ by VEX.&lt;/p&gt;
 &lt;p&gt;During some installations, Atom may not install correctly. This is best diagnosed by there not being shortcuts to
 Atom after installation, or if &lt;code&gt;apm&lt;/code&gt; isn&amp;rsquo;t on PATH. If this is the case, you may need to manually install Atom by visiting
 &lt;a href=&#34;https://atom.io/download/windows&#34;&gt;https://atom.io/download/windows&lt;/a&gt;. Once installed and Atom appears, you will be able to install the PROS plugin by pressing
-&lt;strong&gt;Win&lt;/strong&gt;+&lt;strong&gt;R&lt;/strong&gt; and entering &lt;code&gt;apm install file-icons linter tool-bar tool-bar-main busy build platformio-ide-terminal pros&lt;/code&gt;&lt;/p&gt;
+&lt;strong&gt;Win&lt;/strong&gt;+&lt;strong&gt;R&lt;/strong&gt; and entering &lt;code&gt;apm install file-icons linter tool-bar tool-bar-main busy build platformio-ide-terminal pros&lt;/code&gt;. If you are still having trouble after installing Atom manually, it may be necessary to add Atom to &lt;code&gt;PATH&lt;/code&gt; manually as well. To do so, follow these instructions:
+1. Find the location of atom.exe. One good way of doing this is by right clicking on the Atom shortcut on your dekstop, clicking &amp;lsquo;Open File Location,&amp;rsquo; and copying the path from the Explorer address bar.
+2. Windows 7/8/8.1:
+  1. Open the Start menu
+  2. Right click on &amp;lsquo;Computer&amp;rsquo;
+  3. Select &amp;lsquo;Properties&amp;rsquo;
+  4. Click &amp;lsquo;Advanced System Settings&amp;rsquo;
+  5. Click &amp;lsquo;Environment Variables&amp;rsquo;
+  6. Select &amp;lsquo;PATH&amp;rsquo; under &amp;lsquo;User Variables,&amp;rsquo; then click &amp;lsquo;Edit&amp;rsquo;
+  7. Add a semicolon (&lt;code&gt;;&lt;/code&gt;) to the end of the value, then paste in the path to atom.exe
+  8. Click &amp;lsquo;OK&amp;rsquo;
+3. Windows 10:
+  1. Type &amp;lsquo;Environment Variables&amp;rsquo; into the search bar
+  2. Select &amp;lsquo;Edit environment variables for your account
+  3. Select &amp;lsquo;Path&amp;rsquo; in the upper box
+  4. Click &amp;lsquo;Edit,&amp;rsquo; then click &amp;lsquo;New&amp;rsquo;
+  5. Paste in the path to atom.exe
+  6. Click &amp;lsquo;OK&amp;rsquo;&lt;/p&gt;
 
 &lt;h3 id=&#34;installing-alongside-pros-for-eclipse&#34;&gt;Installing alongside PROS for Eclipse&lt;/h3&gt;
 

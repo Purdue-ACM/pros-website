@@ -409,7 +409,24 @@ by VEX.</p>
 <p>During some installations, Atom may not install correctly. This is best diagnosed by there not being shortcuts to
 Atom after installation, or if <code>apm</code> isn&rsquo;t on PATH. If this is the case, you may need to manually install Atom by visiting
 <a href="https://atom.io/download/windows">https://atom.io/download/windows</a>. Once installed and Atom appears, you will be able to install the PROS plugin by pressing
-<strong>Win</strong>+<strong>R</strong> and entering <code>apm install file-icons linter tool-bar tool-bar-main busy build platformio-ide-terminal pros</code></p>
+<strong>Win</strong>+<strong>R</strong> and entering <code>apm install file-icons linter tool-bar tool-bar-main busy build platformio-ide-terminal pros</code>. If you are still having trouble after installing Atom manually, it may be necessary to add Atom to <code>PATH</code> manually as well. To do so, follow these instructions:
+1. Find the location of atom.exe. One good way of doing this is by right clicking on the Atom shortcut on your dekstop, clicking &lsquo;Open File Location,&rsquo; and copying the path from the Explorer address bar.
+2. Windows 7/8/8.1:
+  1. Open the Start menu
+  2. Right click on &lsquo;Computer&rsquo;
+  3. Select &lsquo;Properties&rsquo;
+  4. Click &lsquo;Advanced System Settings&rsquo;
+  5. Click &lsquo;Environment Variables&rsquo;
+  6. Select &lsquo;PATH&rsquo; under &lsquo;User Variables,&rsquo; then click &lsquo;Edit&rsquo;
+  7. Add a semicolon (<code>;</code>) to the end of the value, then paste in the path to atom.exe
+  8. Click &lsquo;OK&rsquo;
+3. Windows 10:
+  1. Type &lsquo;Environment Variables&rsquo; into the search bar
+  2. Select &lsquo;Edit environment variables for your account
+  3. Select &lsquo;Path&rsquo; in the upper box
+  4. Click &lsquo;Edit,&rsquo; then click &lsquo;New&rsquo;
+  5. Paste in the path to atom.exe
+  6. Click &lsquo;OK&rsquo;</p>
 
 <h3 id="installing-alongside-pros-for-eclipse">Installing alongside PROS for Eclipse</h3>
 

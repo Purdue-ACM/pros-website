@@ -415,7 +415,7 @@
 
 <h2 id="platformio-ide-terminal">Failed to install platformio-ide-terminal</h2>
 
-<p>This issue may occur when install PROS from within the Atom GUI. The current cause of the issue is
+<p>This issue may occur when installing PROS from within the Atom GUI. The current cause of the issue is
 unknown. You can get the dependency installed by manually installing <code>platformio-ide-terminal</code> by going to settings (<code>Ctrl</code>+<code>,</code>), click <code>Install</code>, then search for and install <code>platformio-ide-terminal</code>. In some instances, restarting Atom will allow the plugin to install.</p>
 
 <p>Another workaround for this issue is to clone the <a href="https://github.com/platformio/platformio-atom-ide-terminal/"><code>platformio-atom-ide-terminal</code></a> repository and set up a <a href="https://en.wikipedia.org/wiki/Symbolic_link">symlink</a> using the Atom package manager:</p>
@@ -423,6 +423,12 @@ unknown. You can get the dependency installed by manually installing <code>platf
 <p><code>git clone https://github.com/platformio/platformio-atom-ide-terminal.git</code></p>
 
 <p><code>apm link &lt;path to cloned repository&gt;</code></p>
+
+<h2 id="terminal-update">Terminal doesn&rsquo;t show up!</h2>
+
+<p>After updating Atom to a new minor version, some packages (including <code>platformio-ide-terminal</code>) will not work until they have been rebuilt for the new Atom version. Symptoms include missing terminal buttons and an inability to open the terminal manually using <code>PROS:Toggle-Terminal</code>.</p>
+
+<p>If these symptoms apply, check if there is a red bug icon in the right-hand corner of the bottom status bar. If so, click this icon, and you will be prompted to rebuild any broken packages. For more information, see <a href="http://flight-manual.atom.io/hacking-atom/sections/debugging/#check-for-incompatible-packages">this section of the Atom flight manual</a>.</p>
 
 
 			<aside class="copyright" role="note">

@@ -83,7 +83,7 @@ reinstall/repair the new version of PROS or manually delete all files/folders in
 
 &lt;ol&gt;
 &lt;li&gt;Install &lt;a href=&#34;https://www.python.org/downloads/&#34;&gt;Python 3&lt;/a&gt;(Version 3.4 or higher) for macOS.&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Download the &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/tag/2.11.0&#34;&gt;PROS installer&lt;/a&gt; and run it. You will need to input an administrator&amp;rsquo;s password, and must remain connected to the internet for the duration of installation. The installer will download Atom.app and the ARM toolchain to &lt;code&gt;/Applications/PROS_2.0&lt;/code&gt;, and will use pip3 to install the command line interface. You will be able to see the progress of the installer in a Terminal window automatically openned by the installer.&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Download the &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/tag/2.11.0&#34;&gt;PROS installer&lt;/a&gt; and run it. You will need to input an administrator&amp;rsquo;s password, and must remain connected to the internet for the duration of installation. The installer will download Atom.app and the Arm toolchain to &lt;code&gt;/Applications/PROS_2.0&lt;/code&gt;, and will use pip3 to install the command line interface. You will be able to see the progress of the installer in a Terminal window automatically openned by the installer.&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;Open Atom (&lt;code&gt;/Applications/PROS_2.0/Atom.app&lt;/code&gt;) and verify that PROS appears in the menu (Likely next to Help).&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;Congratulations! You have successfully installed PROS for macOS. If you want autocomlete functionality within Atom for your PROS code, download either &lt;a href=&#34;https://itunes.apple.com/us/app/xcode/id497799835?mt=12#&#34;&gt;Xcode&lt;/a&gt; or &lt;a href=&#34;http://llvm.org&#34;&gt;LLVM&lt;/a&gt;. Xcode is easier to install than LLVM, but you must open the application at least once and its command line tools must be installed.&lt;/li&gt;
 &lt;/ol&gt;
@@ -4377,7 +4377,7 @@ void parseMessage(JINX * inStr) {
 
 &lt;h2 id=&#34;platformio-ide-terminal&#34;&gt;Failed to install platformio-ide-terminal&lt;/h2&gt;
 
-&lt;p&gt;This issue may occur when install PROS from within the Atom GUI. The current cause of the issue is
+&lt;p&gt;This issue may occur when installing PROS from within the Atom GUI. The current cause of the issue is
 unknown. You can get the dependency installed by manually installing &lt;code&gt;platformio-ide-terminal&lt;/code&gt; by going to settings (&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;,&lt;/code&gt;), click &lt;code&gt;Install&lt;/code&gt;, then search for and install &lt;code&gt;platformio-ide-terminal&lt;/code&gt;. In some instances, restarting Atom will allow the plugin to install.&lt;/p&gt;
 
 &lt;p&gt;Another workaround for this issue is to clone the &lt;a href=&#34;https://github.com/platformio/platformio-atom-ide-terminal/&#34;&gt;&lt;code&gt;platformio-atom-ide-terminal&lt;/code&gt;&lt;/a&gt; repository and set up a &lt;a href=&#34;https://en.wikipedia.org/wiki/Symbolic_link&#34;&gt;symlink&lt;/a&gt; using the Atom package manager:&lt;/p&gt;
@@ -4385,6 +4385,12 @@ unknown. You can get the dependency installed by manually installing &lt;code&gt
 &lt;p&gt;&lt;code&gt;git clone https://github.com/platformio/platformio-atom-ide-terminal.git&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;apm link &amp;lt;path to cloned repository&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;terminal-update&#34;&gt;Terminal doesn&amp;rsquo;t show up!&lt;/h2&gt;
+
+&lt;p&gt;After updating Atom to a new minor version, some packages (including &lt;code&gt;platformio-ide-terminal&lt;/code&gt;) will not work until they have been rebuilt for the new Atom version. Symptoms include missing terminal buttons and an inability to open the terminal manually using &lt;code&gt;PROS:Toggle-Terminal&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;If these symptoms apply, check if there is a red bug icon in the right-hand corner of the bottom status bar. If so, click this icon, and you will be prompted to rebuild any broken packages. For more information, see &lt;a href=&#34;http://flight-manual.atom.io/hacking-atom/sections/debugging/#check-for-incompatible-packages&#34;&gt;this section of the Atom flight manual&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

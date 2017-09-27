@@ -225,7 +225,7 @@
         </div>
       
       <div class="name">
-        <strong>PROS <span class="version">2.11.1</span></strong>
+        <strong>PROS <span class="version">2.12.0</span></strong>
         
           <br>
           purduesigbots/pros
@@ -3324,6 +3324,15 @@ This document serves as a quick reference for API.h functions.</p>
 <p>It is highly recommended that users enable the watchdog if using IMEs, as the Cortex is particularly vulnerable to static shock through the I2C line.</p>
 
 <p><strong>Should be called once in initializeIO().</strong> Calling the function multiple times or anywhere besides initializeIO() will have no effect.</p>
+
+<h2 id="standaloneModeEnable">void standaloneModeEnable</h2>
+
+<pre><code>void standaloneModeEnable ( )
+</code></pre>
+
+<p>Enables the Cortex to run the op control task in a standalone mode- no VEXnet connection required.</p>
+
+<p><strong>Should be called once in initializeIO().</strong> Calling the function outside initializeIO() may produce unexpected behavior.</p>
 
 <h2 id="macros">Macros</h2>
 

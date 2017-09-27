@@ -3092,6 +3092,15 @@ This document serves as a quick reference for API.h functions.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Should be called once in initializeIO().&lt;/strong&gt; Calling the function multiple times or anywhere besides initializeIO() will have no effect.&lt;/p&gt;
 
+&lt;h2 id=&#34;standaloneModeEnable&#34;&gt;void standaloneModeEnable&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;void standaloneModeEnable ( )
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Enables the Cortex to run the op control task in a standalone mode- no VEXnet connection required.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Should be called once in initializeIO().&lt;/strong&gt; Calling the function outside initializeIO() may produce unexpected behavior.&lt;/p&gt;
+
 &lt;h2 id=&#34;macros&#34;&gt;Macros&lt;/h2&gt;
 
 &lt;h3 id=&#34;define-accel-x-5&#34;&gt;#define ACCEL_X  5&lt;/h3&gt;

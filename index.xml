@@ -2882,7 +2882,7 @@ This document serves as a quick reference for API.h functions.&lt;/p&gt;
 
 &lt;p&gt;Gets the current ultrasonic sensor value in centimeters.&lt;/p&gt;
 
-&lt;p&gt;If no object was found, zero is returned. If the ultrasonic sensor was never started, the return value is undefined. Round and fluffy objects can cause inaccurate values to be returned.&lt;/p&gt;
+&lt;p&gt;If no object was found or if the ultrasonic sensor is polled while it is pinging and waiting for a response, -1 (&lt;a href=&#34;#ULTRA_BAD_RESPONSE&#34;&gt;ULTRA_BAD_RESPONSE&lt;/a&gt;) is returned. If the ultrasonic sensor was never started, the return value is undefined. Round and fluffy objects can cause inaccurate values to be returned.&lt;/p&gt;
 
 &lt;table&gt;
 &lt;thead&gt;
@@ -3341,7 +3341,11 @@ This document serves as a quick reference for API.h functions.&lt;/p&gt;
 
 &lt;h3 id=&#34;define-uart2-file-2&#34;&gt;#define     uart2   ((FILE *)2)&lt;/h3&gt;
 
-&lt;p&gt;UART 2 on the Cortex; must be opened first using usartInit().
+&lt;p&gt;UART 2 on the Cortex; must be opened first using usartInit().&lt;/p&gt;
+
+&lt;h3 id=&#34;define-ultra-bad-response-1&#34;&gt;#define   ULTRA_BAD_RESPONSE   -1&lt;/h3&gt;
+
+&lt;p&gt;This value is returned if the ultrasonic sensor cannot find an object in range or if the sensor is polled while it is in the midst of sending a ping. It is recommended that such values be discarded through the use of a filter.
 &lt;/div&gt;
 
 </description>

@@ -225,7 +225,7 @@
         </div>
       
       <div class="name">
-        <strong>PROS <span class="version">2.12.0</span></strong>
+        <strong>PROS <span class="version">2.12.1</span></strong>
         
           <br>
           purduesigbots/pros
@@ -3117,7 +3117,7 @@ This document serves as a quick reference for API.h functions.</p>
 
 <p>Gets the current ultrasonic sensor value in centimeters.</p>
 
-<p>If no object was found, zero is returned. If the ultrasonic sensor was never started, the return value is undefined. Round and fluffy objects can cause inaccurate values to be returned.</p>
+<p>If no object was found or if the ultrasonic sensor is polled while it is pinging and waiting for a response, -1 (<a href="#ULTRA_BAD_RESPONSE">ULTRA_BAD_RESPONSE</a>) is returned. If the ultrasonic sensor was never started, the return value is undefined. Round and fluffy objects can cause inaccurate values to be returned.</p>
 
 <table>
 <thead>
@@ -3576,7 +3576,11 @@ This document serves as a quick reference for API.h functions.</p>
 
 <h3 id="define-uart2-file-2">#define     uart2   ((FILE *)2)</h3>
 
-<p>UART 2 on the Cortex; must be opened first using usartInit().
+<p>UART 2 on the Cortex; must be opened first using usartInit().</p>
+
+<h3 id="define-ultra-bad-response-1">#define   ULTRA_BAD_RESPONSE   -1</h3>
+
+<p>This value is returned if the ultrasonic sensor cannot find an object in range or if the sensor is polled while it is in the midst of sending a ping. It is recommended that such values be discarded through the use of a filter.
 </div>
 
 

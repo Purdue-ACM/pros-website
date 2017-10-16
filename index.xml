@@ -21,19 +21,22 @@
 
 &lt;p&gt;PROS for Atom is the new best way to program for VEX Robotics. Getting started with PROS is easy on Windows.&lt;/p&gt;
 
-&lt;p&gt;To begin, &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/latest&#34;&gt;download&lt;/a&gt; and run the installer. Please note
-that an Internet connection is required throughout the installation process.&lt;/p&gt;
+&lt;p&gt;To begin, &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/latest&#34;&gt;download&lt;/a&gt; and run the installer. Please note that an Internet connection is required throughout the installation process.&lt;/p&gt;
 
-&lt;p&gt;Most users will wish to complete the typical installation process, which will install the PROS Core components
-(the PROS CLI and GCC toolchain) and Atom with Clang and the PROS plugin. If you already have Atom installed, then
-the installer will simply add the PROS plugin to your existing Atom environment.&lt;/p&gt;
+&lt;p&gt;Most users will wish to complete the typical installation process, which will install the PROS Core components (the PROS CLI and GCC toolchain) and PROS Editor. If you already have Atom installed, you may opt to not install PROS Editor and install the PROS plugin on your installation of Atom.&lt;/p&gt;
 
-&lt;p&gt;If VEX drivers haven&amp;rsquo;t previously been installed, you will be prompted to install the official drivers released
-by VEX.&lt;/p&gt;
+&lt;p&gt;If VEX drivers haven&amp;rsquo;t previously been installed, you will be prompted to install the official drivers released by VEX.&lt;/p&gt;
 
 &lt;p&gt;Once the installation is completed, Atom can be started via the Start Menu or Desktop shortcut.&lt;/p&gt;
 
 &lt;h2 id=&#34;issues-and-notes-about-installation&#34;&gt;Issues and Notes about Installation&lt;/h2&gt;
+
+&lt;h2 id=&#34;install-long-path&#34;&gt;Error reading from file when installing&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Since 2.6.0&lt;/em&gt;
+When installing PROS on Windows, you may receive a warning box along the lines of:
+&amp;gt; There was an error reading from file &amp;ldquo;&amp;hellip;&amp;rdquo;. Verify that the file exists and you can access it.
+In most cases, this is because the file length is too long due to a limitation of Windows. Move the installer to a folder closer to the root directory of the drive, such as C:\pros-temp.&lt;/p&gt;
 
 &lt;h3 id=&#34;apm-failure&#34;&gt;APM Failure&lt;/h3&gt;
 
@@ -112,14 +115,9 @@ reinstall/repair the new version of PROS or manually delete all files/folders in
       <guid>https://pros.cs.purdue.edu/getting-started/debian-linux/</guid>
       <description>
 
-&lt;h2 id=&#34;easy-install-scripts&#34;&gt;Easy Install Scripts&lt;/h2&gt;
+&lt;h2 id=&#34;installer-binaries&#34;&gt;Installer binaries&lt;/h2&gt;
 
-&lt;p&gt;If you are installing on Ubuntu or Arch linux there are install scripts available which should handle most of the process. The scripts can be downloaded from Github:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Ubuntu:&lt;/strong&gt; &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/download/2.11.0/pros-install_ubuntu.sh&#34;&gt;pros-install_ubuntu.sh&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Arch Linux:&lt;/strong&gt; &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/download/2.11.0/pros-install_arch.sh&#34;&gt;pros-install_arch.sh&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;If you are installing on a Debian-based Linux distribution, such as Ubuntu, or have a distribution which can install Debian packages, you should download the provided packages from the &lt;a href=&#34;https://github.com/purduesigbots/pros/releases/latest&#34;&gt;latest release&lt;/a&gt;. The PROS Core package provides the PROS CLI and Arm Embedded GCC Toolchain. The PROS Editor package provides our rebranded version of Atom. Most users will install both, although the PROS Core package is always required.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; When using PROS for linux you cannot program or interact with a cortex directly tethered via A-A. This is a &lt;a href=&#34;https://pros.cs.purdue.edu/known-issues/#linuxAA&#34;&gt;known issue&lt;/a&gt; with a simple solution.&lt;/p&gt;
 
@@ -4342,6 +4340,17 @@ void parseMessage(JINX * inStr) {
 &lt;/figure&gt;
 &lt;/p&gt;
 
+&lt;h2 id=&#34;platformio-ide-terminal&#34;&gt;Failed to install platformio-ide-terminal&lt;/h2&gt;
+
+&lt;p&gt;This issue may occur when installing PROS from within the Atom GUI. The current cause of the issue is
+unknown. You can get the dependency installed by manually installing &lt;code&gt;platformio-ide-terminal&lt;/code&gt; by going to settings (&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;,&lt;/code&gt;), click &lt;code&gt;Install&lt;/code&gt;, then search for and install &lt;code&gt;platformio-ide-terminal&lt;/code&gt;. In some instances, restarting Atom will allow the plugin to install.&lt;/p&gt;
+
+&lt;p&gt;Another workaround for this issue is to clone the &lt;a href=&#34;https://github.com/platformio/platformio-atom-ide-terminal/&#34;&gt;&lt;code&gt;platformio-atom-ide-terminal&lt;/code&gt;&lt;/a&gt; repository and set up a &lt;a href=&#34;https://en.wikipedia.org/wiki/Symbolic_link&#34;&gt;symlink&lt;/a&gt; using the Atom package manager:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git clone https://github.com/platformio/platformio-atom-ide-terminal.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;apm link &amp;lt;path to cloned repository&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
 &lt;h2 id=&#34;cannot-find-libstdc-a&#34;&gt;Cannot find libstdc++.a&lt;/h2&gt;
 
 &lt;p&gt;On Ubuntu 14.04 it is a &lt;a href=&#34;https://bugs.launchpad.net/ubuntu/+source/gcc-arm-none-eabi/+bug/1293024&#34;&gt;known bug&lt;/a&gt; that libstdc++-arm-none-eabi-newlib package is missing from the repositories and fails to install with arm-none-eabi-gcc. This can lead to the following error when trying to compile your PROS project:
@@ -4383,17 +4392,6 @@ void parseMessage(JINX * inStr) {
 
 
 &lt;p&gt;Both wired and wirless (VEXnet 1.0 &amp;amp; 2.0) are supported.&lt;/p&gt;
-
-&lt;h2 id=&#34;platformio-ide-terminal&#34;&gt;Failed to install platformio-ide-terminal&lt;/h2&gt;
-
-&lt;p&gt;This issue may occur when installing PROS from within the Atom GUI. The current cause of the issue is
-unknown. You can get the dependency installed by manually installing &lt;code&gt;platformio-ide-terminal&lt;/code&gt; by going to settings (&lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;,&lt;/code&gt;), click &lt;code&gt;Install&lt;/code&gt;, then search for and install &lt;code&gt;platformio-ide-terminal&lt;/code&gt;. In some instances, restarting Atom will allow the plugin to install.&lt;/p&gt;
-
-&lt;p&gt;Another workaround for this issue is to clone the &lt;a href=&#34;https://github.com/platformio/platformio-atom-ide-terminal/&#34;&gt;&lt;code&gt;platformio-atom-ide-terminal&lt;/code&gt;&lt;/a&gt; repository and set up a &lt;a href=&#34;https://en.wikipedia.org/wiki/Symbolic_link&#34;&gt;symlink&lt;/a&gt; using the Atom package manager:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;git clone https://github.com/platformio/platformio-atom-ide-terminal.git&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;apm link &amp;lt;path to cloned repository&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;terminal-update&#34;&gt;Terminal doesn&amp;rsquo;t show up!&lt;/h2&gt;
 

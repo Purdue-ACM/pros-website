@@ -982,6 +982,114 @@ lcdPrint(uart1, 1, &amp;quot;Batt: %1.3f V&amp;quot;, (double)powerLevelMain() /
     </item>
     
     <item>
+      <title>Libraries</title>
+      <link>https://pros.cs.purdue.edu/tutorials/libraries/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pros.cs.purdue.edu/tutorials/libraries/</guid>
+      <description>
+
+&lt;p&gt;&lt;em&gt;Since PROS CLI 2.6.0, PROS for Atom 0.7.2, PROS Kernel 2.12.0&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;PROS supports the concept of adding libraries, allowing you to modularize and share code with others. PROS libraries can be any set of files, but are typically a collection of precompiled code with some header files.&lt;/p&gt;
+
+&lt;div class=&#34;admonition note&#34;&gt;
+&lt;p class=&#34;admonition-title&#34;&gt;Under Construction&lt;/p&gt;
+&lt;p&gt;This section of our documentation is still under construction. Atom documentation is cooming soon.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;using-libraries-for-pros&#34;&gt;Using Libraries for PROS&lt;/h2&gt;
+
+&lt;p&gt;For example, to set up &lt;a href=&#34;https://github.com/purduesigbots/libblrs&#34;&gt;Boiler Robotics&amp;rsquo; libblrs&lt;/a&gt;, you can do the following from command line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;pros conduct add-depot --name libblrs --registrar github-releases --location purduesigbots/libblrs --no-configure
+pros conduct download libmtrmgr
+pros conduct add-lib &amp;lt;project-path&amp;gt; libmtrmgr
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Using Atom, you can open the PROS Conductor by pressing &lt;code&gt;Ctrl&lt;/code&gt;+&lt;code&gt;Shift&lt;/code&gt;+&lt;code&gt;P&lt;/code&gt;, then typing &lt;code&gt;Conductor&lt;/code&gt;. Scroll down to the Global Configuration section and add a depot.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/tuts/add-depot-conductor.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Select github-releases if not already done so, then fill out the following fields:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-None&#34;&gt;Name the depot: libblrs
+Depot location: purduesigbots/libblrs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You may leave the rest of the options blank.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/tuts/add-depot-libblrs.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Now, you should see the various libraries offered by the libblrs repository.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://pros.cs.purdue.edu/images/tuts/add-depot-withlibblrs.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;You can download whichever libraries you would like to use now by clicking on the download button. Next, you should open the project you want to add a library to, if you have not already done so. Select the project in the Conductor window and click &amp;ldquo;Add Library&amp;rdquo;. Select the library you want to add and click OK. You will now have access to the capabilities provided by the library!&lt;/p&gt;
+
+&lt;h2 id=&#34;making-libraries-for-pros-using-github-releases&#34;&gt;Making Libraries for PROS using GitHub Releases&lt;/h2&gt;
+
+&lt;p&gt;Make a template.mk file in the root directory of your project and paste the following template:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;LIBNAME=libfbc
+VERSION=1.0.0
+
+# extra files (like header files)
+TEMPLATEFILES = include/fbc_pid.h include/fbc.h
+# basename of the source files that should be archived
+TEMPLATEOBJS = fbc_pid fbc
+
+TEMPLATE=$(ROOT)/$(LIBNAME)-template
+
+.DEFAULT_GOAL: all
+
+library: clean $(BINDIR) $(SUBDIRS) $(ASMOBJ) $(COBJ) $(CPPOBJ)
+	$(MCUPREFIX)ar rvs $(BINDIR)/$(LIBNAME).a $(foreach f,$(TEMPLATEOBJS),$(BINDIR)/$(f).o)
+	mkdir -p $(TEMPLATE) $(TEMPLATE)/firmware $(addprefix $(TEMPLATE)/, $(dir $(TEMPLATEFILES)))
+	cp $(BINDIR)/$(LIBNAME).a $(TEMPLATE)/firmware/$(LIBNAME).a
+	$(foreach f,$(TEMPLATEFILES),cp $(f) $(TEMPLATE)/$(f);)
+	pros conduct create-template $(LIBNAME) $(VERSION) $(TEMPLATE) --ignore template.pros --upgrade-files &amp;quot;firmware/$(LIBNAME).a $(TEMPLATEFILES)&amp;quot;
+	@echo Need to zip $(TEMPLATE) without the base directory
+	# cd $(TEMPLATE) &amp;amp;&amp;amp; zip -r ../$(basename $(TEMPLATE)) *
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should change &lt;code&gt;LIBNAME&lt;/code&gt;, &lt;code&gt;VERSION&lt;/code&gt;, &lt;code&gt;TEMPLATEFILES&lt;/code&gt;, and &lt;code&gt;TEMPLATEOBJS&lt;/code&gt; to fit your project.&lt;/p&gt;
+
+&lt;p&gt;In the project&amp;rsquo;s Makefile, add the following line to line 14:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-include $(ROOT)/template.mk
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then to build the library, run &lt;code&gt;pros make library&lt;/code&gt;. Next, you will need to zip the
+template directory. The zip file should not contain the &lt;code&gt;libfbc-template&lt;/code&gt; directory
+(that is, the root of the zip file should contain template.pros and all your
+other files). Next, you should &lt;a href=&#34;https://help.github.com/articles/creating-releases/&#34;&gt;create a release on GitHub&lt;/a&gt; and upload your template(s)
+to the release. You can see Purdue SIGBots&amp;rsquo; repository at &lt;a href=&#34;https://github.com/purduesigbots/libblrs/releases&#34;&gt;purduesigbots/libblrs&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Pneumatics</title>
       <link>https://pros.cs.purdue.edu/tutorials/pneumatics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1640,129 +1748,6 @@ void myFunction() {
   int distance = ultrasonicGet(sonar);
 }
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Upgrading PROS Projects</title>
-      <link>https://pros.cs.purdue.edu/tutorials/upgrading/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://pros.cs.purdue.edu/tutorials/upgrading/</guid>
-      <description>
-
-&lt;h2 id=&#34;hey-i-heard-there-was-a-new-release-of-the-pros-kernel-how-do-i-upgrade-my-project&#34;&gt;Hey! I heard there was a new release of the PROS kernel&amp;ndash; How do I upgrade my project?&lt;/h2&gt;
-
-&lt;p&gt;Never fear, you&amp;rsquo;ve come to the right place.&lt;/p&gt;
-
-&lt;h3 id=&#34;downloading-the-new-version&#34;&gt;Downloading the new version&lt;/h3&gt;
-
-&lt;p&gt;The first step in this process is to acquire a physical copy of the kernel. Don&amp;rsquo;t worry, it&amp;rsquo;s easier than it sounds.&lt;/p&gt;
-
-&lt;div class=&#34;admonition note&#34;&gt;
-&lt;p class=&#34;admonition-title&#34;&gt;Terminology&lt;/p&gt;
-&lt;p&gt;From now on, this tutorial will specify keypress commands in the form &lt;code&gt;CTRL&lt;/code&gt;-&lt;code&gt;SHIFT&lt;/code&gt;-&lt;code&gt;P&lt;/code&gt;. On macOS, the equivalent command is &lt;code&gt;⌘&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;P&lt;/code&gt;, so for the rest of this tutorial, assume that &lt;code&gt;CTRL&lt;/code&gt; refers to &lt;code&gt;⌘&lt;/code&gt; unless otherwise specified.&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;ol&gt;
-&lt;li&gt;In Atom, type &lt;code&gt;CTRL&lt;/code&gt;+&lt;code&gt;SHIFT&lt;/code&gt;+&lt;code&gt;P&lt;/code&gt;, and then start typing &amp;lsquo;conductor&amp;rsquo;.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/open-conductor.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-2. A nice tab like this will appear:&lt;/p&gt;
-
-&lt;p&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/conductor-gui.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-3. In the &amp;lsquo;Global Configuration&amp;rsquo; section, under &amp;lsquo;Kernels,&amp;rsquo; there is a list:&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/conductor-gui-zoom.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;The latest version of the kernel appears at the top of the list, and the versions you have available to use have the small computer icon to the right of the version number.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;To download the latest version, click the small cloud icon on the far right of the version number.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Once the download has completed, a green balloon will pop up informing you as such.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/download-complete.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;If you don&amp;rsquo;t have any old projects to upgrade, you&amp;rsquo;re done! New projects will be created, by default, with the latest version of the kernel you have locally.&lt;/p&gt;
-
-&lt;h3 id=&#34;but-i-have-old-projects-that-need-to-get-upgraded&#34;&gt;But I have old projects that need to get upgraded!&lt;/h3&gt;
-
-&lt;p&gt;Alright, here&amp;rsquo;s how:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Up on the menu bar in Atom, select &lt;code&gt;PROS&lt;/code&gt;&amp;gt;&lt;code&gt;Upgrade a PROS Project&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/upgrade-menu.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-2. A new dialog will appear, asking you to select the project folder and the kernel version:&lt;/p&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/upgrade-project.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;Note that choosing &amp;lsquo;Auto-select latest&amp;rsquo; in the dropdown will do the same thing as manually selecting the latest version (as it is shown in the screenshot above).&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;If it works, another green balloon will appear to let you know:&lt;/li&gt;
-&lt;/ol&gt;
-
-
-&lt;figure &gt;
-    
-        &lt;img src=&#34;https://pros.cs.purdue.edu/images/atom/upgrade-success.png&#34; /&gt;
-    
-    
-&lt;/figure&gt;
-
-
-&lt;p&gt;If the balloon is red, that means the conductor failed to upgrade the project successfully. In this case, follow any instructions in the balloon and try again.&lt;/p&gt;
-
-&lt;h3 id=&#34;what-now&#34;&gt;What now?&lt;/h3&gt;
-
-&lt;p&gt;You&amp;rsquo;re done&amp;ndash; now go make something cool!&lt;/p&gt;
 </description>
     </item>
     

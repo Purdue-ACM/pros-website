@@ -72,6 +72,10 @@
   </url>
   
   <url>
+    <loc>https://pros.cs.purdue.edu/tutorials/libraries/</loc>
+  </url>
+  
+  <url>
     <loc>https://pros.cs.purdue.edu/</loc>
     <priority>0</priority>
   </url>

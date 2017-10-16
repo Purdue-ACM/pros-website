@@ -371,6 +371,17 @@
 </figure>
 </p>
 
+<h2 id="platformio-ide-terminal">Failed to install platformio-ide-terminal</h2>
+
+<p>This issue may occur when installing PROS from within the Atom GUI. The current cause of the issue is
+unknown. You can get the dependency installed by manually installing <code>platformio-ide-terminal</code> by going to settings (<code>Ctrl</code>+<code>,</code>), click <code>Install</code>, then search for and install <code>platformio-ide-terminal</code>. In some instances, restarting Atom will allow the plugin to install.</p>
+
+<p>Another workaround for this issue is to clone the <a href="https://github.com/platformio/platformio-atom-ide-terminal/"><code>platformio-atom-ide-terminal</code></a> repository and set up a <a href="https://en.wikipedia.org/wiki/Symbolic_link">symlink</a> using the Atom package manager:</p>
+
+<p><code>git clone https://github.com/platformio/platformio-atom-ide-terminal.git</code></p>
+
+<p><code>apm link &lt;path to cloned repository&gt;</code></p>
+
 <h2 id="cannot-find-libstdc-a">Cannot find libstdc++.a</h2>
 
 <p>On Ubuntu 14.04 it is a <a href="https://bugs.launchpad.net/ubuntu/+source/gcc-arm-none-eabi/+bug/1293024">known bug</a> that libstdc++-arm-none-eabi-newlib package is missing from the repositories and fails to install with arm-none-eabi-gcc. This can lead to the following error when trying to compile your PROS project:
@@ -412,17 +423,6 @@
 
 
 <p>Both wired and wirless (VEXnet 1.0 &amp; 2.0) are supported.</p>
-
-<h2 id="platformio-ide-terminal">Failed to install platformio-ide-terminal</h2>
-
-<p>This issue may occur when installing PROS from within the Atom GUI. The current cause of the issue is
-unknown. You can get the dependency installed by manually installing <code>platformio-ide-terminal</code> by going to settings (<code>Ctrl</code>+<code>,</code>), click <code>Install</code>, then search for and install <code>platformio-ide-terminal</code>. In some instances, restarting Atom will allow the plugin to install.</p>
-
-<p>Another workaround for this issue is to clone the <a href="https://github.com/platformio/platformio-atom-ide-terminal/"><code>platformio-atom-ide-terminal</code></a> repository and set up a <a href="https://en.wikipedia.org/wiki/Symbolic_link">symlink</a> using the Atom package manager:</p>
-
-<p><code>git clone https://github.com/platformio/platformio-atom-ide-terminal.git</code></p>
-
-<p><code>apm link &lt;path to cloned repository&gt;</code></p>
 
 <h2 id="terminal-update">Terminal doesn&rsquo;t show up!</h2>
 

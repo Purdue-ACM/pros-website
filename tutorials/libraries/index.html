@@ -9,18 +9,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>PROS - Uploading PROS Projects</title>
+    <title>PROS - Libraries</title>
     <meta name="generator" content="Hugo 0.19" />
 
     
     <meta name="description" content="An open source programming environment for the VEX EDR Platform">
     
-    <link rel="canonical" href="https://pros.cs.purdue.edu/tutorials/uploading/">
+    <link rel="canonical" href="https://pros.cs.purdue.edu/tutorials/libraries/">
     
     <meta name="author" content="purduesigbots">
     
 
-    <meta property="og:url" content="https://pros.cs.purdue.edu/tutorials/uploading/">
+    <meta property="og:url" content="https://pros.cs.purdue.edu/tutorials/libraries/">
     <meta property="og:title" content="PROS">
     <meta property="og:image" content="https://pros.cs.purdue.edu/images/logo.png">
     <meta name="apple-mobile-web-app-title" content="PROS">
@@ -99,7 +99,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Uploading PROS Projects
+        Libraries
       </div>
     </div>
 
@@ -252,14 +252,11 @@
 
 
 
-<a class="current" title="Uploading" href="https://pros.cs.purdue.edu/tutorials/uploading/">
+<a  title="Uploading" href="https://pros.cs.purdue.edu/tutorials/uploading/">
 	
 	Uploading
 </a>
 
-
-<ul id="scrollspy">
-</ul>
 
 
       
@@ -385,11 +382,14 @@
 
 
 
-<a  title="Libraries" href="https://pros.cs.purdue.edu/tutorials/libraries/">
+<a class="current" title="Libraries" href="https://pros.cs.purdue.edu/tutorials/libraries/">
 	
 	Libraries
 </a>
 
+
+<ul id="scrollspy">
+</ul>
 
 
       
@@ -532,55 +532,107 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>Uploading PROS Projects </h1>
+			<h1>Libraries </h1>
 
 			
 
-<p>The PROS uploading utility allows you to flash compiled binaries to your VEX microcontroller. There are a variety of different ways to flash code:</p>
+<p><em>Since PROS CLI 2.6.0, PROS for Atom 0.7.2, PROS Kernel 2.12.0</em></p>
 
-<ul>
-<li>USB A-A (Windows only)</li>
-<li>Programming module w/USB between Joystick and Microcontroller</li>
-<li>Programming module w/VEXnet between Joystick and Microcontroller</li>
-</ul>
+<p>PROS supports the concept of adding libraries, allowing you to modularize and share code with others. PROS libraries can be any set of files, but are typically a collection of precompiled code with some header files.</p>
 
-<p>Within Atom, click the &lsquo;Upload to Cortex&rsquo; button in Atom. This process will upload the binary the compilation process created (<code>bin/output.bin</code>) to the Cortex and begin running it.</p>
+<div class="admonition note">
+<p class="admonition-title">Under Construction</p>
+<p>This section of our documentation is still under construction. Atom documentation is cooming soon.</p>
+</div>
+
+<h2 id="using-libraries-for-pros">Using Libraries for PROS</h2>
+
+<p>For example, to set up <a href="https://github.com/purduesigbots/libblrs">Boiler Robotics&rsquo; libblrs</a>, you can do the following from command line:</p>
+
+<pre><code class="language-bash">pros conduct add-depot --name libblrs --registrar github-releases --location purduesigbots/libblrs --no-configure
+pros conduct download libmtrmgr
+pros conduct add-lib &lt;project-path&gt; libmtrmgr
+</code></pre>
+
+<p>Using Atom, you can open the PROS Conductor by pressing <code>Ctrl</code>+<code>Shift</code>+<code>P</code>, then typing <code>Conductor</code>. Scroll down to the Global Configuration section and add a depot.</p>
 
 
 <figure >
     
-        <img src="https://pros.cs.purdue.edu/images/atom/upload.png" />
+        <img src="https://pros.cs.purdue.edu/images/tuts/add-depot-conductor.png" />
     
     
 </figure>
 
 
-<p>Using just the terminal, this can be done by navigating to the directory (or subdirectory) of the PROS project and invoking <code>pros upload</code>. You can get all of the command options by running <code>pros upload --help</code>. Some additional commands you may find helpful is <code>pros mu</code>, which runs the default Make target (forks and calls <code>make</code>) and then uploads your code, and <code>pros mut</code>, which does the same but also opens the PROS terminal after uploading.</p>
+<p>Select github-releases if not already done so, then fill out the following fields:</p>
 
-<h2 id="issues">Having issues flashing?</h2>
+<pre><code class="language-None">Name the depot: libblrs
+Depot location: purduesigbots/libblrs
+</code></pre>
 
-<div class="admonition warning">
-<p class="admonition-title">PROS CLI 2.5.0 Available</p>
-<p>We fixed a number of issues flashing code onto the VEX Cortex. Make sure you&rsquo;ve <a href="https://github.com/purduesigbots/pros-cli/releases/latest">updated PROS to at least 2.5.0</a>.</p>
-</div>
+<p>You may leave the rest of the options blank.</p>
 
-<p>Before trying these solutions, make sure you have built your project! If there&rsquo;s nothing to upload, the flasher will throw an error!</p>
 
-<h3 id="issues-use-usb">Use USB</h3>
+<figure >
+    
+        <img src="https://pros.cs.purdue.edu/images/tuts/add-depot-libblrs.png" />
+    
+    
+</figure>
 
-<p>First, try putting the fewest amount of electronics between the Cortex and computer. If you&rsquo;re on Windows, try flashing using only a USB A-A cable. If you&rsquo;re on a Unix-like OS, flash using a programming module with a USB cable between the Joystick and microcontroller. Sometimes commands to upload your code are dropped when flashing wirelessly, especially when the distance between the joystick and microcontroller is large.</p>
 
-<h3 id="issues-no-poll">Don&rsquo;t poll</h3>
+<p>Now, you should see the various libraries offered by the libblrs repository.</p>
 
-<p>Next, try using the <code>--no-poll</code> option. This limits communication between the Cortex and your computer to just what&rsquo;s vitally important to flashing. Polling allows us to determine what connection type you&rsquo;re using and also allows you to check what firmware version you&rsquo;re running. Sometimes when printing a lot of data to the console, responses from the Cortex about system information gets intertwined with your data, preventing us from parsing it. Using <code>--no-poll</code> may allow you to bypass this issue.</p>
 
-<h3 id="issues-updates">Check for updates</h3>
+<figure >
+    
+        <img src="https://pros.cs.purdue.edu/images/tuts/add-depot-withlibblrs.png" />
+    
+    
+</figure>
 
-<p>There may be updates for the CLI which improves flasher reliability. If you keep Atom up to date, we&rsquo;ll notify you about updates. Otherwise, check <a href="https://github.com/purduesigbots/pros-cli/releases">Releases</a> for the latest version.</p>
 
-<h3 id="issues-debug">Open an issue on GitHub and include debug output</h3>
+<p>You can download whichever libraries you would like to use now by clicking on the download button. Next, you should open the project you want to add a library to, if you have not already done so. Select the project in the Conductor window and click &ldquo;Add Library&rdquo;. Select the library you want to add and click OK. You will now have access to the capabilities provided by the library!</p>
 
-<p>You&rsquo;ve tried everything you can and flashing still isn&rsquo;t working. Use the <code>-vd</code> option to print out all of the microcontroller&rsquo;s responses to the flasher&rsquo;s commands. Please copy the output of the program output and <a href="https://github.com/purduesigbots/pros-cli/issues/new">open an issue</a> or shoot us an email at pros_development@cs.purdue.edu .</p>
+<h2 id="making-libraries-for-pros-using-github-releases">Making Libraries for PROS using GitHub Releases</h2>
+
+<p>Make a template.mk file in the root directory of your project and paste the following template:</p>
+
+<pre><code>LIBNAME=libfbc
+VERSION=1.0.0
+
+# extra files (like header files)
+TEMPLATEFILES = include/fbc_pid.h include/fbc.h
+# basename of the source files that should be archived
+TEMPLATEOBJS = fbc_pid fbc
+
+TEMPLATE=$(ROOT)/$(LIBNAME)-template
+
+.DEFAULT_GOAL: all
+
+library: clean $(BINDIR) $(SUBDIRS) $(ASMOBJ) $(COBJ) $(CPPOBJ)
+	$(MCUPREFIX)ar rvs $(BINDIR)/$(LIBNAME).a $(foreach f,$(TEMPLATEOBJS),$(BINDIR)/$(f).o)
+	mkdir -p $(TEMPLATE) $(TEMPLATE)/firmware $(addprefix $(TEMPLATE)/, $(dir $(TEMPLATEFILES)))
+	cp $(BINDIR)/$(LIBNAME).a $(TEMPLATE)/firmware/$(LIBNAME).a
+	$(foreach f,$(TEMPLATEFILES),cp $(f) $(TEMPLATE)/$(f);)
+	pros conduct create-template $(LIBNAME) $(VERSION) $(TEMPLATE) --ignore template.pros --upgrade-files &quot;firmware/$(LIBNAME).a $(TEMPLATEFILES)&quot;
+	@echo Need to zip $(TEMPLATE) without the base directory
+	# cd $(TEMPLATE) &amp;&amp; zip -r ../$(basename $(TEMPLATE)) *
+</code></pre>
+
+<p>You should change <code>LIBNAME</code>, <code>VERSION</code>, <code>TEMPLATEFILES</code>, and <code>TEMPLATEOBJS</code> to fit your project.</p>
+
+<p>In the project&rsquo;s Makefile, add the following line to line 14:</p>
+
+<pre><code>-include $(ROOT)/template.mk
+</code></pre>
+
+<p>Then to build the library, run <code>pros make library</code>. Next, you will need to zip the
+template directory. The zip file should not contain the <code>libfbc-template</code> directory
+(that is, the root of the zip file should contain template.pros and all your
+other files). Next, you should <a href="https://help.github.com/articles/creating-releases/">create a release on GitHub</a> and upload your template(s)
+to the release. You can see Purdue SIGBots&rsquo; repository at <a href="https://github.com/purduesigbots/libblrs/releases">purduesigbots/libblrs</a>.</p>
 
 
 			<aside class="copyright" role="note">

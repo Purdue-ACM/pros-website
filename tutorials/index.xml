@@ -259,9 +259,11 @@ Turn the Cortex microcontroller off and on again. This usually resolves the prob
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://pros.cs.purdue.edu/tutorials/debugging/</guid>
-      <description>&lt;p&gt;The &lt;a href=&#34;https://pros.cs.purdue.edu/api/&#34;&gt;PROS API&lt;/a&gt; provides various functions, like &lt;a href=&#34;https://pros.cs.purdue.edu/api/#print&#34;&gt;&lt;code&gt;print()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;https://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt;, that allow your robot to output information to a connected serial console during operation.&lt;/p&gt;
+      <description>
 
-&lt;p&gt;###To view a robot&amp;rsquo;s output, there are two officially supported methods:&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;https://pros.cs.purdue.edu/api/&#34;&gt;PROS API&lt;/a&gt; provides various functions, like &lt;a href=&#34;https://pros.cs.purdue.edu/api/#print&#34;&gt;&lt;code&gt;print()&lt;/code&gt;&lt;/a&gt; or &lt;a href=&#34;https://pros.cs.purdue.edu/api/#printf&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt;, that allow your robot to output information to a connected serial console during operation.&lt;/p&gt;
+
+&lt;h3 id=&#34;to-view-a-robot-s-output-there-are-two-officially-supported-methods&#34;&gt;To view a robot&amp;rsquo;s output, there are two officially supported methods:&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Through the PROS CLI: &lt;br/&gt;&lt;/p&gt;
@@ -291,7 +293,7 @@ Turn the Cortex microcontroller off and on again. This usually resolves the prob
 &lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;###Alternate method: &lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&#34;alternate-method-br&#34;&gt;Alternate method: &lt;br /&gt;&lt;/h3&gt;
 
 &lt;p&gt;Use the serial communication monitor of your choice (such as &lt;a href=&#34;http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html&#34;&gt;PuTTY&lt;/a&gt;, &lt;a href=&#34;http://freeware.the-meiers.org/&#34;&gt;CoolTerm&lt;/a&gt; or &lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=EgorGrushko.SerialMonitor&#34;&gt;this plugin for Visual Studio&lt;/a&gt; if using Visual Studio) with the following settings: &lt;br /&gt;&lt;/p&gt;
 

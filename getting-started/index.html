@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>PROS - Programming the Clawbot</title>
+    <title>PROS - Getting Started with PROS</title>
     <meta name="generator" content="Hugo 0.19" />
 
     
@@ -99,7 +99,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Programming the Clawbot
+        Getting Started with PROS
       </div>
     </div>
 
@@ -389,453 +389,48 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>Programming the Clawbot </h1>
+			<h1>Getting Started with PROS </h1>
 
 			
 
-<h4 id="objective">Objective:</h4>
+<h2 id="first-steps">First Steps</h2>
 
-<p>This tutorial will guide you through basic programming of the VEX Clawbot.</p>
+<p>The most important characteristic of PROS to note when getting started is that PROS is just C. Anything that works in standard C will work as a part of a PROS project, and similarly the errors given for code that doesn&rsquo;t work will match errors given for any similar C code. Learning C is essential for using PROS.</p>
 
-<h4 id="intended-audience">Intended Audience:</h4>
+<p>If you are already familiar with C development outside of VEX, skip ahead to <a href="#using-PROS">Using PROS</a>.</p>
 
-<p>This tutorial is intended for developers with some programming experience, but with little to no experience with the PROS library. If you haven&rsquo;t programmed before, we recommend checking out all the &ldquo;Introduction and Basic C Features&rdquo; sections of <a href="http://www.cprogramming.com/tutorial/c-tutorial.html">this tutorial series</a>; you may also benefit from the &ldquo;Pointers, Arrays and Strings&rdquo; sections as well (although they aren&rsquo;t as pertintent).</p>
-
-<h4 id="goals">Goals:</h4>
-
-<p>At the end of this tutorial you will have:</p>
+<p>If you have not used PROS or done non-VEX C code development before, checking out these following C tutorials is highly recommended.</p>
 
 <ul>
-<li>Understood the basic project structure of PROS</li>
-<li>Programmed a basic chassis with &ldquo;tank&rdquo; control or &ldquo;arcade&rdquo; control</li>
-<li>Programmed buttons to control the clawbot&rsquo;s lift</li>
-<li>Programmed a joystick axis to control the clawbot&rsquo;s claw</li>
-<li>Understood the standard subsystem module methodology</li>
-<li>Programmed a dead-reckoned autonomous routine</li>
+<li><p><a href="http://www.studytonight.com/c/user-defined-functions-in-c.php">Functions</a>. C is a language that heavily emphasizes functions, and knowing how they work is essential to using PROS. The <a href="https://pros.cs.purdue.edu/api/">PROS API</a> is a set of functions, so any time that you want to interact with a sensor or motor, you&rsquo;re using functions.</p></li>
+
+<li><p><a href="https://www.tutorialspoint.com/cprogramming/c_header_files.htm">Header Files</a>. The PROS template (the set of files automatically created when you start a PROS project) contains a couple of header files, and it&rsquo;s recommended that you make additional header files as you develop your code. Header files contain the declarations for functions and global variables (among other things), which is why the <a href="https://pros.cs.purdue.edu/api/">PROS API</a> can be found in <code>API.h</code>. Knowing what code should go in a header file (<code>.h</code>) or a source file (<code>.c</code>) can be difficult to determine at first, but it is a very useful skill to learn.</p></li>
+
+<li><p><a href="https://www.codingunit.com/printf-format-specifiers-format-conversions-and-formatted-output"><code>printf()</code></a>. At some point when developing PROS code, you will likely want to get some feedback on what the value of a variable is. This is not an exact replacement for a full debugging utility by any means, but is the standard method for troubleshooting issues in most languages and can be used for viewing sensor values or your own variables&rsquo; values. The output from these <code>printf()</code> statements can be viewed in the terminal by running <code>pros terminal</code>.</p></li>
 </ul>
 
-<p>Here&rsquo;s the robot we&rsquo;ll be programming:
+<p>And then for additional C tutorial topics, visit <a href="https://www.cprogramming.com/tutorial/c-tutorial.html">CProgramming.com</a> or <a href="http://www.studytonight.com/c/overview-of-c.php">StudyTonight</a>. A good video tutorial series (as opposed to the previous text-based tutorials) can be found on <a href="https://youtu.be/nXvy5900m3M">YouTube</a>.</p>
 
-<figure >
-    
-        <img src="https://pros.cs.purdue.edu/images/tuts/clawbot1.jpg" />
-    
-    
-</figure>
-</p>
+<h2 id="using-PROS">I know C, now how do I use PROS?</h2>
 
-<p>For the purposes of this tutorial, we&rsquo;ve plugged in our motors into the following ports:</p>
+<p>The PROS tutorials are designed to show the application of C programming to a PROS project. The <a href="https://pros.cs.purdue.edu/tutorials/clawbot/">Programming the Clawbot</a> tutorial is a great place to start, as it goes through every step of putting together a sample PROS project. Once you are ready to branch out and create your own custom project, looking through the following tutorials is recommended:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Port</th>
-<th align="center">Description</th>
-<th align="center">Port</th>
-<th align="center">Description</th>
-</tr>
-</thead>
+<ul>
+<li><p><a href="https://pros.cs.purdue.edu/tutorials/project-structure/">PROS Project Structure</a></p></li>
 
-<tbody>
-<tr>
-<td align="center">1</td>
-<td align="center"></td>
-<td align="center">6</td>
-<td align="center"></td>
-</tr>
+<li><p><a href="https://pros.cs.purdue.edu/tutorials/uploading/">Uploading Code</a></p></li>
 
-<tr>
-<td align="center">2</td>
-<td align="center">Left wheels</td>
-<td align="center">7</td>
-<td align="center"></td>
-</tr>
+<li><p><a href="https://pros.cs.purdue.edu/tutorials/debugging/">Debugging</a></p></li>
 
-<tr>
-<td align="center">3</td>
-<td align="center">Right wheels</td>
-<td align="center">8</td>
-<td align="center">Lift</td>
-</tr>
+<li><p><a href="https://pros.cs.purdue.edu/tutorials/coding-faq/">Coding FAQs</a></p></li>
+</ul>
 
-<tr>
-<td align="center">4</td>
-<td align="center"></td>
-<td align="center">9</td>
-<td align="center">Claw</td>
-</tr>
-
-<tr>
-<td align="center">5</td>
-<td align="center"></td>
-<td align="center">10</td>
-<td align="center"></td>
-</tr>
-</tbody>
-</table>
-
-<p>We modified our clawbot to include a quadrature encoder on the lift arm. We plugged the top and bottom ports into digital ports 2 and 3, respectively.</p>
-
-<p>With Atom started, you can create a new PROS project by clicking the <code>PROS</code> menu, then click <code>Create new Project</code>.</p>
-
-
-<figure >
-    
-        <img src="https://pros.cs.purdue.edu/images/atom/menu-create-new.png" />
-    
-    
-</figure>
-
-
-<p>Create a directory that you&rsquo;d like to keep the source files for your Clawbot project. We&rsquo;re creating ours in <code>C:\Users\Elliot\dev\Clawbot</code>.</p>
-
-
-<figure >
-    
-        <img src="https://pros.cs.purdue.edu/images/atom/window-create-new.png" />
-    
-    
-</figure>
-
-
-<p>Pick a directory to create the new project in and click Create. The PROS CLI will now copy the latest kernel template into the specified directory and Atom will open it.
-
-<figure >
-    
-        <img src="https://pros.cs.purdue.edu/images/atom/proj-brand-new.png" />
-    
-    
-</figure>
-</p>
-
-<h2 id="pros-project-structure">PROS Project Structure</h2>
-
-<p>When you create your project, PROS will copy all of the files necessary to build your project. The structure of the project looks like:</p>
-
-<pre><code class="language-nohighlight">project
-│   project.pros        (used by PROS CLI to know kernel version and other metadata)
-│   Makefile            (instructs make how to compile your project)
-|   common.mk           (helper file for Makefile)
-│
-└───src                 (source files should go here)
-│   │   auto.c          (source for autonomous function)
-│   │   init.c          (source for initialization)
-│   │   opcontrol.c     (source for operator control)
-│   │   Makefile        (instructs make how to compile your source files)
-|
-└───include             (Header files should go in here)
-│   │   API.h           (Lets source files know PROS API functions)
-│   │   main.h          (Includes API.h and anything else you want to include project-wide)
-│   
-└───firmware
-    │   cortex.ld       (Instructs the linker how to construct binaries for the Cortex)
-    │   libpros.a       (Pre-compiled PROS library)
-    |   STM32F10x.ld    (Instructs the linker how to construct binaries for the Cortex)
-    |   uniflash.jar    (Legacy flashing utility built w/Java)
-</code></pre>
-
-<div class="admonition note">
-<p class="admonition-title">Convention Awareness</p>
-<p>By convention, the <code>opcontrol()</code>, <code>autonomous()</code>, and initialize functions are separated into separate files (opcontrol.c, auto.c, and init.c). They could be all in the same file, but it can be helpful to organize your functions into multiple files to keep things from becoming messy.</p>
-</div>
-
-<h2 id="arcade-control">Arcade Control</h2>
-
-<p>Let&rsquo;s begin by writing a basic &ldquo;arcade&rdquo; control for the clawbot. In arcade control, the vertical joystick values control the forward/backward speed of the robot and the horizontal joystick values control the rotation of the robot. Atom will open<code>src/opcontrol.c</code> for you when you create a project, but if it is not open then you will need to open it by navigating the directory tree on the left panel.</p>
-
-<p>The template <code>opcontrol.c</code> file contains a simple infinite loop and documentation to help remind you what <code>opcontrol()</code> does.</p>
-
-<p>PROS offers functions to perform common tasks associated with programming robotics. To program basic arcade functionality, we need to be aware of two functions: one to get the joystick input and one to set the motors to a speed.</p>
-
-<pre><code class="language-c">int joystickGetAnalog ( unsigned char joystick,   // the joystick slot to check (1 for master, 2 for partner)
-                        unsigned char axis        // One of the joystick channels on a VEX Joystick: 1, 2, 3, 4, ACCEL_X, or ACCEL_Y
-                      );
-</code></pre>
-
-<p>Gets the value of a control axis on the VEX joystick.
-<em><strong>Returns</strong> the value from -127 to 127, or 0 if no joystick is connected to the requested slot.</em></p>
-
-<pre><code class="language-c">void motorSet ( unsigned char channel,  // motor channel to set from 1-10
-                int speed               // new signed speed. -127 is full reverse, 127 full forward, 0 off
-              );
-</code></pre>
-
-<p>Sets the speed of the specified motor channel.</p>
-
-<p>Armed with knowledge of these functions, let&rsquo;s modify <code>opcontrol()</code>:</p>
-
-<pre><code class="language-c">void operatorControl() {
-  int power;
-  int turn;
-    while (1) {
-        power = joystickGetAnalog(1, 2); // vertical axis on right joystick
-        turn  = joystickGetAnalog(1, 1); // horizontal axis on right joystick
-        motorSet(2, power + turn); // set left wheels
-        motorSet(3, power - turn); // set right wheels
-        delay(20);
-    }
-}
-</code></pre>
-
-<div class="admonition note">
-<p class="admonition-title">Commenting Code</p>
-<p>It&rsquo;s considered good practice to comment your code. Commenting can make it easier to understand the original intention of code when you have to look back on it months later in the middle of the competition and everything&rsquo;s broken.</p>
-
-<blockquote>
-<p>Your code should tell the story of what you are doing; your comments should tell the story of why you are doing it.
-<em>(Source: <a href="http://stackoverflow.com/a/142869">http://stackoverflow.com/a/142869</a>)</em></p>
-</blockquote>
-</p>
-</div>
-
-<h2 id="compilation">Compilation</h2>
-
-<p>Next, you will need to <strong>compile</strong> your project. Compilation converts your code into instructions the Cortex can understand. There are typically four stages to compilation. The following paragraphs explain abstract complicated technical systems. This introduction to compilation is intended to give some justification for the compilation process, but is by no means complete. <strong>This information is not necessary to program with PROS, but may be helpful for some.</strong></p>
-
-<p>1. Preprocessing</p>
-
-<p>Lines starting with a <code>#</code> are interpreted by the preprocessor as commands. These commands can include other pieces of files (<code>#include</code>), execute basic macro logic (<code>#ifdef</code>), replace text (<code>#define</code>), and more. The goal of preprocessing is to reduce duplicated code.</p>
-
-<p>For instance, to call the PROS API, all of the <em>function declarations</em> need to go in the source file. Using a <em>header file</em> can simplify this operation by writing all of the function declarations in one place, and just <code>#include</code>-ing it to reference those function declarations.</p>
-
-<p>2. Compilation</p>
-
-<p>The next stage of compilation is to translate preprocessed code into <em>assembly instructions</em> that the Arm Cortex-M3 processor can almost understand. Assembly code is human readable and reasonably converted into a language that the processor can understand.</p>
-
-<p>3. Assembly</p>
-
-<p>The assembler translates assembly instructions directly into machine code (called <em>object code</em> or <em>objects</em>). These files aren&rsquo;t considered human readable and can be interpreted by the processor directly.</p>
-
-<p>4. Linking</p>
-
-<p>The final stage of compilation is linking. Objects contain pieces of machine instructions, but may not be complete. For instance, when compiling your source files, the PROS API are not directly incorporated into your object code (merely references to the PROS API functions, as specified by the function declarations). The Linker will incorporate and rearrange all the different object files (and libraries) into one file that <em>can</em> be interpreted by the processor.</p>
-
-<p>To compile code within Atom, press <code>Ctrl</code>+<code>Shift</code>+<code>P</code> to bring up the Command Palette. You can start typing the command you wish to execute, &ldquo;Build: Trigger&rdquo;. You should also notice that it will display the available shortcut keys to execute the command. By default, triggering a build can be done by pressing <code>Ctrl</code>+<code>Alt</code>+<code>B</code> (<code>⌘</code>+<code>Alt</code>+<code>B</code>) or <code>F9</code>. If you have unsaved files, Build will prompt you to save those files. You should always save before building.</p>
-
-
-<figure >
-    
-        <img src="https://pros.cs.purdue.edu/images/atom/build.png" />
-    
-    
-</figure>
-
-
-<h2 id="uploading">Uploading Code to the Cortex</h2>
-
-<p>Now that you have compiled a binary file that the Cortex can understand, you need to upload it to the microcontroller. Within Atom, click the &lsquo;Upload to Cortex&rsquo; button in Atom. This process will upload the binary the compilation process created (<code>bin/output.bin</code>) to the Cortex and begin running it.</p>
-
-<p>If you followed these instructions correctly, you can connect a joystick to the clawbot and drive it using arcade controls!</p>
-
-
-<figure >
-    
-        <img src="https://pros.cs.purdue.edu/images/atom/upload.png" />
-    
-    
-</figure>
-
-
-<h2 id="subsystem-methodology">Subsystem Module Methodology</h2>
-
-<p>In this section, we&rsquo;ll introduce the subsystem module methodology. When developing code for complicated robotic systems, it&rsquo;s extremely helpful to abstract away the necessary steps to perform actions on a system. For instance, to set the speed of a 4 motor chassis, you may need to set the speed of the front left motor, the rear left motor, and so on. You might just have four <code>motorSet()</code> calls every time you want to set robot&rsquo;s speed, but what happens when you add another pair of motors to your chassis, or collapse your left and right sides onto two Y-cables? You would need to comb through all of your code to find all of the times you set the chassis speeds and adjust those calls accordingly. Similarly, you may want a level of abstraction for getting sensor values - what happens if you decide to switch from quadrature encoders to integrated motor encoders?</p>
-
-<p>Writing a function such as <code>chassisSet()</code> can help mitigate this problem. Additionally, you cannot write your <code>chassisSet()</code> function in multiple source files, so you need to create a single source file and be able to incorporate it with <code>opcontrol.c</code>, <code>init.c</code>, and <code>auto.c</code>. The subsystem module methodology is a standard way of organizing these sorts of functions. We define a subsystem as a major component of a robot: chassis, lift, intake, and claw are some common subsystems. We&rsquo;ll write our abstracted subsystem functions in a file like <code>src/chassis.c</code> and put our function declarations in <code>include/chassis.h</code> so that way we can call our new functions.</p>
-
-<p>Let&rsquo;s modify our existing operator control to use the subsystem methodology. We&rsquo;ll begin by creating the header file containing our function declarations. You can create a new file in the <code>include</code> directory by right clicking <code>include</code> and clicking &ldquo;New File&rdquo;. We&rsquo;ll name our file <code>chassis.h</code>. A new empty file is created for us. Header files contain declarations, but not typically definitions. They are a way to describe what resources are available to you.</p>
-
-<blockquote>
-<p>Your own header files contain declarations for interfaces between the source files of your program. Each time you have a group of related declarations and macro definitions all or most of which are needed in several different source files, it is a good idea to create a header file for them. <em>(<a href="https://gcc.gnu.org/onlinedocs/cpp/Header-Files.html">GNU</a>)</em></p>
-</blockquote>
-
-<p><code>include/chassis.h</code>:</p>
-
-<pre><code class="language-c">#ifndef _CHASSIS_H_
-#define _CHASSIS_H_
-
-// Sets the speeds of the left and right wheels of the chassis
-void chassisSet(int left, int right);
-
-#endif // _CHASSIS_H_
-</code></pre>
-
-<p><code>src/chassis.c</code>:</p>
-
-<pre><code class="language-c">#include &quot;main.h&quot;    // includes API.h and other headers
-#include &quot;chassis.h&quot; // redundant, but ensures that the corresponding header file (chassis.h) is included
-
-void chassisSet(int left, int right) {
-  motorSet(2, left);
-  motorSet(3, right);
-}
-</code></pre>
-
-<p>Using this methodology, we can rewrite our operator control to something much more concise:</p>
-
-<pre><code class="language-c">#include &quot;main.h&quot;
-#include &quot;chassis.h&quot;
-
-void opcontrol() {
-  while(1) {
-    int power, turn;
-    while (1) {
-      power = joystickGetAnalog(1, 2); // vertical axis on left joystick
-      turn  = joystickGetAnalog(1, 1); // horizontal axis on left joystick
-      chassisSet(power + turn, power - turn);
-      delay(20);
-    }
-  }
-}
-</code></pre>
-
-<p>It should be clear that congregating similar pieces of code into a C source file and a header file for other source files simplifies and organizes your code.</p>
-
-<div class="admonition note">
-<p class="admonition-title">Reduce even more</p>
-<p>You can modify <code>main.h</code> and include your own header files. In our example, we could modify our <code>main.h</code> to look like the following:</p>
-
-<pre><code class="language-c">// top of main.h omitted
-#ifndef MAIN_H_
-
-// This prevents multiple inclusion, which isn't bad for this file but is good practice
-#define MAIN_H_
-
-#include &lt;API.h&gt;
-#include &quot;chassis.h&quot; // Added this line
-
-// rest of main.h omitted from this listing
-</code></pre>
-
-<p>Then, in <code>opcontrol.c</code>, the only file we would need to <code>#include</code> is <code>main.h</code>. In future source files, we would only ever need to <code>#include &quot;main.h&quot;</code> in order to get access to all of our robot&rsquo;s subsystems&rsquo; functions!</p>
-</div>
-
-<h2 id="claw">Programming the VEX Claw</h2>
-
-<p>We now want to use the left horizontal joystick to control the aperture of the claw. We&rsquo;ll continue using the modular methodology:</p>
-
-<p><code>include/claw.h</code>:</p>
-
-<pre><code class="language-c">#ifndef _CLAW_H_
-#define _CLAW_H_
-
-void clawSet(int speed);
-
-#endif
-</code></pre>
-
-<p><code>src/claw.c</code>:</p>
-
-<pre><code class="language-c">#include &quot;main.h&quot;
-#include &quot;claw.h&quot;
-
-void clawSet(int speed) {
-  motorSet(9, -speed);
-}
-</code></pre>
-
-<p><code>src/opcontrol.c</code>:</p>
-
-<pre><code class="language-c">#include &quot;main.h&quot;
-
-void operatorControl() {
-  int power, turn;
-  while (1) {
-    power = joystickGetAnalog(1, 2); // vertical axis on left joystick
-    turn  = joystickGetAnalog(1, 1); // horizontal axis on left joystick
-    chassisSet(power + turn, power - turn);
-
-    // add the following line:
-    clawSet(joystickGetAnalog(1, 4));
-
-    delay(20);
-  }
-}
-</code></pre>
-
-<p>Your project structure should now look something like this:
-
-<figure >
-    
-        <img src="https://pros.cs.purdue.edu/images/tuts/clawbot-atom.png" />
-    
-    
-</figure>
-</p>
-
-<h2 id="lift">Controlling the Lift</h2>
-
-<p>Our drivers requested that they be able to use the trigger buttons to control the lift. At this point, complete the lift submodule on your own just like we did for the chassis and claw. If you&rsquo;re having trouble, take a look at the complete Clawbot code sample at the bottom of this page.</p>
-
-<p><code>src/opcontrol.c</code>:</p>
-
-<pre><code class="language-c">#include &quot;main.h&quot;
-
-void operatorControl() {
-  int power, turn;
-    while (1) {
-    power = joystickGetAnalog(1, 2); // vertical axis on left joystick
-    turn  = joystickGetAnalog(1, 1); // horizontal axis on left joystick
-    chassisSet(power + turn, power - turn);
-
-    clawSet(joystickGetAnalog(1, 4));
-
-    // add the following logic:
-    if(joystickGetDigital(1, 6, JOY_UP)) {
-      liftSet(127); // pressing up, so lift should go up
-    }
-    else if(joystickGetDigital(1, 6, JOY_DOWN)) {
-      liftSet(-127); // pressing down, so lift should go down
-    }
-    else {
-      liftSet(0); // no buttons are pressed, stop the lift
-    }
-
-    delay(20);
-    }
-}
-</code></pre>
-
-<p>Depending on your motor, you may notice that the arm falls back down when stopped mid-raise. This can be alleviated by applying some power to the motor when no buttons are pressed (instead of 0), or by using a control system such as PID.</p>
-
-<h2 id="autonomous">Writing a simple autonomous</h2>
-
-<p>Now that we&rsquo;ve written our code using subsystem modules, writing an autonomous can be simple. In autonomous mode, your robot receives no input from the joystick and operates on its own logic. This mode is typically initiated by a competition controller (<a href="http://www.vexrobotics.com/vexedr/products/competition-products/276-2335.html">field</a> or <a href="http://www.vexrobotics.com/vexedr/products/competition-products/275-1401.html">switch</a>), however you can call <code>autonomous()</code> like you would any other function.</p>
-
-<p>Our autonomous routine will be simple: we want to drive forward for 3.5 seconds and lift the claw for 2 seconds, then rotate left/right every 3 seconds 3 times. Hopefully, this autonomous will score our preload object and knock an object into a scored position.</p>
-
-<p>The code to accomplish this looks like:</p>
-
-<p><code>src/auto.c</code>:</p>
-
-<pre><code class="language-c">#include &quot;main.h&quot;
-
-void autonomous() {
-  chassisSet(127, 127); // drive forward
-  delay(3500); // delay 3.5 seconds = 3500 milliseconds
-  chassisSet(0, 0); // stop driving forward
-  liftSet(127); // lift goes up
-  delay(2000);
-  liftSet(0);
-  for(int i = 0; i &lt; 3; i++) {
-    chassisSet(-127, 127); // rotate left
-    delay(1000);
-    chassisSet(127, -127); // rotate right for twice as long \\--/
-    delay(2000);
-  }
-  chassisSet(0, 0); // stop chassis for safety, although potentially not necessary
-}
-</code></pre>
-
-<p>You may notice that this code runs quite inconsistently. Time delayed autonomous routines do not provide the robot with any progress reports. Due to variations caused by wheels slipping, motor output speed due to battery voltage, and other factors, a time delayed autonomous will rarely perform better than an autonomous using sensor feedback. To create a better autonomous routine, the Internet provides lots of a resources for creating commonly used feedback controllers like the PID Controller.</p>
-
-<p>Congratulations you have completed your first PROS program!</p>
-
-<p><a href="https://pros.cs.purdue.edu/clawbot.zip">Complete source code is available here.</a></p>
+<p>And then you can find tutorials for specific subjects from <a href="https://pros.cs.purdue.edu/tutorials/analog/">analog sensors</a> to <a href="https://pros.cs.purdue.edu/tutorials/tasks/">tasks and multithreading</a> as well.</p>
 
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2017 Released under the MPL 2.0 license &ndash;
+				&copy; 2018 Released under the MPL 2.0 license &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>

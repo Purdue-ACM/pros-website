@@ -3731,6 +3731,50 @@ Encoder encoder;
     </item>
     
     <item>
+      <title>Getting Started with PROS</title>
+      <link>https://pros.cs.purdue.edu/getting-started/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pros.cs.purdue.edu/getting-started/</guid>
+      <description>
+
+&lt;h2 id=&#34;first-steps&#34;&gt;First Steps&lt;/h2&gt;
+
+&lt;p&gt;The most important characteristic of PROS to note when getting started is that PROS is just C. Anything that works in standard C will work as a part of a PROS project, and similarly the errors given for code that doesn&amp;rsquo;t work will match errors given for any similar C code. Learning C is essential for using PROS.&lt;/p&gt;
+
+&lt;p&gt;If you are already familiar with C development outside of VEX, skip ahead to &lt;a href=&#34;#using-PROS&#34;&gt;Using PROS&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you have not used PROS or done non-VEX C code development before, checking out these following C tutorials is highly recommended.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.studytonight.com/c/user-defined-functions-in-c.php&#34;&gt;Functions&lt;/a&gt;. C is a language that heavily emphasizes functions, and knowing how they work is essential to using PROS. The &lt;a href=&#34;https://pros.cs.purdue.edu/api/&#34;&gt;PROS API&lt;/a&gt; is a set of functions, so any time that you want to interact with a sensor or motor, you&amp;rsquo;re using functions.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.tutorialspoint.com/cprogramming/c_header_files.htm&#34;&gt;Header Files&lt;/a&gt;. The PROS template (the set of files automatically created when you start a PROS project) contains a couple of header files, and it&amp;rsquo;s recommended that you make additional header files as you develop your code. Header files contain the declarations for functions and global variables (among other things), which is why the &lt;a href=&#34;https://pros.cs.purdue.edu/api/&#34;&gt;PROS API&lt;/a&gt; can be found in &lt;code&gt;API.h&lt;/code&gt;. Knowing what code should go in a header file (&lt;code&gt;.h&lt;/code&gt;) or a source file (&lt;code&gt;.c&lt;/code&gt;) can be difficult to determine at first, but it is a very useful skill to learn.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.codingunit.com/printf-format-specifiers-format-conversions-and-formatted-output&#34;&gt;&lt;code&gt;printf()&lt;/code&gt;&lt;/a&gt;. At some point when developing PROS code, you will likely want to get some feedback on what the value of a variable is. This is not an exact replacement for a full debugging utility by any means, but is the standard method for troubleshooting issues in most languages and can be used for viewing sensor values or your own variables&amp;rsquo; values. The output from these &lt;code&gt;printf()&lt;/code&gt; statements can be viewed in the terminal by running &lt;code&gt;pros terminal&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And then for additional C tutorial topics, visit &lt;a href=&#34;https://www.cprogramming.com/tutorial/c-tutorial.html&#34;&gt;CProgramming.com&lt;/a&gt; or &lt;a href=&#34;http://www.studytonight.com/c/overview-of-c.php&#34;&gt;StudyTonight&lt;/a&gt;. A good video tutorial series (as opposed to the previous text-based tutorials) can be found on &lt;a href=&#34;https://youtu.be/nXvy5900m3M&#34;&gt;YouTube&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;using-PROS&#34;&gt;I know C, now how do I use PROS?&lt;/h2&gt;
+
+&lt;p&gt;The PROS tutorials are designed to show the application of C programming to a PROS project. The &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/clawbot/&#34;&gt;Programming the Clawbot&lt;/a&gt; tutorial is a great place to start, as it goes through every step of putting together a sample PROS project. Once you are ready to branch out and create your own custom project, looking through the following tutorials is recommended:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/project-structure/&#34;&gt;PROS Project Structure&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/uploading/&#34;&gt;Uploading Code&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/debugging/&#34;&gt;Debugging&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/coding-faq/&#34;&gt;Coding FAQs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And then you can find tutorials for specific subjects from &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/analog/&#34;&gt;analog sensors&lt;/a&gt; to &lt;a href=&#34;https://pros.cs.purdue.edu/tutorials/tasks/&#34;&gt;tasks and multithreading&lt;/a&gt; as well.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>I2C Communication</title>
       <link>https://pros.cs.purdue.edu/tutorials/i2c/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -4404,38 +4448,6 @@ unknown. You can get the dependency installed by manually installing &lt;code&gt
 &lt;p&gt;After updating Atom to a new minor version, some packages (including &lt;code&gt;platformio-ide-terminal&lt;/code&gt;) will not work until they have been rebuilt for the new Atom version. Symptoms include missing terminal buttons and an inability to open the terminal manually using &lt;code&gt;PROS:Toggle-Terminal&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;If these symptoms apply, check if there is a red bug icon in the right-hand corner of the bottom status bar. If so, click this icon, and you will be prompted to rebuild any broken packages. For more information, see &lt;a href=&#34;http://flight-manual.atom.io/hacking-atom/sections/debugging/#check-for-incompatible-packages&#34;&gt;this section of the Atom flight manual&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>LCD Screen</title>
-      <link>https://pros.cs.purdue.edu/tutorials/lcd/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://pros.cs.purdue.edu/tutorials/lcd/</guid>
-      <description>&lt;p&gt;The LCD screen communicates to the Cortex Microcontroller via a UART cable. This communication needs to be initialized in &lt;code&gt;init.c&lt;/code&gt;:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void initialize() {
-  // ...
-  // Select &amp;quot;uart1&amp;quot; or &amp;quot;uart2&amp;quot; as appropriate
-  lcdInit(uart1);
-  lcdClear(uart1);
-  // ...
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And in any function you can do the following:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;//...
-// Print formatted text to LCD (line #1) like printf
-// supposing that &amp;quot;x&amp;quot; is an existing integer variable
-lcdPrint(uart1, 1, &amp;quot;X is %d&amp;quot;, x);
-// Print plain text to LCD (much faster than lcdPrint)
-lcdSetText(uart1, 2, &amp;quot;Hello World&amp;quot;);
-// Print current battery voltage
-lcdPrint(uart1, 1, &amp;quot;Batt: %1.3f V&amp;quot;, (double)powerLevelMain() / 1000);
-// ...
-&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

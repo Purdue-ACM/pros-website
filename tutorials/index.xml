@@ -1134,7 +1134,7 @@ sensor configuration is insufficient.&lt;/p&gt;
 
 &lt;h4 id=&#34;intended-audience&#34;&gt;Intended Audience:&lt;/h4&gt;
 
-&lt;p&gt;This tutorial is intended for developers with some programming experience, but with little to no experience with the PROS library. If you haven&amp;rsquo;t programmed before, we recommend checking out all the &amp;ldquo;Introduction and Basic C Features&amp;rdquo; sections of &lt;a href=&#34;Introduction and Basic C Features&#34;&gt;this tutorial series&lt;/a&gt;; you may also benefit from the &amp;ldquo;Pointers, Arrays and Strings&amp;rdquo; sections as well (although they aren&amp;rsquo;t as pertintent).&lt;/p&gt;
+&lt;p&gt;This tutorial is intended for developers with some programming experience, but with little to no experience with the PROS library. If you haven&amp;rsquo;t programmed before, we recommend checking out all the &amp;ldquo;Introduction and Basic C Features&amp;rdquo; sections of &lt;a href=&#34;http://www.studytonight.com/c/overview-of-c.php&#34;&gt;this tutorial series&lt;/a&gt;; you may also benefit from the &amp;ldquo;Pointers, Arrays and Strings&amp;rdquo; sections as well (although they aren&amp;rsquo;t as pertinent).&lt;/p&gt;
 
 &lt;h4 id=&#34;goals&#34;&gt;Goals:&lt;/h4&gt;
 

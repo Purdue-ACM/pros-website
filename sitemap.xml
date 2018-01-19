@@ -52,6 +52,10 @@
   
   <url>
     <loc>https://pros.cs.purdue.edu/getting-started/</loc>
+  </url>
+  
+  <url>
+    <loc>https://pros.cs.purdue.edu/getting-started/</loc>
     <priority>0</priority>
   </url>
   
@@ -82,10 +86,6 @@
   
   <url>
     <loc>https://pros.cs.purdue.edu/tutorials/pneumatics/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pros.cs.purdue.edu/getting-started/</loc>
   </url>
   
   <url>

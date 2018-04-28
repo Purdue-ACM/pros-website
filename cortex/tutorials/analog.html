@@ -1,0 +1,493 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Analog Sensors &mdash; PROS for Cortex 2.12.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for Cortex 2.12.1 documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="Clawbot Tutorial" href="clawbot.html"/>
+        <link rel="prev" title="Tutorials" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for Cortex
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  Cortex (2.12.1)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Analog Sensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#potentiometer">Potentiometer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#line-tracker">Line Tracker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gyroscope">Gyroscope</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#warning">Warning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accelerometer">Accelerometer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="clawbot.html">Clawbot Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding-faq.html">Coding FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digitalRead.html">Digital Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i2c.html">I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jinx.html">JINX Debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="known-issues.html">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pneumatics.html">Pneumatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-structure.html">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speaker.html">Speaker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultrasonic.html">Ultrasonics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html">Upgrading PROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uploading.html">Uploading</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for Cortex</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+        
+      <li>Analog Sensors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/cortex/tutorials/analog.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="analog-sensors">
+<h1>Analog Sensors<a class="headerlink" href="#analog-sensors" title="Permalink to this headline">¶</a></h1>
+<p>While computers, microcontrollers, and other devices that interface with
+VEX robots are digital systems, most of the real world operates as
+analog components, where a range of possible values exist instead of
+simply an arrangement of 1s and 0s. To communicate with these analog
+real-world systems, analog sensors like potentiometers and line trackers
+are used. These sensors return a number within a preset range of values
+in accordance with their input, as opposed to a digit sensor which
+simply returns an on or off state.</p>
+<p>To take these analog inputs and convert them to information that the
+Cortex can actually use, ADCs (Analog to Digital Converters) are used on
+each of the Analog In ports to convert the analog input signals (varying
+voltage signals) to 12 bit integers. As a result, the range of all
+analog sensors when used with the Cortex is 0 to 4095 (the range of a 12
+bit unsigned integer).</p>
+<div class="section" id="initialization">
+<h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
+<p>Unlike many of the other VEX sensors, no initialization process is
+needed in the <code class="docutils literal"><span class="pre">initializeIO()</span></code> or <code class="docutils literal"><span class="pre">initialize()</span></code> functions. However,
+it is often worthwhile to calibrate analog sensors before using them,
+which would take place in the <code class="docutils literal"><span class="pre">initialize()</span></code> function. The
+<a class="reference external" href="../api/index.html#analogCalibrate">analogCalibrate</a> function collects approximately 500 data samples over a period of half a
+second and returns the average value received over the sampling period.
+This average value can be used to account for variations like gyroscope
+orientation or ambient light for line trackers.</p>
+</div>
+<div class="section" id="potentiometer">
+<h2>Potentiometer<a class="headerlink" href="#potentiometer" title="Permalink to this headline">¶</a></h2>
+<p>Potentiometers measure angular position and can be used to determine the
+direction of rotation of its input. Potentiometers are best used in
+applications such as lifts where the sensor is not at risk of being
+rotated beyond its 250-degree physical constraint. Potentiometers
+typically do not need to be calibrated, although it may be desired as it
+helps account for possible shifting in the potentiometer mounting and to
+find the actual range of the potentiometer due to its mechanical stops
+as that range may be closer to 5-4090 instead of 0-4095. If the
+potentiometer is not calibrated, the <a class="reference external" href="../api/index.html#analogRead">analogRead</a>
+function may be used to obtain the raw
+input value of the potentiometer. If the sensor was calibrated, the
+<a class="reference external" href="../api/index.html#analogCalibrate">analogReadCalibrated</a> function should be used,
+as it will account for the sensor’s
+calibration and return more accurate results. The input to both of these
+functions is the channel number of the sensor, and an integer is
+returned.</p>
+<p>Thus an example of use on a lift would look like:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define POTENTIOMETER_PORT 1</span>
+<span class="cp">#define LIFT_MOTOR 1</span>
+
+<span class="c1">//while the potentiometer is not at its maximum position</span>
+<span class="k">while</span><span class="p">(</span><span class="n">analogRead</span><span class="p">(</span><span class="n">POTENTIOMETER_PORT</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">4095</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">motorSet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">127</span><span class="p">);</span> <span class="c1">//activate the lift</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="line-tracker">
+<h2>Line Tracker<a class="headerlink" href="#line-tracker" title="Permalink to this headline">¶</a></h2>
+<p>VEX Line Trackers operate by measuring the amount of light reflected to
+the sensor and determining the existence of lines from the difference in
+light reflected by the white tape and the dark tiles. The Line Trackers
+return a value between 0 and 405, with 0 being the lightest reading and
+4095 the darkest. It is recommended that Line Trackers be calibrated to
+account for changes in ambient light.</p>
+<p>An example of Line Tracker use:</p>
+<p>main.h:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define LINE_TRACKER_PORT 1</span>
+<span class="cp">#define DRIVE_MOTOR_LEFT 1</span>
+<span class="cp">#define DRIVE_MOTOR_RIGHT 2</span>
+</pre></div>
+</div>
+<p>init.c:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">analogCalibrate</span><span class="p">(</span><span class="n">LINE_TRACKER_PORT</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>opcontrol.c:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+
+<span class="c1">//2000 arbitrarily set as cutoff between light and dark</span>
+<span class="k">while</span><span class="p">(</span><span class="n">analogReadCalibrated</span><span class="p">(</span><span class="n">LINE_TRACKER_PORT</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="c1">// drive forward until a line is hit</span>
+  <span class="n">motorSet</span><span class="p">(</span><span class="n">DRIVE_MOTOR_LEFT</span><span class="p">,</span><span class="mi">127</span><span class="p">);</span>
+  <span class="n">motorSet</span><span class="p">(</span><span class="n">DRIVE_MOTOR_RIGHT</span><span class="p">,</span><span class="mi">127</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gyroscope">
+<h2>Gyroscope<a class="headerlink" href="#gyroscope" title="Permalink to this headline">¶</a></h2>
+<p>One of the most powerful sensors available for the VEX Cortex is the VEX
+Yaw Rate Gyro. Through proper utilization of this sensors you can
+consistently make your robot perform precise turns.</p>
+<div class="section" id="warning">
+<h3>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h3>
+<p>The VEX Yaw Rate Gyro is an analog sensor which means that it is very
+susceptible to analog noise during its operation. When utilizing this
+sensor, pay special attention to the connection wires between cortex and
+the gyro and keep them far away from motors.</p>
+<p>PROS provides a gyro library to simplify using it. A sample usage would
+be as follows:</p>
+<p>main.h:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">// Analog port number gyro is plugged into</span>
+<span class="cp">#define GYRO_PORT 1</span>
+
+<span class="c1">// Multiple gyros can be declared</span>
+<span class="n">Gyro</span> <span class="n">gyro</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>init.c:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">(){</span>
+    <span class="c1">// ... Other sensor initialization and port configuration</span>
+    <span class="c1">// If gyro reads inaccurately, change &quot;0&quot; to desired sensitivity</span>
+    <span class="c1">// See documentation on gyroInit() for up-to-date sensitivity details</span>
+    <span class="n">gyro</span> <span class="o">=</span> <span class="n">gyroInit</span><span class="p">(</span><span class="n">GYRO_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>opcontrol.c or auto.c:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(){</span>
+    <span class="c1">// ... Do work</span>
+    <span class="c1">// Get gyro reading in degrees</span>
+    <span class="kt">int</span> <span class="n">heading</span> <span class="o">=</span> <span class="n">gyroGet</span><span class="p">(</span><span class="n">gyro</span><span class="p">);</span>
+
+    <span class="c1">// ... Do other work</span>
+    <span class="c1">// Reset the gyro to zero</span>
+    <span class="n">gyroReset</span><span class="p">(</span><span class="n">gyro</span><span class="p">);</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="accelerometer">
+<h2>Accelerometer<a class="headerlink" href="#accelerometer" title="Permalink to this headline">¶</a></h2>
+<p>The VEX Accelerometer measures acceleration on the x, y, and z axes
+simultaneously. Accelerometers can be used to infer velocity and
+displacement, but due to the error induced by such integration it is
+recommended that simply the acceleration data be used. By design of the
+VEX Accelerometer each axis is treated as its own analog sensors. Due to
+this the VEX Accelerometer requires three analog input ports on the
+Cortex.</p>
+<p>Example accelerometer use:</p>
+<p>main.h:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define ACCELEROMETER_X 1</span>
+<span class="cp">#define ACCELEROMETER_Y 2</span>
+<span class="cp">#define ACCELEROMETER_Z 3</span>
+</pre></div>
+</div>
+<p>init.c:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">analogCalibrate</span><span class="p">(</span><span class="n">ACCELEROMETER_X</span><span class="p">);</span> <span class="c1">//calibrates the x axis input</span>
+  <span class="n">analogCalibrate</span><span class="p">(</span><span class="n">ACCELEROMETER_Y</span><span class="p">);</span> <span class="c1">//calibrates the y axis input</span>
+  <span class="n">analogCalibrate</span><span class="p">(</span><span class="n">ACCELEROMETER_Z</span><span class="p">);</span> <span class="c1">//calibrates the z axis input</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>opcontrol.c:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+
+<span class="c1">//Read the acceleration data for each axis</span>
+<span class="kt">int</span> <span class="n">x_acc</span> <span class="o">=</span> <span class="n">analogReadCalibratedHR</span><span class="p">(</span><span class="n">ACCELEROMETER_X</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">y_acc</span> <span class="o">=</span> <span class="n">analogReadCalibratedHR</span><span class="p">(</span><span class="n">ACCELEROMETER_Y</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">z_acc</span> <span class="o">=</span> <span class="n">analogReadCalibratedHR</span><span class="p">(</span><span class="n">ACCELEROMETER_Z</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="clawbot.html" class="btn btn-neutral float-right" title="Clawbot Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: Cortex (2.12.1)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.12.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

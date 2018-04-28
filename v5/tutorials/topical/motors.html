@@ -1,0 +1,710 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Motors &mdash; PROS for V5 3.0.6 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../index.html"/>
+        <link rel="up" title="Tutorials" href="../index.html"/>
+        <link rel="next" title="Multitasking" href="multitasking.html"/>
+        <link rel="prev" title="LLEMU (Legacy LCD Emulator)" href="llemu.html"/>
+   
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> PROS for V5
+          
+
+          
+            
+            <img src="../../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  V5 (3.0.6)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">PROS: Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blog/index.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../releases/index.html">Version Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/new-users.html">PROS First Time Users Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/installation.html">Installation Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#general-tutorials">General Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#walkthrough-tutorials">Walkthrough Tutorials</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#topical-tutorials">Topical Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="adi.html">ADI (3 Wire Ports)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controller.html">Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jinx.html">JINX Graphical Debugger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="llemu.html">LLEMU (Legacy LCD Emulator)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Motors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simple-usage">Simple Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autonomous-movement">Autonomous Movement</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#profile-movements">Profile Movements</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#velocity-controller-movement">Velocity Controller Movement</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#telemetry">Telemetry</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="multitasking.html">Multitasking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="notifications.html">Task Notifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vision.html">Vision Sensor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/c/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/cpp/index.html">C++ API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OkapiLib</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../okapi/index.html">OkapiLib Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../okapi/tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../okapi/api/index.html">OkapiLib API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extended (Advanced Users)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../extended/index.html">Extended API Topics</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PROS for V5</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+        
+      <li>Motors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/tutorials/topical/motors.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="motors">
+<h1>Motors<a class="headerlink" href="#motors" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For a full list of functions for interacting with the V5 Motors, see its
+<a class="reference external" href="../../api/c/motors.html">C API</a> and <a class="reference external" href="../../api/cpp/motors.html">C++ API</a>.</p>
+</div>
+<div class="section" id="initialization">
+<h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
+<p>V5 Motors should be configured before use in your code. Configuration options like
+the gearset and encoder units are important to address first thing in your user program
+to ensure that functions like <a class="reference external" href="../../api/c/motors.html#motor-move-velocity">motor_move_velocity</a>
+will work as expected.</p>
+<p>When declaring motors in C++, it is not necessary to set the configuration for the motor
+with its constructor (beyond its port number) more than once for the given port.
+An example of this is given below.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">initialize.c</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_set_gearing</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="n">E_MOTOR_GEARSET_18</span><span class="p">);</span>
+  <span class="n">motor_set_reversed</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+  <span class="n">motor_set_encoder_units</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="n">E_MOTOR_ENCODER_DEGREES</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">initialize.cpp</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">drive_left_initializer</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="n">E_MOTOR_GEARSET_18</span><span class="p">,</span> <span class="nb">true</span><span class="p">,</span> <span class="n">E_MOTOR_ENCODER_DEGREES</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">opcontrol.cpp</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">drive_left</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+  <span class="c1">// drive_left will have the same configuration as drive_left_initializer</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="simple-usage">
+<h2>Simple Usage<a class="headerlink" href="#simple-usage" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to interact with the motors is through the <a class="reference external" href="../../api/c/motors.html#motor-move">motor_move</a>
+function. This is analogous to the <a class="reference external" href="../../../cortex/api/index.html#motorSet">motorSet</a>
+function from PROS 2.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">opcontrol.c</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="n">controller_get_analog</span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">E_CONTROLLER_ANALOG_LEFT_Y</span><span class="p">));</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">opcontrol.cpp</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">drive_left</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">drive_left</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">E_CONTROLLER_ANALOG_LEFT_Y</span><span class="p">));</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="autonomous-movement">
+<h2>Autonomous Movement<a class="headerlink" href="#autonomous-movement" title="Permalink to this headline">¶</a></h2>
+<p>The V5 Motors can move in a number of different ways that are better suited towards
+autonomous movement than the simple <code class="docutils literal"><span class="pre">motor_move()</span></code> example shown above.</p>
+<div class="section" id="profile-movements">
+<h3>Profile Movements<a class="headerlink" href="#profile-movements" title="Permalink to this headline">¶</a></h3>
+<p>Profile movements are movements to a given position that are executed by the motor’s
+firmware. There are two functions that achieve this, <code class="docutils literal"><span class="pre">motor_move_absolute()</span></code> and
+<code class="docutils literal"><span class="pre">motor_move_relative()</span></code>. These two functions are practically similar, but
+<code class="docutils literal"><span class="pre">motor_move_relative()</span></code> takes into account the zero position of the motor’s encoder.</p>
+<p>These functions are very well suited to movement in autonomous.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">autonomous.c</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+<span class="cp">#define MOTOR_MAX_SPEED 100 </span><span class="c1">// The motor has the 36 Gearset</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_move_relative</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">MOTOR_MAX_SPEED</span><span class="p">);</span>
+  <span class="c1">// This will move 1000 ticks forward</span>
+  <span class="n">motor_move_relative</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">MOTOR_MAX_SPEED</span><span class="p">);</span>
+  <span class="c1">// This moves an additional 1000 ticks forward</span>
+  <span class="n">motor_move_absolute</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">MOTOR_MAX_SPEED</span><span class="p">);</span>
+  <span class="c1">// This moves 1000 ticks backwards to the 1000 tick position</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">autonomous.cpp</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+<span class="cp">#define MOTOR_MAX_SPEED 100 </span><span class="c1">// The motor has the 36 Gearset</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">drive_left</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+  <span class="n">drive_left</span><span class="p">.</span><span class="n">move_relative</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">MOTOR_MAX_SPEED</span><span class="p">);</span>
+  <span class="c1">// This will move 1000 ticks forward</span>
+  <span class="n">drive_left</span><span class="p">.</span><span class="n">move_relative</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">MOTOR_MAX_SPEED</span><span class="p">);</span>
+  <span class="c1">// This moves an additional 1000 ticks forward</span>
+  <span class="n">drive_left</span><span class="p">.</span><span class="n">move_absolute</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">MOTOR_MAX_SPEED</span><span class="p">);</span>
+  <span class="c1">// This moves 1000 ticks backwards to the 1000 tick position</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<p>For further reading material on the algorithms that create these profiled movement,
+see <a class="reference external" href="https://pdfs.semanticscholar.org/a229/fdba63d8d68abd09f70604d56cc07ee50f7d.pdf">Mathematics of Motion Control Profiles</a>
+for the <a class="reference external" href="https://en.wikipedia.org/wiki/Feed_forward_(control)">Feedforward</a> control,
+and <a class="reference external" href="http://georgegillard.com/documents/2-introduction-to-pid-controllers">George Gillard’s PID Explanation</a>
+for the <a class="reference external" href="https://en.wikipedia.org/wiki/Control_theory#PID_feedback_control">feedback</a> control.</p>
+</div>
+<div class="section" id="velocity-controller-movement">
+<h3>Velocity Controller Movement<a class="headerlink" href="#velocity-controller-movement" title="Permalink to this headline">¶</a></h3>
+<p>The final <code class="docutils literal"><span class="pre">move</span></code> function available with the PROS Motor API is <code class="docutils literal"><span class="pre">motor_move_velocity()</span></code>.
+This ensures consistent velocity output from the motor through the use of
+<a class="reference external" href="http://georgegillard.com/documents/2-introduction-to-pid-controllers">PID</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">autonomous.c</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+<span class="cp">#define MOTOR_MAX_SPEED 100 </span><span class="c1">// The motor has the 36 Gearset</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="n">MOTOR_MAX_SPEED</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// Move at full speed for 1 second</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">autonomous.cpp</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+<span class="cp">#define MOTOR_MAX_SPEED 100 </span><span class="c1">// The motor has the 36 Gearset</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">drive_left</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+  <span class="n">drive_left</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="n">MOTOR_MAX_SPEED</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// Move at full speed for 1 second</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="telemetry">
+<h2>Telemetry<a class="headerlink" href="#telemetry" title="Permalink to this headline">¶</a></h2>
+<p>The V5 motors return a plethora of diagnostic information about their performance.
+The motors return the following parameters:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="29%" />
+<col width="58%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">C Function</th>
+<th class="head">C++ Function</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Position</td>
+<td><a class="reference external" href="../../api/c/motors.html#motor-get-position">motor_get_position</a></td>
+<td><a class="reference external" href="../../api/cpp/motors.html#get-position">pros::Motor::get_position</a></td>
+</tr>
+<tr class="row-odd"><td>Velocity</td>
+<td><a class="reference external" href="../../api/c/motors.html#motor-get-actual-velocity">motor_get_actual_velocity</a></td>
+<td><a class="reference external" href="../../api/cpp/motors.html#get-actual-velocity">pros::Motor::get_actual_velocity</a></td>
+</tr>
+<tr class="row-even"><td>Current</td>
+<td><a class="reference external" href="../../api/c/motors.html#motor-get-current-draw">motor_get_current_draw</a></td>
+<td><a class="reference external" href="../../api/cpp/motors.html#get-current-draw">pros::Motor::get_current_draw</a></td>
+</tr>
+<tr class="row-odd"><td>Efficiency</td>
+<td><a class="reference external" href="../../api/c/motors.html#motor-get-efficiency">motor_get_efficiency</a></td>
+<td><a class="reference external" href="../../api/cpp/motors.html#get-efficiency">pros::Motor::get_efficiency</a></td>
+</tr>
+<tr class="row-even"><td>Power</td>
+<td><a class="reference external" href="../../api/c/motors.html#motor-get-power">motor_get_power</a></td>
+<td><a class="reference external" href="../../api/cpp/motors.html#get-power">pros::Motor::get_power</a></td>
+</tr>
+<tr class="row-odd"><td>Temperature</td>
+<td><a class="reference external" href="../../api/c/motors.html#motor-get-temperature">motor_get_temperature</a></td>
+<td><a class="reference external" href="../../api/cpp/motors.html#get-temperature">pros::Motor::get_temperature</a></td>
+</tr>
+<tr class="row-even"><td>Torque</td>
+<td><a class="reference external" href="../../api/c/motors.html#motor-get-torque">motor_get_torque</a></td>
+<td><a class="reference external" href="../../api/cpp/motors.html#get-torque">pros::Motor::get_torque</a></td>
+</tr>
+<tr class="row-odd"><td>Voltage</td>
+<td><a class="reference external" href="../../api/c/motors.html#motor-get-voltage">motor_get_voltage</a></td>
+<td><a class="reference external" href="../../api/cpp/motors.html#get-voltage">pros::Motor::get_voltage</a></td>
+</tr>
+<tr class="row-even"><td>Direction</td>
+<td><a class="reference external" href="../../api/c/motors.html#motor-get-direction">motor_get_direction</a></td>
+<td><a class="reference external" href="../../api/cpp/motors.html#get-direction">pros::Motor::get_direction</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="multitasking.html" class="btn btn-neutral float-right" title="Multitasking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="llemu.html" class="btn btn-neutral" title="LLEMU (Legacy LCD Emulator)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: V5 (3.0.6)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../../cortex/index.html">Cortex</a></dd>
+        
+          <dd><a href="../../index.html">V5</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.0.6',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

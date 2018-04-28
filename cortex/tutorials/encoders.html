@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Encoders &mdash; PROS for Cortex 2.12.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for Cortex 2.12.1 documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="I2C" href="i2c.html"/>
+        <link rel="prev" title="Digital Sensors" href="digitalRead.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for Cortex
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  Cortex (2.12.1)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analog.html">Analog Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clawbot.html">Clawbot Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding-faq.html">Coding FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digitalRead.html">Digital Sensors</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Encoders</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quad-encoder">Quad Encoder</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#wiring-notes">Wiring Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#integrated-motor-encoders-imes">Integrated Motor Encoders (IMEs)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="i2c.html">I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jinx.html">JINX Debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="known-issues.html">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pneumatics.html">Pneumatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-structure.html">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speaker.html">Speaker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultrasonic.html">Ultrasonics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html">Upgrading PROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uploading.html">Uploading</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for Cortex</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+        
+      <li>Encoders</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/cortex/tutorials/encoders.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="encoders">
+<h1>Encoders<a class="headerlink" href="#encoders" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="quad-encoder">
+<h2>Quad Encoder<a class="headerlink" href="#quad-encoder" title="Permalink to this headline">¶</a></h2>
+<p>Quadrature encoders can measure the rotation of the attached axle on
+your robot. Most common uses of this sensor type are to track distance
+traveled by attaching them to your robots drivetrain and monitoring how
+much the axle spins.</p>
+<p>With these sensors 1 measured tick is 1 degree of revolution.</p>
+<p>PROS provides a simple quadrature library to utilize these sensors. A
+sample usage would be as follows:</p>
+<p>main.h:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">// Digital port number for top and bottom port of quad encoder</span>
+<span class="cp">#define QUAD_TOP_PORT 1</span>
+<span class="cp">#define QUAD_BOTTOM_PORT 2</span>
+
+<span class="c1">// Multiple encoders can be declared</span>
+<span class="n">Encoder</span> <span class="n">encoder</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>init.c:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+    <span class="n">encoder</span> <span class="o">=</span> <span class="n">encoderInit</span><span class="p">(</span><span class="n">QUAD_TOP_PORT</span><span class="p">,</span> <span class="n">QUAD_BOTTOM_PORT</span><span class="p">,</span> <span class="n">is_reversed</span><span class="p">);</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>opcontrol.c or auto.c:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(){</span>
+    <span class="c1">// ... Do work</span>
+    <span class="c1">// Get encoder reading in degrees</span>
+    <span class="kt">int</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">encoderGet</span><span class="p">(</span><span class="n">encoder</span><span class="p">);</span>
+
+    <span class="c1">// ... Do other work</span>
+    <span class="c1">// Reset encoder to zero</span>
+    <span class="n">encoderReset</span><span class="p">(</span><span class="n">encoder</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="wiring-notes">
+<h3>Wiring Notes<a class="headerlink" href="#wiring-notes" title="Permalink to this headline">¶</a></h3>
+<p>One important thing to note with the use of encoders is that they should
+<strong>not</strong> be plugged into digital <strong>port 10</strong> on the Cortex. This is not
+unique to PROS, it is simply a result of the way that <a class="reference external" href="http://users.ece.utexas.edu/~valvano/Volume1/E-Book/C12_Interrupts.htm">digital
+interrupts</a>
+are configured for the Cortex. Other types of sensors may be used on
+port 10 with no effect on their performance, but encoders cannot.</p>
+</div>
+</div>
+<div class="section" id="integrated-motor-encoders-imes">
+<h2>Integrated Motor Encoders (IMEs)<a class="headerlink" href="#integrated-motor-encoders-imes" title="Permalink to this headline">¶</a></h2>
+<p>See the <a class="reference external" href="/tutorials/i2c.md/#vex-integrated-motor-encoder-ime">I2C
+Communication</a>
+page.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="i2c.html" class="btn btn-neutral float-right" title="I2C" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="digitalRead.html" class="btn btn-neutral" title="Digital Sensors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: Cortex (2.12.1)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.12.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

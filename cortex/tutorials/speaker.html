@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Speaker &mdash; PROS for Cortex 2.12.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for Cortex 2.12.1 documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="Tasks" href="tasks.html"/>
+        <link rel="prev" title="Project Structure" href="project-structure.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for Cortex
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  Cortex (2.12.1)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analog.html">Analog Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clawbot.html">Clawbot Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding-faq.html">Coding FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digitalRead.html">Digital Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i2c.html">I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jinx.html">JINX Debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="known-issues.html">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pneumatics.html">Pneumatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-structure.html">Project Structure</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Speaker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultrasonic.html">Ultrasonics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html">Upgrading PROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uploading.html">Uploading</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for Cortex</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+        
+      <li>Speaker</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/cortex/tutorials/speaker.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="speaker">
+<h1>Speaker<a class="headerlink" href="#speaker" title="Permalink to this headline">¶</a></h1>
+<p>PROS supports playing Ring Tone Text Transfer Language (RTTTL) tones on
+the VEX Speaker as demonstrated below:</p>
+<p>init.c:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">speakerInit</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>opcontrol.c or auto.c:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="p">...()</span> <span class="p">{</span>
+  <span class="c1">// Play a tune on the speaker</span>
+  <span class="n">speakerPlayRtttl</span><span class="p">(</span><span class="s">&quot;Super Mario:d=4,o=5,b=100:16e6,16e6,32p,8e6,16c6,8e6,8g6,8p,8g,8p,&quot;</span>
+   <span class="s">&quot;8c6,16p,8g,16p,8e,16p,8a,8b,16a#,8a,16g.,16e6,16g6,8a6,16f6,8g6,8e6,16c6,16d6,8b,16p,&quot;</span>
+   <span class="s">&quot;8c6,16p,8g,16p,8e,16p,8a,8b,16a#,8a,16g.,16e6,16g6,8a6,16f6,8g6,8e6,16c6,16d6,8b,16p,&quot;</span>
+   <span class="s">&quot;8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16g#,16a,16c6,16p,16a,16c6,16d6,&quot;</span>
+   <span class="s">&quot;8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16c7,16p,16c7,16c7,8p.,&quot;</span>
+   <span class="s">&quot;8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16g#,16a,16c6,16p,16a,16c6,16d6,&quot;</span> <span class="s">&quot;8p,16d#6,8p,16d6,8p,16c6&quot;</span><span class="p">);</span>
+  <span class="c1">// Play a polyphonic tune on the speaker with 2 tracks</span>
+  <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">rtttl</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;Super Mario:d=4,o=5,b=100:&quot;</span>
+      <span class="s">&quot;16e6,16e6,32p,8e6,16c6,8e6,8g6,8p,8g,8p,&quot;</span>
+      <span class="s">&quot;8c6,16p,8g,16p,8e,16p,8a,8b,16a#,8a,16g.,16e6,16g6,8a6,16f6,8g6,8e6,16c6,16d6,8b,16p,&quot;</span>
+      <span class="s">&quot;8c6,16p,8g,16p,8e,16p,8a,8b,16a#,8a,16g.,16e6,16g6,8a6,16f6,8g6,8e6,16c6,16d6,8b,16p,&quot;</span>
+      <span class="s">&quot;8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16g#,16a,16c6,16p,16a,16c6,16d6,&quot;</span>
+      <span class="s">&quot;8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16c7,16p,16c7,16c7,8p.,&quot;</span>
+      <span class="s">&quot;8p,16g6,16f#6,16f6,16d#6,16p,16e6,16p,16g#,16a,16c6,16p,16a,16c6,16d6,&quot;</span>
+      <span class="s">&quot;8p,16d#6,8p,16d6,8p,16c6&quot;</span><span class="p">,</span>
+    <span class="s">&quot;Super Mario:d=4,o=4,b=100:&quot;</span>
+      <span class="s">&quot;16d,16d,32p,8d,16d,8d,8g5,8p,8g,8p,&quot;</span>
+      <span class="s">&quot;8g5,16p,8e,16p,8c,16p,8f,8g,16f#,8f,16e.,16c5,16e5,8f5,16d5,8e5,8c5,16a,16b,8g,16p,&quot;</span>
+      <span class="s">&quot;8g5,16p,8e,16p,8c,16p,8f,8g,16f#,8f,16e.,16c5,16e5,8f5,16d5,8e5,8c5,16a,16b,8g,16p,&quot;</span>
+      <span class="s">&quot;8c,16p,16g,8p,8c5,8f,16p,16c5,16c5,16c5,8f,&quot;</span>
+      <span class="s">&quot;8c,16p,16e,8p,16g,16c5,p.,8g,&quot;</span>
+      <span class="s">&quot;8c,16p,16g,8p,8c5,8f,16p,16c5,16c5,16c5,8f,&quot;</span>
+      <span class="s">&quot;8c,16g#,8p,16a#,8p,16c5&quot;</span><span class="p">,</span>
+    <span class="nb">NULL</span>
+  <span class="p">};</span>
+  <span class="n">speakerPlayArray</span><span class="p">(</span><span class="n">rtttl</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tasks.html" class="btn btn-neutral float-right" title="Tasks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="project-structure.html" class="btn btn-neutral" title="Project Structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: Cortex (2.12.1)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.12.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

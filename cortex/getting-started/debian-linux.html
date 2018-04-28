@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installing on Linux &mdash; PROS for Cortex 2.12.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for Cortex 2.12.1 documentation" href="../index.html"/>
+        <link rel="up" title="Getting Started" href="index.html"/>
+        <link rel="next" title="Installing on OS-X" href="os-x.html"/>
+        <link rel="prev" title="Getting Started" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for Cortex
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  Cortex (2.12.1)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting Started</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#installing-pros">Installing PROS</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installing on Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installer-binaries">Installer binaries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-distro-installation-requirements">Other Distro Installation Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="os-x.html">Installing on OS-X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="windows.html">Installing on Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#first-steps">First Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#i-know-c-now-how-do-i-use-pros">I know C, now how do I use PROS?</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for Cortex</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Getting Started</a> &raquo;</li>
+        
+      <li>Installing on Linux</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/cortex/getting-started/debian-linux.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installing-on-linux">
+<h1>Installing on Linux<a class="headerlink" href="#installing-on-linux" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installer-binaries">
+<h2>Installer binaries<a class="headerlink" href="#installer-binaries" title="Permalink to this headline">¶</a></h2>
+<p>If you are installing on a Debian-based Linux distribution, such as
+Ubuntu, or have a distribution which can install Debian packages, you
+should download the provided packages from the <a class="reference external" href="https://github.com/purduesigbots/pros/releases/latest">latest
+release</a>. The
+PROS Core package provides the PROS CLI and Arm Embedded GCC Toolchain.
+The PROS Editor package provides our rebranded version of Atom. Most
+users will install both, although the PROS Core package is always
+required.</p>
+<p><strong>Note</strong> When using PROS for linux you cannot program or interact with a
+cortex directly tethered via A-A. This is a <a class="reference external" href="tutorials/known-issues#linuxAA">known issue</a> with a simple solution.</p>
+</div>
+<div class="section" id="other-distro-installation-requirements">
+<h2>Other Distro Installation Requirements<a class="headerlink" href="#other-distro-installation-requirements" title="Permalink to this headline">¶</a></h2>
+<p>To follows these instructions you need an operating system on your
+machine which is not Windows. We recommend the latest version of Ubuntu
+LTS. If you choose to not use Ubuntu LTS be sure that the flavor of
+linux you are using has support for the following packages:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://atom.io/">Atom 1.10.x+</a></li>
+<li><a class="reference external" href="https://git-scm.com/downloads">git 2.x</a></li>
+<li><a class="reference external" href="http://llvm.org/releases/download.html">clang 3.9.0+</a></li>
+<li><a class="reference external" href="https://launchpad.net/gcc-arm-embedded/+download">gcc-arm-none-eabi
+4.7.1+</a></li>
+<li><a class="reference external" href="https://www.python.org/downloads/">python3 3.5+</a></li>
+<li>python3-pip</li>
+</ul>
+<p>Once you have downloaded and install all those packages type the
+following command to install the PROS atom plugins:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">apm</span> <span class="n">install</span> <span class="n">file</span><span class="o">-</span><span class="n">icons</span> <span class="n">linter</span> <span class="n">tool</span><span class="o">-</span><span class="n">bar</span> <span class="n">tool</span><span class="o">-</span><span class="n">bar</span><span class="o">-</span><span class="n">main</span> <span class="n">busy</span> <span class="n">build</span> <span class="n">pros</span>
+</pre></div>
+</div>
+<p>Upon completion open Atom and it will finish the setup process. Now you
+are all set to use PROS!!!</p>
+<p>If you have any issues with these instructions be sure to report the
+issues on our <a class="reference external" href="https://github.com/purduesigbots/pros-atom">github
+project</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="os-x.html" class="btn btn-neutral float-right" title="Installing on OS-X" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: Cortex (2.12.1)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.12.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

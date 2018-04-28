@@ -1,0 +1,1971 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ADI (TriPort) C++ API &mdash; PROS for V5 3.0.6 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../index.html"/>
+        <link rel="up" title="API Home" href="../index.html"/>
+        <link rel="next" title="LLEMU (Legacy LCD Emulator) C++ API" href="llemu.html"/>
+        <link rel="prev" title="Vision Sensor C API" href="../c/vision.html"/>
+   
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> PROS for V5
+          
+
+          
+            
+            <img src="../../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  V5 (3.0.6)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">PROS: Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blog/index.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../releases/index.html">Version Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/new-users.html">PROS First Time Users Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/installation.html">Installation Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">API Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../c/index.html">C API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ADI (TriPort) C++ API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pros-adianalogin">pros::ADIAnalogIn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#calibrate">calibrate</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#get-value">get_value</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#get-value-calibrated">get_value_calibrated</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#get-value-calibrated-hr">get_value_calibrated_HR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pros-adianalogout">pros::ADIAnalogOut</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Constructor(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Methods</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#set-value">set_value</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pros-adidigitalin">pros::ADIDigitalIn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Constructor(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Methods</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#get-new-press">get_new_press</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id5">get_value</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pros-adidigitalout">pros::ADIDigitalOut</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Constructor(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Methods</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id8">set_value</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pros-adiencoder">pros::ADIEncoder</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Constructor(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Methods</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id11">get_value</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#reset">reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pros-adimotor">pros::ADIMotor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id12">Constructor(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Methods</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id14">get_value</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id15">set_value</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#stop">stop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pros-adiport">pros::ADIPort</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id16">Constructor(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">Methods</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#get-config">get_config</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id18">get_value</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#set-config">set_config</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id20">set_value</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pros-adiultrasonic">pros::ADIUltrasonic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id22">Constructor(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">Methods</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id24">get_value</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="llemu.html">LLEMU (Legacy LCD Emulator) C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellaneous C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motors.html">Motors C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtos.html">RTOS Facilities C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vision.html">Vision Sensor C++ API</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OkapiLib</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../okapi/index.html">OkapiLib Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../okapi/tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../okapi/api/index.html">OkapiLib API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extended (Advanced Users)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../extended/index.html">Extended API Topics</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PROS for V5</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">API Home</a> &raquo;</li>
+        
+      <li>ADI (TriPort) C++ API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/api/cpp/adi.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="adi-triport-c-api">
+<h1>ADI (TriPort) C++ API<a class="headerlink" href="#adi-triport-c-api" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Additional example code for this module can be found in
+<a class="reference external" href="../../tutorials/topical/adi.html">its Tutorial</a>.</p>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#pros-adianalogin" id="id25">pros::ADIAnalogIn</a><ul>
+<li><a class="reference internal" href="#constructor-s" id="id26">Constructor(s)</a></li>
+<li><a class="reference internal" href="#methods" id="id27">Methods</a><ul>
+<li><a class="reference internal" href="#calibrate" id="id28">calibrate</a></li>
+<li><a class="reference internal" href="#get-value" id="id29">get_value</a></li>
+<li><a class="reference internal" href="#get-value-calibrated" id="id30">get_value_calibrated</a></li>
+<li><a class="reference internal" href="#get-value-calibrated-hr" id="id31">get_value_calibrated_HR</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pros-adianalogout" id="id32">pros::ADIAnalogOut</a><ul>
+<li><a class="reference internal" href="#id1" id="id33">Constructor(s)</a></li>
+<li><a class="reference internal" href="#id2" id="id34">Methods</a><ul>
+<li><a class="reference internal" href="#set-value" id="id35">set_value</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pros-adidigitalin" id="id36">pros::ADIDigitalIn</a><ul>
+<li><a class="reference internal" href="#id3" id="id37">Constructor(s)</a></li>
+<li><a class="reference internal" href="#id4" id="id38">Methods</a><ul>
+<li><a class="reference internal" href="#get-new-press" id="id39">get_new_press</a></li>
+<li><a class="reference internal" href="#id5" id="id40">get_value</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pros-adidigitalout" id="id41">pros::ADIDigitalOut</a><ul>
+<li><a class="reference internal" href="#id6" id="id42">Constructor(s)</a></li>
+<li><a class="reference internal" href="#id7" id="id43">Methods</a><ul>
+<li><a class="reference internal" href="#id8" id="id44">set_value</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pros-adiencoder" id="id45">pros::ADIEncoder</a><ul>
+<li><a class="reference internal" href="#id9" id="id46">Constructor(s)</a></li>
+<li><a class="reference internal" href="#id10" id="id47">Methods</a><ul>
+<li><a class="reference internal" href="#id11" id="id48">get_value</a></li>
+<li><a class="reference internal" href="#reset" id="id49">reset</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pros-adimotor" id="id50">pros::ADIMotor</a><ul>
+<li><a class="reference internal" href="#id12" id="id51">Constructor(s)</a></li>
+<li><a class="reference internal" href="#id13" id="id52">Methods</a><ul>
+<li><a class="reference internal" href="#id14" id="id53">get_value</a></li>
+<li><a class="reference internal" href="#id15" id="id54">set_value</a></li>
+<li><a class="reference internal" href="#stop" id="id55">stop</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pros-adiport" id="id56">pros::ADIPort</a><ul>
+<li><a class="reference internal" href="#id16" id="id57">Constructor(s)</a></li>
+<li><a class="reference internal" href="#id17" id="id58">Methods</a><ul>
+<li><a class="reference internal" href="#get-config" id="id59">get_config</a></li>
+<li><a class="reference internal" href="#id18" id="id60">get_value</a></li>
+<li><a class="reference internal" href="#set-config" id="id61">set_config</a></li>
+<li><a class="reference internal" href="#id20" id="id62">set_value</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pros-adiultrasonic" id="id63">pros::ADIUltrasonic</a><ul>
+<li><a class="reference internal" href="#id22" id="id64">Constructor(s)</a></li>
+<li><a class="reference internal" href="#id23" id="id65">Methods</a><ul>
+<li><a class="reference internal" href="#id24" id="id66">get_value</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="pros-adianalogin">
+<h2><a class="toc-backref" href="#id25">pros::ADIAnalogIn</a><a class="headerlink" href="#pros-adianalogin" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>ADIPotentiometer</strong>, <strong>ADILineSensor</strong>, <strong>ADILightSensor</strong>, and <strong>ADIAccelerometer</strong>
+are all <a class="reference internal" href="#pros-adianalogin">pros::ADIAnalogIn</a> objects as well.</p>
+</div>
+<div class="section" id="constructor-s">
+<h3><a class="toc-backref" href="#id26">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
+<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-1 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">ADIAnalogIn</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Use the sensor</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The ADI port number (from 1-8, ‘a’-‘h’, ‘A’-‘H’) for which to create an object</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="methods">
+<h3><a class="toc-backref" href="#id27">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="calibrate">
+<h4><a class="toc-backref" href="#id28">calibrate</a><a class="headerlink" href="#calibrate" title="Permalink to this headline">¶</a></h4>
+<p>Calibrates the analog sensor on the specified channel.</p>
+<p>This method assumes that the true sensor value is not actively changing at this time and
+computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of
+calibration. The average value thus calculated is returned and stored for later calls to the
+<a class="reference external" href="../c/adi.html#adi_analog_read_calibrated">adi_analog_read_calibrated</a> and <a class="reference external" href="../c/adi.html#adi_analog_read_calibrated_HR">adi_analog_read_calibrated_HR</a> functions. These functions will return
+the difference between this value and the current sensor value when called.</p>
+<p>Do not use this function when the sensor value might be unstable
+(gyro rotation, accelerometer movement).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The ADI currently returns data at 50ms std::intervals, despite the calibrate function’s
+1ms sample rate. This sample rate was kept for the sake of being similar to PROS
+2, and increasing the sample rate would not have a tangible difference in the
+function’s performance.</p>
+</div>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-analog-calibrate">adi_analog_calibrate</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-3 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">calibrate</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+  <span class="n">sensor</span><span class="p">.</span><span class="n">calibrate</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Calibrated Reading:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sensor</span><span class="p">.</span><span class="n">get_value_calibrated</span><span class="p">();</span>
+  <span class="c1">// All readings from then on will be calibrated</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> The average sensor value computed by this function.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-value">
+<h4><a class="toc-backref" href="#id29">get_value</a><a class="headerlink" href="#get-value" title="Permalink to this headline">¶</a></h4>
+<p>Reads an analog input channel and returns the 12-bit value.</p>
+<p>The value returned is undefined if the analog pin has been switched to a different mode.
+The meaning of the returned value varies depending on the sensor attached.</p>
+<p>Inherited from <a class="reference internal" href="#id18">ADIPort::get_value</a>.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-analog-read">adi_analog_read</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-5 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Sensor Reading:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sensor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> The analog sensor value, where a value of 0 reflects an input voltage of nearly 0 V
+and a value of 4095 reflects an input voltage of nearly 5 V</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-value-calibrated">
+<h4><a class="toc-backref" href="#id30">get_value_calibrated</a><a class="headerlink" href="#get-value-calibrated" title="Permalink to this headline">¶</a></h4>
+<p>Reads the calibrated value of an analog input channel.</p>
+<p>The <a class="reference external" href="../c/adi.html#adi-analog-calibrate">adi_analog_calibrate</a> function must be run first on that channel. This function is
+inappropriate for sensor values std::intended for std::integration, as round-off error can accumulate
+causing drift over time. Use <a class="reference external" href="../c/adi.html#adi_analog_read_calibrated_HR">adi_analog_read_calibrated_HR</a> instead.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi_analog_read_calibrated">adi_analog_read_calibrated</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-6 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-7 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">get_value_calibrated</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+  <span class="n">sensor</span><span class="p">.</span><span class="n">calibrate</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Calibrated Reading:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sensor</span><span class="p">.</span><span class="n">get_value_calibrated</span><span class="p">();</span>
+  <span class="c1">// All readings from then on will be calibrated</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> The difference of the sensor value from its calibrated default from -4095 to 4095.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-value-calibrated-hr">
+<h4><a class="toc-backref" href="#id31">get_value_calibrated_HR</a><a class="headerlink" href="#get-value-calibrated-hr" title="Permalink to this headline">¶</a></h4>
+<p>Reads the calibrated value of an analog input channel 1-8 with enhanced precision.</p>
+<p>The <a class="reference external" href="../c/adi.html#adi-analog-calibrate">adi_analog_calibrate</a> function must be run first. This is std::intended for std::integrated sensor
+values such as gyros and accelerometers to reduce drift due to round-off, and should not be
+used on a sensor such as a line tracker or potentiometer.</p>
+<p>The value returned actually has 16 bits of “precision”, even though the ADC only reads
+12 bits, so that errors induced by the average value being between two values come out
+in the wash when std::integrated over time. Think of the value as the true value times 16.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi_analog_read_calibrated_HR">adi_analog_read_calibrated_HR</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-8 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-9 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">get_value_calibrated_HR</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+  <span class="n">sensor</span><span class="p">.</span><span class="n">calibrate</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;High Res Calibrated Reading:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sensor</span><span class="p">.</span><span class="n">get_value_calibrated_HR</span><span class="p">();</span>
+  <span class="c1">// All readings from then on will be calibrated</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> The difference of the sensor value from its calibrated default from -16384 to 16384.</p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="pros-adianalogout">
+<h2><a class="toc-backref" href="#id32">pros::ADIAnalogOut</a><a class="headerlink" href="#pros-adianalogout" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id33">Constructor(s)</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-10 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-11 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogOut</span><span class="o">::</span><span class="n">ADIAnalogOut</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogOut</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+  <span class="c1">// Use the sensor</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The ADI port number (from 1-8, ‘a’-‘h’, ‘A’-‘H’) for which to create an object</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id34">Methods</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="set-value">
+<h4><a class="toc-backref" href="#id35">set_value</a><a class="headerlink" href="#set-value" title="Permalink to this headline">¶</a></h4>
+<p>Sets the output for the Analog Output from 0 (0V) to 4095 (5V).</p>
+<p>Inherited from <a class="reference internal" href="#id20">ADIPort::set_value</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-12 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-13 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogOut</span><span class="o">::</span><span class="n">set_value</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">value</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogOut</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+  <span class="n">sensor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">4095</span><span class="p">);</span> <span class="c1">// Set the port to 5V</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>value</td>
+<td>The value to set the ADI port to from 0 (0V) to 4095 (5V)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if the operation was successful, PROS_ERR otherwise.</p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="pros-adidigitalin">
+<h2><a class="toc-backref" href="#id36">pros::ADIDigitalIn</a><a class="headerlink" href="#pros-adidigitalin" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id37">Constructor(s)</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-14 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-15 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+  <span class="c1">// Use the sensor</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The ADI port number (from 1-8, ‘a’-‘h’, ‘A’-‘H’) for which to create an object</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id38">Methods</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="get-new-press">
+<h4><a class="toc-backref" href="#id39">get_new_press</a><a class="headerlink" href="#get-new-press" title="Permalink to this headline">¶</a></h4>
+<p>Returns a rising-edge case for a digital button press.</p>
+<p>This function is not thread-safe.
+Multiple tasks polling a single button may return different results under the
+same circumstances, so only one task should call this function for any given
+button. E.g., Task A calls this function for buttons 1 and 2. Task B may call
+this function for button 3, but should not for buttons 1 or 2. A typical
+use-case for this function is to call inside opcontrol to detect new button
+presses, and not in any other tasks.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-digital-get-new-press">adi_digital_get_new_press</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-16 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-17 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span><span class="o">::</span><span class="n">get_new_press</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">get_new_press</span><span class="p">())</span> <span class="p">{</span>
+      <span class="c1">// Toggle pneumatics or other state operations</span>
+    <span class="p">}</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> 1 if the button on the controller is pressed and had not been pressed
+the last time this function was called, 0 otherwise.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id5">
+<h4><a class="toc-backref" href="#id40">get_value</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>Gets the digital value (1 or 0) of a pin.</p>
+<p>Inherited from <a class="reference internal" href="#id18">ADIPort::get_value</a>.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-digital-read">adi_digital_read</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-18 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-19 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Sensor Value:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sensor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> True if the pin is <a class="reference external" href="../c/adi.html#HIGH">HIGH</a>, or false if it is <a class="reference external" href="../c/adi.html#LOW">LOW</a>.</p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="pros-adidigitalout">
+<h2><a class="toc-backref" href="#id41">pros::ADIDigitalOut</a><a class="headerlink" href="#pros-adidigitalout" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id42">Constructor(s)</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-20 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-21 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalOut</span><span class="o">::</span><span class="n">ADIDigitalOut</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span>
+                                     <span class="kt">bool</span> <span class="n">init_state</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">bool</span> <span class="n">state</span> <span class="o">=</span> <span class="n">LOW</span><span class="p">;</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalOut</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">,</span> <span class="n">state</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">state</span> <span class="o">!=</span> <span class="n">state</span><span class="p">;</span>
+    <span class="n">sensor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">state</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span> <span class="c1">// toggle the sensor value every 50ms</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The ADI port number (from 1-8, ‘a’-‘h’, ‘A’-‘H’) for which to create an object</td>
+</tr>
+<tr class="row-odd"><td>init_state</td>
+<td>The initial state for the digital output. The default value is false.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id43">Methods</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h4><a class="toc-backref" href="#id44">set_value</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p>Sets the digital value (1 or 0) of a pin.</p>
+<p>Inherited from <a class="reference internal" href="#id20">ADIPort::set_value</a>.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-digital-write">adi_digital_write</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-22 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-23 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalOut</span><span class="o">::</span><span class="n">set_value</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">value</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">bool</span> <span class="n">state</span> <span class="o">=</span> <span class="n">LOW</span><span class="p">;</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalOut</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">state</span> <span class="o">!=</span> <span class="n">state</span><span class="p">;</span>
+    <span class="n">sensor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">state</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span> <span class="c1">// toggle the sensor value every 50ms</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>value</td>
+<td>an expression evaluating to “true” or “false” to set the output to HIGH or LOW
+respectively, or the constants HIGH or LOW themselves</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if the operation was successful, PROS_ERR otherwise.</p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="pros-adiencoder">
+<h2><a class="toc-backref" href="#id45">pros::ADIEncoder</a><a class="headerlink" href="#pros-adiencoder" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3><a class="toc-backref" href="#id46">Constructor(s)</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-24 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-25 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">ADIEncoder</span><span class="o">::</span><span class="n">ADIEncoder</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_top</span><span class="p">,</span>
+                         <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_bottom</span><span class="p">,</span>
+                         <span class="k">const</span> <span class="kt">bool</span> <span class="n">reverse</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define PORT_TOP 1</span>
+<span class="cp">#define PORT_BOTTOM 2</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIEncoder</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">PORT_TOP</span><span class="p">,</span> <span class="n">PORT_BOTTOM</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+  <span class="c1">// Use the sensor</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="92%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port_top</td>
+<td>the “top” wire from the encoder sensor with the removable cover side UP. This should be in port 1, 3, 5, or 7 (‘A’, ‘C’, ‘E’, ‘G’).</td>
+</tr>
+<tr class="row-odd"><td>port_bottom</td>
+<td>the “bottom” wire from the encoder sensor</td>
+</tr>
+<tr class="row-even"><td>reverse</td>
+<td>if “true”, the sensor will count in the opposite direction. The default value is “false”.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="id10">
+<h3><a class="toc-backref" href="#id47">Methods</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h4><a class="toc-backref" href="#id48">get_value</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<p>Gets the number of ticks recorded by the encoder.</p>
+<p>There are 360 ticks in one revolution.</p>
+<p>Inherited from <a class="reference internal" href="#id18">ADIPort::get_value</a>.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-encoder-get">adi_encoder_get</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-26 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-27 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-26 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIEncoder</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-27 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define PORT_TOP 1</span>
+<span class="cp">#define PORT_BOTTOM 2</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIEncoder</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">PORT_TOP</span><span class="p">,</span> <span class="n">PORT_BOTTOM</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Encoder Value: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sensor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="reset">
+<h4><a class="toc-backref" href="#id49">reset</a><a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
+<p>Resets the encoder to zero.</p>
+<p>It is safe to use this method while an encoder is enabled. It is not necessary to call this
+method before stopping or starting an encoder.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-encoder-reset">adi_encoder_reset</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-28 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-29 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-28 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIEncoder</span><span class="o">::</span><span class="n">reset</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-29 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define PORT_TOP 1</span>
+<span class="cp">#define PORT_BOTTOM 2</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIEncoder</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">PORT_TOP</span><span class="p">,</span> <span class="n">PORT_BOTTOM</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// Move the encoder around in this time</span>
+  <span class="n">sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span> <span class="c1">// The encoder is now zero again</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> 1 if the operation was successful, PROS_ERR otherwise.</p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="pros-adimotor">
+<h2><a class="toc-backref" href="#id50">pros::ADIMotor</a><a class="headerlink" href="#pros-adimotor" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h3><a class="toc-backref" href="#id51">Constructor(s)</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-30 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-31 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-30 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span><span class="o">::</span><span class="n">ADIMotor</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-31 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span> <span class="n">motor</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+  <span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span> <span class="c1">// Go full speed forward</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Commanded Motor Power: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">motor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span> <span class="c1">// Will display 127</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// Stop the motor</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The ADI port number (from 1-8, ‘a’-‘h’, ‘A’-‘H’) for which to create an object</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="id13">
+<h3><a class="toc-backref" href="#id52">Methods</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h4><a class="toc-backref" href="#id53">get_value</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<p>Returns the last set speed of the motor on the given port.</p>
+<p>Inherited from <a class="reference internal" href="#id18">ADIPort::get_value</a>.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-motor-get">adi_motor_get</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-32 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-33 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-32 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-33 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span> <span class="n">motor</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+  <span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span> <span class="c1">// Go full speed forward</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Commanded Motor Power: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">motor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span> <span class="c1">// Will display 127</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// Stop the motor</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> The last set speed of the motor on the given port.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id15">
+<h4><a class="toc-backref" href="#id54">set_value</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<p>Sets the speed of the given motor.</p>
+<p>Inherited from <a class="reference internal" href="#id20">ADIPort::set_value</a>.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-motor-set">adi_motor_set</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-34 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-35 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-34 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span><span class="o">::</span><span class="n">set_value</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">value</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-35 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span> <span class="n">motor</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+  <span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span> <span class="c1">// Go full speed forward</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Commanded Motor Power: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">motor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span> <span class="c1">// Will display 127</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// Stop the motor</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>speed</td>
+<td>the new signed speed; -127 is full reverse and 127 is full forward, with 0 being off</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if the operation was successful, PROS_ERR otherwise</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="stop">
+<h4><a class="toc-backref" href="#id55">stop</a><a class="headerlink" href="#stop" title="Permalink to this headline">¶</a></h4>
+<p>Stops the given motor.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-motor-stop">adi_motor_stop</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-36 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-37 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-36 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span><span class="o">::</span><span class="n">stop</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-37 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span> <span class="n">motor</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+  <span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span> <span class="c1">// Go full speed forward</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Commanded Motor Power: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">motor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span> <span class="c1">// Will display 127</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="n">motor</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span> <span class="c1">// Stop the motor</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> 1 if the operation was successful, PROS_ERR otherwise.</p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="pros-adiport">
+<h2><a class="toc-backref" href="#id56">pros::ADIPort</a><a class="headerlink" href="#pros-adiport" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id16">
+<h3><a class="toc-backref" href="#id57">Constructor(s)</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-38 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-39 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-38 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">ADIPort</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                         <span class="n">adi_port_config_e_t</span> <span class="n">type</span> <span class="o">=</span> <span class="n">E_ADI_TYPE_UNDEFINED</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-39 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span> <span class="n">E_ADI_ANALOG_IN</span><span class="p">);</span>
+  <span class="c1">// Displays the value of E_ADI_ANALOG_IN</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Port Type: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sensor</span><span class="p">.</span><span class="n">get_config</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The ADI port number (from 1-8, ‘a’-‘h’, ‘A’-‘H’) for which to create an object</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>The <a class="reference external" href="adi_port_config_e_t">configuration</a> type for the port</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="id17">
+<h3><a class="toc-backref" href="#id58">Methods</a><a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="get-config">
+<h4><a class="toc-backref" href="#id59">get_config</a><a class="headerlink" href="#get-config" title="Permalink to this headline">¶</a></h4>
+<p>Returns the configuration for the given ADI port.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-port-config-get">adi_port_get_config</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-40 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-41 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-40 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">get_config</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-41 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span> <span class="n">E_ADI_ANALOG_IN</span><span class="p">);</span>
+  <span class="c1">// Displays the value of E_ADI_ANALOG_IN</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Port Type: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_port_get_config</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<hr class="docutils" />
+</div>
+<div class="section" id="id18">
+<span id="id19"></span><h4><a class="toc-backref" href="#id60">get_value</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+<p>Returns the value for the given ADI port.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-port-value-get">adi_port_get_value</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-42 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-43 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-42 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-43 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span> <span class="n">E_ADI_ANALOG_IN</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Port Value: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sensor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> The value for the given ADI port.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="set-config">
+<h4><a class="toc-backref" href="#id61">set_config</a><a class="headerlink" href="#set-config" title="Permalink to this headline">¶</a></h4>
+<p>Configures an ADI port to act as a given sensor type.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-port-config-set">adi_port_set_config</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-44 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-45 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-44 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">set_config</span> <span class="p">(</span> <span class="n">adi_port_config_e_t</span> <span class="n">type</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-45 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span> <span class="n">E_ADI_DIGITAL_IN</span><span class="p">);</span>
+  <span class="c1">// Do things as a digital sensor</span>
+  <span class="c1">// Digital is unplugged and an analog is plugged in</span>
+  <span class="n">sensor</span><span class="p">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">E_ADI_ANALOG_IN</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>type</td>
+<td>The <a class="reference external" href="../c/adi.html#adi-port-config-e-t">configuration</a> type for the port</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if the operation was successful, PROS_ERR otherwise.</p>
+<hr class="docutils" />
+</div>
+<div class="section" id="id20">
+<span id="id21"></span><h4><a class="toc-backref" href="#id62">set_value</a><a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
+<p>Sets the value for the given ADI port</p>
+<p>This only works on ports configured as outputs, and the behavior will change
+depending on the configuration of the port.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-port-value-set">adi_port_set_value</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-46 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-47 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-46 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">set_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-47 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">,</span> <span class="n">E_ADI_DIGITAL_OUT</span><span class="p">);</span>
+  <span class="n">sensor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>value</td>
+<td>The value to set the ADI port to</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if the operation was successful, PROS_ERR otherwise.</p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="pros-adiultrasonic">
+<h2><a class="toc-backref" href="#id63">pros::ADIUltrasonic</a><a class="headerlink" href="#pros-adiultrasonic" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id22">
+<h3><a class="toc-backref" href="#id64">Constructor(s)</a><a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-48 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-49 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-48 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIUltrasonic</span><span class="o">::</span><span class="n">ADIUltrasonic</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_echo</span><span class="p">,</span>
+                                     <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_ping</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-49 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define PORT_ECHO 1</span>
+<span class="cp">#define PORT_PING 2</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIUltrasonic</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">PORT_ECHO</span><span class="p">,</span> <span class="n">PORT_PING</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Print the distance read by the ultrasonic</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sensor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port_echo</td>
+<td>the port connected to the yellow INPUT cable. This should be in port 1, 3, 5, or 7 (‘A’, ‘C’, ‘E’, ‘G’).</td>
+</tr>
+<tr class="row-odd"><td>port_ping</td>
+<td>the port connected to the orange OUTPUT cable. This should be in the next highest port following port_echo.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="id23">
+<h3><a class="toc-backref" href="#id65">Methods</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id24">
+<h4><a class="toc-backref" href="#id66">get_value</a><a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<p>Gets the current ultrasonic sensor value in centimeters.</p>
+<p>If no object was found, zero is returned. If the ultrasonic sensor was never started, the
+return value is PROS_ERR. Round and fluffy objects can cause inaccurate values to be
+returned.</p>
+<p>Inherited from <a class="reference internal" href="#id18">ADIPort::get_value</a>.</p>
+<p>Analogous to <a class="reference external" href="../c/adi.html#adi-ultrasonic-get">adi_ultrasonic_get</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-50 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-51 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-50 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIUltrasonic</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-51 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define PORT_ECHO 1</span>
+<span class="cp">#define PORT_PING 2</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIUltrasonic</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">PORT_ECHO</span><span class="p">,</span> <span class="n">PORT_PING</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Print the distance read by the ultrasonic</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Distance: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sensor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> The distance to the nearest object in centimeters.</p>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="llemu.html" class="btn btn-neutral float-right" title="LLEMU (Legacy LCD Emulator) C++ API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../c/vision.html" class="btn btn-neutral" title="Vision Sensor C API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: V5 (3.0.6)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../../cortex/index.html">Cortex</a></dd>
+        
+          <dd><a href="../../index.html">V5</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.0.6',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

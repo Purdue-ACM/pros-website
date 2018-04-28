@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Upgrading PROS &mdash; PROS for Cortex 2.12.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for Cortex 2.12.1 documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="Uploading" href="uploading.html"/>
+        <link rel="prev" title="Ultrasonics" href="ultrasonic.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for Cortex
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  Cortex (2.12.1)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analog.html">Analog Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clawbot.html">Clawbot Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding-faq.html">Coding FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digitalRead.html">Digital Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i2c.html">I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jinx.html">JINX Debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="known-issues.html">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pneumatics.html">Pneumatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-structure.html">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speaker.html">Speaker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultrasonic.html">Ultrasonics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Upgrading PROS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hey-i-heard-there-was-a-new-release-of-the-pros-kernel-how-do-i-upgrade-my-project">Hey! I heard there was a new release of the PROS kernel– How do I upgrade my project?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-the-new-version">Downloading the new version</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#but-i-have-old-projects-that-need-to-get-upgraded">But I have old projects that need to get upgraded!</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-now">What now?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="uploading.html">Uploading</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for Cortex</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+        
+      <li>Upgrading PROS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/cortex/tutorials/upgrading.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="upgrading-pros">
+<h1>Upgrading PROS<a class="headerlink" href="#upgrading-pros" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="hey-i-heard-there-was-a-new-release-of-the-pros-kernel-how-do-i-upgrade-my-project">
+<h2>Hey! I heard there was a new release of the PROS kernel– How do I upgrade my project?<a class="headerlink" href="#hey-i-heard-there-was-a-new-release-of-the-pros-kernel-how-do-i-upgrade-my-project" title="Permalink to this headline">¶</a></h2>
+<p>Never fear, you’ve come to the right place.</p>
+<div class="section" id="downloading-the-new-version">
+<h3>Downloading the new version<a class="headerlink" href="#downloading-the-new-version" title="Permalink to this headline">¶</a></h3>
+<p>The first step in this process is to acquire a physical copy of the
+kernel. Don’t worry, it’s easier than it sounds.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Terminology:</p>
+<p class="last">From now on, this tutorial will specify keypress commands in the form
+<code class="docutils literal"><span class="pre">CTRL</span></code>-<code class="docutils literal"><span class="pre">SHIFT</span></code>-<code class="docutils literal"><span class="pre">P</span></code>. On macOS, the
+equivalent command is <code class="docutils literal"><span class="pre">⌘</span></code> + <code class="docutils literal"><span class="pre">SHIFT</span></code> + <code class="docutils literal"><span class="pre">P</span></code>, so for the rest of
+this tutorial, assume that <code class="docutils literal"><span class="pre">CTRL</span></code> refers to <code class="docutils literal"><span class="pre">⌘</span></code> unless otherwise
+specified.</p>
+</div>
+<ol class="arabic simple">
+<li>In Atom, type <code class="docutils literal"><span class="pre">CTRL</span></code> + <code class="docutils literal"><span class="pre">SHIFT</span></code> + <code class="docutils literal"><span class="pre">P</span></code>, and then start typing
+‘conductor’.</li>
+</ol>
+<img alt="../_images/open-conductor.png" src="../_images/open-conductor.png" />
+<ol class="arabic simple" start="2">
+<li>A nice tab like this will appear:</li>
+</ol>
+<img alt="../_images/conductor-gui.png" src="../_images/conductor-gui.png" />
+<ol class="arabic simple" start="3">
+<li>In the ‘Global Configuration’ section, under ‘Kernels,’ there is a list:</li>
+</ol>
+<img alt="../_images/conductor-gui-zoom.png" src="../_images/conductor-gui-zoom.png" />
+<p>The latest version of the kernel appears at the top of the list, and the
+versions you have available to use have the small computer icon to the
+right of the version number.</p>
+<ol class="arabic simple" start="4">
+<li>To download the latest version, click the small cloud icon on the far
+right of the version number.</li>
+<li>Once the download has completed, a green balloon will pop up
+informing you as such.</li>
+</ol>
+<img alt="../_images/download-complete.png" src="../_images/download-complete.png" />
+<p>If you don’t have any old projects to upgrade, you’re done! New projects
+will be created, by default, with the latest version of the kernel you
+have locally.</p>
+</div>
+<div class="section" id="but-i-have-old-projects-that-need-to-get-upgraded">
+<h3>But I have old projects that need to get upgraded!<a class="headerlink" href="#but-i-have-old-projects-that-need-to-get-upgraded" title="Permalink to this headline">¶</a></h3>
+<p>Alright, here’s how:</p>
+<ol class="arabic simple">
+<li>Up on the menu bar in Atom, select
+<code class="docutils literal"><span class="pre">PROS</span></code>&gt; <code class="docutils literal"><span class="pre">Upgrade</span> <span class="pre">a</span> <span class="pre">PROS</span> <span class="pre">Project</span></code></li>
+</ol>
+<img alt="../_images/upgrade-menu.png" src="../_images/upgrade-menu.png" />
+<ol class="arabic simple" start="2">
+<li>A new dialog will appear, asking you to select the project folder and the kernel version:</li>
+</ol>
+<img alt="../_images/upgrade-project.png" src="../_images/upgrade-project.png" />
+<p>Note that choosing ‘Auto-select latest’ in the dropdown will do the same
+thing as manually selecting the latest version (as it is shown in the
+screenshot above).</p>
+<ol class="arabic simple" start="3">
+<li>If it works, another green balloon will appear to let you know:</li>
+</ol>
+<img alt="../_images/upgrade-success.png" src="../_images/upgrade-success.png" />
+<p>If the balloon is red, that means the conductor failed to upgrade the
+project successfully. In this case, follow any instructions in the
+balloon and try again.</p>
+</div>
+<div class="section" id="what-now">
+<h3>What now?<a class="headerlink" href="#what-now" title="Permalink to this headline">¶</a></h3>
+<p>You’re done– now go make something cool!</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="uploading.html" class="btn btn-neutral float-right" title="Uploading" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ultrasonic.html" class="btn btn-neutral" title="Ultrasonics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: Cortex (2.12.1)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.12.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

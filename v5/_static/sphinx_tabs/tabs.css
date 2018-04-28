@@ -1,0 +1,53 @@
+.sphinx-tabs {
+    margin-bottom: 2em;
+}
+
+.sphinx-tabs .sphinx-menu a.item {
+    color: #E6B85C !important;
+}
+
+.sphinx-tabs .sphinx-menu {
+    border-bottom-color: #B89349 !important;
+}
+
+.sphinx-tabs .sphinx-menu a.active.item {
+    border-color: #B89349 !important;
+    background: #333 !important;
+}
+
+.sphinx-tab {
+    border-color: #B89349 !important;
+    background: #333 !important;
+    box-sizing: border-box;
+}
+
+.tab div[class^='highlight'] {
+    border: none;
+    background: #333 !important;
+    box-sizing: border-box;
+}
+
+.tab div[class^='highlight']:last-child {
+    margin-bottom: 0;
+    border: none;
+    background: #333 !important;
+    box-sizing: border-box;
+}
+
+/* Code tabs don't need the code-block border */
+.code-tab.tab {
+    padding: 0.4em !important;
+    background: #333 !important;
+}
+
+.code-tab.tab div[class^='highlight'] {
+    border: none;
+    background: #333 !important;
+}
+
+/* Semantic UI tabs don't shrink, make font smaller when viewing in mobile devices */
+@media screen and (max-width: 768px) {
+    .sphinx-tabs .sphinx-menu a.item {
+        font-size: 0.9em !important;
+    }
+}

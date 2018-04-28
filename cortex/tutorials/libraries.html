@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Libraries &mdash; PROS for Cortex 2.12.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for Cortex 2.12.1 documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="Pneumatics" href="pneumatics.html"/>
+        <link rel="prev" title="LCD" href="lcd.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for Cortex
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  Cortex (2.12.1)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analog.html">Analog Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clawbot.html">Clawbot Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding-faq.html">Coding FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digitalRead.html">Digital Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i2c.html">I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jinx.html">JINX Debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="known-issues.html">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcd.html">LCD</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Libraries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-libraries-for-pros">Using Libraries for PROS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#making-libraries-for-pros-using-github-releases">Making Libraries for PROS using GitHub Releases</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pneumatics.html">Pneumatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-structure.html">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speaker.html">Speaker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultrasonic.html">Ultrasonics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html">Upgrading PROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uploading.html">Uploading</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for Cortex</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+        
+      <li>Libraries</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/cortex/tutorials/libraries.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="libraries">
+<h1>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h1>
+<p><strong>Since PROS CLI 2.6.0, PROS for Atom 0.7.2, PROS Kernel 2.12.0</strong></p>
+<p>PROS supports the concept of adding libraries, allowing you to
+modularize and share code with others. PROS libraries can be any set of
+files, but are typically a collection of precompiled code with some
+header files.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Under Construction
+This section of our documentation is still under construction.
+Atom documentation is coming soon.</p>
+</div>
+<div class="section" id="using-libraries-for-pros">
+<h2>Using Libraries for PROS<a class="headerlink" href="#using-libraries-for-pros" title="Permalink to this headline">¶</a></h2>
+<p>For example, to set up <a class="reference external" href="https://github.com/purduesigbots/libblrs">Boiler Robotics’
+libblrs</a>, you can do the
+following from command line:</p>
+<div class="code bash highlight-c"><div class="highlight"><pre><span></span><span class="n">pros</span> <span class="n">conduct</span> <span class="n">add</span><span class="o">-</span><span class="n">depot</span> <span class="o">--</span><span class="n">name</span> <span class="n">libblrs</span> <span class="o">--</span><span class="n">registrar</span> <span class="n">github</span><span class="o">-</span><span class="n">releases</span> <span class="o">--</span><span class="n">location</span> <span class="n">purduesigbots</span><span class="o">/</span><span class="n">libblrs</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">configure</span>
+<span class="n">pros</span> <span class="n">conduct</span> <span class="n">download</span> <span class="n">libmtrmgr</span>
+<span class="n">pros</span> <span class="n">conduct</span> <span class="n">add</span><span class="o">-</span><span class="n">lib</span> <span class="o">&lt;</span><span class="n">project</span><span class="o">-</span><span class="n">path</span><span class="o">&gt;</span> <span class="n">libmtrmgr</span>
+</pre></div>
+</div>
+<p>Using Atom, you can open the PROS Conductor by pressing
+<code class="docutils literal"><span class="pre">Ctrl</span></code> + <code class="docutils literal"><span class="pre">Shift</span></code> + <code class="docutils literal"><span class="pre">P</span></code>, then typing <code class="docutils literal"><span class="pre">Conductor</span></code>. Scroll down
+to the Global Configuration section and add a depot.</p>
+<p>{{&lt; figure src=”/images/tuts/add-depot-conductor.png” &gt;}}</p>
+<p>Select github-releases if not already done so, then fill out the
+following fields:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>Name the depot: libblrs
+Depot location: purduesigbots/libblrs
+</pre></div>
+</div>
+<p>You may leave the rest of the options blank.</p>
+<img alt="../_images/add-depot-libblrs.png" src="../_images/add-depot-libblrs.png" />
+<p>Now, you should see the various libraries offered by the libblrs
+repository.</p>
+<img alt="../_images/add-depot-withlibblrs.png" src="../_images/add-depot-withlibblrs.png" />
+<p>You can download whichever libraries you would like to use now by
+clicking on the download button. Next, you should open the project you
+want to add a library to, if you have not already done so. Select the
+project in the Conductor window and click “Add Library”. Select the
+library you want to add and click OK. You will now have access to the
+capabilities provided by the library!</p>
+</div>
+<div class="section" id="making-libraries-for-pros-using-github-releases">
+<h2>Making Libraries for PROS using GitHub Releases<a class="headerlink" href="#making-libraries-for-pros-using-github-releases" title="Permalink to this headline">¶</a></h2>
+<p>Make a template.mk file in the root directory of your project and paste
+the following template:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>LIBNAME=libfbc
+VERSION=1.0.0
+
+# extra files (like header files)
+TEMPLATEFILES = include/fbc_pid.h include/fbc.h
+# basename of the source files that should be archived
+TEMPLATEOBJS = fbc_pid fbc
+
+TEMPLATE=$(ROOT)/$(LIBNAME)-template
+
+.DEFAULT_GOAL: all
+
+library: clean $(BINDIR) $(SUBDIRS) $(ASMOBJ) $(COBJ) $(CPPOBJ)
+    $(MCUPREFIX)ar rvs $(BINDIR)/$(LIBNAME).a $(foreach f,$(TEMPLATEOBJS),$(BINDIR)/$(f).o)
+    mkdir -p $(TEMPLATE) $(TEMPLATE)/firmware $(addprefix $(TEMPLATE)/, $(dir $(TEMPLATEFILES)))
+    cp $(BINDIR)/$(LIBNAME).a $(TEMPLATE)/firmware/$(LIBNAME).a
+    $(foreach f,$(TEMPLATEFILES),cp $(f) $(TEMPLATE)/$(f);)
+    pros conduct create-template $(LIBNAME) $(VERSION) $(TEMPLATE) --ignore template.pros --upgrade-files firmware/$(LIBNAME).a $(foreach f,$(TEMPLATEFILES),--upgrade-files $(f))
+    @echo Need to zip $(TEMPLATE) without the base directory
+    # cd $(TEMPLATE) &amp;&amp; zip -r ../$(basename $(TEMPLATE)) *
+</pre></div>
+</div>
+<p>You should change <code class="docutils literal"><span class="pre">LIBNAME</span></code>, <code class="docutils literal"><span class="pre">VERSION</span></code>, <code class="docutils literal"><span class="pre">TEMPLATEFILES</span></code>, and
+<code class="docutils literal"><span class="pre">TEMPLATEOBJS</span></code> to fit your project.</p>
+<p>In the project’s Makefile, add the following line to line 14:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>-include $(ROOT)/template.mk
+</pre></div>
+</div>
+<p>Then to build the library, run <code class="docutils literal"><span class="pre">pros</span> <span class="pre">make</span> <span class="pre">library</span></code>. Next, you will
+need to zip the template directory. The zip file should not contain the
+<code class="docutils literal"><span class="pre">libfbc-template</span></code> directory (that is, the root of the zip file should
+contain template.pros and all your other files). Next, you should
+<a class="reference external" href="https://help.github.com/articles/creating-releases/">create a release on
+GitHub</a> and
+upload your template(s) to the release. You can see Purdue SIGBots’
+repository at
+<a class="reference external" href="https://github.com/purduesigbots/libblrs/releases">purduesigbots/libblrs</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pneumatics.html" class="btn btn-neutral float-right" title="Pneumatics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lcd.html" class="btn btn-neutral" title="LCD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: Cortex (2.12.1)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.12.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

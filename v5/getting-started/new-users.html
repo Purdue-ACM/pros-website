@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PROS First Time Users Guide &mdash; PROS for V5 3.0.6 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../index.html"/>
+        <link rel="up" title="Getting Started" href="index.html"/>
+        <link rel="next" title="Installing on Windows" href="windows.html"/>
+        <link rel="prev" title="Getting Started" href="index.html"/>
+   
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for V5
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  V5 (3.0.6)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../blog/index.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Version Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PROS First Time Users Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#i-know-c-c-now-how-do-i-use-pros">I know C/C++, now how do I use PROS?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/c/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/cpp/index.html">C++ API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OkapiLib</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../okapi/index.html">OkapiLib Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../okapi/tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../okapi/api/index.html">OkapiLib API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extended (Advanced Users)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extended/index.html">Extended API Topics</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for V5</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Getting Started</a> &raquo;</li>
+        
+      <li>PROS First Time Users Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/getting-started/new-users.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pros-first-time-users-guide">
+<h1>PROS First Time Users Guide<a class="headerlink" href="#pros-first-time-users-guide" title="Permalink to this headline">¶</a></h1>
+<p>The most important characteristic of PROS to note when getting started
+is that PROS is just standard C or C++ programming. Anything that works in
+standard C/C++ will work as a
+part of a PROS project, and similarly the errors given for code that
+doesn’t work will match errors given for any similar C/C++ code. Learning C/C++
+is essential for using PROS.</p>
+<p>If you are already familiar with C/C++ development outside of VEX, skip
+ahead to <a class="reference external" href="#using-PROS">Using PROS</a>.</p>
+<p>If you have not used PROS or done non-VEX C/C++ code development before,
+checking out these following C tutorials is highly recommended.</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.studytonight.com/c/user-defined-functions-in-c.php">Functions</a>.
+C is a language that heavily emphasizes functions, and knowing how
+they work is essential to using PROS. The <cite>PROS API &lt;../api/index.html&gt;`_</cite> is a set of functions,
+so any time that you want to interact with a sensor or motor, you’re using functions.</li>
+<li><a class="reference external" href="https://www.tutorialspoint.com/cprogramming/c_header_files.htm">Header
+Files</a>.
+The PROS template (the set of files automatically created when you
+start a PROS project) contains a couple of header files, and it’s
+recommended that you make additional header files as you develop your
+code. Header files contain the declarations for functions and global
+variables (among other things), which is why the <a class="reference external" href="api/index">PROS API</a>
+can be found in <code class="docutils literal"><span class="pre">API.h</span></code>. Knowing what
+code should go in a header file (<code class="docutils literal"><span class="pre">.h</span></code>, <code class="docutils literal"><span class="pre">.hpp</span></code>) or a source file (<code class="docutils literal"><span class="pre">.c</span></code>, <code class="docutils literal"><span class="pre">.cpp</span></code>)
+can be difficult to determine at first, but it is a very useful skill
+to learn.</li>
+<li><a class="reference external" href="https://www.codingunit.com/printf-format-specifiers-format-conversions-and-formatted-output">printf()</a>.
+At some point when developing PROS code, you will likely want to get
+some feedback on what the value of a variable is. This is not an
+exact replacement for a full debugging utility by any means, but is
+the standard method for troubleshooting issues in most languages and
+can be used for viewing sensor values or your own variables’ values.
+The output from these <code class="docutils literal"><span class="pre">printf()</span></code> statements can be viewed in the
+terminal by running <code class="docutils literal"><span class="pre">pros</span> <span class="pre">terminal</span></code>.</li>
+</ul>
+<p>And then for additional C tutorial topics, visit
+<a class="reference external" href="https://www.cprogramming.com/tutorial/c-tutorial.html">CProgramming.com</a>
+or <a class="reference external" href="http://www.studytonight.com/c/overview-of-c.php">StudyTonight</a>. A
+good video tutorial series (as opposed to the previous text-based
+tutorials) can be found on <a class="reference external" href="https://youtu.be/nXvy5900m3M">YouTube</a>.</p>
+<div class="section" id="i-know-c-c-now-how-do-i-use-pros">
+<h2>I know C/C++, now how do I use PROS?<a class="headerlink" href="#i-know-c-c-now-how-do-i-use-pros" title="Permalink to this headline">¶</a></h2>
+<p>The PROS tutorials are designed to show the application of C/C++ programming
+to a PROS project. The <a class="reference external" href="../tutorials/clawbot.html">Programming the Clawbot</a>
+tutorial is a great place to start, as it
+goes through every step of putting together a sample PROS project. Once
+you are ready to branch out and create your own custom project, looking
+through the following tutorials is recommended:</p>
+<ul class="simple">
+<li><a class="reference external" href="../tutorials/project-structure.html">PROS Project Structure</a></li>
+<li><a class="reference external" href="../tutorials/uploading.html">Uploading Code</a></li>
+<li><a class="reference external" href="../tutorials/debugging.html">Debugging</a></li>
+<li><a class="reference external" href="./faq.html">Coding FAQs</a></li>
+</ul>
+<p>And then you can find tutorials for specific subjects from <a class="reference external" href="../tutorials/adi.html">the ADI</a>
+to <a class="reference external" href="../tutorials/multitasking.html">tasks and multithreading</a> as well.</p>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="windows.html" class="btn btn-neutral float-right" title="Installing on Windows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: V5 (3.0.6)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../cortex/index.html">Cortex</a></dd>
+        
+          <dd><a href="../index.html">V5</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.0.6',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Known Issues &mdash; PROS for Cortex 2.12.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for Cortex 2.12.1 documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="LCD" href="lcd.html"/>
+        <link rel="prev" title="JINX Debugger" href="jinx.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for Cortex
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  Cortex (2.12.1)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analog.html">Analog Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clawbot.html">Clawbot Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding-faq.html">Coding FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digitalRead.html">Digital Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i2c.html">I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jinx.html">JINX Debugger</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Known Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#failed-to-install-platformio-ide-terminal">Failed to install platformio-ide-terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cannot-find-libstdc-a">Cannot find libstdc++.a</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ghost-com-ports">Ghost COM ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux-a-a-tethering">Linux A-A Tethering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#terminal-doesn-t-show-up">Terminal doesn’t show up!</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pneumatics.html">Pneumatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-structure.html">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speaker.html">Speaker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultrasonic.html">Ultrasonics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html">Upgrading PROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uploading.html">Uploading</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for Cortex</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+        
+      <li>Known Issues</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/cortex/tutorials/known-issues.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="known-issues">
+<h1>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h1>
+<p>If you’re running into issues, the first thing you should do is check
+whether you are running the very latest version of PROS. To do so with
+Atom, you will need to open the PROS Welcome Page. If it’s not already
+open, you can open it by toggling the Command Palette
+(<code class="docutils literal"><span class="pre">Ctrl</span></code> + <code class="docutils literal"><span class="pre">Shift</span></code> + <code class="docutils literal"><span class="pre">P</span></code> or <code class="docutils literal"><span class="pre">⌘</span></code> + <code class="docutils literal"><span class="pre">SHIFT</span></code> + <code class="docutils literal"><span class="pre">P</span></code>) and
+searching for the pros welcome page</p>
+<img alt="../_images/open-welcome.png" src="../_images/open-welcome.png" />
+<p>With the PROS screen welcome, you can see what version you’re running.
+If you’ve kept the PROS plugin up to date, you will get a notification
+to upgrade PROS if there is an upgrade available</p>
+<img alt="../_images/welcome-page-updater-split.png" src="../_images/welcome-page-updater-split.png" />
+<div class="section" id="failed-to-install-platformio-ide-terminal">
+<h2>Failed to install platformio-ide-terminal<a class="headerlink" href="#failed-to-install-platformio-ide-terminal" title="Permalink to this headline">¶</a></h2>
+<p>This issue may occur when installing PROS from within the Atom GUI. The
+current cause of the issue is unknown. You can get the dependency
+installed by manually installing <code class="docutils literal"><span class="pre">platformio-ide-terminal</span></code> by going to
+settings (<code class="docutils literal"><span class="pre">Ctrl</span></code> + <code class="docutils literal"><span class="pre">,</span></code>), click <code class="docutils literal"><span class="pre">Install</span></code>, then search for and
+install <code class="docutils literal"><span class="pre">platformio-ide-terminal</span></code>. In some instances, restarting Atom
+will allow the plugin to install.</p>
+<p>Another workaround for this issue is to clone the
+<a class="reference external" href="https://github.com/platformio/platformio-atom-ide-terminal/">platformio-atom-ide-terminal</a>
+repository and set up a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Symbolic_link">symlink</a> using the Atom
+package manager:</p>
+<p><code class="docutils literal"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/platformio/platformio-atom-ide-terminal.git</span></code></p>
+<p><code class="docutils literal"><span class="pre">apm</span> <span class="pre">link</span> <span class="pre">&lt;path</span> <span class="pre">to</span> <span class="pre">cloned</span> <span class="pre">repository&gt;</span></code></p>
+</div>
+<div class="section" id="cannot-find-libstdc-a">
+<h2>Cannot find libstdc++.a<a class="headerlink" href="#cannot-find-libstdc-a" title="Permalink to this headline">¶</a></h2>
+<p>On Ubuntu 14.04 it is a <a class="reference external" href="https://bugs.launchpad.net/ubuntu/+source/gcc-arm-none-eabi/+bug/1293024">known
+bug</a>
+that libstdc++-arm-none-eabi-newlib package is missing from the
+repositories and fails to install with arm-none-eabi-gcc. This can lead
+to the following error when trying to compile your PROS project:</p>
+<img alt="../_images/ubuntu-error.png" src="../_images/ubuntu-error.png" />
+<p>The easiest solution to this issue is to upgrade to 16.04 LTS.</p>
+</div>
+<div class="section" id="ghost-com-ports">
+<h2>Ghost COM ports<a class="headerlink" href="#ghost-com-ports" title="Permalink to this headline">¶</a></h2>
+<p>During normal operation of the serial COM ports on windows errors may
+occur when hardware is disconnected causing them to not close. This
+results in high COM port numbers (e.g. COM17). We recommend following
+<a class="reference external" href="http://theitbros.com/how-to-delete-com-ports-in-use/">these instructions</a>
+to clean up any COM ports that are left in limbo.</p>
+</div>
+<div class="section" id="linux-a-a-tethering">
+<h2>Linux A-A Tethering<a class="headerlink" href="#linux-a-a-tethering" title="Permalink to this headline">¶</a></h2>
+<p>When utilizing PROS in your Linux environment you cannot interact with
+or flash your cortex via direct A-A Tethering to your computer. This is
+due to the fact that VEX does not provide Linux drivers for this feature
+that is readily available on Windows. However, this does not mean that
+you cannot interact with or flash your cortex. To do so you must utilize
+the <a class="reference external" href="http://www.vexrobotics.com/276-2186.html">programming hardware
+kit</a> and a
+<a class="reference external" href="http://www.vexrobotics.com/276-2186.html">joystick</a> connected as
+follows:</p>
+<div class="figure" id="id1">
+<img alt="../_images/wiring-diagram.png" src="../_images/wiring-diagram.png" />
+<p class="caption"><span class="caption-text">Diagram courtesy of VEX Robotics.</span></p>
+</div>
+<p>Both wired and wirless (VEXnet 1.0 &amp; 2.0) are supported.</p>
+</div>
+<div class="section" id="terminal-doesn-t-show-up">
+<h2>Terminal doesn’t show up!<a class="headerlink" href="#terminal-doesn-t-show-up" title="Permalink to this headline">¶</a></h2>
+<p>After updating Atom to a new minor version, some packages (including
+<code class="docutils literal"><span class="pre">platformio-ide-terminal</span></code>) will not work until they have been rebuilt
+for the new Atom version. Symptoms include missing terminal buttons and
+an inability to open the terminal manually using
+<code class="docutils literal"><span class="pre">PROS:Toggle-Terminal</span></code>.</p>
+<p>If these symptoms apply, check if there is a red bug icon in the
+right-hand corner of the bottom status bar. If so, click this icon, and
+you will be prompted to rebuild any broken packages. For more
+information, see <a class="reference external" href="http://flight-manual.atom.io/hacking-atom/sections/debugging/#check-for-incompatible-packages">this section of the Atom flight
+manual</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lcd.html" class="btn btn-neutral float-right" title="LCD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="jinx.html" class="btn btn-neutral" title="JINX Debugger" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: Cortex (2.12.1)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.12.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

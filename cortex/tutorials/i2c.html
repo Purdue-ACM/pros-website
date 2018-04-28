@@ -1,0 +1,746 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>I2C &mdash; PROS for Cortex 2.12.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for Cortex 2.12.1 documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="JINX Debugger" href="jinx.html"/>
+        <link rel="prev" title="Encoders" href="encoders.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for Cortex
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  Cortex (2.12.1)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analog.html">Analog Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clawbot.html">Clawbot Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding-faq.html">Coding FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digitalRead.html">Digital Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">I2C</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vex-integrated-motor-encoder-ime">VEX Integrated Motor Encoder (IME)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#advance-user-warning">Advance User Warning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-to-an-i2c-slave">Writing to an I2C Slave</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reading-from-an-i2c-slave">Reading from an I2C Slave</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#third-party-i2c-devices">Third-Party I2C Devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i2c-polling-tasks">I2C Polling Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-tips-and-tricks">Debugging Tips and Tricks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cortex-crashes">Cortex Crashes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sign-extension">Sign Extension</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#endianness">Endianness</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#union-struct-method">Union/Struct method</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="jinx.html">JINX Debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="known-issues.html">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pneumatics.html">Pneumatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-structure.html">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speaker.html">Speaker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultrasonic.html">Ultrasonics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html">Upgrading PROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uploading.html">Uploading</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for Cortex</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+        
+      <li>I2C</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/cortex/tutorials/i2c.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="i2c">
+<h1>I2C<a class="headerlink" href="#i2c" title="Permalink to this headline">¶</a></h1>
+<p>Inter-Integrated Circuit or I2C communications is but one of the common
+embedded communications protocols found commonly in robotics at large.
+It sports a master-slave configuration as well as a unified bus allowing
+devices to be daisy-chained together in series if so desired. A standard
+I2C bus consists of two signals seen by all devices - Serial Data (SDA)
+and Serial Clock (SCL). These two signals are found alongside +5V and
+GND power rails in the VEX Cortex I2C port to supply power to any
+attached I2C slave devices.</p>
+<p>The primary I2C device encountered in VEX is the <a class="reference external" href="http://www.vexrobotics.com/encoder-modules.html">Integrated Motor
+Encoder (IME)</a>; VEX
+U teams or hobbyists may feel so inclined to connect third-party I2C
+sensors to their robots such as gyroscopes or lidars. This tutorial aims
+to cover writing to and reading from I2C slave devices, a rundown of the
+IME-specific functions provided, and transition into topics such as
+device initialization and polling tasks for managing multiple I2C slaves
+at once.</p>
+<p>In a future update this tutorial will strive to provide a brief summary
+of the I2C protocol itself, but in lieu of our own take on the subject
+please review the excellent rundown provided by SparkFun located
+<a class="reference external" href="https://learn.sparkfun.com/tutorials/i2c">here</a>.</p>
+<div class="section" id="vex-integrated-motor-encoder-ime">
+<h2>VEX Integrated Motor Encoder (IME)<a class="headerlink" href="#vex-integrated-motor-encoder-ime" title="Permalink to this headline">¶</a></h2>
+<p>IMEs function a lot like the quadrature encoders except they are
+directly attached to the motor rather than mounted to a mechanism on
+your robot. In addition these sensors utilize the I2C bus on the cortex
+and can be daisy chained together on your robot.</p>
+<div class="section" id="advance-user-warning">
+<h3>Advance User Warning<a class="headerlink" href="#advance-user-warning" title="Permalink to this headline">¶</a></h3>
+<p>When utilizing IMEs and 3rd party sensors on your I2C bus it is
+recommended that you write your own task to handle all the I2C
+communication to prevent resource thrashing. See the <a class="reference external" href="./tutorials/i2c.html#pollingTask">I2C Polling
+Task</a> for more details.</p>
+<p>PROS provides a simple library for interacting with your IMEs. A sample
+usage would be as follows:</p>
+<p>main.h:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define IME_LEFT_MOTOR 0</span>
+<span class="cp">#define IME_RIGHT_MOTOR 1</span>
+<span class="cp">#define NUMBER_OF_IME 2</span>
+</pre></div>
+</div>
+<p>init.c:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">(){</span>
+    <span class="c1">// ...</span>
+    <span class="c1">// Check count to ensure all IMEs are plugged in!</span>
+    <span class="kt">int</span> <span class="n">IMECount</span> <span class="o">=</span> <span class="n">imeInitializeAll</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">IMECount</span> <span class="o">!=</span> <span class="n">NUMBER_OF_IME</span><span class="p">){</span>
+        <span class="c1">// something has gone wrong</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>opcontrolc or auto.c:</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(){</span>
+    <span class="c1">// ... do work</span>
+    <span class="c1">// Get IME tick count in the &quot;counts&quot; variable</span>
+    <span class="c1">// (conversion to rotations varies depending on the motor type in use)</span>
+    <span class="kt">int</span> <span class="n">counts</span><span class="p">;</span>
+    <span class="n">imeGet</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">counts</span><span class="p">);</span>
+
+    <span class="c1">// Or if #define was used:</span>
+    <span class="n">imeGet</span><span class="p">(</span><span class="n">IME_LEFT_MOTOR</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">counts</span><span class="p">);</span>
+
+    <span class="c1">// ... Do other work</span>
+    <span class="c1">// Reset IME to zero</span>
+    <span class="n">imeReset</span><span class="p">(</span><span class="n">IME_RIGHT_MOTOR</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="writing-to-an-i2c-slave">
+<h2>Writing to an I2C Slave<a class="headerlink" href="#writing-to-an-i2c-slave" title="Permalink to this headline">¶</a></h2>
+<p>PROS low-level and initialization functions establish the VEX Cortex as
+an I2C master device, thus the primary I2C action it will perform is
+writing to I2C slave devices attached to it. During I2C slave
+initialization and operation it is common to modify single byte
+registers in non-sequential locations of the slave’s memory. In these
+cases PROS provides the <a class="reference external" href="../api/index.html#i2cWriteRegister">i2cWriteRegister()</a>.
+A sister function <a class="reference external" href="../api/index.html#i2cWrite">i2cWrite()</a> is better used when
+writing to sequential bytes of an I2C slave such as providing full
+32-bit integer parameters. When using <a class="reference external" href="../api/index.html#i2cWrite">i2cWrite()</a>
+the first byte of the data argument should be the first register of the
+slave being written to. Shown below is a short example of initializing
+and configuring a fictional I2C slave sensor.</p>
+<p>main.h</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">// 7-bit address of the slave I2C device, right aligned</span>
+<span class="cp">#define I2C_SLAVE_ADDR         0x4A</span>
+<span class="c1">// Fictional &quot;enable&quot; register for the device</span>
+<span class="cp">#define I2C_SLAVE_REG_ENABLE   0x38</span>
+<span class="c1">// Fictional 32-bit &quot;parameters&quot; buffer for the device, 0x6D-0x6F</span>
+<span class="cp">#define I2C_SLAVE_BUF_PARAMS   0x6D</span>
+</pre></div>
+</div>
+<p>init.c</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Note the address of the first register of the buffer is first in the message</span>
+    <span class="kt">uint8_t</span> <span class="n">params</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">I2C_SLAVE_BUF_PARAMS</span><span class="p">,</span> <span class="mh">0x50</span><span class="p">,</span> <span class="mh">0x52</span><span class="p">,</span> <span class="mh">0x79</span><span class="p">,</span> <span class="mh">0x53</span><span class="p">};</span>
+
+    <span class="c1">// Send the slave some parameters</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i2cWrite</span><span class="p">(</span><span class="n">I2C_SLAVE_ADDR</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Parameters sent successfully!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Failed to send parameters to I2C slave!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// And then enable the device</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i2cWriteRegister</span><span class="p">(</span><span class="n">I2C_SLAVE_ADDR</span><span class="p">,</span> <span class="n">I2C_I2C_SLAVE_REG_ENABLE</span><span class="p">,</span> <span class="mh">0x01</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;I2C slave enabled!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Failed to enable the I2C slave!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reading-from-an-i2c-slave">
+<h2>Reading from an I2C Slave<a class="headerlink" href="#reading-from-an-i2c-slave" title="Permalink to this headline">¶</a></h2>
+<p>As the vast majority of I2C slave devices serve as sensors, PROS
+provides both <a class="reference external" href="../api/index.html#i2cRead">i2cRead()</a> and
+<a class="reference external" href="../api/index.html#i2cReadRegister">i2cReadRegister()</a> to receive data from them.
+Since I2C slave devices do not emit data onto the bus without the
+request of the master device, <a class="reference external" href="../api/index.html#i2cRead">i2cRead()</a> is limited
+in its usefulness. To that extent, below is an example showing how to
+read from data from a fictional sensor using the more typical
+<a class="reference external" href="../api/index.html#i2cReadRegister">i2cReadRegister()</a>.</p>
+<p>main.h</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">// 7-bit address of the slave I2C device, right aligned</span>
+<span class="cp">#define I2C_SLAVE_ADDR       0x4A</span>
+<span class="c1">// Fictional 32-bit data buffer for the device, 0x30-0x34</span>
+<span class="cp">#define I2C_SLAVE_BUF_DATA   0x30</span>
+</pre></div>
+</div>
+<p>auto.c</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">uint8_t</span> <span class="n">dataIn</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+    <span class="kt">int32_t</span> <span class="n">reading</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i2cReadRegister</span><span class="p">(</span><span class="n">I2C_SLAVE_ADDR</span><span class="p">,</span> <span class="n">I2C_SLAVE_BUF_DATA</span><span class="p">,</span> <span class="n">data_in</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// Combine the 8-bit incoming values by extending them and bitwise-oring them together</span>
+            <span class="c1">//</span>
+            <span class="c1">// NOTE: Extension to 32-bits is done using uint32_t even though reading is int32_t</span>
+            <span class="c1">//       This is done to prevent &quot;sign extension,&quot; a common problem in these scenarios</span>
+            <span class="c1">//</span>
+            <span class="c1">// NOTE: This implementation assumes incoming data is big-endian with the order (0, 1, 2, 3)</span>
+            <span class="c1">//       If your I2C slave emits data as little-endian, the order needs to be reversed</span>
+            <span class="n">reading</span> <span class="o">=</span> <span class="p">(((</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">dataIn</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">|</span>
+                      <span class="p">(((</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">dataIn</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">|</span>
+                      <span class="p">(((</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">dataIn</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">&lt;&lt;</span>  <span class="mi">8</span><span class="p">)</span> <span class="o">|</span>
+                      <span class="p">(((</span><span class="kt">uint32_t</span><span class="p">)</span><span class="n">dataIn</span><span class="p">[</span><span class="mi">3</span><span class="p">]));</span>
+
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Read in a value of %d from slave.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">reading</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="n">reading</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: Failed to read sensor data from slave!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Use the sensor value in some way here</span>
+
+        <span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="third-party-i2c-devices">
+<h2>Third-Party I2C Devices<a class="headerlink" href="#third-party-i2c-devices" title="Permalink to this headline">¶</a></h2>
+<p>Writing to and reading from third-party I2C devices with the Cortex
+using PROS is a relatively painless process with the techniques
+described earlier in this tutorial. PROS essentially only requires the
+7-bit I2C address of the target slave and a register you wish to
+interact with if any. These can all be found in the third-party device’s
+datasheet.</p>
+<p>The great deal of effort in connecting a third-party I2C slave comes in
+scouring its datasheet and synthesizing its instructions into a device
+driver. A critical aspect of this driver is its initialization routine.
+Since I2C slave sensors often have their own microprocessors present,
+they may require several registers to be configured and an enable
+register to be set before they will even begin collecting data. It is
+recommended that a <code class="docutils literal"><span class="pre">Xinit()</span></code> function be created for sensor X (e.g.
+lidarInit, gyroInit, etc) so that it may be called from different
+locations in the robot code rather than hard-coding the setup protocol
+into <code class="docutils literal"><span class="pre">init.c</span></code>. This way if the device were to ever lose power or
+disconnect a reconnection attempt is feasible. This <code class="docutils literal"><span class="pre">Xinit()</span></code> function
+will contain several calls to
+<a class="reference external" href="../api/index.html#i2cWriteRegister">i2cWriteRegister()</a> and
+<a class="reference external" href="../api/index.html#i2cReadRegister">i2cReadRegister()</a> that follow the
+datasheet’s instructions to bring the sensor up and running.</p>
+<p>In addition to an initialization routine for the third-party sensor, it
+is good practice to group multiple sequential write/read operations into
+routines as well. This can drastically improve code readability and
+portability to future robots. A simple device driver for a fictional
+lidar is given below.</p>
+<p>lidar.h</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">// The 7-bit I2C address of the lidar sensor</span>
+<span class="c1">// Found in its manufacturer datasheet</span>
+<span class="cp">#define LIDAR_ADDR              0x67</span>
+<span class="cp">#define LIDAR_REG_CFG_ADDR      0x10</span>
+<span class="cp">#define LIDAR_BUF_VALUE_ADDR    0x4C</span>
+
+<span class="c1">// Allowed values for the PVAL bits of the CFG register on the lidar</span>
+<span class="k">enum</span> <span class="p">{</span>
+    <span class="n">SQ</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+    <span class="n">LQ</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">,</span>
+    <span class="n">MQ</span> <span class="o">=</span> <span class="mh">0x02</span><span class="p">,</span>
+    <span class="n">HQ</span> <span class="o">=</span> <span class="mh">0x03</span>
+<span class="p">}</span> <span class="n">LIDAR_REG_CFG_PVAL</span><span class="p">;</span>
+
+<span class="c1">// Allowed values for the EN bit of the CFG register on the lidar</span>
+<span class="k">enum</span> <span class="p">{</span>
+    <span class="n">DISABLE</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+    <span class="n">ENABLE</span> <span class="o">=</span> <span class="mh">0x01</span>
+<span class="p">}</span> <span class="n">LIDAR_REG_CFG_EN</span><span class="p">;</span>
+
+<span class="c1">// Allowed values for the ITR bit of the CFG register on the lidar</span>
+<span class="k">enum</span> <span class="p">{</span>
+    <span class="n">DISABLE</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+    <span class="n">ENABLE</span> <span class="o">=</span> <span class="mh">0x01</span>
+<span class="p">}</span> <span class="n">LIDAR_REG_CFG_ITR</span><span class="p">;</span>
+
+<span class="c1">// Global union with convenient structure for accessing bitfields</span>
+<span class="c1">// rather than defining a gazillion bitmasks</span>
+<span class="k">union</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="p">{</span>
+        <span class="kt">uint8_t</span> <span class="nl">PVAL0</span>  <span class="p">:</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="kt">uint8_t</span> <span class="nl">unused</span> <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="kt">uint8_t</span> <span class="nl">PVAL1</span>  <span class="p">:</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="kt">uint8_t</span> <span class="nl">unused</span> <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="kt">uint8_t</span> <span class="nl">EN</span>     <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="kt">uint8_t</span> <span class="nl">ITR</span>    <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="n">field</span><span class="p">;</span>
+    <span class="kt">uint8_t</span> <span class="n">all</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">LIDAR_REG_CFG</span> <span class="o">=</span> <span class="p">{.</span><span class="n">all</span> <span class="o">=</span> <span class="mi">0</span><span class="p">};</span>
+
+<span class="c1">// Global union for accessing the individual bytes of a 32-bit int sensor reading</span>
+<span class="k">union</span> <span class="p">{</span>
+    <span class="kt">uint8_t</span> <span class="n">byte</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+    <span class="kt">int32_t</span> <span class="n">value</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">LIDAR_BUF_VALUE</span> <span class="p">{.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">};</span>
+
+<span class="c1">// Function declarations</span>
+<span class="kt">bool</span> <span class="nf">lidarInit</span><span class="p">();</span>
+<span class="kt">bool</span> <span class="nf">lidarSetLowRes</span><span class="p">();</span>
+<span class="kt">bool</span> <span class="nf">lidarSetHighRes</span><span class="p">();</span>
+<span class="kt">bool</span> <span class="nf">lidarReadValue</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>lidar.c</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">lidarInit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Initialize with PVAL0 high quality, PVAL1 standard quality, enable, no interrupt</span>
+    <span class="n">LIDAR_REG_CFG</span><span class="p">.</span><span class="n">field</span><span class="p">.</span><span class="n">PVAL0</span> <span class="o">=</span> <span class="n">LIDAR_REG_CFG_PVAL</span><span class="p">.</span><span class="n">HQ</span><span class="p">;</span>
+    <span class="n">LIDAR_REG_CFG</span><span class="p">.</span><span class="n">field</span><span class="p">.</span><span class="n">PVAL1</span> <span class="o">=</span> <span class="n">LIDAR_REG_CFG_PVAL</span><span class="p">.</span><span class="n">SQ</span><span class="p">;</span>
+    <span class="n">LIDAR_REG_CFG</span><span class="p">.</span><span class="n">field</span><span class="p">.</span><span class="n">EN</span>    <span class="o">=</span> <span class="n">LIDAR_REG_CFG_EN</span><span class="p">.</span><span class="n">ENABLE</span><span class="p">;</span>
+    <span class="n">LIDAR_REG_CFG</span><span class="p">.</span><span class="n">field</span><span class="p">.</span><span class="n">ITR</span>   <span class="o">=</span> <span class="n">LIDAR_REG_CFG_ITR</span><span class="p">.</span><span class="n">DISABLE</span><span class="p">;</span>
+
+    <span class="c1">// Write the desired configuration to the appropraite register on the lidar</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">i2cWriteRegister</span><span class="p">(</span><span class="n">LIDAR_ADDR</span><span class="p">,</span> <span class="n">LIDAR_REG_CFG_ADDR</span><span class="p">,</span> <span class="n">LIDAR_REG_CFG</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">// Return if we failed</span>
+        <span class="k">return</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Enable was a success, let&#39;s adjust the PVALs to finish</span>
+    <span class="n">LIDAR_REG_CFG</span><span class="p">.</span><span class="n">field</span><span class="p">.</span><span class="n">PVAL0</span> <span class="o">=</span> <span class="n">LIDAR_REG_CFG_PVAL</span><span class="p">.</span><span class="n">MQ</span><span class="p">;</span>
+    <span class="n">LIDAR_REG_CFG</span><span class="p">.</span><span class="n">field</span><span class="p">.</span><span class="n">PVAL1</span> <span class="o">=</span> <span class="n">LIDAR_REG_CFG_PVAL</span><span class="p">.</span><span class="n">HQ</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">i2cWriteRegister</span><span class="p">(</span><span class="n">LIDAR_ADDR</span><span class="p">,</span> <span class="n">LIDAR_REG_CFG_ADDR</span><span class="p">,</span> <span class="n">LIDAR_REG_CFG</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">lidarSetLowRes</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">LIDAR_REG_CFG</span><span class="p">.</span><span class="n">field</span><span class="p">.</span><span class="n">PVAL0</span> <span class="o">=</span> <span class="n">LIDAR_REG_CFG_PVAL</span><span class="p">.</span><span class="n">LQ</span><span class="p">;</span>
+    <span class="n">LIDAR_REG_CFG</span><span class="p">.</span><span class="n">field</span><span class="p">.</span><span class="n">PVAL1</span> <span class="o">=</span> <span class="n">LIDAR_REG_CFG_PVAL</span><span class="p">.</span><span class="n">LQ</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">i2cWriteRegister</span><span class="p">(</span><span class="n">LIDAR_ADDR</span><span class="p">,</span> <span class="n">LIDAR_REG_CFG_ADDR</span><span class="p">,</span> <span class="n">LIDAR_REG_CFG</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">lidarSetHighRes</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">LIDAR_REG_CFG</span><span class="p">.</span><span class="n">field</span><span class="p">.</span><span class="n">PVAL0</span> <span class="o">=</span> <span class="n">LIDAR_REG_CFG_PVAL</span><span class="p">.</span><span class="n">HQ</span><span class="p">;</span>
+    <span class="n">LIDAR_REG_CFG</span><span class="p">.</span><span class="n">field</span><span class="p">.</span><span class="n">PVAL1</span> <span class="o">=</span> <span class="n">LIDAR_REG_CFG_PVAL</span><span class="p">.</span><span class="n">HQ</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">i2cWriteRegister</span><span class="p">(</span><span class="n">LIDAR_ADDR</span><span class="p">,</span> <span class="n">LIDAR_REG_CFG_ADDR</span><span class="p">,</span> <span class="n">LIDAR_REG_CFG</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">lidarReadValue</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">i2cReadRegister</span><span class="p">(</span><span class="n">LIDAR_ADDR</span><span class="p">,</span> <span class="n">LIDAR_BUF_VALUE_ADDR</span><span class="p">,</span> <span class="n">LIDAR_BUF_VALUE</span><span class="p">.</span><span class="n">byte</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>auto.c</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;lidar.h&quot;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="i2c-polling-tasks">
+<h2>I2C Polling Tasks<a class="headerlink" href="#i2c-polling-tasks" title="Permalink to this headline">¶</a></h2>
+<p>A dedicated I2C polling task is necessary when using multiple I2C
+devices at once to ensure that they are all read properly. It is
+recommended that this task be run at a high priority
+(TASK_PRIORITY_DEFAULT + 2 should work well) to ensure that the task
+runs at very consistent intervals and it is never starved for processing
+resources. The I2C line updates at 4KHz in PROS, but it is typically
+unnecessary to read any faster than once per millisecond.</p>
+<p>The I2C polling task can be run like any other task. It is highly
+recommended that the <code class="docutils literal"><span class="pre">taskDelayUntil()</span></code> function be used instead of
+<code class="docutils literal"><span class="pre">delay()</span></code> to set the loop frequency to prevent even-odd jitter.</p>
+<p>A Third-party gyroscope is used as an example here because it needs to
+be polled regularly. This same technique can be applied to any other I2C
+device that needs to be polled regularly, provided that you use its
+appropriate initialization and integration functions as opposed to the
+examples here.</p>
+<p>i2cTask.c</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;third_party_gyro.h&quot; //custom gyro</span><span class="cp"></span>
+
+<span class="cp">#define NUM_IMES 2 </span><span class="c1">//using two IMEs on the robot</span>
+<span class="cp">#define IME_LEFT 0</span>
+<span class="cp">#define IME_RIGHT 1</span>
+
+<span class="cp">#define CYCLE_TIME 2 </span><span class="c1">//loop delay in milliseconds</span>
+
+<span class="k">volatile</span> <span class="kt">int32_t</span> <span class="n">leftIME</span><span class="p">,</span> <span class="n">rightIME</span><span class="p">;</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="nf">i2cHandler</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ignore</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">third_party_gyroInit</span><span class="p">();</span> <span class="c1">//initialization for custom gyro</span>
+  <span class="kt">int</span> <span class="n">num_IMEs_initialized</span> <span class="o">=</span> <span class="n">imeInitializeAll</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">num_IMEs_initialized</span> <span class="o">!=</span> <span class="n">NUM_IMES</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;ERROR: INCORRECT NUMBER OF IMEs INITIALIZED</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kt">uint32_t</span> <span class="n">now</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+  <span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">third_party_gyroIntegrate</span><span class="p">();</span> <span class="c1">//summing third party gyro&#39;s readings</span>
+    <span class="n">imeGet</span><span class="p">(</span><span class="n">IME_LEFT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">leftIME</span><span class="p">);</span>
+    <span class="n">imeGet</span><span class="p">(</span><span class="n">IME_RIGHT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rightIME</span><span class="p">);</span>
+
+    <span class="n">taskDelayUntil</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">,</span> <span class="n">CYCLE_TIME</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">i2cTaskStart</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">taskCreate</span><span class="p">(</span><span class="n">i2cHandler</span><span class="p">,</span> <span class="n">TASK_DEFAULT_STACK_SIZE</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="p">(</span><span class="n">TASK_PRIORITY_DEFAULT</span> <span class="o">+</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>init.c</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">i2cTaskStart</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="debugging-tips-and-tricks">
+<h2>Debugging Tips and Tricks<a class="headerlink" href="#debugging-tips-and-tricks" title="Permalink to this headline">¶</a></h2>
+<p>As with most advanced topics, a lot of debugging is typically needed
+when working with the I2C bus, both for beginners and experienced users.
+It can sometimes be difficult to know where to start with debugging any
+issues that arise, but here are few good places to start looking.</p>
+<div class="section" id="cortex-crashes">
+<h3>Cortex Crashes<a class="headerlink" href="#cortex-crashes" title="Permalink to this headline">¶</a></h3>
+<p>The Cortex’s I2C line is particularly vulnerable to static shock, which
+can cause the Cortex to reset or other undefined behavior. This issue is
+often seen when using IMEs, as they are typically used in locations on
+the robot that are prime candidates for static discharge from the field.</p>
+<p>To help prevent this issue, a watchdog is available with PROS to monitor
+the status of the Cortex and perform a reset in the case of a static
+shock. The watchdog is a feature that is implemented in the Cortex M3
+chip itself, and PROS simply provides a wrapper for this.</p>
+<p>To enable the watchdog, it must be started in <code class="docutils literal"><span class="pre">initalizeIO()</span></code>. Calling
+the watchdog anywhere else will not have an effect.</p>
+<p>init.c</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initializeIO</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">watchdogInit</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sign-extension">
+<h3>Sign Extension<a class="headerlink" href="#sign-extension" title="Permalink to this headline">¶</a></h3>
+<p>It is very important to keep track of the size of the data being read
+from or written to your I2C device. Sign Extension occurs when casting a
+signed value with a smaller number of bytes to a signed value with a
+larger number of bytes. In this case, the sign bit is copied to all of
+the additional bits, which can cause readings to be different than their
+intended values.</p>
+</div>
+<div class="section" id="endianness">
+<h3>Endianness<a class="headerlink" href="#endianness" title="Permalink to this headline">¶</a></h3>
+<p>Endianness is the direction in which bytes are arranged when being
+output from a device. A device is either big-endian or little-endian,
+with these two options being the opposite of one another. A big-endian
+device will arrange bytes with the most significant (highest order) byte
+first, and little-endian arranges bytes with the least significant byte
+first. An example of reading a big-endian device can be found in
+<a class="reference external" href="./tutorials/i2c.html#readingI2CSlave">Reading from an I2C Slave</a>. If an
+I2C reading is an unexpected value, try reading in the opposite
+endianness.</p>
+</div>
+<div class="section" id="union-struct-method">
+<h3>Union/Struct method<a class="headerlink" href="#union-struct-method" title="Permalink to this headline">¶</a></h3>
+<p>One solution to reading a collection of bits from a device is to use a
+struct wrapped in a union as seen in the <code class="docutils literal"><span class="pre">LIDAR_REG_CFG</span></code> union in
+<a class="reference external" href="./tutorials/i2c.html#thirdPartyI2CDevices">Third-Party I2C Devices</a>. The
+union contains a value that contains the reading from the sensor, and
+the struct contains each significant bit as an individual value. Write
+to the union’s value, and then read individual bits from the struct. If
+you are not familiar with unions and structs, reading an <a class="reference external" href="https://www.codingunit.com/c-tutorial-structures-unions-typedef">Online C
+Tutorial</a>
+about the subject is recommended.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="jinx.html" class="btn btn-neutral float-right" title="JINX Debugger" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="encoders.html" class="btn btn-neutral" title="Encoders" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: Cortex (2.12.1)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.12.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

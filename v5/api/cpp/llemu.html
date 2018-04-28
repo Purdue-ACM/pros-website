@@ -1,0 +1,993 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>LLEMU (Legacy LCD Emulator) C++ API &mdash; PROS for V5 3.0.6 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../index.html"/>
+        <link rel="up" title="API Home" href="../index.html"/>
+        <link rel="next" title="Miscellaneous C++ API" href="misc.html"/>
+        <link rel="prev" title="ADI (TriPort) C++ API" href="adi.html"/>
+   
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> PROS for V5
+          
+
+          
+            
+            <img src="../../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  V5 (3.0.6)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">PROS: Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blog/index.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../releases/index.html">Version Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/new-users.html">PROS First Time Users Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/installation.html">Installation Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">API Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../c/index.html">C API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adi.html">ADI (TriPort) C++ API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">LLEMU (Legacy LCD Emulator) C++ API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pros-lcd">pros::lcd</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#clear">clear</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clear-line">clear_line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initialize">initialize</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-initialized">is_initialized</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#print">print</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#read-buttons">read_buttons</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-btn0-cb">register_btn0_cb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-btn1-cb">register_btn1_cb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-btn2-cb">register_btn2_cb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-text">set_text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shutdown">shutdown</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellaneous C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motors.html">Motors C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtos.html">RTOS Facilities C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vision.html">Vision Sensor C++ API</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OkapiLib</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../okapi/index.html">OkapiLib Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../okapi/tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../okapi/api/index.html">OkapiLib API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extended (Advanced Users)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../extended/index.html">Extended API Topics</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PROS for V5</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">API Home</a> &raquo;</li>
+        
+      <li>LLEMU (Legacy LCD Emulator) C++ API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/api/cpp/llemu.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="llemu-legacy-lcd-emulator-c-api">
+<h1>LLEMU (Legacy LCD Emulator) C++ API<a class="headerlink" href="#llemu-legacy-lcd-emulator-c-api" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Additional example code for this module can be found in
+<a class="reference external" href="../../tutorials/topical/llemu.html">its Tutorial</a>.</p>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#pros-lcd" id="id3">pros::lcd</a><ul>
+<li><a class="reference internal" href="#clear" id="id4">clear</a></li>
+<li><a class="reference internal" href="#clear-line" id="id5">clear_line</a></li>
+<li><a class="reference internal" href="#initialize" id="id6">initialize</a></li>
+<li><a class="reference internal" href="#is-initialized" id="id7">is_initialized</a></li>
+<li><a class="reference internal" href="#print" id="id8">print</a></li>
+<li><a class="reference internal" href="#read-buttons" id="id9">read_buttons</a></li>
+<li><a class="reference internal" href="#register-btn0-cb" id="id10">register_btn0_cb</a></li>
+<li><a class="reference internal" href="#register-btn1-cb" id="id11">register_btn1_cb</a></li>
+<li><a class="reference internal" href="#register-btn2-cb" id="id12">register_btn2_cb</a></li>
+<li><a class="reference internal" href="#set-text" id="id13">set_text</a></li>
+<li><a class="reference internal" href="#shutdown" id="id14">shutdown</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="pros-lcd">
+<h2><a class="toc-backref" href="#id3">pros::lcd</a><a class="headerlink" href="#pros-lcd" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="clear">
+<h3><a class="toc-backref" href="#id4">clear</a><a class="headerlink" href="#clear" title="Permalink to this headline">¶</a></h3>
+<p>Clear the text on the emulated three-button LCD screen.</p>
+<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-clear">lcd_clear</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-1 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">clear</span> <span class="p">(</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">clear</span><span class="p">();</span> <span class="c1">// No more text will be displayed</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="clear-line">
+<h3><a class="toc-backref" href="#id5">clear_line</a><a class="headerlink" href="#clear-line" title="Permalink to this headline">¶</a></h3>
+<p>Clears a line on the emulated three-button LCD screen.</p>
+<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
+<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-clear-line">lcd_clear_line</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-3 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">clear_line</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int16_t</span> <span class="n">line</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">clear_line</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// No more text will be displayed</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>line</td>
+<td>The line to clear</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="initialize">
+<h3><a class="toc-backref" href="#id6">initialize</a><a class="headerlink" href="#initialize" title="Permalink to this headline">¶</a></h3>
+<p>Initialize the display to be an emulation of the three-button, UART-based VEX LCD.</p>
+<p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-initialize">lcd_initialize</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-5 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span> <span class="p">(</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the LCD was successfully initialized, or <code class="docutils literal"><span class="pre">false</span></code> if it has already been initialized.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="is-initialized">
+<h3><a class="toc-backref" href="#id7">is_initialized</a><a class="headerlink" href="#is-initialized" title="Permalink to this headline">¶</a></h3>
+<p>Determines whether the emulated three-button LCD has already been initialized.</p>
+<p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-is-initialized">lcd_is_initialized</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-6 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-7 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">is_initialized</span> <span class="p">(</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Is the LCD initialized?&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">lcd_is_initialized</span><span class="p">();</span>
+  <span class="c1">// Will Display True</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> True if the LCD has been initialized or false if not.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="print">
+<h3><a class="toc-backref" href="#id8">print</a><a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h3>
+<p>Displays a formatted string on the emulated three-button LCD screen</p>
+<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is
+reached:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
+<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-print">lcd_print</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-8 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-9 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">Params</span><span class="o">&gt;</span> <span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">print</span><span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int16_t</span> <span class="n">line</span><span class="p">,</span>
+                                                     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">fmt</span><span class="p">,</span>
+                                                     <span class="n">Params</span><span class="p">...</span> <span class="n">args</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Buttons Bitmap: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">read_buttons</span><span class="p">());</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>line</td>
+<td>The line on which to display the text [0-7]</td>
+</tr>
+<tr class="row-odd"><td>fmt</td>
+<td>Format string</td>
+</tr>
+<tr class="row-even"><td>args</td>
+<td>Optional list of arguments for the format string</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="read-buttons">
+<h3><a class="toc-backref" href="#id9">read_buttons</a><a class="headerlink" href="#read-buttons" title="Permalink to this headline">¶</a></h3>
+<p>Reads the button status from the emulated three-button LCD.</p>
+<p>The value returned is a 3-bit std::integer where <code class="docutils literal"><span class="pre">1</span> <span class="pre">0</span> <span class="pre">0</span></code> indicates the left button
+is pressed, <code class="docutils literal"><span class="pre">0</span> <span class="pre">1</span> <span class="pre">0</span></code> indicates the center button is pressed, and <code class="docutils literal"><span class="pre">0</span> <span class="pre">0</span> <span class="pre">1</span></code>
+indicates the right button is pressed. <code class="docutils literal"><span class="pre">0</span></code> is returned if no buttons are
+currently being pressed.</p>
+<p>Note that this function is provided for legacy API compatibility purposes,
+with the caveat that the V5 touch screen does not actually support pressing
+multiple points on the screen at the same time.</p>
+<p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-read-buttons">lcd_read_buttons</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-10 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-11 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">read_buttons</span> <span class="p">(</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Buttons Bitmap: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">read_buttons</span><span class="p">());</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> The buttons pressed as a bit mask.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="register-btn0-cb">
+<h3><a class="toc-backref" href="#id10">register_btn0_cb</a><a class="headerlink" href="#register-btn0-cb" title="Permalink to this headline">¶</a></h3>
+<p>Register a callback function for the leftmost button.</p>
+<p>When the leftmost button on the emulated three-button LCD is pressed, the
+user-provided callback function will be invoked.</p>
+<p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-register-btn0-cb">lcd_register_btn0_cb</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-12 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-13 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">register_btn0_cb</span> <span class="p">(</span> <span class="n">lcd_btn_cb_fn_t</span> <span class="n">cb</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">on_center_button</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="kt">bool</span> <span class="n">pressed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="n">pressed</span> <span class="o">=</span> <span class="o">!</span><span class="n">pressed</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">pressed</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;I was pressed!&quot;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">clear_line</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">register_btn0_cb</span><span class="p">(</span><span class="n">on_center_button</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cb</td>
+<td>An <a class="reference external" href="../c/llemu.html#lcd-btn-cb-fn-t">LCD callback function</a> to be executed by this button press</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="register-btn1-cb">
+<h3><a class="toc-backref" href="#id11">register_btn1_cb</a><a class="headerlink" href="#register-btn1-cb" title="Permalink to this headline">¶</a></h3>
+<p>Register a callback function for the center button.</p>
+<p>When the center button on the emulated three-button LCD is pressed, the
+user-provided callback function will be invoked.</p>
+<p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-register-btn1-cb">lcd_register_btn1_cb</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-14 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-15 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">register_btn1_cb</span> <span class="p">(</span> <span class="n">lcd_btn_cb_fn_t</span> <span class="n">cb</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">on_center_button</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="kt">bool</span> <span class="n">pressed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="n">pressed</span> <span class="o">=</span> <span class="o">!</span><span class="n">pressed</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">pressed</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;I was pressed!&quot;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">clear_line</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">register_btn1_cb</span><span class="p">(</span><span class="n">on_center_button</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cb</td>
+<td>An <a class="reference external" href="../c/llemu.html#lcd-btn-cb-fn-t">LCD callback function</a> to be executed by this button press</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="register-btn2-cb">
+<h3><a class="toc-backref" href="#id12">register_btn2_cb</a><a class="headerlink" href="#register-btn2-cb" title="Permalink to this headline">¶</a></h3>
+<p>Register a callback function for the rightmost button.</p>
+<p>When the rightmost button on the emulated three-button LCD is pressed, the
+user-provided callback function will be invoked.</p>
+<p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-register-btn2-cb">lcd_register_btn2_cb</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-16 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-17 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">register_btn2_cb</span> <span class="p">(</span> <span class="n">lcd_btn_cb_fn_t</span> <span class="n">cb</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">on_center_button</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="kt">bool</span> <span class="n">pressed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="n">pressed</span> <span class="o">=</span> <span class="o">!</span><span class="n">pressed</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">pressed</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;I was pressed!&quot;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">clear_line</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">register_btn2_cb</span><span class="p">(</span><span class="n">on_center_button</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>cb</td>
+<td>An <a class="reference external" href="../c/llemu.html#lcd-btn-cb-fn-t">LCD callback function</a> to be executed by this button press</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="set-text">
+<h3><a class="toc-backref" href="#id13">set_text</a><a class="headerlink" href="#set-text" title="Permalink to this headline">¶</a></h3>
+<p>Displays a string on the emulated three-button LCD screen</p>
+<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
+<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-set-text">lcd_set_text</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-18 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-19 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int16_t</span> <span class="n">line</span><span class="p">,</span>
+                    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">text</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>line</td>
+<td>The line on which to display the text [0-7]</td>
+</tr>
+<tr class="row-odd"><td>text</td>
+<td>The text to display</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="shutdown">
+<h3><a class="toc-backref" href="#id14">shutdown</a><a class="headerlink" href="#shutdown" title="Permalink to this headline">¶</a></h3>
+<p>Turn off the Legacy LCD Emulator</p>
+<p>Calling this function will clear the entire display, and you will not be able
+to call any further LLEMU functions until another call to <a class="reference internal" href="#initialize">initialize</a>.</p>
+<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">ENXIO</span></code> - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-shutdown">lcd_shutdown</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-20 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-21 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">shutdown</span> <span class="p">(</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span> <span class="c1">// All done with the LCD</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="misc.html" class="btn btn-neutral float-right" title="Miscellaneous C++ API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="adi.html" class="btn btn-neutral" title="ADI (TriPort) C++ API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: V5 (3.0.6)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../../cortex/index.html">Cortex</a></dd>
+        
+          <dd><a href="../../index.html">V5</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.0.6',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

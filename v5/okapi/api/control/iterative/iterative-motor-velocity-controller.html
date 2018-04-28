@@ -1,0 +1,984 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Iterative Motor Velocity Controller &mdash; PROS for V5 3.0.6 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+
+  
+    <link rel="stylesheet" href="../../../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Control API" href="../index.html"/>
+        <link rel="next" title="Iterative Pos PID Controller" href="iterative-pos-pid-controller.html"/>
+        <link rel="prev" title="(Abstract) Iterative Velocity Controller" href="abstract-iterative-velocity-controller.html"/>
+   
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> PROS for V5
+          
+
+          
+            
+            <img src="../../../../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  V5 (3.0.6)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">PROS: Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../blog/index.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../releases/index.html">Version Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/new-users.html">PROS First Time Users Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting-started/installation.html">Installation Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/index.html">API Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/c/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/cpp/index.html">C++ API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../cli/index.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OkapiLib</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">OkapiLib Documentation Home</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../chassis/index.html">Chassis API</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">Control API</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../async/abstract-async-controller.html">(Abstract) Async Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/async-pos-pid-controller.html">Async Pos PID Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/async-vel-integrated-controller.html">Async Vel Integrated Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/async-vel-pid-controller.html">Async Vel PID Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/async-wrapper.html">Async Wrapper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="abstract-iterative-controller.html">(Abstract) Iterative Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="abstract-iterative-position-controller.html">(Abstract) Iterative Position Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="abstract-iterative-velocity-controller.html">(Abstract) Iterative Velocity Controller</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Iterative Motor Velocity Controller</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#okapi-iterativemotorvelocitycontrollerargs">okapi::IterativeMotorVelocityControllerArgs</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#okapi-iterativemotorvelocitycontroller">okapi::IterativeMotorVelocityController</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id3">Constructor(s)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#step">step</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#settarget">setTarget</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#getoutput">getOutput</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#geterror">getError</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#getderivative">getDerivative</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#issettled">isSettled</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#setsampletime">setSampleTime</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#setoutputlimits">setOutputLimits</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#reset">reset</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#flipdisable">flipDisable</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id7">flipDisable</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#isdisabled">isDisabled</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#getsampletime">getSampleTime</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="iterative-pos-pid-controller.html">Iterative Pos PID Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="iterative-vel-pid-controller.html">Iterative Vel PID Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../util/controller-runner.html">Controller Runner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../util/settled-util.html">Settled Utility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../abstract-closed-loop-controller.html">(Abstract) Closed-loop Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../abstract-controller-input.html">(Abstract) Controller Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../abstract-controller-output.html">(Abstract) Controller Output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../device/index.html">Devices API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filters/index.html">Filters API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../odometry/index.html">Odometry API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../util/index.html">Utility API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../chassis/index.html">Chassis API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Control API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../async/abstract-async-controller.html">(Abstract) Async Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../async/abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../async/abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../async/async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../async/async-pos-pid-controller.html">Async Pos PID Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../async/async-vel-integrated-controller.html">Async Vel Integrated Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../async/async-vel-pid-controller.html">Async Vel PID Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../async/async-wrapper.html">Async Wrapper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="abstract-iterative-controller.html">(Abstract) Iterative Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="abstract-iterative-position-controller.html">(Abstract) Iterative Position Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="abstract-iterative-velocity-controller.html">(Abstract) Iterative Velocity Controller</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Iterative Motor Velocity Controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#okapi-iterativemotorvelocitycontrollerargs">okapi::IterativeMotorVelocityControllerArgs</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#okapi-iterativemotorvelocitycontroller">okapi::IterativeMotorVelocityController</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id3">Constructor(s)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#step">step</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#settarget">setTarget</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getoutput">getOutput</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#geterror">getError</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getderivative">getDerivative</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#issettled">isSettled</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#setsampletime">setSampleTime</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#setoutputlimits">setOutputLimits</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#reset">reset</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#flipdisable">flipDisable</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id7">flipDisable</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#isdisabled">isDisabled</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getsampletime">getSampleTime</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="iterative-pos-pid-controller.html">Iterative Pos PID Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iterative-vel-pid-controller.html">Iterative Vel PID Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../util/controller-runner.html">Controller Runner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../util/settled-util.html">Settled Utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../abstract-closed-loop-controller.html">(Abstract) Closed-loop Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../abstract-controller-input.html">(Abstract) Controller Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../abstract-controller-output.html">(Abstract) Controller Output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../device/index.html">Devices API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../filters/index.html">Filters API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../odometry/index.html">Odometry API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../util/index.html">Utility API</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extended (Advanced Users)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../extended/index.html">Extended API Topics</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">PROS for V5</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">OkapiLib Documentation Home</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OkapiLib API</a> &raquo;</li>
+        
+          <li><a href="../index.html">Control API</a> &raquo;</li>
+        
+      <li>Iterative Motor Velocity Controller</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/okapi/api/control/iterative/iterative-motor-velocity-controller.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="iterative-motor-velocity-controller">
+<h1>Iterative Motor Velocity Controller<a class="headerlink" href="#iterative-motor-velocity-controller" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#okapi-iterativemotorvelocitycontrollerargs" id="id8">okapi::IterativeMotorVelocityControllerArgs</a><ul>
+<li><a class="reference internal" href="#constructor-s" id="id9">Constructor(s)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#okapi-iterativemotorvelocitycontroller" id="id10">okapi::IterativeMotorVelocityController</a><ul>
+<li><a class="reference internal" href="#id3" id="id11">Constructor(s)</a></li>
+<li><a class="reference internal" href="#methods" id="id12">Methods</a><ul>
+<li><a class="reference internal" href="#step" id="id13">step</a></li>
+<li><a class="reference internal" href="#settarget" id="id14">setTarget</a></li>
+<li><a class="reference internal" href="#getoutput" id="id15">getOutput</a></li>
+<li><a class="reference internal" href="#geterror" id="id16">getError</a></li>
+<li><a class="reference internal" href="#getderivative" id="id17">getDerivative</a></li>
+<li><a class="reference internal" href="#issettled" id="id18">isSettled</a></li>
+<li><a class="reference internal" href="#setsampletime" id="id19">setSampleTime</a></li>
+<li><a class="reference internal" href="#setoutputlimits" id="id20">setOutputLimits</a></li>
+<li><a class="reference internal" href="#reset" id="id21">reset</a></li>
+<li><a class="reference internal" href="#flipdisable" id="id22">flipDisable</a></li>
+<li><a class="reference internal" href="#id7" id="id23">flipDisable</a></li>
+<li><a class="reference internal" href="#isdisabled" id="id24">isDisabled</a></li>
+<li><a class="reference internal" href="#getsampletime" id="id25">getSampleTime</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="okapi-iterativemotorvelocitycontrollerargs">
+<h2><a class="toc-backref" href="#id8">okapi::IterativeMotorVelocityControllerArgs</a><a class="headerlink" href="#okapi-iterativemotorvelocitycontrollerargs" title="Permalink to this headline">¶</a></h2>
+<p>Data class for the to arguments to <code class="docutils literal"><span class="pre">IterativeMotorVelocityController</span></code>.</p>
+<div class="section" id="constructor-s">
+<h3><a class="toc-backref" href="#id9">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">IterativeMotorVelocityControllerArgs</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">imotor</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">IterativeVelocityController</span><span class="o">&gt;</span> <span class="n">icontroller</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>imotor</td>
+<td>The motor to control.</td>
+</tr>
+<tr class="row-odd"><td>icontroller</td>
+<td>The <a class="reference external" href="abstract-iterative-velocity-controller.html">IterativeVelocityController</a> to use.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="okapi-iterativemotorvelocitycontroller">
+<h2><a class="toc-backref" href="#id10">okapi::IterativeMotorVelocityController</a><a class="headerlink" href="#okapi-iterativemotorvelocitycontroller" title="Permalink to this headline">¶</a></h2>
+<p>A simple <a class="reference external" href="abstract-iterative-velocity-controller.html">IterativeVelocityController</a> that
+associates an <a class="reference external" href="../../device/motor/abstract-motor.html">AbstractMotor</a> with an
+<a class="reference external" href="abstract-iterative-velocity-controller.html">IterativeVelocityController</a>.</p>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id11">Constructor(s)</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-1 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">IterativeMotorVelocityController</span><span class="p">(</span><span class="n">Motor</span> <span class="n">imotor</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">IterativeVelocityController</span><span class="o">&gt;</span> <span class="n">icontroller</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>imotor</td>
+<td>The motor to control.</td>
+</tr>
+<tr class="row-odd"><td>icontroller</td>
+<td>The <a class="reference external" href="abstract-iterative-velocity-controller.html">IterativeVelocityController</a> to use.</td>
+</tr>
+</tbody>
+</table>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">IterativeMotorVelocityController</span><span class="p">(</span><span class="n">MotorGroup</span> <span class="n">imotor</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">IterativeVelocityController</span><span class="o">&gt;</span> <span class="n">icontroller</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>imotor</td>
+<td>The motor to control.</td>
+</tr>
+<tr class="row-odd"><td>icontroller</td>
+<td>The <a class="reference external" href="abstract-iterative-velocity-controller.html">IterativeVelocityController</a> to use.</td>
+</tr>
+</tbody>
+</table>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-3 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">IterativeMotorVelocityController</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">imotor</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">IterativeVelocityController</span><span class="o">&gt;</span> <span class="n">icontroller</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>imotor</td>
+<td>The motor to control.</td>
+</tr>
+<tr class="row-odd"><td>icontroller</td>
+<td>The <a class="reference external" href="abstract-iterative-velocity-controller.html">IterativeVelocityController</a> to use.</td>
+</tr>
+</tbody>
+</table>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">IterativeMotorVelocityController</span><span class="p">(</span><span class="k">const</span> <span class="n">IterativeMotorControllerArgs</span> <span class="o">&amp;</span><span class="n">iparams</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>iparams</td>
+<td>The <code class="docutils literal"><span class="pre">IterativeMotorController</span></code> arguments.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="methods">
+<h3><a class="toc-backref" href="#id12">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="step">
+<h4><a class="toc-backref" href="#id13">step</a><a class="headerlink" href="#step" title="Permalink to this headline">¶</a></h4>
+<p>Do one iteration of the controller. Outputs in the range <code class="docutils literal"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-5 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">step</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">ireading</span><span class="p">)</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ireading</td>
+<td>The new sensor reading.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> The controller output.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="settarget">
+<h4><a class="toc-backref" href="#id14">setTarget</a><a class="headerlink" href="#settarget" title="Permalink to this headline">¶</a></h4>
+<p>Sets the target for the controller.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-6 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setTarget</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">itarget</span><span class="p">)</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>itarget</td>
+<td>The new target.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="getoutput">
+<h4><a class="toc-backref" href="#id15">getOutput</a><a class="headerlink" href="#getoutput" title="Permalink to this headline">¶</a></h4>
+<p>Returns the last calculated output of the controller.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-7 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">getOutput</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The previous output from the filter.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="geterror">
+<h4><a class="toc-backref" href="#id16">getError</a><a class="headerlink" href="#geterror" title="Permalink to this headline">¶</a></h4>
+<p>Returns the last error of the controller.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-8 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">getError</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The last error of the controller.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="getderivative">
+<h4><a class="toc-backref" href="#id17">getDerivative</a><a class="headerlink" href="#getderivative" title="Permalink to this headline">¶</a></h4>
+<p>Returns the last derivative (change in error) of the controller.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-9 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">getDerivative</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The last derivative (change in error) of the controller.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="issettled">
+<h4><a class="toc-backref" href="#id18">isSettled</a><a class="headerlink" href="#issettled" title="Permalink to this headline">¶</a></h4>
+<p>Returns whether the controller has settled at the target. Setting is when the error or derivative
+of error has been small enough for a long enough period.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-10 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">bool</span> <span class="n">isSettled</span><span class="p">()</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> Whether the controller is settled.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="setsampletime">
+<h4><a class="toc-backref" href="#id19">setSampleTime</a><a class="headerlink" href="#setsampletime" title="Permalink to this headline">¶</a></h4>
+<p>Sets time between loops in ms.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-11 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setSampleTime</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">isampleTime</span><span class="p">)</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>isampleTime</td>
+<td>The sample time in ms.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="setoutputlimits">
+<h4><a class="toc-backref" href="#id20">setOutputLimits</a><a class="headerlink" href="#setoutputlimits" title="Permalink to this headline">¶</a></h4>
+<p>Sets controller output bounds.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-12 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setOutputLimits</span><span class="p">(</span><span class="kt">double</span> <span class="n">imax</span><span class="p">,</span> <span class="kt">double</span> <span class="n">imin</span><span class="p">)</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>imax</td>
+<td>The upper bound.</td>
+</tr>
+<tr class="row-odd"><td>imin</td>
+<td>The lower bound.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="reset">
+<h4><a class="toc-backref" href="#id21">reset</a><a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
+<p>Resets the controller so it can start from 0 again properly. Keeps configuration from before.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-13 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">reset</span><span class="p">()</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="flipdisable">
+<h4><a class="toc-backref" href="#id22">flipDisable</a><a class="headerlink" href="#flipdisable" title="Permalink to this headline">¶</a></h4>
+<p>Changes whether the controller is off or on. Turning the controller on after it was off will cause
+the controller to move to its last set target, unless it was reset in that time.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-14 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">flipDisable</span><span class="p">()</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id7">
+<h4><a class="toc-backref" href="#id23">flipDisable</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>Sets whether the controller is off or on. Turning the controller on after it was off will cause the
+controller to move to its last set target, unless it was reset in that time.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-15 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">flipDisable</span><span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">iisDisabled</span><span class="p">)</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>iisDisabled</td>
+<td>Whether the controller should be disabled.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="isdisabled">
+<h4><a class="toc-backref" href="#id24">isDisabled</a><a class="headerlink" href="#isdisabled" title="Permalink to this headline">¶</a></h4>
+<p>Returns whether the controller is currently disabled.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-16 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">bool</span> <span class="n">isDisabled</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> Whether the controller is currently disabled.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="getsampletime">
+<h4><a class="toc-backref" href="#id25">getSampleTime</a><a class="headerlink" href="#getsampletime" title="Permalink to this headline">¶</a></h4>
+<p>Returns the last set sample time. Default is <code class="docutils literal"><span class="pre">10</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-17 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">getSampleTime</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The last set sample time.</p>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="iterative-pos-pid-controller.html" class="btn btn-neutral float-right" title="Iterative Pos PID Controller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="abstract-iterative-velocity-controller.html" class="btn btn-neutral" title="(Abstract) Iterative Velocity Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: V5 (3.0.6)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../../../../cortex/index.html">Cortex</a></dd>
+        
+          <dd><a href="../../../../index.html">V5</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'3.0.6',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../../../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

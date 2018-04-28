@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Coding FAQ &mdash; PROS for Cortex 2.12.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for Cortex 2.12.1 documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="Debugging" href="debugging.html"/>
+        <link rel="prev" title="Clawbot Tutorial" href="clawbot.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for Cortex
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  Cortex (2.12.1)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analog.html">Analog Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clawbot.html">Clawbot Tutorial</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Coding FAQ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#compile-time-issues">Compile-Time Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-time-issues">Run-Time Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digitalRead.html">Digital Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i2c.html">I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jinx.html">JINX Debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="known-issues.html">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pneumatics.html">Pneumatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-structure.html">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speaker.html">Speaker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultrasonic.html">Ultrasonics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html">Upgrading PROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uploading.html">Uploading</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for Cortex</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+        
+      <li>Coding FAQ</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/cortex/tutorials/coding-faq.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="coding-faq">
+<h1>Coding FAQ<a class="headerlink" href="#coding-faq" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="compile-time-issues">
+<h2>Compile-Time Issues<a class="headerlink" href="#compile-time-issues" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">undefined</span> <span class="pre">reference</span> <span class="pre">to</span> <span class="pre">...</span></code> or <code class="docutils literal"><span class="pre">implicit</span> <span class="pre">declaration</span> <span class="pre">of</span> <span class="pre">function</span> <span class="pre">...</span></code>:</dt>
+<dd>A function name is spelled incorrectly, or the function was incorrectly
+declared in a header file. Custom headers must be included in <code class="docutils literal"><span class="pre">main.h</span></code> or
+in the file in which they are used.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">format</span> <span class="pre">...</span> <span class="pre">expects</span> <span class="pre">argument</span> <span class="pre">of</span> <span class="pre">type</span> <span class="pre">...,</span> <span class="pre">but</span> <span class="pre">argument</span> <span class="pre">has</span> <span class="pre">type</span> <span class="pre">...`</span></code>:</dt>
+<dd>The value provided to a function like <a class="reference external" href="http://www.cplusplus.com/reference/cstdio/printf/">printf</a>
+or <a class="reference external" href="../api/index.html#lcdPrint">lcdPrint</a> does not match the expected
+type inferred from the format string. Some instances of this warning can be
+safely ignored, but crashes can occur if types <code class="docutils literal"><span class="pre">double</span></code> or <code class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></code> are
+mixed with other types.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">assignment</span> <span class="pre">makes</span> <span class="pre">pointer</span> <span class="pre">from</span> <span class="pre">integer</span> <span class="pre">without</span> <span class="pre">a</span> <span class="pre">cast</span></code>:</dt>
+<dd>Typically caused when a C pointer has the wrong number of asterisks to
+<a class="reference external" href="http://stackoverflow.com/a/4955297/3681958">dereference</a> it, or when
+assigning a constant to <code class="docutils literal"><span class="pre">pointer</span></code> (instead of <code class="docutils literal"><span class="pre">*pointer</span></code>).</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="run-time-issues">
+<h2>Run-Time Issues<a class="headerlink" href="#run-time-issues" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt><strong>Some tasks are running, others are not:</strong></dt>
+<dd><p class="first last">A task is not waiting using <a class="reference external" href="../api/index.html#delay">delay</a> or
+<a class="reference external" href="../api/index.html#taskDelayUntil">taskDelayUntil</a>. Due to the fact that
+PROS utilizes a priority based non-preemptive scheduler, tasks of higher or
+equal priority to the blocking task will still run while lower priority tasks
+will not. This scenario is also known as
+<a class="reference external" href="https://en.wikipedia.org/wiki/Starvation_(computer_science)">starvation</a>.
+See <a class="reference external" href="../tutorials/multitasking">Tasks/Multithreading</a> for more information.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>VEX LCD updates very slowly or is “frozen”:</strong></dt>
+<dd><p class="first">A task is not waiting using <a class="reference external" href="../api/index.html#delay">delay</a> or
+<a class="reference external" href="../api/index.html#taskDelayUntil">taskDelayUntil</a>. From the kernel’s
+perspective, updating the LCD is usually less important than how well the
+robot is running, so PROS prioritizes user tasks over the LCD.</p>
+<p class="last">The LCD is only updated if all other tasks are waiting.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Neither autonomous nor driver control code starts:</strong></dt>
+<dd><p class="first">The <code class="docutils literal"><span class="pre">initialize()</span></code> function may still be running. Some tasks such as
+<a class="reference external" href="../api/index.html#analogCalibrate">analogCalibrate</a> take time.</p>
+<p class="last">If the <code class="docutils literal"><span class="pre">initialize()</span></code> function implements some type of loop or autonomous
+selection routine, verify that it actually has a means of ending.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Code restarts unexpectedly:</strong></dt>
+<dd><p class="first last">A run-time error has caused the program to crash.
+<a class="reference external" href="../tutorials/debugging">Debugging</a> may reveal the cause of the error.
+Examine any newly added code for possible logical errors. Some common error
+messages include:</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><strong>Segmentation Fault:</strong></dt>
+<dd>Indicates that an invalid C pointer has been used. Check for confusion
+between pointers and regular variables and that an invalid pointer has not
+been passed to a PROS API function.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Stack Overflow:</strong></dt>
+<dd>Often indicates infinite recursion, or that the stack size for a custom task
+is too small. Calling many layers of functions and declaring large local
+variables can require large amounts of space on the stack. If this error
+occurs in a default task like <code class="docutils literal"><span class="pre">autonomous()</span></code>, consider changing code to
+reduce the stack requirements, or creating a new task with a larger stack
+size using <a class="reference external" href="../api/index.html#taskCreate">taskCreate</a> to handle large jobs.
+Large arrays declared inside functions can usually be declared globally to
+alleviate pressure on stack space.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>System Task Failure:</strong></dt>
+<dd>Too many tasks were running for the system to start a new one. Disable or
+merge unnecessary tasks to eliminate this error.</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Cortex blinking red light after upload:</strong></dt>
+<dd><p class="first last">Turn the Cortex microcontroller off and on again. This usually resolves the
+problem, and it is generally good practice to re-initialize the robot to
+simulate conditions at most competitions. If the error persists, see the
+“<strong>Code restarts unexpectedly</strong>” section above.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="http://www.cplusplus.com/reference/cstdio/printf/">printf</a> <strong>doesn’t work</strong>:</dt>
+<dd><p class="first last"><a class="reference external" href="http://www.cplusplus.com/reference/cstdio/printf/">printf</a> prints
+information over a serial connection (<a class="reference external" href="../tutorials/debugging">Debugging</a>),
+not to the VEX LCD. To print to the LCD, use <a class="reference external" href="../api/index.html#lcdPrint">lcdPrint</a>
+instead.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="debugging.html" class="btn btn-neutral float-right" title="Debugging" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="clawbot.html" class="btn btn-neutral" title="Clawbot Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: Cortex (2.12.1)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.12.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

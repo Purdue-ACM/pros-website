@@ -1,0 +1,386 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Uploading &mdash; PROS for Cortex 2.12.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for Cortex 2.12.1 documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="API" href="../api/index.html"/>
+        <link rel="prev" title="Upgrading PROS" href="upgrading.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for Cortex
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  Cortex (2.12.1)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analog.html">Analog Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clawbot.html">Clawbot Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding-faq.html">Coding FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digitalRead.html">Digital Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i2c.html">I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jinx.html">JINX Debugger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="known-issues.html">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pneumatics.html">Pneumatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-structure.html">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speaker.html">Speaker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultrasonic.html">Ultrasonics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html">Upgrading PROS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Uploading</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#having-issues-flashing">Having issues flashing?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#use-usb">Use USB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#don-t-poll">Don’t poll</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-for-updates">Check for updates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#open-an-issue-on-github-and-include-debug-output">Open an issue on GitHub and include debug output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for Cortex</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+        
+      <li>Uploading</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/cortex/tutorials/uploading.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="uploading">
+<h1>Uploading<a class="headerlink" href="#uploading" title="Permalink to this headline">¶</a></h1>
+<p>The PROS uploading utility allows you to flash compiled binaries to your
+VEX microcontroller. There are a variety of different ways to flash
+code:</p>
+<ul class="simple">
+<li>USB A-A (Windows only)</li>
+<li>Programming module w/USB between Joystick and Microcontroller</li>
+<li>Programming module w/VEXnet between Joystick and Microcontroller</li>
+</ul>
+<p>Within Atom, click the ‘Upload to Cortex’ button in Atom. This process
+will upload the binary the compilation process created
+(<code class="docutils literal"><span class="pre">bin/output.bin</span></code>) to the Cortex and begin running it.</p>
+<img alt="../_images/upload.png" src="../_images/upload.png" />
+<p>Using just the terminal, this can be done by navigating to the directory
+(or subdirectory) of the PROS project and invoking <code class="docutils literal"><span class="pre">pros</span> <span class="pre">upload</span></code>. You
+can get all of the command options by running <code class="docutils literal"><span class="pre">pros</span> <span class="pre">upload</span> <span class="pre">--help</span></code>.
+Some additional commands you may find helpful is <code class="docutils literal"><span class="pre">pros</span> <span class="pre">mu</span></code>, which runs
+the default Make target (forks and calls <code class="docutils literal"><span class="pre">make</span></code>) and then uploads your
+code, and <code class="docutils literal"><span class="pre">pros</span> <span class="pre">mut</span></code>, which does the same but also opens the PROS
+terminal after uploading.</p>
+<div class="section" id="having-issues-flashing">
+<h2>Having issues flashing?<a class="headerlink" href="#having-issues-flashing" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>PROS CLI 2.5.0 Available</p>
+<p class="last">We fixed a number of issues flashing code onto the VEX Cortex.
+Make sure you’ve <a class="reference external" href="https://github.com/purduesigbots/pros-cli/releases/latest">updated PROS to at least 2.5.0</a>.</p>
+</div>
+<p>Before trying these solutions, make sure you have built your project! If
+there’s nothing to upload, the flasher will throw an error!</p>
+<div class="section" id="use-usb">
+<h3>Use USB<a class="headerlink" href="#use-usb" title="Permalink to this headline">¶</a></h3>
+<p>First, try putting the fewest amount of electronics between the Cortex
+and computer. If you’re on Windows, try flashing using only a USB A-A
+cable. If you’re on a Unix-like OS, flash using a programming module
+with a USB cable between the Joystick and microcontroller. Sometimes
+commands to upload your code are dropped when flashing wirelessly,
+especially when the distance between the joystick and microcontroller is
+large.</p>
+</div>
+<div class="section" id="don-t-poll">
+<h3>Don’t poll<a class="headerlink" href="#don-t-poll" title="Permalink to this headline">¶</a></h3>
+<p>Next, try using the <code class="docutils literal"><span class="pre">--no-poll</span></code> option. This limits communication
+between the Cortex and your computer to just what’s vitally important to
+flashing. Polling allows us to determine what connection type you’re
+using and also allows you to check what firmware version you’re running.
+Sometimes when printing a lot of data to the console, responses from the
+Cortex about system information gets intertwined with your data,
+preventing us from parsing it. Using <code class="docutils literal"><span class="pre">--no-poll</span></code> may allow you to
+bypass this issue.</p>
+</div>
+<div class="section" id="check-for-updates">
+<h3>Check for updates<a class="headerlink" href="#check-for-updates" title="Permalink to this headline">¶</a></h3>
+<p>There may be updates for the CLI which improves flasher reliability. If
+you keep Atom up to date, we’ll notify you about updates. Otherwise,
+check <a class="reference external" href="https://github.com/purduesigbots/pros-cli/releases">Releases</a>
+for the latest version.</p>
+</div>
+<div class="section" id="open-an-issue-on-github-and-include-debug-output">
+<h3>Open an issue on GitHub and include debug output<a class="headerlink" href="#open-an-issue-on-github-and-include-debug-output" title="Permalink to this headline">¶</a></h3>
+<p>You’ve tried everything you can and flashing still isn’t working. Use
+the <code class="docutils literal"><span class="pre">-vd</span></code> option to print out all of the microcontroller’s responses
+to the flasher’s commands. Please copy the output of the program output
+and <a class="reference external" href="https://github.com/purduesigbots/pros-cli/issues/new">open an
+issue</a> or shoot
+us an email at <a class="reference external" href="mailto:pros_development&#37;&#52;&#48;cs&#46;purdue&#46;edu">pros_development<span>&#64;</span>cs<span>&#46;</span>purdue<span>&#46;</span>edu</a> .</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api/index.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="upgrading.html" class="btn btn-neutral" title="Upgrading PROS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: Cortex (2.12.1)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.12.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

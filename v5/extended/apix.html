@@ -1,0 +1,886 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Extended API &mdash; PROS for V5 3.0.6 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../index.html"/>
+        <link rel="up" title="Extended API Topics" href="index.html"/>
+        <link rel="next" title="Multitasking (Extended API)" href="multitasking.html"/>
+        <link rel="prev" title="Extended API Topics" href="index.html"/>
+   
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for V5
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  V5 (3.0.6)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../blog/index.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Version Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/new-users.html">PROS First Time Users Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/installation.html">Installation Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/c/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/cpp/index.html">C++ API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OkapiLib</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../okapi/index.html">OkapiLib Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../okapi/tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../okapi/api/index.html">OkapiLib API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extended (Advanced Users)</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Extended API Topics</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Extended API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mutex-get-owner">mutex_get_owner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mutex-recursive-create">mutex_recursive_create</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mutex-recursive-give">mutex_recursive_give</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mutex-recursive-take">mutex_recursive_take</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#queue-append">queue_append</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#queue-create">queue_create</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#queue-delete">queue_delete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#queue-get-available">queue_get_available</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#queue-get-waiting">queue_get_waiting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#queue-peek">queue_peek</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#queue-prepend">queue_prepend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#queue-recv">queue_recv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#queue-reset">queue_reset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sem-binary-create">sem_binary_create</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sem-create">sem_create</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sem-get-count">sem_get_count</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sem-post">sem_post</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sem-wait">sem_wait</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-abort-delay">task_abort_delay</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#macros">Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enumerated-values">Enumerated Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typedefs">Typedefs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#queue-t">queue_t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sem-t">sem_t</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="multitasking.html">Multitasking (Extended API)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tmei.html">Touch Management Engine Interface (TMEI) API</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for V5</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Extended API Topics</a> &raquo;</li>
+        
+      <li>Extended API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/extended/apix.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="extended-api">
+<h1>Extended API<a class="headerlink" href="#extended-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mutex-get-owner">
+<h3>mutex_get_owner<a class="headerlink" href="#mutex-get-owner" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">task_t</span> <span class="n">mutex_get_owner</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns a handle to the owner of the mutex.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mutex</td>
+<td>The mutex to unlock</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> A handle to the current task that owns the mutex, or NULL if the mutex isn’t owned.</p>
+</div>
+<div class="section" id="mutex-recursive-create">
+<h3>mutex_recursive_create<a class="headerlink" href="#mutex-recursive-create" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">mutex_t</span> <span class="n">mutex_recursive_create</span> <span class="p">(</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Creates a recursive mutex which can be locked recursively by the owner.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<p><strong>Returns:</strong> A newly created recursive mutex.</p>
+</div>
+<div class="section" id="mutex-recursive-give">
+<h3>mutex_recursive_give<a class="headerlink" href="#mutex-recursive-give" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutex_recursive_give</span><span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Gives a recursive mutex.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mutex</td>
+<td>The mutex to unlock</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="mutex-recursive-take">
+<h3>mutex_recursive_take<a class="headerlink" href="#mutex-recursive-take" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutex_recursive_take</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span><span class="p">,</span>
+                              <span class="kt">uint32_t</span> <span class="n">wait_time</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Takes a recursive mutex.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mutex</td>
+<td>The mutex to take.</td>
+</tr>
+<tr class="row-odd"><td>timeout</td>
+<td><p class="first">Time to wait before the mutex becomes available.</p>
+<p class="last">A timeout of 0 can be used to poll the mutex. TIMEOUT_MAX can be used to block indefinitely.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if the mutex was obtained, 0 otherwise</p>
+</div>
+<div class="section" id="queue-append">
+<h3>queue_append<a class="headerlink" href="#queue-append" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_append</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
+                      <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">item</span><span class="p">,</span>
+                      <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Posts an item to the end of a queue. The item is queued by copy, not by reference.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>queue</td>
+<td>The queue handle</td>
+</tr>
+<tr class="row-odd"><td>item</td>
+<td>A pointer to the item that will be placed on the queue.</td>
+</tr>
+<tr class="row-even"><td>timeout</td>
+<td>Time to wait for space to become available. A timeout of 0 can be used to attempt to
+post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the item was preprended, <code class="docutils literal"><span class="pre">false</span></code> otherwise.</p>
+</div>
+<div class="section" id="queue-create">
+<h3>queue_create<a class="headerlink" href="#queue-create" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">queue_t</span> <span class="n">queue_create</span> <span class="p">(</span> <span class="kt">uint32_t</span> <span class="n">length</span><span class="p">,</span>
+                       <span class="kt">uint32_t</span> <span class="n">item_size</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Creates a queue.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>length</td>
+<td>The maximum number of items that the queue can contain.</td>
+</tr>
+<tr class="row-odd"><td>item_size</td>
+<td>The number of bytes each item in the queue will require.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> A handle to a newly created queue, or NULL if the queue cannot be created.</p>
+</div>
+<div class="section" id="queue-delete">
+<h3>queue_delete<a class="headerlink" href="#queue-delete" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">queue_delete</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Deletes a queue.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>queue</td>
+<td>The queue handle to delete</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="queue-get-available">
+<h3>queue_get_available<a class="headerlink" href="#queue-get-available" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">queue_get_available</span> <span class="p">(</span> <span class="k">const</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the number of spaces left in a queue.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>queue</td>
+<td>The queue handle</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> the number of spaces left in a queue.</p>
+</div>
+<div class="section" id="queue-get-waiting">
+<h3>queue_get_waiting<a class="headerlink" href="#queue-get-waiting" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">queue_get_waiting</span> <span class="p">(</span> <span class="k">const</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Returns the number of messages stored in a queue.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>queue</td>
+<td>The queue handle</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> The number of messages available in the queue.</p>
+</div>
+<div class="section" id="queue-peek">
+<h3>queue_peek<a class="headerlink" href="#queue-peek" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_peek</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
+                    <span class="kt">void</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span>
+                    <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Receive an item from a queue without removing the item from the queue.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>queue</td>
+<td>The queue handle</td>
+</tr>
+<tr class="row-odd"><td>buffer</td>
+<td>Pointer to a buffer to which the received item will be copied</td>
+</tr>
+<tr class="row-even"><td>timeout</td>
+<td>Time to wait for space to become available. A timeout of 0 can be used to attempt to
+post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if an item was copied into the buffer, <code class="docutils literal"><span class="pre">false</span></code> otherwise.</p>
+</div>
+<div class="section" id="queue-prepend">
+<h3>queue_prepend<a class="headerlink" href="#queue-prepend" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_prepend</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
+                       <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">item</span><span class="p">,</span>
+                       <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Posts an item to the front of a queue. The item is queued by copy, not by reference.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>queue</td>
+<td>The queue handle</td>
+</tr>
+<tr class="row-odd"><td>item</td>
+<td>A pointer to the item that will be placed on the queue.</td>
+</tr>
+<tr class="row-even"><td>timeout</td>
+<td>Time to wait for space to become available. A timeout of 0 can be used to attempt to
+post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the item was preprended, <code class="docutils literal"><span class="pre">false</span></code> otherwise.</p>
+</div>
+<div class="section" id="queue-recv">
+<h3>queue_recv<a class="headerlink" href="#queue-recv" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_recv</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
+                    <span class="kt">void</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span>
+                    <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Receive an item from the queue.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>queue</td>
+<td>The queue handle</td>
+</tr>
+<tr class="row-odd"><td>buffer</td>
+<td>Pointer to a buffer to which the received item will be copied</td>
+</tr>
+<tr class="row-even"><td>timeout</td>
+<td>Time to wait for space to become available. A timeout of 0 can be used to attempt to
+post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if an item was copied into the buffer, <code class="docutils literal"><span class="pre">false</span></code> otherwise.</p>
+</div>
+<div class="section" id="queue-reset">
+<h3>queue_reset<a class="headerlink" href="#queue-reset" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">queue_reset</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Resets a queue to an empty state.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>queue</td>
+<td>The queue handle to reset</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sem-binary-create">
+<h3>sem_binary_create<a class="headerlink" href="#sem-binary-create" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">sem_t</span> <span class="n">sem_binary_create</span> <span class="p">(</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Creates a binary semaphore.</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<p><strong>Returns:</strong> A newly created semaphore.</p>
+</div>
+<div class="section" id="sem-create">
+<h3>sem_create<a class="headerlink" href="#sem-create" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">sem_t</span> <span class="n">sem_create</span> <span class="p">(</span> <span class="kt">uint32_t</span> <span class="n">max_count</span><span class="p">,</span>
+                   <span class="kt">uint32_t</span> <span class="n">init_count</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Creates a counting semaphore.</p>
+<p>See <a class="reference internal" href="../tutorials/topical/multitasking.html"><span class="doc">Multitasking</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>max_count</td>
+<td>The maximum count value that can be reached</td>
+</tr>
+<tr class="row-odd"><td>init_count</td>
+<td>The initial count value assigned to the new semaphore</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> A newly created semaphore. If an error occurred, NULL will be
+returned and <code class="docutils literal"><span class="pre">errno</span></code> can be checked for hints as to why <a class="reference internal" href="#sem-create">sem_create</a> failed.</p>
+</div>
+<div class="section" id="sem-get-count">
+<h3>sem_get_count<a class="headerlink" href="#sem-get-count" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="nf">sem_get_count</span><span class="p">(</span><span class="n">sem_t</span> <span class="n">sem</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Returns the current value of the semaphore.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sem</td>
+<td>The semaphore to check</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> The current value of the semaphore (e.g. the number of resources available)</p>
+</div>
+<div class="section" id="sem-post">
+<h3>sem_post<a class="headerlink" href="#sem-post" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">sem_post</span> <span class="p">(</span> <span class="n">sem_t</span> <span class="n">sem</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Increments a semaphore’s value.</p>
+<p>See <a class="reference internal" href="../tutorials/topical/multitasking.html"><span class="doc">Multitasking</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sem</td>
+<td>The semaphore to post.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> True if the value was incremented, false otherwise. If false is
+returned, then <code class="docutils literal"><span class="pre">errno</span></code> is set with a hint about why the semaphore
+couldn’t be taken.</p>
+</div>
+<div class="section" id="sem-wait">
+<h3>sem_wait<a class="headerlink" href="#sem-wait" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">sem_wait</span> <span class="p">(</span> <span class="n">sem_t</span> <span class="n">sem</span><span class="p">,</span>
+                  <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Waits for the semaphore’s value to be greater than 0. If the value is already
+greater than 0, this function immediately returns.</p>
+<p>See <a class="reference internal" href="../tutorials/topical/multitasking.html"><span class="doc">Multitasking</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="92%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sem</td>
+<td>The semaphore to wait on.</td>
+</tr>
+<tr class="row-odd"><td>timeout</td>
+<td>Time to wait before the semaphore’s becomes available. A timeout of 0 can be used to poll the sempahore. TIMEOUT_MAX can be used to block indefinitely.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> True if the semaphore was successfully taken, false otherwise.
+If false is returned, then errno is set with a hint about why the
+sempahore couldn’t be taken.</p>
+</div>
+<div class="section" id="task-abort-delay">
+<h3>task_abort_delay<a class="headerlink" href="#task-abort-delay" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">task_abort_delay</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Unblocks a task in the Blocked state (e.g. waiting for a delay, on a semaphore, etc.)</p>
+<p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Paramaters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>task</td>
+<td>The handle of the task being unblocked</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> TO BE DECIDED</p>
+</div>
+</div>
+<div class="section" id="macros">
+<h2>Macros<a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="enumerated-values">
+<h2>Enumerated Values<a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="typedefs">
+<h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="queue-t">
+<h3>queue_t<a class="headerlink" href="#queue-t" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="n">queue_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sem-t">
+<h3>sem_t<a class="headerlink" href="#sem-t" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="n">sem_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>A <a class="reference external" href="../tutorials/multitasking">semaphore</a>.</p>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="multitasking.html" class="btn btn-neutral float-right" title="Multitasking (Extended API)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Extended API Topics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: V5 (3.0.6)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../cortex/index.html">Cortex</a></dd>
+        
+          <dd><a href="../index.html">V5</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'3.0.6',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

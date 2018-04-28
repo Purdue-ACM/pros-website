@@ -1,0 +1,1 @@
+Search.setIndex({docnames:["blank"],envversion:53,filenames:["blank.rst"],objects:{},objnames:{},objtypes:{},terms:{},titles:["&lt;no title&gt;"],titleterms:{}})

@@ -1,0 +1,1336 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ADI (3 Wire Ports) &mdash; PROS for V5 3.0.6 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+    <link rel="stylesheet" href="../../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../index.html"/>
+        <link rel="up" title="Tutorials" href="../index.html"/>
+        <link rel="next" title="Extended API Topics" href="../../../extended/index.html"/>
+        <link rel="prev" title="Programming the Clawbot" href="../walkthrough/clawbot.html"/>
+   
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PROS for V5
+          
+
+          
+            
+            <img src="../../../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  V5 (3.0.6)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">PROS: Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../blog/index.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../releases/index.html">Version Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started/new-users.html">PROS First Time Users Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started/installation.html">Installation Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/c/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/cpp/index.html">C++ API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OkapiLib</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">OkapiLib Documentation Home</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../api/index.html">OkapiLib API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../index.html#general-tutorials">General Tutorials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#walkthrough-tutorials">Walkthrough Tutorials</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#topical-tutorials">Topical Tutorials</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">ADI (3 Wire Ports)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#analog-sensors">Analog Sensors</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#potentiometer">Potentiometer</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#line-tracker">Line Tracker</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#accelerometer">Accelerometer</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#digital-sensors">Digital Sensors</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id1">Initialization</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#quad-encoder">Quad Encoder</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#ultrasonic">Ultrasonic</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pneumatics">Pneumatics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#general-tutorials">General Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#walkthrough-tutorials">Walkthrough Tutorials</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#topical-tutorials">Topical Tutorials</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ADI (3 Wire Ports)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#analog-sensors">Analog Sensors</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#potentiometer">Potentiometer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#line-tracker">Line Tracker</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#accelerometer">Accelerometer</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#digital-sensors">Digital Sensors</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id1">Initialization</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#quad-encoder">Quad Encoder</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ultrasonic">Ultrasonic</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pneumatics">Pneumatics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">OkapiLib API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extended (Advanced Users)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../extended/index.html">Extended API Topics</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PROS for V5</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OkapiLib Documentation Home</a> &raquo;</li>
+        
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+        
+      <li>ADI (3 Wire Ports)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/okapi/tutorials/topical/adi.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="adi-3-wire-ports">
+<h1>ADI (3 Wire Ports)<a class="headerlink" href="#adi-3-wire-ports" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#analog-sensors" id="id30">Analog Sensors</a><ul>
+<li><a class="reference internal" href="#initialization" id="id31">Initialization</a></li>
+<li><a class="reference internal" href="#potentiometer" id="id32">Potentiometer</a></li>
+<li><a class="reference internal" href="#line-tracker" id="id33">Line Tracker</a></li>
+<li><a class="reference internal" href="#accelerometer" id="id34">Accelerometer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#digital-sensors" id="id35">Digital Sensors</a><ul>
+<li><a class="reference internal" href="#id1" id="id36">Initialization</a></li>
+<li><a class="reference internal" href="#quad-encoder" id="id37">Quad Encoder</a></li>
+<li><a class="reference internal" href="#ultrasonic" id="id38">Ultrasonic</a></li>
+<li><a class="reference internal" href="#pneumatics" id="id39">Pneumatics</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="analog-sensors">
+<h2><a class="toc-backref" href="#id30">Analog Sensors</a><a class="headerlink" href="#analog-sensors" title="Permalink to this headline">¶</a></h2>
+<p>While computers, microcontrollers, and other devices that interface with
+VEX robots are digital systems, most of the real world operates as
+analog components, where a range of possible values exist instead of
+simply an arrangement of 1s and 0s. To communicate with these analog
+real-world systems, analog sensors like potentiometers and line trackers
+are used. These sensors return a number within a preset range of values
+in accordance with their input, as opposed to a digit sensor which
+simply returns an on or off state.</p>
+<p>To take these analog inputs and convert them to information that the
+Cortex can actually use, ADCs (Analog to Digital Converters) are used on
+each of the Analog In ports to convert the analog input signals (varying
+voltage signals) to 12 bit integers. As a result, the range of all
+analog sensors when used with the Cortex is 0 to 4095 (the range of a 12
+bit unsigned integer).</p>
+<div class="section" id="initialization">
+<h3><a class="toc-backref" href="#id31">Initialization</a><a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h3>
+<p>As with all ADI sensors, the first step to using the sensor is to set the configuration
+for its ADI port.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">initialize.c</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span> <span class="n">E_ADI_ANALOG_IN</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">initialize.cpp</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+  <span class="c1">// Use the sensor</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<p>Additionally, it is often worthwhile to calibrate analog sensors before using them
+in the <code class="docutils literal"><span class="pre">initialize()</span></code> function. The
+<a class="reference external" href="../../api/c/adi.htmladi-#analog-calibrate">analog_calibrate</a> function collects
+approximately 500 data samples over a period of half a
+second and returns the average value received over the sampling period.
+This average value can be used to account for variations like ambient light for
+line trackers.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">initialize.c</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span> <span class="n">E_ADI_ANALOG_IN</span><span class="p">);</span>
+  <span class="n">adi_analog_calibrate</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">initialize.cpp</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
+  <span class="n">sensor</span><span class="p">.</span><span class="n">calibrate</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="potentiometer">
+<h3><a class="toc-backref" href="#id32">Potentiometer</a><a class="headerlink" href="#potentiometer" title="Permalink to this headline">¶</a></h3>
+<p>Potentiometers measure angular position and can be used to determine the
+direction of rotation of its input. Potentiometers are best used in
+applications such as lifts where the sensor is not at risk of being
+rotated beyond its 250-degree physical constraint. Potentiometers
+typically do not need to be calibrated, although it may be desired as it
+helps account for possible shifting in the potentiometer mounting and to
+find the actual range of the potentiometer due to its mechanical stops
+as that range may be closer to 5-4090 instead of 0-4095. If the
+potentiometer is not calibrated, the <a class="reference external" href="../../api/c/adi.html#adi-analog-read">analog_read</a>
+function may be used to obtain the raw
+input value of the potentiometer. If the sensor was calibrated, the
+<a class="reference external" href="../../api/c/adi.html#adi-analog-read-calibrated">analog_read_calibrated</a> function should be used,
+as it will account for the sensor’s
+calibration and return more accurate results. The input to both of these
+functions is the channel number of the sensor, and an integer is
+returned.</p>
+<p>Thus an example of use on a lift would look like:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">autonomous.c</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define POTENTIOMETER_PORT 1</span>
+<span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">//while the potentiometer is not at its maximum position</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">adi_analog_read</span><span class="p">(</span><span class="n">POTENTIOMETER_PORT</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">4095</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="mi">127</span><span class="p">);</span> <span class="c1">//activate the lift</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">autonomous.cpp</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define POTENTIOMETER_PORT 1</span>
+<span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIPotentiometer</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">POTENTIOMETER_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">motor</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+  <span class="c1">//while the potentiometer is not at its maximum position</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">get_value</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">4095</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">motor</span> <span class="o">=</span> <span class="mi">127</span><span class="p">;</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="line-tracker">
+<h3><a class="toc-backref" href="#id33">Line Tracker</a><a class="headerlink" href="#line-tracker" title="Permalink to this headline">¶</a></h3>
+<p>VEX Line Trackers operate by measuring the amount of light reflected to
+the sensor and determining the existence of lines from the difference in
+light reflected by the white tape and the dark tiles. The Line Trackers
+return a value between 0 and 4095, with 0 being the lightest reading and
+4095 the darkest. It is recommended that Line Trackers be calibrated to
+account for changes in ambient light.</p>
+<p>An example of Line Tracker use:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">autonomous.c</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LINE_TRACKER_PORT 1</span>
+<span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Arbitrarily set the threshold for a line at 2000 quid</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">analogRead</span><span class="p">(</span><span class="n">LINE_TRACKER_PORT</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// drive forward until a line is hit</span>
+    <span class="n">motorSet</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span><span class="mi">127</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">autonomous.cpp</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LINE_TRACKER_PORT 1</span>
+<span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADILineSensor</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">LINE_TRACKER_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">motor</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+  <span class="c1">// Arbitrarily set the threshold for a line at 2000 quid</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">get_value</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// drive forward until a line is hit</span>
+    <span class="n">motor</span> <span class="o">=</span> <span class="mi">127</span><span class="p">;</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="accelerometer">
+<h3><a class="toc-backref" href="#id34">Accelerometer</a><a class="headerlink" href="#accelerometer" title="Permalink to this headline">¶</a></h3>
+<p>The VEX Accelerometer measures acceleration on the x, y, and z axes
+simultaneously. Accelerometers can be used to infer velocity and
+displacement, but due to the error induced by such integration it is
+recommended that simply the acceleration data be used. By design of the
+VEX Accelerometer each axis is treated as its own analog sensors. Due to
+this the VEX Accelerometer requires three analog input ports on the
+Cortex.</p>
+<p>Example accelerometer use:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">initialize.c</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ACCELEROMETER_X 1</span>
+<span class="cp">#define ACCELEROMETER_Y 2</span>
+<span class="cp">#define ACCELEROMETER_Z 3</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">analog_calibrate</span><span class="p">(</span><span class="n">ACCELEROMETER_X</span><span class="p">);</span> <span class="c1">//calibrates the x axis input</span>
+  <span class="n">analog_calibrate</span><span class="p">(</span><span class="n">ACCELEROMETER_Y</span><span class="p">);</span> <span class="c1">//calibrates the y axis input</span>
+  <span class="n">analog_calibrate</span><span class="p">(</span><span class="n">ACCELEROMETER_Z</span><span class="p">);</span> <span class="c1">//calibrates the z axis input</span>
+
+  <span class="kt">int</span> <span class="n">x_acc</span> <span class="o">=</span> <span class="n">analog_read_calibrated_HR</span><span class="p">(</span><span class="n">ACCELEROMETER_X</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">y_acc</span> <span class="o">=</span> <span class="n">analog_read_calibrated_HR</span><span class="p">(</span><span class="n">ACCELEROMETER_Y</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">z_acc</span> <span class="o">=</span> <span class="n">analog_read_calibrated_HR</span><span class="p">(</span><span class="n">ACCELEROMETER_Z</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;X: %d, Y: %d, Z: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">x_acc</span><span class="p">,</span> <span class="n">y_acc</span><span class="p">,</span> <span class="n">z_acc</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">initialize.cpp</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define ACCELEROMETER_X 1</span>
+<span class="cp">#define ACCELEROMETER_Y 2</span>
+<span class="cp">#define ACCELEROMETER_Z 3</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span> <span class="n">acc_x</span> <span class="p">(</span><span class="n">ACCELEROMETER_X</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span> <span class="n">acc_y</span> <span class="p">(</span><span class="n">ACCELEROMETER_Y</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span> <span class="n">acc_z</span> <span class="p">(</span><span class="n">ACCELEROMETER_Z</span><span class="p">);</span>
+  <span class="n">acc_x</span><span class="p">.</span><span class="n">calibrate</span><span class="p">();</span> <span class="c1">//calibrates the x axis input</span>
+  <span class="n">acc_y</span><span class="p">.</span><span class="n">calibrate</span><span class="p">();</span> <span class="c1">//calibrates the y axis input</span>
+  <span class="n">acc_z</span><span class="p">.</span><span class="n">calibrate</span><span class="p">();</span> <span class="c1">//calibrates the z axis input</span>
+
+  <span class="kt">int</span> <span class="n">x_acc</span> <span class="o">=</span> <span class="n">acc_x</span><span class="p">.</span><span class="n">value_get_calibrated_HR</span><span class="p">();</span>
+  <span class="kt">int</span> <span class="n">y_acc</span> <span class="o">=</span> <span class="n">acc_y</span><span class="p">.</span><span class="n">value_get_calibrated_HR</span><span class="p">();</span>
+  <span class="kt">int</span> <span class="n">z_acc</span> <span class="o">=</span> <span class="n">acc_z</span><span class="p">.</span><span class="n">value_get_calibrated_HR</span><span class="p">();</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;X: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">x_acc</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Y: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">y_acc</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Z: &quot;</span> <span class="n">z_acc</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="digital-sensors">
+<h2><a class="toc-backref" href="#id35">Digital Sensors</a><a class="headerlink" href="#digital-sensors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id36">Initialization</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>As with all ADI sensors, the first step to using the sensor is to set the configuration
+for its ADI port.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">initialize.c</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">,</span> <span class="n">E_ADI_DIGITAL_IN</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">initialize.cpp</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="n">sensor</span> <span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">);</span>
+  <span class="c1">// Use the sensor</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<p>From there, using a digital sensor is fairly straightforward. Digital Sensors
+always return a true or false (boolean) value.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">autonomous.c</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+<span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">adi_digital_read</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// Drive forward until the button digital sensor button is pressed</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">127</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// The button was pressed, stop moving.</span>
+  <span class="n">motor_move</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">autonomous.cpp</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+<span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="n">button</span> <span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">drive</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">button</span><span class="p">.</span><span class="n">get_value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Drive forward until the button digital sensor button is pressed</span>
+    <span class="n">drive</span> <span class="o">=</span> <span class="mi">127</span><span class="p">;</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// The button was pressed, stop moving.</span>
+  <span class="n">drive</span> <span class="o">=</span>  <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="quad-encoder">
+<h3><a class="toc-backref" href="#id37">Quad Encoder</a><a class="headerlink" href="#quad-encoder" title="Permalink to this headline">¶</a></h3>
+<p>Quadrature encoders can measure the rotation of the attached axle on
+your robot. Most common uses of this sensor type are to track distance
+traveled by attaching them to your robots drivetrain and monitoring how
+much the axle spins.</p>
+<p>With these sensors 1 measured tick is 1 degree of revolution.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Encoders must be plugged into the ADI such that the top wire
+is in an odd numbered port (1, 3, 5, 7 or ‘A’, ‘C’, ‘E’, or ‘G’),
+and then the bottom wire must be in the next highest port number.</p>
+</div>
+<p>Encoders are initialized as such:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">main.h</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Digital port number for top and bottom port of quad encoder</span>
+<span class="cp">#define QUAD_TOP_PORT 1</span>
+<span class="cp">#define QUAD_BOTTOM_PORT 2</span>
+
+<span class="c1">// Multiple encoders can be declared</span>
+<span class="k">extern</span> <span class="n">adi_encoder_t</span> <span class="n">encoder</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">initialize.c</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">encoder</span> <span class="o">=</span> <span class="n">adi_encoder_init</span><span class="p">(</span><span class="n">QUAD_TOP_PORT</span><span class="p">,</span> <span class="n">QUAD_BOTTOM_PORT</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">initialize.cpp</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Digital port number for top and bottom port of quad encoder</span>
+<span class="cp">#define QUAD_TOP_PORT 1</span>
+<span class="cp">#define QUAD_BOTTOM_PORT 2</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIEncoder</span> <span class="n">encoder</span> <span class="p">(</span><span class="n">QUAD_TOP_PORT</span><span class="p">,</span> <span class="n">QUAD_BOTTOM_PORT</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<p>And then used in the following manner:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">autonomous.c</span><a class="headerlink" href="#id19" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">adi_encoder_get</span><span class="p">(</span><span class="n">encoder</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Move forward for 1000 ticks</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="mi">127</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">motor_move</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">autonomous.cpp</span><a class="headerlink" href="#id20" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+<span class="cp">#define QUAD_TOP_PORT 1</span>
+<span class="cp">#define QUAD_BOTTOM_PORT 2</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIEncoder</span> <span class="n">encoder</span> <span class="p">(</span><span class="n">QUAD_TOP_PORT</span><span class="p">,</span> <span class="n">QUAD_BOTTOM_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">drive</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="n">encoder</span><span class="p">.</span><span class="n">get_value</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Move forward for 1000 ticks</span>
+    <span class="n">drive</span> <span class="o">=</span> <span class="mi">127</span><span class="p">;</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">drive</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ultrasonic">
+<h3><a class="toc-backref" href="#id38">Ultrasonic</a><a class="headerlink" href="#ultrasonic" title="Permalink to this headline">¶</a></h3>
+<p>Ultrasonic sensors are used in a manner that is very similar to encoders, given
+that they are both two-wire sensors.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Ultrasonic sensors must be plugged into the ADI such that the ECHO wire
+(the yellow INPUT cable) is in an odd numbered port (1, 3, 5, 7 or ‘A’, ‘C’, ‘E’, or ‘G’),
+and then the PING wire (the orange OUTPUT cable) must be in the next highest port number.</p>
+</div>
+<p>Ultrasonic sensors are initialized as such:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-text">main.h</span><a class="headerlink" href="#id21" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Digital port number for top and bottom port of quad encoder</span>
+<span class="cp">#define ULTRA_ECHO_PORT 1</span>
+<span class="cp">#define ULTRA_PING_PORT 2</span>
+
+<span class="c1">// Multiple encoders can be declared</span>
+<span class="k">extern</span> <span class="n">adi_ultrasonic_t</span> <span class="n">ultrasonic</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-text">initialize.c</span><a class="headerlink" href="#id22" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">ultrasonic</span> <span class="o">=</span> <span class="n">adi_ultrasonic_init</span><span class="p">(</span><span class="n">ULTRA_ECHO_PORT</span><span class="p">,</span> <span class="n">ULTRA_PING_PORT</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-text">initialize.cpp</span><a class="headerlink" href="#id23" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Digital port number for top and bottom port of quad encoder</span>
+<span class="cp">#define ULTRA_ECHO_PORT 1</span>
+<span class="cp">#define ULTRA_PING_PORT 2</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIUltrasonic</span> <span class="n">ultrasonic</span> <span class="p">(</span><span class="n">ULTRA_ECHO_PORT</span><span class="p">,</span> <span class="n">ULTRA_PING_PORT</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<p>And then used in the following manner:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-text">autonomous.c</span><a class="headerlink" href="#id24" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">adi_ultrasonic_get</span><span class="p">(</span><span class="n">ultrasonic</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Move forward until the robot is 100 cm from a solid object</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="mi">127</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">motor_move</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-text">autonomous.cpp</span><a class="headerlink" href="#id25" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+<span class="cp">#define ULTRA_ECHO_PORT 1</span>
+<span class="cp">#define ULTRA_PING_PORT 2</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIUltrasonic</span> <span class="n">ultrasonic</span> <span class="p">(</span><span class="n">ULTRA_ECHO_PORT</span><span class="p">,</span> <span class="n">ULTRA_PING_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">drive</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="n">ultrasonic</span><span class="p">.</span><span class="n">get_value</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Move forward until the robot is 100 cm from a solid object</span>
+    <span class="n">drive</span> <span class="o">=</span> <span class="mi">127</span><span class="p">;</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">drive</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pneumatics">
+<h3><a class="toc-backref" href="#id39">Pneumatics</a><a class="headerlink" href="#pneumatics" title="Permalink to this headline">¶</a></h3>
+<p>Pneumatics in VEX provide two-state linear actuation. They differ from
+other digital sensors in that they are output signals. Therefore, the
+default digital sensor configuration is insufficient.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-text">initialize.c</span><a class="headerlink" href="#id26" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">,</span> <span class="n">E_ADI_DIGITAL_OUT</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-text">initialize.cpp</span><a class="headerlink" href="#id27" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalOut</span> <span class="n">piston</span> <span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<p>And then the pneumatics are used as such:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-text">autonomous.c</span><a class="headerlink" href="#id28" title="Permalink to this code">¶</a></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">adi_digital_write</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="n">adi_digital_write</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span><span class="n">s</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-text">autonomous.cpp</span><a class="headerlink" href="#id29" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalOut</span> <span class="n">piston</span> <span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">);</span>
+
+  <span class="n">piston</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="n">piston</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../extended/index.html" class="btn btn-neutral float-right" title="Extended API Topics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../walkthrough/clawbot.html" class="btn btn-neutral" title="Programming the Clawbot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: V5 (3.0.6)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
+        
+          <dd><a href="../../../index.html">V5</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'3.0.6',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

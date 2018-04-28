@@ -1,0 +1,576 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>JINX Debugger &mdash; PROS for Cortex 2.12.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for Cortex 2.12.1 documentation" href="../index.html"/>
+        <link rel="up" title="Tutorials" href="index.html"/>
+        <link rel="next" title="Known Issues" href="known-issues.html"/>
+        <link rel="prev" title="I2C" href="i2c.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for Cortex
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  Cortex (2.12.1)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/index.html">Getting Started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="analog.html">Analog Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clawbot.html">Clawbot Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding-faq.html">Coding FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="digitalRead.html">Digital Sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encoders.html">Encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i2c.html">I2C</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">JINX Debugger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#jinx-installation-requirements">JINX Installation Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jinx-installation">JINX Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-with-jinx">Debugging with JINX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sending-data-from-the-cortex">Sending data from the Cortex</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#initjinx">initJINX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writejinxserial">writeJINXSerial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writejinxdata">writeJINXData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writejinxmessage">writeJINXMessage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jinx-reader">JINX Reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parsemessage">parseMessage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gettoken">getToken</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="known-issues.html">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lcd.html">LCD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries.html">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pneumatics.html">Pneumatics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project-structure.html">Project Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speaker.html">Speaker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ultrasonic.html">Ultrasonics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading.html">Upgrading PROS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uploading.html">Uploading</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for Cortex</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorials</a> &raquo;</li>
+        
+      <li>JINX Debugger</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/cortex/tutorials/jinx.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="jinx-debugger">
+<h1>JINX Debugger<a class="headerlink" href="#jinx-debugger" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">JINX is in Beta.
+JINX is in active development and could change at any time.
+This document is intended to introduce
+JINX to advanced PROS users who may wish to experiment with JINX.</p>
+</div>
+<p>JINX is the graphical debugger and interactive data visualization tool
+for PROS. With JINX, you get to graph data, generate CSV files, send
+commands back to the cortex, and more, all from the browser of choice.
+JINX works by using a computer connected to the cortex via serial as the
+central hub enabling other computers and mobile devices on the network
+to connect as clients and enjoy the use of the interactive features.</p>
+<p>Before you can run JINX there are some required setup tasks.</p>
+<div class="section" id="jinx-installation-requirements">
+<h2>JINX Installation Requirements<a class="headerlink" href="#jinx-installation-requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://www.python.org/downloads/">Python 3.4.3+</a></li>
+<li><a class="reference external" href="http://pyserial.readthedocs.io/en/latest/pyserial.html">pySerial
+3.2.1+</a></li>
+</ul>
+<p>Once you have python3 installed on your machine you can easily install
+pySerial from the command line via:</p>
+<p><code class="docutils literal"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">pyserial</span></code> or <code class="docutils literal"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">pyserial</span></code> to
+upgrade to the latest if a previous instance is already installed.</p>
+</div>
+<div class="section" id="jinx-installation">
+<h2>JINX Installation<a class="headerlink" href="#jinx-installation" title="Permalink to this headline">¶</a></h2>
+<p>Release 0.1: <a class="reference external" href="https://github.com/purduesigbots/JINX/releases/tag/v0.1">https://github.com/purduesigbots/JINX/releases/tag/v0.1</a></p>
+</div>
+<div class="section" id="debugging-with-jinx">
+<h2>Debugging with JINX<a class="headerlink" href="#debugging-with-jinx" title="Permalink to this headline">¶</a></h2>
+<p>To utilize the power of JINX simply:</p>
+<ol class="arabic simple">
+<li>Connect your desired host computer to the VEX Cortex</li>
+<li>Upload JINX enabled code</li>
+<li>Start the JINX server on your host computer with <code class="docutils literal"><span class="pre">python3</span> <span class="pre">JINX.py</span></code>
+You must run this command in the JINX directory for the server to
+work correctly.</li>
+<li>Navigate to the JINX Dashboard by connecting to
+<code class="docutils literal"><span class="pre">http://localhost:9001/views/combined.html</span></code> on your host computer
+and watch the information flow</li>
+</ol>
+<p>If at any point in time you want to stop the JINX server simply type
+<code class="docutils literal"><span class="pre">q</span></code> in the active terminal used to launch JINX or send a keyboard
+interrupt via <code class="docutils literal"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">c</span></code>.</p>
+<p><strong>Note</strong>: Since JINX is a network application not everyone has to crowd
+around a single machine to observe the data feed. If you are on the same
+local network you can navigate to the IP address of the JINX host
+machine to get access to the dashboard as well. For example, if the IP
+address of the JINX host machine is <code class="docutils literal"><span class="pre">192.168.1.105</span></code> you would navigate
+to <a class="reference external" href="http://192.168.1.105:9001/views/combined.html">http://192.168.1.105:9001/views/combined.html</a>.</p>
+<div class="section" id="sending-data-from-the-cortex">
+<h3>Sending data from the Cortex<a class="headerlink" href="#sending-data-from-the-cortex" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Create a “large enough” char array, 20 characters or so should work.</li>
+<li>Use <code class="docutils literal"><span class="pre">sprintf(destination,</span> <span class="pre">formatString,</span> <span class="pre">dataToSend)</span></code> to save data.</li>
+<li>Use <code class="docutils literal"><span class="pre">writeJINXData(&quot;DataID&quot;,</span> <span class="pre">char_array)</span></code> to send data.</li>
+</ol>
+<p>Alternatively, use <code class="docutils literal"><span class="pre">writeJINXMessage(&quot;Message&quot;)</span></code> to send a message
+with no data value.</p>
+</div>
+</div>
+<div class="section" id="initjinx">
+<h2>initJINX<a class="headerlink" href="#initjinx" title="Permalink to this headline">¶</a></h2>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">initJINX</span> <span class="p">(</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">port</span> <span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Initializes and enables JINX on the specified port.</div>
+<div class="line">This should be called in <code class="docutils literal"><span class="pre">initialize()</span></code></div>
+</div>
+<p>This call prints an error message over stdout if unable to initialize
+and set port.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">port</span></code></td>
+<td>the port to open, either stdout, UART1, or UART2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="writejinxserial">
+<h2>writeJINXSerial<a class="headerlink" href="#writejinxserial" title="Permalink to this headline">¶</a></h2>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">writeJINXSerial</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span>  <span class="n">message</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Sends a simple string to the JINX host with appropriate header and
+terminator.</p>
+<p>This function only takes one character pointer, and does <strong>not</strong> work
+like <code class="docutils literal"><span class="pre">printf()</span></code>. Therefore, it is advised that users calling this
+function directly use
+<code class="docutils literal"><span class="pre">sprintf(char</span> <span class="pre">*src,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*formatString,</span> <span class="pre">...)</span></code> to compose their
+message before calling this.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">message</span></code></td>
+<td>The message to send</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="writejinxdata">
+<h2>writeJINXData<a class="headerlink" href="#writejinxdata" title="Permalink to this headline">¶</a></h2>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">writeJINXData</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span>  <span class="n">name</span>
+<span class="k">const</span> <span class="kt">char</span> <span class="o">*</span>  <span class="n">value</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Sends a name/value pair of data to to the JINX host.</p>
+<p>If <code class="docutils literal"><span class="pre">value</span></code> is strictly numeric (as defined by javascript’s <code class="docutils literal"><span class="pre">isNaN</span></code>
+then the variable can be graphed. Otherwise, the name/value pair will be
+displayed in the terminal.</p>
+<p>This function does not allow for string formatting. Therefore, it is
+advised that users calling this function directly use
+<code class="docutils literal"><span class="pre">sprintf(char</span> <span class="pre">*src,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*formatString,</span> <span class="pre">...)</span></code> to compose both
+<code class="docutils literal"><span class="pre">name</span></code> and <code class="docutils literal"><span class="pre">value</span></code> before calling this.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">name</span></code></td>
+<td>The identifier key sent to the GUI.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">value</span></code></td>
+<td>The value to be graphed or displayed in the GUI</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="writejinxmessage">
+<h2>writeJINXMessage<a class="headerlink" href="#writejinxmessage" title="Permalink to this headline">¶</a></h2>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">writeJINXMessage</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span>  <span class="n">message</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Simple wrapper function for <a class="reference internal" href="#writejinxdata">writeJINXData</a> with <code class="docutils literal"><span class="pre">name</span></code> as “msg” and
+<code class="docutils literal"><span class="pre">value</span></code> set to <code class="docutils literal"><span class="pre">message</span></code>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">message</span></code></td>
+<td>The message to send</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="jinx-reader">
+<h2>JINX Reader<a class="headerlink" href="#jinx-reader" title="Permalink to this headline">¶</a></h2>
+<p>The read task is started by calling</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="n">taskCreate</span><span class="p">(</span><span class="n">JINXRun</span><span class="p">,</span> <span class="n">TASK_DEFAULT_STACK_SIZE</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="p">(</span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>in <code class="docutils literal"><span class="pre">initialize()</span></code></p>
+</div>
+<div class="section" id="parsemessage">
+<h2>parseMessage<a class="headerlink" href="#parsemessage" title="Permalink to this headline">¶</a></h2>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">parseMessage</span> <span class="p">(</span> <span class="n">JINX</span> <span class="o">*</span>  <span class="n">inStr</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Automatically called by whenever a message is sent to the cortex. The
+user should implement the body of this function to call their method of
+choice based on the incoming message. See below for an example.</p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">//Example parse. User can and should replace with own body.</span>
+<span class="kt">void</span> <span class="nf">parseMessage</span><span class="p">(</span><span class="n">JINX</span> <span class="o">*</span> <span class="n">inStr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//Echo entire recieved message</span>
+  <span class="n">writeJINXMessage</span><span class="p">(</span><span class="n">inStr</span><span class="o">-&gt;</span><span class="n">command</span><span class="p">);</span>
+  <span class="c1">//Set inStr-&gt;token to first token (space-delimated word)</span>
+  <span class="n">getToken</span><span class="p">(</span><span class="n">inStr</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">inStr</span><span class="o">-&gt;</span><span class="n">token</span><span class="p">,</span> <span class="s">&quot;Option_1&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//Do option 1</span>
+    <span class="n">writeJINXMessage</span><span class="p">(</span><span class="s">&quot;Option 1 chosen.&quot;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">inStr</span><span class="o">-&gt;</span><span class="n">token</span><span class="p">,</span> <span class="s">&quot;get&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//Call another function to handle &quot;get&quot;</span>
+    <span class="n">handleGet</span><span class="p">(</span><span class="n">inStr</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">//Do default</span>
+    <span class="n">writeJINXMessage</span><span class="p">(</span><span class="s">&quot;No comparison found&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>and <code class="docutils literal"><span class="pre">handleGet()</span></code></p>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span>  <span class="c1">//Example of user defined JINX helper function.</span>
+  <span class="c1">//Since it is at the top of this file, it can be called from anywhere   else in this file.</span>
+  <span class="c1">//Good practice is to put its prototype in JINX.h, though.</span>
+  <span class="kt">void</span> <span class="nf">handleGet</span><span class="p">(</span><span class="n">JINX</span> <span class="o">*</span> <span class="n">inStr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//Get the first token from the sent command</span>
+  <span class="n">getToken</span><span class="p">(</span><span class="n">inStr</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="c1">//Host outgoing messages</span>
+  <span class="kt">char</span> <span class="o">*</span> <span class="n">message</span> <span class="o">=</span> <span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">char</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">inStr</span><span class="o">-&gt;</span><span class="n">token</span><span class="p">)</span> <span class="o">+</span> <span class="mi">30</span><span class="p">));</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">inStr</span><span class="o">-&gt;</span><span class="n">token</span><span class="p">,</span> <span class="s">&quot;DEBUG_JINX&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">writeJINXMessage</span><span class="p">(</span><span class="s">&quot;Asked for Debug&quot;</span><span class="p">);</span>
+    <span class="n">sprintf</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s">&quot;%s, %d&quot;</span><span class="p">,</span> <span class="n">inStr</span><span class="o">-&gt;</span><span class="n">token</span><span class="p">,</span> <span class="n">DEBUG_JINX</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">sprintf</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s">&quot;%s %s&quot;</span><span class="p">,</span> <span class="n">inStr</span><span class="o">-&gt;</span><span class="n">token</span><span class="p">,</span> <span class="s">&quot; was unable to be gotten.&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="c1">//Free malloc&#39;d string</span>
+  <span class="n">writeJINXMessage</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+  <span class="n">free</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+  <span class="n">message</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gettoken">
+<h2>getToken<a class="headerlink" href="#gettoken" title="Permalink to this headline">¶</a></h2>
+<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">getToken</span> <span class="p">(</span> <span class="n">JINX</span> <span class="o">*</span>  <span class="n">inStr</span>
+  <span class="kt">int</span>     <span class="n">tokenNum</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Sets <code class="docutils literal"><span class="pre">inStr-&gt;token</span></code> to the <code class="docutils literal"><span class="pre">tokenNum``th</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">space-delimated</span> <span class="pre">word</span>
+<span class="pre">within</span> <span class="pre">``inStr-&gt;command</span></code> <code class="docutils literal"><span class="pre">tokenNum</span></code> is 0-based, so 0 will get the 1st
+token, 1 will get the 2nd token…</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="known-issues.html" class="btn btn-neutral float-right" title="Known Issues" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="i2c.html" class="btn btn-neutral" title="I2C" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: Cortex (2.12.1)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.12.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

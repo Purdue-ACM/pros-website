@@ -1,0 +1,1919 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RTOS Facilities C API &mdash; PROS for V5 3.0.6 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../index.html"/>
+        <link rel="up" title="API Home" href="../index.html"/>
+        <link rel="next" title="Vision Sensor C API" href="vision.html"/>
+        <link rel="prev" title="Motors C API" href="motors.html"/>
+   
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> PROS for V5
+          
+
+          
+            
+            <img src="../../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  V5 (3.0.6)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">PROS: Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blog/index.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../releases/index.html">Version Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/new-users.html">PROS First Time Users Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started/installation.html">Installation Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">API Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">C API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="adi.html">ADI (TriPort) C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="llemu.html">LLEMU (Legacy LCD Emulator) C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellaneous C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motors.html">Motors C API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RTOS Facilities C API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#delay">delay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#millis">millis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mutex-create">mutex_create</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mutex-give">mutex_give</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mutex-take">mutex_take</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-create">task_create</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-delay">task_delay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-delay-until">task_delay_until</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-delete">task_delete</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-get-by-name">task_get_by_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-get-count">task_get_count</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-get-name">task_get_name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-get-priority">task_get_priority</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-get-state">task_get_state</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-notify">task_notify</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-notify-clear">task_notify_clear</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-notify-ext">task_notify_ext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-notify-take">task_notify_take</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-resume">task_resume</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-set-priority">task_set_priority</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-suspend">task_suspend</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#macros">Macros</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#current-task">CURRENT_TASK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-name-max-len">TASK_NAME_MAX_LEN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-priority-default">TASK_PRIORITY_DEFAULT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-priority-max">TASK_PRIORITY_MAX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-priority-min">TASK_PRIORITY_MIN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-stack-depth-default">TASK_STACK_DEPTH_DEFAULT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-stack-depth-min">TASK_STACK_DEPTH_MIN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timeout-max">TIMEOUT_MAX</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#enumerated-values">Enumerated Values</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#task-state-e-t">task_state_e_t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-notify-t">task_notify_t</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#typedefs">Typedefs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#task-t">task_t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-fn-t">task_fn_t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mutex-t">mutex_t</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vision.html">Vision Sensor C API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/index.html">C++ API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OkapiLib</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../okapi/index.html">OkapiLib Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../okapi/tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../okapi/api/index.html">OkapiLib API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extended (Advanced Users)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../extended/index.html">Extended API Topics</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PROS for V5</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">API Home</a> &raquo;</li>
+        
+      <li>RTOS Facilities C API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/api/c/rtos.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="rtos-facilities-c-api">
+<h1>RTOS Facilities C API<a class="headerlink" href="#rtos-facilities-c-api" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Additional example code for this module can be found in
+<a class="reference external" href="../../tutorials/topical/multitasking.html">its Tutorial</a>.</p>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#functions" id="id1">Functions</a><ul>
+<li><a class="reference internal" href="#delay" id="id2">delay</a></li>
+<li><a class="reference internal" href="#millis" id="id3">millis</a></li>
+<li><a class="reference internal" href="#mutex-create" id="id4">mutex_create</a></li>
+<li><a class="reference internal" href="#mutex-give" id="id5">mutex_give</a></li>
+<li><a class="reference internal" href="#mutex-take" id="id6">mutex_take</a></li>
+<li><a class="reference internal" href="#task-create" id="id7">task_create</a></li>
+<li><a class="reference internal" href="#task-delay" id="id8">task_delay</a></li>
+<li><a class="reference internal" href="#task-delay-until" id="id9">task_delay_until</a></li>
+<li><a class="reference internal" href="#task-delete" id="id10">task_delete</a></li>
+<li><a class="reference internal" href="#task-get-by-name" id="id11">task_get_by_name</a></li>
+<li><a class="reference internal" href="#task-get-count" id="id12">task_get_count</a></li>
+<li><a class="reference internal" href="#task-get-name" id="id13">task_get_name</a></li>
+<li><a class="reference internal" href="#task-get-priority" id="id14">task_get_priority</a></li>
+<li><a class="reference internal" href="#task-get-state" id="id15">task_get_state</a></li>
+<li><a class="reference internal" href="#task-notify" id="id16">task_notify</a></li>
+<li><a class="reference internal" href="#task-notify-clear" id="id17">task_notify_clear</a></li>
+<li><a class="reference internal" href="#task-notify-ext" id="id18">task_notify_ext</a></li>
+<li><a class="reference internal" href="#task-notify-take" id="id19">task_notify_take</a></li>
+<li><a class="reference internal" href="#task-resume" id="id20">task_resume</a></li>
+<li><a class="reference internal" href="#task-set-priority" id="id21">task_set_priority</a></li>
+<li><a class="reference internal" href="#task-suspend" id="id22">task_suspend</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#macros" id="id23">Macros</a><ul>
+<li><a class="reference internal" href="#current-task" id="id24">CURRENT_TASK</a></li>
+<li><a class="reference internal" href="#task-name-max-len" id="id25">TASK_NAME_MAX_LEN</a></li>
+<li><a class="reference internal" href="#task-priority-default" id="id26">TASK_PRIORITY_DEFAULT</a></li>
+<li><a class="reference internal" href="#task-priority-max" id="id27">TASK_PRIORITY_MAX</a></li>
+<li><a class="reference internal" href="#task-priority-min" id="id28">TASK_PRIORITY_MIN</a></li>
+<li><a class="reference internal" href="#task-stack-depth-default" id="id29">TASK_STACK_DEPTH_DEFAULT</a></li>
+<li><a class="reference internal" href="#task-stack-depth-min" id="id30">TASK_STACK_DEPTH_MIN</a></li>
+<li><a class="reference internal" href="#timeout-max" id="id31">TIMEOUT_MAX</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#enumerated-values" id="id32">Enumerated Values</a><ul>
+<li><a class="reference internal" href="#task-state-e-t" id="id33">task_state_e_t</a></li>
+<li><a class="reference internal" href="#task-notify-t" id="id34">task_notify_t</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#typedefs" id="id35">Typedefs</a><ul>
+<li><a class="reference internal" href="#task-t" id="id36">task_t</a></li>
+<li><a class="reference internal" href="#task-fn-t" id="id37">task_fn_t</a></li>
+<li><a class="reference internal" href="#mutex-t" id="id38">mutex_t</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="functions">
+<h2><a class="toc-backref" href="#id1">Functions</a><a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="delay">
+<h3><a class="toc-backref" href="#id2">delay</a><a class="headerlink" href="#delay" title="Permalink to this headline">¶</a></h3>
+<p>Delay a task for a given number of milliseconds.</p>
+<p>This is not the best method to have a task execute code at predefined
+intervals, as the delay time is measured from when the delay is requested.
+To delay cyclically, use <a class="reference internal" href="#task-delay-until">task_delay_until</a>.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#delay">pros::delay</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-1 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">delay</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">milliseconds</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Do opcontrol things</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>milliseconds</td>
+<td>The number of milliseconds to wait (1000 milliseconds per second)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="millis">
+<h3><a class="toc-backref" href="#id3">millis</a><a class="headerlink" href="#millis" title="Permalink to this headline">¶</a></h3>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#millis">pros::millis</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-3 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">millis</span> <span class="p">(</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">uint32_t</span> <span class="n">now</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Do opcontrol things</span>
+    <span class="n">task_delay_until</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> Returns the number of milliseconds since PROS initialized.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="mutex-create">
+<h3><a class="toc-backref" href="#id4">mutex_create</a><a class="headerlink" href="#mutex-create" title="Permalink to this headline">¶</a></h3>
+<p>Creates a mutex.</p>
+<p>See <a class="reference internal" href="../../tutorials/topical/multitasking.html"><span class="doc">Multitasking</span></a> for details.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#mutex">pros::Mutex::Mutex</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-5 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">mutex_t</span> <span class="n">mutex_create</span> <span class="p">(</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">mutex_t</span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">mutex_create</span><span class="p">();</span>
+
+<span class="c1">// Acquire the mutex; other tasks using this command will wait until the mutex is released</span>
+<span class="c1">// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever</span>
+<span class="c1">// If the timeout expires, &quot;false&quot; will be returned, otherwise &quot;true&quot;</span>
+<span class="n">mutex_take</span><span class="p">(</span><span class="n">mutex</span><span class="p">,</span> <span class="n">MAX_DELAY</span><span class="p">);</span>
+<span class="c1">// do some work</span>
+<span class="c1">// Release the mutex for other tasks</span>
+<span class="n">mutex_give</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong>  A handle to a newly created mutex. If an error occurred, NULL will be
+returned and <code class="docutils literal"><span class="pre">errno</span></code> can be checked for hints as to why <a class="reference internal" href="#mutex-create">mutex_create</a> failed.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="mutex-give">
+<h3><a class="toc-backref" href="#id5">mutex_give</a><a class="headerlink" href="#mutex-give" title="Permalink to this headline">¶</a></h3>
+<p>Unlocks a mutex.</p>
+<p>See <a class="reference internal" href="../../tutorials/topical/multitasking.html"><span class="doc">Multitasking</span></a> for details.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#give">pros::Mutex::give</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-6 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-7 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutex_give</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">mutex_t</span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">mutex_create</span><span class="p">();</span>
+
+<span class="c1">// Acquire the mutex; other tasks using this command will wait until the mutex is released</span>
+<span class="c1">// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever</span>
+<span class="c1">// If the timeout expires, &quot;false&quot; will be returned, otherwise &quot;true&quot;</span>
+<span class="n">mutex_take</span><span class="p">(</span><span class="n">mutex</span><span class="p">,</span> <span class="n">timeout</span><span class="p">);</span>
+<span class="c1">// do some work</span>
+<span class="c1">// Release the mutex for other tasks</span>
+<span class="n">mutex_give</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mutex</td>
+<td>The mutex to unlock</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> True if the mutex was successfully returned, false otherwise. If false
+is returned, then <code class="docutils literal"><span class="pre">errno</span></code> is set with a hint about why the mutex couldn’t
+be returned.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="mutex-take">
+<h3><a class="toc-backref" href="#id6">mutex_take</a><a class="headerlink" href="#mutex-take" title="Permalink to this headline">¶</a></h3>
+<p>Takes and locks a mutex, waiting for up to a certain number of milliseconds
+before timing out.</p>
+<p>See <a class="reference internal" href="../../tutorials/topical/multitasking.html"><span class="doc">Multitasking</span></a> for details.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#take">pros::Mutex::take</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-8 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-9 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutex_take</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span><span class="p">,</span>
+                  <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">mutex_t</span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">mutex_create</span><span class="p">();</span>
+
+<span class="c1">// Acquire the mutex; other tasks using this command will wait until the mutex is released</span>
+<span class="c1">// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever</span>
+<span class="c1">// If the timeout expires, &quot;false&quot; will be returned, otherwise &quot;true&quot;</span>
+<span class="n">mutex_take</span><span class="p">(</span><span class="n">mutex</span><span class="p">,</span> <span class="n">timeout</span><span class="p">);</span>
+<span class="c1">// do some work</span>
+<span class="c1">// Release the mutex for other tasks</span>
+<span class="n">mutex_give</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>mutex</td>
+<td>The mutex to take.</td>
+</tr>
+<tr class="row-odd"><td>timeout</td>
+<td><p class="first">Time to wait before the mutex becomes available.</p>
+<p class="last">A timeout of 0 can be used to poll the mutex. TIMEOUT_MAX can be used to block indefinitely.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> True if the mutex was successfully taken, false otherwise. If false
+is returned, then <code class="docutils literal"><span class="pre">errno</span></code> is set with a hint about why the the mutex
+couldn’t be taken.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-create">
+<h3><a class="toc-backref" href="#id7">task_create</a><a class="headerlink" href="#task-create" title="Permalink to this headline">¶</a></h3>
+<p>Create a new task and add it to the list of tasks that are ready to run.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#task">pros::Task::Task</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-10 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-11 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">task_t</span> <span class="n">task_create</span> <span class="p">(</span> <span class="n">task_fn_t</span> <span class="n">function</span><span class="p">,</span>
+                    <span class="kt">void</span><span class="o">*</span> <span class="n">parameters</span><span class="p">,</span>
+                     <span class="kt">uint8_t</span> <span class="n">prio</span><span class="p">,</span>
+                     <span class="kt">uint16_t</span> <span class="n">stack_depth</span><span class="p">,</span>
+                     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">);</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+                              <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="92%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>function</td>
+<td>Pointer to the task entry function</td>
+</tr>
+<tr class="row-odd"><td>parameters</td>
+<td>Pointer to memory that will be used as a parameter for the task being created. This memory should not typically come from stack, but rather from dynamically (i.e., malloc’d) or statically allocated memory.</td>
+</tr>
+<tr class="row-even"><td>prio</td>
+<td>The priority at which the task should run. TASK_PRIO_DEFAULT plus/minus 1 or 2 is typically used.</td>
+</tr>
+<tr class="row-odd"><td>stack_depth</td>
+<td>The number of words (i.e. 4 * stack_depth) available on the task’s stack. TASK_STACK_DEPTH_DEFAULT is typically sufficient.</td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>A descriptive name for the task.  This is mainly used to facilitate debugging. The name may be up to 32 characters long.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> Will return a handle by which the newly created task can be referenced.
+If an error occurred, NULL will be returned and <code class="docutils literal"><span class="pre">errno</span></code> can be checked for hints
+as to why <a class="reference internal" href="#task-create">task_create</a> failed.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-delay">
+<h3><a class="toc-backref" href="#id8">task_delay</a><a class="headerlink" href="#task-delay" title="Permalink to this headline">¶</a></h3>
+<p>Delay a task for a given number of milliseconds.</p>
+<p>This is not the best method to have a task execute code at predefined
+intervals, as the delay time is measured from when the delay is requested.
+To delay cyclically, use <a class="reference internal" href="#task-delay-until">task_delay_until</a>.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#delay">pros::Task::delay</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-12 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-13 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">task_delay</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">milliseconds</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Do opcontrol things</span>
+    <span class="n">task_delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>milliseconds</td>
+<td>The number of milliseconds to wait (1000 milliseconds per second)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-delay-until">
+<h3><a class="toc-backref" href="#id9">task_delay_until</a><a class="headerlink" href="#task-delay-until" title="Permalink to this headline">¶</a></h3>
+<p>Delay a task until a specified time.  This function can be used by periodic
+tasks to ensure a constant execution frequency.</p>
+<p>The task will be woken up at the time <code class="docutils literal"><span class="pre">*prev_time</span> <span class="pre">+</span> <span class="pre">delta</span></code>, and <code class="docutils literal"><span class="pre">*prev_time</span></code> will
+be updated to reflect the time at which the task will unblock.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#delay_until">pros::Task::delay_until</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-14 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-15 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">task_delay_until</span> <span class="p">(</span> <span class="kt">uint32_t</span><span class="o">*</span> <span class="k">const</span> <span class="n">prev_time</span><span class="p">,</span>
+                        <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">delta</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">uint32_t</span> <span class="n">now</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Do opcontrol things</span>
+    <span class="n">task_delay_until</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>prev_time</td>
+<td>A pointer to the location storing the setpoint time</td>
+</tr>
+<tr class="row-odd"><td>delta</td>
+<td>The number of milliseconds to wait (1000 milliseconds per second)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-delete">
+<h3><a class="toc-backref" href="#id10">task_delete</a><a class="headerlink" href="#task-delete" title="Permalink to this headline">¶</a></h3>
+<p>Remove a task from the RTOS real time kernel’s management.  The task being
+deleted will be removed from all ready, blocked, suspended and event lists.</p>
+<p>Memory dynamically allocated by the task is not automatically freed, and
+should be freed before the task is deleted.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-16 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-17 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">task_delete</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">);</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+                              <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
+  <span class="c1">// Do other things</span>
+  <span class="n">task_delete</span><span class="p">(</span><span class="n">my_task</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>task</td>
+<td>The handle of the task to be deleted.  Passing NULL will cause the calling task to be deleted.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-get-by-name">
+<h3><a class="toc-backref" href="#id11">task_get_by_name</a><a class="headerlink" href="#task-get-by-name" title="Permalink to this headline">¶</a></h3>
+<p>Obtains a task handle from the specified name.</p>
+<p>The operation takes a relatively long time and should be used sparingly.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-18 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-19 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">task_t</span> <span class="n">task_get_by_name</span> <span class="p">(</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">);</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+                              <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
+  <span class="c1">// Do other things</span>
+  <span class="n">task_delete</span><span class="p">(</span><span class="n">task_get_by_name</span><span class="p">(</span><span class="s">&quot;My Task&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>name</td>
+<td>The name to query</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> A task handle with a matching name, or NULL if none were found.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-get-count">
+<h3><a class="toc-backref" href="#id12">task_get_count</a><a class="headerlink" href="#task-get-count" title="Permalink to this headline">¶</a></h3>
+<p>Returns the number of tasks the kernel is currently managing, including all
+ready, blocked, or suspended tasks. A task that has been deleted, but not yet
+reaped by the idle task will also be included in the count. Tasks recently
+created may take one context switch to be counted.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#get-count">pros::Task::get_count</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-20 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-21 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">task_get_count</span> <span class="p">(</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">);</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+                              <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Number of Running Tasks: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">task_get_count</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> The number of tasks that are currently being managed by the kernel</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-get-name">
+<h3><a class="toc-backref" href="#id13">task_get_name</a><a class="headerlink" href="#task-get-name" title="Permalink to this headline">¶</a></h3>
+<p>Obtains the name of the specified task.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#get-name">pros::Task::get_name</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-22 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-23 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="k">const</span><span class="o">*</span> <span class="n">task_get_name</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">);</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+                              <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Task Name: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">task_get_name</span><span class="p">(</span><span class="n">my_task</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>task</td>
+<td>The handle of the task to check</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> A pointer to the name of the task</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-get-priority">
+<h3><a class="toc-backref" href="#id14">task_get_priority</a><a class="headerlink" href="#task-get-priority" title="Permalink to this headline">¶</a></h3>
+<p>Obtains the priority of the specified task.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#get-priority">pros::Task::get_priority</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-24 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-25 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">task_get_priority</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">);</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+                              <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Task Priority: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">task_get_priority</span><span class="p">(</span><span class="n">my_task</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>task</td>
+<td>The handle of the task to check</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> The priority of the task.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-get-state">
+<h3><a class="toc-backref" href="#id15">task_get_state</a><a class="headerlink" href="#task-get-state" title="Permalink to this headline">¶</a></h3>
+<p>Returns the state of the specified task.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#get-state">pros::Task::get_state</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-26 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-27 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-26 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">task_state_e_t</span> <span class="n">task_get_state</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-27 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">);</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+                              <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Task&#39;s State: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">task_get_state</span><span class="p">(</span><span class="n">my_task</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>task</td>
+<td>The handle of the task to check</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> The state of the task. (see <a class="reference internal" href="#task-state-e-t">task_state_e_t</a>).</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-notify">
+<h3><a class="toc-backref" href="#id16">task_notify</a><a class="headerlink" href="#task-notify" title="Permalink to this headline">¶</a></h3>
+<p>Sends a simple notification to task and increments the notification counter.</p>
+<p>See <a class="reference internal" href="../../tutorials/topical/notifications.html"><span class="doc">Task Notifications</span></a> for details.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#notify">pros::Task::notify</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-28 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-29 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-28 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">task_notify</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-29 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ign</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">task_notify_take</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="n">TIMEOUT_MAX</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s">&quot;I was unblocked!&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+                               <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;Notify me! Task&quot;</span><span class="p">);</span>
+  <span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">DIGITAL_L1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">task_notify</span><span class="p">(</span><span class="n">my_task</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>task</td>
+<td>The handle of the task to notify</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> Always true.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-notify-clear">
+<h3><a class="toc-backref" href="#id17">task_notify_clear</a><a class="headerlink" href="#task-notify-clear" title="Permalink to this headline">¶</a></h3>
+<p>Clears the notification for a task.</p>
+<p>See <a class="reference internal" href="../../tutorials/topical/notifications.html"><span class="doc">Task Notifications</span></a> for details.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#notify-clear">pros::Task::notify_clear</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-30 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-31 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-30 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">task_notify_clear</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-31 docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">TO</span> <span class="n">BE</span> <span class="n">ADDED</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>task</td>
+<td>The handle of the task to clear</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> False if there was not a notification waiting, true if there was</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-notify-ext">
+<h3><a class="toc-backref" href="#id18">task_notify_ext</a><a class="headerlink" href="#task-notify-ext" title="Permalink to this headline">¶</a></h3>
+<p>Sends a notification to a task, optionally performing some action. Will also
+retrieve the value of the notification in the target task before modifying
+the notification value.</p>
+<p>See <a class="reference internal" href="../../tutorials/topical/notifications.html"><span class="doc">Task Notifications</span></a> for details.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#notify-ext">pros::Task::notify_ext</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-32 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-33 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-32 active docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">task_notify_ext</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span><span class="p">,</span>
+                           <span class="kt">uint32_t</span> <span class="n">value</span><span class="p">,</span>
+                           <span class="n">notify_action_e_t</span> <span class="n">action</span><span class="p">,</span>
+                           <span class="kt">uint32_t</span><span class="o">*</span> <span class="n">prev_value</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-33 docutils container">
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">TO</span> <span class="n">BE</span> <span class="n">ADDED</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>task</td>
+<td>The handle of the task to notify</td>
+</tr>
+<tr class="row-odd"><td>value</td>
+<td>The value used in performing the action</td>
+</tr>
+<tr class="row-even"><td>action</td>
+<td>An action to optionally perform on the task’s notification</td>
+</tr>
+<tr class="row-odd"><td>prev_value</td>
+<td>A pointer to store the previous value of the target task’s notification, may be NULL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> Dependent on the notification action. For <a class="reference external" href="notify_action_e_t">NOTIFY_ACTION_NO_OWRITE</a>:
+return 0 if the value could be written without needing to overwrite, 1 otherwise.
+For all other <a class="reference external" href="notify_action_e_t">NOTIFY_ACTION</a> values: always return 0</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-notify-take">
+<h3><a class="toc-backref" href="#id19">task_notify_take</a><a class="headerlink" href="#task-notify-take" title="Permalink to this headline">¶</a></h3>
+<p>Wait for a notification to be nonzero.</p>
+<p>See <a class="reference internal" href="../../tutorials/topical/notifications.html"><span class="doc">Task Notifications</span></a> for details.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#notify-take">pros::Task::notify_take</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-34 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-35 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-34 active docutils container">
+<blockquote>
+<div><div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">task_notify_take</span> <span class="p">(</span> <span class="kt">bool</span> <span class="n">clear_on_exit</span><span class="p">,</span>
+                            <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-35 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ign</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">while</span><span class="p">(</span><span class="n">task_notify_take</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="n">TIMEOUT_MAX</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">puts</span><span class="p">(</span><span class="s">&quot;I was unblocked!&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+                               <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;Notify me! Task&quot;</span><span class="p">);</span>
+  <span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">DIGITAL_L1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">task_notify</span><span class="p">(</span><span class="n">my_task</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>clear_on_exit</td>
+<td>If true (1), then the notification value is cleared. If false (0), then the notification value is decremented.</td>
+</tr>
+<tr class="row-odd"><td>timeout</td>
+<td>Specifies the amount of time to be spent waiting for a notification to occur.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> The value of the task’s notification value before it is decremented or cleared.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-resume">
+<h3><a class="toc-backref" href="#id20">task_resume</a><a class="headerlink" href="#task-resume" title="Permalink to this headline">¶</a></h3>
+<p>Resumes the specified task, making it eligible to be scheduled.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#resume">pros::Task::resume</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-36 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-37 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-36 active docutils container">
+<blockquote>
+<div><div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">task_resume</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-37 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ign</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Do things</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+                               <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;Example Task&quot;</span><span class="p">);</span>
+  <span class="c1">// Do things</span>
+  <span class="n">task_suspend</span><span class="p">(</span><span class="n">my_task</span><span class="p">);</span> <span class="c1">// The task will no longer execute</span>
+  <span class="c1">// Do other things</span>
+  <span class="n">task_resume</span><span class="p">(</span><span class="n">my_task</span><span class="p">);</span> <span class="c1">// The task will resume execution</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>task</td>
+<td>The handle of the task to resume</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-set-priority">
+<h3><a class="toc-backref" href="#id21">task_set_priority</a><a class="headerlink" href="#task-set-priority" title="Permalink to this headline">¶</a></h3>
+<p>Sets the priority of the specified task.</p>
+<p>If the specified task’s state is available to be scheduled (e.g. not blocked)
+and new priority is higher than the currently running task, a context switch
+may occur.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#set-priority">pros::Task::set_priority</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-38 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-39 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-38 active docutils container">
+<blockquote>
+<div><div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">task_set_priority</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span><span class="p">,</span>
+                         <span class="kt">uint32_t</span> <span class="n">prio</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-39 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ign</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Do things</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+                               <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;Example Task&quot;</span><span class="p">);</span>
+  <span class="n">task_set_priority</span><span class="p">(</span><span class="n">my_task</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>task</td>
+<td>The handle of the task to set</td>
+</tr>
+<tr class="row-odd"><td>prio</td>
+<td>The new priority of the task</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="task-suspend">
+<h3><a class="toc-backref" href="#id22">task_suspend</a><a class="headerlink" href="#task-suspend" title="Permalink to this headline">¶</a></h3>
+<p>Suspends the current task, making it ineligible to be scheduled.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#suspend">pros::Task::suspend</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-40 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-41 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-40 active docutils container">
+<blockquote>
+<div><div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">task_suspend</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-41 docutils container">
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ign</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Do things</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+                               <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;Notify me! Task&quot;</span><span class="p">);</span>
+  <span class="c1">// Do things</span>
+  <span class="n">task_suspend</span><span class="p">(</span><span class="n">my_task</span><span class="p">);</span> <span class="c1">// The task will no longer execute</span>
+  <span class="c1">// Do other things</span>
+  <span class="n">task_resume</span><span class="p">(</span><span class="n">my_task</span><span class="p">);</span> <span class="c1">// The task will resume execution</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>task</td>
+<td>The handle of the task to suspend</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="macros">
+<h2><a class="toc-backref" href="#id23">Macros</a><a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="current-task">
+<h3><a class="toc-backref" href="#id24">CURRENT_TASK</a><a class="headerlink" href="#current-task" title="Permalink to this headline">¶</a></h3>
+<p>Refers to the current task. To be used for checking attributes of the task in which
+this macro is called.</p>
+<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">((task_t)NULL)</span></code></p>
+</div>
+<div class="section" id="task-name-max-len">
+<h3><a class="toc-backref" href="#id25">TASK_NAME_MAX_LEN</a><a class="headerlink" href="#task-name-max-len" title="Permalink to this headline">¶</a></h3>
+<p>The maximum number of characters allowed in a task’s name.</p>
+<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">32</span></code></p>
+</div>
+<div class="section" id="task-priority-default">
+<h3><a class="toc-backref" href="#id26">TASK_PRIORITY_DEFAULT</a><a class="headerlink" href="#task-priority-default" title="Permalink to this headline">¶</a></h3>
+<p>The default task priority, which should be used for most tasks.</p>
+<p>Default tasks such as autonomous() inherit this priority.</p>
+<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">8</span></code></p>
+</div>
+<div class="section" id="task-priority-max">
+<h3><a class="toc-backref" href="#id27">TASK_PRIORITY_MAX</a><a class="headerlink" href="#task-priority-max" title="Permalink to this headline">¶</a></h3>
+<p>The highest priority that can be assigned to a task. Beware of deadlock.</p>
+<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">16</span></code></p>
+</div>
+<div class="section" id="task-priority-min">
+<h3><a class="toc-backref" href="#id28">TASK_PRIORITY_MIN</a><a class="headerlink" href="#task-priority-min" title="Permalink to this headline">¶</a></h3>
+<p>The lowest priority that can be assigned to a task.</p>
+<p>This may cause severe performance problems and is generally not
+recommended.</p>
+<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">1</span></code></p>
+</div>
+<div class="section" id="task-stack-depth-default">
+<h3><a class="toc-backref" href="#id29">TASK_STACK_DEPTH_DEFAULT</a><a class="headerlink" href="#task-stack-depth-default" title="Permalink to this headline">¶</a></h3>
+<p>The recommended stack size for a new task. This stack size is used for
+default tasks such as autonomous(). This equates to 32,768 bytes, or 128 times
+the default stack size for a task in PROS 2.</p>
+<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">0x2000</span></code></p>
+</div>
+<div class="section" id="task-stack-depth-min">
+<h3><a class="toc-backref" href="#id30">TASK_STACK_DEPTH_MIN</a><a class="headerlink" href="#task-stack-depth-min" title="Permalink to this headline">¶</a></h3>
+<p>The minimal stack size for a task. This equates to 2048 bytes, or 8 times the
+default stack size for a task in PROS 2.</p>
+<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">0x200</span></code></p>
+</div>
+<div class="section" id="timeout-max">
+<h3><a class="toc-backref" href="#id31">TIMEOUT_MAX</a><a class="headerlink" href="#timeout-max" title="Permalink to this headline">¶</a></h3>
+<p>The maximum timeout value that can be given to, for instance, a <a class="reference external" href="mutex_take">mutex grab</a>.</p>
+<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">((uint32_t)0xffffffffUL)</span></code></p>
+</div>
+</div>
+<div class="section" id="enumerated-values">
+<h2><a class="toc-backref" href="#id32">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="task-state-e-t">
+<h3><a class="toc-backref" href="#id33">task_state_e_t</a><a class="headerlink" href="#task-state-e-t" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span>
+  <span class="n">E_TASK_STATE_RUNNING</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="n">E_TASK_STATE_READY</span><span class="p">,</span>
+  <span class="n">E_TASK_STATE_BLOCKED</span><span class="p">,</span>
+  <span class="n">E_TASK_STATE_SUSPENDED</span><span class="p">,</span>
+  <span class="n">E_TASK_STATE_DELETED</span><span class="p">,</span>
+  <span class="n">E_TASK_STATE_INVALID</span>
+<span class="p">}</span> <span class="n">task_state_e_t</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>E_TASK_STATE_RUNNING</td>
+<td>The task is actively executing.</td>
+</tr>
+<tr class="row-odd"><td>E_TASK_STATE_READY</td>
+<td>The task exists and is available to run, but is not currently running.</td>
+</tr>
+<tr class="row-even"><td>E_TASK_STATE_BLOCKED</td>
+<td>The task is delayed or blocked by a mutex, semaphore, or I/O operation.</td>
+</tr>
+<tr class="row-odd"><td>E_TASK_STATE_SUSPENDED</td>
+<td>The task is supended using <a class="reference internal" href="#task-suspend">task_suspend</a>.</td>
+</tr>
+<tr class="row-even"><td>E_TASK_STATE_DELETED</td>
+<td>The task has been deleted using <a class="reference internal" href="#task-delete">task_delete</a>.</td>
+</tr>
+<tr class="row-odd"><td>E_TASK_STATE_INVALID</td>
+<td>The task handle does not point to a current or past task.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="task-notify-t">
+<h3><a class="toc-backref" href="#id34">task_notify_t</a><a class="headerlink" href="#task-notify-t" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span>
+  <span class="n">E_NOTIFY_ACTION_NONE</span><span class="p">,</span>
+  <span class="n">E_NOTIFY_ACTION_BITS</span><span class="p">,</span>
+  <span class="n">E_NOTIFY_ACTION_INCR</span><span class="p">,</span>
+  <span class="n">E_NOTIFY_ACTION_OWRITE</span><span class="p">,</span>
+  <span class="n">E_NOTIFY_ACTION_NO_OWRITE</span>
+<span class="p">}</span> <span class="n">notify_action_e_t</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="68%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>E_NOTIFY_ACTION_NONE</td>
+<td>TO BE ADDED</td>
+</tr>
+<tr class="row-odd"><td>E_NOTIFY_ACTION_BITS</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>E_NOTIFY_ACTION_INCR</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>E_NOTIFY_ACTION_OWRITE</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>E_NOTIFY_ACTION_NO_OWRITE</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="typedefs">
+<h2><a class="toc-backref" href="#id35">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="task-t">
+<h3><a class="toc-backref" href="#id36">task_t</a><a class="headerlink" href="#task-t" title="Permalink to this headline">¶</a></h3>
+<p>Points to a task handle. Used for referencing a task.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="n">task_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="task-fn-t">
+<h3><a class="toc-backref" href="#id37">task_fn_t</a><a class="headerlink" href="#task-fn-t" title="Permalink to this headline">¶</a></h3>
+<p>Points to the function associated with a task.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="nf">void</span> <span class="p">(</span><span class="o">*</span><span class="n">task_fn_t</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mutex-t">
+<h3><a class="toc-backref" href="#id38">mutex_t</a><a class="headerlink" href="#mutex-t" title="Permalink to this headline">¶</a></h3>
+<p>A <a class="reference external" href="../../tutorials/topical/multitasking">mutex</a>.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="n">mutex_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="vision.html" class="btn btn-neutral float-right" title="Vision Sensor C API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="motors.html" class="btn btn-neutral" title="Motors C API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: V5 (3.0.6)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../../cortex/index.html">Cortex</a></dd>
+        
+          <dd><a href="../../index.html">V5</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'3.0.6',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

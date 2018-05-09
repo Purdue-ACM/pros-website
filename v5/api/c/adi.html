@@ -176,7 +176,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#output-analog">OUTPUT_ANALOG</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#enumerated-values">Enumerated Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enumerated-values">Enumerated Values</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#adi-port-config-e-t">adi_port_config_e_t</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#typedefs">Typedefs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#adi-encoder-t">adi_encoder_t</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adi-ultrasonic-t">adi_ultrasonic_t</a></li>
@@ -317,10 +320,13 @@
 <li><a class="reference internal" href="#output-analog" id="id31">OUTPUT_ANALOG</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#enumerated-values" id="id32">Enumerated Values</a></li>
-<li><a class="reference internal" href="#typedefs" id="id33">Typedefs</a><ul>
-<li><a class="reference internal" href="#adi-encoder-t" id="id34">adi_encoder_t</a></li>
-<li><a class="reference internal" href="#adi-ultrasonic-t" id="id35">adi_ultrasonic_t</a></li>
+<li><a class="reference internal" href="#enumerated-values" id="id32">Enumerated Values</a><ul>
+<li><a class="reference internal" href="#adi-port-config-e-t" id="id33">adi_port_config_e_t</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#typedefs" id="id34">Typedefs</a><ul>
+<li><a class="reference internal" href="#adi-encoder-t" id="id35">adi_encoder_t</a></li>
+<li><a class="reference internal" href="#adi-ultrasonic-t" id="id36">adi_ultrasonic_t</a></li>
 </ul>
 </li>
 </ul>
@@ -1397,7 +1403,7 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> The <cite>adi_port_config_e_t</cite> set for the port.</p>
+<p><strong>Returns:</strong> The <a class="reference internal" href="#adi-port-config-e-t">adi_port_config_e_t</a> set for the port.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="adi-port-get-value">
@@ -1843,6 +1849,8 @@ Example</div>
 </div>
 <div class="section" id="enumerated-values">
 <h2><a class="toc-backref" href="#id32">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adi-port-config-e-t">
+<h3><a class="toc-backref" href="#id33">adi_port_config_e_t</a><a class="headerlink" href="#adi-port-config-e-t" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -1964,10 +1972,11 @@ for use with a Cortex-Era Ultrasonic</td>
 </tbody>
 </table>
 </div>
+</div>
 <div class="section" id="typedefs">
-<h2><a class="toc-backref" href="#id33">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id34">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="adi-encoder-t">
-<h3><a class="toc-backref" href="#id34">adi_encoder_t</a><a class="headerlink" href="#adi-encoder-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id35">adi_encoder_t</a><a class="headerlink" href="#adi-encoder-t" title="Permalink to this headline">¶</a></h3>
 <p>Reference type for an initialized encoder.</p>
 <p>This merely contains the port number for the encoder, unlike its use as an
 object to store encoder data in PROS 2.</p>
@@ -1976,7 +1985,7 @@ object to store encoder data in PROS 2.</p>
 </div>
 </div>
 <div class="section" id="adi-ultrasonic-t">
-<h3><a class="toc-backref" href="#id35">adi_ultrasonic_t</a><a class="headerlink" href="#adi-ultrasonic-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id36">adi_ultrasonic_t</a><a class="headerlink" href="#adi-ultrasonic-t" title="Permalink to this headline">¶</a></h3>
 <p>Reference type for an initialized ultrasonic.</p>
 <p>This merely contains the port number for the ultrasonic, unlike its use as an
 object to store encoder data in PROS 2.</p>
@@ -2038,9 +2047,9 @@ object to store encoder data in PROS 2.</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../../cortex/index.html">Cortex</a></dd>
-        
           <dd><a href="../../index.html">V5</a></dd>
+        
+          <dd><a href="../../../cortex/index.html">Cortex</a></dd>
         
       </dl>
     </div>

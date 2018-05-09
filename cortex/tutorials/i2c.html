@@ -251,7 +251,7 @@ and can be daisy chained together on your robot.</p>
 <h3>Advance User Warning<a class="headerlink" href="#advance-user-warning" title="Permalink to this headline">¶</a></h3>
 <p>When utilizing IMEs and 3rd party sensors on your I2C bus it is
 recommended that you write your own task to handle all the I2C
-communication to prevent resource thrashing. See the <a class="reference external" href="./tutorials/i2c.html#pollingTask">I2C Polling
+communication to prevent resource thrashing. See the <a class="reference external" href="i2c.html#pollingTask">I2C Polling
 Task</a> for more details.</p>
 <p>PROS provides a simple library for interacting with your IMEs. A sample
 usage would be as follows:</p>
@@ -623,7 +623,7 @@ with these two options being the opposite of one another. A big-endian
 device will arrange bytes with the most significant (highest order) byte
 first, and little-endian arranges bytes with the least significant byte
 first. An example of reading a big-endian device can be found in
-<a class="reference external" href="./tutorials/i2c.html#readingI2CSlave">Reading from an I2C Slave</a>. If an
+<a class="reference external" href="i2c.html#readingI2CSlave">Reading from an I2C Slave</a>. If an
 I2C reading is an unexpected value, try reading in the opposite
 endianness.</p>
 </div>
@@ -631,7 +631,7 @@ endianness.</p>
 <h3>Union/Struct method<a class="headerlink" href="#union-struct-method" title="Permalink to this headline">¶</a></h3>
 <p>One solution to reading a collection of bits from a device is to use a
 struct wrapped in a union as seen in the <code class="docutils literal"><span class="pre">LIDAR_REG_CFG</span></code> union in
-<a class="reference external" href="./tutorials/i2c.html#thirdPartyI2CDevices">Third-Party I2C Devices</a>. The
+<a class="reference external" href="i2c.html#thirdPartyI2CDevices">Third-Party I2C Devices</a>. The
 union contains a value that contains the reading from the sensor, and
 the struct contains each significant bit as an individual value. Write
 to the union’s value, and then read individual bits from the struct. If
@@ -689,9 +689,9 @@ about the subject is recommended.</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../v5/index.html">V5</a></dd>
-        
           <dd><a href="../index.html">Cortex</a></dd>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
         
       </dl>
     </div>

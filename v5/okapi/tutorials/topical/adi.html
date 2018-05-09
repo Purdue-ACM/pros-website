@@ -148,35 +148,7 @@
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">OkapiLib Documentation Home</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../api/index.html">OkapiLib API</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../index.html#general-tutorials">General Tutorials</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../index.html#walkthrough-tutorials">Walkthrough Tutorials</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../index.html#topical-tutorials">Topical Tutorials</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">ADI (3 Wire Ports)</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#analog-sensors">Analog Sensors</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#initialization">Initialization</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#potentiometer">Potentiometer</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#line-tracker">Line Tracker</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#accelerometer">Accelerometer</a></li>
-</ul>
-</li>
-<li class="toctree-l5"><a class="reference internal" href="#digital-sensors">Digital Sensors</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#id1">Initialization</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#quad-encoder">Quad Encoder</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#ultrasonic">Ultrasonic</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pneumatics">Pneumatics</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">OkapiLib Documentation Home</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index.html#general-tutorials">General Tutorials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#walkthrough-tutorials">Walkthrough Tutorials</a></li>
@@ -364,7 +336,7 @@ C++</div>
 </div>
 <p>Additionally, it is often worthwhile to calibrate analog sensors before using them
 in the <code class="docutils literal"><span class="pre">initialize()</span></code> function. The
-<a class="reference external" href="../../api/c/adi.htmladi-#analog-calibrate">analog_calibrate</a> function collects
+<a class="reference external" href="../../../api/c/adi.html#adi-analog-calibrate">analog_calibrate</a> function collects
 approximately 500 data samples over a period of half a
 second and returns the average value received over the sampling period.
 This average value can be used to account for variations like ambient light for
@@ -428,10 +400,10 @@ typically do not need to be calibrated, although it may be desired as it
 helps account for possible shifting in the potentiometer mounting and to
 find the actual range of the potentiometer due to its mechanical stops
 as that range may be closer to 5-4090 instead of 0-4095. If the
-potentiometer is not calibrated, the <a class="reference external" href="../../api/c/adi.html#adi-analog-read">analog_read</a>
+potentiometer is not calibrated, the <a class="reference external" href="../../../api/c/adi.html#adi-analog-read">analog_read</a>
 function may be used to obtain the raw
 input value of the potentiometer. If the sensor was calibrated, the
-<a class="reference external" href="../../api/c/adi.html#adi-analog-read-calibrated">analog_read_calibrated</a> function should be used,
+<a class="reference external" href="../../../api/c/adi.html#adi-analog-read-calibrated">analog_read_calibrated</a> function should be used,
 as it will account for the sensor’s
 calibration and return more accurate results. The input to both of these
 functions is the channel number of the sensor, and an integer is
@@ -1277,9 +1249,9 @@ C++</div>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
-        
           <dd><a href="../../../index.html">V5</a></dd>
+        
+          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
         
       </dl>
     </div>

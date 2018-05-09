@@ -564,9 +564,9 @@ setting <code class="docutils literal"><span class="pre">errno</span></code>.</p
 <p>Sets the velocity for the motor.</p>
 <p>This velocity corresponds to different actual speeds depending on the gearset
 used for the motor. This results in a range of +-100 for
-<a class="reference external" href="motor_gearset_e_t">E_MOTOR_GEARSET_36</a>,
-+-200 for <a class="reference external" href="motor_gearset_e_t">E_MOTOR_GEARSET_18</a>, and +-600 for
-<a class="reference external" href="motor_gearset_e_t">E_MOTOR_GEARSET_6</a>. The velocity
+<a class="reference external" href="motors.html#motor-gearset-e-t">E_MOTOR_GEARSET_36</a>,
++-200 for <a class="reference external" href="motors.html#motor-gearset-e-t">E_MOTOR_GEARSET_18</a>, and +-600 for
+<a class="reference external" href="motors.html#motor-gearset-e-t">E_MOTOR_GEARSET_6</a>. The velocity
 is held with PID to ensure consistent speed, as opposed to setting the motor’s
 voltage.</p>
 <p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
@@ -622,7 +622,7 @@ Example</div>
 </tr>
 <tr class="row-odd"><td>velocity</td>
 <td>The new motor velocity from +-100, +-200, or +-600 depending
-on the motor’s <a class="reference external" href="motor_gearset_e_t">gearset</a></td>
+on the motor’s <a class="reference external" href="motors.html#motor-gearset-e-t">gearset</a></td>
 </tr>
 </tbody>
 </table>
@@ -1955,7 +1955,7 @@ setting <code class="docutils literal"><span class="pre">errno</span></code>.</p
 <hr class="docutils" />
 <div class="section" id="motor-get-encoder-units">
 <h3><a class="toc-backref" href="#id29">motor_get_encoder_units</a><a class="headerlink" href="#motor-get-encoder-units" title="Permalink to this headline">¶</a></h3>
-<p>Gets the <a class="reference external" href="motor_encoder_units_e_t">encoder units</a> set for the motor.</p>
+<p>Gets the <a class="reference external" href="motors.html#motor-encoder-units-e-t">encoder units</a> set for the motor.</p>
 <p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
@@ -2009,7 +2009,7 @@ or <code class="docutils literal"><span class="pre">E_MOTOR_ENCODER_INVALID</spa
 <hr class="docutils" />
 <div class="section" id="motor-get-gearing">
 <h3><a class="toc-backref" href="#id30">motor_get_gearing</a><a class="headerlink" href="#motor-get-gearing" title="Permalink to this headline">¶</a></h3>
-<p>Gets the <cite>gearset &lt;motor_gearset_e_t&gt;`_</cite> that was set for the motor.</p>
+<p>Gets the <cite>gearset &lt;motors.html#motor-gearset-e-t&gt;`_</cite> that was set for the motor.</p>
 <p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
@@ -2788,9 +2788,9 @@ setting <code class="docutils literal"><span class="pre">errno</span></code>.</p
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../../cortex/index.html">Cortex</a></dd>
-        
           <dd><a href="../../index.html">V5</a></dd>
+        
+          <dd><a href="../../../cortex/index.html">Cortex</a></dd>
         
       </dl>
     </div>

@@ -436,7 +436,7 @@ Example</div>
 <hr class="docutils" />
 <div class="section" id="mutex-create">
 <h3><a class="toc-backref" href="#id4">mutex_create</a><a class="headerlink" href="#mutex-create" title="Permalink to this headline">¶</a></h3>
-<p>Creates a mutex.</p>
+<p>Creates a <a class="reference internal" href="#mutex-t">mutex_t</a>.</p>
 <p>See <a class="reference internal" href="../../tutorials/topical/multitasking.html"><span class="doc">Multitasking</span></a> for details.</p>
 <p>Analogous to <a class="reference external" href="../cpp/rtos.html#mutex">pros::Mutex::Mutex</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -477,13 +477,13 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong>  A handle to a newly created mutex. If an error occurred, NULL will be
+<p><strong>Returns:</strong>  A handle to a newly created <a class="reference internal" href="#mutex-t">mutex_t</a>. If an error occurred, NULL will be
 returned and <code class="docutils literal"><span class="pre">errno</span></code> can be checked for hints as to why <a class="reference internal" href="#mutex-create">mutex_create</a> failed.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="mutex-give">
 <h3><a class="toc-backref" href="#id5">mutex_give</a><a class="headerlink" href="#mutex-give" title="Permalink to this headline">¶</a></h3>
-<p>Unlocks a mutex.</p>
+<p>Unlocks a <a class="reference internal" href="#mutex-t">mutex_t</a>.</p>
 <p>See <a class="reference internal" href="../../tutorials/topical/multitasking.html"><span class="doc">Multitasking</span></a> for details.</p>
 <p>Analogous to <a class="reference external" href="../cpp/rtos.html#give">pros::Mutex::give</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -547,7 +547,7 @@ be returned.</p>
 <hr class="docutils" />
 <div class="section" id="mutex-take">
 <h3><a class="toc-backref" href="#id6">mutex_take</a><a class="headerlink" href="#mutex-take" title="Permalink to this headline">¶</a></h3>
-<p>Takes and locks a mutex, waiting for up to a certain number of milliseconds
+<p>Takes and locks a <a class="reference internal" href="#mutex-t">mutex_t</a>, waiting for up to a certain number of milliseconds
 before timing out.</p>
 <p>See <a class="reference internal" href="../../tutorials/topical/multitasking.html"><span class="doc">Multitasking</span></a> for details.</p>
 <p>Analogous to <a class="reference external" href="../cpp/rtos.html#take">pros::Mutex::take</a>.</p>
@@ -606,7 +606,7 @@ Example</div>
 </tr>
 <tr class="row-odd"><td>timeout</td>
 <td><p class="first">Time to wait before the mutex becomes available.</p>
-<p class="last">A timeout of 0 can be used to poll the mutex. TIMEOUT_MAX can be used to block indefinitely.</p>
+<p class="last">A timeout of 0 can be used to poll the <a class="reference internal" href="#mutex-t">mutex_t</a>. TIMEOUT_MAX can be used to block indefinitely.</p>
 </td>
 </tr>
 </tbody>
@@ -1350,9 +1350,9 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> Dependent on the notification action. For <a class="reference external" href="notify_action_e_t">NOTIFY_ACTION_NO_OWRITE</a>:
+<p><strong>Returns:</strong> Dependent on the notification action. For <a class="reference external" href="rtos.html#notify-action-e-t">NOTIFY_ACTION_NO_OWRITE</a>:
 return 0 if the value could be written without needing to overwrite, 1 otherwise.
-For all other <a class="reference external" href="notify_action_e_t">NOTIFY_ACTION</a> values: always return 0</p>
+For all other <a class="reference external" href="rtos.html#notify-action-e-t">NOTIFY_ACTION</a> values: always return 0</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="task-notify-take">
@@ -1679,7 +1679,7 @@ default stack size for a task in PROS 2.</p>
 </div>
 <div class="section" id="timeout-max">
 <h3><a class="toc-backref" href="#id31">TIMEOUT_MAX</a><a class="headerlink" href="#timeout-max" title="Permalink to this headline">¶</a></h3>
-<p>The maximum timeout value that can be given to, for instance, a <a class="reference external" href="mutex_take">mutex grab</a>.</p>
+<p>The maximum timeout value that can be given to, for instance, a <a class="reference external" href="rtos.html#mutex-take">mutex grab</a>.</p>
 <p><strong>Value:</strong> <code class="docutils literal"><span class="pre">((uint32_t)0xffffffffUL)</span></code></p>
 </div>
 </div>
@@ -1801,7 +1801,7 @@ default stack size for a task in PROS 2.</p>
 </div>
 <div class="section" id="mutex-t">
 <h3><a class="toc-backref" href="#id38">mutex_t</a><a class="headerlink" href="#mutex-t" title="Permalink to this headline">¶</a></h3>
-<p>A <a class="reference external" href="../../tutorials/topical/multitasking">mutex</a>.</p>
+<p>A <a class="reference external" href="../../tutorials/topical/multitasking.html#mutexes">mutex</a>.</p>
 <div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="n">mutex_t</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -1860,9 +1860,9 @@ default stack size for a task in PROS 2.</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../../cortex/index.html">Cortex</a></dd>
-        
           <dd><a href="../../index.html">V5</a></dd>
+        
+          <dd><a href="../../../cortex/index.html">Cortex</a></dd>
         
       </dl>
     </div>

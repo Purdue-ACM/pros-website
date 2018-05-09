@@ -41,7 +41,7 @@ provides object-oriented abstractions in C++ and offers best-in-class
 extensibility to enable users to maximize the capabilities of their V5 robot.
 The current Cortex will continue to be supported in the PROS 3 environment with
 the PROS 2.x Kernel and the existing features it provides via its
-`C language API <../../cortex/api/index.html>`_.
+`C language API <../../cortex/api/index.html>`_
 
 The improved PROS Editor is the officially supported integrated development environment.
 Built as a plugin to the Atom Editor, the PROS Editor brings all of the

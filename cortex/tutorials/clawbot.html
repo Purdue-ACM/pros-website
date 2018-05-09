@@ -348,32 +348,32 @@ documentation to help remind you what <code class="docutils literal"><span class
 programming robotics. To program basic arcade functionality, we need to
 be aware of two functions: one to get the joystick input and one to set
 the motors to a speed.</p>
-<div class="code c highlight-none"><div class="highlight"><pre><span></span>int joystickGetAnalog ( unsigned char joystick,   // the joystick slot to check (1 for master, 2 for partner)
-                        unsigned char axis        // One of the joystick channels on a VEX Joystick: 1, 2, 3, 4, ACCEL_X, or ACCEL_Y
-                      );
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">joystickGetAnalog</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">joystick</span><span class="p">,</span>   <span class="o">//</span> <span class="n">the</span> <span class="n">joystick</span> <span class="n">slot</span> <span class="n">to</span> <span class="n">check</span> <span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">master</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">partner</span><span class="p">)</span>
+                        <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">axis</span>        <span class="c1">// One of the joystick channels on a VEX Joystick: 1, 2, 3, 4, ACCEL_X, or ACCEL_Y</span>
+                      <span class="p">);</span>
 </pre></div>
 </div>
 <p>Gets the value of a control axis on the VEX joystick. <strong>*Returns</strong> the
 value from -127 to 127, or 0 if no joystick is connected to the
 requested slot.s</p>
-<div class="code c highlight-none"><div class="highlight"><pre><span></span>void motorSet ( unsigned char channel,  // motor channel to set from 1-10
-                int speed               // new signed speed. -127 is full reverse, 127 full forward, 0 off
-              );
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">motorSet</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span><span class="p">,</span>  <span class="c1">// motor channel to set from 1-10</span>
+                <span class="kt">int</span> <span class="n">speed</span>               <span class="c1">// new signed speed. -127 is full reverse, 127 full forward, 0 off</span>
+              <span class="p">);</span>
 </pre></div>
 </div>
 <p>Sets the speed of the specified motor channel.</p>
 <p>Armed with knowledge of these functions, let’s modify <code class="docutils literal"><span class="pre">opcontrol()</span></code>:</p>
-<div class="code c highlight-none"><div class="highlight"><pre><span></span>void operatorControl() {
-  int power;
-  int turn;
-    while (1) {
-        power = joystickGetAnalog(1, 2); // vertical axis on left joystick
-        turn  = joystickGetAnalog(1, 1); // horizontal axis on left joystick
-        motorSet(2, power + turn); // set left wheels
-        motorSet(3, power - turn); // set right wheels
-        delay(20);
-    }
-}
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">operatorControl</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">power</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">power</span> <span class="o">=</span> <span class="n">joystickGetAnalog</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// vertical axis on left joystick</span>
+        <span class="n">turn</span>  <span class="o">=</span> <span class="n">joystickGetAnalog</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// horizontal axis on left joystick</span>
+        <span class="n">motorSet</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">);</span> <span class="c1">// set left wheels</span>
+        <span class="n">motorSet</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">);</span> <span class="c1">// set right wheels</span>
+        <span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -490,40 +490,40 @@ related declarations and macro definitions all or most of which are
 needed in several different source files, it is a good idea to
 create a header file for them.
 <em>(`GNU &lt;https://gcc.gnu.org/onlinedocs/cpp/Header-Files.html&gt;`__)</em></p>
-<div class="code c highlight-none"><div class="highlight"><pre><span></span>#ifndef _CHASSIS_H_
-#define _CHASSIS_H_
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#ifndef _CHASSIS_H_</span>
+<span class="cp">#define _CHASSIS_H_</span>
 
-// Sets the speeds of the left and right wheels of the chassis
-void chassisSet(int left, int right);
+<span class="c1">// Sets the speeds of the left and right wheels of the chassis</span>
+<span class="kt">void</span> <span class="nf">chassisSet</span><span class="p">(</span><span class="kt">int</span> <span class="n">left</span><span class="p">,</span> <span class="kt">int</span> <span class="n">right</span><span class="p">);</span>
 
-#endif // _CHASSIS_H_
+<span class="cp">#endif </span><span class="c1">// _CHASSIS_H_</span>
 </pre></div>
 </div>
-<div class="code c highlight-none"><div class="highlight"><pre><span></span>#include &quot;main.h&quot;    // includes API.h and other headers
-#include &quot;chassis.h&quot; // redundant, but ensures that the corresponding header file (chassis.h) is included
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;    // includes API.h and other headers</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;chassis.h&quot; // redundant, but ensures that the corresponding header file (chassis.h) is included</span><span class="cp"></span>
 
-void chassisSet(int left, int right) {
-  motorSet(2, left);
-  motorSet(3, right);
-}
+<span class="kt">void</span> <span class="nf">chassisSet</span><span class="p">(</span><span class="kt">int</span> <span class="n">left</span><span class="p">,</span> <span class="kt">int</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">motorSet</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">left</span><span class="p">);</span>
+  <span class="n">motorSet</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">right</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Using this methodology, we can rewrite our operator control to something
 much more concise:</p>
-<div class="code c highlight-none"><div class="highlight"><pre><span></span>#include &quot;main.h&quot;
-#include &quot;chassis.h&quot;
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;chassis.h&quot;</span><span class="cp"></span>
 
-void opcontrol() {
-  while(1) {
-    int power, turn;
-    while (1) {
-      power = joystickGetAnalog(1, 2); // vertical axis on left joystick
-      turn  = joystickGetAnalog(1, 1); // horizontal axis on left joystick
-      chassisSet(power + turn, power - turn);
-      delay(20);
-    }
-  }
-}
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">power</span><span class="p">,</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">power</span> <span class="o">=</span> <span class="n">joystickGetAnalog</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// vertical axis on left joystick</span>
+      <span class="n">turn</span>  <span class="o">=</span> <span class="n">joystickGetAnalog</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// horizontal axis on left joystick</span>
+      <span class="n">chassisSet</span><span class="p">(</span><span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">,</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">);</span>
+      <span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>It should be clear that congregating similar pieces of code into a C
@@ -535,16 +535,16 @@ organizes your code.</p>
 include your own header files. In our example, we could modify our
 <code class="docutils literal"><span class="pre">main.h</span></code> to look like the following:</p>
 </div>
-<div class="code c highlight-none"><div class="highlight"><pre><span></span>// top of main.h omitted
-#ifndef MAIN_H_
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// top of main.h omitted</span>
+<span class="cp">#ifndef MAIN_H_</span>
 
-// This prevents multiple inclusion, which isn&#39;t bad for this file but is good practice
-#define MAIN_H_
+<span class="c1">// This prevents multiple inclusion, which isn&#39;t bad for this file but is good practice</span>
+<span class="cp">#define MAIN_H_</span>
 
-#include &lt;API.h&gt;
-#include &quot;chassis.h&quot; // Added this line
+<span class="cp">#include</span> <span class="cpf">&lt;API.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;chassis.h&quot; // Added this line</span><span class="cp"></span>
 
-// rest of main.h omitted from this listing
+<span class="c1">// rest of main.h omitted from this listing</span>
 </pre></div>
 </div>
 <p>Then, in <code class="docutils literal"><span class="pre">opcontrol.c</span></code>, the only file we would need to <code class="docutils literal"><span class="pre">#include</span></code> is
@@ -557,37 +557,37 @@ subsystems’ functions!</p>
 <p>We now want to use the left horizontal joystick to control the aperture
 of the claw. We’ll continue using the modular methodology:</p>
 <p><code class="docutils literal"><span class="pre">include/claw.h</span></code>:</p>
-<div class="code c highlight-none"><div class="highlight"><pre><span></span>#ifndef *CLAW_H*
-#define *CLAW_H*
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#ifndef *CLAW_H*</span>
+<span class="cp">#define *CLAW_H*</span>
 
-void clawSet(int speed);
+<span class="kt">void</span> <span class="nf">clawSet</span><span class="p">(</span><span class="kt">int</span> <span class="n">speed</span><span class="p">);</span>
 
-#endif
+<span class="cp">#endif</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">src/claw.c</span></code>:</p>
-<div class="code c highlight-none"><div class="highlight"><pre><span></span>#include &quot;main.h&quot;
-#include &quot;claw.h&quot;
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;claw.h&quot;</span><span class="cp"></span>
 
-void clawSet(int speed) { motorSet(9, -speed); }
+<span class="kt">void</span> <span class="nf">clawSet</span><span class="p">(</span><span class="kt">int</span> <span class="n">speed</span><span class="p">)</span> <span class="p">{</span> <span class="n">motorSet</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="n">speed</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p><code class="docutils literal"><span class="pre">src/opcontrol.c</span></code>:</p>
-<div class="code c highlight-none"><div class="highlight"><pre><span></span>#include &quot;main.h&quot;
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
 
-void operatorControl() {
-  int power, turn;
-  while (1) {
-    power = joystickGetAnalog(1, 2); // vertical axis on left joystick
-    turn = joystickGetAnalog(1, 1); // horizontal axis on left joystick
-    chassisSet(power + turn, power - turn);
+<span class="kt">void</span> <span class="nf">operatorControl</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">power</span><span class="p">,</span> <span class="n">turn</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="n">joystickGetAnalog</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// vertical axis on left joystick</span>
+    <span class="n">turn</span> <span class="o">=</span> <span class="n">joystickGetAnalog</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// horizontal axis on left joystick</span>
+    <span class="n">chassisSet</span><span class="p">(</span><span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">,</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">);</span>
 
-    // add the following line:
-    clawSet(joystickGetAnalog(1, 4));
+    <span class="c1">// add the following line:</span>
+    <span class="n">clawSet</span><span class="p">(</span><span class="n">joystickGetAnalog</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
 
-    delay(20);
-  }
-}
+    <span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -599,31 +599,31 @@ just like we did for the chassis and claw. If you’re having trouble,
 take a look at the complete Clawbot code sample at the bottom of this
 page.</p>
 <p><code class="docutils literal"><span class="pre">src/opcontrol.c</span></code>:</p>
-<div class="code c highlight-none"><div class="highlight"><pre><span></span>#include &quot;main.h&quot;
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
 
-void operatorControl() {
-  int power, turn;
-  while (1) {
-    power = joystickGetAnalog(1, 2); // vertical axis on left joystick
-    turn = joystickGetAnalog(1, 1); // horizontal axis on left joystick
-    chassisSet(power + turn, power - turn);
+<span class="kt">void</span> <span class="nf">operatorControl</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">power</span><span class="p">,</span> <span class="n">turn</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="n">joystickGetAnalog</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// vertical axis on left joystick</span>
+    <span class="n">turn</span> <span class="o">=</span> <span class="n">joystickGetAnalog</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// horizontal axis on left joystick</span>
+    <span class="n">chassisSet</span><span class="p">(</span><span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">,</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">);</span>
 
-    clawSet(joystickGetAnalog(1, 4));
+    <span class="n">clawSet</span><span class="p">(</span><span class="n">joystickGetAnalog</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
 
-    // add the following logic:
-    if(joystickGetDigital(1, 6, JOY_UP)) {
-      liftSet(127); // pressing up, so lift should go up
-    }
-    else if(joystickGetDigital(1, 6, JOY_DOWN)) {
-      liftSet(-127); // pressing down, so lift should go down
-    }
-    else {
-      liftSet(0); // no buttons are pressed, stop the lift
-    }
+    <span class="c1">// add the following logic:</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">joystickGetDigital</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">JOY_UP</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">liftSet</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span> <span class="c1">// pressing up, so lift should go up</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">joystickGetDigital</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">JOY_DOWN</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">liftSet</span><span class="p">(</span><span class="o">-</span><span class="mi">127</span><span class="p">);</span> <span class="c1">// pressing down, so lift should go down</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">liftSet</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// no buttons are pressed, stop the lift</span>
+    <span class="p">}</span>
 
-    delay(20);
-  }
-}
+    <span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Depending on your motor, you may notice that the arm falls back down
@@ -682,9 +682,9 @@ feedback control system such as PID.</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../v5/index.html">V5</a></dd>
-        
           <dd><a href="../index.html">Cortex</a></dd>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
         
       </dl>
     </div>

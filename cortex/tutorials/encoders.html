@@ -221,7 +221,7 @@ much the axle spins.</p>
 <p>PROS provides a simple quadrature library to utilize these sensors. A
 sample usage would be as follows:</p>
 <p>main.h:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">// Digital port number for top and bottom port of quad encoder</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Digital port number for top and bottom port of quad encoder</span>
 <span class="cp">#define QUAD_TOP_PORT 1</span>
 <span class="cp">#define QUAD_BOTTOM_PORT 2</span>
 
@@ -230,7 +230,7 @@ sample usage would be as follows:</p>
 </pre></div>
 </div>
 <p>init.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// ...</span>
     <span class="n">encoder</span> <span class="o">=</span> <span class="n">encoderInit</span><span class="p">(</span><span class="n">QUAD_TOP_PORT</span><span class="p">,</span> <span class="n">QUAD_BOTTOM_PORT</span><span class="p">,</span> <span class="n">is_reversed</span><span class="p">);</span>
     <span class="c1">// ...</span>
@@ -238,7 +238,7 @@ sample usage would be as follows:</p>
 </pre></div>
 </div>
 <p>opcontrol.c or auto.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(){</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(){</span>
     <span class="c1">// ... Do work</span>
     <span class="c1">// Get encoder reading in degrees</span>
     <span class="kt">int</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">encoderGet</span><span class="p">(</span><span class="n">encoder</span><span class="p">);</span>
@@ -314,9 +314,9 @@ page.</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

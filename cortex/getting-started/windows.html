@@ -227,25 +227,25 @@ box along the lines of: &gt; There was an error reading from file “…”.
 Verify that the file exists and you can access it. In most cases, this
 is because the file length is too long due to a limitation of Windows.
 Move the installer to a folder closer to the root directory of the
-drive, such as <code class="docutils literal"><span class="pre">C::\pros-temp</span></code>.</p>
+drive, such as <code class="docutils literal notranslate"><span class="pre">C::\pros-temp</span></code>.</p>
 <div class="section" id="apm-failure">
 <h3>APM Failure<a class="headerlink" href="#apm-failure" title="Permalink to this headline">¶</a></h3>
 <p>During some installations, Atom may not install correctly. This is best
 diagnosed by there not being shortcuts to Atom after installation, or if
-<code class="docutils literal"><span class="pre">apm</span></code> isn’t on PATH. If this is the case, you may need to manually
+<code class="docutils literal notranslate"><span class="pre">apm</span></code> isn’t on PATH. If this is the case, you may need to manually
 install Atom by visiting <a class="reference external" href="https://atom.io/download/windows">https://atom.io/download/windows</a>. Once
 installed and Atom appears, you will be able to install the PROS plugin
 by pressing <strong>Win</strong> + <strong>R</strong> and entering
-<code class="docutils literal"><span class="pre">apm</span> <span class="pre">install</span> <span class="pre">file-icons</span> <span class="pre">linter</span> <span class="pre">tool-bar</span> <span class="pre">tool-bar-main</span> <span class="pre">busy</span> <span class="pre">build</span> <span class="pre">platformio-ide-terminal</span> <span class="pre">pros</span></code>.
+<code class="docutils literal notranslate"><span class="pre">apm</span> <span class="pre">install</span> <span class="pre">file-icons</span> <span class="pre">linter</span> <span class="pre">tool-bar</span> <span class="pre">tool-bar-main</span> <span class="pre">busy</span> <span class="pre">build</span> <span class="pre">platformio-ide-terminal</span> <span class="pre">pros</span></code>.
 If you are still having trouble after installing Atom manually, it may
-be necessary to add Atom to <code class="docutils literal"><span class="pre">PATH</span></code> manually as well. To do so, follow
+be necessary to add Atom to <code class="docutils literal notranslate"><span class="pre">PATH</span></code> manually as well. To do so, follow
 these instructions: 1. Find the location of atom.exe. One good way of
 doing this is by right clicking on the Atom shortcut on your dekstop,
 clicking ‘Open File Location,’ and copying the path from the Explorer
 address bar. 2. Windows 7/8/8.1: 1. Open the Start menu 2. Right click
 on ‘Computer’ 3. Select ‘Properties’ 4. Click ‘Advanced System Settings’
 5. Click ‘Environment Variables’ 6. Select ‘PATH’ under ‘User
-Variables,’ then click ‘Edit’ 7. Add a semicolon (<code class="docutils literal"><span class="pre">;</span></code>) to the end of
+Variables,’ then click ‘Edit’ 7. Add a semicolon (<code class="docutils literal notranslate"><span class="pre">;</span></code>) to the end of
 the value, then paste in the path to atom.exe 8. Click ‘OK’ 3. Windows
 10: 1. Type ‘Environment Variables’ into the search bar 2. Select ‘Edit
 environment variables for your account 3. Select ‘Path’ in the upper box
@@ -256,15 +256,15 @@ Click ‘OK’</p>
 <h3>Installing alongside PROS for Eclipse<a class="headerlink" href="#installing-alongside-pros-for-eclipse" title="Permalink to this headline">¶</a></h3>
 <p>It is possible to install Atom alongside Eclipse, if you have previously
 installed Eclipse. However, the uninstall utility for PROS for Eclipse
-will remove all the contents in <code class="docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files\PROS</span></code>, so the new
+will remove all the contents in <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\PROS</span></code>, so the new
 version of PROS will also be affected. If you decide to remove Eclipse
 but want to keep the PROS Core components, either run the PROS for
 Eclipse uninstall utility and reinstall/repair the new version of PROS
-or manually delete all files/folders in <code class="docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files\PROS</span></code>
-except: <code class="docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files\PROS\cli-64</span></code> (or just <code class="docutils literal"><span class="pre">cli</span></code> if x86),
-<code class="docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files\PROS\toolchain</span></code>,
-<code class="docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files\PROS\updater.exe</span></code>, and
-<code class="docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files\PROS\updater.ini</span></code></p>
+or manually delete all files/folders in <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\PROS</span></code>
+except: <code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\PROS\cli-64</span></code> (or just <code class="docutils literal notranslate"><span class="pre">cli</span></code> if x86),
+<code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\PROS\toolchain</span></code>,
+<code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\PROS\updater.exe</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\PROS\updater.ini</span></code></p>
 </div>
 </div>
 </div>
@@ -316,9 +316,9 @@ except: <code class="docutils literal"><span class="pre">C:\Program</span> <span
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

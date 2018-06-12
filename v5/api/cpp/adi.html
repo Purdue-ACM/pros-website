@@ -138,9 +138,13 @@
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">API Home</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../c/index.html">C API</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ API</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Home</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../c/adi.html">ADI (TriPort) C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/llemu.html">LLEMU (Legacy LCD Emulator) C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/misc.html">Miscellaneous C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/motors.html">Motors C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/rtos.html">RTOS Facilities C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/vision.html">Vision Sensor C API</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">ADI (TriPort) C++ API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pros-adianalogin">pros::ADIAnalogIn</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
@@ -223,8 +227,11 @@
 <li class="toctree-l2"><a class="reference internal" href="motors.html">Motors C++ API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rtos.html">RTOS Facilities C++ API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vision.html">Vision Sensor C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api-legacy.html">Legacy API</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../c/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">C++ API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CLI</span></p>
 <ul>
@@ -400,9 +407,9 @@ are all <a class="reference internal" href="#pros-adianalogin">pros::ADIAnalogIn
 </div>
 <div class="section" id="constructor-s">
 <h3><a class="toc-backref" href="#id27">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -416,12 +423,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">ADIAnalogIn</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">ADIAnalogIn</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -472,7 +479,7 @@ the difference between this value and the current sensor value when called.</p>
 (gyro rotation, accelerometer movement).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The ADI currently returns data at 50ms std::intervals, despite the calibrate function’s
+<p class="last">The ADI currently returns data at 50ms intervals, despite the calibrate function’s
 1ms sample rate. This sample rate was kept for the sake of being similar to PROS
 2, and increasing the sample rate would not have a tangible difference in the
 function’s performance.</p>
@@ -490,12 +497,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">calibrate</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">calibrate</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -536,12 +543,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -564,7 +571,7 @@ and a value of 4095 reflects an input voltage of nearly 5 V</p>
 <h4><a class="toc-backref" href="#id31">get_value_calibrated</a><a class="headerlink" href="#get-value-calibrated" title="Permalink to this headline">¶</a></h4>
 <p>Reads the calibrated value of an analog input channel.</p>
 <p>The <a class="reference external" href="../c/adi.html#adi-analog-calibrate">adi_analog_calibrate</a> function must be run first on that channel. This function is
-inappropriate for sensor values std::intended for std::integration, as round-off error can accumulate
+inappropriate for sensor values intended for integration, as round-off error can accumulate
 causing drift over time. Use <a class="reference external" href="../c/adi.html#adi_analog_read_calibrated_HR">adi_analog_read_calibrated_HR</a> instead.</p>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi_analog_read_calibrated">adi_analog_read_calibrated</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -579,12 +586,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">get_value_calibrated</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">get_value_calibrated</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -609,12 +616,12 @@ Example</div>
 <div class="section" id="get-value-calibrated-hr">
 <h4><a class="toc-backref" href="#id32">get_value_calibrated_HR</a><a class="headerlink" href="#get-value-calibrated-hr" title="Permalink to this headline">¶</a></h4>
 <p>Reads the calibrated value of an analog input channel 1-8 with enhanced precision.</p>
-<p>The <a class="reference external" href="../c/adi.html#adi-analog-calibrate">adi_analog_calibrate</a> function must be run first. This is std::intended for std::integrated sensor
+<p>The <a class="reference external" href="../c/adi.html#adi-analog-calibrate">adi_analog_calibrate</a> function must be run first. This is intended for integrated sensor
 values such as gyros and accelerometers to reduce drift due to round-off, and should not be
 used on a sensor such as a line tracker or potentiometer.</p>
 <p>The value returned actually has 16 bits of “precision”, even though the ADC only reads
 12 bits, so that errors induced by the average value being between two values come out
-in the wash when std::integrated over time. Think of the value as the true value times 16.</p>
+in the wash when integrated over time. Think of the value as the true value times 16.</p>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi_analog_read_calibrated_HR">adi_analog_read_calibrated_HR</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -628,12 +635,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">get_value_calibrated_HR</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="o">::</span><span class="n">get_value_calibrated_HR</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -661,9 +668,9 @@ Example</div>
 <h2><a class="toc-backref" href="#id33">pros::ADIAnalogOut</a><a class="headerlink" href="#pros-adianalogout" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
 <h3><a class="toc-backref" href="#id34">Constructor(s)</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -677,12 +684,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogOut</span><span class="o">::</span><span class="n">ADIAnalogOut</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogOut</span><span class="o">::</span><span class="n">ADIAnalogOut</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -733,12 +740,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogOut</span><span class="o">::</span><span class="n">set_value</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">value</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogOut</span><span class="o">::</span><span class="n">set_value</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">value</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -778,9 +785,9 @@ Example</div>
 <h2><a class="toc-backref" href="#id37">pros::ADIDigitalIn</a><a class="headerlink" href="#pros-adidigitalin" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
 <h3><a class="toc-backref" href="#id38">Constructor(s)</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -794,12 +801,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -857,12 +864,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span><span class="o">::</span><span class="n">get_new_press</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span><span class="o">::</span><span class="n">get_new_press</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -908,12 +915,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -943,9 +950,9 @@ Example</div>
 <h2><a class="toc-backref" href="#id42">pros::ADIDigitalOut</a><a class="headerlink" href="#pros-adidigitalout" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id6">
 <h3><a class="toc-backref" href="#id43">Constructor(s)</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -959,13 +966,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalOut</span><span class="o">::</span><span class="n">ADIDigitalOut</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalOut</span><span class="o">::</span><span class="n">ADIDigitalOut</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span>
                                      <span class="kt">bool</span> <span class="n">init_state</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1030,12 +1037,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalOut</span><span class="o">::</span><span class="n">set_value</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">value</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalOut</span><span class="o">::</span><span class="n">set_value</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">value</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1086,9 +1093,9 @@ respectively, or the constants HIGH or LOW themselves</td>
 <h2><a class="toc-backref" href="#id46">pros::ADIEncoder</a><a class="headerlink" href="#pros-adiencoder" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id9">
 <h3><a class="toc-backref" href="#id47">Constructor(s)</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1102,14 +1109,14 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">ADIEncoder</span><span class="o">::</span><span class="n">ADIEncoder</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_top</span><span class="p">,</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ADIEncoder</span><span class="o">::</span><span class="n">ADIEncoder</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_top</span><span class="p">,</span>
                          <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_bottom</span><span class="p">,</span>
                          <span class="k">const</span> <span class="kt">bool</span> <span class="n">reverse</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1170,12 +1177,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-26 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIEncoder</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIEncoder</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-27 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1218,12 +1225,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-28 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIEncoder</span><span class="o">::</span><span class="n">reset</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIEncoder</span><span class="o">::</span><span class="n">reset</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-29 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1251,9 +1258,9 @@ Example</div>
 <h2><a class="toc-backref" href="#id51">pros::ADIMotor</a><a class="headerlink" href="#pros-adimotor" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id12">
 <h3><a class="toc-backref" href="#id52">Constructor(s)</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1267,12 +1274,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-30 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span><span class="o">::</span><span class="n">ADIMotor</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span><span class="o">::</span><span class="n">ADIMotor</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-31 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1330,12 +1337,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-32 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-33 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1376,12 +1383,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-34 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span><span class="o">::</span><span class="n">set_value</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">value</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span><span class="o">::</span><span class="n">set_value</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">value</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-35 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1437,12 +1444,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-36 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span><span class="o">::</span><span class="n">stop</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIMotor</span><span class="o">::</span><span class="n">stop</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-37 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1472,9 +1479,9 @@ Example</div>
 <h2><a class="toc-backref" href="#id57">pros::ADIPort</a><a class="headerlink" href="#pros-adiport" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id16">
 <h3><a class="toc-backref" href="#id58">Constructor(s)</a><a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1488,13 +1495,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-38 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">ADIPort</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">ADIPort</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                          <span class="n">adi_port_config_e_t</span> <span class="n">type</span> <span class="o">=</span> <span class="n">E_ADI_TYPE_UNDEFINED</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-39 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1550,12 +1557,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-40 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">get_config</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">get_config</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-41 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1590,12 +1597,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-42 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-43 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1629,12 +1636,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-44 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">set_config</span> <span class="p">(</span> <span class="n">adi_port_config_e_t</span> <span class="n">type</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">set_config</span> <span class="p">(</span> <span class="n">adi_port_config_e_t</span> <span class="n">type</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-45 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1690,12 +1697,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-46 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">set_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIPort</span><span class="o">::</span><span class="n">set_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-47 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1735,9 +1742,9 @@ Example</div>
 <h2><a class="toc-backref" href="#id64">pros::ADIUltrasonic</a><a class="headerlink" href="#pros-adiultrasonic" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id23">
 <h3><a class="toc-backref" href="#id65">Constructor(s)</a><a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1751,13 +1758,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-48 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIUltrasonic</span><span class="o">::</span><span class="n">ADIUltrasonic</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_echo</span><span class="p">,</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIUltrasonic</span><span class="o">::</span><span class="n">ADIUltrasonic</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_echo</span><span class="p">,</span>
                                      <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_ping</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-49 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1825,12 +1832,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-50 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIUltrasonic</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">ADIUltrasonic</span><span class="o">::</span><span class="n">get_value</span> <span class="p">(</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-51 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4

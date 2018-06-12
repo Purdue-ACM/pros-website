@@ -138,9 +138,13 @@
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">API Home</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../c/index.html">C API</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ API</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Home</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../c/adi.html">ADI (TriPort) C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/llemu.html">LLEMU (Legacy LCD Emulator) C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/misc.html">Miscellaneous C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/motors.html">Motors C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/rtos.html">RTOS Facilities C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/vision.html">Vision Sensor C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.html">ADI (TriPort) C++ API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="llemu.html">LLEMU (Legacy LCD Emulator) C++ API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellaneous C++ API</a></li>
@@ -198,8 +202,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="rtos.html">RTOS Facilities C++ API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vision.html">Vision Sensor C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api-legacy.html">Legacy API</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../c/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">C++ API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CLI</span></p>
 <ul>
@@ -345,10 +352,10 @@
 <h2><a class="toc-backref" href="#id3">pros::Motor</a><a class="headerlink" href="#pros-motor" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="constructor-s">
 <h3><a class="toc-backref" href="#id4">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -362,7 +369,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">explicit</span> <span class="n">Motor</span> <span class="p">(</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">explicit</span> <span class="n">Motor</span> <span class="p">(</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                  <span class="k">const</span> <span class="n">motor_gearset_e_t_</span> <span class="n">gearset</span> <span class="o">=</span> <span class="n">E_MOTOR_GEARSET_36</span><span class="p">,</span>
                  <span class="k">const</span> <span class="kt">bool</span> <span class="n">reverse</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
                  <span class="k">const</span> <span class="n">motor_encoder_units_e_t</span> <span class="n">encoder_units</span> <span class="o">=</span> <span class="n">E_MOTOR_ENCODER_DEGREES</span> <span class="p">)</span>
@@ -370,7 +377,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -407,7 +414,7 @@ Example</div>
 <td>The new motor <a class="reference external" href="../c/motors.html#motor-gearset-e-t">gearset</a></td>
 </tr>
 <tr class="row-even"><td>reverse</td>
-<td><code class="docutils literal"><span class="pre">1</span></code> reverses the motor, <code class="docutils literal"><span class="pre">0</span></code> is default</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span></code> reverses the motor, <code class="docutils literal notranslate"><span class="pre">0</span></code> is default</td>
 </tr>
 <tr class="row-odd"><td>encoder_units</td>
 <td>The new <a class="reference external" href="../c/motors.html#motor-encoder-units-e-t">motor encoder units</a></td>
@@ -423,9 +430,9 @@ Example</div>
 stick for simple opcontrol use. The actual behavior of the motor is analogous
 to use of <a class="reference internal" href="#move-voltage">move_voltage</a>, or <a class="reference external" href="../../../cortex/api/index.html#motorSet">motorSet</a>
 from the PROS 2 API.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -439,12 +446,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="k">operator</span><span class="o">=</span> <span class="p">(</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int8_t</span> <span class="n">voltage</span> <span class="p">)</span> <span class="k">const</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="k">operator</span><span class="o">=</span> <span class="p">(</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int8_t</span> <span class="n">voltage</span> <span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -495,13 +502,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="k">operator</span><span class="s">&quot;&quot;</span> <span class="n">_m</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">iport</span><span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="k">operator</span><span class="s">&quot;&quot;</span> <span class="n">_m</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">iport</span><span class="p">)</span>
 <span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="k">operator</span><span class="s">&quot;&quot;</span> <span class="n">_rm</span><span class="p">(</span><span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">iport</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -525,9 +532,9 @@ Example</div>
 stick for simple opcontrol use. The actual behavior of the motor is analogous
 to use of <a class="reference internal" href="#move-voltage">move_voltage</a>, or <a class="reference external" href="../../../cortex/api/index.html#motorSet">motorSet</a>
 from the PROS 2 API.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-move">motor_move</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -542,12 +549,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_move</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">int8_t</span> <span class="n">voltage</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_move</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">int8_t</span> <span class="n">voltage</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -582,8 +589,8 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -592,9 +599,9 @@ setting <code class="docutils literal"><span class="pre">errno</span></code>.</p
 <p>Sets the target absolute position for the motor to move to.</p>
 <p>This movement is relative to the position of the motor when initialized or
 the position when it was most recently reset with <a class="reference internal" href="#tare-position">tare_position</a>.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-move-absolute">motor_move_absolute</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -609,13 +616,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">move_absolute</span> <span class="p">(</span> <span class="kt">double</span> <span class="n">position</span><span class="p">,</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">move_absolute</span> <span class="p">(</span> <span class="kt">double</span> <span class="n">position</span><span class="p">,</span>
                                      <span class="kt">int32_t</span> <span class="n">velocity</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -653,17 +660,17 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 <hr class="docutils" />
 <div class="section" id="move-relative">
 <h4><a class="toc-backref" href="#id10">move_relative</a><a class="headerlink" href="#move-relative" title="Permalink to this headline">¶</a></h4>
 <p>Sets the relative target position for the motor to move to.</p>
 <p>This movement is relative to the current position of the motor as given in
 <a class="reference internal" href="#get-position">get_position</a>.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-move-relative">motor_move_relative</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -678,13 +685,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">move_relative</span> <span class="p">(</span> <span class="kt">double</span> <span class="n">position</span><span class="p">,</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">move_relative</span> <span class="p">(</span> <span class="kt">double</span> <span class="n">position</span><span class="p">,</span>
                                      <span class="kt">int32_t</span> <span class="n">velocity</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -716,8 +723,8 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="move-velocity">
@@ -730,9 +737,9 @@ used for the motor. This results in a range of +-100 for
 <a class="reference external" href="../c/motors.html#motor-gearset-e-t">E_MOTOR_GEARSET_6</a>. The velocity
 is held with PID to ensure consistent speed, as opposed to setting the motor’s
 voltage.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-move-velocity">motor_move_velocity</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -747,13 +754,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">move_velocity</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">move_velocity</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                      <span class="kt">int16_t</span> <span class="n">velocity</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -785,16 +792,16 @@ on the motor’s <a class="reference external" href="../c/motors.html#motor-gear
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="move-voltage">
 <h4><a class="toc-backref" href="#id12">move_voltage</a><a class="headerlink" href="#move-voltage" title="Permalink to this headline">¶</a></h4>
 <p>Sets the voltage for the motor from -12000 mV to 12000 mV.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-move-voltage">motor_move_voltage</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -809,12 +816,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">move_voltage</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">voltage</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">move_voltage</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">voltage</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -843,16 +850,16 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-target-position">
 <h4><a class="toc-backref" href="#id13">get_target_position</a><a class="headerlink" href="#get-target-position" title="Permalink to this headline">¶</a></h4>
 <p>Gets the target position set for the motor by the user.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-target">motor_get_target</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -867,12 +874,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_target</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_target</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -887,16 +894,16 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> The target position in its encoder units or <code class="docutils literal"><span class="pre">PROS_ERR_F</span></code> if the
-operation failed, setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> The target position in its encoder units or <code class="docutils literal notranslate"><span class="pre">PROS_ERR_F</span></code> if the
+operation failed, setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-target-velocity">
 <h4><a class="toc-backref" href="#id14">get_target_velocity</a><a class="headerlink" href="#get-target-velocity" title="Permalink to this headline">¶</a></h4>
 <p>Gets the velocity commanded to the motor by the user.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-velocity">motor_get_velocity</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -911,12 +918,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_velocity</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_velocity</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -939,8 +946,8 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> The commanded motor velocity from +-100, +-200, +-600, or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the
-operation failed, setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> The commanded motor velocity from +-100, +-200, +-600, or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the
+operation failed, setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -949,9 +956,9 @@ operation failed, setting <code class="docutils literal"><span class="pre">errno
 <div class="section" id="get-actual-velocity">
 <h4><a class="toc-backref" href="#id16">get_actual_velocity</a><a class="headerlink" href="#get-actual-velocity" title="Permalink to this headline">¶</a></h4>
 <p>Gets the actual velocity of the motor.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-actual-velocity">motor_get_actual_velocity</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -966,12 +973,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_actual_velocity</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_actual_velocity</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -992,15 +999,15 @@ Example</div>
 </div>
 <p><strong>Returns:</strong> The motor’s actual velocity in
 <a class="reference external" href="../c/motors.html#motor-encoder-units-e-t">motor_encoder_units_e_t</a> per second
-or <code class="docutils literal"><span class="pre">PROS_ERR_F</span></code> if the operation failed, setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+or <code class="docutils literal notranslate"><span class="pre">PROS_ERR_F</span></code> if the operation failed, setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-current-draw">
 <h4><a class="toc-backref" href="#id17">get_current_draw</a><a class="headerlink" href="#get-current-draw" title="Permalink to this headline">¶</a></h4>
 <p>Gets the current drawn by the motor in mA.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-current-draw">motor_get_current_draw</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1015,12 +1022,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_current_draw</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_current_draw</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1041,16 +1048,16 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> The motor’s current in mA or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> The motor’s current in mA or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-direction">
 <h4><a class="toc-backref" href="#id18">get_direction</a><a class="headerlink" href="#get-direction" title="Permalink to this headline">¶</a></h4>
 <p>Gets the direction of movement for the motor.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-direction">motor_get_direction</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1065,12 +1072,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_direction</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_direction</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1092,8 +1099,8 @@ Example</div>
 </div>
 </div>
 <p><strong>Returns:</strong> 1 for moving in the positive direction, -1 for moving in the
-negative direction, and <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+negative direction, and <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-efficiency">
@@ -1102,9 +1109,9 @@ setting <code class="docutils literal"><span class="pre">errno</span></code>.</p
 <p>An efficiency of 100% means that the motor is moving electrically while
 drawing no electrical power, and an efficiency of 0% means that the motor
 is drawing power but not moving.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-efficiency">motor_get_efficiency</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1119,12 +1126,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-26 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_efficiency</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_efficiency</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-27 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1145,16 +1152,16 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> The motor’s efficiency in percent or <code class="docutils literal"><span class="pre">PROS_ERR_F</span></code> if the operation
-failed, setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> The motor’s efficiency in percent or <code class="docutils literal notranslate"><span class="pre">PROS_ERR_F</span></code> if the operation
+failed, setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-faults">
 <h4><a class="toc-backref" href="#id20">get_faults</a><a class="headerlink" href="#get-faults" title="Permalink to this headline">¶</a></h4>
 <p>Gets the faults experienced by the motor.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-faults">motor_get_faults</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1169,12 +1176,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-28 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_faults</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_faults</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-29 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1201,9 +1208,9 @@ Example</div>
 <div class="section" id="get-flags">
 <h4><a class="toc-backref" href="#id21">get_flags</a><a class="headerlink" href="#get-flags" title="Permalink to this headline">¶</a></h4>
 <p>Gets the flags set by the motor’s operation.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-flags">motor_get_flags</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1218,12 +1225,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-30 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_flags</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_flags</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-31 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1250,9 +1257,9 @@ Example</div>
 <div class="section" id="get-position">
 <h4><a class="toc-backref" href="#id22">get_position</a><a class="headerlink" href="#get-position" title="Permalink to this headline">¶</a></h4>
 <p>Gets the absolute position of the motor in its encoder units.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-position">motor_get_position</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1267,12 +1274,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-32 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_position</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_position</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-33 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1293,16 +1300,16 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> The motor’s absolute position in its encoder units or <code class="docutils literal"><span class="pre">PROS_ERR_F</span></code>
-if the operation failed, setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> The motor’s absolute position in its encoder units or <code class="docutils literal notranslate"><span class="pre">PROS_ERR_F</span></code>
+if the operation failed, setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-power">
 <h4><a class="toc-backref" href="#id23">get_power</a><a class="headerlink" href="#get-power" title="Permalink to this headline">¶</a></h4>
 <p>Gets the power drawn by the motor in Watts.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-power">motor_get_power</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1317,12 +1324,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-34 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_power</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_power</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-35 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1343,16 +1350,16 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> The motor’s power draw in Watts or <code class="docutils literal"><span class="pre">PROS_ERR_F</span></code> if the operation
-failed, setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> The motor’s power draw in Watts or <code class="docutils literal notranslate"><span class="pre">PROS_ERR_F</span></code> if the operation
+failed, setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-raw-position">
 <h4><a class="toc-backref" href="#id24">get_raw_position</a><a class="headerlink" href="#get-raw-position" title="Permalink to this headline">¶</a></h4>
 <p>Gets the raw encoder count of the motor at a given timestamp.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-raw-position">motor_get_raw_position</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1367,12 +1374,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-36 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_raw_position</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="o">*</span> <span class="n">timestamp</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_raw_position</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="o">*</span> <span class="n">timestamp</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-37 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1412,8 +1419,8 @@ encoder count will be returned</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> The raw encoder count at the given timestamp or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the
-operation failed, setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> The raw encoder count at the given timestamp or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the
+operation failed, setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-temperature">
@@ -1421,9 +1428,9 @@ operation failed, setting <code class="docutils literal"><span class="pre">errno
 <p>Gets the temperature of the motor in degrees Celsius. The resolution of this
 eading is 5 degrees Celsius. The motor will start to reduce its power when the
 temperature reading is greater than or equal to 55 C.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-temperature">motor_get_temperature</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1438,12 +1445,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-38 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_temperature</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_temperature</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-39 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1464,16 +1471,16 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> The motor’s temperature in degrees Celsius or <code class="docutils literal"><span class="pre">PROS_ERR_F</span></code> if the
-operation failed, setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> The motor’s temperature in degrees Celsius or <code class="docutils literal notranslate"><span class="pre">PROS_ERR_F</span></code> if the
+operation failed, setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-torque">
 <h4><a class="toc-backref" href="#id26">get_torque</a><a class="headerlink" href="#get-torque" title="Permalink to this headline">¶</a></h4>
 <p>Gets the torque generated by the motor in Nm.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-torque">motor_get_torque</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1488,12 +1495,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-40 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_torque</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_torque</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-41 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1514,16 +1521,16 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> The motor’s torque in NM or <code class="docutils literal"><span class="pre">PROS_ERR_F</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> The motor’s torque in NM or <code class="docutils literal notranslate"><span class="pre">PROS_ERR_F</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-voltage">
 <h4><a class="toc-backref" href="#id27">get_voltage</a><a class="headerlink" href="#get-voltage" title="Permalink to this headline">¶</a></h4>
 <p>Gets the voltage delivered to the motor in mV.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-voltage">motor_get_voltage</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1538,12 +1545,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-42 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_voltage</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_voltage</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-43 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1564,16 +1571,16 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> The motor’s voltage in mV or <code class="docutils literal"><span class="pre">PROS_ERR_F</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> The motor’s voltage in mV or <code class="docutils literal notranslate"><span class="pre">PROS_ERR_F</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-zero-position-flag">
 <h4><a class="toc-backref" href="#id28">get_zero_position_flag</a><a class="headerlink" href="#get-zero-position-flag" title="Permalink to this headline">¶</a></h4>
 <p>Gets the zero position flag for the motor.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-zero-position-flag">motor_get_zero_position_flag</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1588,12 +1595,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-44 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_zero_position_flag</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_zero_position_flag</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-45 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1614,17 +1621,17 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the motor is at zero absolute position and <code class="docutils literal"><span class="pre">0</span></code> if the motor has
-moved from its absolute zero, or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the motor is at zero absolute position and <code class="docutils literal notranslate"><span class="pre">0</span></code> if the motor has
+moved from its absolute zero, or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="is-stopped">
 <h4><a class="toc-backref" href="#id29">is_stopped</a><a class="headerlink" href="#is-stopped" title="Permalink to this headline">¶</a></h4>
 <p>Gets the zero velocity flag for the motor.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-is-stopped">motor_is_stopped</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1639,12 +1646,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-46 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_is_stopped</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_is_stopped</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-47 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1665,16 +1672,16 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the motor is not moving and <code class="docutils literal"><span class="pre">0</span></code> if the motor is moving,
-or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed, setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the motor is not moving and <code class="docutils literal notranslate"><span class="pre">0</span></code> if the motor is moving,
+or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed, setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="is-over-current">
 <h4><a class="toc-backref" href="#id30">is_over_current</a><a class="headerlink" href="#is-over-current" title="Permalink to this headline">¶</a></h4>
 <p>Detects if the motor is drawing over its current limit.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-is-over-current">motor_is_over_current</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1689,12 +1696,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-48 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">is_over_current</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">is_over_current</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-49 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1716,16 +1723,16 @@ Example</div>
 </div>
 </div>
 <p><strong>Returns:</strong> 1 if the motor’s current limit is being exceeded and 0 if the current
-limit is not exceeded, or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed, setting
-<code class="docutils literal"><span class="pre">errno</span></code>.</p>
+limit is not exceeded, or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed, setting
+<code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="is-over-temp">
 <h4><a class="toc-backref" href="#id31">is_over_temp</a><a class="headerlink" href="#is-over-temp" title="Permalink to this headline">¶</a></h4>
 <p>Gets the temperature limit flag for the motor.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-is-over-temp">motor_is_over_temp</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1740,12 +1747,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-50 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">is_over_temp</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">is_over_temp</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-51 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1783,8 +1790,8 @@ Example</div>
 </tbody>
 </table>
 <p><strong>Returns:</strong> 1 if the temperature limit is exceeded and 0 if the the
-temperature is below the limit, or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+temperature is below the limit, or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -1793,9 +1800,9 @@ setting <code class="docutils literal"><span class="pre">errno</span></code>.</p
 <div class="section" id="get-brake-mode">
 <h4><a class="toc-backref" href="#id33">get_brake_mode</a><a class="headerlink" href="#get-brake-mode" title="Permalink to this headline">¶</a></h4>
 <p>Gets the brake mode of the motor.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-brake-mode">motor_get_brake_mode</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1810,12 +1817,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-52 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">motor_brake_mode_e_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_brake_mode</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">motor_brake_mode_e_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_brake_mode</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-53 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1829,16 +1836,16 @@ Example</div>
 </div>
 </div>
 <p><strong>Returns:</strong> One of <a class="reference external" href="../c/motors.html#motor-brake-mode-e-t">motor_brake_mode_e_t</a>, according to what was set for the motor,
-or <code class="docutils literal"><span class="pre">E_MOTOR_BRAKE_INVALID</span></code> if the operation failed, setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+or <code class="docutils literal notranslate"><span class="pre">E_MOTOR_BRAKE_INVALID</span></code> if the operation failed, setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-current-limit">
 <h4><a class="toc-backref" href="#id34">get_current_limit</a><a class="headerlink" href="#get-current-limit" title="Permalink to this headline">¶</a></h4>
 <p>Gets the current limit for the motor in mA.</p>
 <p>The default limit is 2500 mA.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-current-limit">motor_get_current_limit</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1853,12 +1860,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-54 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_current_limit</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_current_limit</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-55 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1875,12 +1882,12 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> The motor’s current limit in mA or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> The motor’s current limit in mA or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 <p>Gets the encoder units set for the motor.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-encoder-units">motor_get_encoder_units</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1895,12 +1902,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-56 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">motor_encoder_units_e_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_encoder_units</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">motor_encoder_units_e_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_encoder_units</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-57 docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">motor</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">E_MOTOR_GEARSET_06</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="n">E_MOTOR_ENCODER_COUNTS</span><span class="p">);</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Motor Encoder Units: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">motor</span><span class="p">.</span><span class="n">get_encoder_units</span><span class="p">();</span>
 <span class="p">}</span>
@@ -1909,11 +1916,11 @@ Example</div>
 </div>
 </div>
 <p><strong>Returns:</strong> One of <a class="reference external" href="../c/motors.html#motor-encoder-units-e-t">motor_encoder_units_e_t</a> according to what is set for the motor
-or <code class="docutils literal"><span class="pre">E_MOTOR_ENCODER_INVALID</span></code> if the operation failed.</p>
+or <code class="docutils literal notranslate"><span class="pre">E_MOTOR_ENCODER_INVALID</span></code> if the operation failed.</p>
 <p>Gets the <cite>gearset &lt;motor_gearset_e_t_&gt;`_</cite> that was set for the motor.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-gearing">motor_get_gearing</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1928,12 +1935,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-58 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">motor_gearset_e_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_gearing</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">motor_gearset_e_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_gearing</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-59 docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">motor</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">E_MOTOR_GEARSET_06</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="n">E_MOTOR_ENCODER_COUNTS</span><span class="p">);</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Motor Gearing: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">motor</span><span class="p">.</span><span class="n">get_gearing</span><span class="p">();</span>
 <span class="p">}</span>
@@ -1942,11 +1949,11 @@ Example</div>
 </div>
 </div>
 <p><strong>Returns:</strong> One of <a class="reference external" href="../c/motors.html#motor-gearset-e-t">motor_gearset_e_t</a> according to what is set for the motor,
-or <code class="docutils literal"><span class="pre">E_GEARSET_INVALID</span></code> if the operation failed.</p>
+or <code class="docutils literal notranslate"><span class="pre">E_GEARSET_INVALID</span></code> if the operation failed.</p>
 <p>Gets the voltage limit set by the user.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-get-voltage-limit">motor_get_voltage_limit</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1961,12 +1968,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-60 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_voltage_limit</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">get_voltage_limit</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-61 docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">motor</span> <span class="p">(</span><span class="mi">1</span><span class="p">);</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Motor Voltage Limit: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">motor</span><span class="p">.</span><span class="n">get_voltage_limit</span><span class="p">();</span>
 <span class="p">}</span>
@@ -1974,12 +1981,12 @@ Example</div>
 </div>
 </div>
 </div>
-<p><strong>Returns:</strong> The motor’s voltage limit in V or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> The motor’s voltage limit in V or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 <p>Gets the operation direction of the motor as set by the user.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-is-reversed">motor_is_reversed</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1994,12 +2001,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-62 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">is_reversed</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">is_reversed</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-63 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -2013,11 +2020,11 @@ Example</div>
 </div>
 </div>
 <p><strong>Returns:</strong> 1 if the motor has been reversed and 0 if the motor was not reversed,
-or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed, setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed, setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 <p>Sets one of <a class="reference external" href="../c/motors.html#motor-brake-mode-e-t">motor_brake_mode_e_t</a> to the motor.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-set-brake-mode">motor_set_brake_mode</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -2032,12 +2039,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-64 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_brake_mode</span> <span class="p">(</span> <span class="n">motor_brake_mode_e_t</span> <span class="n">mode</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_brake_mode</span> <span class="p">(</span> <span class="n">motor_brake_mode_e_t</span> <span class="n">mode</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-65 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -2066,17 +2073,17 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="set-current-limit">
 <h4><a class="toc-backref" href="#id35">set_current_limit</a><a class="headerlink" href="#set-current-limit" title="Permalink to this headline">¶</a></h4>
 <p>Sets the current limit for the motor in mA.</p>
 <p>The default limit is 2500 mA.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-set-current-limit">motor_set_current_limit</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -2091,12 +2098,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-66 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_current_limit</span> <span class="p">(</span> <span class="kt">int32_t</span> <span class="n">limit</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_current_limit</span> <span class="p">(</span> <span class="kt">int32_t</span> <span class="n">limit</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-67 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -2137,16 +2144,16 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="set-encoder-units">
 <h4><a class="toc-backref" href="#id36">set_encoder_units</a><a class="headerlink" href="#set-encoder-units" title="Permalink to this headline">¶</a></h4>
 <p>Sets one of <a class="reference external" href="../c/motors.html#motor-encoder-units-e-t">motor_encoder_units_e_t</a> for the motor encoder.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-set-encoder-units">motor_set_encoder_units</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -2161,12 +2168,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-68 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_encoder_units</span> <span class="p">(</span> <span class="n">motor_encoder_units_e_t</span> <span class="n">units</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_encoder_units</span> <span class="p">(</span> <span class="n">motor_encoder_units_e_t</span> <span class="n">units</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-69 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -2195,16 +2202,16 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="set-gearing">
 <h4><a class="toc-backref" href="#id37">set_gearing</a><a class="headerlink" href="#set-gearing" title="Permalink to this headline">¶</a></h4>
 <p>Sets one of <a class="reference external" href="../c/motors.html#motor-gearset-e-t">motor_gearset_e_t</a> for the motor.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-set-gearing">motor_set_gearing</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -2219,12 +2226,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-70 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_gearing</span> <span class="p">(</span> <span class="n">motor_gearset_e_t_</span> <span class="n">gearset</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_gearing</span> <span class="p">(</span> <span class="n">motor_gearset_e_t_</span> <span class="n">gearset</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-71 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -2253,17 +2260,17 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="set-reversed">
 <h4><a class="toc-backref" href="#id38">set_reversed</a><a class="headerlink" href="#set-reversed" title="Permalink to this headline">¶</a></h4>
 <p>Sets the reverse flag for the motor.</p>
 <p>This will invert its movements and the values returned for its position.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-set-reversed">motor_set_reversed</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -2278,12 +2285,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-72 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_reversed</span> <span class="p">(</span> <span class="kt">bool</span> <span class="n">reverse</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_reversed</span> <span class="p">(</span> <span class="kt">bool</span> <span class="n">reverse</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-73 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -2308,20 +2315,20 @@ Example</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>reverse</td>
-<td><code class="docutils literal"><span class="pre">1</span></code> reverses the motor, <code class="docutils literal"><span class="pre">0</span></code> is default</td>
+<td><code class="docutils literal notranslate"><span class="pre">1</span></code> reverses the motor, <code class="docutils literal notranslate"><span class="pre">0</span></code> is default</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="set-voltage-limit">
 <h4><a class="toc-backref" href="#id39">set_voltage_limit</a><a class="headerlink" href="#set-voltage-limit" title="Permalink to this headline">¶</a></h4>
 <p>Sets the voltage limit for the motor in mV.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-set-voltage-limit">motor_set_voltage_limit</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -2336,12 +2343,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-74 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_voltage_limit</span> <span class="p">(</span> <span class="kt">int32_t</span> <span class="n">limit</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_voltage_limit</span> <span class="p">(</span> <span class="kt">int32_t</span> <span class="n">limit</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-75 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -2382,17 +2389,17 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="set-zero-position">
 <h4><a class="toc-backref" href="#id40">set_zero_position</a><a class="headerlink" href="#set-zero-position" title="Permalink to this headline">¶</a></h4>
 <p>Sets the zero position for the motor in its encoder units.</p>
 <p>This will be the future reference point for the motor’s “absolute” position.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-set-zero-position">motor_set_zero_position</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -2407,12 +2414,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-76 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_zero_position</span> <span class="p">(</span> <span class="kt">double</span> <span class="n">position</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">set_zero_position</span> <span class="p">(</span> <span class="kt">double</span> <span class="n">position</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-77 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -2447,16 +2454,16 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="tare-position">
 <h4><a class="toc-backref" href="#id41">tare_position</a><a class="headerlink" href="#tare-position" title="Permalink to this headline">¶</a></h4>
 <p>Sets the “absolute” zero position of the motor to its current position.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/motors.html#motor-tare-position">motor_tare_position</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -2471,12 +2478,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-78 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">tare_position</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="o">::</span><span class="n">tare_position</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-79 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -2495,8 +2502,8 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 </div>
 </div>

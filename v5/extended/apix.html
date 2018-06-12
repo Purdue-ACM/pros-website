@@ -252,11 +252,16 @@
             
   <div class="section" id="extended-api">
 <h1>Extended API<a class="headerlink" href="#extended-api" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Also included in the Extended API is <a class="reference external" href="https://littlevgl.com/">LVGL</a>.
+LVGL will be replacing TMEI for the display functionality.</p>
+</div>
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="mutex-get-owner">
 <h3>mutex_get_owner<a class="headerlink" href="#mutex-get-owner" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">task_t</span> <span class="n">mutex_get_owner</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">task_t</span> <span class="n">mutex_get_owner</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Returns a handle to the owner of the mutex.</p>
@@ -281,7 +286,7 @@
 </div>
 <div class="section" id="mutex-recursive-create">
 <h3>mutex_recursive_create<a class="headerlink" href="#mutex-recursive-create" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">mutex_t</span> <span class="n">mutex_recursive_create</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">mutex_t</span> <span class="n">mutex_recursive_create</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Creates a recursive mutex which can be locked recursively by the owner.</p>
@@ -290,7 +295,7 @@
 </div>
 <div class="section" id="mutex-recursive-give">
 <h3>mutex_recursive_give<a class="headerlink" href="#mutex-recursive-give" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutex_recursive_give</span><span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutex_recursive_give</span><span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Gives a recursive mutex.</p>
@@ -314,7 +319,7 @@
 </div>
 <div class="section" id="mutex-recursive-take">
 <h3>mutex_recursive_take<a class="headerlink" href="#mutex-recursive-take" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutex_recursive_take</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutex_recursive_take</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span><span class="p">,</span>
                               <span class="kt">uint32_t</span> <span class="n">wait_time</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -345,7 +350,7 @@
 </div>
 <div class="section" id="queue-append">
 <h3>queue_append<a class="headerlink" href="#queue-append" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_append</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_append</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
                       <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">item</span><span class="p">,</span>
                       <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
 </pre></div>
@@ -375,11 +380,11 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the item was preprended, <code class="docutils literal"><span class="pre">false</span></code> otherwise.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the item was preprended, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 </div>
 <div class="section" id="queue-create">
 <h3>queue_create<a class="headerlink" href="#queue-create" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">queue_t</span> <span class="n">queue_create</span> <span class="p">(</span> <span class="kt">uint32_t</span> <span class="n">length</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">queue_t</span> <span class="n">queue_create</span> <span class="p">(</span> <span class="kt">uint32_t</span> <span class="n">length</span><span class="p">,</span>
                        <span class="kt">uint32_t</span> <span class="n">item_size</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -408,7 +413,7 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </div>
 <div class="section" id="queue-delete">
 <h3>queue_delete<a class="headerlink" href="#queue-delete" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">queue_delete</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">queue_delete</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Deletes a queue.</p>
@@ -432,7 +437,7 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </div>
 <div class="section" id="queue-get-available">
 <h3>queue_get_available<a class="headerlink" href="#queue-get-available" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">queue_get_available</span> <span class="p">(</span> <span class="k">const</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">queue_get_available</span> <span class="p">(</span> <span class="k">const</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Returns the number of spaces left in a queue.</p>
@@ -457,7 +462,7 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </div>
 <div class="section" id="queue-get-waiting">
 <h3>queue_get_waiting<a class="headerlink" href="#queue-get-waiting" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">queue_get_waiting</span> <span class="p">(</span> <span class="k">const</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">queue_get_waiting</span> <span class="p">(</span> <span class="k">const</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Returns the number of messages stored in a queue.</p>
@@ -482,7 +487,7 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </div>
 <div class="section" id="queue-peek">
 <h3>queue_peek<a class="headerlink" href="#queue-peek" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_peek</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_peek</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
                     <span class="kt">void</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span>
                     <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
 </pre></div>
@@ -512,11 +517,11 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if an item was copied into the buffer, <code class="docutils literal"><span class="pre">false</span></code> otherwise.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if an item was copied into the buffer, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 </div>
 <div class="section" id="queue-prepend">
 <h3>queue_prepend<a class="headerlink" href="#queue-prepend" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_prepend</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_prepend</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
                        <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">item</span><span class="p">,</span>
                        <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
 </pre></div>
@@ -546,11 +551,11 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the item was preprended, <code class="docutils literal"><span class="pre">false</span></code> otherwise.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the item was preprended, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 </div>
 <div class="section" id="queue-recv">
 <h3>queue_recv<a class="headerlink" href="#queue-recv" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_recv</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_recv</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
                     <span class="kt">void</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span>
                     <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
 </pre></div>
@@ -580,11 +585,11 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if an item was copied into the buffer, <code class="docutils literal"><span class="pre">false</span></code> otherwise.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if an item was copied into the buffer, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 </div>
 <div class="section" id="queue-reset">
 <h3>queue_reset<a class="headerlink" href="#queue-reset" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">queue_reset</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">queue_reset</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Resets a queue to an empty state.</p>
@@ -608,7 +613,7 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </div>
 <div class="section" id="sem-binary-create">
 <h3>sem_binary_create<a class="headerlink" href="#sem-binary-create" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">sem_t</span> <span class="n">sem_binary_create</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sem_t</span> <span class="n">sem_binary_create</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Creates a binary semaphore.</p>
@@ -617,7 +622,7 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </div>
 <div class="section" id="sem-create">
 <h3>sem_create<a class="headerlink" href="#sem-create" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">sem_t</span> <span class="n">sem_create</span> <span class="p">(</span> <span class="kt">uint32_t</span> <span class="n">max_count</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sem_t</span> <span class="n">sem_create</span> <span class="p">(</span> <span class="kt">uint32_t</span> <span class="n">max_count</span><span class="p">,</span>
                    <span class="kt">uint32_t</span> <span class="n">init_count</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -643,11 +648,11 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </tbody>
 </table>
 <p><strong>Returns:</strong> A newly created semaphore. If an error occurred, NULL will be
-returned and <code class="docutils literal"><span class="pre">errno</span></code> can be checked for hints as to why <a class="reference internal" href="#sem-create">sem_create</a> failed.</p>
+returned and <code class="docutils literal notranslate"><span class="pre">errno</span></code> can be checked for hints as to why <a class="reference internal" href="#sem-create">sem_create</a> failed.</p>
 </div>
 <div class="section" id="sem-get-count">
 <h3>sem_get_count<a class="headerlink" href="#sem-get-count" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="nf">sem_get_count</span><span class="p">(</span><span class="n">sem_t</span> <span class="n">sem</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="nf">sem_get_count</span><span class="p">(</span><span class="n">sem_t</span> <span class="n">sem</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Returns the current value of the semaphore.</p>
@@ -671,7 +676,7 @@ returned and <code class="docutils literal"><span class="pre">errno</span></code
 </div>
 <div class="section" id="sem-post">
 <h3>sem_post<a class="headerlink" href="#sem-post" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">sem_post</span> <span class="p">(</span> <span class="n">sem_t</span> <span class="n">sem</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">sem_post</span> <span class="p">(</span> <span class="n">sem_t</span> <span class="n">sem</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Increments a semaphore’s value.</p>
@@ -693,12 +698,12 @@ returned and <code class="docutils literal"><span class="pre">errno</span></code
 </tbody>
 </table>
 <p><strong>Returns:</strong> True if the value was incremented, false otherwise. If false is
-returned, then <code class="docutils literal"><span class="pre">errno</span></code> is set with a hint about why the semaphore
+returned, then <code class="docutils literal notranslate"><span class="pre">errno</span></code> is set with a hint about why the semaphore
 couldn’t be taken.</p>
 </div>
 <div class="section" id="sem-wait">
 <h3>sem_wait<a class="headerlink" href="#sem-wait" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">sem_wait</span> <span class="p">(</span> <span class="n">sem_t</span> <span class="n">sem</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">sem_wait</span> <span class="p">(</span> <span class="n">sem_t</span> <span class="n">sem</span><span class="p">,</span>
                   <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -730,7 +735,7 @@ sempahore couldn’t be taken.</p>
 </div>
 <div class="section" id="task-abort-delay">
 <h3>task_abort_delay<a class="headerlink" href="#task-abort-delay" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">task_abort_delay</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">task_abort_delay</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Unblocks a task in the Blocked state (e.g. waiting for a delay, on a semaphore, etc.)</p>
@@ -764,13 +769,13 @@ sempahore couldn’t be taken.</p>
 <h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="queue-t">
 <h3>queue_t<a class="headerlink" href="#queue-t" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="n">queue_t</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="n">queue_t</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="sem-t">
 <h3>sem_t<a class="headerlink" href="#sem-t" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="n">sem_t</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="n">sem_t</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>A <a class="reference external" href="../tutorials/topical/multitasking">semaphore</a>.</p>

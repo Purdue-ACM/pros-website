@@ -213,26 +213,26 @@
 <blockquote>
 <div><ul class="simple">
 <li><dl class="first docutils">
-<dt><code class="docutils literal"><span class="pre">undefined</span> <span class="pre">reference</span> <span class="pre">to</span> <span class="pre">...</span></code> or <code class="docutils literal"><span class="pre">implicit</span> <span class="pre">declaration</span> <span class="pre">of</span> <span class="pre">function</span> <span class="pre">...</span></code>:</dt>
+<dt><code class="docutils literal notranslate"><span class="pre">undefined</span> <span class="pre">reference</span> <span class="pre">to</span> <span class="pre">...</span></code> or <code class="docutils literal notranslate"><span class="pre">implicit</span> <span class="pre">declaration</span> <span class="pre">of</span> <span class="pre">function</span> <span class="pre">...</span></code>:</dt>
 <dd>A function name is spelled incorrectly, or the function was incorrectly
-declared in a header file. Custom headers must be included in <code class="docutils literal"><span class="pre">main.h</span></code> or
+declared in a header file. Custom headers must be included in <code class="docutils literal notranslate"><span class="pre">main.h</span></code> or
 in the file in which they are used.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><code class="docutils literal"><span class="pre">format</span> <span class="pre">...</span> <span class="pre">expects</span> <span class="pre">argument</span> <span class="pre">of</span> <span class="pre">type</span> <span class="pre">...,</span> <span class="pre">but</span> <span class="pre">argument</span> <span class="pre">has</span> <span class="pre">type</span> <span class="pre">...`</span></code>:</dt>
+<dt><code class="docutils literal notranslate"><span class="pre">format</span> <span class="pre">...</span> <span class="pre">expects</span> <span class="pre">argument</span> <span class="pre">of</span> <span class="pre">type</span> <span class="pre">...,</span> <span class="pre">but</span> <span class="pre">argument</span> <span class="pre">has</span> <span class="pre">type</span> <span class="pre">...`</span></code>:</dt>
 <dd>The value provided to a function like <a class="reference external" href="http://www.cplusplus.com/reference/cstdio/printf/">printf</a>
 or <a class="reference external" href="../api/index.html#lcdPrint">lcdPrint</a> does not match the expected
 type inferred from the format string. Some instances of this warning can be
-safely ignored, but crashes can occur if types <code class="docutils literal"><span class="pre">double</span></code> or <code class="docutils literal"><span class="pre">long</span> <span class="pre">long</span></code> are
+safely ignored, but crashes can occur if types <code class="docutils literal notranslate"><span class="pre">double</span></code> or <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">long</span></code> are
 mixed with other types.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><code class="docutils literal"><span class="pre">assignment</span> <span class="pre">makes</span> <span class="pre">pointer</span> <span class="pre">from</span> <span class="pre">integer</span> <span class="pre">without</span> <span class="pre">a</span> <span class="pre">cast</span></code>:</dt>
+<dt><code class="docutils literal notranslate"><span class="pre">assignment</span> <span class="pre">makes</span> <span class="pre">pointer</span> <span class="pre">from</span> <span class="pre">integer</span> <span class="pre">without</span> <span class="pre">a</span> <span class="pre">cast</span></code>:</dt>
 <dd>Typically caused when a C pointer has the wrong number of asterisks to
 <a class="reference external" href="http://stackoverflow.com/a/4955297/3681958">dereference</a> it, or when
-assigning a constant to <code class="docutils literal"><span class="pre">pointer</span></code> (instead of <code class="docutils literal"><span class="pre">*pointer</span></code>).</dd>
+assigning a constant to <code class="docutils literal notranslate"><span class="pre">pointer</span></code> (instead of <code class="docutils literal notranslate"><span class="pre">*pointer</span></code>).</dd>
 </dl>
 </li>
 </ul>
@@ -266,9 +266,9 @@ robot is running, so PROS prioritizes user tasks over the LCD.</p>
 </li>
 <li><dl class="first docutils">
 <dt><strong>Neither autonomous nor driver control code starts:</strong></dt>
-<dd><p class="first">The <code class="docutils literal"><span class="pre">initialize()</span></code> function may still be running. Some tasks such as
+<dd><p class="first">The <code class="docutils literal notranslate"><span class="pre">initialize()</span></code> function may still be running. Some tasks such as
 <a class="reference external" href="../api/index.html#analogCalibrate">analogCalibrate</a> take time.</p>
-<p class="last">If the <code class="docutils literal"><span class="pre">initialize()</span></code> function implements some type of loop or autonomous
+<p class="last">If the <code class="docutils literal notranslate"><span class="pre">initialize()</span></code> function implements some type of loop or autonomous
 selection routine, verify that it actually has a means of ending.</p>
 </dd>
 </dl>
@@ -294,7 +294,7 @@ been passed to a PROS API function.</dd>
 <dd>Often indicates infinite recursion, or that the stack size for a custom task
 is too small. Calling many layers of functions and declaring large local
 variables can require large amounts of space on the stack. If this error
-occurs in a default task like <code class="docutils literal"><span class="pre">autonomous()</span></code>, consider changing code to
+occurs in a default task like <code class="docutils literal notranslate"><span class="pre">autonomous()</span></code>, consider changing code to
 reduce the stack requirements, or creating a new task with a larger stack
 size using <a class="reference external" href="../api/index.html#taskCreate">taskCreate</a> to handle large jobs.
 Large arrays declared inside functions can usually be declared globally to
@@ -379,9 +379,9 @@ instead.</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

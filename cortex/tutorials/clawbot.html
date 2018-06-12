@@ -294,10 +294,10 @@ following ports:</p>
 We plugged the top and bottom ports into digital ports 2 and 3,
 respectively.</p>
 <p>With Atom started, you can create a new PROS project by clicking the
-<code class="docutils literal"><span class="pre">PROS</span></code> menu, then click <code class="docutils literal"><span class="pre">Create</span> <span class="pre">new</span> <span class="pre">Project</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">PROS</span></code> menu, then click <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">new</span> <span class="pre">Project</span></code>.</p>
 <img alt="../_images/menu-create-new.png" src="../_images/menu-create-new.png" />
 <p>Create a directory that you’d like to keep the source files for your
-Clawbot project. We’re creating ours in <code class="docutils literal"><span class="pre">C:\Users\Elliot\dev\Clawbot</span></code>.</p>
+Clawbot project. We’re creating ours in <code class="docutils literal notranslate"><span class="pre">C:\Users\Elliot\dev\Clawbot</span></code>.</p>
 <img alt="../_images/window-create-new.png" src="../_images/window-create-new.png" />
 <p>Pick a directory to create the new project in and click Create. The PROS
 CLI will now copy the latest kernel template into the specified
@@ -307,7 +307,7 @@ directory and Atom will open it.</p>
 <h3>PROS Project Structure<a class="headerlink" href="#pros-project-structure" title="Permalink to this headline">¶</a></h3>
 <p>When you create your project, PROS will copy all of the files necessary
 to build your project. The structure of the project looks like:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>project
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>project
 │   project.pros        (used by PROS CLI to know kernel version and other metadata)
 │   Makefile            (instructs make how to compile your project)
 |   common.mk           (helper file for Makefile)
@@ -331,7 +331,7 @@ to build your project. The structure of the project looks like:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">By convention, the <code class="docutils literal"><span class="pre">opcontrol()</span></code>, <code class="docutils literal"><span class="pre">autonomous()</span></code>, and initialize functions are separated into separate files (opcontrol.c, auto.c, and init.c). They could be all in the same file, but it can be helpful to organize your functions into multiple files to keep things from becoming messy.</p>
+<p class="last">By convention, the <code class="docutils literal notranslate"><span class="pre">opcontrol()</span></code>, <code class="docutils literal notranslate"><span class="pre">autonomous()</span></code>, and initialize functions are separated into separate files (opcontrol.c, auto.c, and init.c). They could be all in the same file, but it can be helpful to organize your functions into multiple files to keep things from becoming messy.</p>
 </div>
 </div>
 <div class="section" id="arcade-control">
@@ -339,16 +339,16 @@ to build your project. The structure of the project looks like:</p>
 <p>Let’s begin by writing a basic “arcade” control for the clawbot. In
 arcade control, the vertical joystick values control the
 forward/backward speed of the robot and the horizontal joystick values
-control the rotation of the robot. Atom will open <code class="docutils literal"><span class="pre">src/opcontrol.c</span></code>
+control the rotation of the robot. Atom will open <code class="docutils literal notranslate"><span class="pre">src/opcontrol.c</span></code>
 for you when you create a project, but if it is not open then you will
 need to open it by navigating the directory tree on the left panel.</p>
-<p>The template <code class="docutils literal"><span class="pre">opcontrol.c</span></code> file contains a simple infinite loop and
-documentation to help remind you what <code class="docutils literal"><span class="pre">opcontrol()</span></code> does.</p>
+<p>The template <code class="docutils literal notranslate"><span class="pre">opcontrol.c</span></code> file contains a simple infinite loop and
+documentation to help remind you what <code class="docutils literal notranslate"><span class="pre">opcontrol()</span></code> does.</p>
 <p>PROS offers functions to perform common tasks associated with
 programming robotics. To program basic arcade functionality, we need to
 be aware of two functions: one to get the joystick input and one to set
 the motors to a speed.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">joystickGetAnalog</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">joystick</span><span class="p">,</span>   <span class="o">//</span> <span class="n">the</span> <span class="n">joystick</span> <span class="n">slot</span> <span class="n">to</span> <span class="n">check</span> <span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">master</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">partner</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">joystickGetAnalog</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">joystick</span><span class="p">,</span>   <span class="o">//</span> <span class="n">the</span> <span class="n">joystick</span> <span class="n">slot</span> <span class="n">to</span> <span class="n">check</span> <span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">master</span><span class="p">,</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">partner</span><span class="p">)</span>
                         <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">axis</span>        <span class="c1">// One of the joystick channels on a VEX Joystick: 1, 2, 3, 4, ACCEL_X, or ACCEL_Y</span>
                       <span class="p">);</span>
 </pre></div>
@@ -356,14 +356,14 @@ the motors to a speed.</p>
 <p>Gets the value of a control axis on the VEX joystick. <strong>*Returns</strong> the
 value from -127 to 127, or 0 if no joystick is connected to the
 requested slot.s</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">motorSet</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span><span class="p">,</span>  <span class="c1">// motor channel to set from 1-10</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">motorSet</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span><span class="p">,</span>  <span class="c1">// motor channel to set from 1-10</span>
                 <span class="kt">int</span> <span class="n">speed</span>               <span class="c1">// new signed speed. -127 is full reverse, 127 full forward, 0 off</span>
               <span class="p">);</span>
 </pre></div>
 </div>
 <p>Sets the speed of the specified motor channel.</p>
-<p>Armed with knowledge of these functions, let’s modify <code class="docutils literal"><span class="pre">opcontrol()</span></code>:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">operatorControl</span><span class="p">()</span> <span class="p">{</span>
+<p>Armed with knowledge of these functions, let’s modify <code class="docutils literal notranslate"><span class="pre">opcontrol()</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">operatorControl</span><span class="p">()</span> <span class="p">{</span>
   <span class="kt">int</span> <span class="n">power</span><span class="p">;</span>
   <span class="kt">int</span> <span class="n">turn</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
@@ -399,15 +399,15 @@ with PROS, but may be helpful for some.</strong></p>
 <ol class="arabic simple">
 <li>Preprocessing</li>
 </ol>
-<p>Lines starting with a <code class="docutils literal"><span class="pre">#</span></code> are interpreted by the preprocessor as
+<p>Lines starting with a <code class="docutils literal notranslate"><span class="pre">#</span></code> are interpreted by the preprocessor as
 commands. These commands can include other pieces of files
-(<code class="docutils literal"><span class="pre">#include</span></code>), execute basic macro logic (<code class="docutils literal"><span class="pre">#ifdef</span></code>), replace text
-(<code class="docutils literal"><span class="pre">#define</span></code>), and more. The goal of preprocessing is to reduce
+(<code class="docutils literal notranslate"><span class="pre">#include</span></code>), execute basic macro logic (<code class="docutils literal notranslate"><span class="pre">#ifdef</span></code>), replace text
+(<code class="docutils literal notranslate"><span class="pre">#define</span></code>), and more. The goal of preprocessing is to reduce
 duplicated code.</p>
 <p>For instance, to call the PROS API, all of the <em>function declarations</em>
 need to go in the source file. Using a <em>header file</em> can simplify this
 operation by writing all of the function declarations in one place, and
-just <code class="docutils literal"><span class="pre">#include</span></code>-ing it to reference those function declarations.</p>
+just <code class="docutils literal notranslate"><span class="pre">#include</span></code>-ing it to reference those function declarations.</p>
 <ol class="arabic simple" start="2">
 <li>Compilation</li>
 </ol>
@@ -431,12 +431,12 @@ into your object code (merely references to the PROS API functions, as
 specified by the function declarations). The Linker will incorporate and
 rearrange all the difference object files (and libraries) into one file
 that <em>can</em> be interpreted by the processor.</p>
-<p>To compile code within Atom, press <code class="docutils literal"><span class="pre">Ctrl</span></code> + <code class="docutils literal"><span class="pre">Shift</span></code> + <code class="docutils literal"><span class="pre">P</span></code> to
+<p>To compile code within Atom, press <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> + <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">P</span></code> to
 bring up the Command Palette. You can start typing the command you wish
 to execute, “Build: Trigger”. You should also notice that it will
 display the available shortcut keys to execute the command. By default,
 triggering a build can be done by pressing
-<code class="docutils literal"><span class="pre">Ctrl</span></code> + <code class="docutils literal"><span class="pre">Alt</span></code> + <code class="docutils literal"><span class="pre">B</span></code> (<code class="docutils literal"><span class="pre">⌘</span></code> + <code class="docutils literal"><span class="pre">Alt</span></code> + <code class="docutils literal"><span class="pre">B</span></code>) or <code class="docutils literal"><span class="pre">F9</span></code>.
+<code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> + <code class="docutils literal notranslate"><span class="pre">Alt</span></code> + <code class="docutils literal notranslate"><span class="pre">B</span></code> (<code class="docutils literal notranslate"><span class="pre">⌘</span></code> + <code class="docutils literal notranslate"><span class="pre">Alt</span></code> + <code class="docutils literal notranslate"><span class="pre">B</span></code>) or <code class="docutils literal notranslate"><span class="pre">F9</span></code>.
 If you have unsaved files, Build will prompt you to save those files.
 You should always save before building.</p>
 <img alt="../_images/build.png" src="../_images/build.png" />
@@ -446,7 +446,7 @@ You should always save before building.</p>
 <p>Now that you have compiled a binary file that the Cortex can understand,
 you need to upload it to the microcontroller. Within Atom, click the
 ‘Upload to Cortex’ button in Atom. This process will upload the binary
-the compilation process created (<code class="docutils literal"><span class="pre">bin/output.bin</span></code>) to the Cortex and
+the compilation process created (<code class="docutils literal notranslate"><span class="pre">bin/output.bin</span></code>) to the Cortex and
 begin running it.</p>
 <p>If you followed these instructions correctly, you can connect a joystick
 to the clawbot and drive it using arcade controls!</p>
@@ -459,7 +459,7 @@ developing code for complicated robotic systems, it’s extremely helpful
 to abstract away the necessary steps to perform actions on a system. For
 instance, to set the speed of a 4 motor chassis, you may need to set the
 speed of the front left motor, the rear left motor, and so on. You might
-just have four <code class="docutils literal"><span class="pre">motorSet()</span></code> calls every time you want to set robot’s
+just have four <code class="docutils literal notranslate"><span class="pre">motorSet()</span></code> calls every time you want to set robot’s
 speed, but what happens when you add another pair of motors to your
 chassis, or collapse your left and right sides onto two Y-cables? You
 would need to comb through all of your code to find all of the times you
@@ -467,21 +467,21 @@ set the chassis speeds and adjust those calls accordingly. Similarly,
 you may want a level of abstraction for getting sensor values - what
 happens if you decide to switch from quadrature encoders to integrated
 motor encoders?</p>
-<p>Writing a function such as <code class="docutils literal"><span class="pre">chassisSet()</span></code> can help mitigate this
-problem. Additionally, you cannot write your <code class="docutils literal"><span class="pre">chassisSet()</span></code> function
+<p>Writing a function such as <code class="docutils literal notranslate"><span class="pre">chassisSet()</span></code> can help mitigate this
+problem. Additionally, you cannot write your <code class="docutils literal notranslate"><span class="pre">chassisSet()</span></code> function
 in multiple source files, so you need to create a single source file and
-be able to incorporate it with <code class="docutils literal"><span class="pre">opcontrol.c</span></code>, <code class="docutils literal"><span class="pre">init.c</span></code>, and
-<code class="docutils literal"><span class="pre">auto.c</span></code>. The subsystem module methodology is a standard way of
+be able to incorporate it with <code class="docutils literal notranslate"><span class="pre">opcontrol.c</span></code>, <code class="docutils literal notranslate"><span class="pre">init.c</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">auto.c</span></code>. The subsystem module methodology is a standard way of
 organizing these sorts of functions. We define a subsystem as a major
 component of a robot: chassis, lift, intake, and claw are some common
 subsystems. We’ll write our abstracted subsystem functions in a file
-like <code class="docutils literal"><span class="pre">src/chassis.c</span></code> and put our function declarations in
-<code class="docutils literal"><span class="pre">include/chassis.h</span></code> so that way we can call our new functions.</p>
+like <code class="docutils literal notranslate"><span class="pre">src/chassis.c</span></code> and put our function declarations in
+<code class="docutils literal notranslate"><span class="pre">include/chassis.h</span></code> so that way we can call our new functions.</p>
 <p>Let’s modify our existing operator control to use the subsystem
 methodology. We’ll begin by creating the header file containing our
-function declarations. You can create a new file in the <code class="docutils literal"><span class="pre">include</span></code>
-directory by right clicking <code class="docutils literal"><span class="pre">include</span></code> and clicking “New File”. We’ll
-name our file <code class="docutils literal"><span class="pre">chassis.h</span></code>. A new empty file is created for us. Header
+function declarations. You can create a new file in the <code class="docutils literal notranslate"><span class="pre">include</span></code>
+directory by right clicking <code class="docutils literal notranslate"><span class="pre">include</span></code> and clicking “New File”. We’ll
+name our file <code class="docutils literal notranslate"><span class="pre">chassis.h</span></code>. A new empty file is created for us. Header
 files contain declarations, but not typically definitions. They are a
 way to describe what resources are available to you.</p>
 <p>Your own header files contain declarations for interfaces between
@@ -490,7 +490,7 @@ related declarations and macro definitions all or most of which are
 needed in several different source files, it is a good idea to
 create a header file for them.
 <em>(`GNU &lt;https://gcc.gnu.org/onlinedocs/cpp/Header-Files.html&gt;`__)</em></p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#ifndef _CHASSIS_H_</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef _CHASSIS_H_</span>
 <span class="cp">#define _CHASSIS_H_</span>
 
 <span class="c1">// Sets the speeds of the left and right wheels of the chassis</span>
@@ -499,7 +499,7 @@ create a header file for them.
 <span class="cp">#endif </span><span class="c1">// _CHASSIS_H_</span>
 </pre></div>
 </div>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;    // includes API.h and other headers</span><span class="cp"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;    // includes API.h and other headers</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;chassis.h&quot; // redundant, but ensures that the corresponding header file (chassis.h) is included</span><span class="cp"></span>
 
 <span class="kt">void</span> <span class="nf">chassisSet</span><span class="p">(</span><span class="kt">int</span> <span class="n">left</span><span class="p">,</span> <span class="kt">int</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
@@ -510,7 +510,7 @@ create a header file for them.
 </div>
 <p>Using this methodology, we can rewrite our operator control to something
 much more concise:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;chassis.h&quot;</span><span class="cp"></span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -531,11 +531,11 @@ source file and a header file for other source files simplifies and
 organizes your code.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You can modify <code class="docutils literal"><span class="pre">main.h</span></code> and
+<p class="last">You can modify <code class="docutils literal notranslate"><span class="pre">main.h</span></code> and
 include your own header files. In our example, we could modify our
-<code class="docutils literal"><span class="pre">main.h</span></code> to look like the following:</p>
+<code class="docutils literal notranslate"><span class="pre">main.h</span></code> to look like the following:</p>
 </div>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// top of main.h omitted</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// top of main.h omitted</span>
 <span class="cp">#ifndef MAIN_H_</span>
 
 <span class="c1">// This prevents multiple inclusion, which isn&#39;t bad for this file but is good practice</span>
@@ -547,17 +547,17 @@ include your own header files. In our example, we could modify our
 <span class="c1">// rest of main.h omitted from this listing</span>
 </pre></div>
 </div>
-<p>Then, in <code class="docutils literal"><span class="pre">opcontrol.c</span></code>, the only file we would need to <code class="docutils literal"><span class="pre">#include</span></code> is
-<code class="docutils literal"><span class="pre">main.h</span></code>. In future source files, we would only ever need to
-<code class="docutils literal"><span class="pre">#include</span> <span class="pre">&quot;main.h&quot;</span></code> in order to get access to all of our robot’s
+<p>Then, in <code class="docutils literal notranslate"><span class="pre">opcontrol.c</span></code>, the only file we would need to <code class="docutils literal notranslate"><span class="pre">#include</span></code> is
+<code class="docutils literal notranslate"><span class="pre">main.h</span></code>. In future source files, we would only ever need to
+<code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&quot;main.h&quot;</span></code> in order to get access to all of our robot’s
 subsystems’ functions!</p>
 </div>
 <div class="section" id="programming-the-vex-claw">
 <h3>Programming the VEX Claw<a class="headerlink" href="#programming-the-vex-claw" title="Permalink to this headline">¶</a></h3>
 <p>We now want to use the left horizontal joystick to control the aperture
 of the claw. We’ll continue using the modular methodology:</p>
-<p><code class="docutils literal"><span class="pre">include/claw.h</span></code>:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#ifndef *CLAW_H*</span>
+<p><code class="docutils literal notranslate"><span class="pre">include/claw.h</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef *CLAW_H*</span>
 <span class="cp">#define *CLAW_H*</span>
 
 <span class="kt">void</span> <span class="nf">clawSet</span><span class="p">(</span><span class="kt">int</span> <span class="n">speed</span><span class="p">);</span>
@@ -565,15 +565,15 @@ of the claw. We’ll continue using the modular methodology:</p>
 <span class="cp">#endif</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">src/claw.c</span></code>:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+<p><code class="docutils literal notranslate"><span class="pre">src/claw.c</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&quot;claw.h&quot;</span><span class="cp"></span>
 
 <span class="kt">void</span> <span class="nf">clawSet</span><span class="p">(</span><span class="kt">int</span> <span class="n">speed</span><span class="p">)</span> <span class="p">{</span> <span class="n">motorSet</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="n">speed</span><span class="p">);</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">src/opcontrol.c</span></code>:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+<p><code class="docutils literal notranslate"><span class="pre">src/opcontrol.c</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
 
 <span class="kt">void</span> <span class="nf">operatorControl</span><span class="p">()</span> <span class="p">{</span>
   <span class="kt">int</span> <span class="n">power</span><span class="p">,</span> <span class="n">turn</span><span class="p">;</span>
@@ -598,8 +598,8 @@ control the lift. At this point, complete the lift submodule on your own
 just like we did for the chassis and claw. If you’re having trouble,
 take a look at the complete Clawbot code sample at the bottom of this
 page.</p>
-<p><code class="docutils literal"><span class="pre">src/opcontrol.c</span></code>:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+<p><code class="docutils literal notranslate"><span class="pre">src/opcontrol.c</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
 
 <span class="kt">void</span> <span class="nf">operatorControl</span><span class="p">()</span> <span class="p">{</span>
   <span class="kt">int</span> <span class="n">power</span><span class="p">,</span> <span class="n">turn</span><span class="p">;</span>
@@ -682,9 +682,9 @@ feedback control system such as PID.</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

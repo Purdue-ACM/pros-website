@@ -148,7 +148,53 @@
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../index.html">OkapiLib Documentation Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">OkapiLib Documentation Home</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../chassis/index.html">Chassis API</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">Control API</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../async/abstract-async-controller.html">(Abstract) Async Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/async-pos-pid-controller.html">Async Pos PID Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/async-vel-integrated-controller.html">Async Vel Integrated Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/async-vel-pid-controller.html">Async Vel PID Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/async-wrapper.html">Async Wrapper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../iterative/abstract-iterative-controller.html">(Abstract) Iterative Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../iterative/abstract-iterative-position-controller.html">(Abstract) Iterative Position Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../iterative/abstract-iterative-velocity-controller.html">(Abstract) Iterative Velocity Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../iterative/iterative-motor-velocity-controller.html">Iterative Motor Velocity Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../iterative/iterative-pos-pid-controller.html">Iterative Pos PID Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../iterative/iterative-vel-pid-controller.html">Iterative Vel PID Controller</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Controller Runner</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#okapi-controllerrunner">okapi::ControllerRunner</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#rununtilsettled">runUntilSettled</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id1">runUntilSettled</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#rununtilattarget">runUntilAtTarget</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id2">runUntilAtTarget</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="settled-util.html">Settled Utility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../abstract-closed-loop-controller.html">(Abstract) Closed-loop Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../abstract-controller-input.html">(Abstract) Controller Input</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../abstract-controller-output.html">(Abstract) Controller Output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../device/index.html">Devices API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filters/index.html">Filters API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../units/index.html">Units API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../util/index.html">Utility API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../chassis/index.html">Chassis API</a></li>
@@ -189,6 +235,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../device/index.html">Devices API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../filters/index.html">Filters API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../units/index.html">Units API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../util/index.html">Utility API</a></li>
 </ul>
 </li>
@@ -296,7 +343,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">ControllerRunner</span><span class="p">()</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ControllerRunner</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -320,13 +367,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">runUntilSettled</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">itarget</span><span class="p">,</span> <span class="n">AsyncController</span> <span class="o">&amp;</span><span class="n">icontroller</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">runUntilSettled</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">itarget</span><span class="p">,</span> <span class="n">AsyncController</span> <span class="o">&amp;</span><span class="n">icontroller</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">AsyncPosIntegratedController</span> <span class="n">controller</span><span class="p">(</span><span class="mi">1</span><span class="n">_m</span><span class="p">);</span> <span class="c1">// Using motor 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+<span class="n">okapi</span><span class="o">::</span><span class="n">AsyncPosIntegratedController</span> <span class="n">controller</span><span class="p">(</span><span class="mi">1</span><span class="n">_mtr</span><span class="p">);</span> <span class="c1">// Using motor 1</span>
 <span class="n">okapi</span><span class="o">::</span><span class="n">ControllerRunner</span> <span class="n">runner</span><span class="p">;</span>
 
 <span class="n">runner</span><span class="p">.</span><span class="n">runUntilSettled</span><span class="p">(</span><span class="mi">1800</span><span class="p">,</span> <span class="n">controller</span><span class="p">);</span>
@@ -370,15 +417,15 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">runUntilSettled</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">itarget</span><span class="p">,</span> <span class="n">IterativeController</span> <span class="o">&amp;</span><span class="n">icontroller</span><span class="p">,</span> <span class="n">ControllerOutput</span> <span class="o">&amp;</span><span class="n">ioutput</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">runUntilSettled</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">itarget</span><span class="p">,</span> <span class="n">IterativeController</span> <span class="o">&amp;</span><span class="n">icontroller</span><span class="p">,</span> <span class="n">ControllerOutput</span> <span class="o">&amp;</span><span class="n">ioutput</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
 <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span> <span class="n">controller</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// P controller</span>
 <span class="n">okapi</span><span class="o">::</span><span class="n">ControllerRunner</span> <span class="n">runner</span><span class="p">;</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">myMotor</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_m</span><span class="p">;</span>
+<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">myMotor</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_mtr</span><span class="p">;</span>
 
 <span class="n">runner</span><span class="p">.</span><span class="n">runUntilSettled</span><span class="p">(</span><span class="mi">1800</span><span class="p">,</span> <span class="n">controller</span><span class="p">,</span> <span class="n">myMotor</span><span class="p">);</span>
 </pre></div>
@@ -424,13 +471,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">runUntilAtTarget</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">itarget</span><span class="p">,</span> <span class="n">AsyncController</span> <span class="o">&amp;</span><span class="n">icontroller</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">runUntilAtTarget</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">itarget</span><span class="p">,</span> <span class="n">AsyncController</span> <span class="o">&amp;</span><span class="n">icontroller</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">AsyncPosIntegratedController</span> <span class="n">controller</span><span class="p">(</span><span class="mi">1</span><span class="n">_m</span><span class="p">);</span> <span class="c1">// Using motor 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+<span class="n">okapi</span><span class="o">::</span><span class="n">AsyncPosIntegratedController</span> <span class="n">controller</span><span class="p">(</span><span class="mi">1</span><span class="n">_mtr</span><span class="p">);</span> <span class="c1">// Using motor 1</span>
 <span class="n">okapi</span><span class="o">::</span><span class="n">ControllerRunner</span> <span class="n">runner</span><span class="p">;</span>
 
 <span class="n">runner</span><span class="p">.</span><span class="n">runUntilAtTarget</span><span class="p">(</span><span class="mi">1800</span><span class="p">,</span> <span class="n">controller</span><span class="p">);</span>
@@ -474,15 +521,15 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">runUntilSettled</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">itarget</span><span class="p">,</span> <span class="n">AsyncController</span> <span class="o">&amp;</span><span class="n">icontroller</span><span class="p">,</span> <span class="n">ControllerOutput</span> <span class="o">&amp;</span><span class="n">ioutput</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">runUntilSettled</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">itarget</span><span class="p">,</span> <span class="n">AsyncController</span> <span class="o">&amp;</span><span class="n">icontroller</span><span class="p">,</span> <span class="n">ControllerOutput</span> <span class="o">&amp;</span><span class="n">ioutput</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
 <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span> <span class="n">controller</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// P controller</span>
 <span class="n">okapi</span><span class="o">::</span><span class="n">ControllerRunner</span> <span class="n">runner</span><span class="p">;</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">myMotor</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_m</span><span class="p">;</span>
+<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">myMotor</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_mtr</span><span class="p">;</span>
 
 <span class="n">runner</span><span class="p">.</span><span class="n">runUntilSettled</span><span class="p">(</span><span class="mi">1800</span><span class="p">,</span> <span class="n">controller</span><span class="p">,</span> <span class="n">myMotor</span><span class="p">);</span>
 </pre></div>

@@ -49,7 +49,7 @@
         <link rel="search" title="Search" href="../../../../search.html"/>
     <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../../index.html"/>
         <link rel="up" title="Devices API" href="../index.html"/>
-        <link rel="next" title="Controller" href="../controller.html"/>
+        <link rel="next" title="Potentiometer" href="potentiometer.html"/>
         <link rel="prev" title="ADI Encoder" href="adi-encoder.html"/>
    
   
@@ -148,7 +148,47 @@
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../index.html">OkapiLib Documentation Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">OkapiLib Documentation Home</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../chassis/index.html">Chassis API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../control/index.html">Control API</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">Devices API</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../button/abstract-button.html">(Abstract) Button</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../button/adi-button.html">ADI Button</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../button/controller-button.html">Controller Button</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../motor/abstract-abstract-motor.html">(Abstract) Abstract Motor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../motor/adimotor.html">ADI Motor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../motor/motor.html">Motor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../motor/motor-group.html">Motor Group</a></li>
+<li class="toctree-l4"><a class="reference internal" href="abstract-continuous-rotary-sensor.html">(Abstract) Continuous Rotary Sensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="abstract-rotary-sensor.html">(Abstract) Rotary Sensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="adi-encoder.html">ADI Encoder</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Integrated Encoder</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#okapi-integratedencoder">okapi::IntegratedEncoder</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#get">get</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#reset">reset</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#controllerget">controllerGet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="potentiometer.html">Potentiometer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../controller.html">Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../adi-ultrasonic.html">ADI Ultrasonic</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../filters/index.html">Filters API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../units/index.html">Units API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../util/index.html">Utility API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../chassis/index.html">Chassis API</a></li>
@@ -161,6 +201,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../motor/adimotor.html">ADI Motor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../motor/motor.html">Motor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../motor/motor-group.html">Motor Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="abstract-continuous-rotary-sensor.html">(Abstract) Continuous Rotary Sensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="abstract-rotary-sensor.html">(Abstract) Rotary Sensor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="adi-encoder.html">ADI Encoder</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Integrated Encoder</a><ul>
@@ -176,11 +217,13 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="potentiometer.html">Potentiometer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../controller.html">Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../adi-ultrasonic.html">ADI Ultrasonic</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../filters/index.html">Filters API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../units/index.html">Units API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../util/index.html">Utility API</a></li>
 </ul>
 </li>
@@ -277,8 +320,8 @@
 </div>
 <div class="section" id="okapi-integratedencoder">
 <h2><a class="toc-backref" href="#id1">okapi::IntegratedEncoder</a><a class="headerlink" href="#okapi-integratedencoder" title="Permalink to this headline">¶</a></h2>
-<p>A <a class="reference external" href="abstract-rotary-sensor.html">RotarySensor</a> representing the encoder inside the V5 motors (not
-an IME).</p>
+<p>A <a class="reference external" href="abstract-continuous-rotary-sensor.html">ContinuousRotarySensor</a> representing the encoder
+inside the V5 motors (not an IME).</p>
 <div class="section" id="constructor-s">
 <h3><a class="toc-backref" href="#id2">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
 <div class="sphinx-tabs docutils container">
@@ -289,7 +332,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">IntegratedEncoder</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">imotor</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">IntegratedEncoder</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">imotor</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -324,17 +367,17 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">get</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">get</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Returns:</strong> The current sensor value, or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> on a failure.</p>
+<p><strong>Returns:</strong> The current sensor value, or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> on a failure.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="reset">
 <h4><a class="toc-backref" href="#id5">reset</a><a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
-<p>Resets the sensor to <code class="docutils literal"><span class="pre">0</span></code>.</p>
+<p>Resets the sensor to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-2 docutils container">
@@ -343,12 +386,12 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">reset</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">reset</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> on success, or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> on a failure.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> on success, or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> on a failure.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="controllerget">
@@ -363,12 +406,12 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">controllerGet</span><span class="p">()</span> <span class="n">override</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">controllerGet</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Returns:</strong> The current sensor value, or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> on a failure.</p>
+<p><strong>Returns:</strong> The current sensor value, or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> on a failure.</p>
 </div>
 </div>
 </div>
@@ -388,7 +431,7 @@ Prototype</div>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../controller.html" class="btn btn-neutral float-right" title="Controller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="potentiometer.html" class="btn btn-neutral float-right" title="Potentiometer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="adi-encoder.html" class="btn btn-neutral" title="ADI Encoder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

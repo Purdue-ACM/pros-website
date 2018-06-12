@@ -152,6 +152,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#by-signature">By Signature</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#changing-the-object-coordinates">Changing the Object Coordinates</a></li>
 </ul>
 </li>
 </ul>
@@ -280,7 +281,7 @@ C++</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">opcontrol.c</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -306,7 +307,7 @@ C++</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">opcontrol.cpp</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -338,7 +339,7 @@ C++</div>
 <div class="section" id="by-signature">
 <h3>By Signature<a class="headerlink" href="#by-signature" title="Permalink to this headline">¶</a></h3>
 <p>If you have multiple signatures saved to the vision signature, you will most likely
-want to only look for objects of a particular signature. The <code class="docutils literal"><span class="pre">get_by_sig()</span></code> function
+want to only look for objects of a particular signature. The <code class="docutils literal notranslate"><span class="pre">get_by_sig()</span></code> function
 implements this functionality.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -354,7 +355,7 @@ C++</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">opcontrol.c</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -384,7 +385,7 @@ C++</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
 <div class="literal-block-wrapper docutils container" id="id5">
 <div class="code-block-caption"><span class="caption-text">opcontrol.cpp</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -412,6 +413,61 @@ C++</div>
 </pre></div>
 </td></tr></table></div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="changing-the-object-coordinates">
+<h2>Changing the Object Coordinates<a class="headerlink" href="#changing-the-object-coordinates" title="Permalink to this headline">¶</a></h2>
+<p>Each returned object from the vision sensor comes with a set of coordinates telling
+where the object was found in the vision sensor’s field of view. The default behavior
+is to return the coordinates as a function of distance from the top left corner
+of the field of view - so positive y is downward and positive x is right. With the
+PROS API, you can change this behavior so that the center of the Field Of View is
+the (0,0) point for object coordinates. Positive y is still downward and positive
+x is still right, but negative y is upward of center and negative x is left of center
+in this configuration.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+<div class="item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== active docutils container">
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">initialize.c</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">vision_set_zero_point</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">E_VISION_ZERO_CENTER</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr docutils container">
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">initialize.cpp</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Vision</span> <span class="n">vision_sensor</span> <span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">E_VISION_ZERO_CENTER</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 </div>
 </div>

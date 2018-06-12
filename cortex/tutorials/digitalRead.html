@@ -211,19 +211,19 @@ sensors is that you need to configure the pin they are connected to as
 an input. PROS provides a simple interface to perform such tasks that is
 as follows:</p>
 <p>main.h:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">// digital port number limit switch is plugged into</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// digital port number limit switch is plugged into</span>
 <span class="cp">#define LIMIT_SWITCH 1</span>
 </pre></div>
 </div>
 <p>init.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initializeIO</span><span class="p">(){</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initializeIO</span><span class="p">(){</span>
     <span class="c1">// configure the pin that the limit switch is plugged into as an input</span>
     <span class="n">pinMode</span><span class="p">(</span><span class="n">LIMIT_SWITCH</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>opcontrol.c or auto.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(){</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(){</span>
     <span class="c1">// ... Do work</span>
     <span class="c1">// digitalRead() will return LOW if PRESSED and HIGH if RELEASED</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">LIMIT_SWITCH</span><span class="p">)</span> <span class="o">==</span> <span class="n">LOW</span><span class="p">){</span>
@@ -283,9 +283,9 @@ as follows:</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

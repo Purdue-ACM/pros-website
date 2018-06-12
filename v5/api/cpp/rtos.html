@@ -138,9 +138,13 @@
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">API Home</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../c/index.html">C API</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ API</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Home</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../c/adi.html">ADI (TriPort) C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/llemu.html">LLEMU (Legacy LCD Emulator) C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/misc.html">Miscellaneous C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/motors.html">Motors C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/rtos.html">RTOS Facilities C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/vision.html">Vision Sensor C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.html">ADI (TriPort) C++ API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="llemu.html">LLEMU (Legacy LCD Emulator) C++ API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellaneous C++ API</a></li>
@@ -183,8 +187,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="vision.html">Vision Sensor C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api-legacy.html">Legacy API</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../c/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">C++ API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CLI</span></p>
 <ul>
@@ -328,12 +335,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">millis</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">millis</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -371,7 +378,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -384,7 +391,7 @@ Example</div>
 </td></tr></table></div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -445,12 +452,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">Task</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">Task</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -504,12 +511,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="k">operator</span> <span class="o">=</span> <span class="p">(</span> <span class="k">const</span> <span class="n">task_t</span> <span class="n">in</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="k">operator</span> <span class="o">=</span> <span class="p">(</span> <span class="k">const</span> <span class="n">task_t</span> <span class="n">in</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -569,12 +576,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay</span> <span class="p">(</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">milliseconds</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay</span> <span class="p">(</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">milliseconds</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -611,7 +618,7 @@ Example</div>
 <h4><a class="toc-backref" href="#id12">delay_until</a><a class="headerlink" href="#delay-until" title="Permalink to this headline">¶</a></h4>
 <p>Delay a task until a specified time.  This function can be used by periodic
 tasks to ensure a constant execution frequency.</p>
-<p>The task will be woken up at the time <code class="docutils literal"><span class="pre">*prev_time</span> <span class="pre">+</span> <span class="pre">delta</span></code>, and <code class="docutils literal"><span class="pre">*prev_time</span></code> will
+<p>The task will be woken up at the time <code class="docutils literal notranslate"><span class="pre">*prev_time</span> <span class="pre">+</span> <span class="pre">delta</span></code>, and <code class="docutils literal notranslate"><span class="pre">*prev_time</span></code> will
 be updated to reflect the time at which the task will unblock.</p>
 <p>Analogous to <a class="reference external" href="../c/rtos.html#delay-until">task_delay_until</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -626,13 +633,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay_until</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="o">*</span> <span class="k">const</span> <span class="n">prev_time</span><span class="p">,</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay_until</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="o">*</span> <span class="k">const</span> <span class="n">prev_time</span><span class="p">,</span>
                                <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">delta</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -689,12 +696,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">get_count</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">get_count</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -734,12 +741,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="k">const</span><span class="o">*</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">get_name</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="k">const</span><span class="o">*</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">get_name</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -779,12 +786,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">get_priority</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">get_priority</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -822,12 +829,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">task_state_e_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">get_state</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">task_state_e_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">get_state</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -873,12 +880,12 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
 <blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">notify</span> <span class="p">(</span> <span class="p">)</span>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">notify</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -933,12 +940,12 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
 <blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">notify_clear</span> <span class="p">(</span> <span class="p">)</span>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">notify_clear</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">TO</span> <span class="n">BE</span> <span class="n">ADDED</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TO</span> <span class="n">BE</span> <span class="n">ADDED</span>
 </pre></div>
 </div>
 </div>
@@ -967,14 +974,14 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
 <blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">notify_ext</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">value</span><span class="p">,</span>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">notify_ext</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">value</span><span class="p">,</span>
                                   <span class="n">notify_action_e_t</span> <span class="n">action</span><span class="p">,</span>
                                   <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="o">*</span> <span class="n">prev_value</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">TO</span> <span class="n">BE</span> <span class="n">ADDED</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">TO</span> <span class="n">BE</span> <span class="n">ADDED</span>
 </pre></div>
 </div>
 </div>
@@ -1025,13 +1032,13 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-26 active docutils container">
 <blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">notify_take</span> <span class="p">(</span> <span class="kt">bool</span> <span class="n">clear_on_exit</span><span class="p">,</span>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">notify_take</span> <span class="p">(</span> <span class="kt">bool</span> <span class="n">clear_on_exit</span><span class="p">,</span>
                                    <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-27 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1104,12 +1111,12 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-28 active docutils container">
 <blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">resume</span> <span class="p">(</span> <span class="p">)</span>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">resume</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-29 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1157,12 +1164,12 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-30 active docutils container">
 <blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">set_priority</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">prio</span> <span class="p">)</span>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">set_priority</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">prio</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-31 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1217,12 +1224,12 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-32 active docutils container">
 <blockquote>
-<div><div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">suspend</span> <span class="p">(</span> <span class="p">)</span>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">suspend</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-33 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1271,12 +1278,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-34 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">Mutex</span><span class="o">::</span><span class="n">Mutex</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">Mutex</span><span class="o">::</span><span class="n">Mutex</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-35 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1318,12 +1325,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-36 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">Mutex</span><span class="o">::</span><span class="n">give</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">Mutex</span><span class="o">::</span><span class="n">give</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-37 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1345,7 +1352,7 @@ Example</div>
 </div>
 </div>
 <p><strong>Returns:</strong> True if the mutex was successfully returned, false otherwise. If false
-is returned, then <code class="docutils literal"><span class="pre">errno</span></code> is set with a hint about why the mutex couldn’t
+is returned, then <code class="docutils literal notranslate"><span class="pre">errno</span></code> is set with a hint about why the mutex couldn’t
 be returned.</p>
 </div>
 <hr class="docutils" />
@@ -1367,12 +1374,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-38 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">Mutex</span><span class="o">::</span><span class="n">take</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">Mutex</span><span class="o">::</span><span class="n">take</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-39 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1411,7 +1418,7 @@ A timeout of 0 can be used to poll the mutex. TIMEOUT_MAX can be used to block i
 </tbody>
 </table>
 <p><strong>Returns:</strong> True if the mutex was successfully taken, false otherwise. If false
-is returned, then <code class="docutils literal"><span class="pre">errno</span></code> is set with a hint about why the the mutex
+is returned, then <code class="docutils literal notranslate"><span class="pre">errno</span></code> is set with a hint about why the the mutex
 couldn’t be taken.</p>
 </div>
 </div>

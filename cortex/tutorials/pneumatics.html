@@ -208,14 +208,14 @@
 other digital sensors in that they are output signals. Therefore, the
 default digital sensor configuration is insufficient.</p>
 <p>init.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initializeIO</span><span class="p">()</span> <span class="p">{</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initializeIO</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">pinMode</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span> <span class="c1">// configure digital port 1 as an output</span>
   <span class="n">digitalWrite</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span> <span class="c1">// write LOW to port 1 (solenoid may be extended or not, depending on wiring)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>opcontrol.c, auto.c, etc.</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">()</span> <span class="p">{</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// ...</span>
   <span class="n">digitalWrite</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">new_value</span><span class="p">);</span> <span class="c1">// write HIGH or LOW to port 1 in place of new_value</span>
   <span class="c1">// ...</span>
@@ -271,9 +271,9 @@ default digital sensor configuration is insufficient.</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

@@ -138,8 +138,7 @@
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">API Home</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">C API</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Home</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">ADI (TriPort) C API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#adi-analog-calibrate">adi_analog_calibrate</a></li>
@@ -192,8 +191,16 @@
 <li class="toctree-l2"><a class="reference internal" href="motors.html">Motors C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rtos.html">RTOS Facilities C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vision.html">Vision Sensor C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/adi.html">ADI (TriPort) C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/llemu.html">LLEMU (Legacy LCD Emulator) C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/misc.html">Miscellaneous C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/motors.html">Motors C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/rtos.html">RTOS Facilities C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/vision.html">Vision Sensor C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api-legacy.html">Legacy API</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/index.html">C++ API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CLI</span></p>
@@ -350,9 +357,9 @@ the difference between this value and the current sensor value when called.</p>
 2, and increasing the sample rate would not have a tangible difference in the
 function’s performance.</p>
 </div>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#calibrate">pros::ADIAnalogIn::calibrate</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -367,12 +374,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_analog_calibrate</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_analog_calibrate</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -413,9 +420,9 @@ Example</div>
 <p>Reads an analog input channel and returns the 12-bit value.</p>
 <p>The value returned is undefined if the analog pin has been switched to a different mode.
 The meaning of the returned value varies depending on the sensor attached.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#get-value">pros::ADIAnalogIn::get_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -430,12 +437,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_analog_read</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_analog_read</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -480,9 +487,9 @@ and a value of 4095 reflects an input voltage of nearly 5 V</p>
 <p>The <a class="reference internal" href="#adi-analog-calibrate">adi_analog_calibrate</a> function must be run first on that channel. This function is
 inappropriate for sensor values intended for integration, as round-off error can accumulate
 causing drift over time. Use <a class="reference internal" href="#adi-analog-read-calibrated-hr">adi_analog_read_calibrated_HR</a> instead.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#get-value-calibrated">pros::ADIAnalogIn::get_value_calibrated</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -497,12 +504,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_analog_read_calibrated</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_analog_read_calibrated</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -549,9 +556,9 @@ used on a sensor such as a line tracker or potentiometer.</p>
 <p>The value returned actually has 16 bits of “precision”, even though the ADC only reads
 12 bits, so that errors induced by the average value being between two values come out
 in the wash when integrated over time. Think of the value as the true value times 16.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#get-value-calibrated-HR">pros::ADIAnalogIn::get_value_calibrated_HR</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -566,12 +573,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_analog_read_calibrated_HR</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_analog_read_calibrated_HR</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -621,9 +628,9 @@ button. E.g., Task A calls this function for buttons 1 and 2. Task B may call
 this function for button 3, but should not for buttons 1 or 2. A typical
 use-case for this function is to call inside opcontrol to detect new button
 presses, and not in any other tasks.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be a digital input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be a digital input.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#get-new-press">pros::ADIDigitalIn::get_new_press</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -638,12 +645,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_digital_get_new_press</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_digital_get_new_press</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -692,9 +699,9 @@ the last time this function was called, 0 otherwise.</p>
 <p>If the pin is configured as some other mode, the digital value which reflects the current
 state of the pin is returned, which may or may not differ from the currently set value. The
 return value is undefined for pins configured as Analog inputs.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be a digital input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be a digital input.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id5">pros::ADIDigitalIn::get_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -709,12 +716,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_digital_read</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_digital_read</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -755,9 +762,9 @@ Example</div>
 <div class="section" id="adi-digital-write">
 <h3><a class="toc-backref" href="#id8">adi_digital_write</a><a class="headerlink" href="#adi-digital-write" title="Permalink to this headline">¶</a></h3>
 <p>Sets the digital value (1 or 0) of a pin configured as a digital output.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be a digital output.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be a digital output.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id8">pros::ADIDigitalOut::set_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -772,13 +779,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_digital_write</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_digital_write</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                              <span class="k">const</span> <span class="kt">bool</span> <span class="n">value</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -828,9 +835,9 @@ respectively, or the constants HIGH or LOW themselves</td>
 <h3><a class="toc-backref" href="#id9">adi_encoder_get</a><a class="headerlink" href="#adi-encoder-get" title="Permalink to this headline">¶</a></h3>
 <p>Gets the number of ticks recorded by the encoder.</p>
 <p>There are 360 ticks in one revolution.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id11">pros::ADIEncoder::get_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -845,12 +852,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_encoder_get</span> <span class="p">(</span> <span class="n">adi_encoder_t</span> <span class="n">enc</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_encoder_get</span> <span class="p">(</span> <span class="n">adi_encoder_t</span> <span class="n">enc</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -895,9 +902,9 @@ Example</div>
 <div class="section" id="adi-encoder-init">
 <h3><a class="toc-backref" href="#id10">adi_encoder_init</a><a class="headerlink" href="#adi-encoder-init" title="Permalink to this headline">¶</a></h3>
 <p>Initializes and enables a quadrature encoder on two ADI ports.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the criteria in the parameter list below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the criteria in the parameter list below.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id9">pros::ADIEncoder::ADIEncoder</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -912,14 +919,14 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">adi_encoder_t</span> <span class="n">adi_encoder_init</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port_top</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">adi_encoder_t</span> <span class="n">adi_encoder_init</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port_top</span><span class="p">,</span>
                                 <span class="kt">uint8_t</span> <span class="n">port_bottom</span><span class="p">,</span>
                                 <span class="k">const</span> <span class="kt">bool</span> <span class="n">reverse</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -972,9 +979,9 @@ Example</div>
 <p>Resets the encoder to zero.</p>
 <p>It is safe to use this method while an encoder is enabled. It is not necessary to call this
 method before stopping or starting an encoder.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#reset">pros::ADIEncoder::reset</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -989,12 +996,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_encoder_reset</span> <span class="p">(</span> <span class="n">adi_encoder_t</span> <span class="n">enc</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_encoder_reset</span> <span class="p">(</span> <span class="n">adi_encoder_t</span> <span class="n">enc</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1035,9 +1042,9 @@ Example</div>
 <div class="section" id="adi-encoder-shutdown">
 <h3><a class="toc-backref" href="#id12">adi_encoder_shutdown</a><a class="headerlink" href="#adi-encoder-shutdown" title="Permalink to this headline">¶</a></h3>
 <p>Stops and disables the encoder.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1051,12 +1058,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_encoder_shutdown</span> <span class="p">(</span> <span class="n">adi_encoder_t</span> <span class="n">enc</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_encoder_shutdown</span> <span class="p">(</span> <span class="n">adi_encoder_t</span> <span class="n">enc</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1097,9 +1104,9 @@ Example</div>
 <div class="section" id="adi-motor-get">
 <h3><a class="toc-backref" href="#id13">adi_motor_get</a><a class="headerlink" href="#adi-motor-get" title="Permalink to this headline">¶</a></h3>
 <p>Returns the last set speed of the motor on the given port.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id14">pros::ADIMotor::get_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1114,12 +1121,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_motor_get</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_motor_get</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1160,9 +1167,9 @@ Example</div>
 <div class="section" id="adi-motor-set">
 <h3><a class="toc-backref" href="#id14">adi_motor_set</a><a class="headerlink" href="#adi-motor-set" title="Permalink to this headline">¶</a></h3>
 <p>Sets the speed of the motor on the given port.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id15">pros::ADIMotor::set_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1177,13 +1184,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_motor_set</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_motor_set</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                         <span class="k">const</span> <span class="kt">int8_t</span> <span class="n">speed</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1225,9 +1232,9 @@ Example</div>
 <div class="section" id="adi-motor-stop">
 <h3><a class="toc-backref" href="#id15">adi_motor_stop</a><a class="headerlink" href="#adi-motor-stop" title="Permalink to this headline">¶</a></h3>
 <p>Stops the motor on the given port.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id16">pros::ADIMotor::stop</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1242,12 +1249,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-26 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_motor_stop</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_motor_stop</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-27 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1288,9 +1295,9 @@ Example</div>
 <div class="section" id="adi-pin-mode">
 <h3><a class="toc-backref" href="#id16">adi_pin_mode</a><a class="headerlink" href="#adi-pin-mode" title="Permalink to this headline">¶</a></h3>
 <p>Configures the pin as an input or output with a variety of settings.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1304,13 +1311,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-28 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_pin_mode</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_pin_mode</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                        <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">mode</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-29 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1348,9 +1355,9 @@ Example</div>
 <div class="section" id="adi-port-get-config">
 <h3><a class="toc-backref" href="#id17">adi_port_get_config</a><a class="headerlink" href="#adi-port-get-config" title="Permalink to this headline">¶</a></h3>
 <p>Returns the configuration for the given ADI port.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#get-config">pros::ADIPort::get_config</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1365,12 +1372,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-30 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">adi_port_config_e_t</span> <span class="n">adi_port_get_config</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">adi_port_config_e_t</span> <span class="n">adi_port_get_config</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-31 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1409,9 +1416,9 @@ Example</div>
 <div class="section" id="adi-port-get-value">
 <h3><a class="toc-backref" href="#id18">adi_port_get_value</a><a class="headerlink" href="#adi-port-get-value" title="Permalink to this headline">¶</a></h3>
 <p>Returns the value for the given ADI port.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id18">pros::ADIPort::get_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1426,12 +1433,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-32 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_get_value</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_get_value</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-33 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1468,9 +1475,9 @@ Example</div>
 <div class="section" id="adi-port-set-config">
 <h3><a class="toc-backref" href="#id19">adi_port_set_config</a><a class="headerlink" href="#adi-port-set-config" title="Permalink to this headline">¶</a></h3>
 <p>Configures an ADI port to act as a given sensor type.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#set-config">pros::ADIPort::set_config</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1485,13 +1492,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-34 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_port_set_config</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_port_set_config</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                <span class="n">adi_port_config_e_t</span> <span class="n">type</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-35 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1531,9 +1538,9 @@ Example</div>
 <p>Sets the value for the given ADI port</p>
 <p>This only works on ports configured as outputs, and the behavior will change
 depending on the configuration of the port.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id20">pros::ADIPort::set_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1548,13 +1555,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-36 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_set_value</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_set_value</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                         <span class="kt">int32_t</span> <span class="n">value</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-37 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1597,9 +1604,9 @@ Example</div>
 <p>If no object was found, zero is returned. If the ultrasonic sensor was never started, the
 return value is PROS_ERR. Round and fluffy objects can cause inaccurate values to be
 returned.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The ultrasonic port number is out of range or the ultrasonic port is not properly configured.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The ultrasonic port number is out of range or the ultrasonic port is not properly configured.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id24">pros::ADIUltrasonic::get_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1614,12 +1621,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-38 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_ultrasonic_get</span> <span class="p">(</span> <span class="n">adi_ultrasonic_t</span> <span class="n">ult</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_ultrasonic_get</span> <span class="p">(</span> <span class="n">adi_ultrasonic_t</span> <span class="n">ult</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-39 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1666,9 +1673,9 @@ Example</div>
 <div class="section" id="adi-ultrasonic-init">
 <h3><a class="toc-backref" href="#id22">adi_ultrasonic_init</a><a class="headerlink" href="#adi-ultrasonic-init" title="Permalink to this headline">¶</a></h3>
 <p>Initializes an ultrasonic sensor on the specified ADI ports.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id22">pros::ADIUltrasonic::ADIUltrasonic</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1683,13 +1690,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-40 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">adi_ultrasonic_t</span> <span class="n">adi_ultrasonic_init</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port_echo</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">adi_ultrasonic_t</span> <span class="n">adi_ultrasonic_init</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port_echo</span><span class="p">,</span>
                                       <span class="kt">uint8_t</span> <span class="n">port_ping</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-41 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1739,9 +1746,9 @@ Example</div>
 <div class="section" id="adi-ultrasonic-shutdown">
 <h3><a class="toc-backref" href="#id23">adi_ultrasonic_shutdown</a><a class="headerlink" href="#adi-ultrasonic-shutdown" title="Permalink to this headline">¶</a></h3>
 <p>Stops and disables the ultrasonic sensor.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The ultrasonic port number is out of range or the ultrasonic port is not properly configured.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The ultrasonic port number is out of range or the ultrasonic port is not properly configured.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1755,12 +1762,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-42 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_ultrasonic_shutdown</span> <span class="p">(</span> <span class="n">adi_ultrasonic_t</span> <span class="n">ult</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_ultrasonic_shutdown</span> <span class="p">(</span> <span class="n">adi_ultrasonic_t</span> <span class="n">ult</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-43 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1851,7 +1858,7 @@ Example</div>
 <h2><a class="toc-backref" href="#id32">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="adi-port-config-e-t">
 <h3><a class="toc-backref" href="#id33">adi_port_config_e_t</a><a class="headerlink" href="#adi-port-config-e-t" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1980,7 +1987,7 @@ for use with a Cortex-Era Ultrasonic</td>
 <p>Reference type for an initialized encoder.</p>
 <p>This merely contains the port number for the encoder, unlike its use as an
 object to store encoder data in PROS 2.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">int32_t</span> <span class="n">adi_encoder_t</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">int32_t</span> <span class="n">adi_encoder_t</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -1989,7 +1996,7 @@ object to store encoder data in PROS 2.</p>
 <p>Reference type for an initialized ultrasonic.</p>
 <p>This merely contains the port number for the ultrasonic, unlike its use as an
 object to store encoder data in PROS 2.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">int32_t</span> <span class="n">adi_ultrasonic_t</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">int32_t</span> <span class="n">adi_ultrasonic_t</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>

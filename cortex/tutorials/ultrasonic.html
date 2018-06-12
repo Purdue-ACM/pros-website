@@ -219,11 +219,11 @@ by the cable with a yellow wire.</p>
 <p>PROS provides an ultrasonic library to automatically send out pulses and
 determine how long the response takes.</p>
 <p>main.h:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="n">Ultrasonic</span> <span class="n">sonar</span><span class="p">;</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Ultrasonic</span> <span class="n">sonar</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>init.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// ...</span>
   <span class="n">sonar</span> <span class="o">=</span> <span class="n">ultrasonicInit</span><span class="p">(</span><span class="n">orange_port_number</span><span class="p">,</span> <span class="n">yellow_port_number</span><span class="p">);</span>
   <span class="c1">// ...</span>
@@ -231,7 +231,7 @@ determine how long the response takes.</p>
 </pre></div>
 </div>
 <p>opcontrol.c, auto.c, etc.:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
 
 <span class="kt">void</span> <span class="nf">myFunction</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// ...</span>
@@ -289,9 +289,9 @@ determine how long the response takes.</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

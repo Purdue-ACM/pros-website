@@ -41,7 +41,7 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
-        <link rel="next" title="Programming the Clawbot" href="../walkthrough/clawbot.html"/>
+        <link rel="next" title="General Usage FAQ" href="usage-faq.html"/>
         <link rel="prev" title="Debugging" href="debugging.html"/>
    
   
@@ -125,8 +125,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../../getting-started/installation.html">Installation Guides</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tutorials</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Tutorials</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#general-tutorials">General Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="coding-faq.html">Coding FAQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="combining-c-cpp.html">Combining C and C++</a></li>
+<li class="toctree-l3"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Project Structure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#firmware">firmware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#include">include</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src">src</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="usage-faq.html">General Usage FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#walkthrough-tutorials">Walkthrough Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#topical-tutorials">Topical Tutorials</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul>
@@ -139,25 +156,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">CLI</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../okapi/index.html">OkapiLib Documentation Home</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../okapi/tutorials/index.html">Tutorials</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../../okapi/tutorials/index.html#general-tutorials">General Tutorials</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="coding-faq.html">Coding FAQ</a></li>
-<li class="toctree-l3"><a class="reference internal" href="combining-c-cpp.html">Combining C and C++</a></li>
-<li class="toctree-l3"><a class="reference internal" href="debugging.html">Debugging</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Project Structure</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#firmware">firmware</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#include">include</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#src">src</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../okapi/tutorials/index.html#walkthrough-tutorials">Walkthrough Tutorials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../okapi/tutorials/index.html#topical-tutorials">Topical Tutorials</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../okapi/tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../okapi/api/index.html">OkapiLib API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Extended (Advanced Users)</span></p>
@@ -233,8 +234,8 @@
   <div class="section" id="project-structure">
 <h1>Project Structure<a class="headerlink" href="#project-structure" title="Permalink to this headline">¶</a></h1>
 <p>PROS projects are internally composed of three parts: the <strong>PROS library</strong> (found
-in <code class="docutils literal"><span class="pre">/firmware</span></code>), the <strong>header</strong> files (found in <code class="docutils literal"><span class="pre">/include</span></code>), and <strong>user code</strong>
-(found in <code class="docutils literal"><span class="pre">/src</span></code>).</p>
+in <code class="docutils literal notranslate"><span class="pre">/firmware</span></code>), the <strong>header</strong> files (found in <code class="docutils literal notranslate"><span class="pre">/include</span></code>), and <strong>user code</strong>
+(found in <code class="docutils literal notranslate"><span class="pre">/src</span></code>).</p>
 <div class="section" id="firmware">
 <h2>firmware<a class="headerlink" href="#firmware" title="Permalink to this headline">¶</a></h2>
 <p>The <strong>PROS library</strong> is a single file containing the core PROS routines.
@@ -244,30 +245,30 @@ with a core PROS function, please file an issue on
 </div>
 <div class="section" id="include">
 <h2>include<a class="headerlink" href="#include" title="Permalink to this headline">¶</a></h2>
-<p>The <strong>header</strong> files are all found in the <code class="docutils literal"><span class="pre">include</span></code> directory. One
+<p>The <strong>header</strong> files are all found in the <code class="docutils literal notranslate"><span class="pre">include</span></code> directory. One
 header file, <a class="reference external" href="../../api/index.html">api.h</a>, is required to declare
 the PROS library functions. This file exists merely to include the individual
-PROS API headers, all of which can be found in <code class="docutils literal"><span class="pre">include/pros</span></code>. Each header file
+PROS API headers, all of which can be found in <code class="docutils literal notranslate"><span class="pre">include/pros</span></code>. Each header file
 in this directory covers a specific aspect of interacting with the V5 hardware,
 and correlates to the files found in the <a class="reference external" href="../../api/index.html">API documentation</a>.</p>
-<p>The other file, <code class="docutils literal"><span class="pre">main.h</span></code>, is intended for declaring functions and
-variables shared between the user code files.  <code class="docutils literal"><span class="pre">main.h</span></code> also
+<p>The other file, <code class="docutils literal notranslate"><span class="pre">main.h</span></code>, is intended for declaring functions and
+variables shared between the user code files.  <code class="docutils literal notranslate"><span class="pre">main.h</span></code> also
 offers a variety of configurable options for tailoring PROS to your needs.</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">PROS_USE_SIMPLE_NAMES</span></code>: If defined, some commonly used enums will have preprocessor
+<li><code class="docutils literal notranslate"><span class="pre">PROS_USE_SIMPLE_NAMES</span></code>: If defined, some commonly used enums will have preprocessor
 macros which give a shorter, more convenient naming pattern. For instance,
-E_CONTROLLER_MASTER has a shorter name: <code class="docutils literal"><span class="pre">CONTROLLER_MASTER</span></code>. <code class="docutils literal"><span class="pre">E_CONTROLLER_MASTER</span></code>
+E_CONTROLLER_MASTER has a shorter name: <code class="docutils literal notranslate"><span class="pre">CONTROLLER_MASTER</span></code>. <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_MASTER</span></code>
 is pedantically correct within the PROS styleguide, but not convenient for most
 student programmers.</li>
-<li><code class="docutils literal"><span class="pre">using</span> <span class="pre">namespace</span> <span class="pre">pros</span></code>: This can be uncommented to be added with the use of <code class="docutils literal"><span class="pre">PROS_USE_SIMPLE_NAMES</span></code>.
+<li><code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">namespace</span> <span class="pre">pros</span></code>: This can be uncommented to be added with the use of <code class="docutils literal notranslate"><span class="pre">PROS_USE_SIMPLE_NAMES</span></code>.
 This reduces the length of declarations when using C++, allowing you to simply
-declare a <code class="docutils literal"><span class="pre">Motor</span></code> instead of a <code class="docutils literal"><span class="pre">pros::Motor</span></code>. This will make the code appear cleaner
+declare a <code class="docutils literal notranslate"><span class="pre">Motor</span></code> instead of a <code class="docutils literal notranslate"><span class="pre">pros::Motor</span></code>. This will make the code appear cleaner
 and will be simpler for newer programmers, but is typically considered
 <a class="reference external" href="https://msdn.microsoft.com/en-us/library/5cb46ksf.aspx">bad practice</a>. As a
 result, this line is commented out by default.</li>
 </ul>
 <p>New header files can be created in the include directory, as long as the name
-ends with <code class="docutils literal"><span class="pre">.h</span></code> (Traditionally for C files) or <code class="docutils literal"><span class="pre">.hpp</span></code> (for C++ files). See
+ends with <code class="docutils literal notranslate"><span class="pre">.h</span></code> (Traditionally for C files) or <code class="docutils literal notranslate"><span class="pre">.hpp</span></code> (for C++ files). See
 this <a class="reference external" href="http://www.learncpp.com/cpp-tutorial/19-header-files/">C++ tutorial</a>
 for more information on how to create header files.</p>
 </div>
@@ -275,14 +276,14 @@ for more information on how to create header files.</p>
 <h2>src<a class="headerlink" href="#src" title="Permalink to this headline">¶</a></h2>
 <p><strong>User code</strong> has the actual sequential instructions that govern the
 robot’s behavior. PROS by default splits the user code up into
-autonomous (<code class="docutils literal"><span class="pre">autonomous.c</span></code> or <code class="docutils literal"><span class="pre">autonomous.cpp</span></code>), driver control
-(<code class="docutils literal"><span class="pre">opcontrol.c</span></code> or <code class="docutils literal"><span class="pre">opcontrol.cpp</span></code>), and initialization
-(<code class="docutils literal"><span class="pre">initialize.c</span></code> or <code class="docutils literal"><span class="pre">initialize.cpp</span></code>) files. Code in one file can talk to code in
+autonomous (<code class="docutils literal notranslate"><span class="pre">autonomous.c</span></code> or <code class="docutils literal notranslate"><span class="pre">autonomous.cpp</span></code>), driver control
+(<code class="docutils literal notranslate"><span class="pre">opcontrol.c</span></code> or <code class="docutils literal notranslate"><span class="pre">opcontrol.cpp</span></code>), and initialization
+(<code class="docutils literal notranslate"><span class="pre">initialize.c</span></code> or <code class="docutils literal notranslate"><span class="pre">initialize.cpp</span></code>) files. Code in one file can talk to code in
 another file using declarations in the header files.</p>
-<p>New user code files can be created in the <code class="docutils literal"><span class="pre">src</span></code> directory, as long as the name
-ends with <code class="docutils literal"><span class="pre">.c</span></code> or <code class="docutils literal"><span class="pre">.cpp</span></code> it will be compiled with the others.</p>
+<p>New user code files can be created in the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory, as long as the name
+ends with <code class="docutils literal notranslate"><span class="pre">.c</span></code> or <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> it will be compiled with the others.</p>
 <p>All user code files should start with:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>#include &quot;main.h&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#include &quot;main.h&quot;
 </pre></div>
 </div>
 <p>This will ensure that the PROS API and other critical definitions are
@@ -307,7 +308,7 @@ source control.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../walkthrough/clawbot.html" class="btn btn-neutral float-right" title="Programming the Clawbot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="usage-faq.html" class="btn btn-neutral float-right" title="General Usage FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="debugging.html" class="btn btn-neutral" title="Debugging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

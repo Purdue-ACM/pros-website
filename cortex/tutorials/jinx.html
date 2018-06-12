@@ -242,7 +242,7 @@ to connect as clients and enjoy the use of the interactive features.</p>
 </ul>
 <p>Once you have python3 installed on your machine you can easily install
 pySerial from the command line via:</p>
-<p><code class="docutils literal"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">pyserial</span></code> or <code class="docutils literal"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">pyserial</span></code> to
+<p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">pyserial</span></code> or <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">pyserial</span></code> to
 upgrade to the latest if a previous instance is already installed.</p>
 </div>
 <div class="section" id="jinx-installation">
@@ -255,41 +255,41 @@ upgrade to the latest if a previous instance is already installed.</p>
 <ol class="arabic simple">
 <li>Connect your desired host computer to the VEX Cortex</li>
 <li>Upload JINX enabled code</li>
-<li>Start the JINX server on your host computer with <code class="docutils literal"><span class="pre">python3</span> <span class="pre">JINX.py</span></code>
+<li>Start the JINX server on your host computer with <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">JINX.py</span></code>
 You must run this command in the JINX directory for the server to
 work correctly.</li>
 <li>Navigate to the JINX Dashboard by connecting to
-<code class="docutils literal"><span class="pre">http://localhost:9001/views/combined.html</span></code> on your host computer
+<code class="docutils literal notranslate"><span class="pre">http://localhost:9001/views/combined.html</span></code> on your host computer
 and watch the information flow</li>
 </ol>
 <p>If at any point in time you want to stop the JINX server simply type
-<code class="docutils literal"><span class="pre">q</span></code> in the active terminal used to launch JINX or send a keyboard
-interrupt via <code class="docutils literal"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">c</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">q</span></code> in the active terminal used to launch JINX or send a keyboard
+interrupt via <code class="docutils literal notranslate"><span class="pre">ctrl</span> <span class="pre">+</span> <span class="pre">c</span></code>.</p>
 <p><strong>Note</strong>: Since JINX is a network application not everyone has to crowd
 around a single machine to observe the data feed. If you are on the same
 local network you can navigate to the IP address of the JINX host
 machine to get access to the dashboard as well. For example, if the IP
-address of the JINX host machine is <code class="docutils literal"><span class="pre">192.168.1.105</span></code> you would navigate
-to <code class="docutils literal"><span class="pre">http://192.168.1.105:9001/views/combined.html</span></code>.</p>
+address of the JINX host machine is <code class="docutils literal notranslate"><span class="pre">192.168.1.105</span></code> you would navigate
+to <code class="docutils literal notranslate"><span class="pre">http://192.168.1.105:9001/views/combined.html</span></code>.</p>
 <div class="section" id="sending-data-from-the-cortex">
 <h3>Sending data from the Cortex<a class="headerlink" href="#sending-data-from-the-cortex" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li>Create a “large enough” char array, 20 characters or so should work.</li>
-<li>Use <code class="docutils literal"><span class="pre">sprintf(destination,</span> <span class="pre">formatString,</span> <span class="pre">dataToSend)</span></code> to save data.</li>
-<li>Use <code class="docutils literal"><span class="pre">writeJINXData(&quot;DataID&quot;,</span> <span class="pre">char_array)</span></code> to send data.</li>
+<li>Use <code class="docutils literal notranslate"><span class="pre">sprintf(destination,</span> <span class="pre">formatString,</span> <span class="pre">dataToSend)</span></code> to save data.</li>
+<li>Use <code class="docutils literal notranslate"><span class="pre">writeJINXData(&quot;DataID&quot;,</span> <span class="pre">char_array)</span></code> to send data.</li>
 </ol>
-<p>Alternatively, use <code class="docutils literal"><span class="pre">writeJINXMessage(&quot;Message&quot;)</span></code> to send a message
+<p>Alternatively, use <code class="docutils literal notranslate"><span class="pre">writeJINXMessage(&quot;Message&quot;)</span></code> to send a message
 with no data value.</p>
 </div>
 </div>
 <div class="section" id="initjinx">
 <h2>initJINX<a class="headerlink" href="#initjinx" title="Permalink to this headline">¶</a></h2>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">initJINX</span> <span class="p">(</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">port</span> <span class="p">)</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">initJINX</span> <span class="p">(</span> <span class="kt">FILE</span> <span class="o">*</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line">Initializes and enables JINX on the specified port.</div>
-<div class="line">This should be called in <code class="docutils literal"><span class="pre">initialize()</span></code></div>
+<div class="line">This should be called in <code class="docutils literal notranslate"><span class="pre">initialize()</span></code></div>
 </div>
 <p>This call prints an error message over stdout if unable to initialize
 and set port.</p>
@@ -304,7 +304,7 @@ and set port.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">port</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">port</span></code></td>
 <td>the port to open, either stdout, UART1, or UART2</td>
 </tr>
 </tbody>
@@ -312,15 +312,15 @@ and set port.</p>
 </div>
 <div class="section" id="writejinxserial">
 <h2>writeJINXSerial<a class="headerlink" href="#writejinxserial" title="Permalink to this headline">¶</a></h2>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">writeJINXSerial</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span>  <span class="n">message</span> <span class="p">)</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">writeJINXSerial</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span>  <span class="n">message</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Sends a simple string to the JINX host with appropriate header and
 terminator.</p>
 <p>This function only takes one character pointer, and does <strong>not</strong> work
-like <code class="docutils literal"><span class="pre">printf()</span></code>. Therefore, it is advised that users calling this
+like <code class="docutils literal notranslate"><span class="pre">printf()</span></code>. Therefore, it is advised that users calling this
 function directly use
-<code class="docutils literal"><span class="pre">sprintf(char</span> <span class="pre">*src,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*formatString,</span> <span class="pre">...)</span></code> to compose their
+<code class="docutils literal notranslate"><span class="pre">sprintf(char</span> <span class="pre">*src,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*formatString,</span> <span class="pre">...)</span></code> to compose their
 message before calling this.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -333,7 +333,7 @@ message before calling this.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">message</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">message</span></code></td>
 <td>The message to send</td>
 </tr>
 </tbody>
@@ -341,19 +341,19 @@ message before calling this.</p>
 </div>
 <div class="section" id="writejinxdata">
 <h2>writeJINXData<a class="headerlink" href="#writejinxdata" title="Permalink to this headline">¶</a></h2>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">writeJINXData</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span>  <span class="n">name</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">writeJINXData</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span>  <span class="n">name</span>
 <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span>  <span class="n">value</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <p>Sends a name/value pair of data to to the JINX host.</p>
-<p>If <code class="docutils literal"><span class="pre">value</span></code> is strictly numeric (as defined by javascript’s <code class="docutils literal"><span class="pre">isNaN</span></code>
+<p>If <code class="docutils literal notranslate"><span class="pre">value</span></code> is strictly numeric (as defined by javascript’s <code class="docutils literal notranslate"><span class="pre">isNaN</span></code>
 then the variable can be graphed. Otherwise, the name/value pair will be
 displayed in the terminal.</p>
 <p>This function does not allow for string formatting. Therefore, it is
 advised that users calling this function directly use
-<code class="docutils literal"><span class="pre">sprintf(char</span> <span class="pre">*src,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*formatString,</span> <span class="pre">...)</span></code> to compose both
-<code class="docutils literal"><span class="pre">name</span></code> and <code class="docutils literal"><span class="pre">value</span></code> before calling this.</p>
+<code class="docutils literal notranslate"><span class="pre">sprintf(char</span> <span class="pre">*src,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*formatString,</span> <span class="pre">...)</span></code> to compose both
+<code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> before calling this.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="22%" />
@@ -365,10 +365,10 @@ advised that users calling this function directly use
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">name</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">name</span></code></td>
 <td>The identifier key sent to the GUI.</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">value</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">value</span></code></td>
 <td>The value to be graphed or displayed in the GUI</td>
 </tr>
 </tbody>
@@ -376,11 +376,11 @@ advised that users calling this function directly use
 </div>
 <div class="section" id="writejinxmessage">
 <h2>writeJINXMessage<a class="headerlink" href="#writejinxmessage" title="Permalink to this headline">¶</a></h2>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">writeJINXMessage</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span>  <span class="n">message</span> <span class="p">)</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">writeJINXMessage</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span>  <span class="n">message</span> <span class="p">)</span>
 </pre></div>
 </div>
-<p>Simple wrapper function for <a class="reference internal" href="#writejinxdata">writeJINXData</a> with <code class="docutils literal"><span class="pre">name</span></code> as “msg” and
-<code class="docutils literal"><span class="pre">value</span></code> set to <code class="docutils literal"><span class="pre">message</span></code>.</p>
+<p>Simple wrapper function for <a class="reference internal" href="#writejinxdata">writeJINXData</a> with <code class="docutils literal notranslate"><span class="pre">name</span></code> as “msg” and
+<code class="docutils literal notranslate"><span class="pre">value</span></code> set to <code class="docutils literal notranslate"><span class="pre">message</span></code>.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="39%" />
@@ -392,7 +392,7 @@ advised that users calling this function directly use
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">message</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">message</span></code></td>
 <td>The message to send</td>
 </tr>
 </tbody>
@@ -401,20 +401,20 @@ advised that users calling this function directly use
 <div class="section" id="jinx-reader">
 <h2>JINX Reader<a class="headerlink" href="#jinx-reader" title="Permalink to this headline">¶</a></h2>
 <p>The read task is started by calling</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="n">taskCreate</span><span class="p">(</span><span class="n">JINXRun</span><span class="p">,</span> <span class="n">TASK_DEFAULT_STACK_SIZE</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="p">(</span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">));</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">taskCreate</span><span class="p">(</span><span class="n">JINXRun</span><span class="p">,</span> <span class="n">TASK_DEFAULT_STACK_SIZE</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="p">(</span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">));</span>
 </pre></div>
 </div>
-<p>in <code class="docutils literal"><span class="pre">initialize()</span></code></p>
+<p>in <code class="docutils literal notranslate"><span class="pre">initialize()</span></code></p>
 </div>
 <div class="section" id="parsemessage">
 <h2>parseMessage<a class="headerlink" href="#parsemessage" title="Permalink to this headline">¶</a></h2>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">parseMessage</span> <span class="p">(</span> <span class="n">JINX</span> <span class="o">*</span>  <span class="n">inStr</span> <span class="p">)</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">parseMessage</span> <span class="p">(</span> <span class="n">JINX</span> <span class="o">*</span>  <span class="n">inStr</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Automatically called by whenever a message is sent to the cortex. The
 user should implement the body of this function to call their method of
 choice based on the incoming message. See below for an example.</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">//Example parse. User can and should replace with own body.</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//Example parse. User can and should replace with own body.</span>
 <span class="kt">void</span> <span class="nf">parseMessage</span><span class="p">(</span><span class="n">JINX</span> <span class="o">*</span> <span class="n">inStr</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">//Echo entire recieved message</span>
   <span class="n">writeJINXMessage</span><span class="p">(</span><span class="n">inStr</span><span class="o">-&gt;</span><span class="n">command</span><span class="p">);</span>
@@ -434,8 +434,8 @@ choice based on the incoming message. See below for an example.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>and <code class="docutils literal"><span class="pre">handleGet()</span></code></p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span>  <span class="c1">//Example of user defined JINX helper function.</span>
+<p>and <code class="docutils literal notranslate"><span class="pre">handleGet()</span></code></p>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span>  <span class="c1">//Example of user defined JINX helper function.</span>
   <span class="c1">//Since it is at the top of this file, it can be called from anywhere   else in this file.</span>
   <span class="c1">//Good practice is to put its prototype in JINX.h, though.</span>
   <span class="kt">void</span> <span class="nf">handleGet</span><span class="p">(</span><span class="n">JINX</span> <span class="o">*</span> <span class="n">inStr</span><span class="p">)</span> <span class="p">{</span>
@@ -461,13 +461,13 @@ choice based on the incoming message. See below for an example.</p>
 </div>
 <div class="section" id="gettoken">
 <h2>getToken<a class="headerlink" href="#gettoken" title="Permalink to this headline">¶</a></h2>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">getToken</span> <span class="p">(</span> <span class="n">JINX</span> <span class="o">*</span>  <span class="n">inStr</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">getToken</span> <span class="p">(</span> <span class="n">JINX</span> <span class="o">*</span>  <span class="n">inStr</span>
   <span class="kt">int</span>     <span class="n">tokenNum</span>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>Sets <code class="docutils literal"><span class="pre">inStr-&gt;token</span></code> to the <code class="docutils literal"><span class="pre">tokenNum``th</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">space-delimated</span> <span class="pre">word</span>
-<span class="pre">within</span> <span class="pre">``inStr-&gt;command</span></code> <code class="docutils literal"><span class="pre">tokenNum</span></code> is 0-based, so 0 will get the 1st
+<p>Sets <code class="docutils literal notranslate"><span class="pre">inStr-&gt;token</span></code> to the <code class="docutils literal notranslate"><span class="pre">tokenNum``th</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">space-delimated</span> <span class="pre">word</span>
+<span class="pre">within</span> <span class="pre">``inStr-&gt;command</span></code> <code class="docutils literal notranslate"><span class="pre">tokenNum</span></code> is 0-based, so 0 will get the 1st
 token, 1 will get the 2nd token…</p>
 </div>
 </div>
@@ -519,9 +519,9 @@ token, 1 will get the 2nd token…</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

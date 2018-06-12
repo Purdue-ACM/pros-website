@@ -205,8 +205,8 @@
   <div class="section" id="lcd">
 <h1>LCD<a class="headerlink" href="#lcd" title="Permalink to this headline">¶</a></h1>
 <p>The LCD screen communicates to the Cortex Microcontroller via a UART
-cable. This communication needs to be initialized in <code class="docutils literal"><span class="pre">init.c</span></code>:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+cable. This communication needs to be initialized in <code class="docutils literal notranslate"><span class="pre">init.c</span></code>:</p>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// ...</span>
   <span class="c1">// Select &quot;uart1&quot; or &quot;uart2&quot; as appropriate</span>
   <span class="n">lcdInit</span><span class="p">(</span><span class="n">uart1</span><span class="p">);</span>
@@ -216,7 +216,7 @@ cable. This communication needs to be initialized in <code class="docutils liter
 </pre></div>
 </div>
 <p>And in any function you can do the following:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">//...</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//...</span>
 <span class="c1">// Print formatted text to LCD (line #1) like printf</span>
 <span class="c1">// supposing that &quot;x&quot; is an existing integer variable</span>
 <span class="n">lcdPrint</span><span class="p">(</span><span class="n">uart1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;X is %d&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
@@ -276,9 +276,9 @@ cable. This communication needs to be initialized in <code class="docutils liter
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

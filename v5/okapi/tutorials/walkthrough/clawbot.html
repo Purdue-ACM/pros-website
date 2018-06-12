@@ -49,7 +49,7 @@
         <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
-        <link rel="next" title="ADI (3 Wire Ports)" href="../topical/adi.html"/>
+        <link rel="next" title="Extended API Topics" href="../../../extended/index.html"/>
         <link rel="prev" title="Tutorials" href="../index.html"/>
    
   
@@ -148,7 +148,30 @@
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../index.html">OkapiLib Documentation Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">OkapiLib Documentation Home</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../api/index.html">OkapiLib API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../index.html#general-tutorials">General Tutorials</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#walkthrough-tutorials">Walkthrough Tutorials</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Programming the Clawbot</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#objective">Objective:</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#intended-audience">Intended Audience:</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#goals">Goals:</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#tank-arcade-control">Tank/Arcade Control</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#arm-control">Arm Control</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#autonomous-routine">Autonomous Routine</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#wrap-up">Wrap Up</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#topical-tutorials">Topical Tutorials</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index.html#general-tutorials">General Tutorials</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#walkthrough-tutorials">Walkthrough Tutorials</a><ul class="current">
@@ -386,13 +409,13 @@ following ports:</p>
 </tbody>
 </table>
 <p>To create, build, and upload a new project in PROS 3, run</p>
-<div class="code bash highlight-c"><div class="highlight"><pre><span></span><span class="n">prosv5</span> <span class="n">conduct</span> <span class="n">new</span> <span class="o">&lt;</span><span class="n">path_to_project</span><span class="o">&gt;</span>
+<div class="code bash highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">prosv5</span> <span class="n">conduct</span> <span class="n">new</span> <span class="o">&lt;</span><span class="n">path_to_project</span><span class="o">&gt;</span>
 <span class="n">prosv5</span> <span class="n">make</span>
 <span class="n">prosv5</span> <span class="n">upload</span>
 <span class="n">prosv5</span> <span class="n">terminal</span>
 </pre></div>
 </div>
-<p>The last 3 commands can be simplified to <code class="code docutils literal"><span class="pre">prosv5</span> <span class="pre">mut</span></code>.</p>
+<p>The last 3 commands can be simplified to <code class="code docutils literal notranslate"><span class="pre">prosv5</span> <span class="pre">mut</span></code>.</p>
 <div class="section" id="tank-arcade-control">
 <h3>Tank/Arcade Control<a class="headerlink" href="#tank-arcade-control" title="Permalink to this headline">¶</a></h3>
 <p>Okapi uses something called a <a class="reference external" href="../../api/chassis/controller/abstract-chassis-controller.html">ChassisController</a>
@@ -410,26 +433,16 @@ is the easiest to use</strong>, and should be used by default. The other class,
 controllers running on the V5 brain and sends velocity commands to the motors.</p>
 <p>We will be using
 <a class="reference external" href="../../api/chassis/controller/chassis-controller-integrated.html">ChassisControllerIntegrated</a>
-for this tutorial. Let’s initialize it now with our two motors in ports <code class="docutils literal"><span class="pre">1</span></code> and <code class="docutils literal"><span class="pre">10</span></code>.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="c1">// Chassis Controller - lets us drive the robot around with open- or closed-loop control</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerIntegrated</span> <span class="n">robotChassisController</span><span class="p">(</span><span class="mi">1</span><span class="n">_rm</span><span class="p">,</span> <span class="mi">10</span><span class="n">_m</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal"><span class="pre">_m</span></code> syntax is called a used-defined literal. It’s a succinct way of initializing a motor,
-and is equivalent to calling the normal constructor. For example,</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">foo</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_m</span><span class="p">;</span> <span class="c1">// Motor in port 1</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>    <span class="c1">// Motor in port 1</span>
-
-<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">bar</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_rm</span><span class="p">;</span>   <span class="c1">// Reversed motor in port 1</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">bar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span> <span class="c1">// Reversed motor in port 1</span>
+for this tutorial. Let’s initialize it now with our two motors in ports <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Chassis Controller - lets us drive the robot around with open- or closed-loop control</span>
+<span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerIntegrated</span> <span class="n">robotChassisController</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Next, let’s setup tank or arcade control.
 <a class="reference external" href="../../api/chassis/controller/chassis-controller.html">ChassisController</a> provides methods for us
 to use, we just need to pass in joystick values which have been scaled to be in the range
-<code class="docutils literal"><span class="pre">[-1,</span> <span class="pre">1]</span></code>. Okapi’s <a class="reference external" href="../../api/device/controller.html">Controller</a> returns analog values in the
-range <code class="docutils literal"><span class="pre">[-1,</span> <span class="pre">1]</span></code>, so we don’t need to do any division ourselves.</p>
+<code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>. Okapi’s <a class="reference external" href="../../api/device/controller.html">Controller</a> returns analog values in the
+range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>, so we don’t need to do any division ourselves.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-0 docutils container">
@@ -442,7 +455,7 @@ Arcade drive</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="c1">// Joystick to read analog values for tank or arcade control.</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Joystick to read analog values for tank or arcade control.</span>
 <span class="c1">// Master controller by default.</span>
 <span class="n">okapi</span><span class="o">::</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">;</span>
 
@@ -459,7 +472,7 @@ Arcade drive</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="c1">// Joystick to read analog values for tank or arcade control.</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Joystick to read analog values for tank or arcade control.</span>
 <span class="c1">// Master controller by default.</span>
 <span class="n">okapi</span><span class="o">::</span><span class="n">Controller</span> <span class="n">controller</span><span class="p">;</span>
 
@@ -487,15 +500,25 @@ controller.</p>
 this button, the arm motor should stop trying to make the arm move down. We can accomplish this
 using an if-statement that checks whether the button is pressed.</p>
 <p>We can define our button as an <a class="reference external" href="../../api/device/button/adi-button.html">ADIButton</a>:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">okapi</span><span class="o">::</span><span class="n">ADIButton</span> <span class="n">armLimitSwitch</span><span class="p">(</span><span class="sc">&#39;H&#39;</span><span class="p">);</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">okapi</span><span class="o">::</span><span class="n">ADIButton</span> <span class="n">armLimitSwitch</span><span class="p">(</span><span class="sc">&#39;H&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>And the arm motor:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">armMotor</span> <span class="o">=</span> <span class="mi">8</span><span class="n">_rm</span><span class="p">;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">armMotor</span> <span class="o">=</span> <span class="mi">8</span><span class="n">_rmtr</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">_mtr</span></code> syntax is called a user-defined literal. It’s a succinct way of initializing a motor,
+and is equivalent to calling the normal constructor. For example,</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">foo</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_mtr</span><span class="p">;</span> <span class="c1">// Motor in port 1</span>
+<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>      <span class="c1">// Motor in port 1</span>
+
+<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">bar</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_rmtr</span><span class="p">;</span> <span class="c1">// Reversed motor in port 1</span>
+<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">bar</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span> <span class="c1">// Reversed motor in port 1</span>
 </pre></div>
 </div>
 <p>Then we can check if it’s pressed and stop powering the arm motor:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="c1">// Don&#39;t power the arm if it is all the way down</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Don&#39;t power the arm if it is all the way down</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">armLimitSwitch</span><span class="p">.</span><span class="n">isPressed</span><span class="p">())</span> <span class="p">{</span>
   <span class="n">armMotor</span><span class="p">.</span><span class="n">move_voltage</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -506,12 +529,12 @@ using an if-statement that checks whether the button is pressed.</p>
 <p>Next, let’s add the logic to make the arm user-controller with two buttons on the controller.
 First, we need to define our two controller buttons as
 <a class="reference external" href="../../api/device/button/controller-button.html">ControllerButton</a> instances:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">okapi</span><span class="o">::</span><span class="n">ControllerButton</span> <span class="n">armUpButton</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_A</span><span class="p">);</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">okapi</span><span class="o">::</span><span class="n">ControllerButton</span> <span class="n">armUpButton</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_A</span><span class="p">);</span>
 <span class="n">okapi</span><span class="o">::</span><span class="n">ControllerButton</span> <span class="n">armDownButton</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_B</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Then we can use them along with our limit switch logic from above to control the arm:</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="c1">// Don&#39;t power the arm if it is all the way down</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Don&#39;t power the arm if it is all the way down</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">armLimitSwitch</span><span class="p">.</span><span class="n">isPressed</span><span class="p">())</span> <span class="p">{</span>
   <span class="n">armMotor</span><span class="p">.</span><span class="n">move_voltage</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -546,12 +569,12 @@ Result</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">ticks</span> <span class="n">per</span> <span class="n">wheel</span> <span class="n">rotation</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">wheel</span> <span class="n">diameter</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="mi">12</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">ticks</span> <span class="n">per</span> <span class="n">wheel</span> <span class="n">rotation</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">wheel</span> <span class="n">diameter</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="mi">12</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1800</span> <span class="n">ticks</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="n">in</span> <span class="o">*</span> <span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="mi">12</span> <span class="n">in</span> <span class="o">=</span> <span class="mi">1719</span> <span class="n">ticks</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1800</span> <span class="n">ticks</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="n">in</span> <span class="o">*</span> <span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="mi">12</span> <span class="n">in</span> <span class="o">=</span> <span class="mi">1719</span> <span class="n">ticks</span>
 </pre></div>
 </div>
 </div>
@@ -569,20 +592,20 @@ Result</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">ticks</span> <span class="n">per</span> <span class="n">wheel</span> <span class="n">rotation</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">wheel</span> <span class="n">diameter</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="p">((</span><span class="n">center</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">center</span> <span class="n">wheel</span> <span class="n">distance</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">))</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">ticks</span> <span class="n">per</span> <span class="n">wheel</span> <span class="n">rotation</span><span class="p">)</span> <span class="o">/</span> <span class="p">((</span><span class="n">wheel</span> <span class="n">diameter</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="p">((</span><span class="n">center</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">center</span> <span class="n">wheel</span> <span class="n">distance</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1800</span> <span class="n">ticks</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="n">in</span> <span class="o">*</span> <span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mf">11.498</span> <span class="n">in</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1294</span> <span class="n">ticks</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1800</span> <span class="n">ticks</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="n">in</span> <span class="o">*</span> <span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mf">11.498</span> <span class="n">in</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1294</span> <span class="n">ticks</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>Now that we know how far we need to drive, we can program the routine. We will use
-<a class="reference external" href="../../api/chassis/controller/chassis-controller.html">ChassisController</a>’s <code class="docutils literal"><span class="pre">moveDistance</span></code>
-method to drive along a straight line and <code class="docutils literal"><span class="pre">turnAngle</span></code> method to turn in place.</p>
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<a class="reference external" href="../../api/chassis/controller/chassis-controller.html">ChassisController</a>’s <code class="docutils literal notranslate"><span class="pre">moveDistance</span></code>
+method to drive along a straight line and <code class="docutils literal notranslate"><span class="pre">turnAngle</span></code> method to turn in place.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">robotChassisController</span><span class="p">.</span><span class="n">moveDistance</span><span class="p">(</span><span class="mi">1719</span><span class="p">);</span> <span class="c1">// Drive forward 12 inches</span>
   <span class="n">robotChassisController</span><span class="p">.</span><span class="n">turnAngle</span><span class="p">(</span><span class="mi">1294</span><span class="p">);</span>    <span class="c1">// Turn in place 90 degrees</span>
 <span class="p">}</span>
@@ -604,13 +627,14 @@ Arcade drive</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;okapi/api.hpp&quot;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">task_delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
 
   <span class="c1">// Chassis Controller - lets us drive the robot around with open- or closed-loop control</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerIntegrated</span> <span class="n">robotChassisController</span><span class="p">(</span><span class="mi">1</span><span class="n">_rm</span><span class="p">,</span> <span class="mi">10</span><span class="n">_m</span><span class="p">);</span>
+  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerIntegrated</span> <span class="n">robotChassisController</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 
   <span class="c1">// Joystick to read analog values for tank or arcade control</span>
   <span class="c1">// Master controller by default</span>
@@ -620,7 +644,7 @@ Arcade drive</div>
   <span class="n">okapi</span><span class="o">::</span><span class="n">ADIButton</span> <span class="n">armLimitSwitch</span><span class="p">(</span><span class="sc">&#39;H&#39;</span><span class="p">);</span>
   <span class="n">okapi</span><span class="o">::</span><span class="n">ControllerButton</span> <span class="n">armUpButton</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_A</span><span class="p">);</span>
   <span class="n">okapi</span><span class="o">::</span><span class="n">ControllerButton</span> <span class="n">armDownButton</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_B</span><span class="p">);</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">armMotor</span> <span class="o">=</span> <span class="mi">8</span><span class="n">_rm</span><span class="p">;</span>
+  <span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">armMotor</span> <span class="o">=</span> <span class="mi">8</span><span class="n">_rmtr</span><span class="p">;</span>
 
   <span class="c1">// Button to run our sample autonomous routine</span>
   <span class="n">okapi</span><span class="o">::</span><span class="n">ControllerButton</span> <span class="n">runAutoButton</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">);</span>
@@ -662,13 +686,14 @@ Arcade drive</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;okapi/api.hpp&quot;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="o">::</span><span class="n">literals</span><span class="p">;</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">task_delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
 
   <span class="c1">// Chassis Controller - lets us drive the robot around with open- or closed-loop control</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerIntegrated</span> <span class="n">robotChassisController</span><span class="p">(</span><span class="mi">1</span><span class="n">_rm</span><span class="p">,</span> <span class="mi">10</span><span class="n">_m</span><span class="p">);</span>
+  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerIntegrated</span> <span class="n">robotChassisController</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 
   <span class="c1">// Joystick to read analog values for tank or arcade control</span>
   <span class="c1">// Master controller by default</span>
@@ -678,7 +703,7 @@ Arcade drive</div>
   <span class="n">okapi</span><span class="o">::</span><span class="n">ADIButton</span> <span class="n">armLimitSwitch</span><span class="p">(</span><span class="sc">&#39;H&#39;</span><span class="p">);</span>
   <span class="n">okapi</span><span class="o">::</span><span class="n">ControllerButton</span> <span class="n">armUpButton</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_A</span><span class="p">);</span>
   <span class="n">okapi</span><span class="o">::</span><span class="n">ControllerButton</span> <span class="n">armDownButton</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_B</span><span class="p">);</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">armMotor</span> <span class="o">=</span> <span class="mi">8</span><span class="n">_rm</span><span class="p">;</span>
+  <span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">armMotor</span> <span class="o">=</span> <span class="mi">8</span><span class="n">_rmtr</span><span class="p">;</span>
 
   <span class="c1">// Button to run our sample autonomous routine</span>
   <span class="n">okapi</span><span class="o">::</span><span class="n">ControllerButton</span> <span class="n">runAutoButton</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">);</span>
@@ -738,7 +763,7 @@ Arcade drive</div>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../topical/adi.html" class="btn btn-neutral float-right" title="ADI (3 Wire Ports)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../../extended/index.html" class="btn btn-neutral float-right" title="Extended API Topics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

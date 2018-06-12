@@ -231,9 +231,9 @@ bit unsigned integer).</p>
 <div class="section" id="initialization">
 <h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
 <p>Unlike many of the other VEX sensors, no initialization process is
-needed in the <code class="docutils literal"><span class="pre">initializeIO()</span></code> or <code class="docutils literal"><span class="pre">initialize()</span></code> functions. However,
+needed in the <code class="docutils literal notranslate"><span class="pre">initializeIO()</span></code> or <code class="docutils literal notranslate"><span class="pre">initialize()</span></code> functions. However,
 it is often worthwhile to calibrate analog sensors before using them,
-which would take place in the <code class="docutils literal"><span class="pre">initialize()</span></code> function. The
+which would take place in the <code class="docutils literal notranslate"><span class="pre">initialize()</span></code> function. The
 <a class="reference external" href="../api/index.html#analogCalibrate">analogCalibrate</a> function collects approximately 500 data samples over a period of half a
 second and returns the average value received over the sampling period.
 This average value can be used to account for variations like gyroscope
@@ -258,7 +258,7 @@ calibration and return more accurate results. The input to both of these
 functions is the channel number of the sensor, and an integer is
 returned.</p>
 <p>Thus an example of use on a lift would look like:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define POTENTIOMETER_PORT 1</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define POTENTIOMETER_PORT 1</span>
 <span class="cp">#define LIFT_MOTOR 1</span>
 
 <span class="c1">//while the potentiometer is not at its maximum position</span>
@@ -279,13 +279,13 @@ return a value between 0 and 405, with 0 being the lightest reading and
 account for changes in ambient light.</p>
 <p>An example of Line Tracker use:</p>
 <p>main.h:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define LINE_TRACKER_PORT 1</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define LINE_TRACKER_PORT 1</span>
 <span class="cp">#define DRIVE_MOTOR_LEFT 1</span>
 <span class="cp">#define DRIVE_MOTOR_RIGHT 2</span>
 </pre></div>
 </div>
 <p>init.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">analogCalibrate</span><span class="p">(</span><span class="n">LINE_TRACKER_PORT</span><span class="p">);</span>
@@ -293,7 +293,7 @@ account for changes in ambient light.</p>
 </pre></div>
 </div>
 <p>opcontrol.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
 
 <span class="c1">//2000 arbitrarily set as cutoff between light and dark</span>
 <span class="k">while</span><span class="p">(</span><span class="n">analogReadCalibrated</span><span class="p">(</span><span class="n">LINE_TRACKER_PORT</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)</span>
@@ -319,7 +319,7 @@ the gyro and keep them far away from motors.</p>
 <p>PROS provides a gyro library to simplify using it. A sample usage would
 be as follows:</p>
 <p>main.h:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">// Analog port number gyro is plugged into</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Analog port number gyro is plugged into</span>
 <span class="cp">#define GYRO_PORT 1</span>
 
 <span class="c1">// Multiple gyros can be declared</span>
@@ -327,7 +327,7 @@ be as follows:</p>
 </pre></div>
 </div>
 <p>init.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">(){</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">(){</span>
     <span class="c1">// ... Other sensor initialization and port configuration</span>
     <span class="c1">// If gyro reads inaccurately, change &quot;0&quot; to desired sensitivity</span>
     <span class="c1">// See documentation on gyroInit() for up-to-date sensitivity details</span>
@@ -336,7 +336,7 @@ be as follows:</p>
 </pre></div>
 </div>
 <p>opcontrol.c or auto.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(){</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(){</span>
     <span class="c1">// ... Do work</span>
     <span class="c1">// Get gyro reading in degrees</span>
     <span class="kt">int</span> <span class="n">heading</span> <span class="o">=</span> <span class="n">gyroGet</span><span class="p">(</span><span class="n">gyro</span><span class="p">);</span>
@@ -362,13 +362,13 @@ this the VEX Accelerometer requires three analog input ports on the
 Cortex.</p>
 <p>Example accelerometer use:</p>
 <p>main.h:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define ACCELEROMETER_X 1</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define ACCELEROMETER_X 1</span>
 <span class="cp">#define ACCELEROMETER_Y 2</span>
 <span class="cp">#define ACCELEROMETER_Z 3</span>
 </pre></div>
 </div>
 <p>init.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">analogCalibrate</span><span class="p">(</span><span class="n">ACCELEROMETER_X</span><span class="p">);</span> <span class="c1">//calibrates the x axis input</span>
@@ -378,7 +378,7 @@ Cortex.</p>
 </pre></div>
 </div>
 <p>opcontrol.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
 
 <span class="c1">//Read the acceleration data for each axis</span>
 <span class="kt">int</span> <span class="n">x_acc</span> <span class="o">=</span> <span class="n">analogReadCalibratedHR</span><span class="p">(</span><span class="n">ACCELEROMETER_X</span><span class="p">);</span>
@@ -436,9 +436,9 @@ Cortex.</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

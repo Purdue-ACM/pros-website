@@ -347,7 +347,7 @@
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="analogcalibrate">
 <h3>analogCalibrate<a class="headerlink" href="#analogcalibrate" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">analogCalibrate</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">analogCalibrate</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Calibrates the analog sensor on the specified channel.</p>
@@ -358,7 +358,7 @@ calculated is returned and stored for later calls to the
 <a class="reference internal" href="#analogreadcalibrated">analogReadCalibrated</a> and <a class="reference internal" href="#analogreadcalibratedhr">analogReadCalibratedHR</a> functions. These
 functions will return the difference between this value and the current
 sensor value when called.</p>
-<p>Do not use this function in <code class="docutils literal"><span class="pre">initializeIO</span></code>, or when the sensor value
+<p>Do not use this function in <code class="docutils literal notranslate"><span class="pre">initializeIO</span></code>, or when the sensor value
 might be unstable (gyro rotation, accelerometer movement).</p>
 <p>This function may not work properly if the VEX Cortex is tethered to a
 PC using the orange USB A to A cable and has no VEX 7.2V Battery
@@ -374,7 +374,7 @@ connected and powered on, as the VEX Battery provides power to sensors.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">channel</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">channel</span></code></td>
 <td>the channel to calibrate from 1-8</td>
 </tr>
 </tbody>
@@ -383,7 +383,7 @@ connected and powered on, as the VEX Battery provides power to sensors.</p>
 </div>
 <div class="section" id="analogread">
 <h3>analogRead<a class="headerlink" href="#analogread" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">analogRead</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">analogRead</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Reads an analog input channel and returns the 12-bit value.</p>
@@ -405,7 +405,7 @@ connected and powered on, as the VEX Battery provides power to sensors.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">channel</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">channel</span></code></td>
 <td>the channel to read from 1-8</td>
 </tr>
 </tbody>
@@ -416,7 +416,7 @@ voltage of nearly 5 V</p>
 </div>
 <div class="section" id="analogreadcalibrated">
 <h3>analogReadCalibrated<a class="headerlink" href="#analogreadcalibrated" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">analogReadCalibrated</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">analogReadCalibrated</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Reads the calibrated value of an analog input channel.</p>
@@ -438,7 +438,7 @@ connected and powered on, as the VEX Battery provides power to sensors.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">channel</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">channel</span></code></td>
 <td>the channel to read from 1-8</td>
 </tr>
 </tbody>
@@ -448,7 +448,7 @@ default value from -4095 to 4095</p>
 </div>
 <div class="section" id="analogreadcalibratedhr">
 <h3>analogReadCalibratedHR<a class="headerlink" href="#analogreadcalibratedhr" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">analogReadCalibratedHR</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">analogReadCalibratedHR</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Reads the calibrated value of an analog input channel 1-8 with enhanced
@@ -475,7 +475,7 @@ connected and powered on, as the VEX Battery provides power to sensors.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">channel</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">channel</span></code></td>
 <td>the channel to read from 1-8</td>
 </tr>
 </tbody>
@@ -485,7 +485,7 @@ default from -16384 to 16384</p>
 </div>
 <div class="section" id="delay">
 <h3>delay<a class="headerlink" href="#delay" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">delay</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">time</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">delay</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">time</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Wiring-compatible alias of <a class="reference internal" href="#taskdelay">taskDelay</a></p>
@@ -500,7 +500,7 @@ default from -16384 to 16384</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">time</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">time</span></code></td>
 <td>the duration of the delay in milliseconds (1000 milliseconds per second)</td>
 </tr>
 </tbody>
@@ -508,7 +508,7 @@ default from -16384 to 16384</p>
 </div>
 <div class="section" id="delaymicroseconds">
 <h3>delayMicroseconds<a class="headerlink" href="#delaymicroseconds" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">delayMicroseconds</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">us</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">delayMicroseconds</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">us</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Wait for approximately the given number of microseconds.</p>
@@ -528,7 +528,7 @@ from other tasks.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">us</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">us</span></code></td>
 <td>the duration of the delay in microseconds (1,000,000) microseconds per second)</td>
 </tr>
 </tbody>
@@ -536,7 +536,7 @@ from other tasks.</p>
 </div>
 <div class="section" id="digitalread">
 <h3>digitalRead<a class="headerlink" href="#digitalread" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">digitalRead</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">pin</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">digitalRead</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">pin</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Gets the digital value (1 or 0) of a pin configured as a digital input.</p>
@@ -559,7 +559,7 @@ connected and powered on, as the VEX Battery provides power to sensors.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">pin</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">pin</span></code></td>
 <td>the pin to read from 1-26</td>
 </tr>
 </tbody>
@@ -568,7 +568,7 @@ connected and powered on, as the VEX Battery provides power to sensors.</p>
 </div>
 <div class="section" id="digitalwrite">
 <h3>digitalWrite<a class="headerlink" href="#digitalwrite" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">digitalWrite</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">pin</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">digitalWrite</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">pin</span><span class="p">,</span>
                     <span class="kt">bool</span> <span class="n">value</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -586,10 +586,10 @@ function is Wiring-compatible.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">pin</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">pin</span></code></td>
 <td>the pin to read from 1-26</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">value</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">value</span></code></td>
 <td>an expression evaluating to “true” or “false” to set the output to HIGH or LOW,
 respectively, or the constants HIGH or LOW themselves.</td>
 </tr>
@@ -598,7 +598,7 @@ respectively, or the constants HIGH or LOW themselves.</td>
 </div>
 <div class="section" id="encoderget">
 <h3>encoderGet<a class="headerlink" href="#encoderget" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">encoderGet</span> <span class="p">(</span> <span class="n">Encoder</span> <span class="n">enc</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">encoderGet</span> <span class="p">(</span> <span class="n">Encoder</span> <span class="n">enc</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Gets the number of ticks recorded by the encoder.</p>
@@ -614,7 +614,7 @@ respectively, or the constants HIGH or LOW themselves.</td>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">enc</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">enc</span></code></td>
 <td>the Encoder object from <a class="reference internal" href="#encoderinit">encoderInit</a> to read</td>
 </tr>
 </tbody>
@@ -624,7 +624,7 @@ start or reset</p>
 </div>
 <div class="section" id="encoderinit">
 <h3>encoderInit<a class="headerlink" href="#encoderinit" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Encoder</span> <span class="n">encoderInit</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">portTop</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Encoder</span> <span class="n">encoderInit</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">portTop</span><span class="p">,</span>
                       <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">portBottom</span><span class="p">,</span>
                       <span class="kt">bool</span> <span class="n">reverse</span> <span class="p">)</span>
 </pre></div>
@@ -644,12 +644,12 @@ use. Initializing an encoder implicitly resets its count.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td colspan="2"><code class="docutils literal"><span class="pre">portTop</span></code> | the “top” wire from the encoder sensor with the removable cover side UP</td>
+<tr class="row-even"><td colspan="2"><code class="docutils literal notranslate"><span class="pre">portTop</span></code> | the “top” wire from the encoder sensor with the removable cover side UP</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">portBottom</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">portBottom</span></code></td>
 <td>the “bottom” wire from the encoder sensor</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">reverse</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">reverse</span></code></td>
 <td>if “true”, the sensor will count in the opposite direction</td>
 </tr>
 </tbody>
@@ -659,7 +659,7 @@ encoder functions</p>
 </div>
 <div class="section" id="encoderreset">
 <h3>encoderReset<a class="headerlink" href="#encoderreset" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">encoderReset</span> <span class="p">(</span> <span class="n">Encoder</span> <span class="n">enc</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">encoderReset</span> <span class="p">(</span> <span class="n">Encoder</span> <span class="n">enc</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Resets the encoder to zero.</p>
@@ -676,7 +676,7 @@ necessary to call this method before stopping or starting an encoder.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">enc</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">enc</span></code></td>
 <td>the Encoder object from <a class="reference internal" href="#encoderinit">encoderInit</a> to reset</td>
 </tr>
 </tbody>
@@ -684,7 +684,7 @@ necessary to call this method before stopping or starting an encoder.</p>
 </div>
 <div class="section" id="encodershutdown">
 <h3>encoderShutdown<a class="headerlink" href="#encodershutdown" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">encoderShutdown</span> <span class="p">(</span> <span class="n">Encoder</span> <span class="n">enc</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">encoderShutdown</span> <span class="p">(</span> <span class="n">Encoder</span> <span class="n">enc</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Stops and disables the encoder.</p>
@@ -701,7 +701,7 @@ code performance. The encoder’s count will be retained.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">enc</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">enc</span></code></td>
 <td>the Encoder object from <a class="reference internal" href="#encoderinit">encoderInit</a> to shutdown</td>
 </tr>
 </tbody>
@@ -709,7 +709,7 @@ code performance. The encoder’s count will be retained.</p>
 </div>
 <div class="section" id="fclose">
 <h3>fclose<a class="headerlink" href="#fclose" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">fclose</span><span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">fclose</span><span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Closes the specified file descriptor.</p>
@@ -726,7 +726,7 @@ code performance. The encoder’s count will be retained.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the file descriptor to close from <a class="reference internal" href="#fopen">fopen</a></td>
 </tr>
 </tbody>
@@ -734,7 +734,7 @@ code performance. The encoder’s count will be retained.</p>
 </div>
 <div class="section" id="fcount">
 <h3>fcount<a class="headerlink" href="#fcount" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">fcount</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">fcount</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Returns the number of characters that can be read without blocking (the
@@ -754,7 +754,7 @@ of characters which meet this criterion.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the stream to read (stdin, uart1, uart2, or an open file in Read mode)</td>
 </tr>
 </tbody>
@@ -764,7 +764,7 @@ number cannot be determined, returns 0</p>
 </div>
 <div class="section" id="fdelete">
 <h3>fdelete<a class="headerlink" href="#fdelete" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fdelete</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">file</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fdelete</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">file</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Delete the specified file if it exists and is not currently open.</p>
@@ -783,7 +783,7 @@ considered inaccessible to <a class="reference internal" href="#fopen">fopen</a>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">file</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">file</span></code></td>
 <td>the file name to erase</td>
 </tr>
 </tbody>
@@ -793,7 +793,7 @@ number cannot be determined, returns 0</p>
 </div>
 <div class="section" id="feof">
 <h3>feof<a class="headerlink" href="#feof" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">feof</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">feof</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Checks to see if the specified stream is at its end.</p>
@@ -810,7 +810,7 @@ files in Write mode, 1 is always returned.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the stream to check (stdin, uart1, uart2, or an open file in Read mode)</td>
 </tr>
 </tbody>
@@ -819,7 +819,7 @@ files in Write mode, 1 is always returned.</p>
 </div>
 <div class="section" id="fflush">
 <h3>fflush<a class="headerlink" href="#fflush" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fflush</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fflush</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Flushes the data on the specified file channel open in Write mode.</p>
@@ -839,7 +839,7 @@ cannot guarantee that the file is vaild until <a class="reference internal" href
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the channel to flush (an open file in Write mode)</td>
 </tr>
 </tbody>
@@ -848,7 +848,7 @@ cannot guarantee that the file is vaild until <a class="reference internal" href
 </div>
 <div class="section" id="fgetc">
 <h3>fgetc<a class="headerlink" href="#fgetc" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fgetc</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fgetc</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Reads and returns one character from the specified stream, blocking
@@ -866,7 +866,7 @@ deadlock may occur.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the stream to read (stdin, uart1, uart2, or an open file in Read mode)</td>
 </tr>
 </tbody>
@@ -876,7 +876,7 @@ be read</p>
 </div>
 <div class="section" id="fgets">
 <h3>fgets<a class="headerlink" href="#fgets" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="o">*</span> <span class="n">fgets</span> <span class="p">(</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">str</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span> <span class="o">*</span> <span class="n">fgets</span> <span class="p">(</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">str</span><span class="p">,</span>
                <span class="kt">int</span> <span class="n">num</span><span class="p">,</span>
                <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
 </pre></div>
@@ -899,13 +899,13 @@ stored into str.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">str</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">str</span></code></td>
 <td>the location where the characters read will be stored</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">num</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">num</span></code></td>
 <td>the maximum number of characters to store; at most (num - 1) characters will be read, with a null terminator (0) automatically appended</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the stream to read (stdin, uart1, uart2, or an open file in Read mode)</td>
 </tr>
 </tbody>
@@ -914,7 +914,7 @@ stored into str.</p>
 </div>
 <div class="section" id="fopen">
 <h3>fopen<a class="headerlink" href="#fopen" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">fopen</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">file</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">fopen</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">file</span><span class="p">,</span>
                     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">mode</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -946,10 +946,10 @@ mid-write may cause file system corruption.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">file</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">file</span></code></td>
 <td>the file name</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">mode</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">mode</span></code></td>
 <td>the file mode</td>
 </tr>
 </tbody>
@@ -959,7 +959,7 @@ file could not be opened</p>
 </div>
 <div class="section" id="fprint">
 <h3>fprint<a class="headerlink" href="#fprint" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">fprint</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">string</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">fprint</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">string</span><span class="p">,</span>
               <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -977,10 +977,10 @@ Use <a class="reference internal" href="#lcdsettext">lcdSetText</a> instead.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">string</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">string</span></code></td>
 <td>the string to write</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the stream to write (stdin, uart1, uart2, or an open file in Write mode)</td>
 </tr>
 </tbody>
@@ -988,14 +988,14 @@ Use <a class="reference internal" href="#lcdsettext">lcdSetText</a> instead.</p>
 </div>
 <div class="section" id="fprintf">
 <h3>fprintf<a class="headerlink" href="#fprintf" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fprintf</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fprintf</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">,</span>
               <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">formatString</span><span class="p">,</span>
               <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Prints the formatted string to the specified output stream.</p>
 <p>The specifiers supported by this minimalistic <a class="reference internal" href="#printf">printf</a> function are:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="o">-</span>  <span class="o">%</span><span class="nl">d</span><span class="p">:</span> <span class="n">Signed</span> <span class="n">integer</span> <span class="n">in</span> <span class="n">base</span> <span class="mi">10</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">-</span>  <span class="o">%</span><span class="nl">d</span><span class="p">:</span> <span class="n">Signed</span> <span class="n">integer</span> <span class="n">in</span> <span class="n">base</span> <span class="mi">10</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span>
 <span class="o">-</span>  <span class="o">%</span><span class="nl">u</span><span class="p">:</span> <span class="n">Unsigned</span> <span class="n">integer</span> <span class="n">in</span> <span class="n">base</span> <span class="mi">10</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">)</span>
 <span class="o">-</span>  <span class="o">%</span><span class="n">x</span><span class="p">,</span> <span class="o">%</span><span class="nl">X</span><span class="p">:</span> <span class="n">Integer</span> <span class="n">in</span> <span class="n">base</span> <span class="mi">16</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span>
 <span class="o">-</span>  <span class="o">%</span><span class="nl">p</span><span class="p">:</span> <span class="n">Pointer</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="kt">int</span> <span class="o">*</span><span class="p">,</span> <span class="p">...)</span>
@@ -1006,7 +1006,7 @@ Use <a class="reference internal" href="#lcdsettext">lcdSetText</a> instead.</p>
 </pre></div>
 </div>
 <p>Specifiers can be modified with:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="o">-</span>  <span class="mi">0</span><span class="o">:</span> <span class="n">Zero</span><span class="o">-</span><span class="n">pad</span><span class="p">,</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">space</span><span class="o">-</span><span class="n">pad</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="o">-</span>  <span class="mi">0</span><span class="o">:</span> <span class="n">Zero</span><span class="o">-</span><span class="n">pad</span><span class="p">,</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">space</span><span class="o">-</span><span class="n">pad</span>
 <span class="o">-</span>  <span class="n">a</span><span class="p">.</span><span class="nl">b</span><span class="p">:</span> <span class="n">Make</span> <span class="n">the</span> <span class="n">field</span> <span class="n">at</span> <span class="n">least</span> <span class="s">&quot;a&quot;</span> <span class="n">characters</span> <span class="n">wide</span><span class="p">.</span> <span class="n">If</span> <span class="s">&quot;b&quot;</span> <span class="n">is</span> <span class="n">specified</span>
    <span class="k">for</span> <span class="s">&quot;%f&quot;</span><span class="p">,</span> <span class="n">changes</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">digits</span> <span class="n">after</span> <span class="n">the</span> <span class="n">decimal</span> <span class="n">point</span>
 <span class="o">-</span>  <span class="o">-:</span> <span class="n">Left</span><span class="o">-</span><span class="n">align</span><span class="p">,</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">right</span><span class="o">-</span><span class="n">align</span>
@@ -1030,10 +1030,10 @@ use <a class="reference internal" href="#fprintf">fprintf</a> on a VEX LCD port.
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the stream to write (stdin, uart1, uart2, or an open file in Write mode)</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">formatString</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">formatString</span></code></td>
 <td>the format string (as specified above)</td>
 </tr>
 </tbody>
@@ -1042,7 +1042,7 @@ use <a class="reference internal" href="#fprintf">fprintf</a> on a VEX LCD port.
 </div>
 <div class="section" id="fputc">
 <h3>fputc<a class="headerlink" href="#fputc" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fputc</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">value</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fputc</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">value</span><span class="p">,</span>
             <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -1059,10 +1059,10 @@ use <a class="reference internal" href="#fprintf">fprintf</a> on a VEX LCD port.
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">value</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">value</span></code></td>
 <td>the character to write (a value of type “char” can be used)</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the stream to write (stdin, uart1, uart2, or an open file in Write mode)</td>
 </tr>
 </tbody>
@@ -1071,12 +1071,12 @@ use <a class="reference internal" href="#fprintf">fprintf</a> on a VEX LCD port.
 </div>
 <div class="section" id="fputs">
 <h3>fputs<a class="headerlink" href="#fputs" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fputs</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">string</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fputs</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">string</span><span class="p">,</span>
             <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Behaves the same as the <a class="reference internal" href="#fprint">fprint</a> function, and appends a trailing
-newline (<code class="docutils literal"><span class="pre">\n</span></code>).</p>
+newline (<code class="docutils literal notranslate"><span class="pre">\n</span></code>).</p>
 <p>Do not use <a class="reference internal" href="#fputs">fputs</a> on a VEX LCD port. Use <a class="reference internal" href="#lcdsettext">lcdSetText</a> instead.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -1089,10 +1089,10 @@ newline (<code class="docutils literal"><span class="pre">\n</span></code>).</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">string</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">string</span></code></td>
 <td>the string to write</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the stream to write (stdin, uart1, uart2, or an open file in Write mode)</td>
 </tr>
 </tbody>
@@ -1101,7 +1101,7 @@ newline (<code class="docutils literal"><span class="pre">\n</span></code>).</p>
 </div>
 <div class="section" id="fread">
 <h3>fread<a class="headerlink" href="#fread" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">size_t</span> <span class="n">fread</span> <span class="p">(</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">ptr</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">size_t</span> <span class="n">fread</span> <span class="p">(</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">ptr</span><span class="p">,</span>
                <span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span>
                <span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span>
                <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
@@ -1121,16 +1121,16 @@ behavior occurs.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ptr</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ptr</span></code></td>
 <td>a pointer to where the data will be stored</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">size</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">size</span></code></td>
 <td>the size of each data element to read in bytes</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">count</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">count</span></code></td>
 <td>the number of data elements to read</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the stream to read (stdin, uart1, uart2, or an open file in Read mode)</td>
 </tr>
 </tbody>
@@ -1139,7 +1139,7 @@ behavior occurs.</p>
 </div>
 <div class="section" id="fseek">
 <h3>fseek<a class="headerlink" href="#fseek" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fseek</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">fseek</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span><span class="p">,</span>
             <span class="kt">long</span> <span class="kt">int</span> <span class="n">offset</span><span class="p">,</span>
             <span class="kt">int</span> <span class="n">origin</span> <span class="p">)</span>
 </pre></div>
@@ -1158,13 +1158,13 @@ communications port.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the stream to seek within</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">offset</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">offset</span></code></td>
 <td>the location within the stream to seek</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">origin</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">origin</span></code></td>
 <td>the reference location for offest: SEEK_CUR, SEEK_SET, or SEEK_END</td>
 </tr>
 </tbody>
@@ -1173,7 +1173,7 @@ communications port.</p>
 </div>
 <div class="section" id="ftell">
 <h3>ftell<a class="headerlink" href="#ftell" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">int</span> <span class="n">ftell</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">long</span> <span class="kt">int</span> <span class="n">ftell</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Returns the current position of the stream.</p>
@@ -1190,7 +1190,7 @@ on communications ports.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the stream to check</td>
 </tr>
 </tbody>
@@ -1200,7 +1200,7 @@ determined</p>
 </div>
 <div class="section" id="fwrite">
 <h3>fwrite<a class="headerlink" href="#fwrite" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">size_t</span> <span class="n">fwrite</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">ptr</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">size_t</span> <span class="n">fwrite</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">ptr</span><span class="p">,</span>
                 <span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span>
                 <span class="kt">size_t</span> <span class="n">count</span><span class="p">,</span>
                 <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">stream</span> <span class="p">)</span>
@@ -1221,16 +1221,16 @@ behavior occurs.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ptr</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ptr</span></code></td>
 <td>a pointer to the data to write</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">size</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">size</span></code></td>
 <td>the size of each data element to write in bytes</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">count</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">count</span></code></td>
 <td>the number of data elements to write</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">stream</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">stream</span></code></td>
 <td>the stream to write (stdin, uart1, uart2, or an open file in Write mode)</td>
 </tr>
 </tbody>
@@ -1239,7 +1239,7 @@ behavior occurs.</p>
 </div>
 <div class="section" id="getchar">
 <h3>getchar<a class="headerlink" href="#getchar" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">getchar</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">getchar</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Reads and returns one character from “stdin”, which is the PC debug
@@ -1249,7 +1249,7 @@ be read</p>
 </div>
 <div class="section" id="gyroget">
 <h3>gyroGet<a class="headerlink" href="#gyroget" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">gyroGet</span> <span class="p">(</span> <span class="n">Gyro</span> <span class="n">gyro</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">gyroGet</span> <span class="p">(</span> <span class="n">Gyro</span> <span class="n">gyro</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Gets the current gyro angle in degrees, rounded to the nearest degree.</p>
@@ -1265,7 +1265,7 @@ be read</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">gyro</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">gyro</span></code></td>
 <td>the Gyro object from <a class="reference internal" href="#gyroinit">gyroInit</a> to read</td>
 </tr>
 </tbody>
@@ -1275,7 +1275,7 @@ the gyro’s vertical axis since the last start or reset</p>
 </div>
 <div class="section" id="gyroinit">
 <h3>gyroInit<a class="headerlink" href="#gyroinit" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Gyro</span> <span class="n">gyroInit</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Gyro</span> <span class="n">gyroInit</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">port</span><span class="p">,</span>
                 <span class="kt">unsigned</span> <span class="kt">short</span> <span class="n">multiplier</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -1302,10 +1302,10 @@ turning far enough, decrease the multiplier.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">port</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">port</span></code></td>
 <td>the analog port to use from 1-8</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">multiplier</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">multiplier</span></code></td>
 <td>an optional constant to tune the gyro readings; use 0 for the default value</td>
 </tr>
 </tbody>
@@ -1315,7 +1315,7 @@ functions</p>
 </div>
 <div class="section" id="gyroreset">
 <h3>gyroReset<a class="headerlink" href="#gyroreset" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">gyroReset</span> <span class="p">(</span> <span class="n">Gyro</span> <span class="n">gyro</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">gyroReset</span> <span class="p">(</span> <span class="n">Gyro</span> <span class="n">gyro</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Resets the gyro to zero.</p>
@@ -1332,7 +1332,7 @@ necessary to call this method before stopping or starting a gyro.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">gyro</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">gyro</span></code></td>
 <td>the Gyro obect from <a class="reference internal" href="#gyroinit">gyroInit</a> to reset</td>
 </tr>
 </tbody>
@@ -1340,7 +1340,7 @@ necessary to call this method before stopping or starting a gyro.</p>
 </div>
 <div class="section" id="gyroshutdown">
 <h3>gyroShutdown<a class="headerlink" href="#gyroshutdown" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">gyroShutdown</span> <span class="p">(</span> <span class="n">Gyro</span> <span class="n">gyro</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">gyroShutdown</span> <span class="p">(</span> <span class="n">Gyro</span> <span class="n">gyro</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Stops and disables the gyro.</p>
@@ -1357,7 +1357,7 @@ performance. The gyro’s position will be retained.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">gyro</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">gyro</span></code></td>
 <td>the Gyro object from <a class="reference internal" href="#gyroinit">gyroInit</a> to stop</td>
 </tr>
 </tbody>
@@ -1365,7 +1365,7 @@ performance. The gyro’s position will be retained.</p>
 </div>
 <div class="section" id="i2cread">
 <h3>i2cRead<a class="headerlink" href="#i2cread" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">i2cRead</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">i2cRead</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span>
                <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">data</span><span class="p">,</span>
                <span class="kt">uint16_t</span> <span class="n">count</span> <span class="p">)</span>
 </pre></div>
@@ -1388,13 +1388,13 @@ has limited usefulness. Consider <a class="reference internal" href="#i2creadreg
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">addr</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">addr</span></code></td>
 <td>address to read</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">data</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">data</span></code></td>
 <td>a pointer to the location where the value will be stored</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">count</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">count</span></code></td>
 <td>number of bytes to read</td>
 </tr>
 </tbody>
@@ -1404,7 +1404,7 @@ could be read, false is still returned.</p>
 </div>
 <div class="section" id="i2creadregister">
 <h3>i2cReadRegister<a class="headerlink" href="#i2creadregister" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">i2cReadRegister</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">i2cReadRegister</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span>
                        <span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span>
                        <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">value</span><span class="p">,</span>
                        <span class="kt">uint16_t</span> <span class="n">count</span> <span class="p">)</span>
@@ -1431,16 +1431,16 @@ reliability, even if a few intermediate values need to be thrown away.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">addr</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">addr</span></code></td>
 <td>register address to read</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">reg</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">reg</span></code></td>
 <td>register address to be written to</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">value</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">value</span></code></td>
 <td>a pointer to the location where the value will be stored</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">count</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">count</span></code></td>
 <td>number of bytes to read</td>
 </tr>
 </tbody>
@@ -1450,7 +1450,7 @@ could be read, false is still returned.</p>
 </div>
 <div class="section" id="i2cwrite">
 <h3>i2cWrite<a class="headerlink" href="#i2cwrite" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">i2cWrite</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">i2cWrite</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span>
                 <span class="kt">uint8_t</span> <span class="o">*</span> <span class="n">data</span><span class="p">,</span>
                 <span class="kt">uint16_t</span> <span class="n">count</span> <span class="p">)</span>
 </pre></div>
@@ -1477,13 +1477,13 @@ to use.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">addr</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">addr</span></code></td>
 <td>address to write to</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">data</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">data</span></code></td>
 <td>a pointer to the data to be written</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">count</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">count</span></code></td>
 <td>number of bytes to write</td>
 </tr>
 </tbody>
@@ -1493,7 +1493,7 @@ could be written, false is still returned.</p>
 </div>
 <div class="section" id="i2cwriteregister">
 <h3>i2cWriteRegister<a class="headerlink" href="#i2cwriteregister" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">i2cWriteRegister</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">i2cWriteRegister</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">addr</span><span class="p">,</span>
                         <span class="kt">uint8_t</span> <span class="n">reg</span><span class="p">,</span>
                         <span class="kt">uint16_t</span> <span class="n">value</span> <span class="p">)</span>
 </pre></div>
@@ -1517,13 +1517,13 @@ bytes requires the i2cWrite method.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">addr</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">addr</span></code></td>
 <td>base address of i2c device</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">reg</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">reg</span></code></td>
 <td>register address to be written to</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">value</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">value</span></code></td>
 <td>byte to write to register</td>
 </tr>
 </tbody>
@@ -1532,7 +1532,7 @@ bytes requires the i2cWrite method.</p>
 </div>
 <div class="section" id="imeget">
 <h3>imeGet<a class="headerlink" href="#imeget" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">imeGet</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">address</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">imeGet</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">address</span><span class="p">,</span>
               <span class="kt">int</span> <span class="o">*</span> <span class="n">value</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -1548,7 +1548,7 @@ revolution:</p>
 <li>261.333 for the 393 IME in turbo mode</li>
 </ul>
 <p>If the IME address is invalid, or the IME has not been reset or
-initialized, the value stored in <code class="docutils literal"><span class="pre">*value</span></code> is undefined.</p>
+initialized, the value stored in <code class="docutils literal notranslate"><span class="pre">*value</span></code> is undefined.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -1560,20 +1560,20 @@ initialized, the value stored in <code class="docutils literal"><span class="pre
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">address</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">address</span></code></td>
 <td>the IME address to fetch from 0 to IME_ADDR_MAX</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">value</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">value</span></code></td>
 <td>a pointer to the location will be stored (obtained using the “&amp;” operator on the target variable name e.g. imeGet(2, &amp;counts))</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Returns</strong> true if the count was successfully read and the value stored
-in <code class="docutils literal"><span class="pre">*value</span></code> is valid; false otherwise</p>
+in <code class="docutils literal notranslate"><span class="pre">*value</span></code> is valid; false otherwise</p>
 </div>
 <div class="section" id="imegetvelocity">
 <h3>imeGetVelocity<a class="headerlink" href="#imegetvelocity" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">imeGetVelocity</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">address</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">imeGetVelocity</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">address</span><span class="p">,</span>
                       <span class="kt">int</span> <span class="o">*</span> <span class="n">value</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -1590,7 +1590,7 @@ value by the number of output revolutions per encoder revolution:</p>
 <li>24.5 for the 393 IME in high speed mode</li>
 </ul>
 <p>If the IME address is invalid, or the IME has not been reset or
-initialized, the value stored in <code class="docutils literal"><span class="pre">*value</span></code> is undefined.</p>
+initialized, the value stored in <code class="docutils literal notranslate"><span class="pre">*value</span></code> is undefined.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="9%" />
@@ -1602,20 +1602,20 @@ initialized, the value stored in <code class="docutils literal"><span class="pre
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">address</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">address</span></code></td>
 <td>the IME address to fetch from 0 to IME_ADDR_MAX</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">value</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">value</span></code></td>
 <td>a pointer to the location will be stored (obtained using the “&amp;” operator on the target variable name e.g. imeGet(2, &amp;counts))</td>
 </tr>
 </tbody>
 </table>
 <p><strong>*Returns*</strong> true if the velocity was successfully read and the value
-stored in <code class="docutils literal"><span class="pre">*value</span></code> is valid; false otherwise</p>
+stored in <code class="docutils literal notranslate"><span class="pre">*value</span></code> is valid; false otherwise</p>
 </div>
 <div class="section" id="imeinitializeall">
 <h3>imeInitializeAll<a class="headerlink" href="#imeinitializeall" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">imeInitializeAll</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">imeInitializeAll</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Initializes all IMEs.</p>
@@ -1636,7 +1636,7 @@ functions might behave unpredictably during this function’s execution.</p>
 </div>
 <div class="section" id="imereset">
 <h3>imeReset<a class="headerlink" href="#imereset" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">imeReset</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">address</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">imeReset</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">address</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Resets the specified IME’s counters to zero.</p>
@@ -1652,7 +1652,7 @@ functions might behave unpredictably during this function’s execution.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">address</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">address</span></code></td>
 <td>the IME address to fetch from 0 to IME_ADDR_MAX</td>
 </tr>
 </tbody>
@@ -1661,7 +1661,7 @@ functions might behave unpredictably during this function’s execution.</p>
 </div>
 <div class="section" id="imeshutdown">
 <h3>imeShutdown<a class="headerlink" href="#imeshutdown" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">imeShutdown</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">imeShutdown</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Shuts down all IMEs on the chain; their addresses return to the default
@@ -1672,7 +1672,7 @@ and the stored counts and velocities are lost.</p>
 </div>
 <div class="section" id="ioclearinterrupt">
 <h3>ioClearInterrupt<a class="headerlink" href="#ioclearinterrupt" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">ioClearInterrupt</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">pin</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">ioClearInterrupt</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">pin</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Disables interrupts on the specified pin.</p>
@@ -1689,7 +1689,7 @@ processing time.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">pin</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">pin</span></code></td>
 <td>the pin on which to reset interrupts from 1-9,11-12</td>
 </tr>
 </tbody>
@@ -1697,7 +1697,7 @@ processing time.</p>
 </div>
 <div class="section" id="iosetinterrupt">
 <h3>ioSetInterrupt<a class="headerlink" href="#iosetinterrupt" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">ioSetInterrupt</span><span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span>    <span class="n">pin</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">ioSetInterrupt</span><span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span>    <span class="n">pin</span><span class="p">,</span>
                      <span class="kt">unsigned</span> <span class="kt">char</span>    <span class="n">edges</span><span class="p">,</span>
                      <span class="n">InterruptHandler</span> <span class="n">handler</span> <span class="p">)</span>
 </pre></div>
@@ -1727,13 +1727,13 @@ switched to output mode.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">pin</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">pin</span></code></td>
 <td>the pin on which to reset interrupts from 1-9,11-12</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">edges</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">edges</span></code></td>
 <td>one of INTERRRUPT_EDGE_RISING, INTERRUPT_EDGE_FALLING, or INTERRUPT_EDGE_BOTH</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">handler</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">handler</span></code></td>
 <td>the function to call when the condition is satisfied</td>
 </tr>
 </tbody>
@@ -1741,7 +1741,7 @@ switched to output mode.</p>
 </div>
 <div class="section" id="isautonomous">
 <h3>isAutonomous<a class="headerlink" href="#isautonomous" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isAutonomous</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isAutonomous</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>While in autonomous mode, joystick inputs will return a neutral value,
@@ -1751,7 +1751,7 @@ properly.</p>
 </div>
 <div class="section" id="isenabled">
 <h3>isEnabled<a class="headerlink" href="#isenabled" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isEnabled</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isEnabled</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>While disabled via the VEX Competition Switch or VEX Field Controller,
@@ -1763,7 +1763,7 @@ should take care of this most of the time).</p>
 </div>
 <div class="section" id="isjoystickconnected">
 <h3>isJoystickConnected<a class="headerlink" href="#isjoystickconnected" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isJoystickConnected</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">joystick</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isJoystickConnected</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">joystick</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Useful for automatically merging joysticks for one operator, or
@@ -1783,7 +1783,7 @@ joysticks, respectively.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">joystick</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">joystick</span></code></td>
 <td>the joystick slot to check (1, 2)</td>
 </tr>
 </tbody>
@@ -1793,7 +1793,7 @@ joysticks, respectively.</p>
 </div>
 <div class="section" id="isonline">
 <h3>isOnline<a class="headerlink" href="#isonline" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isOnline</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isOnline</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>When in online mode, the switching between autonomous() and
@@ -1803,7 +1803,7 @@ connected, or false otherwise</p>
 </div>
 <div class="section" id="joystickgetanalog">
 <h3>joystickGetAnalog<a class="headerlink" href="#joystickgetanalog" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">joystickGetAnalog</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">joystick</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">joystickGetAnalog</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">joystick</span><span class="p">,</span>
                         <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">axis</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -1821,10 +1821,10 @@ respectively.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">joystick</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">joystick</span></code></td>
 <td>the joystick slot to check (1, 2)</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">axis</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">axis</span></code></td>
 <td>one of the 1, 2, 3, 4, ACCEL_X, or ACCEL_Y analog channels on a VEX joystick</td>
 </tr>
 </tbody>
@@ -1834,7 +1834,7 @@ to the requested slot.</p>
 </div>
 <div class="section" id="joystickgetdigital">
 <h3>joystickGetDigital<a class="headerlink" href="#joystickgetdigital" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">joystickGetDigital</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">joystick</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">joystickGetDigital</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">joystick</span><span class="p">,</span>
                          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">buttonGroup</span><span class="p">,</span>
                          <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">button</span> <span class="p">)</span>
 </pre></div>
@@ -1852,13 +1852,13 @@ joystick are 1 and 2 for the master and partner joysticks, respectively.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">joystick</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">joystick</span></code></td>
 <td>the joystick slot to check (1, 2)</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">buttonGroup</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">buttonGroup</span></code></td>
 <td>one of 5, 6, 7, or 8 to request that button as labeled on the joystick</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">button</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">button</span></code></td>
 <td>one of JOY_UP, JOY_DOWN, JOY_LEFT, or JOY_RIGHT; requesting JOY_LEFT or JOY_RIGHT for groups 5 or 6 will cause undefined values to be returned</td>
 </tr>
 </tbody>
@@ -1868,7 +1868,7 @@ joystick is connected to the requested slot, returns false.</p>
 </div>
 <div class="section" id="lcdclear">
 <h3>lcdClear<a class="headerlink" href="#lcdclear" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">lcdClear</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">lcdClear</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Clears the LCD screen on the specified port.</p>
@@ -1885,7 +1885,7 @@ should only be required at startup.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">lcdPort</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">lcdPort</span></code></td>
 <td>the LCD to clear, either uart1 or uart2</td>
 </tr>
 </tbody>
@@ -1893,7 +1893,7 @@ should only be required at startup.</p>
 </div>
 <div class="section" id="lcdinit">
 <h3>lcdInit<a class="headerlink" href="#lcdinit" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">lcdInit</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">lcdInit</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Initializes the LCD port, but does not change the text or settings.</p>
@@ -1911,7 +1911,7 @@ functions until the LCD is stopped.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">lcdPort</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">lcdPort</span></code></td>
 <td>the LCD to initialize, either uart1 or uart2</td>
 </tr>
 </tbody>
@@ -1919,7 +1919,7 @@ functions until the LCD is stopped.</p>
 </div>
 <div class="section" id="lcdprint">
 <h3>lcdPrint<a class="headerlink" href="#lcdprint" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">lcdPrint</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">lcdPrint</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span><span class="p">,</span>
                 <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">line</span><span class="p">,</span>
                 <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">formatString</span><span class="p">,</span>
                 <span class="p">...</span> <span class="p">)</span>
@@ -1940,13 +1940,13 @@ in a local buffer and use <a class="reference internal" href="#lcdsettext">lcdSe
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">lcdPort</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">lcdPort</span></code></td>
 <td>the LCD to write, either uart1 or uart2</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">line</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">line</span></code></td>
 <td>the LCD line to write, either 1 or 2</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">formatString</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">formatString</span></code></td>
 <td>the format string as specified in <a class="reference internal" href="#fprintf">fprintf</a></td>
 </tr>
 </tbody>
@@ -1954,12 +1954,12 @@ in a local buffer and use <a class="reference internal" href="#lcdsettext">lcdSe
 </div>
 <div class="section" id="lcdreadbuttons">
 <h3>lcdReadButtons<a class="headerlink" href="#lcdreadbuttons" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">lcdReadButtons</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">lcdReadButtons</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Reads the user button status from the LCD display. The value returned is
-a 3 bit integer where <code class="docutils literal"><span class="pre">1</span> <span class="pre">0</span> <span class="pre">0</span></code> indicates the left button being pressed,
-<code class="docutils literal"><span class="pre">0</span> <span class="pre">1</span> <span class="pre">0</span></code> indicates the center button being pressed, and <code class="docutils literal"><span class="pre">0</span> <span class="pre">0</span> <span class="pre">1</span></code>
+a 3 bit integer where <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">0</span> <span class="pre">0</span></code> indicates the left button being pressed,
+<code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">1</span> <span class="pre">0</span></code> indicates the center button being pressed, and <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">0</span> <span class="pre">1</span></code>
 indicates the right button being pressed.</p>
 <p>For example, if the left and right buttons are pushed, (1 | 4) = 5 will
 be returned. 0 is returned if no buttons are pushed</p>
@@ -1974,7 +1974,7 @@ be returned. 0 is returned if no buttons are pushed</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">lcdPort</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">lcdPort</span></code></td>
 <td>the LCD to read, either uart1 or uart2</td>
 </tr>
 </tbody>
@@ -1983,7 +1983,7 @@ be returned. 0 is returned if no buttons are pushed</p>
 </div>
 <div class="section" id="lcdsetbacklight">
 <h3>lcdSetBacklight<a class="headerlink" href="#lcdsetbacklight" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">lcdSetBacklight</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">lcdSetBacklight</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span><span class="p">,</span>
                        <span class="kt">bool</span> <span class="n">backlight</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2001,10 +2001,10 @@ dim conditions.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">lcdPort</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">lcdPort</span></code></td>
 <td>the LCD to set, either uart1 or uart2</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">backlight</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">backlight</span></code></td>
 <td>true to turn the backlight on, or false to turn it off</td>
 </tr>
 </tbody>
@@ -2012,7 +2012,7 @@ dim conditions.</p>
 </div>
 <div class="section" id="lcdsettext">
 <h3>lcdSetText<a class="headerlink" href="#lcdsettext" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">lcdSetText</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">lcdSetText</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span><span class="p">,</span>
                   <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">line</span><span class="p">,</span>
                   <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span> <span class="p">)</span>
 </pre></div>
@@ -2032,13 +2032,13 @@ screen, 16 characters wide. This function, like <a class="reference internal" hr
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">lcdPort</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">lcdPort</span></code></td>
 <td>the LCD to set, either uart1 or uart2</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">line</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">line</span></code></td>
 <td>the LCD line to write, either 1 or 2</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">buffer</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">buffer</span></code></td>
 <td>the string to write</td>
 </tr>
 </tbody>
@@ -2046,7 +2046,7 @@ screen, 16 characters wide. This function, like <a class="reference internal" hr
 </div>
 <div class="section" id="lcdshutdown">
 <h3>lcdShutdown<a class="headerlink" href="#lcdshutdown" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">lcdShutdown</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">lcdShutdown</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">lcdPort</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Shut down the specified LCD port.</p>
@@ -2061,7 +2061,7 @@ screen, 16 characters wide. This function, like <a class="reference internal" hr
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">lcdPort</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">lcdPort</span></code></td>
 <td>the LCD to shutdown, either uart1 or uart2</td>
 </tr>
 </tbody>
@@ -2069,7 +2069,7 @@ screen, 16 characters wide. This function, like <a class="reference internal" hr
 </div>
 <div class="section" id="micros">
 <h3>micros<a class="headerlink" href="#micros" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">micros</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">micros</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>There are 10^6 microseconds in a second, so as a 32-bit integer, this
@@ -2080,7 +2080,7 @@ the last overflow</p>
 </div>
 <div class="section" id="millis">
 <h3>millis<a class="headerlink" href="#millis" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">millis</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">millis</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>There are 1000 milliseconds in a second, so as a 32-bit integer, this
@@ -2090,7 +2090,7 @@ will not overflow for 50 days.</p>
 </div>
 <div class="section" id="motorget">
 <h3>motorGet<a class="headerlink" href="#motorget" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">motorGet</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">motorGet</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Gets the last set speed of the specified motor channel.</p>
@@ -2112,7 +2112,7 @@ each.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">channel</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">channel</span></code></td>
 <td>the motor channel to fetch from 1-10</td>
 </tr>
 </tbody>
@@ -2122,7 +2122,7 @@ and 127 is full forward, with 0 being off</p>
 </div>
 <div class="section" id="motorset">
 <h3>motorSet<a class="headerlink" href="#motorset" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">motorSet</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">motorSet</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span><span class="p">,</span>
                 <span class="kt">int</span> <span class="n">speed</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2142,10 +2142,10 @@ arguments from different tasks.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">channel</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">channel</span></code></td>
 <td>the motor channel to fetch from 1-10</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">speed</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">speed</span></code></td>
 <td>the new signed speed; -127 is full revers and 127 is full forward, with 0 being off. For servos, the position of the servo is set.</td>
 </tr>
 </tbody>
@@ -2153,7 +2153,7 @@ arguments from different tasks.</p>
 </div>
 <div class="section" id="motorstop">
 <h3>motorStop<a class="headerlink" href="#motorstop" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">motorStop</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">motorStop</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">channel</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Stops the motor on the specified channel, equivalent to calling
@@ -2171,7 +2171,7 @@ similar to motorSet(0), see the note for <a class="reference internal" href="#mo
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">channel</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">channel</span></code></td>
 <td>the motor channel to fetch from 1-10</td>
 </tr>
 </tbody>
@@ -2179,7 +2179,7 @@ similar to motorSet(0), see the note for <a class="reference internal" href="#mo
 </div>
 <div class="section" id="mutexcreate">
 <h3>mutexCreate<a class="headerlink" href="#mutexcreate" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Mutex</span> <span class="n">mutexCreate</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Mutex</span> <span class="n">mutexCreate</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Creates a mutex intended to allow only one task to use a resource at a
@@ -2195,7 +2195,7 @@ longer required.</p>
 </div>
 <div class="section" id="mutexdelete">
 <h3>mutexDelete<a class="headerlink" href="#mutexdelete" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">mutexDelete</span> <span class="p">(</span> <span class="n">Mutex</span> <span class="n">mutex</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">mutexDelete</span> <span class="p">(</span> <span class="n">Mutex</span> <span class="n">mutex</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Deletes the specified mutex.</p>
@@ -2212,7 +2212,7 @@ task may cause deadlock or a crash.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">mutex</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">mutex</span></code></td>
 <td>the mutex to destroy</td>
 </tr>
 </tbody>
@@ -2220,7 +2220,7 @@ task may cause deadlock or a crash.</p>
 </div>
 <div class="section" id="mutexgive">
 <h3>mutexGive<a class="headerlink" href="#mutexgive" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutexGive</span> <span class="p">(</span> <span class="n">Mutex</span> <span class="n">mutex</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutexGive</span> <span class="p">(</span> <span class="n">Mutex</span> <span class="n">mutex</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Relinquishes a mutex so that other tasks can use the resource it guards.</p>
@@ -2237,7 +2237,7 @@ task may cause deadlock or a crash.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">mutex</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">mutex</span></code></td>
 <td>the mutex to release</td>
 </tr>
 </tbody>
@@ -2247,7 +2247,7 @@ not already held</p>
 </div>
 <div class="section" id="mutextake">
 <h3>mutexTake<a class="headerlink" href="#mutextake" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutexTake</span> <span class="p">(</span> <span class="n">Mutex</span> <span class="n">mutex</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutexTake</span> <span class="p">(</span> <span class="n">Mutex</span> <span class="n">mutex</span><span class="p">,</span>
                  <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">blockTime</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2267,10 +2267,10 @@ released. Other tasks can run during this time.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">mutex</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">mutex</span></code></td>
 <td>the mutex to request</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">blockTime</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">blockTime</span></code></td>
 <td>the maximum time to wait for the mutex to be available, where -1 specifies an infinite timeout</td>
 </tr>
 </tbody>
@@ -2280,7 +2280,7 @@ timeout expired</p>
 </div>
 <div class="section" id="pinmode">
 <h3>pinMode<a class="headerlink" href="#pinmode" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pinMode</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">pin</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pinMode</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">pin</span><span class="p">,</span>
                <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">mode</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2299,10 +2299,10 @@ push-pull sources. This function is Wiring-compatible.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">pin</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">pin</span></code></td>
 <td>the pin to read from 1-26</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">mode</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">mode</span></code></td>
 <td>one of INPUT, INPUT_ANALOG, INPUT_FLOATING, OUTPUT, or OUTPUT_OD</td>
 </tr>
 </tbody>
@@ -2310,7 +2310,7 @@ push-pull sources. This function is Wiring-compatible.</p>
 </div>
 <div class="section" id="powerlevelbackup">
 <h3>powerLevelBackup<a class="headerlink" href="#powerlevelbackup" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">powerLevelBackup</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">powerLevelBackup</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>Returns</strong> the backup battery voltage in millivolts. If no backup
@@ -2318,7 +2318,7 @@ battery is connected, returns 0</p>
 </div>
 <div class="section" id="powerlevelmain">
 <h3>powerLevelMain<a class="headerlink" href="#powerlevelmain" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">powerLevelMain</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">powerLevelMain</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>In rare circumstances, this method might return 0. Check the output
@@ -2327,7 +2327,7 @@ value for reasonability before blindly blasting the user.</p>
 </div>
 <div class="section" id="print">
 <h3>print<a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">print</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">string</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">print</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">string</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Prints the simple string to the debug terminal without formatting.</p>
@@ -2343,7 +2343,7 @@ value for reasonability before blindly blasting the user.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">string</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">string</span></code></td>
 <td>the string to write</td>
 </tr>
 </tbody>
@@ -2351,7 +2351,7 @@ value for reasonability before blindly blasting the user.</p>
 </div>
 <div class="section" id="printf">
 <h3>printf<a class="headerlink" href="#printf" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">printf</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">formatString</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">printf</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">formatString</span><span class="p">,</span>
              <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2367,7 +2367,7 @@ value for reasonability before blindly blasting the user.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">formatString</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">formatString</span></code></td>
 <td>the format string as specified in <a class="reference internal" href="#fprintf">fprintf</a></td>
 </tr>
 </tbody>
@@ -2376,7 +2376,7 @@ value for reasonability before blindly blasting the user.</p>
 </div>
 <div class="section" id="putchar">
 <h3>putchar<a class="headerlink" href="#putchar" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">putchar</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">value</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">putchar</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">value</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Writes one character to “stdout”, which is the PC debug terminal, and
@@ -2394,7 +2394,7 @@ before the input is visible on the terminal.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">value</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">value</span></code></td>
 <td>the character to write (a value of type “char” can be used)</td>
 </tr>
 </tbody>
@@ -2403,7 +2403,7 @@ before the input is visible on the terminal.</p>
 </div>
 <div class="section" id="semaphorecreate">
 <h3>semaphoreCreate<a class="headerlink" href="#semaphorecreate" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Semaphore</span> <span class="n">semaphoreCreate</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Semaphore</span> <span class="n">semaphoreCreate</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Creates a semaphore intended for synchronizing tasks.</p>
@@ -2419,7 +2419,7 @@ interrupt routine.</p>
 </div>
 <div class="section" id="semaphoredelete">
 <h3>semaphoreDelete<a class="headerlink" href="#semaphoredelete" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">semaphoreDelete</span> <span class="p">(</span> <span class="n">Semaphore</span> <span class="n">semaphore</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">semaphoreDelete</span> <span class="p">(</span> <span class="n">Semaphore</span> <span class="n">semaphore</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Deletes the specified semaphore.</p>
@@ -2436,7 +2436,7 @@ task may cause deadlock or a crash.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">semaphore</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">semaphore</span></code></td>
 <td>the semaphore to destroy</td>
 </tr>
 </tbody>
@@ -2444,7 +2444,7 @@ task may cause deadlock or a crash.</p>
 </div>
 <div class="section" id="semaphoregive">
 <h3>semaphoreGive<a class="headerlink" href="#semaphoregive" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">semaphoreGive</span> <span class="p">(</span> <span class="n">Semaphore</span> <span class="n">semaphore</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">semaphoreGive</span> <span class="p">(</span> <span class="n">Semaphore</span> <span class="n">semaphore</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Signals a semaphore.</p>
@@ -2463,7 +2463,7 @@ waiting to take the semaphore will continue at that point.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">semaphore</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">semaphore</span></code></td>
 <td>the semaphore to destroy</td>
 </tr>
 </tbody>
@@ -2473,7 +2473,7 @@ the semaphore was not taken since the last give</p>
 </div>
 <div class="section" id="semaphoretake">
 <h3>semaphoreTake<a class="headerlink" href="#semaphoretake" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">semaphoreTake</span> <span class="p">(</span> <span class="n">Semaphore</span> <span class="n">semaphore</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">semaphoreTake</span> <span class="p">(</span> <span class="n">Semaphore</span> <span class="n">semaphore</span><span class="p">,</span>
                      <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">blockTime</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2492,10 +2492,10 @@ time.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">semaphore</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">semaphore</span></code></td>
 <td>the semaphore to wait</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">blockTime</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">blockTime</span></code></td>
 <td>the maximum time to wait for the semaphore to be given, where -1 specifies an infinite timeout</td>
 </tr>
 </tbody>
@@ -2505,7 +2505,7 @@ the timeout expired</p>
 </div>
 <div class="section" id="setteamname">
 <h3>setTeamName<a class="headerlink" href="#setteamname" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">setTeamName</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">name</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">setTeamName</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">name</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Sets the team name displayed to the VEX field control and VEX Firmware
@@ -2521,7 +2521,7 @@ Upgrade.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">name</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">name</span></code></td>
 <td>a string containing the team name; only the first eight characters will be shown</td>
 </tr>
 </tbody>
@@ -2529,7 +2529,7 @@ Upgrade.</p>
 </div>
 <div class="section" id="snprintf">
 <h3>snprintf<a class="headerlink" href="#snprintf" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">snprintf</span> <span class="p">(</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">snprintf</span> <span class="p">(</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span>
                <span class="kt">size_t</span> <span class="n">limit</span><span class="p">,</span>
                <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">formatString</span><span class="p">,</span>
                <span class="p">...</span> <span class="p">)</span>
@@ -2551,13 +2551,13 @@ characters to be printed, and one null terminator in all cases.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">buffer</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">buffer</span></code></td>
 <td>the string buffer where characters can be placed</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">limit</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">limit</span></code></td>
 <td>the maximum number of characters to write</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">formatString</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">formatString</span></code></td>
 <td>the format string as specified in <a class="reference internal" href="#fprintf">fprintf</a></td>
 </tr>
 </tbody>
@@ -2566,7 +2566,7 @@ characters to be printed, and one null terminator in all cases.</p>
 </div>
 <div class="section" id="speakerinit">
 <h3>speakerInit<a class="headerlink" href="#speakerinit" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">speakerInit</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">speakerInit</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Initializes VEX speaker support.</p>
@@ -2576,7 +2576,7 @@ benefit from an if statement that only enables sound if <a class="reference inte
 </div>
 <div class="section" id="speakerplayarray">
 <h3>speakerPlayArray<a class="headerlink" href="#speakerplayarray" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">speakerPlayArray</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span> <span class="n">songs</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">speakerPlayArray</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span> <span class="n">songs</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Plays up to three RTTTL (Ring Tone Text Transfer Language) songs
@@ -2600,7 +2600,7 @@ benefit from an if statement that only enables sound if <a class="reference inte
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">songs</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">songs</span></code></td>
 <td>an array of up to three (3) RTTTL songs as string values to play</td>
 </tr>
 </tbody>
@@ -2608,7 +2608,7 @@ benefit from an if statement that only enables sound if <a class="reference inte
 </div>
 <div class="section" id="speakerplayrtttl">
 <h3>speakerPlayRtttl<a class="headerlink" href="#speakerplayrtttl" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">speakerPlayRtttl</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">song</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">speakerPlayRtttl</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">song</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Plays an RTTTL (Ring Tone Text Transfer Language) song over the VEX
@@ -2631,7 +2631,7 @@ benefit from an if statement that only enables sound if <a class="reference inte
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">song</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">song</span></code></td>
 <td>the RTTTL song as a string value to play</td>
 </tr>
 </tbody>
@@ -2639,7 +2639,7 @@ benefit from an if statement that only enables sound if <a class="reference inte
 </div>
 <div class="section" id="speakershutdown">
 <h3>speakerShutdown<a class="headerlink" href="#speakershutdown" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">speakerShutdown</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">speakerShutdown</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Powers down and disables the VEX speaker.</p>
@@ -2648,7 +2648,7 @@ this function is undefined, since the VEX speaker is not thread safe.</p>
 </div>
 <div class="section" id="sprintf">
 <h3>sprintf<a class="headerlink" href="#sprintf" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">sprintf</span> <span class="p">(</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">sprintf</span> <span class="p">(</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">buffer</span><span class="p">,</span>
                <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">formatString</span><span class="p">,</span>
                <span class="p">...</span> <span class="p">)</span>
 </pre></div>
@@ -2667,10 +2667,10 @@ output, undefined behavior occurs. See <a class="reference internal" href="#snpr
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">buffer</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">buffer</span></code></td>
 <td>the string buffer where characters can be placed</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">formatString</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">formatString</span></code></td>
 <td>the format string as specified in <a class="reference internal" href="#fprintf">fprintf</a></td>
 </tr>
 </tbody>
@@ -2679,7 +2679,7 @@ output, undefined behavior occurs. See <a class="reference internal" href="#snpr
 </div>
 <div class="section" id="taskcreate">
 <h3>taskCreate<a class="headerlink" href="#taskcreate" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">TaskHandle</span> <span class="n">taskCreate</span> <span class="p">(</span> <span class="n">TaskCode</span> <span class="n">taskCode</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TaskHandle</span> <span class="n">taskCreate</span> <span class="p">(</span> <span class="n">TaskCode</span> <span class="n">taskCode</span><span class="p">,</span>
                         <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">stackDepth</span><span class="p">,</span>
                         <span class="kt">void</span> <span class="o">*</span> <span class="n">parameters</span><span class="p">,</span>
                         <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">priority</span> <span class="p">)</span>
@@ -2698,16 +2698,16 @@ run.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">taskCode</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">taskCode</span></code></td>
 <td>the function to execute in its own task</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">stackDepth</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">stackDepth</span></code></td>
 <td>the number of variables available on the stack (4 * stackDepth bytes will be allocated on the Cortex)</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">parameters</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">parameters</span></code></td>
 <td>an argument passed to the taskCode function</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">priority</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">priority</span></code></td>
 <td>a value from TASK_PRIORITY_LOWEST to TASK_PRIORITY_HIGHEST determining the initial priority of the task</td>
 </tr>
 </tbody>
@@ -2716,7 +2716,7 @@ run.</p>
 </div>
 <div class="section" id="taskdelay">
 <h3>taskDelay<a class="headerlink" href="#taskdelay" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskDelay</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">msToDelay</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskDelay</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">msToDelay</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Delays the current task for a given number of milliseconds.</p>
@@ -2739,7 +2739,7 @@ requested. To delay cyclically, use <a class="reference internal" href="#taskdel
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">msToDelay</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">msToDelay</span></code></td>
 <td>the number of milliseconds to wait, with 1000 milliseconds per second</td>
 </tr>
 </tbody>
@@ -2747,22 +2747,22 @@ requested. To delay cyclically, use <a class="reference internal" href="#taskdel
 </div>
 <div class="section" id="taskdelayuntil">
 <h3>taskDelayUntil<a class="headerlink" href="#taskdelayuntil" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskDelayUntil</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="o">*</span> <span class="n">previousWakeTime</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskDelayUntil</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="o">*</span> <span class="n">previousWakeTime</span><span class="p">,</span>
                       <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">cycleTime</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Delays the current task until a specified time.</p>
-<p>The task will be unblocked at the time <code class="docutils literal"><span class="pre">*previousWakeTime</span> <span class="pre">+</span> <span class="pre">cycleTime</span></code> ,
-and <code class="docutils literal"><span class="pre">*previousWakeTime</span></code> will be changed to reflect the time at which the
+<p>The task will be unblocked at the time <code class="docutils literal notranslate"><span class="pre">*previousWakeTime</span> <span class="pre">+</span> <span class="pre">cycleTime</span></code> ,
+and <code class="docutils literal notranslate"><span class="pre">*previousWakeTime</span></code> will be changed to reflect the time at which the
 task will unblock.</p>
 <p>If the target time is in the past, no delay occurs, but a reschedule is
 forced, as if <a class="reference internal" href="#taskdelay">taskDelay</a> was called with
-an argument of zero. If the sum of <code class="docutils literal"><span class="pre">cycleTime</span></code> and <code class="docutils literal"><span class="pre">*previousWakeTime</span></code>
+an argument of zero. If the sum of <code class="docutils literal notranslate"><span class="pre">cycleTime</span></code> and <code class="docutils literal notranslate"><span class="pre">*previousWakeTime</span></code>
 overflows or underflows, undefined behavior occurs.</p>
 <p>This function should be used by cyclical tasks to ensure a constant
 execution frequency. While <a class="reference internal" href="#taskdelay">taskDelay</a> specifies a wake time relative to the time at which the function is
 called, <a class="reference internal" href="#taskdelayuntil">taskDelayUntil</a> specifies the absolute future time at which it wishes to unblock. Calling
-<a class="reference internal" href="#taskdelayuntil">taskDelayUntil</a> with the same <code class="docutils literal"><span class="pre">cycleTime</span></code> parameter value in a loop, with <code class="docutils literal"><span class="pre">previousWakeTime</span></code> referring to
+<a class="reference internal" href="#taskdelayuntil">taskDelayUntil</a> with the same <code class="docutils literal notranslate"><span class="pre">cycleTime</span></code> parameter value in a loop, with <code class="docutils literal notranslate"><span class="pre">previousWakeTime</span></code> referring to
 a local variable initialized to <a class="reference internal" href="#millis">millis</a> will cause the loop to execute with a fixed period.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -2775,10 +2775,10 @@ a local variable initialized to <a class="reference internal" href="#millis">mil
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">previousWakeTime</span></code></td>
-<td>a pointer to the location storing the last unblock time, obtained by using the “&amp;” operator on a variable (e.g. <code class="docutils literal"><span class="pre">taskDelayUntil(&amp;now,</span> <span class="pre">50)</span></code>)</td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">previousWakeTime</span></code></td>
+<td>a pointer to the location storing the last unblock time, obtained by using the “&amp;” operator on a variable (e.g. <code class="docutils literal notranslate"><span class="pre">taskDelayUntil(&amp;now,</span> <span class="pre">50)</span></code>)</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">cycleTime</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">cycleTime</span></code></td>
 <td>the number of milliseconds to wait, with 1000 milliseconds per second</td>
 </tr>
 </tbody>
@@ -2786,7 +2786,7 @@ a local variable initialized to <a class="reference internal" href="#millis">mil
 </div>
 <div class="section" id="taskdelete">
 <h3>taskDelete<a class="headerlink" href="#taskdelete" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskDelete</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">taskToDelete</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskDelete</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">taskToDelete</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Kills and removes the specified task from the kernel task list.</p>
@@ -2809,7 +2809,7 @@ task is deleted.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">taskToDelete</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">taskToDelete</span></code></td>
 <td>the task to kill; passing NULL kills the current task</td>
 </tr>
 </tbody>
@@ -2817,7 +2817,7 @@ task is deleted.</p>
 </div>
 <div class="section" id="taskgetcount">
 <h3>taskGetCount<a class="headerlink" href="#taskgetcount" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">taskGetCount</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">taskGetCount</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Determines the number of tasks that are currently being managed.</p>
@@ -2830,7 +2830,7 @@ suspended</p>
 </div>
 <div class="section" id="taskgetstate">
 <h3>taskGetState<a class="headerlink" href="#taskgetstate" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">taskGetState</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">taskGetState</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Retrieves the state of the specified task.</p>
@@ -2848,7 +2848,7 @@ different task than possibly intended in this case.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">task</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">task</span></code></td>
 <td>Handle to the task to query. Passing NULL will query the current task status (which will, by definition, be TASK_RUNNING if this call returns)</td>
 </tr>
 </tbody>
@@ -2859,7 +2859,7 @@ TASK_SUSPENDED</p>
 </div>
 <div class="section" id="taskpriorityget">
 <h3>taskPriorityGet<a class="headerlink" href="#taskpriorityget" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">taskPriorityGet</span> <span class="p">(</span> <span class="k">const</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">taskPriorityGet</span> <span class="p">(</span> <span class="k">const</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Obtains the priority of the specified task.</p>
@@ -2874,7 +2874,7 @@ TASK_SUSPENDED</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">task</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">task</span></code></td>
 <td>the task to check; passing NULL checks the current task</td>
 </tr>
 </tbody>
@@ -2883,7 +2883,7 @@ TASK_SUSPENDED</p>
 </div>
 <div class="section" id="taskpriorityset">
 <h3>taskPrioritySet<a class="headerlink" href="#taskpriorityset" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskPrioritySet</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskPrioritySet</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span><span class="p">,</span>
                        <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">newPriority</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2902,10 +2902,10 @@ mutated is available to be scheduled.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">task</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">task</span></code></td>
 <td>the task to change; passing NULL changes the current task</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">newPriority</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">newPriority</span></code></td>
 <td>a value between TASK_PRIORITY_LOWEST and TASK_PRIORITY_HIGHEST inclusive indicating the new task priority</td>
 </tr>
 </tbody>
@@ -2913,7 +2913,7 @@ mutated is available to be scheduled.</p>
 </div>
 <div class="section" id="taskresume">
 <h3>taskResume<a class="headerlink" href="#taskresume" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskResume</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">taskToResume</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskResume</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">taskToResume</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Resumes the specified task.</p>
@@ -2933,7 +2933,7 @@ occurs.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">taskToResume</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">taskToResume</span></code></td>
 <td>the task to change; passing NULL is not allowed as the current task cannot be suspended (it is obviously running if this function is called)</td>
 </tr>
 </tbody>
@@ -2941,7 +2941,7 @@ occurs.</p>
 </div>
 <div class="section" id="taskrunloop">
 <h3>taskRunLoop<a class="headerlink" href="#taskrunloop" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">TaskHandle</span> <span class="n">taskRunLoop</span> <span class="p">(</span> <span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="n">fn</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">TaskHandle</span> <span class="n">taskRunLoop</span> <span class="p">(</span> <span class="kt">void</span><span class="p">(</span><span class="o">*</span><span class="p">)(</span><span class="kt">void</span><span class="p">)</span> <span class="n">fn</span><span class="p">,</span>
                          <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">increment</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -2964,10 +2964,10 @@ switched.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">fn</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">fn</span></code></td>
 <td>the function to call in this loop</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">increment</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">increment</span></code></td>
 <td>the delay between successive calls in milliseconds; the <a class="reference internal" href="#taskdelayuntil">taskDelayUntil</a> function is used or accurate cycle timing</td>
 </tr>
 </tbody>
@@ -2976,7 +2976,7 @@ switched.</p>
 </div>
 <div class="section" id="tasksuspend">
 <h3>taskSuspend<a class="headerlink" href="#tasksuspend" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskSuspend</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">taskToSuspend</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskSuspend</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">taskToSuspend</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Suspends the specified task.</p>
@@ -2993,7 +2993,7 @@ might be otherwise available to run.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">taskToSuspend</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">taskToSuspend</span></code></td>
 <td>the task to suspend; passing NULL suspends the current task</td>
 </tr>
 </tbody>
@@ -3001,7 +3001,7 @@ might be otherwise available to run.</p>
 </div>
 <div class="section" id="ultrasonicget">
 <h3>ultrasonicGet<a class="headerlink" href="#ultrasonicget" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">ultrasonicGet</span> <span class="p">(</span> <span class="n">ultrasonic</span> <span class="n">ult</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">ultrasonicGet</span> <span class="p">(</span> <span class="n">ultrasonic</span> <span class="n">ult</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Gets the current ultrasonic sensor value in centimeters.</p>
@@ -3021,7 +3021,7 @@ fluffy objects can cause inaccurate values to be returned.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ult</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ult</span></code></td>
 <td>the Ultrasonic object from <a class="reference internal" href="#ultrasonicinit">ultrasonicInit</a> to read</td>
 </tr>
 </tbody>
@@ -3030,7 +3030,7 @@ fluffy objects can cause inaccurate values to be returned.</p>
 </div>
 <div class="section" id="ultrasonicinit">
 <h3>ultrasonicInit<a class="headerlink" href="#ultrasonicinit" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Ultrasonic</span> <span class="n">ultrasonicInit</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">portEcho</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Ultrasonic</span> <span class="n">ultrasonicInit</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">portEcho</span><span class="p">,</span>
                             <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">portPing</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -3049,10 +3049,10 @@ either port is invalid or the ultrasonic sensor port is already in use.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">portEcho</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">portEcho</span></code></td>
 <td>the port connected to the orange cable from 1-9,11-12</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">portPing</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">portPing</span></code></td>
 <td>the port connected to the yellow cable from 1-12</td>
 </tr>
 </tbody>
@@ -3062,7 +3062,7 @@ to ultrasonic functions</p>
 </div>
 <div class="section" id="ultrasonicshutdown">
 <h3>ultrasonicShutdown<a class="headerlink" href="#ultrasonicshutdown" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">ultrasonicShutdown</span> <span class="p">(</span> <span class="n">Ultrasonic</span> <span class="n">ult</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">ultrasonicShutdown</span> <span class="p">(</span> <span class="n">Ultrasonic</span> <span class="n">ult</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Stops and disables the ultrasonic sensor.</p>
@@ -3079,7 +3079,7 @@ operation may occur before the sensor is fully disabled.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ult</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ult</span></code></td>
 <td>the Ultrasonic object from <a class="reference internal" href="#ultrasonicinit">ultrasonicInit</a> to stop</td>
 </tr>
 </tbody>
@@ -3087,7 +3087,7 @@ operation may occur before the sensor is fully disabled.</p>
 </div>
 <div class="section" id="usartinit">
 <h3>usartInit<a class="headerlink" href="#usartinit" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">usartInit</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">usart</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">usartInit</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">usart</span><span class="p">,</span>
                  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">baud</span><span class="p">,</span>
                  <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">flags</span> <span class="p">)</span>
 </pre></div>
@@ -3111,13 +3111,13 @@ opened, the behavior will be the same as if the port had been disabled.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">usart</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">usart</span></code></td>
 <td>the port to open, either “uart1” or “uart2”</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">baud</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">baud</span></code></td>
 <td>the baud rate to use from 2400 to 1000000 baud</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">flags</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">flags</span></code></td>
 <td>a bitmask combination of the SERIAL_* flags specifying parity, stop, and data bits</td>
 </tr>
 </tbody>
@@ -3125,7 +3125,7 @@ opened, the behavior will be the same as if the port had been disabled.</p>
 </div>
 <div class="section" id="usartshutdown">
 <h3>usartShutdown<a class="headerlink" href="#usartshutdown" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">usartShutdown</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">usart</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">usartShutdown</span> <span class="p">(</span> <span class="n">PROS_FILE</span> <span class="o">*</span> <span class="n">usart</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Disables the specified USART interface.</p>
@@ -3143,7 +3143,7 @@ write to it may deadlock depending on the state of the buffer.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">usart</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">usart</span></code></td>
 <td>the port to close, either “uart1” or “uart2”</td>
 </tr>
 </tbody>
@@ -3151,7 +3151,7 @@ write to it may deadlock depending on the state of the buffer.</p>
 </div>
 <div class="section" id="wait">
 <h3>wait<a class="headerlink" href="#wait" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">wait</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">time</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">wait</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">time</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Alias of <a class="reference internal" href="#taskdelay">taskDelay</a> intended to help
@@ -3167,7 +3167,7 @@ EasyC users.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">time</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">time</span></code></td>
 <td>the duration of the delay in milliseconds (1000 milliseconds per second)</td>
 </tr>
 </tbody>
@@ -3175,7 +3175,7 @@ EasyC users.</p>
 </div>
 <div class="section" id="waituntil">
 <h3>waitUntil<a class="headerlink" href="#waituntil" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">waitUntil</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="o">*</span> <span class="n">previousWakeTime</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">waitUntil</span> <span class="p">(</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="o">*</span> <span class="n">previousWakeTime</span><span class="p">,</span>
                  <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">time</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -3192,10 +3192,10 @@ to help EasyC users.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">previousWakeTime</span></code></td>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">previousWakeTime</span></code></td>
 <td>a pointer to the last wakeup time</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">time</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">time</span></code></td>
 <td>the duration of the delay in milliseconds (1000 milliseconds per second)</td>
 </tr>
 </tbody>
@@ -3203,7 +3203,7 @@ to help EasyC users.</p>
 </div>
 <div class="section" id="watchdoginit">
 <h3>watchdogInit<a class="headerlink" href="#watchdoginit" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">watchdogInit</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">watchdogInit</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Enables IWDG watchdog timer that will reset the Cortex if static shock
@@ -3217,7 +3217,7 @@ multiple times or anywhere besides initializeIO() will have no effect.</p>
 </div>
 <div class="section" id="void-standalonemodeenable">
 <h3>void standaloneModeEnable<a class="headerlink" href="#void-standalonemodeenable" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">standaloneModeEnable</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">standaloneModeEnable</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Enables the Cortex to run the op control task in a standalone mode- no
@@ -3546,9 +3546,9 @@ a filter.</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

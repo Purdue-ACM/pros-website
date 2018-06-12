@@ -308,8 +308,8 @@
 <h1>Legacy API<a class="headerlink" href="#legacy-api" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Using this functionality requires including <code class="docutils literal"><span class="pre">&quot;pros/api_legacy.h&quot;</span></code> in
-addition to <code class="docutils literal"><span class="pre">&quot;api.h&quot;</span></code>.</p>
+<p class="last">Using this functionality requires including <code class="docutils literal notranslate"><span class="pre">&quot;pros/api_legacy.h&quot;</span></code> in
+addition to <code class="docutils literal notranslate"><span class="pre">&quot;api.h&quot;</span></code>.</p>
 </div>
 <div class="section" id="adi-functions">
 <h2>ADI Functions<a class="headerlink" href="#adi-functions" title="Permalink to this headline">¶</a></h2>
@@ -330,9 +330,9 @@ the difference between this value and the current sensor value when called.</p>
 2, and increasing the sample rate would not have a tangible difference in the
 function’s performance.</p>
 </div>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-analog-calibrate">adi_analog_calibrate</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -347,12 +347,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">analogCalibrate</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">analogCalibrate</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">analogCalibrate</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
@@ -387,9 +387,9 @@ Example</div>
 <p>Reads an analog input channel and returns the 12-bit value.</p>
 <p>The value returned is undefined if the analog pin has been switched to a different mode.
 The meaning of the returned value varies depending on the sensor attached.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-analog-read">adi_analog_read</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -404,12 +404,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">analogRead</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">analogRead</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
@@ -447,9 +447,9 @@ and a value of 4095 reflects an input voltage of nearly 5 V</p>
 <p>The <a class="reference internal" href="#analogcalibrate">analogCalibrate</a> function must be run first on that channel. This function is
 inappropriate for sensor values intended for integration, as round-off error can accumulate
 causing drift over time. Use <a class="reference internal" href="#analogreadcalibratedhr">analogReadCalibratedHR</a> instead.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-analog-read-calibrated">adi_analog_read_calibrated</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -464,12 +464,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">analogReadCalibrated</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">analogReadCalibrated</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
@@ -509,9 +509,9 @@ used on a sensor such as a line tracker or potentiometer.</p>
 <p>The value returned actually has 16 bits of “precision”, even though the ADC only reads
 12 bits, so that errors induced by the average value being between two values come out
 in the wash when integrated over time. Think of the value as the true value times 16.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-analog-read-calibrated-hr">adi_analog_read_calibrated_HR</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -526,12 +526,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">analogReadCalibratedHR</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">analogReadCalibratedHR</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
@@ -569,9 +569,9 @@ Example</div>
 <p>If the pin is configured as some other mode, the digital value which reflects the current
 state of the pin is returned, which may or may not differ from the currently set value. The
 return value is undefined for pins configured as Analog inputs.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be a digital input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be a digital input.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-digital-read">adi_digital_read</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -586,12 +586,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">digitalRead</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">digitalRead</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
@@ -625,9 +625,9 @@ Example</div>
 <div class="section" id="digitalwrite">
 <h3>digitalWrite<a class="headerlink" href="#digitalwrite" title="Permalink to this headline">¶</a></h3>
 <p>Sets the digital value (1 or 0) of a pin configured as a digital output.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be a digital output.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be a digital output.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#digital-write">adi_digital_write</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -642,13 +642,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">digitalWrite</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">digitalWrite</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                       <span class="k">const</span> <span class="kt">bool</span> <span class="n">value</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define DIGITAL_SENSOR_PORT</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="kt">bool</span> <span class="n">state</span> <span class="o">=</span> <span class="n">LOW</span><span class="p">;</span>
@@ -689,9 +689,9 @@ respectively, or the constants HIGH or LOW themselves</td>
 <h3>encoderGet<a class="headerlink" href="#encoderget" title="Permalink to this headline">¶</a></h3>
 <p>Gets the number of ticks recorded by the encoder.</p>
 <p>There are 360 ticks in one revolution.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-encoder-get">adi-encoder-get</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -706,12 +706,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">encoderGet</span> <span class="p">(</span> <span class="n">Encoder</span> <span class="n">enc</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">encoderGet</span> <span class="p">(</span> <span class="n">Encoder</span> <span class="n">enc</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define PORT_TOP 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PORT_TOP 1</span>
 <span class="cp">#define PORT_BOTTOM 2</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -737,7 +737,7 @@ Example</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>enc</td>
-<td>the <code class="docutils literal"><span class="pre">Encoder</span></code> object from <a class="reference internal" href="#encoderinit">encoderInit</a> to read, or simply the ADI port number</td>
+<td>the <code class="docutils literal notranslate"><span class="pre">Encoder</span></code> object from <a class="reference internal" href="#encoderinit">encoderInit</a> to read, or simply the ADI port number</td>
 </tr>
 </tbody>
 </table>
@@ -747,9 +747,9 @@ Example</div>
 <div class="section" id="encoderinit">
 <h3>encoderInit<a class="headerlink" href="#encoderinit" title="Permalink to this headline">¶</a></h3>
 <p>Initializes and enables a quadrature encoder on two ADI ports.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the criteria in the parameter list below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the criteria in the parameter list below.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-encoder-init">adi_encoder_init</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -764,14 +764,14 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Encoder</span> <span class="n">encoderInit</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port_top</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Encoder</span> <span class="n">encoderInit</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port_top</span><span class="p">,</span>
                      <span class="kt">uint8_t</span> <span class="n">port_bottom</span><span class="p">,</span>
                      <span class="k">const</span> <span class="kt">bool</span> <span class="n">reverse</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define PORT_TOP 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PORT_TOP 1</span>
 <span class="cp">#define PORT_BOTTOM 2</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -815,9 +815,9 @@ Example</div>
 <p>Resets the encoder to zero.</p>
 <p>It is safe to use this method while an encoder is enabled. It is not necessary to call this
 method before stopping or starting an encoder.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-encoder-reset">adi_encoder_reset</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -832,12 +832,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">encoderReset</span> <span class="p">(</span> <span class="n">Encoder</span> <span class="n">enc</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">encoderReset</span> <span class="p">(</span> <span class="n">Encoder</span> <span class="n">enc</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define PORT_TOP 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PORT_TOP 1</span>
 <span class="cp">#define PORT_BOTTOM 2</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -861,7 +861,7 @@ Example</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>enc</td>
-<td>the <code class="docutils literal"><span class="pre">Encoder</span></code> object from <a class="reference internal" href="#encoderinit">encoderInit</a> to reset or simply the ADI port number</td>
+<td>the <code class="docutils literal notranslate"><span class="pre">Encoder</span></code> object from <a class="reference internal" href="#encoderinit">encoderInit</a> to reset or simply the ADI port number</td>
 </tr>
 </tbody>
 </table>
@@ -871,9 +871,9 @@ Example</div>
 <div class="section" id="encodershutdown">
 <h3>encoderShutdown<a class="headerlink" href="#encodershutdown" title="Permalink to this headline">¶</a></h3>
 <p>Stops and disables the encoder.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -887,12 +887,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">encoderShutdown</span> <span class="p">(</span> <span class="n">Encoder</span> <span class="n">enc</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">encoderShutdown</span> <span class="p">(</span> <span class="n">Encoder</span> <span class="n">enc</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define PORT_TOP 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PORT_TOP 1</span>
 <span class="cp">#define PORT_BOTTOM 2</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -926,9 +926,9 @@ Example</div>
 <div class="section" id="adimotorget">
 <h3>adiMotorGet<a class="headerlink" href="#adimotorget" title="Permalink to this headline">¶</a></h3>
 <p>Returns the last set speed of the motor on the given port.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-motor-get">adi_motor_get</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -943,12 +943,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adiMotorGet</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adiMotorGet</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">adiMotorSet</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="mi">127</span><span class="p">);</span> <span class="c1">// Go full speed forward</span>
@@ -982,9 +982,9 @@ Example</div>
 <div class="section" id="adimotorset">
 <h3>adiMotorSet<a class="headerlink" href="#adimotorset" title="Permalink to this headline">¶</a></h3>
 <p>Sets the speed of the motor on the given port.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-motor-set">adi_motor_set</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -999,13 +999,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adiMotorSet</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adiMotorSet</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                       <span class="k">const</span> <span class="kt">int8_t</span> <span class="n">speed</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">adiMotorSet</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="mi">127</span><span class="p">);</span> <span class="c1">// Go full speed forward</span>
@@ -1041,9 +1041,9 @@ Example</div>
 <div class="section" id="adimotorstop">
 <h3>adiMotorStop<a class="headerlink" href="#adimotorstop" title="Permalink to this headline">¶</a></h3>
 <p>Stops the motor on the given port.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-motor-stop">adi_motor_stop</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1058,12 +1058,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_motor_stop</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_motor_stop</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define MOTOR_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">adi_motor_set</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="mi">127</span><span class="p">);</span> <span class="c1">// Go full speed forward</span>
@@ -1097,9 +1097,9 @@ Example</div>
 <div class="section" id="pinmode">
 <h3>pinMode<a class="headerlink" href="#pinmode" title="Permalink to this headline">¶</a></h3>
 <p>Configures the pin as an input or output with a variety of settings.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-pin-mode">adi_pin_mode</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1114,13 +1114,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-26 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pinMode</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pinMode</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                   <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">mode</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-27 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">pinMode</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span> <span class="n">INPUT_ANALOG</span><span class="p">);</span>
@@ -1158,9 +1158,9 @@ Example</div>
 <p>If no object was found, zero is returned. If the ultrasonic sensor was never started, the
 return value is PROS_ERR. Round and fluffy objects can cause inaccurate values to be
 returned.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The ultrasonic port number is out of range or the ultrasonic port is not properly configured.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The ultrasonic port number is out of range or the ultrasonic port is not properly configured.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-ultrasonic-get">adi_ultrasonic_get</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1175,12 +1175,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-28 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">ultrasonicGet</span> <span class="p">(</span> <span class="n">Ultrasonic</span> <span class="n">ult</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">ultrasonicGet</span> <span class="p">(</span> <span class="n">Ultrasonic</span> <span class="n">ult</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-29 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define PORT_ECHO 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PORT_ECHO 1</span>
 <span class="cp">#define PORT_PING 2</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -1217,9 +1217,9 @@ Example</div>
 <div class="section" id="ultrasonicinit">
 <h3>ultrasonicInit<a class="headerlink" href="#ultrasonicinit" title="Permalink to this headline">¶</a></h3>
 <p>Initializes an ultrasonic sensor on the specified ADI ports.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-ultrasonic-init">adi_ultrasonic_init</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1234,13 +1234,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-30 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Ultrasonic</span> <span class="n">ultrasonicInit</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port_echo</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Ultrasonic</span> <span class="n">ultrasonicInit</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port_echo</span><span class="p">,</span>
                             <span class="kt">uint8_t</span> <span class="n">port_ping</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-31 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define PORT_ECHO 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PORT_ECHO 1</span>
 <span class="cp">#define PORT_PING 2</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -1280,9 +1280,9 @@ Example</div>
 <div class="section" id="ultrasonicshutdown">
 <h3>ultrasonicShutdown<a class="headerlink" href="#ultrasonicshutdown" title="Permalink to this headline">¶</a></h3>
 <p>Stops and disables the ultrasonic sensor.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The ultrasonic port number is out of range or the ultrasonic port is not properly configured.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The ultrasonic port number is out of range or the ultrasonic port is not properly configured.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/adi.html#adi-ultrasonic-shutdown">adi_ultrasonic_shutdown</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1297,12 +1297,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-32 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">ultrasonicShutdown</span> <span class="p">(</span> <span class="n">Ultrasonic</span> <span class="n">ult</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">ultrasonicShutdown</span> <span class="p">(</span> <span class="n">Ultrasonic</span> <span class="n">ult</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-33 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define PORT_ECHO 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PORT_ECHO 1</span>
 <span class="cp">#define PORT_PING 2</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -1343,9 +1343,9 @@ Example</div>
 <div class="section" id="lcdclear">
 <h3>lcdClear<a class="headerlink" href="#lcdclear" title="Permalink to this headline">¶</a></h3>
 <p>Clear the text on the emulated three-button LCD screen.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference external" href="./c/llemu.html#lcd-initialize">lcd_initialize</a> first.</li>
+<li><code class="docutils literal notranslate"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference external" href="./c/llemu.html#lcd-initialize">lcd_initialize</a> first.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/llemu.html#lcd-clear">lcd_clear</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1360,12 +1360,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-34 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcd_clear</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcd_clear</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-35 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">lcd_initialize</span><span class="p">();</span>
   <span class="n">lcd_set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
   <span class="n">lcd_clear</span><span class="p">();</span> <span class="c1">// No more text will be displayed</span>
@@ -1374,17 +1374,17 @@ Example</div>
 </div>
 </div>
 </div>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
-<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal notranslate"><span class="pre">errno</span></code> values as specified above.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="lcdclearline">
 <h3>lcdClearLine<a class="headerlink" href="#lcdclearline" title="Permalink to this headline">¶</a></h3>
 <p>Clears a line on the emulated three-button LCD screen.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference external" href="./c/llemu.html#lcd-initialize">lcd_initialize</a> first.</li>
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
+<li><code class="docutils literal notranslate"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference external" href="./c/llemu.html#lcd-initialize">lcd_initialize</a> first.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/llemu.html#lcd-clear-line">lcd_clear_line</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1399,12 +1399,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-36 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcdClearLine</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">line</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcdClearLine</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">line</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-37 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">lcdInit</span><span class="p">();</span>
   <span class="n">lcdSetText</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
   <span class="n">lcdClearLine</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">// No more text will be displayed</span>
@@ -1429,8 +1429,8 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
-<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal notranslate"><span class="pre">errno</span></code> values as specified above.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="lcdinit">
@@ -1449,12 +1449,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-38 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcdInit</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcdInit</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-39 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">lcdInit</span><span class="p">();</span>
   <span class="n">lcdSetText</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -1462,7 +1462,7 @@ Example</div>
 </div>
 </div>
 </div>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the LCD was successfully initialized, or <code class="docutils literal"><span class="pre">false</span></code> if it has already been initialized.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the LCD was successfully initialized, or <code class="docutils literal notranslate"><span class="pre">false</span></code> if it has already been initialized.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="lcdisinitialized">
@@ -1481,12 +1481,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-40 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcdIsInitialized</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcdIsInitialized</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-41 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">lcdInit</span><span class="p">();</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Is the LCD initialized? %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">lcdIsInitialized</span><span class="p">());</span>
   <span class="c1">// Will Display True</span>
@@ -1501,11 +1501,11 @@ Example</div>
 <div class="section" id="lcdprint">
 <h3>lcdPrint<a class="headerlink" href="#lcdprint" title="Permalink to this headline">¶</a></h3>
 <p>Displays a formatted string on the emulated three-button LCD screen</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#lcdinit">lcdInit</a> first.</li>
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
+<li><code class="docutils literal notranslate"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#lcdinit">lcdInit</a> first.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/llemu.html#lcd-print">lcd_print</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1520,14 +1520,14 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-42 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcdPrint</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">line</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcdPrint</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">line</span><span class="p">,</span>
                 <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">fmt</span><span class="p">,</span>
                 <span class="p">...</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-43 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">lcdInit</span><span class="p">();</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">lcdPrint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Buttons Bitmap: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">lcd_read_buttons</span><span class="p">());</span>
@@ -1560,16 +1560,16 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
-<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal notranslate"><span class="pre">errno</span></code> values as specified above.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="lcdreadbuttons">
 <h3>lcdReadButtons<a class="headerlink" href="#lcdreadbuttons" title="Permalink to this headline">¶</a></h3>
 <p>Reads the button status from the emulated three-button LCD.</p>
-<p>The value returned is a 3-bitinteger where <code class="docutils literal"><span class="pre">1</span> <span class="pre">0</span> <span class="pre">0</span></code> indicates the left button
-is pressed, <code class="docutils literal"><span class="pre">0</span> <span class="pre">1</span> <span class="pre">0</span></code> indicates the center button is pressed, and <code class="docutils literal"><span class="pre">0</span> <span class="pre">0</span> <span class="pre">1</span></code>
-indicates the right button is pressed. <code class="docutils literal"><span class="pre">0</span></code> is returned if no buttons are
+<p>The value returned is a 3-bitinteger where <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">0</span> <span class="pre">0</span></code> indicates the left button
+is pressed, <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">1</span> <span class="pre">0</span></code> indicates the center button is pressed, and <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">0</span> <span class="pre">1</span></code>
+indicates the right button is pressed. <code class="docutils literal notranslate"><span class="pre">0</span></code> is returned if no buttons are
 currently being pressed.</p>
 <p>Note that this function is provided for legacy API compatibility purposes,
 with the caveat that the V5 touch screen does not actually support pressing
@@ -1587,12 +1587,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-44 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span> <span class="n">lcdReadButtons</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span> <span class="n">lcdReadButtons</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-45 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">lcdInit</span><span class="p">();</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Buttons Bitmap: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">lcdReadButtons</span><span class="p">());</span>
@@ -1609,10 +1609,10 @@ Example</div>
 <div class="section" id="lcdsettext">
 <h3>lcdSetText<a class="headerlink" href="#lcdsettext" title="Permalink to this headline">¶</a></h3>
 <p>Displays a string on the emulated three-button LCD screen</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#lcdinit">lcdInit</a> first.</li>
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
+<li><code class="docutils literal notranslate"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#lcdinit">lcdInit</a> first.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/llemu.html#lcd-set-text">lcd_set_text</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1627,13 +1627,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-46 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcdSetText</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">line</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcdSetText</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">line</span><span class="p">,</span>
                   <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">text</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-47 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">lcd_initialize</span><span class="p">();</span>
   <span class="n">lcd_set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -1660,8 +1660,8 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
-<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal notranslate"><span class="pre">errno</span></code> values as specified above.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="lcdshutdown">
@@ -1669,9 +1669,9 @@ Example</div>
 <p>Turn off the Legacy LCD Emulator.</p>
 <p>Calling this function will clear the entire display, and you will not be able
 to call any further LLEMU functions until another call to <a class="reference internal" href="#lcdinit">lcdInit</a>.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">ENXIO</span></code> - The LCD has not been initialized. Call <a class="reference internal" href="#lcdinit">lcdInit</a> first.</li>
+<li><code class="docutils literal notranslate"><span class="pre">ENXIO</span></code> - The LCD has not been initialized. Call <a class="reference internal" href="#lcdinit">lcdInit</a> first.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/llemu.html#lcd-print">lcd_print</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1686,12 +1686,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-48 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcdShutdown</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">lcdShutdown</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-49 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">lcdInit</span><span class="p">();</span>
   <span class="n">lcdSetText</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
   <span class="n">lcdShutdown</span><span class="p">();</span> <span class="c1">// All done with the LCD</span>
@@ -1700,8 +1700,8 @@ Example</div>
 </div>
 </div>
 </div>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
-<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal notranslate"><span class="pre">errno</span></code> values as specified above.</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -1722,12 +1722,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-50 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isAutonomous</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isAutonomous</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-51 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ignore</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ignore</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">isAutonomous</span><span class="p">())</span> <span class="p">{</span>
     <span class="c1">// Wait to do anything until autonomous starts</span>
     <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
@@ -1762,12 +1762,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-52 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isOnline</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isOnline</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-53 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">isOnline</span><span class="p">())</span> <span class="p">{</span>
     <span class="c1">// Field Control is Connected</span>
     <span class="c1">// Run LCD Selector code or similar</span>
@@ -1795,12 +1795,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-54 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isEnabled</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isEnabled</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-55 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ignore</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ignore</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="n">isEnabled</span><span class="p">())</span> <span class="p">{</span>
     <span class="c1">// Run competition tasks (like Lift Control or similar)</span>
   <span class="p">}</span>
@@ -1819,10 +1819,10 @@ Example</div>
 <div class="section" id="joystickgetanalog">
 <h3>joystickGetAnalog<a class="headerlink" href="#joystickgetanalog" title="Permalink to this headline">¶</a></h3>
 <p>Gets the value of an analog channel (joystick) on a controller.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
 </ul>
 <p>Analogous to controller_get_analog &lt;./c/misc.html#controller-get-analog&gt;`_.</p>
 <div class="sphinx-tabs docutils container">
@@ -1837,13 +1837,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-56 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">joystickGetAnalog</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">joystickGetAnalog</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span><span class="p">,</span>
                             <span class="n">controller_analog_e_t</span> <span class="n">channel</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-57 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">motor_move</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">joystickGetAnalog</span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">E_CONTROLLER_ANALOG_LEFT_Y</span><span class="p">));</span>
     <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
@@ -1882,10 +1882,10 @@ If the controller was not connected, then 0 is returned</p>
 <div class="section" id="joystickgetdigital">
 <h3>joystickGetDigital<a class="headerlink" href="#joystickgetdigital" title="Permalink to this headline">¶</a></h3>
 <p>Gets the value of an digital channel (button) on a controller.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
 </ul>
 <p>Analogous to joystickGetDigital &lt;./c/misc.html#joystickGetDigital&gt;`_.</p>
 <div class="sphinx-tabs docutils container">
@@ -1900,13 +1900,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-58 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">joystickGetDigital</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">joystickGetDigital</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span><span class="p">,</span>
                              <span class="n">controller_digital_e_t</span> <span class="n">button</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-59 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">joystickGetDigital</span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">E_CONTROLLER_DIGITAL_A</span><span class="p">))</span> <span class="p">{</span>
       <span class="n">adiMotorSet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
@@ -1949,10 +1949,10 @@ If the controller was not connected, then 0 is returned</p>
 <div class="section" id="joystickisconnected">
 <h3>joystickIsConnected<a class="headerlink" href="#joystickisconnected" title="Permalink to this headline">¶</a></h3>
 <p>Returns 0 or 1 if the controller is connected.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/misc.html#controller-is-connected">controller_is_connected</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1967,12 +1967,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-60 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">joystickIsConnected</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">joystickIsConnected</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-61 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">joystickIsConnected</span><span class="p">(</span><span class="n">E_CONTROLLER_PARTNER</span><span class="p">))</span> <span class="p">{</span>
       <span class="c1">// Use a two controller control scheme</span>
@@ -2028,12 +2028,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-62 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">mutex_t</span> <span class="n">mutexCreate</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">mutex_t</span> <span class="n">mutexCreate</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-63 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Mutex</span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">mutexCreate</span><span class="p">();</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Mutex</span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">mutexCreate</span><span class="p">();</span>
 
 <span class="c1">// Acquire the mutex; other tasks using this command will wait until the mutex is released</span>
 <span class="c1">// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever</span>
@@ -2047,7 +2047,7 @@ Example</div>
 </div>
 </div>
 <p><strong>Returns:</strong>  A handle to a newly created mutex. If an error occurred, NULL will be
-returned and <code class="docutils literal"><span class="pre">errno</span></code> can be checked for hints as to why <a class="reference internal" href="#mutexcreate">mutexCreate</a> failed.</p>
+returned and <code class="docutils literal notranslate"><span class="pre">errno</span></code> can be checked for hints as to why <a class="reference internal" href="#mutexcreate">mutexCreate</a> failed.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="mutexgive">
@@ -2067,12 +2067,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-64 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutexGive</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutexGive</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-65 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Mutex</span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">mutexCreate</span><span class="p">();</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Mutex</span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">mutexCreate</span><span class="p">();</span>
 
 <span class="c1">// Acquire the mutex; other tasks using this command will wait until the mutex is released</span>
 <span class="c1">// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever</span>
@@ -2102,7 +2102,7 @@ Example</div>
 </tbody>
 </table>
 <p><strong>Returns:</strong> True if the mutex was successfully returned, false otherwise. If false
-is returned, then <code class="docutils literal"><span class="pre">errno</span></code> is set with a hint about why the mutex couldn’t
+is returned, then <code class="docutils literal notranslate"><span class="pre">errno</span></code> is set with a hint about why the mutex couldn’t
 be returned.</p>
 </div>
 <hr class="docutils" />
@@ -2124,13 +2124,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-66 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutexTake</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutexTake</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span><span class="p">,</span>
                  <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-67 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Mutex</span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">mutexCreate</span><span class="p">();</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Mutex</span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">mutexCreate</span><span class="p">();</span>
 
 <span class="c1">// Acquire the mutex; other tasks using this command will wait until the mutex is released</span>
 <span class="c1">// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever</span>
@@ -2165,7 +2165,7 @@ Example</div>
 </tbody>
 </table>
 <p><strong>Returns:</strong> True if the mutex was successfully taken, false otherwise. If false
-is returned, then <code class="docutils literal"><span class="pre">errno</span></code> is set with a hint about why the the mutex
+is returned, then <code class="docutils literal notranslate"><span class="pre">errno</span></code> is set with a hint about why the the mutex
 couldn’t be taken.</p>
 </div>
 <hr class="docutils" />
@@ -2185,7 +2185,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-68 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">task_t</span> <span class="n">taskCreate</span> <span class="p">(</span> <span class="n">task_fn_t</span> <span class="n">function</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">task_t</span> <span class="n">taskCreate</span> <span class="p">(</span> <span class="n">task_fn_t</span> <span class="n">function</span><span class="p">,</span>
                     <span class="kt">void</span><span class="o">*</span> <span class="n">parameters</span><span class="p">,</span>
                     <span class="kt">uint8_t</span> <span class="n">prio</span><span class="p">,</span>
                     <span class="kt">uint16_t</span> <span class="n">stack_depth</span><span class="p">,</span>
@@ -2194,7 +2194,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-69 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">);</span>
   <span class="c1">// ...</span>
 <span class="p">}</span>
@@ -2231,7 +2231,7 @@ Example</div>
 </tbody>
 </table>
 <p><strong>Returns:</strong> Will return a handle by which the newly created task can be referenced.
-If an error occurred, NULL will be returned and <code class="docutils literal"><span class="pre">errno</span></code> can be checked for hints
+If an error occurred, NULL will be returned and <code class="docutils literal notranslate"><span class="pre">errno</span></code> can be checked for hints
 as to why <a class="reference external" href="./c/rtos.html#task-create">task_create</a> failed.</p>
 </div>
 <hr class="docutils" />
@@ -2254,12 +2254,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-70 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskDelay</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">milliseconds</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskDelay</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">milliseconds</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-71 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Do opcontrol things</span>
     <span class="n">taskDelay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
@@ -2291,7 +2291,7 @@ Example</div>
 <h3>taskDelayUntil<a class="headerlink" href="#taskdelayuntil" title="Permalink to this headline">¶</a></h3>
 <p>Delay a task until a specified time.  This function can be used by periodic
 tasks to ensure a constant execution frequency.</p>
-<p>The task will be woken up at the time <code class="docutils literal"><span class="pre">*prev_time</span> <span class="pre">+</span> <span class="pre">delta</span></code>, and <code class="docutils literal"><span class="pre">*prev_time</span></code> will
+<p>The task will be woken up at the time <code class="docutils literal notranslate"><span class="pre">*prev_time</span> <span class="pre">+</span> <span class="pre">delta</span></code>, and <code class="docutils literal notranslate"><span class="pre">*prev_time</span></code> will
 be updated to reflect the time at which the task will unblock.</p>
 <p>Analogous to task_delay_until &lt;./c/rtos.html#task-delay-until&gt;`_.</p>
 <div class="sphinx-tabs docutils container">
@@ -2306,13 +2306,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-72 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskDelayUntil</span> <span class="p">(</span> <span class="kt">uint32_t</span><span class="o">*</span> <span class="k">const</span> <span class="n">prev_time</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskDelayUntil</span> <span class="p">(</span> <span class="kt">uint32_t</span><span class="o">*</span> <span class="k">const</span> <span class="n">prev_time</span><span class="p">,</span>
                       <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">delta</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-73 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="kt">uint32_t</span> <span class="n">now</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Do opcontrol things</span>
@@ -2363,12 +2363,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-74 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskDelete</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskDelete</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-75 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">);</span>
   <span class="c1">// ...</span>
 <span class="p">}</span>
@@ -2418,12 +2418,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-76 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">taskGetCount</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">taskGetCount</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-77 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">);</span>
   <span class="c1">// ...</span>
 <span class="p">}</span>
@@ -2454,12 +2454,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-78 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">taskGetPriority</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">taskGetPriority</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-79 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">);</span>
   <span class="c1">// ...</span>
 <span class="p">}</span>
@@ -2506,12 +2506,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-80 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">task_state_e_t</span> <span class="n">taskGetState</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">task_state_e_t</span> <span class="n">taskGetState</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-81 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">param</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">);</span>
   <span class="c1">// ...</span>
 <span class="p">}</span>
@@ -2559,12 +2559,12 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-82 active docutils container">
 <blockquote>
-<div><div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskResume</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskResume</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-83 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ign</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ign</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// Do things</span>
 <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -2617,13 +2617,13 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-84 active docutils container">
 <blockquote>
-<div><div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskSetPriority</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span><span class="p">,</span>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskSetPriority</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span><span class="p">,</span>
                        <span class="kt">uint32_t</span> <span class="n">prio</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-85 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ign</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ign</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// Do things</span>
 <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -2673,12 +2673,12 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-86 active docutils container">
 <blockquote>
-<div><div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskSuspend</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
+<div><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">taskSuspend</span> <span class="p">(</span> <span class="n">TaskHandle</span> <span class="n">task</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div></blockquote>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-87 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ign</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ign</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// Do things</span>
 <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -2716,10 +2716,10 @@ Example</div>
 <p>Sets the voltage for the motor from -127 to 127.</p>
 <p>This is designed to map easily to the input from the controller’s analog
 stick for simple opcontrol use.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/motors.html#motor-move">motor_move</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -2734,13 +2734,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-88 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motorSet</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motorSet</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                    <span class="k">const</span> <span class="kt">int8_t</span> <span class="n">voltage</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-89 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">motorSet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">joystickGetAnalog</span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">E_CONTROLLER_ANALOG_LEFT_Y</span><span class="p">));</span>
     <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
@@ -2769,17 +2769,17 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="motorget">
 <h3>motorGet<a class="headerlink" href="#motorget" title="Permalink to this headline">¶</a></h3>
 <p>Gets the voltage delivered to the motor in mV.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="./c/motors.html#motor-get-voltage">motor_get_voltage</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -2794,12 +2794,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-90 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">motorGet</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">motorGet</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-91 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">motorSet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">joystickGetAnalog</span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">E_CONTROLLER_ANALOG_LEFT_Y</span><span class="p">));</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Motor Voltage: %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">motorGet</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
@@ -2826,17 +2826,17 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> The motor’s voltage in mV or <code class="docutils literal"><span class="pre">PROS_ERR_F</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> The motor’s voltage in mV or <code class="docutils literal notranslate"><span class="pre">PROS_ERR_F</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="motorstop">
 <h3>motorStop<a class="headerlink" href="#motorstop" title="Permalink to this headline">¶</a></h3>
 <p>Sets the motor’s output to zero.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -2850,12 +2850,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-92 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motorStop</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motorStop</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-93 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">motorSet</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">127</span><span class="p">);</span>
   <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// Move for 1 second</span>
   <span class="n">motorStop</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
@@ -2883,8 +2883,8 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal"><span class="pre">PROS_ERR</span></code> if the operation failed,
-setting <code class="docutils literal"><span class="pre">errno</span></code>.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -2895,14 +2895,14 @@ setting <code class="docutils literal"><span class="pre">errno</span></code>.</p
 <p>Reference type for an initialized encoder.</p>
 <p>This merely contains the port number for the encoder, unlike its use as an
 object to store encoder data in PROS 2.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">int32_t</span> <span class="n">Encoder</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">int32_t</span> <span class="n">Encoder</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="taskhandle">
 <h3>TaskHandle<a class="headerlink" href="#taskhandle" title="Permalink to this headline">¶</a></h3>
 <p>Points to a task handle. Used for referencing a task.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="n">TaskHandle</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="n">TaskHandle</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -2911,7 +2911,7 @@ object to store encoder data in PROS 2.</p>
 <p>Reference type for an initialized ultrasonic.</p>
 <p>This merely contains the port number for the ultrasonic, unlike its use as an
 object to store encoder data in PROS 2.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">int32_t</span> <span class="n">Ultrasonic</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">int32_t</span> <span class="n">Ultrasonic</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>

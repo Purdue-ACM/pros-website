@@ -256,13 +256,13 @@ Task</a> for more details.</p>
 <p>PROS provides a simple library for interacting with your IMEs. A sample
 usage would be as follows:</p>
 <p>main.h:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define IME_LEFT_MOTOR 0</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define IME_LEFT_MOTOR 0</span>
 <span class="cp">#define IME_RIGHT_MOTOR 1</span>
 <span class="cp">#define NUMBER_OF_IME 2</span>
 </pre></div>
 </div>
 <p>init.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">(){</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">(){</span>
     <span class="c1">// ...</span>
     <span class="c1">// Check count to ensure all IMEs are plugged in!</span>
     <span class="kt">int</span> <span class="n">IMECount</span> <span class="o">=</span> <span class="n">imeInitializeAll</span><span class="p">();</span>
@@ -273,7 +273,7 @@ usage would be as follows:</p>
 </pre></div>
 </div>
 <p>opcontrolc or auto.c:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(){</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">(){</span>
     <span class="c1">// ... do work</span>
     <span class="c1">// Get IME tick count in the &quot;counts&quot; variable</span>
     <span class="c1">// (conversion to rotations varies depending on the motor type in use)</span>
@@ -306,7 +306,7 @@ the first byte of the data argument should be the first register of the
 slave being written to. Shown below is a short example of initializing
 and configuring a fictional I2C slave sensor.</p>
 <p>main.h</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">// 7-bit address of the slave I2C device, right aligned</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// 7-bit address of the slave I2C device, right aligned</span>
 <span class="cp">#define I2C_SLAVE_ADDR         0x4A</span>
 <span class="c1">// Fictional &quot;enable&quot; register for the device</span>
 <span class="cp">#define I2C_SLAVE_REG_ENABLE   0x38</span>
@@ -315,7 +315,7 @@ and configuring a fictional I2C slave sensor.</p>
 </pre></div>
 </div>
 <p>init.c</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// Note the address of the first register of the buffer is first in the message</span>
@@ -351,14 +351,14 @@ in its usefulness. To that extent, below is an example showing how to
 read from data from a fictional sensor using the more typical
 <a class="reference external" href="../api/index.html#i2cReadRegister">i2cReadRegister()</a>.</p>
 <p>main.h</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">// 7-bit address of the slave I2C device, right aligned</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// 7-bit address of the slave I2C device, right aligned</span>
 <span class="cp">#define I2C_SLAVE_ADDR       0x4A</span>
 <span class="c1">// Fictional 32-bit data buffer for the device, 0x30-0x34</span>
 <span class="cp">#define I2C_SLAVE_BUF_DATA   0x30</span>
 </pre></div>
 </div>
 <p>auto.c</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;main.h&quot;</span><span class="cp"></span>
 
 <span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
     <span class="kt">uint8_t</span> <span class="n">dataIn</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
@@ -407,11 +407,11 @@ driver. A critical aspect of this driver is its initialization routine.
 Since I2C slave sensors often have their own microprocessors present,
 they may require several registers to be configured and an enable
 register to be set before they will even begin collecting data. It is
-recommended that a <code class="docutils literal"><span class="pre">Xinit()</span></code> function be created for sensor X (e.g.
+recommended that a <code class="docutils literal notranslate"><span class="pre">Xinit()</span></code> function be created for sensor X (e.g.
 lidarInit, gyroInit, etc) so that it may be called from different
 locations in the robot code rather than hard-coding the setup protocol
-into <code class="docutils literal"><span class="pre">init.c</span></code>. This way if the device were to ever lose power or
-disconnect a reconnection attempt is feasible. This <code class="docutils literal"><span class="pre">Xinit()</span></code> function
+into <code class="docutils literal notranslate"><span class="pre">init.c</span></code>. This way if the device were to ever lose power or
+disconnect a reconnection attempt is feasible. This <code class="docutils literal notranslate"><span class="pre">Xinit()</span></code> function
 will contain several calls to
 <a class="reference external" href="../api/index.html#i2cWriteRegister">i2cWriteRegister()</a> and
 <a class="reference external" href="../api/index.html#i2cReadRegister">i2cReadRegister()</a> that follow the
@@ -422,7 +422,7 @@ routines as well. This can drastically improve code readability and
 portability to future robots. A simple device driver for a fictional
 lidar is given below.</p>
 <p>lidar.h</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">// The 7-bit I2C address of the lidar sensor</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// The 7-bit I2C address of the lidar sensor</span>
 <span class="c1">// Found in its manufacturer datasheet</span>
 <span class="cp">#define LIDAR_ADDR              0x67</span>
 <span class="cp">#define LIDAR_REG_CFG_ADDR      0x10</span>
@@ -476,7 +476,7 @@ lidar is given below.</p>
 </pre></div>
 </div>
 <p>lidar.c</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">lidarInit</span><span class="p">()</span> <span class="p">{</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">lidarInit</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// Initialize with PVAL0 high quality, PVAL1 standard quality, enable, no interrupt</span>
     <span class="n">LIDAR_REG_CFG</span><span class="p">.</span><span class="n">field</span><span class="p">.</span><span class="n">PVAL0</span> <span class="o">=</span> <span class="n">LIDAR_REG_CFG_PVAL</span><span class="p">.</span><span class="n">HQ</span><span class="p">;</span>
     <span class="n">LIDAR_REG_CFG</span><span class="p">.</span><span class="n">field</span><span class="p">.</span><span class="n">PVAL1</span> <span class="o">=</span> <span class="n">LIDAR_REG_CFG_PVAL</span><span class="p">.</span><span class="n">SQ</span><span class="p">;</span>
@@ -516,7 +516,7 @@ lidar is given below.</p>
 </pre></div>
 </div>
 <p>auto.c</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;lidar.h&quot;</span><span class="cp"></span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;lidar.h&quot;</span><span class="cp"></span>
 
 <span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
 <span class="p">}</span>
@@ -533,15 +533,15 @@ runs at very consistent intervals and it is never starved for processing
 resources. The I2C line updates at 4KHz in PROS, but it is typically
 unnecessary to read any faster than once per millisecond.</p>
 <p>The I2C polling task can be run like any other task. It is highly
-recommended that the <code class="docutils literal"><span class="pre">taskDelayUntil()</span></code> function be used instead of
-<code class="docutils literal"><span class="pre">delay()</span></code> to set the loop frequency to prevent even-odd jitter.</p>
+recommended that the <code class="docutils literal notranslate"><span class="pre">taskDelayUntil()</span></code> function be used instead of
+<code class="docutils literal notranslate"><span class="pre">delay()</span></code> to set the loop frequency to prevent even-odd jitter.</p>
 <p>A Third-party gyroscope is used as an example here because it needs to
 be polled regularly. This same technique can be applied to any other I2C
 device that needs to be polled regularly, provided that you use its
 appropriate initialization and integration functions as opposed to the
 examples here.</p>
 <p>i2cTask.c</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;third_party_gyro.h&quot; //custom gyro</span><span class="cp"></span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;third_party_gyro.h&quot; //custom gyro</span><span class="cp"></span>
 
 <span class="cp">#define NUM_IMES 2 </span><span class="c1">//using two IMEs on the robot</span>
 <span class="cp">#define IME_LEFT 0</span>
@@ -575,7 +575,7 @@ examples here.</p>
 </pre></div>
 </div>
 <p>init.c</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">i2cTaskStart</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
@@ -597,10 +597,10 @@ the robot that are prime candidates for static discharge from the field.</p>
 the status of the Cortex and perform a reset in the case of a static
 shock. The watchdog is a feature that is implemented in the Cortex M3
 chip itself, and PROS simply provides a wrapper for this.</p>
-<p>To enable the watchdog, it must be started in <code class="docutils literal"><span class="pre">initalizeIO()</span></code>. Calling
+<p>To enable the watchdog, it must be started in <code class="docutils literal notranslate"><span class="pre">initalizeIO()</span></code>. Calling
 the watchdog anywhere else will not have an effect.</p>
 <p>init.c</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initializeIO</span><span class="p">()</span> <span class="p">{</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initializeIO</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">watchdogInit</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
@@ -630,7 +630,7 @@ endianness.</p>
 <div class="section" id="union-struct-method">
 <h3>Union/Struct method<a class="headerlink" href="#union-struct-method" title="Permalink to this headline">¶</a></h3>
 <p>One solution to reading a collection of bits from a device is to use a
-struct wrapped in a union as seen in the <code class="docutils literal"><span class="pre">LIDAR_REG_CFG</span></code> union in
+struct wrapped in a union as seen in the <code class="docutils literal notranslate"><span class="pre">LIDAR_REG_CFG</span></code> union in
 <a class="reference external" href="i2c.html#thirdPartyI2CDevices">Third-Party I2C Devices</a>. The
 union contains a value that contains the reading from the sensor, and
 the struct contains each significant bit as an individual value. Write
@@ -689,9 +689,9 @@ about the subject is recommended.</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

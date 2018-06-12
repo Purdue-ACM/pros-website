@@ -241,11 +241,16 @@
             
   <div class="section" id="touch-management-engine-interface-tmei-api">
 <h1>Touch Management Engine Interface (TMEI) API<a class="headerlink" href="#touch-management-engine-interface-tmei-api" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">TMEI is going to be deprecated pending further work on incorporating
+<a class="reference external" href="https://littlevgl.com/">LVGL</a>. It is recommended to start using LVGL.</p>
+</div>
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="display-clear-line">
 <h3>display_clear_line<a class="headerlink" href="#display-clear-line" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_clear_line</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_clear_line</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
                           <span class="kt">int16_t</span> <span class="n">y0</span><span class="p">,</span>
                           <span class="kt">int16_t</span> <span class="n">x1</span><span class="p">,</span>
                           <span class="kt">int16_t</span> <span class="n">y1</span> <span class="p">)</span>
@@ -280,7 +285,7 @@
 </div>
 <div class="section" id="display-clear-pixel">
 <h3>display_clear_pixel<a class="headerlink" href="#display-clear-pixel" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_clear_pixel</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_clear_pixel</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x</span><span class="p">,</span>
                            <span class="kt">int16_t</span> <span class="n">y</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -307,7 +312,7 @@
 </div>
 <div class="section" id="display-clear-rect">
 <h3>display_clear_rect<a class="headerlink" href="#display-clear-rect" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_clear_rect</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_clear_rect</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
                           <span class="kt">int16_t</span> <span class="n">y0</span><span class="p">,</span>
                           <span class="kt">int16_t</span> <span class="n">x1</span><span class="p">,</span>
                           <span class="kt">int16_t</span> <span class="n">y1</span> <span class="p">)</span>
@@ -342,7 +347,7 @@
 </div>
 <div class="section" id="display-copy-rect">
 <h3>display_copy_rect<a class="headerlink" href="#display-copy-rect" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_copy_rect</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_copy_rect</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
                          <span class="kt">int16_t</span> <span class="n">y0</span><span class="p">,</span>
                          <span class="kt">int16_t</span> <span class="n">x1</span><span class="p">,</span>
                          <span class="kt">int16_t</span> <span class="n">y1</span><span class="p">,</span>
@@ -389,7 +394,7 @@
 </div>
 <div class="section" id="display-draw-line">
 <h3>display_draw_line<a class="headerlink" href="#display-draw-line" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_draw_line</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_draw_line</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
                          <span class="kt">int16_t</span> <span class="n">y0</span><span class="p">,</span>
                          <span class="kt">int16_t</span> <span class="n">x1</span><span class="p">,</span>
                          <span class="kt">int16_t</span> <span class="n">y1</span> <span class="p">)</span>
@@ -424,7 +429,7 @@
 </div>
 <div class="section" id="display-draw-pixel">
 <h3>display_draw_pixel<a class="headerlink" href="#display-draw-pixel" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_draw_pixel</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_draw_pixel</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x</span><span class="p">,</span>
                           <span class="kt">int16_t</span> <span class="n">y</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -451,7 +456,7 @@
 </div>
 <div class="section" id="display-draw-rect">
 <h3>display_draw_rect<a class="headerlink" href="#display-draw-rect" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_draw_rect</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_draw_rect</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
                          <span class="kt">int16_t</span> <span class="n">y0</span><span class="p">,</span>
                          <span class="kt">int16_t</span> <span class="n">x1</span><span class="p">,</span>
                          <span class="kt">int16_t</span> <span class="n">y1</span> <span class="p">)</span>
@@ -486,14 +491,14 @@
 </div>
 <div class="section" id="display-erase">
 <h3>display_erase<a class="headerlink" href="#display-erase" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_erase</span> <span class="p">(</span> <span class="kt">void</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_erase</span> <span class="p">(</span> <span class="kt">void</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Reset the display to the default black screen.</p>
 </div>
 <div class="section" id="display-fill-rect">
 <h3>display_fill_rect<a class="headerlink" href="#display-fill-rect" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_fill_rect</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_fill_rect</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
                          <span class="kt">int16_t</span> <span class="n">y0</span><span class="p">,</span>
                          <span class="kt">int16_t</span> <span class="n">x1</span><span class="p">,</span>
                          <span class="kt">int16_t</span> <span class="n">y1</span> <span class="p">)</span>
@@ -528,7 +533,7 @@
 </div>
 <div class="section" id="display-scroll">
 <h3>display_scroll<a class="headerlink" href="#display-scroll" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_scroll</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">start_line</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_scroll</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">start_line</span><span class="p">,</span>
                       <span class="kt">int16_t</span> <span class="n">lines</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -555,7 +560,7 @@
 </div>
 <div class="section" id="display-scroll-rect">
 <h3>display_scroll_rect<a class="headerlink" href="#display-scroll-rect" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_scroll_rect</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_scroll_rect</span> <span class="p">(</span> <span class="kt">int16_t</span> <span class="n">x0</span><span class="p">,</span>
                            <span class="kt">int16_t</span> <span class="n">y0</span><span class="p">,</span>
                            <span class="kt">int16_t</span> <span class="n">x1</span><span class="p">,</span>
                            <span class="kt">int16_t</span> <span class="n">y1</span><span class="p">,</span>
@@ -597,7 +602,7 @@ line.</p>
 </div>
 <div class="section" id="display-set-color-bg">
 <h3>display_set_color_bg<a class="headerlink" href="#display-set-color-bg" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_set_color_bg</span> <span class="p">(</span> <span class="kt">uint32_t</span> <span class="n">color</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_set_color_bg</span> <span class="p">(</span> <span class="kt">uint32_t</span> <span class="n">color</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Set the background color for subsequent graphics operations.</p>
@@ -624,7 +629,7 @@ line.</p>
 </div>
 <div class="section" id="display-set-color-fg">
 <h3>display_set_color_fg<a class="headerlink" href="#display-set-color-fg" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_set_color_fg</span> <span class="p">(</span> <span class="kt">uint32_t</span> <span class="n">color</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">display_set_color_fg</span> <span class="p">(</span> <span class="kt">uint32_t</span> <span class="n">color</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Set the foreground color for subsequent graphics operations.</p>

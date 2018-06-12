@@ -223,14 +223,14 @@ code:</p>
 </ul>
 <p>Within Atom, click the ‘Upload to Cortex’ button in Atom. This process
 will upload the binary the compilation process created
-(<code class="docutils literal"><span class="pre">bin/output.bin</span></code>) to the Cortex and begin running it.</p>
+(<code class="docutils literal notranslate"><span class="pre">bin/output.bin</span></code>) to the Cortex and begin running it.</p>
 <img alt="../_images/upload.png" src="../_images/upload.png" />
 <p>Using just the terminal, this can be done by navigating to the directory
-(or subdirectory) of the PROS project and invoking <code class="docutils literal"><span class="pre">pros</span> <span class="pre">upload</span></code>. You
-can get all of the command options by running <code class="docutils literal"><span class="pre">pros</span> <span class="pre">upload</span> <span class="pre">--help</span></code>.
-Some additional commands you may find helpful is <code class="docutils literal"><span class="pre">pros</span> <span class="pre">mu</span></code>, which runs
-the default Make target (forks and calls <code class="docutils literal"><span class="pre">make</span></code>) and then uploads your
-code, and <code class="docutils literal"><span class="pre">pros</span> <span class="pre">mut</span></code>, which does the same but also opens the PROS
+(or subdirectory) of the PROS project and invoking <code class="docutils literal notranslate"><span class="pre">pros</span> <span class="pre">upload</span></code>. You
+can get all of the command options by running <code class="docutils literal notranslate"><span class="pre">pros</span> <span class="pre">upload</span> <span class="pre">--help</span></code>.
+Some additional commands you may find helpful is <code class="docutils literal notranslate"><span class="pre">pros</span> <span class="pre">mu</span></code>, which runs
+the default Make target (forks and calls <code class="docutils literal notranslate"><span class="pre">make</span></code>) and then uploads your
+code, and <code class="docutils literal notranslate"><span class="pre">pros</span> <span class="pre">mut</span></code>, which does the same but also opens the PROS
 terminal after uploading.</p>
 <div class="section" id="having-issues-flashing">
 <h2>Having issues flashing?<a class="headerlink" href="#having-issues-flashing" title="Permalink to this headline">¶</a></h2>
@@ -254,13 +254,13 @@ large.</p>
 </div>
 <div class="section" id="don-t-poll">
 <h3>Don’t poll<a class="headerlink" href="#don-t-poll" title="Permalink to this headline">¶</a></h3>
-<p>Next, try using the <code class="docutils literal"><span class="pre">--no-poll</span></code> option. This limits communication
+<p>Next, try using the <code class="docutils literal notranslate"><span class="pre">--no-poll</span></code> option. This limits communication
 between the Cortex and your computer to just what’s vitally important to
 flashing. Polling allows us to determine what connection type you’re
 using and also allows you to check what firmware version you’re running.
 Sometimes when printing a lot of data to the console, responses from the
 Cortex about system information gets intertwined with your data,
-preventing us from parsing it. Using <code class="docutils literal"><span class="pre">--no-poll</span></code> may allow you to
+preventing us from parsing it. Using <code class="docutils literal notranslate"><span class="pre">--no-poll</span></code> may allow you to
 bypass this issue.</p>
 </div>
 <div class="section" id="check-for-updates">
@@ -273,7 +273,7 @@ for the latest version.</p>
 <div class="section" id="open-an-issue-on-github-and-include-debug-output">
 <h3>Open an issue on GitHub and include debug output<a class="headerlink" href="#open-an-issue-on-github-and-include-debug-output" title="Permalink to this headline">¶</a></h3>
 <p>You’ve tried everything you can and flashing still isn’t working. Use
-the <code class="docutils literal"><span class="pre">-vd</span></code> option to print out all of the microcontroller’s responses
+the <code class="docutils literal notranslate"><span class="pre">-vd</span></code> option to print out all of the microcontroller’s responses
 to the flasher’s commands. Please copy the output of the program output
 and <a class="reference external" href="https://github.com/purduesigbots/pros-cli/issues/new">open an
 issue</a> or shoot
@@ -329,9 +329,9 @@ us an email at <a class="reference external" href="mailto:pros_development&#37;&
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

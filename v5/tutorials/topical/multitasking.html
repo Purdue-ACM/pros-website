@@ -260,7 +260,7 @@ ought to run. PROS decides which task to run next based on all of the ready task
 <blockquote>
 <div><ul class="simple">
 <li>Tasks which are eligible for execution are called “ready.” Tasks are typically not ready
-because they may be sleeping (in a <code class="docutils literal"><span class="pre">task_delay</span></code>) or blocked waiting for a synchronization
+because they may be sleeping (in a <code class="docutils literal notranslate"><span class="pre">task_delay</span></code>) or blocked waiting for a synchronization
 mechanism (e.g. a mutex or semaphore).</li>
 <li>The higher the priority, the more crucial the task is considered, and more CPU time
 will be awarded to the task. Ready tasks of higher priority will always run in preference
@@ -305,7 +305,7 @@ API2</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">initialize.c</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -327,7 +327,7 @@ API2</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">initialize.cpp</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -349,7 +349,7 @@ API2</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 docutils container">
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">initialize.c</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -371,9 +371,9 @@ a priority for the task, and two new fields not yet discussed: stack size and na
 program to store variables, return addresses for functions, and more. Real-time operating systems like PROS work
 in limited-memory situations and do not allow for a dynamically resizable stack. Modern desktop operating systems
 do not need to worry about stack space as much as you would in a RTOS. The good news is that most tasks should
-opt to use <code class="docutils literal"><span class="pre">TASK_STACK_DEPTH_DEFAULT</span></code>, which should provide ample stack space for nearly any task. Very
+opt to use <code class="docutils literal notranslate"><span class="pre">TASK_STACK_DEPTH_DEFAULT</span></code>, which should provide ample stack space for nearly any task. Very
 rudimentary and simple tasks (e.g. not many nested functions, no floating point context, few variables, only C)
-may be able to use <code class="docutils literal"><span class="pre">TASK_STACK_DEPTH_MIN</span></code>.</p>
+may be able to use <code class="docutils literal notranslate"><span class="pre">TASK_STACK_DEPTH_MIN</span></code>.</p>
 <p>The last parameter is the task name. The task name allows you to give a task a human-friendly name for the task. It
 is primarily for debugging purposes and allows you (the human) to easily identify tasks if performing advanced task
 management. Task names may be up to 32 characters long, and you may pass NULL or an empty string into the function.
@@ -393,7 +393,7 @@ and PROS has several facilities to help maintain thread safety.</p>
 the same variables or data. You may design your code to have each subsystem of your
 robot in its own task. Ensuring that tasks never write to the same variables is called
 division of responsibility or separation of domain.</p>
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -439,7 +439,7 @@ C++</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -460,7 +460,7 @@ C++</div>
 </td></tr></table></div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4

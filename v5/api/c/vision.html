@@ -138,8 +138,7 @@
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">API Home</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">C API</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Home</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="adi.html">ADI (TriPort) C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="llemu.html">LLEMU (Legacy LCD Emulator) C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellaneous C API</a></li>
@@ -174,8 +173,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#typedefs">Typedefs</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/adi.html">ADI (TriPort) C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/llemu.html">LLEMU (Legacy LCD Emulator) C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/misc.html">Miscellaneous C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/motors.html">Motors C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/rtos.html">RTOS Facilities C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/vision.html">Vision Sensor C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api-legacy.html">Legacy API</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/index.html">C++ API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CLI</span></p>
@@ -304,8 +311,8 @@ displaying the most prominent object signature color.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -319,12 +326,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_clear_led</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_clear_led</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">vision_clear_led</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
@@ -358,9 +365,9 @@ Example</div>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
-<li><code class="docutils literal"><span class="pre">EAGAIN</span></code> - Reading the Vision Sensor failed for an unknown reason.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EAGAIN</span></code> - Reading the Vision Sensor failed for an unknown reason.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -374,14 +381,14 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">vision_object_s_t</span> <span class="n">vision_get_by_sig</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">vision_object_s_t</span> <span class="n">vision_get_by_sig</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                       <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span><span class="p">,</span>
                                       <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">sig_id</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 <span class="cp">#define EXAMPLE_SIG 1</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -430,8 +437,8 @@ size_id, or PROS_ERR if an error occurred.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -445,13 +452,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">vision_object_s_t</span> <span class="n">vision_get_by_size</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">vision_object_s_t</span> <span class="n">vision_get_by_size</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                        <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
@@ -495,8 +502,8 @@ PROS_ERR if an error occurred.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -510,12 +517,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_get_exposure</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_get_exposure</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">vision_get_exposure</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span>
@@ -551,8 +558,8 @@ PROS_ERR if an error occurred</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -566,12 +573,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_get_object_count</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_get_object_count</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
@@ -609,8 +616,8 @@ Returns PROS_ERR if the port was invalid or an error occurred.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -624,12 +631,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_get_white_balance</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_get_white_balance</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 <span class="cp">#define VISION_WHITE 0xff</span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
@@ -665,8 +672,8 @@ Example</div>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -680,7 +687,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_read_by_sig</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_read_by_sig</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                              <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span><span class="p">,</span>
                              <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">sig_id</span><span class="p">,</span>
                              <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">object_count</span><span class="p">,</span>
@@ -689,7 +696,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 <span class="cp">#define EXAMPLE_SIG 1</span>
 <span class="cp">#define NUM_VISION_OBJECTS 4</span>
 
@@ -745,8 +752,8 @@ largest, etc.)</td>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -760,7 +767,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_read_by_size</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_read_by_size</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                               <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span><span class="p">,</span>
                               <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">object_count</span><span class="p">,</span>
                               <span class="n">vision_object_s_t</span> <span class="o">*</span><span class="k">const</span> <span class="n">object_arr</span> <span class="p">)</span>
@@ -768,7 +775,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 <span class="cp">#define NUM_VISION_OBJECTS 4</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -820,8 +827,8 @@ largest, etc.)</td>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -835,13 +842,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_set_auto_white_balance</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_set_auto_white_balance</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                         <span class="k">const</span> <span class="kt">int32_t</span> <span class="n">rgb</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">vision_set_auto_white_balance</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
@@ -878,8 +885,8 @@ Example</div>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -893,13 +900,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_set_exposure</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_set_exposure</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                               <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">percent</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">vision_get_exposure</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span>
@@ -938,8 +945,8 @@ from [0,100]</td>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -953,13 +960,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_set_led</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_set_led</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                          <span class="k">const</span> <span class="kt">int32_t</span> <span class="n">rgb</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">vision_set_led</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">COLOR_BLANCHED_ALMOND</span><span class="p">);</span>
@@ -997,8 +1004,8 @@ Example</div>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1012,13 +1019,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_set_white_balance</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_set_white_balance</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                    <span class="k">const</span> <span class="kt">int32_t</span> <span class="n">rgb</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 <span class="cp">#define VISION_WHITE 0xff</span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
@@ -1061,7 +1068,7 @@ Example</div>
 <h3><a class="toc-backref" href="#id16">vision_signature_s_t</a><a class="headerlink" href="#vision-signature-s-t" title="Permalink to this headline">¶</a></h3>
 <p>This structure contains the parameters used by the Vision Sensor
 to detect objects.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">))</span> <span class="n">vision_signature</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">))</span> <span class="n">vision_signature</span> <span class="p">{</span>
   <span class="kt">uint8_t</span> <span class="n">id</span><span class="p">;</span>
   <span class="kt">uint8_t</span> <span class="n">_pad</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
   <span class="kt">float</span> <span class="n">range</span><span class="p">;</span>
@@ -1081,7 +1088,7 @@ to detect objects.</p>
 <h3><a class="toc-backref" href="#id17">vision_object_s_t</a><a class="headerlink" href="#vision-object-s-t" title="Permalink to this headline">¶</a></h3>
 <p>This structure contains a descriptor of an object detected
 by the Vision Sensor</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">))</span> <span class="n">vision_object</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">))</span> <span class="n">vision_object</span> <span class="p">{</span>
   <span class="c1">// Object signature</span>
   <span class="kt">uint16_t</span> <span class="n">signature</span><span class="p">;</span>
   <span class="c1">// Object type, e.g. normal, color code, or line detection</span>
@@ -1153,7 +1160,7 @@ e.g. normal, color code, or line detection</td>
 <h3><a class="toc-backref" href="#id19">vision_object_type_e_t</a><a class="headerlink" href="#vision-object-type-e-t" title="Permalink to this headline">¶</a></h3>
 <p>This enumeration defines the different types of objects
 that can be detected by the Vision Sensor</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="n">vision_object_type</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="n">vision_object_type</span> <span class="p">{</span>
   <span class="n">E_VISION_OBJECT_NORMAL</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
   <span class="n">E_VISION_OBJECT_COLOR_CODE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
   <span class="n">E_VISION_OBJECT_LINE</span> <span class="o">=</span> <span class="mi">2</span>

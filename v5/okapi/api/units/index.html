@@ -1,0 +1,891 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Units API &mdash; PROS for V5 3.0.6 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../index.html"/>
+        <link rel="up" title="OkapiLib API" href="../index.html"/>
+        <link rel="next" title="Utility API" href="../util/index.html"/>
+        <link rel="prev" title="Velocity Math" href="../filters/vel-math.html"/>
+   
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PROS for V5
+          
+
+          
+            
+            <img src="../../../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  V5 (3.0.6)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">PROS: Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../blog/index.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../releases/index.html">Version Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started/new-users.html">PROS First Time Users Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started/installation.html">Installation Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/c/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/cpp/index.html">C++ API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OkapiLib</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">OkapiLib Documentation Home</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">OkapiLib API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../chassis/index.html">Chassis API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../control/index.html">Control API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../device/index.html">Devices API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filters/index.html">Filters API</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Units API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#length-units">Length Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#speed-units">Speed Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#acceleration-units">Acceleration Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jerk-units">Jerk Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#angle-units">Angle Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#angular-speed-units">Angular Speed Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#angular-acceleration-units">Angular Acceleration Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#angular-jerk-units">Angular Jerk Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#time-units">Time Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#frequency-units">Frequency Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#area-units">Area Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#volume-units">Volume Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#force-units">Force Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#torque-units">Torque Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pressure-units">Pressure Units</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mass-units">Mass Units</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../util/index.html">Utility API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">OkapiLib API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chassis/index.html">Chassis API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/index.html">Control API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device/index.html">Devices API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filters/index.html">Filters API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Units API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#length-units">Length Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#speed-units">Speed Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#acceleration-units">Acceleration Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jerk-units">Jerk Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#angle-units">Angle Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#angular-speed-units">Angular Speed Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#angular-acceleration-units">Angular Acceleration Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#angular-jerk-units">Angular Jerk Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-units">Time Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#frequency-units">Frequency Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#area-units">Area Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#volume-units">Volume Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#force-units">Force Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#torque-units">Torque Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pressure-units">Pressure Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mass-units">Mass Units</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../util/index.html">Utility API</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extended (Advanced Users)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../extended/index.html">Extended API Topics</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PROS for V5</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OkapiLib Documentation Home</a> &raquo;</li>
+        
+          <li><a href="../index.html">OkapiLib API</a> &raquo;</li>
+        
+      <li>Units API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/okapi/api/units/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="units-api">
+<h1>Units API<a class="headerlink" href="#units-api" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#length-units" id="id1">Length Units</a></li>
+<li><a class="reference internal" href="#speed-units" id="id2">Speed Units</a></li>
+<li><a class="reference internal" href="#acceleration-units" id="id3">Acceleration Units</a></li>
+<li><a class="reference internal" href="#jerk-units" id="id4">Jerk Units</a></li>
+<li><a class="reference internal" href="#angle-units" id="id5">Angle Units</a></li>
+<li><a class="reference internal" href="#angular-speed-units" id="id6">Angular Speed Units</a></li>
+<li><a class="reference internal" href="#angular-acceleration-units" id="id7">Angular Acceleration Units</a></li>
+<li><a class="reference internal" href="#angular-jerk-units" id="id8">Angular Jerk Units</a></li>
+<li><a class="reference internal" href="#time-units" id="id9">Time Units</a></li>
+<li><a class="reference internal" href="#frequency-units" id="id10">Frequency Units</a></li>
+<li><a class="reference internal" href="#area-units" id="id11">Area Units</a></li>
+<li><a class="reference internal" href="#volume-units" id="id12">Volume Units</a></li>
+<li><a class="reference internal" href="#force-units" id="id13">Force Units</a></li>
+<li><a class="reference internal" href="#torque-units" id="id14">Torque Units</a></li>
+<li><a class="reference internal" href="#pressure-units" id="id15">Pressure Units</a></li>
+<li><a class="reference internal" href="#mass-units" id="id16">Mass Units</a></li>
+</ul>
+</div>
+<p>OkapiLib features a units API that compares quantities using dimensional analysis. This means that
+if you multiply two length units together, you get an area unit; or if you divide a length unit by
+a time unit, you get a velocity unit. These are just examples, OkapiLib supports much more than
+just these.</p>
+<div class="section" id="length-units">
+<h2><a class="toc-backref" href="#id1">Length Units</a><a class="headerlink" href="#length-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QLength</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="42%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">Name</th>
+<th class="head">Literal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Meter</td>
+<td><code class="docutils literal notranslate"><span class="pre">meter</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_m</span></code></td>
+</tr>
+<tr class="row-odd"><td>Decimeter</td>
+<td><code class="docutils literal notranslate"><span class="pre">decimeter</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Centimeter</td>
+<td><code class="docutils literal notranslate"><span class="pre">centimeter</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_cm</span></code></td>
+</tr>
+<tr class="row-odd"><td>Millimeter</td>
+<td><code class="docutils literal notranslate"><span class="pre">millimeter</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_mm</span></code></td>
+</tr>
+<tr class="row-even"><td>Kilometer</td>
+<td><code class="docutils literal notranslate"><span class="pre">kilometer</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_km</span></code></td>
+</tr>
+<tr class="row-odd"><td>Inch</td>
+<td><code class="docutils literal notranslate"><span class="pre">inch</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_in</span></code></td>
+</tr>
+<tr class="row-even"><td>Foot</td>
+<td><code class="docutils literal notranslate"><span class="pre">foot</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_ft</span></code></td>
+</tr>
+<tr class="row-odd"><td>Yard</td>
+<td><code class="docutils literal notranslate"><span class="pre">yard</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_yd</span></code></td>
+</tr>
+<tr class="row-even"><td>Mile</td>
+<td><code class="docutils literal notranslate"><span class="pre">mile</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_mi</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="speed-units">
+<h2><a class="toc-backref" href="#id2">Speed Units</a><a class="headerlink" href="#speed-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QSpeed</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="46%" />
+<col width="26%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">Name</th>
+<th class="head">Literal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Meter / second</td>
+<td><code class="docutils literal notranslate"><span class="pre">mps</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_mps</span></code></td>
+</tr>
+<tr class="row-odd"><td>Mile / hour</td>
+<td><code class="docutils literal notranslate"><span class="pre">miph</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_miph</span></code></td>
+</tr>
+<tr class="row-even"><td>Kilometer / hour</td>
+<td><code class="docutils literal notranslate"><span class="pre">kmph</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_kmph</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="acceleration-units">
+<h2><a class="toc-backref" href="#id3">Acceleration Units</a><a class="headerlink" href="#acceleration-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QAccerlation</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="25%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">Name</th>
+<th class="head">Literal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>meters / second^2</td>
+<td><code class="docutils literal notranslate"><span class="pre">mps2</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_mps2</span></code></td>
+</tr>
+<tr class="row-odd"><td>gravity</td>
+<td><code class="docutils literal notranslate"><span class="pre">G</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_G</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="jerk-units">
+<h2><a class="toc-backref" href="#id4">Jerk Units</a><a class="headerlink" href="#jerk-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QJerk</span></code></p>
+</div>
+<div class="section" id="angle-units">
+<h2><a class="toc-backref" href="#id5">Angle Units</a><a class="headerlink" href="#angle-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QAngle</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="40%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">Name</th>
+<th class="head">Literal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Radian</td>
+<td><code class="docutils literal notranslate"><span class="pre">radian</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_rad</span></code></td>
+</tr>
+<tr class="row-odd"><td>Degree</td>
+<td><code class="docutils literal notranslate"><span class="pre">degree</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_deg</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="angular-speed-units">
+<h2><a class="toc-backref" href="#id6">Angular Speed Units</a><a class="headerlink" href="#angular-speed-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QAngularSpeed</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="48%" />
+<col width="28%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">Name</th>
+<th class="head">Literal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Radian / second</td>
+<td><code class="docutils literal notranslate"><span class="pre">radps</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Rotation / minute</td>
+<td><code class="docutils literal notranslate"><span class="pre">rpm</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_rpm</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="angular-acceleration-units">
+<h2><a class="toc-backref" href="#id7">Angular Acceleration Units</a><a class="headerlink" href="#angular-acceleration-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QAngularAcceleration</span></code></p>
+</div>
+<div class="section" id="angular-jerk-units">
+<h2><a class="toc-backref" href="#id8">Angular Jerk Units</a><a class="headerlink" href="#angular-jerk-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QAngularJerk</span></code></p>
+</div>
+<div class="section" id="time-units">
+<h2><a class="toc-backref" href="#id9">Time Units</a><a class="headerlink" href="#time-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QTime</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="43%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">Name</th>
+<th class="head">Literal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Second</td>
+<td><code class="docutils literal notranslate"><span class="pre">second</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_s</span></code></td>
+</tr>
+<tr class="row-odd"><td>Millisecond</td>
+<td><code class="docutils literal notranslate"><span class="pre">millisecond</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_ms</span></code></td>
+</tr>
+<tr class="row-even"><td>Minute</td>
+<td><code class="docutils literal notranslate"><span class="pre">minute</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_min</span></code></td>
+</tr>
+<tr class="row-odd"><td>Hour</td>
+<td><code class="docutils literal notranslate"><span class="pre">hour</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_h</span></code></td>
+</tr>
+<tr class="row-even"><td>Day</td>
+<td><code class="docutils literal notranslate"><span class="pre">day</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_day</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="frequency-units">
+<h2><a class="toc-backref" href="#id10">Frequency Units</a><a class="headerlink" href="#frequency-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QFrequency</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="32%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">Name</th>
+<th class="head">Literal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Hertz</td>
+<td><code class="docutils literal notranslate"><span class="pre">Hz</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_Hz</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="area-units">
+<h2><a class="toc-backref" href="#id11">Area Units</a><a class="headerlink" href="#area-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QArea</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="43%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">Name</th>
+<th class="head">Literal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Kilometer^2</td>
+<td><code class="docutils literal notranslate"><span class="pre">kilometer2</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Meter^2</td>
+<td><code class="docutils literal notranslate"><span class="pre">meter2</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Decimeter^2</td>
+<td><code class="docutils literal notranslate"><span class="pre">decimeter2</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Centimeter^2</td>
+<td><code class="docutils literal notranslate"><span class="pre">centimeter2</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Millimeter^2</td>
+<td><code class="docutils literal notranslate"><span class="pre">millimeter2</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Inch^2</td>
+<td><code class="docutils literal notranslate"><span class="pre">inch2</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Foot^2</td>
+<td><code class="docutils literal notranslate"><span class="pre">foot2</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Mile^2</td>
+<td><code class="docutils literal notranslate"><span class="pre">mile2</span></code></td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="volume-units">
+<h2><a class="toc-backref" href="#id12">Volume Units</a><a class="headerlink" href="#volume-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QVolume</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="43%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">Name</th>
+<th class="head">Literal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Kilometer^3</td>
+<td><code class="docutils literal notranslate"><span class="pre">kilometer3</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Meter^3</td>
+<td><code class="docutils literal notranslate"><span class="pre">meter3</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Decimeter^3</td>
+<td><code class="docutils literal notranslate"><span class="pre">decimeter3</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Centimeter^3</td>
+<td><code class="docutils literal notranslate"><span class="pre">centimeter3</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Millimeter^3</td>
+<td><code class="docutils literal notranslate"><span class="pre">millimeter3</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Inch^3</td>
+<td><code class="docutils literal notranslate"><span class="pre">inch3</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Foot^3</td>
+<td><code class="docutils literal notranslate"><span class="pre">foot3</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Mile^3</td>
+<td><code class="docutils literal notranslate"><span class="pre">mile3</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Litre^3</td>
+<td><code class="docutils literal notranslate"><span class="pre">litre3</span></code></td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="force-units">
+<h2><a class="toc-backref" href="#id13">Force Units</a><a class="headerlink" href="#force-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QForce</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="42%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">Name</th>
+<th class="head">Literal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Newton</td>
+<td><code class="docutils literal notranslate"><span class="pre">newton</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_n</span></code></td>
+</tr>
+<tr class="row-odd"><td>Poundforce</td>
+<td><code class="docutils literal notranslate"><span class="pre">poundforce</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_lbf</span></code></td>
+</tr>
+<tr class="row-even"><td>Kilopond</td>
+<td><code class="docutils literal notranslate"><span class="pre">kilopond</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_kp</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="torque-units">
+<h2><a class="toc-backref" href="#id14">Torque Units</a><a class="headerlink" href="#torque-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QTorque</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="40%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">Name</th>
+<th class="head">Literal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Newton-meter</td>
+<td><code class="docutils literal notranslate"><span class="pre">newtonMeter</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_nM</span></code></td>
+</tr>
+<tr class="row-odd"><td>Foot-pound</td>
+<td><code class="docutils literal notranslate"><span class="pre">footPound</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_ftLb</span></code></td>
+</tr>
+<tr class="row-even"><td>Inch-pound</td>
+<td><code class="docutils literal notranslate"><span class="pre">inchPound</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_inLb</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="pressure-units">
+<h2><a class="toc-backref" href="#id15">Pressure Units</a><a class="headerlink" href="#pressure-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QPressure</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="40%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">Name</th>
+<th class="head">Literal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Pascal</td>
+<td><code class="docutils literal notranslate"><span class="pre">pascal</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_Pa</span></code></td>
+</tr>
+<tr class="row-odd"><td>Bar</td>
+<td><code class="docutils literal notranslate"><span class="pre">bar</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_bar</span></code></td>
+</tr>
+<tr class="row-even"><td>PSI</td>
+<td><code class="docutils literal notranslate"><span class="pre">psi</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_psi</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="mass-units">
+<h2><a class="toc-backref" href="#id16">Mass Units</a><a class="headerlink" href="#mass-units" title="Permalink to this headline">¶</a></h2>
+<p>Type name: <code class="docutils literal notranslate"><span class="pre">QMass</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="39%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Unit</th>
+<th class="head">Name</th>
+<th class="head">Literal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Kilogram</td>
+<td><code class="docutils literal notranslate"><span class="pre">kg</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_kg</span></code></td>
+</tr>
+<tr class="row-odd"><td>Gramme</td>
+<td><code class="docutils literal notranslate"><span class="pre">gramme</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_g</span></code></td>
+</tr>
+<tr class="row-even"><td>Tonne</td>
+<td><code class="docutils literal notranslate"><span class="pre">tonne</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_t</span></code></td>
+</tr>
+<tr class="row-odd"><td>Ounce</td>
+<td><code class="docutils literal notranslate"><span class="pre">ounce</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_oz</span></code></td>
+</tr>
+<tr class="row-even"><td>Pound</td>
+<td><code class="docutils literal notranslate"><span class="pre">pound</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_lb</span></code></td>
+</tr>
+<tr class="row-odd"><td>Stone</td>
+<td><code class="docutils literal notranslate"><span class="pre">stone</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">_st</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../util/index.html" class="btn btn-neutral float-right" title="Utility API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../filters/vel-math.html" class="btn btn-neutral" title="Velocity Math" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: V5 (3.0.6)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../../index.html">V5</a></dd>
+        
+          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'3.0.6',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

@@ -138,9 +138,13 @@
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">API Home</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../c/index.html">C API</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">C++ API</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Home</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../c/adi.html">ADI (TriPort) C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/llemu.html">LLEMU (Legacy LCD Emulator) C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/misc.html">Miscellaneous C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/motors.html">Motors C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/rtos.html">RTOS Facilities C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../c/vision.html">Vision Sensor C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adi.html">ADI (TriPort) C++ API</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">LLEMU (Legacy LCD Emulator) C++ API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pros-lcd">pros::lcd</a><ul>
@@ -163,8 +167,11 @@
 <li class="toctree-l2"><a class="reference internal" href="motors.html">Motors C++ API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rtos.html">RTOS Facilities C++ API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vision.html">Vision Sensor C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api-legacy.html">Legacy API</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../c/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">C++ API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CLI</span></p>
 <ul>
@@ -276,9 +283,9 @@
 <div class="section" id="clear">
 <h3><a class="toc-backref" href="#id4">clear</a><a class="headerlink" href="#clear" title="Permalink to this headline">¶</a></h3>
 <p>Clear the text on the emulated three-button LCD screen.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
+<li><code class="docutils literal notranslate"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-clear">lcd_clear</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -293,12 +300,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">clear</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">clear</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -311,17 +318,17 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
-<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal notranslate"><span class="pre">errno</span></code> values as specified above.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="clear-line">
 <h3><a class="toc-backref" href="#id5">clear_line</a><a class="headerlink" href="#clear-line" title="Permalink to this headline">¶</a></h3>
 <p>Clears a line on the emulated three-button LCD screen.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
+<li><code class="docutils literal notranslate"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-clear-line">lcd_clear_line</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -336,12 +343,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">clear_line</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int16_t</span> <span class="n">line</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">clear_line</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int16_t</span> <span class="n">line</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -370,8 +377,8 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
-<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal notranslate"><span class="pre">errno</span></code> values as specified above.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="initialize">
@@ -390,12 +397,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
   <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -403,7 +410,7 @@ Example</div>
 </div>
 </div>
 </div>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the LCD was successfully initialized, or <code class="docutils literal"><span class="pre">false</span></code> if it has already been initialized.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the LCD was successfully initialized, or <code class="docutils literal notranslate"><span class="pre">false</span></code> if it has already been initialized.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="is-initialized">
@@ -422,12 +429,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">is_initialized</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">is_initialized</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -446,11 +453,11 @@ Example</div>
 <div class="section" id="print">
 <h3><a class="toc-backref" href="#id8">print</a><a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h3>
 <p>Displays a formatted string on the emulated three-button LCD screen</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is
 reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
+<li><code class="docutils literal notranslate"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-print">lcd_print</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -465,14 +472,14 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">Params</span><span class="o">&gt;</span> <span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">print</span><span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int16_t</span> <span class="n">line</span><span class="p">,</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">Params</span><span class="o">&gt;</span> <span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">print</span><span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int16_t</span> <span class="n">line</span><span class="p">,</span>
                                                      <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">fmt</span><span class="p">,</span>
                                                      <span class="n">Params</span><span class="p">...</span> <span class="n">args</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -511,16 +518,16 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
-<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal notranslate"><span class="pre">errno</span></code> values as specified above.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="read-buttons">
 <h3><a class="toc-backref" href="#id9">read_buttons</a><a class="headerlink" href="#read-buttons" title="Permalink to this headline">¶</a></h3>
 <p>Reads the button status from the emulated three-button LCD.</p>
-<p>The value returned is a 3-bit std::integer where <code class="docutils literal"><span class="pre">1</span> <span class="pre">0</span> <span class="pre">0</span></code> indicates the left button
-is pressed, <code class="docutils literal"><span class="pre">0</span> <span class="pre">1</span> <span class="pre">0</span></code> indicates the center button is pressed, and <code class="docutils literal"><span class="pre">0</span> <span class="pre">0</span> <span class="pre">1</span></code>
-indicates the right button is pressed. <code class="docutils literal"><span class="pre">0</span></code> is returned if no buttons are
+<p>The value returned is a 3-bit std::integer where <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">0</span> <span class="pre">0</span></code> indicates the left button
+is pressed, <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">1</span> <span class="pre">0</span></code> indicates the center button is pressed, and <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">0</span> <span class="pre">1</span></code>
+indicates the right button is pressed. <code class="docutils literal notranslate"><span class="pre">0</span></code> is returned if no buttons are
 currently being pressed.</p>
 <p>Note that this function is provided for legacy API compatibility purposes,
 with the caveat that the V5 touch screen does not actually support pressing
@@ -538,12 +545,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">read_buttons</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">read_buttons</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -581,12 +588,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">register_btn0_cb</span> <span class="p">(</span> <span class="n">lcd_btn_cb_fn_t</span> <span class="n">cb</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">register_btn0_cb</span> <span class="p">(</span> <span class="n">lcd_btn_cb_fn_t</span> <span class="n">cb</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -653,12 +660,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">register_btn1_cb</span> <span class="p">(</span> <span class="n">lcd_btn_cb_fn_t</span> <span class="n">cb</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">register_btn1_cb</span> <span class="p">(</span> <span class="n">lcd_btn_cb_fn_t</span> <span class="n">cb</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -725,12 +732,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">register_btn2_cb</span> <span class="p">(</span> <span class="n">lcd_btn_cb_fn_t</span> <span class="n">cb</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">register_btn2_cb</span> <span class="p">(</span> <span class="n">lcd_btn_cb_fn_t</span> <span class="n">cb</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -782,10 +789,10 @@ Example</div>
 <div class="section" id="set-text">
 <h3><a class="toc-backref" href="#id13">set_text</a><a class="headerlink" href="#set-text" title="Permalink to this headline">¶</a></h3>
 <p>Displays a string on the emulated three-button LCD screen</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
+<li><code class="docutils literal notranslate"><span class="pre">ENXIO</span></code>  - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The line number specified is not in the range [0-7]</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-set-text">lcd_set_text</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -800,13 +807,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int16_t</span> <span class="n">line</span><span class="p">,</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">int16_t</span> <span class="n">line</span><span class="p">,</span>
                     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">text</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">initialize</span><span class="p">();</span>
   <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
@@ -833,8 +840,8 @@ Example</div>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
-<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal notranslate"><span class="pre">errno</span></code> values as specified above.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="shutdown">
@@ -842,9 +849,9 @@ Example</div>
 <p>Turn off the Legacy LCD Emulator</p>
 <p>Calling this function will clear the entire display, and you will not be able
 to call any further LLEMU functions until another call to <a class="reference internal" href="#initialize">initialize</a>.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">ENXIO</span></code> - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
+<li><code class="docutils literal notranslate"><span class="pre">ENXIO</span></code> - The LCD has not been initialized. Call <a class="reference internal" href="#initialize">initialize</a> first.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../c/llemu.html#lcd-shutdown">lcd_shutdown</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -859,12 +866,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
-<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">shutdown</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">shutdown</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
-<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -877,8 +884,8 @@ Example</div>
 </td></tr></table></div>
 </div>
 </div>
-<p><strong>Returns:</strong> <code class="docutils literal"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal"><span class="pre">false</span></code> otherwise, setting
-<code class="docutils literal"><span class="pre">errno</span></code> values as specified above.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the operation was successful, or <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise, setting
+<code class="docutils literal notranslate"><span class="pre">errno</span></code> values as specified above.</p>
 </div>
 </div>
 </div>

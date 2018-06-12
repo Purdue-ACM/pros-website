@@ -219,10 +219,10 @@ difficult to use properly. Each task has a <em>priority</em> and a <em>stack
 size</em>. The higher the priority, the more crucial the task is considered,
 and more CPU time will be awarded to the task. Tasks of higher priority
 will <em>always</em> run in preference to lower priority tasks, unless the
-higher priority task is using <code class="docutils literal"><span class="pre">delay()</span></code> or some other waiting action.</p>
-<p>Tasks are creating using <code class="docutils literal"><span class="pre">taskCreate()</span></code>, which invokes a user function
+higher priority task is using <code class="docutils literal notranslate"><span class="pre">delay()</span></code> or some other waiting action.</p>
+<p>Tasks are creating using <code class="docutils literal notranslate"><span class="pre">taskCreate()</span></code>, which invokes a user function
 in the new task:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFirstTask</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">parameter</span><span class="p">)</span> <span class="p">{</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFirstTask</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">parameter</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello from another task!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
     <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
@@ -239,9 +239,9 @@ in the new task:</p>
 <div class="section" id="periodic-functions">
 <h3>Periodic functions<a class="headerlink" href="#periodic-functions" title="Permalink to this headline">¶</a></h3>
 <p>If you want a function to run every <em>n</em> milliseconds, you can use
-<code class="docutils literal"><span class="pre">taskRunLoop</span></code>. The example above can be implemented slightly
+<code class="docutils literal notranslate"><span class="pre">taskRunLoop</span></code>. The example above can be implemented slightly
 differently and receive the same effect:</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFirstRunLoop</span><span class="p">()</span> <span class="p">{</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">myFirstRunLoop</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello from another task!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
@@ -261,14 +261,14 @@ differently and receive the same effect:</p>
 than ten tiny ones. There is also a limit of twelve tasks running at
 once.</li>
 <li>Tasks are usually not automatically stopped if the robot is disabled,
-unlike <code class="docutils literal"><span class="pre">operatorControl</span></code> and <code class="docutils literal"><span class="pre">autonomous</span></code>. Tasks running while
+unlike <code class="docutils literal notranslate"><span class="pre">operatorControl</span></code> and <code class="docutils literal notranslate"><span class="pre">autonomous</span></code>. Tasks running while
 disabled cannot use the VEX Joystick or VEX Motors. If the task
-should stop when the robot is disabled, use the <code class="docutils literal"><span class="pre">isOnline</span></code> and/or
-the <code class="docutils literal"><span class="pre">isAutonomous</span></code> function to control the program accordingly. If
-<code class="docutils literal"><span class="pre">taskRunLoop</span></code> is used, the task will automatically be cancelled if
+should stop when the robot is disabled, use the <code class="docutils literal notranslate"><span class="pre">isOnline</span></code> and/or
+the <code class="docutils literal notranslate"><span class="pre">isAutonomous</span></code> function to control the program accordingly. If
+<code class="docutils literal notranslate"><span class="pre">taskRunLoop</span></code> is used, the task will automatically be cancelled if
 the robot is disabled or switched between driver and autonomous.</li>
-<li>Most tasks should have a priority from <code class="docutils literal"><span class="pre">TASK_PRIORITY_LOWEST</span> <span class="pre">+</span> <span class="pre">1</span></code>
-to <code class="docutils literal"><span class="pre">TASK_PRIORITY_HIGHEST</span> <span class="pre">-</span> <span class="pre">1</span></code>. Tasks of the lowest or highest
+<li>Most tasks should have a priority from <code class="docutils literal notranslate"><span class="pre">TASK_PRIORITY_LOWEST</span> <span class="pre">+</span> <span class="pre">1</span></code>
+to <code class="docutils literal notranslate"><span class="pre">TASK_PRIORITY_HIGHEST</span> <span class="pre">-</span> <span class="pre">1</span></code>. Tasks of the lowest or highest
 priority may cause unexpected behavior.</li>
 <li>Tasks should wait when there is no work to do so other tasks can run.
 If a task, especially a high-priority one, does not occasionally use
@@ -277,9 +277,9 @@ hardware such as the VEX LCD and Integrated Motor Encoders is also
 updated by tasks, a run away task can cause unexpected behavior.</li>
 <li>The Cortex Microcontroller is very fast. It is unlikely that any
 repetitive task will gain from running continuously. Even in the
-fastest scenarios, <code class="docutils literal"><span class="pre">delay(2)</span></code> will probably make no noticeable
+fastest scenarios, <code class="docutils literal notranslate"><span class="pre">delay(2)</span></code> will probably make no noticeable
 difference, but will prevent future task starvation issues.</li>
-<li>Tasks using motors or joysticks should use <code class="docutils literal"><span class="pre">delay(20)</span></code> as the
+<li>Tasks using motors or joysticks should use <code class="docutils literal notranslate"><span class="pre">delay(20)</span></code> as the
 motors and joysticks are only updated every 20 ms.</li>
 </ul>
 </div>
@@ -291,7 +291,7 @@ control the same motor at the same time, unexpected behavior may occur
 since two tasks are trying to read/write to the same piece of data.</p>
 <p>Tasks can be designed to never conflict over motors or sensors:
 (division of responsibility)</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">Task1</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">ignore</span><span class="p">)</span> <span class="p">{</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">Task1</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span> <span class="n">ignore</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// update motors 2 and 4</span>
 <span class="p">}</span>
 
@@ -307,7 +307,7 @@ controller. PROS features two types of synchronization structures,
 stand for mutual exclusion; only one task can hold a mutex at any given
 time. Other tasks must wait for the first task to finish (and release
 the mutex) before they may continue.</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="n">Mutex</span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">mutexCreate</span><span class="p">();</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Mutex</span> <span class="n">mutex</span> <span class="o">=</span> <span class="n">mutexCreate</span><span class="p">();</span>
 
 <span class="c1">// Acquire the mutex; other tasks using this command will wait until the mutex is released</span>
 <span class="c1">// timeout can specify the maximum time to wait, or -1 to wait forever</span>
@@ -322,7 +322,7 @@ the mutex) before they may continue.</p>
 a coordination signal from another task which gives the semaphore.
 Multiple tasks may wait for a semaphore; if this is the case, the
 highest priority task will continue per signal given.</p>
-<div class="code c highlight-c"><div class="highlight"><pre><span></span><span class="c1">// Create a semaphore</span>
+<div class="code c highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Create a semaphore</span>
 <span class="n">Semaphore</span> <span class="n">semaphore</span> <span class="o">=</span> <span class="n">semaphoreCreate</span><span class="p">();</span>
 
 <span class="c1">// Waits for the semaphore to be signalled</span>
@@ -384,9 +384,9 @@ highest priority task will continue per signal given.</p>
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../index.html">Cortex</a></dd>
-        
           <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
         
       </dl>
     </div>

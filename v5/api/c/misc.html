@@ -138,8 +138,7 @@
 </ul>
 <p class="caption"><span class="caption-text">API</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">API Home</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">C API</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Home</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="adi.html">ADI (TriPort) C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="llemu.html">LLEMU (Legacy LCD Emulator) C API</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Miscellaneous C API</a><ul>
@@ -195,8 +194,16 @@
 <li class="toctree-l2"><a class="reference internal" href="motors.html">Motors C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rtos.html">RTOS Facilities C API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="vision.html">Vision Sensor C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/adi.html">ADI (TriPort) C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/llemu.html">LLEMU (Legacy LCD Emulator) C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/misc.html">Miscellaneous C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/motors.html">Motors C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/rtos.html">RTOS Facilities C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpp/vision.html">Vision Sensor C++ API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api-legacy.html">Legacy API</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/index.html">C++ API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CLI</span></p>
@@ -342,9 +349,9 @@
 <div class="section" id="battery-get-capacity">
 <h3><a class="toc-backref" href="#id15">battery_get_capacity</a><a class="headerlink" href="#battery-get-capacity" title="Permalink to this headline">¶</a></h3>
 <p>Gets the current capacity of the battery, as reported by VEXos.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the battery port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the battery port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/misc.html#get-capacity">pros::battery::get_capacity</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -359,12 +366,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">battery_get_capacity</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">battery_get_capacity</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Battery Level: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">battery_get_capacity</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
@@ -377,9 +384,9 @@ Example</div>
 <div class="section" id="battery-get-current">
 <h3><a class="toc-backref" href="#id16">battery_get_current</a><a class="headerlink" href="#battery-get-current" title="Permalink to this headline">¶</a></h3>
 <p>Gets the current current of the battery, as reported by VEXos.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the battery port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the battery port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/misc.html#get-current">pros::battery::get_current</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -394,12 +401,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">battery_get_current</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">battery_get_current</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Battery Current: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">battery_get_current</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
@@ -412,9 +419,9 @@ Example</div>
 <div class="section" id="battery-get-temperature">
 <h3><a class="toc-backref" href="#id17">battery_get_temperature</a><a class="headerlink" href="#battery-get-temperature" title="Permalink to this headline">¶</a></h3>
 <p>Gets the current temperature of the battery, as reported by VEXos.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the battery port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the battery port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/misc.html#get-temperature">pros::battery::get_temperature</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -429,12 +436,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">battery_get_temperature</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">battery_get_temperature</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Battery&#39;s Temperature: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">battery_get_temperature</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
@@ -447,9 +454,9 @@ Example</div>
 <div class="section" id="battery-get-voltage">
 <h3><a class="toc-backref" href="#id18">battery_get_voltage</a><a class="headerlink" href="#battery-get-voltage" title="Permalink to this headline">¶</a></h3>
 <p>Gets the current voltage of the battery, as reported by VEXos.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the battery port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the battery port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/misc.html#get-voltage">pros::battery::get_voltage</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -464,12 +471,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">battery_get_voltage</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">battery_get_voltage</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Battery&#39;s Voltage: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">battery_get_voltage</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
@@ -494,12 +501,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span> <span class="n">competition_get_status</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint8_t</span> <span class="n">competition_get_status</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -533,12 +540,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">competition_is_autonomous</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">competition_is_autonomous</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -585,12 +592,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">competition_is_connected</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">competition_is_connected</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -623,12 +630,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">competition_is_disabled</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">competition_is_disabled</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -655,10 +662,10 @@ Example</div>
 <div class="section" id="controller-get-analog">
 <h3><a class="toc-backref" href="#id23">controller_get_analog</a><a class="headerlink" href="#controller-get-analog" title="Permalink to this headline">¶</a></h3>
 <p>Gets the value of an analog channel (joystick) on a controller.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/misc.html#get-analog">pros::Controller::get_analog</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -673,13 +680,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">controller_get_analog</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">controller_get_analog</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span><span class="p">,</span>
                                  <span class="n">controller_analog_e_t</span> <span class="n">channel</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -723,10 +730,10 @@ If the controller was not connected, then 0 is returned</p>
 <div class="section" id="controller-get-digital">
 <h3><a class="toc-backref" href="#id24">controller_get_digital</a><a class="headerlink" href="#controller-get-digital" title="Permalink to this headline">¶</a></h3>
 <p>Gets the value of an digital channel (button) on a controller.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/misc.html#get-digital">pros::Controller::get_digital</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -741,13 +748,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">controller_get_digital</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">controller_get_digital</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span><span class="p">,</span>
                                   <span class="n">controller_digital_e_t</span> <span class="n">button</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -808,10 +815,10 @@ button. E.g., Task A calls this function for buttons 1 and 2. Task B may call
 this function for button 3, but should not for buttons 1 or 2. A typical
 use-case for this function is to call inside opcontrol to detect new button
 presses, and not in any other tasks.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/misc.html#get-digital-new-press">pros::Controller::get_digital_new_press</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -826,13 +833,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">controller_get_digital_new_press</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">controller_get_digital_new_press</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span><span class="p">,</span>
                                             <span class="n">controller_digital_e_t</span> <span class="n">button</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -880,10 +887,10 @@ the last time this function was called, 0 otherwise.</p>
 <div class="section" id="controller-is-connected">
 <h3><a class="toc-backref" href="#id26">controller_is_connected</a><a class="headerlink" href="#controller-is-connected" title="Permalink to this headline">¶</a></h3>
 <p>Returns 0 or 1 if the controller is connected.</p>
-<p>This function uses the following values of <code class="docutils literal"><span class="pre">errno</span></code> when an error state is reached:</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
-<li><code class="docutils literal"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/misc.html#id1">pros::Controller::is_connected</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -898,12 +905,12 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">controller_is_connected</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">controller_is_connected</span> <span class="p">(</span> <span class="n">controller_id_e_t</span> <span class="n">id</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -956,120 +963,120 @@ Must be one of <a class="reference external" href="misc.html#controller-id-e-t">
 <div class="section" id="id8">
 <h3><a class="toc-backref" href="#id28">ANALOG_LEFT_X</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>The horizontal axis of the controller’s left analog stick.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_ANALOG_LEFT_X</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_ANALOG_LEFT_X</span></code></p>
 </div>
 <div class="section" id="id9">
 <h3><a class="toc-backref" href="#id29">ANALOG_LEFT_Y</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>The vertical axis of the controller’s left analog stick.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_ANALOG_LEFT_Y</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_ANALOG_LEFT_Y</span></code></p>
 </div>
 <div class="section" id="id10">
 <h3><a class="toc-backref" href="#id30">ANALOG_RIGHT_X</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>The horizontal axis of the controller’s right analog stick.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_ANALOG_RIGHT_X</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_ANALOG_RIGHT_X</span></code></p>
 </div>
 <div class="section" id="id11">
 <h3><a class="toc-backref" href="#id31">ANALOG_RIGHT_Y</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>The vertical axis of the controller’s right analog stick.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_ANALOG_RIGHT_Y</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_ANALOG_RIGHT_Y</span></code></p>
 </div>
 <div class="section" id="competition-autonomous">
 <h3><a class="toc-backref" href="#id32">COMPETITION_AUTONOMOUS</a><a class="headerlink" href="#competition-autonomous" title="Permalink to this headline">¶</a></h3>
 <p>Use COMPETITION_AUTONOMOUS as a bitmask for checking whether the brain is in autonomous mode
 with <a class="reference internal" href="#competition-get-status">competition_get_status</a>.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">0)</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">0)</span></code></p>
 </div>
 <div class="section" id="competition-disabled">
 <h3><a class="toc-backref" href="#id33">COMPETITION_DISABLED</a><a class="headerlink" href="#competition-disabled" title="Permalink to this headline">¶</a></h3>
 <p>Use COMPETITION_DISABLED as a bitmask for checking whether the brain is disabled with <a class="reference internal" href="#competition-get-status">competition_get_status</a>.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">1)</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">1)</span></code></p>
 </div>
 <div class="section" id="competition-connected">
 <h3><a class="toc-backref" href="#id34">COMPETITION_CONNECTED</a><a class="headerlink" href="#competition-connected" title="Permalink to this headline">¶</a></h3>
 <p>Use COMPETITION_CONNECTED as a bitmask for checking whether the brain is connected to competition control with <a class="reference internal" href="#competition-get-status">competition_get_status</a>.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">2)</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">2)</span></code></p>
 </div>
 <div class="section" id="id12">
 <h3><a class="toc-backref" href="#id35">CONTROLLER_MASTER</a><a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>The master controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_MASTER</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_MASTER</span></code></p>
 </div>
 <div class="section" id="id13">
 <h3><a class="toc-backref" href="#id36">CONTROLLER_PARTNER</a><a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>The partner controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_PARTNER</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_PARTNER</span></code></p>
 </div>
 <div class="section" id="digital-l1">
 <h3><a class="toc-backref" href="#id37">DIGITAL_L1</a><a class="headerlink" href="#digital-l1" title="Permalink to this headline">¶</a></h3>
 <p>The first trigger on the left side of the controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_DIGITAL_L1</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_L1</span></code></p>
 </div>
 <div class="section" id="digital-l2">
 <h3><a class="toc-backref" href="#id38">DIGITAL_L2</a><a class="headerlink" href="#digital-l2" title="Permalink to this headline">¶</a></h3>
 <p>The second trigger on the left side of the controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_DIGITAL_L2</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_L2</span></code></p>
 </div>
 <div class="section" id="digital-r1">
 <h3><a class="toc-backref" href="#id39">DIGITAL_R1</a><a class="headerlink" href="#digital-r1" title="Permalink to this headline">¶</a></h3>
 <p>The first trigger on the right side of the controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_DIGITAL_R1</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_R1</span></code></p>
 </div>
 <div class="section" id="digital-r2">
 <h3><a class="toc-backref" href="#id40">DIGITAL_R2</a><a class="headerlink" href="#digital-r2" title="Permalink to this headline">¶</a></h3>
 <p>The second trigger on the right side of the controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_DIGITAL_R2</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_R2</span></code></p>
 </div>
 <div class="section" id="digital-up">
 <h3><a class="toc-backref" href="#id41">DIGITAL_UP</a><a class="headerlink" href="#digital-up" title="Permalink to this headline">¶</a></h3>
 <p>The up arrow on the left arrow pad of the controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_DIGITAL_UP</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_UP</span></code></p>
 </div>
 <div class="section" id="digital-down">
 <h3><a class="toc-backref" href="#id42">DIGITAL_DOWN</a><a class="headerlink" href="#digital-down" title="Permalink to this headline">¶</a></h3>
 <p>The down arrow on the left arrow pad of the controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_DIGITAL_DOWN</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_DOWN</span></code></p>
 </div>
 <div class="section" id="digital-left">
 <h3><a class="toc-backref" href="#id43">DIGITAL_LEFT</a><a class="headerlink" href="#digital-left" title="Permalink to this headline">¶</a></h3>
 <p>The left arrow on the left arrow pad of the controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_DIGITAL_LEFT</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_LEFT</span></code></p>
 </div>
 <div class="section" id="digital-right">
 <h3><a class="toc-backref" href="#id44">DIGITAL_RIGHT</a><a class="headerlink" href="#digital-right" title="Permalink to this headline">¶</a></h3>
 <p>The right arrow on the left arrow pad of the controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_DIGITAL_RIGHT</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_RIGHT</span></code></p>
 </div>
 <div class="section" id="digital-x">
 <h3><a class="toc-backref" href="#id45">DIGITAL_X</a><a class="headerlink" href="#digital-x" title="Permalink to this headline">¶</a></h3>
 <p>The ‘X’ button on the right button pad of the controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_DIGITAL_X</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_X</span></code></p>
 </div>
 <div class="section" id="digital-b">
 <h3><a class="toc-backref" href="#id46">DIGITAL_B</a><a class="headerlink" href="#digital-b" title="Permalink to this headline">¶</a></h3>
 <p>The ‘B’ button on the right button pad of the controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_DIGITAL_B</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_B</span></code></p>
 </div>
 <div class="section" id="digital-y">
 <h3><a class="toc-backref" href="#id47">DIGITAL_Y</a><a class="headerlink" href="#digital-y" title="Permalink to this headline">¶</a></h3>
 <p>The ‘Y’ button on the right button pad of the controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_DIGITAL_Y</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_Y</span></code></p>
 </div>
 <div class="section" id="digital-a">
 <h3><a class="toc-backref" href="#id48">DIGITAL_A</a><a class="headerlink" href="#digital-a" title="Permalink to this headline">¶</a></h3>
 <p>The ‘A’ button on the right button pad of the controller.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">E_CONTROLLER_DIGITAL_A</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_A</span></code></p>
 </div>
 <div class="section" id="num-v5-ports">
 <h3><a class="toc-backref" href="#id49">NUM_V5_PORTS</a><a class="headerlink" href="#num-v5-ports" title="Permalink to this headline">¶</a></h3>
 <p>The number of RJ11 ports available on the V5 brain.</p>
-<p><strong>Value:</strong> <code class="docutils literal"><span class="pre">(22)</span></code></p>
+<p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">(22)</span></code></p>
 </div>
 </div>
 <div class="section" id="enumerated-values">
 <h2><a class="toc-backref" href="#id50">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="controller-analog-e-t">
 <h3><a class="toc-backref" href="#id51">controller_analog_e_t</a><a class="headerlink" href="#controller-analog-e-t" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
 4
@@ -1110,7 +1117,7 @@ with <a class="reference internal" href="#competition-get-status">competition_ge
 </div>
 <div class="section" id="controller-digital-e-t">
 <h3><a class="toc-backref" href="#id52">controller_digital_e_t</a><a class="headerlink" href="#controller-digital-e-t" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -1191,7 +1198,7 @@ with <a class="reference internal" href="#competition-get-status">competition_ge
 </div>
 <div class="section" id="controller-id-e-t">
 <h3><a class="toc-backref" href="#id53">controller_id_e_t</a><a class="headerlink" href="#controller-id-e-t" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span>
   <span class="n">E_CONTROLLER_MASTER</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
   <span class="n">E_CONTROLLER_PARTNER</span>
 <span class="p">}</span> <span class="n">controller_id_e_t</span><span class="p">;</span>

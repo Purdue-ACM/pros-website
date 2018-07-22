@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>(Abstract) Abstract Motor &mdash; PROS for V5 3.0.6 documentation</title>
+  <title>(Abstract) Abstract Motor &mdash; PROS for V5 3.0.7 documentation</title>
   
 
   
@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../../index.html"/>
         <link rel="up" title="Devices API" href="../index.html"/>
         <link rel="next" title="ADI Motor" href="adimotor.html"/>
         <link rel="prev" title="Controller Button" href="../button/controller-button.html"/>
@@ -95,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.6)
+                  V5 (3.0.7)
                 
               </div>
             
@@ -155,6 +155,7 @@
 <li class="toctree-l3 current"><a class="reference internal" href="../index.html">Devices API</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../button/abstract-button.html">(Abstract) Button</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../button/adi-button.html">ADI Button</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../button/button-base.html">Button Base</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../button/controller-button.html">Controller Button</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">(Abstract) Abstract Motor</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#okapi-abstractmotor">okapi::AbstractMotor</a><ul>
@@ -175,6 +176,16 @@
 <li class="toctree-l7"><a class="reference internal" href="#setreversed">setReversed</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#setvoltagelimit">setVoltageLimit</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#getencoder">getEncoder</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#enumerated-values">Enumerated Values</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#brakemode">brakeMode</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#encoderunits">encoderUnits</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#gearset">gearset</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#helper-structs">Helper Structs</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#gearsetratiopair">GearsetRatioPair</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +219,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Devices API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../button/abstract-button.html">(Abstract) Button</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../button/adi-button.html">ADI Button</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../button/button-base.html">Button Base</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../button/controller-button.html">Controller Button</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">(Abstract) Abstract Motor</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#okapi-abstractmotor">okapi::AbstractMotor</a><ul>
@@ -228,6 +240,16 @@
 <li class="toctree-l6"><a class="reference internal" href="#setreversed">setReversed</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setvoltagelimit">setVoltageLimit</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#getencoder">getEncoder</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#enumerated-values">Enumerated Values</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#brakemode">brakeMode</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#encoderunits">encoderUnits</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#gearset">gearset</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#helper-structs">Helper Structs</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#gearsetratiopair">GearsetRatioPair</a></li>
 </ul>
 </li>
 </ul>
@@ -350,6 +372,16 @@
 <li><a class="reference internal" href="#getencoder" id="id18">getEncoder</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#enumerated-values" id="id19">Enumerated Values</a><ul>
+<li><a class="reference internal" href="#brakemode" id="id20">brakeMode</a></li>
+<li><a class="reference internal" href="#encoderunits" id="id21">encoderUnits</a></li>
+<li><a class="reference internal" href="#gearset" id="id22">gearset</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#helper-structs" id="id23">Helper Structs</a><ul>
+<li><a class="reference internal" href="#gearsetratiopair" id="id24">GearsetRatioPair</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -375,7 +407,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">moveAbsolute</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">iposition</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">ivelocity</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">moveAbsolute</span><span class="p">(</span><span class="kt">double</span> <span class="n">iposition</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">ivelocity</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -421,7 +453,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">moveRelative</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">iposition</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">ivelocity</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">moveRelative</span><span class="p">(</span><span class="kt">double</span> <span class="n">iposition</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">ivelocity</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -453,8 +485,8 @@ setting errno.</p>
 <h4><a class="toc-backref" href="#id5">moveVelocity</a><a class="headerlink" href="#movevelocity" title="Permalink to this headline">¶</a></h4>
 <p>Sets the velocity for the motor.</p>
 <p>This velocity corresponds to different actual speeds depending on the gearset used for the motor.
-This results in a range of <code class="docutils literal notranslate"><span class="pre">+-100</span></code> for <code class="docutils literal notranslate"><span class="pre">E_MOTOR_GEARSET_36</span></code>, <code class="docutils literal notranslate"><span class="pre">+-200</span></code> for
-<code class="docutils literal notranslate"><span class="pre">E_MOTOR_GEARSET_18</span></code>, and <code class="docutils literal notranslate"><span class="pre">+-600</span></code> for <code class="docutils literal notranslate"><span class="pre">E_MOTOR_GEARSET_6</span></code>. The velocity is held with PID to
+This results in a range of <code class="docutils literal notranslate"><span class="pre">+-100</span></code> for <code class="docutils literal notranslate"><span class="pre">red</span></code>, <code class="docutils literal notranslate"><span class="pre">+-200</span></code> for
+<code class="docutils literal notranslate"><span class="pre">green</span></code>, and <code class="docutils literal notranslate"><span class="pre">+-600</span></code> for <code class="docutils literal notranslate"><span class="pre">blue</span></code>. The velocity is held with PID to
 ensure consistent speed, as opposed to setting the motor’s voltage.</p>
 <dl class="docutils">
 <dt>This function uses the following values of errno when an error state is reached:</dt>
@@ -468,7 +500,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">moveVelocity</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int16_t</span> <span class="n">ivelocity</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">moveVelocity</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">int16_t</span> <span class="n">ivelocity</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -508,7 +540,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">moveVoltage</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int16_t</span> <span class="n">ivoltage</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">moveVoltage</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">int16_t</span> <span class="n">ivoltage</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -656,7 +688,7 @@ setting errno.</p>
 <hr class="docutils" />
 <div class="section" id="setbrakemode">
 <h4><a class="toc-backref" href="#id12">setBrakeMode</a><a class="headerlink" href="#setbrakemode" title="Permalink to this headline">¶</a></h4>
-<p>Sets one of <code class="docutils literal notranslate"><span class="pre">pros::c::motor_brake_mode_e_t</span></code> to the motor.</p>
+<p>Sets one of <code class="docutils literal notranslate"><span class="pre">brakeMode</span></code> to the motor.</p>
 <dl class="docutils">
 <dt>This function uses the following values of errno when an error state is reached:</dt>
 <dd>EACCES - Another resource is currently trying to access the port.</dd>
@@ -669,7 +701,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">setBrakeMode</span><span class="p">(</span><span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">motor_brake_mode_e_t</span> <span class="n">imode</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">setBrakeMode</span><span class="p">(</span><span class="n">brakeMode</span> <span class="n">imode</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -686,7 +718,7 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>imode</td>
-<td>The <code class="docutils literal notranslate"><span class="pre">pros::c::motor_brake_mode_e_t</span></code> to set for the motor.</td>
+<td>The new motor brake mode.</td>
 </tr>
 </tbody>
 </table>
@@ -709,7 +741,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">setCurrentLimit</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">ilimit</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">setCurrentLimit</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">ilimit</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -736,7 +768,7 @@ setting errno.</p>
 <hr class="docutils" />
 <div class="section" id="setencoderunits">
 <h4><a class="toc-backref" href="#id14">setEncoderUnits</a><a class="headerlink" href="#setencoderunits" title="Permalink to this headline">¶</a></h4>
-<p>Sets one of <code class="docutils literal notranslate"><span class="pre">pros::c::motor_encoder_units_e_t</span></code> for the motor encoder.</p>
+<p>Sets one of <code class="docutils literal notranslate"><span class="pre">encoderUnits</span></code> for the motor encoder.</p>
 <dl class="docutils">
 <dt>This function uses the following values of errno when an error state is reached:</dt>
 <dd>EACCES - Another resource is currently trying to access the port.</dd>
@@ -749,7 +781,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">setEncoderUnits</span><span class="p">(</span><span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">motor_encoder_units_e_t</span> <span class="n">iunits</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">setEncoderUnits</span><span class="p">(</span><span class="n">encoderUnits</span> <span class="n">iunits</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -776,7 +808,7 @@ setting errno.</p>
 <hr class="docutils" />
 <div class="section" id="setgearing">
 <h4><a class="toc-backref" href="#id15">setGearing</a><a class="headerlink" href="#setgearing" title="Permalink to this headline">¶</a></h4>
-<p>Sets one of <code class="docutils literal notranslate"><span class="pre">pros::c::motor_gearset_e_t</span></code> for the motor.</p>
+<p>Sets one of <code class="docutils literal notranslate"><span class="pre">gearset</span></code> for the motor.</p>
 <dl class="docutils">
 <dt>This function uses the following values of errno when an error state is reached:</dt>
 <dd>EACCES - Another resource is currently trying to access the port.</dd>
@@ -789,7 +821,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">setGearing</span><span class="p">(</span><span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">motor_gearset_e_t</span> <span class="n">igearset</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">setGearing</span><span class="p">(</span><span class="n">gearset</span> <span class="n">igearset</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -830,7 +862,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">setReversed</span><span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">ireverse</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">setReversed</span><span class="p">(</span><span class="kt">bool</span> <span class="n">ireverse</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -870,7 +902,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">setVoltageLimit</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">ilimit</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">setVoltageLimit</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">ilimit</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -906,12 +938,95 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">IntegratedEncoder</span> <span class="n">getEncoder</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ContinuousRotarySensor</span><span class="o">&gt;</span> <span class="n">getEncoder</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>Returns:</strong> The encoder associated with this motor.</p>
+</div>
+</div>
+<div class="section" id="enumerated-values">
+<h3><a class="toc-backref" href="#id19">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="brakemode">
+<h4><a class="toc-backref" href="#id20">brakeMode</a><a class="headerlink" href="#brakemode" title="Permalink to this headline">¶</a></h4>
+<p>Indicates the current ‘brake mode’ of the motor.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">class</span> <span class="n">brakeMode</span> <span class="p">{</span>
+  <span class="n">coast</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">// Motor coasts when stopped, traditional behavior</span>
+  <span class="n">brake</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// Motor brakes when stopped</span>
+  <span class="n">hold</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>  <span class="c1">// Motor actively holds position when stopped</span>
+  <span class="n">invalid</span> <span class="o">=</span> <span class="n">INT32_MAX</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="encoderunits">
+<h4><a class="toc-backref" href="#id21">encoderUnits</a><a class="headerlink" href="#encoderunits" title="Permalink to this headline">¶</a></h4>
+<p>Indicates the units used by the motor’s encoder.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">class</span> <span class="n">encoderUnits</span> <span class="p">{</span>
+  <span class="n">degrees</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="n">rotations</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="n">counts</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="n">invalid</span> <span class="o">=</span> <span class="n">INT32_MAX</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gearset">
+<h4><a class="toc-backref" href="#id22">gearset</a><a class="headerlink" href="#gearset" title="Permalink to this headline">¶</a></h4>
+<p>Indicates the internal gearing used by the motor.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">class</span> <span class="n">gearset</span> <span class="p">{</span>
+  <span class="n">red</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>  <span class="c1">// 36:1, 100 RPM, Red gear set</span>
+  <span class="n">green</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span> <span class="c1">// 18:1, 200 RPM, Green gear set</span>
+  <span class="n">blue</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span>  <span class="c1">// 6:1,  600 RPM, Blue gear set</span>
+  <span class="n">invalid</span> <span class="o">=</span> <span class="n">INT32_MAX</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="helper-structs">
+<h3><a class="toc-backref" href="#id23">Helper Structs</a><a class="headerlink" href="#helper-structs" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="gearsetratiopair">
+<h4><a class="toc-backref" href="#id24">GearsetRatioPair</a><a class="headerlink" href="#gearsetratiopair" title="Permalink to this headline">¶</a></h4>
+<p>This is a simple data class to hold an internal gearset and an external gear ratio.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-16 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-17 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">GearsetRatioPair</span> <span class="p">{</span>
+  <span class="n">GearsetRatioPair</span><span class="p">(</span><span class="k">const</span> <span class="n">gearset</span> <span class="n">igearset</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">iratio</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="o">:</span> <span class="n">internalGearset</span><span class="p">(</span><span class="n">igearset</span><span class="p">),</span> <span class="n">ratio</span><span class="p">(</span><span class="n">iratio</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">}</span>
+
+  <span class="o">~</span><span class="n">GearsetRatioPair</span><span class="p">()</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="n">gearset</span> <span class="n">internalGearset</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">double</span> <span class="n">ratio</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">AbstractMotor</span><span class="o">::</span><span class="n">GearsetRatioPair</span> <span class="n">operator</span><span class="o">*</span><span class="p">(</span><span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span> <span class="n">gearset</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ratio</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// GearsetRatioPair is implicitly constructable from a gearset</span>
+<span class="n">okapi</span><span class="o">::</span><span class="n">AbstractMotor</span><span class="o">::</span><span class="n">GearsetRatioPair</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">;</span>
+
+<span class="c1">// You can also multiple a gearset by an external gear ratio</span>
+<span class="n">okapi</span><span class="o">::</span><span class="n">AbstractMotor</span><span class="o">::</span><span class="n">GearsetRatioPair</span> <span class="n">foo</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -961,7 +1076,7 @@ Prototype</div>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.6)
+      v: V5 (3.0.7)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -982,7 +1097,7 @@ Prototype</div>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'3.0.6',
+            VERSION:'3.0.7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Motors C API &mdash; PROS for V5 3.0.6 documentation</title>
+  <title>Motors C API &mdash; PROS for V5 3.0.7 documentation</title>
   
 
   
@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../index.html"/>
         <link rel="up" title="API Home" href="../index.html"/>
         <link rel="next" title="RTOS Facilities C API" href="rtos.html"/>
         <link rel="prev" title="Miscellaneous C API" href="misc.html"/>
@@ -95,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.6)
+                  V5 (3.0.7)
                 
               </div>
             
@@ -573,7 +573,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 used for the motor. This results in a range of +-100 for
 <a class="reference external" href="motors.html#motor-gearset-e-t">E_MOTOR_GEARSET_36</a>,
 +-200 for <a class="reference external" href="motors.html#motor-gearset-e-t">E_MOTOR_GEARSET_18</a>, and +-600 for
-<a class="reference external" href="motors.html#motor-gearset-e-t">E_MOTOR_GEARSET_6</a>. The velocity
+<a class="reference external" href="motors.html#motor-gearset-e-t">blue</a>. The velocity
 is held with PID to ensure consistent speed, as opposed to setting the motor’s
 voltage.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
@@ -708,7 +708,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
 <li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
-<p>Analogous to <a class="reference external" href="../cpp/motors.html#get-target">pros::Motor::get_target</a>.</p>
+<p>Analogous to <a class="reference external" href="../cpp/motors.html#get-target-position">pros::Motor::get_target_position</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-10 docutils container">
@@ -767,7 +767,7 @@ operation failed, setting <code class="docutils literal notranslate"><span class
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
 <li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
-<p>Analogous to <a class="reference external" href="../cpp/motors.html#get-velocity">pros::Motor::get_velocity</a>.</p>
+<p>Analogous to <a class="reference external" href="../cpp/motors.html#get-target-velocity">pros::Motor::get_target_velocity</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-12 docutils container">
@@ -2788,7 +2788,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.6)
+      v: V5 (3.0.7)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -2809,7 +2809,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'3.0.6',
+            VERSION:'3.0.7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

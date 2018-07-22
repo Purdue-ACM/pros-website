@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Utility API &mdash; PROS for V5 3.0.6 documentation</title>
+  <title>Utility API &mdash; PROS for V5 3.0.7 documentation</title>
   
 
   
@@ -39,9 +39,9 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../index.html"/>
         <link rel="up" title="OkapiLib API" href="../index.html"/>
-        <link rel="next" title="Math Utilities" href="math-util.html"/>
+        <link rel="next" title="(Abstract) Abstract Rate" href="abstract-abstract-rate.html"/>
         <link rel="prev" title="Units API" href="../units/index.html"/>
    
   
@@ -87,7 +87,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.6)
+                  V5 (3.0.7)
                 
               </div>
             
@@ -148,8 +148,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../filters/index.html">Filters API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../units/index.html">Units API</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Utility API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="abstract-abstract-rate.html">(Abstract) Abstract Rate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="abstract-abstract-timer.html">(Abstract) Abstract Timer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="math-util.html">Math Utilities</a></li>
 <li class="toctree-l4"><a class="reference internal" href="rate.html">Rate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="supplier.html">Supplier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="time-util.html">TimeUtil</a></li>
+<li class="toctree-l4"><a class="reference internal" href="time-util-factory.html">TimeUtil Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="timer.html">Timer</a></li>
 </ul>
 </li>
@@ -166,8 +171,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../filters/index.html">Filters API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../units/index.html">Units API</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Utility API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="abstract-abstract-rate.html">(Abstract) Abstract Rate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="abstract-abstract-timer.html">(Abstract) Abstract Timer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="math-util.html">Math Utilities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rate.html">Rate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supplier.html">Supplier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time-util.html">TimeUtil</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time-util-factory.html">TimeUtil Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timer.html">Timer</a></li>
 </ul>
 </li>
@@ -250,8 +260,13 @@
 <h1>Utility API<a class="headerlink" href="#utility-api" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="abstract-abstract-rate.html">(Abstract) Abstract Rate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="abstract-abstract-timer.html">(Abstract) Abstract Timer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="math-util.html">Math Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rate.html">Rate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supplier.html">Supplier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time-util.html">TimeUtil</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time-util-factory.html">TimeUtil Factory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="timer.html">Timer</a></li>
 </ul>
 </div>
@@ -271,7 +286,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="math-util.html" class="btn btn-neutral float-right" title="Math Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="abstract-abstract-rate.html" class="btn btn-neutral float-right" title="(Abstract) Abstract Rate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../units/index.html" class="btn btn-neutral" title="Units API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -301,7 +316,7 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.6)
+      v: V5 (3.0.7)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -322,7 +337,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3.0.6',
+            VERSION:'3.0.7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

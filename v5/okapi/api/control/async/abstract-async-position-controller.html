@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>(Abstract) Async Position Controller &mdash; PROS for V5 3.0.6 documentation</title>
+  <title>(Abstract) Async Position Controller &mdash; PROS for V5 3.0.7 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../../index.html"/>
         <link rel="up" title="Control API" href="../index.html"/>
         <link rel="next" title="(Abstract) Async Velocity Controller" href="abstract-async-velocity-controller.html"/>
         <link rel="prev" title="(Abstract) Async Controller" href="abstract-async-controller.html"/>
@@ -87,7 +87,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.6)
+                  V5 (3.0.7)
                 
               </div>
             
@@ -151,6 +151,7 @@
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="async-controller-factory.html">Async Controller Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="async-pos-pid-controller.html">Async Pos PID Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="async-vel-integrated-controller.html">Async Vel Integrated Controller</a></li>
@@ -159,11 +160,16 @@
 <li class="toctree-l4"><a class="reference internal" href="../iterative/abstract-iterative-controller.html">(Abstract) Iterative Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../iterative/abstract-iterative-position-controller.html">(Abstract) Iterative Position Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../iterative/abstract-iterative-velocity-controller.html">(Abstract) Iterative Velocity Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../iterative/iterative-controller-factory.html">Iterative Controller Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../iterative/iterative-motor-velocity-controller.html">Iterative Motor Velocity Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../iterative/iterative-pos-pid-controller.html">Iterative Pos PID Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../iterative/iterative-vel-pid-controller.html">Iterative Vel PID Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../util/controller-runner.html">Controller Runner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../util/controller-runner-factory.html">Controller Runner Factory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../util/pid-tuner.html">PID Tuner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../util/pid-tuner-factory.html">PID Tuner Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../util/settled-util.html">Settled Utility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../util/settled-util-factory.html">Settled Utility Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../abstract-closed-loop-controller.html">(Abstract) Closed-loop Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../abstract-controller-input.html">(Abstract) Controller Input</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../abstract-controller-output.html">(Abstract) Controller Output</a></li>
@@ -189,6 +195,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="async-controller-factory.html">Async Controller Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async-pos-pid-controller.html">Async Pos PID Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async-vel-integrated-controller.html">Async Vel Integrated Controller</a></li>
@@ -197,11 +204,16 @@
 <li class="toctree-l3"><a class="reference internal" href="../iterative/abstract-iterative-controller.html">(Abstract) Iterative Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../iterative/abstract-iterative-position-controller.html">(Abstract) Iterative Position Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../iterative/abstract-iterative-velocity-controller.html">(Abstract) Iterative Velocity Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iterative/iterative-controller-factory.html">Iterative Controller Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../iterative/iterative-motor-velocity-controller.html">Iterative Motor Velocity Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../iterative/iterative-pos-pid-controller.html">Iterative Pos PID Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../iterative/iterative-vel-pid-controller.html">Iterative Vel PID Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../util/controller-runner.html">Controller Runner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../util/controller-runner-factory.html">Controller Runner Factory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../util/pid-tuner.html">PID Tuner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../util/pid-tuner-factory.html">PID Tuner Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../util/settled-util.html">Settled Utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../util/settled-util-factory.html">Settled Utility Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../abstract-closed-loop-controller.html">(Abstract) Closed-loop Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../abstract-controller-input.html">(Abstract) Controller Input</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../abstract-controller-output.html">(Abstract) Controller Output</a></li>
@@ -351,7 +363,7 @@ operates in the position domain.</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.6)
+      v: V5 (3.0.7)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -372,7 +384,7 @@ operates in the position domain.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'3.0.6',
+            VERSION:'3.0.7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

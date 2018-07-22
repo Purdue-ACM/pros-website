@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Three Encoder Skid-Steer Model &mdash; PROS for V5 3.0.6 documentation</title>
+  <title>Three Encoder Skid-Steer Model &mdash; PROS for V5 3.0.7 documentation</title>
   
 
   
@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../../index.html"/>
         <link rel="up" title="Chassis API" href="../index.html"/>
         <link rel="next" title="X-Drive Model" href="xdrive-model.html"/>
         <link rel="prev" title="Skid-Steer Model" href="skid-steer-model.html"/>
@@ -95,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.6)
+                  V5 (3.0.7)
                 
               </div>
             
@@ -152,10 +152,13 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../index.html">Chassis API</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../controller/abstract-chassis-controller.html">(Abstract) Chassis Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../controller/chassis-controller-factory.html">Chassis Controller Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../controller/chassis-controller-integrated.html">Chassis Controller Integrated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../controller/chassis-controller-pid.html">Chassis Controller PID</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../controller/chassis-scales.html">Chassis Scales</a></li>
 <li class="toctree-l4"><a class="reference internal" href="abstract-chassis-model.html">(Abstract) Chassis Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="abstract-read-only-chassis-model.html">(Abstract) Read-Only Chassis Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="chassis-model-factory.html">Chassis Model Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="skid-steer-model.html">Skid-Steer Model</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Three Encoder Skid-Steer Model</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#okapi-threeencoderskidsteermodelargs">okapi::ThreeEncoderSkidSteerModelArgs</a><ul>
@@ -189,10 +192,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Chassis API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../controller/abstract-chassis-controller.html">(Abstract) Chassis Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../controller/chassis-controller-factory.html">Chassis Controller Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../controller/chassis-controller-integrated.html">Chassis Controller Integrated</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../controller/chassis-controller-pid.html">Chassis Controller PID</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../controller/chassis-scales.html">Chassis Scales</a></li>
 <li class="toctree-l3"><a class="reference internal" href="abstract-chassis-model.html">(Abstract) Chassis Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="abstract-read-only-chassis-model.html">(Abstract) Read-Only Chassis Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chassis-model-factory.html">Chassis Model Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="skid-steer-model.html">Skid-Steer Model</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Three Encoder Skid-Steer Model</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#okapi-threeencoderskidsteermodelargs">okapi::ThreeEncoderSkidSteerModelArgs</a><ul>
@@ -325,55 +331,6 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ThreeEncoderSkidSteerModelArgs</span><span class="p">(</span><span class="n">MotorGroup</span> <span class="n">ileftSideMotor</span><span class="p">,</span>
-                               <span class="n">MotorGroup</span> <span class="n">irightSideMotor</span><span class="p">,</span>
-                               <span class="n">ADIEncoder</span> <span class="n">ileftEnc</span><span class="p">,</span>
-                               <span class="n">ADIEncoder</span> <span class="n">imiddleEnc</span><span class="p">,</span>
-                               <span class="n">ADIEncoder</span> <span class="n">irightEnc</span><span class="p">,</span>
-                               <span class="k">const</span> <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>ileftSideMotor</td>
-<td>The left side motor.</td>
-</tr>
-<tr class="row-odd"><td>irightSideMotor</td>
-<td>The right side motor.</td>
-</tr>
-<tr class="row-even"><td>ileftEnc</td>
-<td>The left side encoder.</td>
-</tr>
-<tr class="row-odd"><td>imiddleEnc</td>
-<td>The middle encoder.</td>
-</tr>
-<tr class="row-even"><td>irightEnc</td>
-<td>The right side encoder.</td>
-</tr>
-<tr class="row-odd"><td>imaxOutput</td>
-<td>The maximum output value to the motors.</td>
-</tr>
-</tbody>
-</table>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-1 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ThreeEncoderSkidSteerModelArgs</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">ileftSideMotor</span><span class="p">,</span>
                                <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">irightSideMotor</span><span class="p">,</span>
                                <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ContinuousRotarySensor</span><span class="o">&gt;</span> <span class="n">ileftEnc</span><span class="p">,</span>
@@ -421,23 +378,28 @@ Prototype</div>
 <div class="section" id="okapi-threeencoderskidsteermodel">
 <h2><a class="toc-backref" href="#id4">okapi::ThreeEncoderSkidSteerModel</a><a class="headerlink" href="#okapi-threeencoderskidsteermodel" title="Permalink to this headline">¶</a></h2>
 <p>The model for a skid-steer chassis. Uses a third encoder mounted perpendicular and between the two
-normal encoders.</p>
+normal encoders. If you are trying to make an instance of this class, you should
+most likely be creating a type of
+<a class="reference external" href="../controller/abstract-chassis-controller.html">ChassisController</a> instead. If you really do
+mean to make an instance of a
+<a class="reference external" href="abstract-chassis-model.html">ChassisModel</a>, then you should probably be using the
+<a class="reference external" href="chassis-model-factory.html">ChassisModelFactory</a> instead of a constructor from this class.</p>
 <div class="section" id="id1">
 <h3><a class="toc-backref" href="#id5">Constructor(s)</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-2 docutils container">
+<div class="active item sphinx-data-tab-1 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ThreeEncoderSkidSteerModelArgs</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">ileftSideMotor</span><span class="p">,</span>
                                <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">irightSideMotor</span><span class="p">,</span>
                                <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ContinuousRotarySensor</span><span class="o">&gt;</span> <span class="n">ileftEnc</span><span class="p">,</span>
                                <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ContinuousRotarySensor</span><span class="o">&gt;</span> <span class="n">imiddleEnc</span><span class="p">,</span>
                                <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ContinuousRotarySensor</span><span class="o">&gt;</span> <span class="n">irightEnc</span><span class="p">,</span>
-                               <span class="k">const</span> <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
+                               <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -475,13 +437,13 @@ Prototype</div>
 </table>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-3 docutils container">
+<div class="active item sphinx-data-tab-2 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ThreeEncoderSkidSteerModel</span><span class="p">(</span><span class="k">const</span> <span class="n">ThreeEncoderSkidSteerModelArgs</span> <span class="o">&amp;</span><span class="n">iparams</span><span class="p">)</span>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">explicit</span> <span class="n">ThreeEncoderSkidSteerModel</span><span class="p">(</span><span class="k">const</span> <span class="n">ThreeEncoderSkidSteerModelArgs</span> <span class="o">&amp;</span><span class="n">iparams</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -510,13 +472,13 @@ Prototype</div>
 <p>Returns the current sensor values in the format <code class="docutils literal notranslate"><span class="pre">{left,</span> <span class="pre">right,</span> <span class="pre">middle}</span></code>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-4 docutils container">
+<div class="active item sphinx-data-tab-3 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="n">valarray</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span><span class="o">&gt;</span> <span class="n">getSensorVals</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">valarray</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span><span class="o">&gt;</span> <span class="n">getSensorVals</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
@@ -571,7 +533,7 @@ Prototype</div>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.6)
+      v: V5 (3.0.7)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -592,7 +554,7 @@ Prototype</div>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'3.0.6',
+            VERSION:'3.0.7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

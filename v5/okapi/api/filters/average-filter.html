@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Average Filter &mdash; PROS for V5 3.0.6 documentation</title>
+  <title>Average Filter &mdash; PROS for V5 3.0.7 documentation</title>
   
 
   
@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../index.html"/>
         <link rel="up" title="Filters API" href="index.html"/>
         <link rel="next" title="Composable Filter" href="composable-filter.html"/>
         <link rel="prev" title="(Abstract) Filter" href="abstract-filter.html"/>
@@ -95,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.6)
+                  V5 (3.0.7)
                 
               </div>
             
@@ -175,6 +175,7 @@
 <li class="toctree-l4"><a class="reference internal" href="median-filter.html">Median Filter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="passthrough-filter.html">Passthrough Filter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="vel-math.html">Velocity Math</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vel-math-factory.html">VelMath Factory</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../units/index.html">Units API</a></li>
@@ -211,6 +212,7 @@
 <li class="toctree-l3"><a class="reference internal" href="median-filter.html">Median Filter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="passthrough-filter.html">Passthrough Filter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="vel-math.html">Velocity Math</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vel-math-factory.html">VelMath Factory</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../units/index.html">Units API</a></li>
@@ -376,7 +378,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">filter</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">ireading</span><span class="p">)</span> <span class="n">override</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">filter</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">ireading</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
@@ -411,7 +413,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">getOutput</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">getOutput</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
@@ -466,7 +468,7 @@ Prototype</div>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.6)
+      v: V5 (3.0.7)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -487,7 +489,7 @@ Prototype</div>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3.0.6',
+            VERSION:'3.0.7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Velocity Math &mdash; PROS for V5 3.0.6 documentation</title>
+  <title>Velocity Math &mdash; PROS for V5 3.0.7 documentation</title>
   
 
   
@@ -47,9 +47,9 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../index.html"/>
         <link rel="up" title="Filters API" href="index.html"/>
-        <link rel="next" title="Units API" href="../units/index.html"/>
+        <link rel="next" title="VelMath Factory" href="vel-math-factory.html"/>
         <link rel="prev" title="Passthrough Filter" href="passthrough-filter.html"/>
    
   
@@ -95,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.6)
+                  V5 (3.0.7)
                 
               </div>
             
@@ -181,6 +181,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="vel-math-factory.html">VelMath Factory</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../units/index.html">Units API</a></li>
@@ -223,6 +224,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="vel-math-factory.html">VelMath Factory</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../units/index.html">Units API</a></li>
@@ -339,7 +341,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VelMathArgs</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">iticksPerRev</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">explicit</span> <span class="n">VelMathArgs</span><span class="p">(</span><span class="kt">double</span> <span class="n">iticksPerRev</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -371,100 +373,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VelMathArgs</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">iticksPerRev</span><span class="p">,</span> <span class="k">const</span> <span class="n">ComposableFilterArgs</span> <span class="o">&amp;</span><span class="n">ifilterParams</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="18%" />
-<col width="82%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>iticksPerRev</td>
-<td>The number of ticks per revolution (or whatever units you are using).</td>
-</tr>
-<tr class="row-odd"><td>ifilterParams</td>
-<td>The filter to use for filtering the velocity.</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="section" id="okapi-velmath">
-<h2><a class="toc-backref" href="#id6">okapi::VelMath</a><a class="headerlink" href="#okapi-velmath" title="Permalink to this headline">¶</a></h2>
-<p>Velocity math helper. Calculates filtered velocity. Filters using a 3-tap <a class="reference external" href="median-filter.html">median filter</a> and a 5-tap
-<a class="reference external" href="average-filter.html">averaging filter</a> by default, unless a different filter is given in the constructor.</p>
-<div class="section" id="id2">
-<h3><a class="toc-backref" href="#id7">Constructor(s)</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-2 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-<div class="item sphinx-data-tab-3 docutils container">
-<div class="docutils container">
-Example</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VelMath</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">iticksPerRev</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">VelMath</span> <span class="n">velMath</span><span class="p">(</span><span class="mi">1800</span><span class="p">);</span> <span class="c1">// V5 motors are 1800 ticks per revolution with the 100 rpm gearset</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="18%" />
-<col width="82%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>iticksPerRev</td>
-<td>The number of ticks per revolution (or whatever units you are using).</td>
-</tr>
-</tbody>
-</table>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-4 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-<div class="item sphinx-data-tab-5 docutils container">
-<div class="docutils container">
-Example</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VelMath</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">iticksPerRev</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Filter</span><span class="o">&gt;</span> <span class="n">ifilter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">VelMath</span> <span class="n">velMath</span><span class="p">(</span><span class="mi">1800</span><span class="p">,</span> <span class="c1">// V5 motors are 1800 ticks per revolution with the 100 rpm gearset</span>
-    <span class="n">ComposableFilterArgs</span><span class="p">({[]</span> <span class="p">{</span> <span class="k">return</span> <span class="n">new</span> <span class="n">MedianFilter</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;</span><span class="p">();</span> <span class="p">},</span>
-                          <span class="p">[]</span> <span class="p">{</span> <span class="k">return</span> <span class="n">new</span> <span class="n">AverageFilter</span><span class="o">&lt;</span><span class="mi">5</span><span class="o">&gt;</span><span class="p">();</span> <span class="p">}}));</span>
-<span class="p">}</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VelMathArgs</span><span class="p">(</span><span class="kt">double</span> <span class="n">iticksPerRev</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Filter</span><span class="o">&gt;</span> <span class="n">ifilter</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -488,45 +397,26 @@ Example</div>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="section" id="okapi-velmath">
+<h2><a class="toc-backref" href="#id6">okapi::VelMath</a><a class="headerlink" href="#okapi-velmath" title="Permalink to this headline">¶</a></h2>
+<p>Velocity math helper. Calculates filtered velocity. Filters using a 2-tap
+<a class="reference external" href="average-filter.html">averaging filter</a> by default, unless a different filter is given. If you
+are trying to make an instance of this class, you should most likely be using the
+<a class="reference external" href="vel-math-factory.html">VelMathFactory</a> instead of a constructor from this class.</p>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id7">Constructor(s)</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Throws a <code class="docutils literal notranslate"><span class="pre">``std::invalid_argument``</span></code> exception if <cite>iticksPerRev</cite> is zero.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-6 docutils container">
+<div class="active item sphinx-data-tab-2 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VelMath</span><span class="p">(</span><span class="k">const</span> <span class="n">VelMathArgs</span> <span class="o">&amp;</span><span class="n">iparams</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="18%" />
-<col width="82%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>iparams</td>
-<td>The <code class="docutils literal notranslate"><span class="pre">VelMath</span></code> arguments.</td>
-</tr>
-</tbody>
-</table>
-<p>This constructor is used for testing.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-7 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VelMath</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">iticksPerRev</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Filter</span><span class="o">&gt;</span> <span class="n">ifilter</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Timer</span><span class="o">&gt;</span> <span class="n">iloopDtTimer</span><span class="p">)</span>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">VelMath</span><span class="p">(</span><span class="kt">double</span> <span class="n">iticksPerRev</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Filter</span><span class="o">&gt;</span> <span class="n">ifilter</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Timer</span><span class="o">&gt;</span> <span class="n">iloopDtTimer</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -562,13 +452,13 @@ Prototype</div>
 <p>Calculates the current velocity and acceleration. Returns the (filtered) velocity.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-8 docutils container">
+<div class="active item sphinx-data-tab-3 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QAngularSpeed</span> <span class="n">step</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">inewPos</span><span class="p">)</span>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QAngularSpeed</span> <span class="n">step</span><span class="p">(</span><span class="kt">double</span> <span class="n">inewPos</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -597,13 +487,13 @@ Prototype</div>
 <p>Sets ticks per revolution (or whatever units you are using).</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-9 docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setTicksPerRev</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">iTPR</span><span class="p">)</span>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setTicksPerRev</span><span class="p">(</span><span class="kt">double</span> <span class="n">iTPR</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -631,12 +521,12 @@ Prototype</div>
 <p>Returns the last calculated velocity.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-10 docutils container">
+<div class="active item sphinx-data-tab-5 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QAngularSpeed</span> <span class="n">getVelocity</span><span class="p">()</span> <span class="k">const</span>
 </pre></div>
 </div>
@@ -650,12 +540,12 @@ Prototype</div>
 <p>Returns the last calculated acceleration.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-11 docutils container">
+<div class="active item sphinx-data-tab-6 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QAngularAcceleration</span> <span class="n">getAccel</span><span class="p">()</span> <span class="k">const</span>
 </pre></div>
 </div>
@@ -681,7 +571,7 @@ Prototype</div>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../units/index.html" class="btn btn-neutral float-right" title="Units API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="vel-math-factory.html" class="btn btn-neutral float-right" title="VelMath Factory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="passthrough-filter.html" class="btn btn-neutral" title="Passthrough Filter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -711,7 +601,7 @@ Prototype</div>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.6)
+      v: V5 (3.0.7)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -732,7 +622,7 @@ Prototype</div>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3.0.6',
+            VERSION:'3.0.7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

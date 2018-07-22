@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Chassis Controller Integrated &mdash; PROS for V5 3.0.6 documentation</title>
+  <title>Chassis Controller Integrated &mdash; PROS for V5 3.0.7 documentation</title>
   
 
   
@@ -47,10 +47,10 @@
         <link rel="index" title="Index"
               href="../../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../../index.html"/>
         <link rel="up" title="Chassis API" href="../index.html"/>
         <link rel="next" title="Chassis Controller PID" href="chassis-controller-pid.html"/>
-        <link rel="prev" title="(Abstract) Chassis Controller" href="abstract-chassis-controller.html"/>
+        <link rel="prev" title="Chassis Controller Factory" href="chassis-controller-factory.html"/>
    
   
   
@@ -95,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.6)
+                  V5 (3.0.7)
                 
               </div>
             
@@ -152,14 +152,15 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../index.html">Chassis API</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="abstract-chassis-controller.html">(Abstract) Chassis Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="chassis-controller-factory.html">Chassis Controller Factory</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Chassis Controller Integrated</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#okapi-chassiscontrollerintegrated">okapi::ChassisControllerIntegrated</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#methods">Methods</a><ul>
 <li class="toctree-l7"><a class="reference internal" href="#movedistance">moveDistance</a></li>
-<li class="toctree-l7"><a class="reference internal" href="#id7">moveDistance</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id5">moveDistance</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#turnangle">turnAngle</a></li>
-<li class="toctree-l7"><a class="reference internal" href="#id8">turnAngle</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id6">turnAngle</a></li>
 </ul>
 </li>
 </ul>
@@ -169,6 +170,8 @@
 <li class="toctree-l4"><a class="reference internal" href="chassis-controller-pid.html">Chassis Controller PID</a></li>
 <li class="toctree-l4"><a class="reference internal" href="chassis-scales.html">Chassis Scales</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../model/abstract-chassis-model.html">(Abstract) Chassis Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../model/abstract-read-only-chassis-model.html">(Abstract) Read-Only Chassis Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../model/chassis-model-factory.html">Chassis Model Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../model/skid-steer-model.html">Skid-Steer Model</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../model/three-encoder-skid-steer-model.html">Three Encoder Skid-Steer Model</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../model/xdrive-model.html">X-Drive Model</a></li>
@@ -188,14 +191,15 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Chassis API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="abstract-chassis-controller.html">(Abstract) Chassis Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chassis-controller-factory.html">Chassis Controller Factory</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Chassis Controller Integrated</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#okapi-chassiscontrollerintegrated">okapi::ChassisControllerIntegrated</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#methods">Methods</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#movedistance">moveDistance</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id7">moveDistance</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id5">moveDistance</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#turnangle">turnAngle</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id8">turnAngle</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id6">turnAngle</a></li>
 </ul>
 </li>
 </ul>
@@ -205,6 +209,8 @@
 <li class="toctree-l3"><a class="reference internal" href="chassis-controller-pid.html">Chassis Controller PID</a></li>
 <li class="toctree-l3"><a class="reference internal" href="chassis-scales.html">Chassis Scales</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../model/abstract-chassis-model.html">(Abstract) Chassis Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model/abstract-read-only-chassis-model.html">(Abstract) Read-Only Chassis Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model/chassis-model-factory.html">Chassis Model Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../model/skid-steer-model.html">Skid-Steer Model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../model/three-encoder-skid-steer-model.html">Three Encoder Skid-Steer Model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../model/xdrive-model.html">X-Drive Model</a></li>
@@ -296,13 +302,13 @@
 <h1>Chassis Controller Integrated<a class="headerlink" href="#chassis-controller-integrated" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#okapi-chassiscontrollerintegrated" id="id9">okapi::ChassisControllerIntegrated</a><ul>
-<li><a class="reference internal" href="#constructor-s" id="id10">Constructor(s)</a></li>
-<li><a class="reference internal" href="#methods" id="id11">Methods</a><ul>
-<li><a class="reference internal" href="#movedistance" id="id12">moveDistance</a></li>
-<li><a class="reference internal" href="#id7" id="id13">moveDistance</a></li>
-<li><a class="reference internal" href="#turnangle" id="id14">turnAngle</a></li>
-<li><a class="reference internal" href="#id8" id="id15">turnAngle</a></li>
+<li><a class="reference internal" href="#okapi-chassiscontrollerintegrated" id="id7">okapi::ChassisControllerIntegrated</a><ul>
+<li><a class="reference internal" href="#constructor-s" id="id8">Constructor(s)</a></li>
+<li><a class="reference internal" href="#methods" id="id9">Methods</a><ul>
+<li><a class="reference internal" href="#movedistance" id="id10">moveDistance</a></li>
+<li><a class="reference internal" href="#id5" id="id11">moveDistance</a></li>
+<li><a class="reference internal" href="#turnangle" id="id12">turnAngle</a></li>
+<li><a class="reference internal" href="#id6" id="id13">turnAngle</a></li>
 </ul>
 </li>
 </ul>
@@ -310,296 +316,27 @@
 </ul>
 </div>
 <div class="section" id="okapi-chassiscontrollerintegrated">
-<h2><a class="toc-backref" href="#id9">okapi::ChassisControllerIntegrated</a><a class="headerlink" href="#okapi-chassiscontrollerintegrated" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">okapi::ChassisControllerIntegrated</a><a class="headerlink" href="#okapi-chassiscontrollerintegrated" title="Permalink to this headline">¶</a></h2>
 <p>A <a class="reference external" href="abstract-chassis-controller.html">ChassisController</a> using the V5 motor’s integrated control.
-The motors passed in will be put into degree units.</p>
+The motors passed in will be put into degree units. If you are trying to make an instance of this
+class, you should most likely be using the
+<a class="reference external" href="chassis-controller-factory.html">ChassisControllerFactory</a> instead of a constructor from this
+class. Throws a <code class="docutils literal notranslate"><span class="pre">std::invalid_argument</span></code> exception if the gear ratio is zero.</p>
 <div class="section" id="constructor-s">
-<h3><a class="toc-backref" href="#id10">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
-<p>This constructor infers a skid-steer layout.</p>
+<h3><a class="toc-backref" href="#id8">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-0 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-1 docutils container">
-<div class="docutils container">
-Example</div>
-</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ChassisControllerIntegrated</span><span class="p">(</span><span class="n">Motor</span> <span class="n">ileftSideMotor</span><span class="p">,</span> <span class="n">Motor</span> <span class="n">irightSideMotor</span><span class="p">,</span>
-                            <span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">motor_gearset_e_t</span> <span class="n">igearset</span> <span class="o">=</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">E_MOTOR_GEARSET_36</span><span class="p">,</span>
-                            <span class="k">const</span> <span class="n">ChassisScales</span> <span class="o">&amp;</span><span class="n">iscales</span> <span class="o">=</span> <span class="n">ChassisScales</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">}))</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerIntegrated</span> <span class="n">controller</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>ileftSideMotor</td>
-<td>The left side motor in a skid-steer model.</td>
-</tr>
-<tr class="row-odd"><td>irightSideMotor</td>
-<td>The right side motor in a skid-steer model.</td>
-</tr>
-<tr class="row-even"><td>igearset</td>
-<td>The motor’s internal planetary gearset.</td>
-</tr>
-<tr class="row-odd"><td>iscales</td>
-<td>See <a class="reference external" href="chassis-scales.html">ChassisScales</a> docs.</td>
-</tr>
-</tbody>
-</table>
-<p>This constructor infers a skid-steer layout.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-2 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-<div class="item sphinx-data-tab-3 docutils container">
-<div class="docutils container">
-Example</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ChassisControllerIntegrated</span><span class="p">(</span><span class="n">MotorGroup</span> <span class="n">ileftSideMotor</span><span class="p">,</span> <span class="n">MotorGroup</span> <span class="n">irightSideMotor</span><span class="p">,</span>
-                            <span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">motor_gearset_e_t</span> <span class="n">igearset</span> <span class="o">=</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">E_MOTOR_GEARSET_36</span><span class="p">,</span>
-                            <span class="k">const</span> <span class="n">ChassisScales</span> <span class="o">&amp;</span><span class="n">iscales</span> <span class="o">=</span> <span class="n">ChassisScales</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">}))</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerIntegrated</span> <span class="n">controller</span><span class="p">(</span><span class="n">okapi</span><span class="o">::</span><span class="n">MotorGroup</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}),</span>
-                                              <span class="n">okapi</span><span class="o">::</span><span class="n">MotorGroup</span><span class="p">({</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">}));</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>ileftSideMotor</td>
-<td>The left side motor in a skid-steer model.</td>
-</tr>
-<tr class="row-odd"><td>irightSideMotor</td>
-<td>The right side motor in a skid-steer model.</td>
-</tr>
-<tr class="row-even"><td>igearset</td>
-<td>The motor’s internal planetary gearset.</td>
-</tr>
-<tr class="row-odd"><td>iscales</td>
-<td>See <a class="reference external" href="chassis-scales.html">ChassisScales</a> docs.</td>
-</tr>
-</tbody>
-</table>
-<p>This constructor infers an x-drive layout.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-4 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-<div class="item sphinx-data-tab-5 docutils container">
-<div class="docutils container">
-Example</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ChassisControllerIntegrated</span><span class="p">(</span><span class="n">Motor</span> <span class="n">itopLeftMotor</span><span class="p">,</span>
-                            <span class="n">Motor</span> <span class="n">itopRightMotor</span><span class="p">,</span>
-                            <span class="n">Motor</span> <span class="n">ibottomRightMotor</span><span class="p">,</span>
-                            <span class="n">Motor</span> <span class="n">ibottomLeftMotor</span><span class="p">,</span>
-                            <span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">motor_gearset_e_t</span> <span class="n">igearset</span> <span class="o">=</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">E_MOTOR_GEARSET_36</span><span class="p">,</span>
-                            <span class="k">const</span> <span class="n">ChassisScales</span> <span class="o">&amp;</span><span class="n">iscales</span> <span class="o">=</span> <span class="n">ChassisScales</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">}))</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerIntegrated</span> <span class="n">controller</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>itopLeftMotor</td>
-<td>The top left motor in an x-drive model.</td>
-</tr>
-<tr class="row-odd"><td>itopRightMotor</td>
-<td>The top right motor in an x-drive model.</td>
-</tr>
-<tr class="row-even"><td>ibottomRightMotor</td>
-<td>The bottom right motor in an x-drive model.</td>
-</tr>
-<tr class="row-odd"><td>ibottomLeftMotor</td>
-<td>The bottom left motor in an x-drive model.</td>
-</tr>
-<tr class="row-even"><td>igearset</td>
-<td>The motor’s internal planetary gearset.</td>
-</tr>
-<tr class="row-odd"><td>iscales</td>
-<td>See <a class="reference external" href="chassis-scales.html">ChassisScales</a> docs.</td>
-</tr>
-</tbody>
-</table>
-<p>This constructor infers a skid-steer layout.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-6 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-<div class="item sphinx-data-tab-7 docutils container">
-<div class="docutils container">
-Example</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ChassisControllerIntegrated</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">ileftSideMotor</span><span class="p">,</span>
-                            <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">irightSideMotor</span><span class="p">,</span>
-                            <span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">motor_gearset_e_t</span> <span class="n">igearset</span> <span class="o">=</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">E_MOTOR_GEARSET_36</span><span class="p">,</span>
-                            <span class="k">const</span> <span class="n">ChassisScales</span> <span class="o">&amp;</span><span class="n">iscales</span> <span class="o">=</span> <span class="n">ChassisScales</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">}))</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerIntegrated</span> <span class="n">controller</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">okapi</span><span class="o">::</span><span class="n">MotorGroup</span><span class="o">&gt;</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}),</span>
-                                              <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">okapi</span><span class="o">::</span><span class="n">MotorGroup</span><span class="o">&gt;</span><span class="p">({</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">}));</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>ileftSideMotor</td>
-<td>The left side motor in a skid-steer model.</td>
-</tr>
-<tr class="row-odd"><td>irightSideMotor</td>
-<td>The right side motor in a skid-steer model.</td>
-</tr>
-<tr class="row-even"><td>igearset</td>
-<td>The motor’s internal planetary gearset.</td>
-</tr>
-<tr class="row-odd"><td>iscales</td>
-<td>See <a class="reference external" href="chassis-scales.html">ChassisScales</a> docs.</td>
-</tr>
-</tbody>
-</table>
-<p>This constructor infers an x-drive layout.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-8 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-<div class="item sphinx-data-tab-9 docutils container">
-<div class="docutils container">
-Example</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ChassisControllerIntegrated</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">itopLeftMotor</span><span class="p">,</span>
-                            <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">itopRightMotor</span><span class="p">,</span>
-                            <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">ibottomRightMotor</span><span class="p">,</span>
-                            <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">ibottomLeftMotor</span><span class="p">,</span>
-                            <span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">motor_gearset_e_t</span> <span class="n">igearset</span> <span class="o">=</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">E_MOTOR_GEARSET_36</span><span class="p">,</span>
-                            <span class="k">const</span> <span class="n">ChassisScales</span> <span class="o">&amp;</span><span class="n">iscales</span> <span class="o">=</span> <span class="n">ChassisScales</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">}))</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// X-Drive controller</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerIntegrated</span> <span class="n">controller</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>itopLeftMotor</td>
-<td>The top left motor in an x-drive model.</td>
-</tr>
-<tr class="row-odd"><td>itopRightMotor</td>
-<td>The top right motor in an x-drive model.</td>
-</tr>
-<tr class="row-even"><td>ibottomRightMotor</td>
-<td>The bottom right motor in an x-drive model.</td>
-</tr>
-<tr class="row-odd"><td>ibottomLeftMotor</td>
-<td>The bottom left motor in an x-drive model.</td>
-</tr>
-<tr class="row-even"><td>igearset</td>
-<td>The motor’s internal planetary gearset.</td>
-</tr>
-<tr class="row-odd"><td>iscales</td>
-<td>See <a class="reference external" href="chassis-scales.html">ChassisScales</a> docs.</td>
-</tr>
-</tbody>
-</table>
-<p>This constructor is not recommended, there are less verbose options above.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-10 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ChassisControllerIntegrated</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ChassisModel</span><span class="o">&gt;</span> <span class="n">imodel</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ChassisControllerIntegrated</span><span class="p">(</span><span class="k">const</span> <span class="n">TimeUtil</span> <span class="o">&amp;</span><span class="n">itimeUtil</span><span class="p">,</span>
+                            <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ChassisModel</span><span class="o">&gt;</span> <span class="n">imodel</span><span class="p">,</span>
                             <span class="k">const</span> <span class="n">AsyncPosIntegratedControllerArgs</span> <span class="o">&amp;</span><span class="n">ileftControllerArgs</span><span class="p">,</span>
                             <span class="k">const</span> <span class="n">AsyncPosIntegratedControllerArgs</span> <span class="o">&amp;</span><span class="n">irightControllerArgs</span><span class="p">,</span>
-                            <span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">motor_gearset_e_t</span> <span class="n">igearset</span> <span class="o">=</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">E_MOTOR_GEARSET_36</span><span class="p">,</span>
+                            <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">GearsetRatioPair</span> <span class="n">igearset</span> <span class="o">=</span> <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">red</span><span class="p">,</span>
                             <span class="k">const</span> <span class="n">ChassisScales</span> <span class="o">&amp;</span><span class="n">iscales</span> <span class="o">=</span> <span class="n">ChassisScales</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">}))</span>
 </pre></div>
 </div>
@@ -616,39 +353,91 @@ Prototype</div>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>imodel</td>
+<tr class="row-even"><td>itimeUtil</td>
+<td>See <code class="docutils literal notranslate"><span class="pre">TimeUtil</span></code> docs.</td>
+</tr>
+<tr class="row-odd"><td>imodel</td>
 <td>The underlying <a class="reference external" href="../model/abstract-chassis-model.html">ChassisModel</a> to control.</td>
 </tr>
-<tr class="row-odd"><td>ileftControllerArgs</td>
+<tr class="row-even"><td>ileftControllerArgs</td>
 <td>The <a class="reference external" href="../../control/async/async-pos-integrated-controller.html">AsyncPosIntegratedControllerArgs</a> for the left side PID controller.</td>
 </tr>
-<tr class="row-even"><td>irightControllerArgs</td>
+<tr class="row-odd"><td>irightControllerArgs</td>
 <td>The <a class="reference external" href="../../control/async/async-pos-integrated-controller.html">AsyncPosIntegratedControllerArgs</a> for the right side PID controller.</td>
 </tr>
-<tr class="row-odd"><td>igearset</td>
-<td>The motor’s internal planetary gearset.</td>
+<tr class="row-even"><td>igearset</td>
+<td>The motor’s internal planetary gearset and external gear ratio.</td>
 </tr>
-<tr class="row-even"><td>iscales</td>
+<tr class="row-odd"><td>iscales</td>
+<td>See <a class="reference external" href="chassis-scales.html">ChassisScales</a> docs.</td>
+</tr>
+</tbody>
+</table>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-1 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ChassisControllerIntegrated</span><span class="p">(</span><span class="k">const</span> <span class="n">TimeUtil</span> <span class="o">&amp;</span><span class="n">itimeUtil</span><span class="p">,</span>
+                            <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ChassisModel</span><span class="o">&gt;</span> <span class="n">imodel</span><span class="p">,</span>
+                            <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">AsyncPosIntegratedController</span><span class="o">&gt;</span> <span class="n">ileftController</span><span class="p">,</span>
+                            <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">AsyncPosIntegratedController</span><span class="o">&gt;</span> <span class="n">irightController</span><span class="p">,</span>
+                            <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">GearsetRatioPair</span> <span class="n">igearset</span> <span class="o">=</span> <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">red</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="n">ChassisScales</span> <span class="o">&amp;</span><span class="n">iscales</span> <span class="o">=</span> <span class="n">ChassisScales</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>itimeUtil</td>
+<td>See <code class="docutils literal notranslate"><span class="pre">TimeUtil</span></code> docs.</td>
+</tr>
+<tr class="row-odd"><td>imodel</td>
+<td>The underlying <a class="reference external" href="../model/abstract-chassis-model.html">ChassisModel</a> to control.</td>
+</tr>
+<tr class="row-even"><td>ileftController</td>
+<td>The <a class="reference external" href="../../control/async/async-pos-integrated-controller.html">AsyncPosIntegratedController</a> for the left side.</td>
+</tr>
+<tr class="row-odd"><td>irightController</td>
+<td>The <a class="reference external" href="../../control/async/async-pos-integrated-controller.html">AsyncPosIntegratedController</a> for the right side.</td>
+</tr>
+<tr class="row-even"><td>igearset</td>
+<td>The motor’s internal planetary gearset and external gear ratio.</td>
+</tr>
+<tr class="row-odd"><td>iscales</td>
 <td>See <a class="reference external" href="chassis-scales.html">ChassisScales</a> docs.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="methods">
-<h3><a class="toc-backref" href="#id11">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="movedistance">
-<h4><a class="toc-backref" href="#id12">moveDistance</a><a class="headerlink" href="#movedistance" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id10">moveDistance</a><a class="headerlink" href="#movedistance" title="Permalink to this headline">¶</a></h4>
 <p>Drives the robot straight for a distance (using closed-loop control). Blocks while the robot is
 driving.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-11 docutils container">
+<div class="active item sphinx-data-tab-2 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">moveDistance</span><span class="p">(</span><span class="k">const</span> <span class="n">QLength</span> <span class="n">itarget</span><span class="p">)</span> <span class="n">override</span>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">moveDistance</span><span class="p">(</span><span class="n">QLength</span> <span class="n">itarget</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
@@ -671,19 +460,19 @@ Prototype</div>
 </table>
 </div>
 <hr class="docutils" />
-<div class="section" id="id7">
-<h4><a class="toc-backref" href="#id13">moveDistance</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id5">
+<h4><a class="toc-backref" href="#id11">moveDistance</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>Drives the robot straight for a distance with units of motor degrees (using closed-loop control).
 Blocks while the robot is driving.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-12 docutils container">
+<div class="active item sphinx-data-tab-3 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">moveDistance</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">itarget</span><span class="p">)</span> <span class="n">override</span>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">moveDistance</span><span class="p">(</span><span class="kt">int</span> <span class="n">itarget</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
@@ -707,17 +496,17 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="turnangle">
-<h4><a class="toc-backref" href="#id14">turnAngle</a><a class="headerlink" href="#turnangle" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id12">turnAngle</a><a class="headerlink" href="#turnangle" title="Permalink to this headline">¶</a></h4>
 <p>Turns the robot clockwise in place (using closed-loop control). Blocks while the robot is turning.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-13 docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">turnAngle</span><span class="p">(</span><span class="k">const</span> <span class="n">QAngle</span> <span class="n">idegTarget</span><span class="p">)</span> <span class="n">override</span>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">turnAngle</span><span class="p">(</span><span class="n">QAngle</span> <span class="n">idegTarget</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
@@ -740,19 +529,19 @@ Prototype</div>
 </table>
 </div>
 <hr class="docutils" />
-<div class="section" id="id8">
-<h4><a class="toc-backref" href="#id15">turnAngle</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id6">
+<h4><a class="toc-backref" href="#id13">turnAngle</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <p>Turns the robot clockwise in place with units of motor degrees (using closed-loop control). Blocks
 while the robot is turning.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-14 docutils container">
+<div class="active item sphinx-data-tab-5 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">turnAngle</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="n">idegTarget</span><span class="p">)</span> <span class="n">override</span>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">turnAngle</span><span class="p">(</span><span class="kt">float</span> <span class="n">idegTarget</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
@@ -795,7 +584,7 @@ Prototype</div>
         <a href="chassis-controller-pid.html" class="btn btn-neutral float-right" title="Chassis Controller PID" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="abstract-chassis-controller.html" class="btn btn-neutral" title="(Abstract) Chassis Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="chassis-controller-factory.html" class="btn btn-neutral" title="Chassis Controller Factory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -822,7 +611,7 @@ Prototype</div>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.6)
+      v: V5 (3.0.7)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -843,7 +632,7 @@ Prototype</div>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'3.0.6',
+            VERSION:'3.0.7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

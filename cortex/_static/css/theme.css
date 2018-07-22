@@ -4625,7 +4625,7 @@ hr {
 code, .rst-content tt, .rst-content code {
   white-space: nowrap;
   max-width: 100%;
-  background: #555;
+  background: #333;
   border: solid 1px #555;
   font-size: 75%;
   padding: 0 5px;
@@ -5443,7 +5443,9 @@ footer span.commit code, footer span.commit .rst-content tt, .rst-content footer
   margin-bottom: 24px;
 }
 .rst-content pre.literal-block, .rst-content div[class^='highlight'] {
-  border: 1px solid #999;
+  border: 1px solid #E6B85C;
+  border-radius: 0.28571429rem;
+  background: #333;
   padding: 0px;
   overflow-x: auto;
   line-height: normal;
@@ -5457,7 +5459,7 @@ footer span.commit code, footer span.commit .rst-content tt, .rst-content footer
   width: 100%;
 }
 .rst-content .linenodiv pre {
-  border-right: solid 1px #9e9e9e;
+  border-right: solid 1px #e7bc65;
   margin: 0;
   padding: 12px 12px;
   font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
@@ -5482,7 +5484,7 @@ footer span.commit code, footer span.commit .rst-content tt, .rst-content footer
   }
 }
 .rst-content .note, .rst-content .attention, .rst-content .caution, .rst-content .danger, .rst-content .error, .rst-content .hint, .rst-content .important, .rst-content .tip, .rst-content .warning, .rst-content .seealso, .rst-content .admonition-todo, .rst-content .admonition {
-  background: #555;
+  background: #333;
 }
 .rst-content .note .last, .rst-content .attention .last, .rst-content .caution .last, .rst-content .danger .last, .rst-content .error .last, .rst-content .hint .last, .rst-content .important .last, .rst-content .tip .last, .rst-content .warning .last, .rst-content .seealso .last, .rst-content .admonition-todo .last, .rst-content .admonition .last {
   margin-bottom: 0;

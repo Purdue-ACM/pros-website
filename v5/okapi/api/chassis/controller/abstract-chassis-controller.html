@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>(Abstract) Chassis Controller &mdash; PROS for V5 3.0.6 documentation</title>
+  <title>(Abstract) Chassis Controller &mdash; PROS for V5 3.0.7 documentation</title>
   
 
   
@@ -47,9 +47,9 @@
         <link rel="index" title="Index"
               href="../../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../../index.html"/>
         <link rel="up" title="Chassis API" href="../index.html"/>
-        <link rel="next" title="Chassis Controller Integrated" href="chassis-controller-integrated.html"/>
+        <link rel="next" title="Chassis Controller Factory" href="chassis-controller-factory.html"/>
         <link rel="prev" title="Chassis API" href="../index.html"/>
    
   
@@ -95,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.6)
+                  V5 (3.0.7)
                 
               </div>
             
@@ -177,10 +177,13 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="chassis-controller-factory.html">Chassis Controller Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="chassis-controller-integrated.html">Chassis Controller Integrated</a></li>
 <li class="toctree-l4"><a class="reference internal" href="chassis-controller-pid.html">Chassis Controller PID</a></li>
 <li class="toctree-l4"><a class="reference internal" href="chassis-scales.html">Chassis Scales</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../model/abstract-chassis-model.html">(Abstract) Chassis Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../model/abstract-read-only-chassis-model.html">(Abstract) Read-Only Chassis Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../model/chassis-model-factory.html">Chassis Model Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../model/skid-steer-model.html">Skid-Steer Model</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../model/three-encoder-skid-steer-model.html">Three Encoder Skid-Steer Model</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../model/xdrive-model.html">X-Drive Model</a></li>
@@ -225,10 +228,13 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="chassis-controller-factory.html">Chassis Controller Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="chassis-controller-integrated.html">Chassis Controller Integrated</a></li>
 <li class="toctree-l3"><a class="reference internal" href="chassis-controller-pid.html">Chassis Controller PID</a></li>
 <li class="toctree-l3"><a class="reference internal" href="chassis-scales.html">Chassis Scales</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../model/abstract-chassis-model.html">(Abstract) Chassis Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model/abstract-read-only-chassis-model.html">(Abstract) Read-Only Chassis Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../model/chassis-model-factory.html">Chassis Model Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../model/skid-steer-model.html">Skid-Steer Model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../model/three-encoder-skid-steer-model.html">Three Encoder Skid-Steer Model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../model/xdrive-model.html">X-Drive Model</a></li>
@@ -357,7 +363,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ChassisController</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ChassisModel</span><span class="o">&gt;</span> <span class="n">imodel</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">explicit</span> <span class="n">ChassisController</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ChassisModel</span><span class="o">&gt;</span> <span class="n">imodel</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -393,7 +399,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">moveDistance</span><span class="p">(</span><span class="k">const</span> <span class="n">QLength</span> <span class="n">itarget</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">moveDistance</span><span class="p">(</span><span class="n">QLength</span> <span class="n">itarget</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -425,7 +431,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">moveDistance</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">itarget</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">moveDistance</span><span class="p">(</span><span class="kt">int</span> <span class="n">itarget</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -459,7 +465,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">turnAngle</span><span class="p">(</span><span class="k">const</span> <span class="n">QAngle</span> <span class="n">idegTarget</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">turnAngle</span><span class="p">(</span><span class="n">QAngle</span> <span class="n">idegTarget</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -494,7 +500,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">turnAngle</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="n">idegTarget</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">turnAngle</span><span class="p">(</span><span class="kt">float</span> <span class="n">idegTarget</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -528,7 +534,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">forward</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">ispeed</span><span class="p">)</span> <span class="k">const</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">forward</span><span class="p">(</span><span class="kt">double</span> <span class="n">ispeed</span><span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
@@ -567,7 +573,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">driveVector</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">iySpeed</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">izRotation</span><span class="p">)</span> <span class="k">const</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">driveVector</span><span class="p">(</span><span class="kt">double</span> <span class="n">iySpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">izRotation</span><span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
@@ -604,7 +610,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">rotate</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">ispeed</span><span class="p">)</span> <span class="k">const</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">rotate</span><span class="p">(</span><span class="kt">double</span> <span class="n">ispeed</span><span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
@@ -656,7 +662,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">tank</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">ileftSpeed</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">irightSpeed</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">ithreshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">tank</span><span class="p">(</span><span class="kt">double</span> <span class="n">ileftSpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">irightSpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ithreshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
@@ -696,7 +702,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">arcade</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">iySpeed</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">izRotation</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="n">ithreshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">arcade</span><span class="p">(</span><span class="kt">double</span> <span class="n">iySpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">izRotation</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ithreshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
@@ -736,7 +742,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">left</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">ispeed</span><span class="p">)</span> <span class="k">const</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">left</span><span class="p">(</span><span class="kt">double</span> <span class="n">ispeed</span><span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
@@ -770,7 +776,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">right</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">ispeed</span><span class="p">)</span> <span class="k">const</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">right</span><span class="p">(</span><span class="kt">double</span> <span class="n">ispeed</span><span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
@@ -841,7 +847,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setBrakeMode</span><span class="p">(</span><span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">motor_brake_mode_e_t</span> <span class="n">mode</span><span class="p">)</span> <span class="k">const</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setBrakeMode</span><span class="p">(</span><span class="n">AbstractMotor</span><span class="o">::</span><span class="n">brakeMode</span> <span class="n">mode</span><span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
@@ -875,7 +881,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setEncoderUnits</span><span class="p">(</span><span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">motor_encoder_units_e_t</span> <span class="n">units</span><span class="p">)</span> <span class="k">const</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setEncoderUnits</span><span class="p">(</span><span class="n">AbstractMotor</span><span class="o">::</span><span class="n">encoderUnits</span> <span class="n">units</span><span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
@@ -909,7 +915,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setGearing</span><span class="p">(</span><span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">motor_gearset_e_t</span> <span class="n">gearset</span><span class="p">)</span> <span class="k">const</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setGearing</span><span class="p">(</span><span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span> <span class="n">gearset</span><span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
 </div>
@@ -949,7 +955,7 @@ Prototype</div>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="chassis-controller-integrated.html" class="btn btn-neutral float-right" title="Chassis Controller Integrated" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="chassis-controller-factory.html" class="btn btn-neutral float-right" title="Chassis Controller Factory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral" title="Chassis API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -979,7 +985,7 @@ Prototype</div>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.6)
+      v: V5 (3.0.7)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -1000,7 +1006,7 @@ Prototype</div>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'3.0.6',
+            VERSION:'3.0.7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

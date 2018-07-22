@@ -1,0 +1,721 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>(Abstract) Abstract Timer &mdash; PROS for V5 3.0.7 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+    <link rel="stylesheet" href="../../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../index.html"/>
+        <link rel="up" title="Utility API" href="index.html"/>
+        <link rel="next" title="Math Utilities" href="math-util.html"/>
+        <link rel="prev" title="(Abstract) Abstract Rate" href="abstract-abstract-rate.html"/>
+   
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PROS for V5
+          
+
+          
+            
+            <img src="../../../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  V5 (3.0.7)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">PROS: Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../blog/index.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../releases/index.html">Version Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started/new-users.html">PROS First Time Users Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started/installation.html">Installation Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/c/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/cpp/index.html">C++ API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OkapiLib</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">OkapiLib Documentation Home</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">OkapiLib API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../chassis/index.html">Chassis API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../control/index.html">Control API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../device/index.html">Devices API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../filters/index.html">Filters API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../units/index.html">Units API</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Utility API</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="abstract-abstract-rate.html">(Abstract) Abstract Rate</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">(Abstract) Abstract Timer</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#okapi-abstracttimer">okapi::AbstractTimer</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#millis">millis</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#getdt">getDt</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#getstartingtime">getStartingTime</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#getdtfromstart">getDtFromStart</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#placemark">placeMark</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#placehardmark">placeHardMark</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#clearhardmark">clearHardMark</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#getdtfrommark">getDtFromMark</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#getdtfromhardmark">getDtFromHardMark</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#repeat">repeat</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id1">repeat</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="math-util.html">Math Utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rate.html">Rate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="supplier.html">Supplier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="time-util.html">TimeUtil</a></li>
+<li class="toctree-l4"><a class="reference internal" href="time-util-factory.html">TimeUtil Factory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer.html">Timer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">OkapiLib API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../chassis/index.html">Chassis API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../control/index.html">Control API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device/index.html">Devices API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filters/index.html">Filters API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../units/index.html">Units API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Utility API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="abstract-abstract-rate.html">(Abstract) Abstract Rate</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">(Abstract) Abstract Timer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#okapi-abstracttimer">okapi::AbstractTimer</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#millis">millis</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getdt">getDt</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getstartingtime">getStartingTime</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getdtfromstart">getDtFromStart</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#placemark">placeMark</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#placehardmark">placeHardMark</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#clearhardmark">clearHardMark</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getdtfrommark">getDtFromMark</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getdtfromhardmark">getDtFromHardMark</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#repeat">repeat</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id1">repeat</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="math-util.html">Math Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rate.html">Rate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="supplier.html">Supplier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time-util.html">TimeUtil</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time-util-factory.html">TimeUtil Factory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timer.html">Timer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Extended (Advanced Users)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../extended/index.html">Extended API Topics</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PROS for V5</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OkapiLib Documentation Home</a> &raquo;</li>
+        
+          <li><a href="../index.html">OkapiLib API</a> &raquo;</li>
+        
+          <li><a href="index.html">Utility API</a> &raquo;</li>
+        
+      <li>(Abstract) Abstract Timer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/okapi/api/util/abstract-abstract-timer.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="abstract-abstract-timer">
+<h1>(Abstract) Abstract Timer<a class="headerlink" href="#abstract-abstract-timer" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#okapi-abstracttimer" id="id2">okapi::AbstractTimer</a><ul>
+<li><a class="reference internal" href="#methods" id="id3">Methods</a><ul>
+<li><a class="reference internal" href="#millis" id="id4">millis</a></li>
+<li><a class="reference internal" href="#getdt" id="id5">getDt</a></li>
+<li><a class="reference internal" href="#getstartingtime" id="id6">getStartingTime</a></li>
+<li><a class="reference internal" href="#getdtfromstart" id="id7">getDtFromStart</a></li>
+<li><a class="reference internal" href="#placemark" id="id8">placeMark</a></li>
+<li><a class="reference internal" href="#placehardmark" id="id9">placeHardMark</a></li>
+<li><a class="reference internal" href="#clearhardmark" id="id10">clearHardMark</a></li>
+<li><a class="reference internal" href="#getdtfrommark" id="id11">getDtFromMark</a></li>
+<li><a class="reference internal" href="#getdtfromhardmark" id="id12">getDtFromHardMark</a></li>
+<li><a class="reference internal" href="#repeat" id="id13">repeat</a></li>
+<li><a class="reference internal" href="#id1" id="id14">repeat</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="okapi-abstracttimer">
+<h2><a class="toc-backref" href="#id2">okapi::AbstractTimer</a><a class="headerlink" href="#okapi-abstracttimer" title="Permalink to this headline">¶</a></h2>
+<p>A time- and timing-related utility class.</p>
+<div class="section" id="methods">
+<h3><a class="toc-backref" href="#id3">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="millis">
+<h4><a class="toc-backref" href="#id4">millis</a><a class="headerlink" href="#millis" title="Permalink to this headline">¶</a></h4>
+<p>Returns the current time in units of <code class="docutils literal notranslate"><span class="pre">QTime</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QTime</span> <span class="n">millis</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The current time in units of <code class="docutils literal notranslate"><span class="pre">QTime</span></code>.</p>
+</div>
+<div class="section" id="getdt">
+<h4><a class="toc-backref" href="#id5">getDt</a><a class="headerlink" href="#getdt" title="Permalink to this headline">¶</a></h4>
+<p>Returns the time passed in ms since the previous call of this function.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-1 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QTime</span> <span class="n">getDt</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The time passed in ms since the previous call of this function.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="getstartingtime">
+<h4><a class="toc-backref" href="#id6">getStartingTime</a><a class="headerlink" href="#getstartingtime" title="Permalink to this headline">¶</a></h4>
+<p>Returns the time the timer was first constructed.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QTime</span> <span class="n">getStartingTime</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The time the timer was first constructed.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="getdtfromstart">
+<h4><a class="toc-backref" href="#id7">getDtFromStart</a><a class="headerlink" href="#getdtfromstart" title="Permalink to this headline">¶</a></h4>
+<p>Returns the time since the timer was first constructed.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-3 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QTime</span> <span class="n">getDtFromStart</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The time since the timer was first constructed.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="placemark">
+<h4><a class="toc-backref" href="#id8">placeMark</a><a class="headerlink" href="#placemark" title="Permalink to this headline">¶</a></h4>
+<p>Place a time marker. Placing another marker will overwrite the previous one.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">placeMark</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="placehardmark">
+<h4><a class="toc-backref" href="#id9">placeHardMark</a><a class="headerlink" href="#placehardmark" title="Permalink to this headline">¶</a></h4>
+<p>Place a hard time marker. Placing another hard marker will not overwrite the previous one; instead, call <code class="docutils literal notranslate"><span class="pre">clearHardMark()</span></code> and then place another.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-5 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">placeHardMark</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="clearhardmark">
+<h4><a class="toc-backref" href="#id10">clearHardMark</a><a class="headerlink" href="#clearhardmark" title="Permalink to this headline">¶</a></h4>
+<p>Clears the hard marker.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-6 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QTime</span> <span class="n">clearHardMark</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The old hard marker.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="getdtfrommark">
+<h4><a class="toc-backref" href="#id11">getDtFromMark</a><a class="headerlink" href="#getdtfrommark" title="Permalink to this headline">¶</a></h4>
+<p>Returns the time since the time marker.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-7 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QTime</span> <span class="n">getDtFromMark</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The time since the time marker.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="getdtfromhardmark">
+<h4><a class="toc-backref" href="#id12">getDtFromHardMark</a><a class="headerlink" href="#getdtfromhardmark" title="Permalink to this headline">¶</a></h4>
+<p>Returns the time since the hard time marker.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-8 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QTime</span> <span class="n">getDtFromHardMark</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The time since the hard time marker.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="repeat">
+<h4><a class="toc-backref" href="#id13">repeat</a><a class="headerlink" href="#repeat" title="Permalink to this headline">¶</a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the input time period has passed, then resets. Meant to be used in loops to
+run an action every time period without blocking.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-9 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-10 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">bool</span> <span class="n">repeat</span><span class="p">(</span><span class="n">QTime</span> <span class="n">time</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">okapi</span><span class="o">::</span><span class="n">Timer</span> <span class="n">timer</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">timer</span><span class="p">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">100</span><span class="n">_ms</span><span class="p">))</span> <span class="p">{</span>
+      <span class="c1">// Do something every 100 ms</span>
+    <span class="p">}</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>time</td>
+<td>The time period.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> when the input time period has passed, <code class="docutils literal notranslate"><span class="pre">false</span></code> after reading <code class="docutils literal notranslate"><span class="pre">true</span></code> until
+the period has passed again</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id1">
+<h4><a class="toc-backref" href="#id14">repeat</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the input time period has passed, then resets. Meant to be used in loops to
+run an action every time period without blocking.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-11 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-12 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">bool</span> <span class="n">repeat</span><span class="p">(</span><span class="n">QFrequency</span> <span class="n">time</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">okapi</span><span class="o">::</span><span class="n">Timer</span> <span class="n">timer</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">timer</span><span class="p">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">10</span><span class="n">_Hz</span><span class="p">))</span> <span class="p">{</span>
+      <span class="c1">// Do something 10 times per second</span>
+    <span class="p">}</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>frequency</td>
+<td>The repeat frequency.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> when the input time period has passed, <code class="docutils literal notranslate"><span class="pre">false</span></code> after reading <code class="docutils literal notranslate"><span class="pre">true</span></code> until
+the period has passed again</p>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="math-util.html" class="btn btn-neutral float-right" title="Math Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="abstract-abstract-rate.html" class="btn btn-neutral" title="(Abstract) Abstract Rate" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: V5 (3.0.7)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../../index.html">V5</a></dd>
+        
+          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'3.0.7',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

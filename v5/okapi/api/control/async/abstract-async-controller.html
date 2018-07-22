@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>(Abstract) Async Controller &mdash; PROS for V5 3.0.6 documentation</title>
+  <title>(Abstract) Async Controller &mdash; PROS for V5 3.0.7 documentation</title>
   
 
   
@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../../index.html"/>
         <link rel="up" title="Control API" href="../index.html"/>
         <link rel="next" title="(Abstract) Async Position Controller" href="abstract-async-position-controller.html"/>
         <link rel="prev" title="Control API" href="../index.html"/>
@@ -95,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.6)
+                  V5 (3.0.7)
                 
               </div>
             
@@ -159,8 +159,7 @@
 <li class="toctree-l7"><a class="reference internal" href="#getoutput">getOutput</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#setsampletime">setSampleTime</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#setoutputlimits">setOutputLimits</a></li>
-<li class="toctree-l7"><a class="reference internal" href="#reset">reset</a></li>
-<li class="toctree-l7"><a class="reference internal" href="#flipdisable">flipDisable</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#waituntilsettled">waitUntilSettled</a></li>
 </ul>
 </li>
 </ul>
@@ -169,6 +168,7 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="async-controller-factory.html">Async Controller Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="async-pos-pid-controller.html">Async Pos PID Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="async-vel-integrated-controller.html">Async Vel Integrated Controller</a></li>
@@ -177,11 +177,16 @@
 <li class="toctree-l4"><a class="reference internal" href="../iterative/abstract-iterative-controller.html">(Abstract) Iterative Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../iterative/abstract-iterative-position-controller.html">(Abstract) Iterative Position Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../iterative/abstract-iterative-velocity-controller.html">(Abstract) Iterative Velocity Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../iterative/iterative-controller-factory.html">Iterative Controller Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../iterative/iterative-motor-velocity-controller.html">Iterative Motor Velocity Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../iterative/iterative-pos-pid-controller.html">Iterative Pos PID Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../iterative/iterative-vel-pid-controller.html">Iterative Vel PID Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../util/controller-runner.html">Controller Runner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../util/controller-runner-factory.html">Controller Runner Factory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../util/pid-tuner.html">PID Tuner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../util/pid-tuner-factory.html">PID Tuner Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../util/settled-util.html">Settled Utility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../util/settled-util-factory.html">Settled Utility Factory</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../abstract-closed-loop-controller.html">(Abstract) Closed-loop Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../abstract-controller-input.html">(Abstract) Controller Input</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../abstract-controller-output.html">(Abstract) Controller Output</a></li>
@@ -207,8 +212,7 @@
 <li class="toctree-l6"><a class="reference internal" href="#getoutput">getOutput</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setsampletime">setSampleTime</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setoutputlimits">setOutputLimits</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#reset">reset</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#flipdisable">flipDisable</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#waituntilsettled">waitUntilSettled</a></li>
 </ul>
 </li>
 </ul>
@@ -217,6 +221,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="async-controller-factory.html">Async Controller Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async-pos-pid-controller.html">Async Pos PID Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async-vel-integrated-controller.html">Async Vel Integrated Controller</a></li>
@@ -225,11 +230,16 @@
 <li class="toctree-l3"><a class="reference internal" href="../iterative/abstract-iterative-controller.html">(Abstract) Iterative Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../iterative/abstract-iterative-position-controller.html">(Abstract) Iterative Position Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../iterative/abstract-iterative-velocity-controller.html">(Abstract) Iterative Velocity Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iterative/iterative-controller-factory.html">Iterative Controller Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../iterative/iterative-motor-velocity-controller.html">Iterative Motor Velocity Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../iterative/iterative-pos-pid-controller.html">Iterative Pos PID Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../iterative/iterative-vel-pid-controller.html">Iterative Vel PID Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../util/controller-runner.html">Controller Runner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../util/controller-runner-factory.html">Controller Runner Factory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../util/pid-tuner.html">PID Tuner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../util/pid-tuner-factory.html">PID Tuner Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../util/settled-util.html">Settled Utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../util/settled-util-factory.html">Settled Utility Factory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../abstract-closed-loop-controller.html">(Abstract) Closed-loop Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../abstract-controller-input.html">(Abstract) Controller Input</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../abstract-controller-output.html">(Abstract) Controller Output</a></li>
@@ -326,8 +336,7 @@
 <li><a class="reference internal" href="#getoutput" id="id4">getOutput</a></li>
 <li><a class="reference internal" href="#setsampletime" id="id5">setSampleTime</a></li>
 <li><a class="reference internal" href="#setoutputlimits" id="id6">setOutputLimits</a></li>
-<li><a class="reference internal" href="#reset" id="id7">reset</a></li>
-<li><a class="reference internal" href="#flipdisable" id="id8">flipDisable</a></li>
+<li><a class="reference internal" href="#waituntilsettled" id="id7">waitUntilSettled</a></li>
 </ul>
 </li>
 </ul>
@@ -375,7 +384,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setSampleTime</span><span class="p">(</span><span class="k">const</span> <span class="n">QTime</span> <span class="n">isampleTime</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setSampleTime</span><span class="p">(</span><span class="n">QTime</span> <span class="n">isampleTime</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -435,9 +444,10 @@ Prototype</div>
 </table>
 </div>
 <hr class="docutils" />
-<div class="section" id="reset">
-<h4><a class="toc-backref" href="#id7">reset</a><a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
-<p>Resets the controller so it can start from 0 again properly. Keeps configuration from before.</p>
+<div class="section" id="waituntilsettled">
+<h4><a class="toc-backref" href="#id7">waitUntilSettled</a><a class="headerlink" href="#waituntilsettled" title="Permalink to this headline">¶</a></h4>
+<p>Blocks the current task until the controller has settled. Determining what settling means is
+implementation-dependent.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-3 docutils container">
@@ -446,25 +456,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">reset</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="flipdisable">
-<h4><a class="toc-backref" href="#id8">flipDisable</a><a class="headerlink" href="#flipdisable" title="Permalink to this headline">¶</a></h4>
-<p>Changes whether the controll is off or on. Default does nothing.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-4 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">flipDisable</span><span class="p">()</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">waitUntilSettled</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -518,7 +510,7 @@ Prototype</div>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.6)
+      v: V5 (3.0.7)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -539,7 +531,7 @@ Prototype</div>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../../',
-            VERSION:'3.0.6',
+            VERSION:'3.0.7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

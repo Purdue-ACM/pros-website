@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PROS First Time Users Guide &mdash; PROS for V5 3.0.6 documentation</title>
+  <title>PROS First Time Users Guide &mdash; PROS for V5 3.0.7 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.6 documentation" href="../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../index.html"/>
         <link rel="up" title="Getting Started" href="index.html"/>
         <link rel="next" title="Installing on Windows" href="windows.html"/>
         <link rel="prev" title="Getting Started" href="index.html"/>
@@ -87,7 +87,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.6)
+                  V5 (3.0.7)
                 
               </div>
             
@@ -122,6 +122,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Getting Started</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">PROS First Time Users Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#i-ve-never-used-pros-or-written-c-c-code-before-how-do-i-start">I’ve never used PROS or written C/C++ code before, how do I start?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#i-know-c-c-now-how-do-i-use-pros">I know C/C++, now how do I use PROS?</a></li>
 </ul>
 </li>
@@ -225,14 +226,14 @@ standard C/C++ will work as a
 part of a PROS project, and similarly the errors given for code that
 doesn’t work will match errors given for any similar C/C++ code. Learning C/C++
 is essential for using PROS.</p>
-<p>If you are already familiar with C/C++ development outside of VEX, skip
-ahead to <a class="reference external" href="#using-PROS">Using PROS</a>.</p>
+<div class="section" id="i-ve-never-used-pros-or-written-c-c-code-before-how-do-i-start">
+<h2>I’ve never used PROS or written C/C++ code before, how do I start?<a class="headerlink" href="#i-ve-never-used-pros-or-written-c-c-code-before-how-do-i-start" title="Permalink to this headline">¶</a></h2>
 <p>If you have not used PROS or done non-VEX C/C++ code development before,
-checking out these following C tutorials is highly recommended.</p>
+we recommend that you check out C tutorials on the following topics:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://www.studytonight.com/c/user-defined-functions-in-c.php">Functions</a>.
 C is a language that heavily emphasizes functions, and knowing how
-they work is essential to using PROS. The <cite>PROS API &lt;../api/index.html&gt;`_</cite> is a set of functions,
+they work is essential to using PROS. The <a class="reference external" href="../api/index.html">PROS API</a> is a set of functions,
 so any time that you want to interact with a sensor or motor, you’re using functions.</li>
 <li><a class="reference external" href="https://www.tutorialspoint.com/cprogramming/c_header_files.htm">Header
 Files</a>.
@@ -240,8 +241,8 @@ The PROS template (the set of files automatically created when you
 start a PROS project) contains a couple of header files, and it’s
 recommended that you make additional header files as you develop your
 code. Header files contain the declarations for functions and global
-variables (among other things), which is why the <a class="reference external" href="api/index">PROS API</a>
-can be found in <code class="docutils literal notranslate"><span class="pre">API.h</span></code>. Knowing what
+variables (among other things), which is why the <a class="reference external" href="../api/index.html">PROS API</a>
+can be found in <code class="docutils literal notranslate"><span class="pre">include/pros/api.h</span></code>. Knowing what
 code should go in a header file (<code class="docutils literal notranslate"><span class="pre">.h</span></code>, <code class="docutils literal notranslate"><span class="pre">.hpp</span></code>) or a source file (<code class="docutils literal notranslate"><span class="pre">.c</span></code>, <code class="docutils literal notranslate"><span class="pre">.cpp</span></code>)
 can be difficult to determine at first, but it is a very useful skill
 to learn.</li>
@@ -259,6 +260,7 @@ terminal by running <code class="docutils literal notranslate"><span class="pre"
 or <a class="reference external" href="http://www.studytonight.com/c/overview-of-c.php">StudyTonight</a>. A
 good video tutorial series (as opposed to the previous text-based
 tutorials) can be found on <a class="reference external" href="https://youtu.be/nXvy5900m3M">YouTube</a>.</p>
+</div>
 <div class="section" id="i-know-c-c-now-how-do-i-use-pros">
 <h2>I know C/C++, now how do I use PROS?<a class="headerlink" href="#i-know-c-c-now-how-do-i-use-pros" title="Permalink to this headline">¶</a></h2>
 <p>The PROS tutorials are designed to show the application of C/C++ programming
@@ -322,7 +324,7 @@ to <a class="reference external" href="../tutorials/topical/multitasking.html">t
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.6)
+      v: V5 (3.0.7)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -343,7 +345,7 @@ to <a class="reference external" href="../tutorials/topical/multitasking.html">t
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.0.6',
+            VERSION:'3.0.7',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

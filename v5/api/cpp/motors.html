@@ -185,6 +185,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#configuration-functions">Configuration Functions</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#get-brake-mode">get_brake_mode</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#get-current-limit">get_current_limit</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#get-encoder-units">get_encoder_units</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#get-gearing">get_gearing</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#get-voltage-limit">get_voltage_limit</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#is-reversed">is_reversed</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#set-brake-mode">set_brake_mode</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#set-current-limit">set_current_limit</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#set-encoder-units">set_encoder_units</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#set-gearing">set_gearing</a></li>
@@ -331,13 +336,18 @@
 <li><a class="reference internal" href="#configuration-functions" id="id31">Configuration Functions</a><ul>
 <li><a class="reference internal" href="#get-brake-mode" id="id32">get_brake_mode</a></li>
 <li><a class="reference internal" href="#get-current-limit" id="id33">get_current_limit</a></li>
-<li><a class="reference internal" href="#set-current-limit" id="id34">set_current_limit</a></li>
-<li><a class="reference internal" href="#set-encoder-units" id="id35">set_encoder_units</a></li>
-<li><a class="reference internal" href="#set-gearing" id="id36">set_gearing</a></li>
-<li><a class="reference internal" href="#set-reversed" id="id37">set_reversed</a></li>
-<li><a class="reference internal" href="#set-voltage-limit" id="id38">set_voltage_limit</a></li>
-<li><a class="reference internal" href="#set-zero-position" id="id39">set_zero_position</a></li>
-<li><a class="reference internal" href="#tare-position" id="id40">tare_position</a></li>
+<li><a class="reference internal" href="#get-encoder-units" id="id34">get_encoder_units</a></li>
+<li><a class="reference internal" href="#get-gearing" id="id35">get_gearing</a></li>
+<li><a class="reference internal" href="#get-voltage-limit" id="id36">get_voltage_limit</a></li>
+<li><a class="reference internal" href="#is-reversed" id="id37">is_reversed</a></li>
+<li><a class="reference internal" href="#set-brake-mode" id="id38">set_brake_mode</a></li>
+<li><a class="reference internal" href="#set-current-limit" id="id39">set_current_limit</a></li>
+<li><a class="reference internal" href="#set-encoder-units" id="id40">set_encoder_units</a></li>
+<li><a class="reference internal" href="#set-gearing" id="id41">set_gearing</a></li>
+<li><a class="reference internal" href="#set-reversed" id="id42">set_reversed</a></li>
+<li><a class="reference internal" href="#set-voltage-limit" id="id43">set_voltage_limit</a></li>
+<li><a class="reference internal" href="#set-zero-position" id="id44">set_zero_position</a></li>
+<li><a class="reference internal" href="#tare-position" id="id45">tare_position</a></li>
 </ul>
 </li>
 </ul>
@@ -1880,6 +1890,10 @@ Example</div>
 </div>
 <p><strong>Returns:</strong> The motor’s current limit in mA or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
 setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-encoder-units">
+<h4><a class="toc-backref" href="#id34">get_encoder_units</a><a class="headerlink" href="#get-encoder-units" title="Permalink to this headline">¶</a></h4>
 <p>Gets the encoder units set for the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1913,6 +1927,10 @@ Example</div>
 </div>
 <p><strong>Returns:</strong> One of <a class="reference external" href="../c/motors.html#motor-encoder-units-e-t">motor_encoder_units_e_t</a> according to what is set for the motor
 or <code class="docutils literal notranslate"><span class="pre">E_MOTOR_ENCODER_INVALID</span></code> if the operation failed.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-gearing">
+<h4><a class="toc-backref" href="#id35">get_gearing</a><a class="headerlink" href="#get-gearing" title="Permalink to this headline">¶</a></h4>
 <p>Gets the <cite>gearset &lt;motor_gearset_e_t_&gt;`_</cite> that was set for the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1946,6 +1964,10 @@ Example</div>
 </div>
 <p><strong>Returns:</strong> One of <a class="reference external" href="../c/motors.html#motor-gearset-e-t">motor_gearset_e_t</a> according to what is set for the motor,
 or <code class="docutils literal notranslate"><span class="pre">E_GEARSET_INVALID</span></code> if the operation failed.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-voltage-limit">
+<h4><a class="toc-backref" href="#id36">get_voltage_limit</a><a class="headerlink" href="#get-voltage-limit" title="Permalink to this headline">¶</a></h4>
 <p>Gets the voltage limit set by the user.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1979,6 +2001,10 @@ Example</div>
 </div>
 <p><strong>Returns:</strong> The motor’s voltage limit in V or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
 setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="is-reversed">
+<h4><a class="toc-backref" href="#id37">is_reversed</a><a class="headerlink" href="#is-reversed" title="Permalink to this headline">¶</a></h4>
 <p>Gets the operation direction of the motor as set by the user.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2017,6 +2043,10 @@ Example</div>
 </div>
 <p><strong>Returns:</strong> 1 if the motor has been reversed and 0 if the motor was not reversed,
 or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed, setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="set-brake-mode">
+<h4><a class="toc-backref" href="#id38">set_brake_mode</a><a class="headerlink" href="#set-brake-mode" title="Permalink to this headline">¶</a></h4>
 <p>Sets one of <a class="reference external" href="../c/motors.html#motor-brake-mode-e-t">motor_brake_mode_e_t</a> to the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2074,7 +2104,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="set-current-limit">
-<h4><a class="toc-backref" href="#id34">set_current_limit</a><a class="headerlink" href="#set-current-limit" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id39">set_current_limit</a><a class="headerlink" href="#set-current-limit" title="Permalink to this headline">¶</a></h4>
 <p>Sets the current limit for the motor in mA.</p>
 <p>The default limit is 2500 mA.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
@@ -2145,7 +2175,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="set-encoder-units">
-<h4><a class="toc-backref" href="#id35">set_encoder_units</a><a class="headerlink" href="#set-encoder-units" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id40">set_encoder_units</a><a class="headerlink" href="#set-encoder-units" title="Permalink to this headline">¶</a></h4>
 <p>Sets one of <a class="reference external" href="../c/motors.html#motor-encoder-units-e-t">motor_encoder_units_e_t</a> for the motor encoder.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2203,7 +2233,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="set-gearing">
-<h4><a class="toc-backref" href="#id36">set_gearing</a><a class="headerlink" href="#set-gearing" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id41">set_gearing</a><a class="headerlink" href="#set-gearing" title="Permalink to this headline">¶</a></h4>
 <p>Sets one of <a class="reference external" href="../c/motors.html#motor-gearset-e-t">motor_gearset_e_t</a> for the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2261,7 +2291,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="set-reversed">
-<h4><a class="toc-backref" href="#id37">set_reversed</a><a class="headerlink" href="#set-reversed" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id42">set_reversed</a><a class="headerlink" href="#set-reversed" title="Permalink to this headline">¶</a></h4>
 <p>Sets the reverse flag for the motor.</p>
 <p>This will invert its movements and the values returned for its position.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
@@ -2320,7 +2350,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="set-voltage-limit">
-<h4><a class="toc-backref" href="#id38">set_voltage_limit</a><a class="headerlink" href="#set-voltage-limit" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id43">set_voltage_limit</a><a class="headerlink" href="#set-voltage-limit" title="Permalink to this headline">¶</a></h4>
 <p>Sets the voltage limit for the motor in mV.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2390,7 +2420,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="set-zero-position">
-<h4><a class="toc-backref" href="#id39">set_zero_position</a><a class="headerlink" href="#set-zero-position" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id44">set_zero_position</a><a class="headerlink" href="#set-zero-position" title="Permalink to this headline">¶</a></h4>
 <p>Sets the zero position for the motor in its encoder units.</p>
 <p>This will be the future reference point for the motor’s “absolute” position.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
@@ -2455,7 +2485,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="tare-position">
-<h4><a class="toc-backref" href="#id40">tare_position</a><a class="headerlink" href="#tare-position" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id45">tare_position</a><a class="headerlink" href="#tare-position" title="Permalink to this headline">¶</a></h4>
 <p>Sets the “absolute” zero position of the motor to its current position.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2556,9 +2586,9 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../index.html">V5</a></dd>
-        
           <dd><a href="../../../cortex/index.html">Cortex</a></dd>
+        
+          <dd><a href="../../index.html">V5</a></dd>
         
       </dl>
     </div>

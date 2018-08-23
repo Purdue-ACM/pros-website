@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2D Motion Profiling &mdash; PROS for V5 3.0.7 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../index.html"/>
+        <link rel="up" title="Tutorials" href="../index.html"/>
+        <link rel="next" title="What is a ChassisController, and why is it important?" href="chassiscontroller.html"/>
+        <link rel="prev" title="Lift Movement" href="../walkthrough/lift-movement.html"/>
+   
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> PROS for V5
+          
+
+          
+            
+            <img src="../../../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  V5 (3.0.7)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">PROS: Documentation Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../blog/index.html">Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../releases/index.html">Version Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started/new-users.html">PROS First Time Users Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started/installation.html">Installation Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/c/index.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/cpp/index.html">C++ API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">CLI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OkapiLib</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">OkapiLib Documentation Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#general-tutorials">General Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#walkthrough-tutorials">Walkthrough Tutorials</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#topical-tutorials">Topical Tutorials</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#concepts">Concepts</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">2D Motion Profiling</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#wrap-up">Wrap-up</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="chassiscontroller.html">What is a ChassisController, and why is it important?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="controller-io.html">Controller Inputs and Outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="factories.html">Factory Object Creation Pattern</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filtering.html">Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="iterative-async-controllers.html">Iterative and Async Controllers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="settled-util.html">SettledUtils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="smart-pointers.html">Smart Pointers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">OkapiLib API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Extended (Advanced Users)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../extended/index.html">Extended API Topics</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PROS for V5</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OkapiLib Documentation Home</a> &raquo;</li>
+        
+          <li><a href="../index.html">Tutorials</a> &raquo;</li>
+        
+      <li>2D Motion Profiling</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/okapi/tutorials/concepts/2dmotionprofiling.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="d-motion-profiling">
+<h1>2D Motion Profiling<a class="headerlink" href="#d-motion-profiling" title="Permalink to this headline">¶</a></h1>
+<p>Motion Profiling is a controls algorithm that defines a movement as a series of
+steps. In one dimension, it defines a motor’s position, speed, acceleration, etc.
+at every timestep during the movement. In two dimensions, it defines your robot’s
+position, speed, acceleration, etc. and heading at every timestep during the movement.</p>
+<p>There is a lot of interesting math that goes into calculating these values, which
+you can learn about in examples like these:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www2.informatik.uni-freiburg.de/~lau/students/Sprunk2008.pdf">http://www2.informatik.uni-freiburg.de/~lau/students/Sprunk2008.pdf</a></li>
+<li><a class="reference external" href="https://github.com/AtsushiSakai/PythonRobotics/blob/master/PathPlanning/QuinticPolynomialsPlanner/animation.gif">https://github.com/AtsushiSakai/PythonRobotics/blob/master/PathPlanning/QuinticPolynomialsPlanner/animation.gif</a></li>
+<li><a class="reference external" href="https://www.dis.uniroma1.it/~deluca/rob1_en/13_TrajectoryPlanningJoints.pdf">https://www.dis.uniroma1.it/~deluca/rob1_en/13_TrajectoryPlanningJoints.pdf</a></li>
+</ul>
+<p>OkapiLib, through <a class="reference external" href="https://github.com/JacisNonsense/Pathfinder">Pathfinder</a>, does
+this math for you and ties both the motion profiling and profile following actions
+to the same <a class="reference external" href="../walkthrough/autonomous-movement-async.html">async controllers</a> that
+are used for other simpler movements. Creating and following a 2D Motion Profile is a simple
+three step process.</p>
+<p>First, before creating any profiles, we need to create a motion profile Async Controller.
+This requires first initializing a Chassis Controller (or Chassis Model) to pass into the
+constructor for the controller.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The “linear” properties of the chassis given to <code class="docutils literal notranslate"><span class="pre">AsyncControllerFactory::motionProfile</span></code>
+are for its forward/backwards movements, not the maximum properties for turning or other
+movements.</p>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+  <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">},</span> <span class="c1">// Left motors</span>
+  <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">},</span>   <span class="c1">// Right motors</span>
+  <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">red</span><span class="p">,</span> <span class="c1">// Torque gearset</span>
+  <span class="p">{</span><span class="mi">4</span><span class="n">_in</span><span class="p">,</span> <span class="mf">12.5</span><span class="n">_in</span><span class="p">}</span> <span class="c1">// 4 inch wheels, 12.5 inch wheelbase width</span>
+<span class="p">);</span>
+<span class="k">auto</span> <span class="n">profileController</span> <span class="o">=</span> <span class="n">AsyncControllerFactory</span><span class="o">::</span><span class="n">motionProfile</span><span class="p">(</span>
+  <span class="mf">1.0</span><span class="p">,</span>  <span class="c1">// Maximum linear velocity of the Chassis in m/s</span>
+  <span class="mf">2.0</span><span class="p">,</span>  <span class="c1">// Maximum linear acceleration of the Chassis in m/s/s</span>
+  <span class="mf">10.0</span><span class="p">,</span> <span class="c1">// Maximum linear jerk of the Chassis in m/s/s/s</span>
+  <span class="n">myChassis</span><span class="p">,</span> <span class="c1">// Chassis Controller</span>
+  <span class="mf">12.5</span><span class="n">_in</span> <span class="c1">// Wheelbase width</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Next, let’s create a motion profile. A profile is created with a list of points and a name.
+Each of the points contains the desired x and y coordinates and heading. The points given to the
+controller form a path from the first given point to the last. The path will be generated
+assuming that all of the points are relative to the first, so if you pass in
+an x value of <code class="docutils literal notranslate"><span class="pre">-4_ft</span></code> for the first point, then passing an x value of <code class="docutils literal notranslate"><span class="pre">0_ft</span></code> for the second
+point will result in a forward movement of 4 feet.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This function computes the set of steps for the desired profile, which
+may take some time.</p>
+</div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">profileController</span><span class="p">.</span><span class="n">generatePath</span><span class="p">({</span>
+  <span class="n">Point</span><span class="p">{</span><span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_deg</span><span class="p">},</span>  <span class="c1">// Profile starting position, this will normally be (0, 0, 0)</span>
+  <span class="n">Point</span><span class="p">{</span><span class="mi">3</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_deg</span><span class="p">}},</span> <span class="c1">// The next point in the profile, 3 feet forward</span>
+  <span class="s">&quot;A&quot;</span> <span class="c1">// Profile name</span>
+  <span class="p">);</span>
+</pre></div>
+</div>
+<p>After the profile is created, it is added to a map of available profiles stored in the controller.
+You can then set a target using the name you gave the profile.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">profileController</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>And then as with any Async Controller movement, you can call <code class="docutils literal notranslate"><span class="pre">waitUntilSettled()</span></code>
+to block program execution until the movement is finished and the robot reaches the
+desired end point.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">profileController</span><span class="p">.</span><span class="n">waitUntilSettled</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="section" id="wrap-up">
+<h2>Wrap-up<a class="headerlink" href="#wrap-up" title="Permalink to this headline">¶</a></h2>
+<p>In total, here is how to initialize and use a 2D motion profiling controller:</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+  <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">},</span> <span class="c1">// Left motors</span>
+  <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">},</span>   <span class="c1">// Right motors</span>
+  <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">red</span><span class="p">,</span> <span class="c1">// Torque gearset</span>
+  <span class="p">{</span><span class="mi">4</span><span class="n">_in</span><span class="p">,</span> <span class="mf">12.5</span><span class="n">_in</span><span class="p">}</span> <span class="c1">// 4 inch wheels, 12.5 inch wheelbase width</span>
+<span class="p">);</span>
+
+<span class="k">auto</span> <span class="n">profileController</span> <span class="o">=</span> <span class="n">AsyncControllerFactory</span><span class="o">::</span><span class="n">motionProfile</span><span class="p">(</span>
+  <span class="mf">1.0</span><span class="p">,</span>  <span class="c1">// Maximum linear velocity of the Chassis in m/s</span>
+  <span class="mf">2.0</span><span class="p">,</span>  <span class="c1">// Maximum linear acceleration of the Chassis in m/s/s</span>
+  <span class="mf">10.0</span><span class="p">,</span> <span class="c1">// Maximum linear jerk of the Chassis in m/s/s/s</span>
+  <span class="n">myChassis</span><span class="p">,</span> <span class="c1">// Chassis Controller</span>
+  <span class="mf">12.5</span><span class="n">_in</span> <span class="c1">// Wheelbase width</span>
+<span class="p">);</span>
+
+<span class="n">profileController</span><span class="p">.</span><span class="n">generatePath</span><span class="p">({</span><span class="n">Point</span><span class="p">{</span><span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_deg</span><span class="p">},</span> <span class="n">Point</span><span class="p">{</span><span class="mi">3</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_deg</span><span class="p">}},</span> <span class="s">&quot;A&quot;</span><span class="p">);</span>
+<span class="n">profileController</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">);</span>
+<span class="n">profileController</span><span class="p">.</span><span class="n">waitUntilSettled</span><span class="p">();</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="chassiscontroller.html" class="btn btn-neutral float-right" title="What is a ChassisController, and why is it important?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../walkthrough/lift-movement.html" class="btn btn-neutral" title="Lift Movement" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: V5 (3.0.7)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
+        
+          <dd><a href="../../../index.html">V5</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'3.0.7',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

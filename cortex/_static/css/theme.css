@@ -5634,8 +5634,9 @@ footer span.commit code, footer span.commit .rst-content tt, .rst-content footer
   text-align: left;
 }
 .rst-content tt, .rst-content tt, .rst-content code {
-  color: #000;
+  color: #ccc;
   padding: 2px 5px;
+  border: #E6B85C;
 }
 .rst-content tt big, .rst-content tt em, .rst-content tt big, .rst-content code big, .rst-content tt em, .rst-content code em {
   font-size: 100% !important;
@@ -5671,14 +5672,14 @@ footer span.commit code, footer span.commit .rst-content tt, .rst-content footer
   margin: 6px 0;
   font-size: 90%;
   line-height: normal;
-  background: white;
+  background: #333;
   color: #5fcde2;
-  border-top: solid 3px #b5e8f2;
+  border-top: solid #E6B85C;
   padding: 6px;
   position: relative;
 }
 .rst-content dl:not(.docutils) dt:before {
-  color: #b5e8f2;
+  color: #5fcde2;
 }
 .rst-content dl:not(.docutils) dt .headerlink {
   color: #ccc;
@@ -5687,9 +5688,9 @@ footer span.commit code, footer span.commit .rst-content tt, .rst-content footer
 .rst-content dl:not(.docutils) dl dt {
   margin-bottom: 6px;
   border: none;
-  border-left: solid 3px #cccccc;
-  background: #f0f0f0;
-  color: #555;
+  border-left: solid 3px #E6B85C;
+  background: #333;
+  color: #5fcde2;
 }
 .rst-content dl:not(.docutils) dl dt .headerlink {
   color: #ccc;

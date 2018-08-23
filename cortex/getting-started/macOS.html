@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installing on macOS &mdash; PROS for Cortex 2.12.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PROS for Cortex 2.12.1 documentation" href="../index.html"/>
+        <link rel="up" title="Getting Started" href="index.html"/>
+        <link rel="next" title="Installing on Windows" href="windows.html"/>
+        <link rel="prev" title="Installing on Linux" href="debian-linux.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PROS for Cortex
+          
+
+          
+            
+            <img src="../_static/logo.svg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                
+                  Cortex (2.12.1)
+                
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Home</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting Started</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#installing-pros">Installing PROS</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="debian-linux.html">Installing on Linux</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installing on macOS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-the-cli">Install the CLI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-the-toolchain">Install the toolchain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-the-editor">Install the editor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues">Known issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="windows.html">Installing on Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#first-steps">First Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#i-know-c-now-how-do-i-use-pros">I know C, now how do I use PROS?</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PROS for Cortex</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Getting Started</a> &raquo;</li>
+        
+      <li>Installing on macOS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/cortex/getting-started/macOS.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installing-on-macos">
+<h1>Installing on macOS<a class="headerlink" href="#installing-on-macos" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-the-cli">
+<h2>Install the CLI<a class="headerlink" href="#install-the-cli" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Installing the CLI through means other than PyPI or source are currently unsupported. Work is ongoing to make this process smoother.</p>
+</div>
+<ol class="arabic simple">
+<li>Install <a class="reference external" href="https://www.python.org/downloads/">Python 3</a> (Version
+3.4 or higher) for macOS.</li>
+<li>In a terminal, run <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">pros-cli</span></code></li>
+</ol>
+</div>
+<div class="section" id="install-the-toolchain">
+<h2>Install the toolchain<a class="headerlink" href="#install-the-toolchain" title="Permalink to this headline">¶</a></h2>
+<p>If you have <a class="reference external" href="https://brew.sh">homebrew</a> installed (recommended method):
+1. In a terminal, run <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">tap</span> <span class="pre">osx-cross/arm</span></code>, then
+2. run <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">arm-gcc-bin</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you have previously used an installer to install PROS, you may be faced with an error that lists a set of conflicting files. In this case, run <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span> <span class="pre">/usr/local/lib/pros-toolchain</span> <span class="pre">&amp;&amp;</span> <span class="pre">rm</span> <span class="pre">-f</span> <span class="pre">/usr/local/bin/arm-none-eabi-*</span> <span class="pre">&amp;&amp;</span> <span class="pre">brew</span> <span class="pre">link</span></code> to remove existing symbolic links and replace them with the correct ones.</p>
+</div>
+<p>If you do not have homebrew installed (advanced):</p>
+<ol class="arabic simple">
+<li>Download the latest version of the <a class="reference external" href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads">GNU Arm Embedded toolchain for macOS</a></li>
+<li>Double click on the downloaded file to extract it.</li>
+<li>Copy the contents of the <code class="docutils literal notranslate"><span class="pre">gcc-arm-none-eabi-X-20XX-qX-update</span></code> (where the Xs are numbers specific to the version you downloaded) to a folder, such as <code class="docutils literal notranslate"><span class="pre">/usr/local/lib/pros-toolchain</span></code>.</li>
+<li>There are two ways to link the binaries:<ol class="lowerroman">
+<li>Simply run <code class="docutils literal notranslate"><span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">/usr/local/lib/pros-toolchain/bin/*</span> <span class="pre">/usr/local/bin</span></code></li>
+<li>Alternatively run <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/usr/local/bin/pros-toolchain</span> <span class="pre">&amp;&amp;</span> <span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">/usr/local/lib/pros-toolchain/bin/*</span> <span class="pre">/usr/local/bin/pros-toolchain</span></code>, and then add <code class="docutils literal notranslate"><span class="pre">/usr/local/bin/pros-toolchain</span></code> to the end of your <code class="docutils literal notranslate"><span class="pre">/etc/paths</span></code> file. This option has the advantage of making upgrades and uninstalls easier.</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="install-the-editor">
+<h2>Install the editor<a class="headerlink" href="#install-the-editor" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The current version of the PROS Editor is out of date, so we recommend installing the PROS Atom package manually for now.</p>
+</div>
+<ol class="arabic simple">
+<li>Install the latest version of <a class="reference external" href="https://atom.io">Atom</a> for macOS.</li>
+<li>Open Atom, then open the settings page (<code class="docutils literal notranslate"><span class="pre">⌘+,</span></code>).</li>
+<li>Navigate to the <code class="docutils literal notranslate"><span class="pre">Install</span></code> tab, then search for “pros”, and install the first package in the list.</li>
+<li>If you would like autocomplete functionality, you will also need to install the Xcode command line tools if they are not already installed. In a terminal, run <code class="docutils literal notranslate"><span class="pre">xcode-select</span> <span class="pre">--install</span></code> and follow the prompts. You may need to restart Atom after this process is finished.</li>
+</ol>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Minimum OS version: 10.8</li>
+<li>Minimum Python Version: 3.4</li>
+</ol>
+</div>
+<div class="section" id="known-issues">
+<h2>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Downloading code to the cortex must be done through the programming
+kit. You cannot download code through a direct tether.</li>
+<li>Using the installer on our GitHub releases page is currently unsupported, due to issues with the CLI and the PROS Editor.</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="windows.html" class="btn btn-neutral float-right" title="Installing on Windows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="debian-linux.html" class="btn btn-neutral" title="Installing on Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Purdue ACM SIGBots. Released under the MPL 2.0 license.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Versions: </span>
+      v: Cortex (2.12.1)
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../../v5/index.html">V5</a></dd>
+        
+          <dd><a href="../index.html">Cortex</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.12.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ 
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-84548828-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+
+</body>
+</html>

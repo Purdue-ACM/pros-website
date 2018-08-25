@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Miscellaneous C++ API &mdash; PROS for V5 3.0.7 documentation</title>
+  <title>Miscellaneous C++ API &mdash; PROS for V5 3.0.8 documentation</title>
   
 
   
@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.8 documentation" href="../../index.html"/>
         <link rel="up" title="API Home" href="../index.html"/>
         <link rel="next" title="Motors C++ API" href="motors.html"/>
         <link rel="prev" title="LLEMU (Legacy LCD Emulator) C++ API" href="llemu.html"/>
@@ -95,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.7)
+                  V5 (3.0.8)
                 
               </div>
             
@@ -161,10 +161,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#pros-controller">pros::Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#clear">clear</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#clear-line">clear_line</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#id1">is_connected</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#get-analog">get_analog</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#get-battery-capacity">get_battery_capacity</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#get-battery-level">get_battery_level</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#get-digital">get_digital</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#get-digital-new-press">get_digital_new_press</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#print">print</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#set-text">set_text</a></li>
 </ul>
 </li>
 </ul>
@@ -283,10 +289,16 @@
 <li><a class="reference internal" href="#pros-controller" id="id13">pros::Controller</a><ul>
 <li><a class="reference internal" href="#constructor-s" id="id14">Constructor(s)</a></li>
 <li><a class="reference internal" href="#methods" id="id15">Methods</a><ul>
-<li><a class="reference internal" href="#id1" id="id16">is_connected</a></li>
-<li><a class="reference internal" href="#get-analog" id="id17">get_analog</a></li>
-<li><a class="reference internal" href="#get-digital" id="id18">get_digital</a></li>
-<li><a class="reference internal" href="#get-digital-new-press" id="id19">get_digital_new_press</a></li>
+<li><a class="reference internal" href="#clear" id="id16">clear</a></li>
+<li><a class="reference internal" href="#clear-line" id="id17">clear_line</a></li>
+<li><a class="reference internal" href="#id1" id="id18">is_connected</a></li>
+<li><a class="reference internal" href="#get-analog" id="id19">get_analog</a></li>
+<li><a class="reference internal" href="#get-battery-capacity" id="id20">get_battery_capacity</a></li>
+<li><a class="reference internal" href="#get-battery-level" id="id21">get_battery_level</a></li>
+<li><a class="reference internal" href="#get-digital" id="id22">get_digital</a></li>
+<li><a class="reference internal" href="#get-digital-new-press" id="id23">get_digital_new_press</a></li>
+<li><a class="reference internal" href="#print" id="id24">print</a></li>
+<li><a class="reference internal" href="#set-text" id="id25">set_text</a></li>
 </ul>
 </li>
 </ul>
@@ -677,14 +689,14 @@ Must be one of <a class="reference external" href="../c/misc.html#controller-id-
 <hr class="docutils" />
 <div class="section" id="methods">
 <h3><a class="toc-backref" href="#id15">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id1">
-<h4><a class="toc-backref" href="#id16">is_connected</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<p>Return 0 or 1 if the controller is connected.</p>
-<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
-<ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
-</ul>
-<p>Analogous to <a class="reference external" href="../c/misc.html#controller-is-connected">controller_is_connected</a>.</p>
+<div class="section" id="clear">
+<h4><a class="toc-backref" href="#id16">clear</a><a class="headerlink" href="#clear" title="Permalink to this headline">¶</a></h4>
+<p>Clears all of the lines of the controller screen.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Controller text setting is currently in beta, so continuous, fast updates will
+not work well.</p>
+</div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-18 docutils container">
@@ -697,11 +709,114 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="n">is_connected</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="n">clear</span> <span class="p">(</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
+  <span class="n">master</span><span class="p">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Example&quot;</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+  <span class="n">master</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<p><strong>Returns:</strong> 1 if the operation was successful, <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> otherwise.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="clear-line">
+<h4><a class="toc-backref" href="#id17">clear_line</a><a class="headerlink" href="#clear-line" title="Permalink to this headline">¶</a></h4>
+<p>Clears an individual line of the controller screen.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Controller text setting is currently in beta, so continuous, fast updates will
+not work well.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-20 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-21 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="n">clear_line</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">line</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
+  <span class="n">master</span><span class="p">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Example&quot;</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+  <span class="n">master</span><span class="p">.</span><span class="n">clear_line</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Parameters</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>======================================================================================================s</td>
+</tr>
+<tr class="row-odd"><td>line</td>
+<td>The line number at which the text will be displayed [0-2]</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if the operation was successful, <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> otherwise.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="id1">
+<h4><a class="toc-backref" href="#id18">is_connected</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>Return 0 or 1 if the controller is connected.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../c/misc.html#controller-is-connected">controller_is_connected</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-22 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-23 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="n">is_connected</span> <span class="p">(</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
 <div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -735,7 +850,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-analog">
-<h4><a class="toc-backref" href="#id17">get_analog</a><a class="headerlink" href="#get-analog" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id19">get_analog</a><a class="headerlink" href="#get-analog" title="Permalink to this headline">¶</a></h4>
 <p>Gets the value of an analog channel (joystick) on a controller.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -744,21 +859,21 @@ Example</div>
 <p>Analogous to <a class="reference external" href="../c/misc.html#controller-get-analog">controller_get_analog</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-20 docutils container">
+<div class="active item sphinx-data-tab-24 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-21 docutils container">
+<div class="item sphinx-data-tab-25 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="n">get_analog</span> <span class="p">(</span> <span class="n">controller_analog_e_t</span> <span class="n">channel</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
 <div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -800,8 +915,80 @@ Must be one of <a class="reference external" href="../c/misc.html#controller-ana
 If the controller was not connected, then 0 is returned</p>
 </div>
 <hr class="docutils" />
+<div class="section" id="get-battery-capacity">
+<h4><a class="toc-backref" href="#id20">get_battery_capacity</a><a class="headerlink" href="#get-battery-capacity" title="Permalink to this headline">¶</a></h4>
+<p>Gets the battery capacity of the given controller.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../c/misc.html#controller-get-battery-capacity">controller_get_battery_capacity</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-26 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-27 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-26 active docutils container">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="n">get_battery_capacity</span> <span class="p">(</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-27 docutils container">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Battery Capacity: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">.</span><span class="n">get_battery_capacity</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The controller’s battery capacity.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-battery-level">
+<h4><a class="toc-backref" href="#id21">get_battery_level</a><a class="headerlink" href="#get-battery-level" title="Permalink to this headline">¶</a></h4>
+<p>Gets the battery level of the given controller.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../c/misc.html#controller-get-battery-level">controller_get_battery_level</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-28 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-29 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-28 active docutils container">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="n">get_battery_level</span> <span class="p">(</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-29 docutils container">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Battery Level: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">.</span><span class="n">get_battery_level</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The controller’s battery level.</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="get-digital">
-<h4><a class="toc-backref" href="#id18">get_digital</a><a class="headerlink" href="#get-digital" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id22">get_digital</a><a class="headerlink" href="#get-digital" title="Permalink to this headline">¶</a></h4>
 <p>Gets the value of an digital channel (button) on a controller.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -810,21 +997,21 @@ If the controller was not connected, then 0 is returned</p>
 <p>Analogous to <a class="reference external" href="../c/misc.html#controller-get-digital">controller_get_digital</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-22 docutils container">
+<div class="active item sphinx-data-tab-30 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-23 docutils container">
+<div class="item sphinx-data-tab-31 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-30 active docutils container">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="n">get_digital</span> <span class="p">(</span> <span class="n">controller_digital_e_t</span> <span class="n">button</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-31 docutils container">
 <div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -877,7 +1064,7 @@ If the controller was not connected, then 0 is returned</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-digital-new-press">
-<h4><a class="toc-backref" href="#id19">get_digital_new_press</a><a class="headerlink" href="#get-digital-new-press" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id23">get_digital_new_press</a><a class="headerlink" href="#get-digital-new-press" title="Permalink to this headline">¶</a></h4>
 <p>Returns a rising-edge case for a controller button press.</p>
 <p>This function is not thread-safe.
 Multiple tasks polling a single button may return different results under the
@@ -893,21 +1080,21 @@ presses, and not in any other tasks.</p>
 <p>Analogous to <a class="reference external" href="../c/misc.html#controller-get-digital-new-press">controller_get_digital_new_press</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-24 docutils container">
+<div class="active item sphinx-data-tab-32 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-25 docutils container">
+<div class="item sphinx-data-tab-33 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-32 active docutils container">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="n">get_digital_new_press</span> <span class="p">(</span> <span class="n">controller_digital_e_t</span> <span class="n">button</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-33 docutils container">
 <div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -949,6 +1136,168 @@ Example</div>
 </table>
 <p><strong>Returns:</strong> 1 if the button on the controller is pressed and had not been pressed
 the last time this function was called, 0 otherwise.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="print">
+<h4><a class="toc-backref" href="#id24">print</a><a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h4>
+<p>Sets text to the controller LCD screen.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Controller text setting is currently in beta, so continuous, fast updates will
+not work well.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-34 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-35 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-34 active docutils container">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="n">print</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">line</span><span class="p">,</span>
+                                  <span class="kt">uint8_t</span> <span class="n">col</span><span class="p">,</span>
+                                  <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">fmt</span><span class="p">,</span>
+                                  <span class="p">...</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-35 docutils container">
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">count</span> <span class="o">%</span> <span class="mi">25</span><span class="p">))</span> <span class="p">{</span>
+      <span class="c1">// Only print every 50ms, the controller text update rate is slow</span>
+      <span class="n">master</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Counter: %d&quot;</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>line</td>
+<td>The line number at which the text will be displayed [0-2]</td>
+</tr>
+<tr class="row-odd"><td>col</td>
+<td>The column number at which the text will be displayed. The width of the screen is 15 characters.</td>
+</tr>
+<tr class="row-even"><td>fmt</td>
+<td>The format string to print to the controller</td>
+</tr>
+<tr class="row-odd"><td>…</td>
+<td>The argument list for the format string</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if the operation was successful, <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> otherwise.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="set-text">
+<h4><a class="toc-backref" href="#id25">set_text</a><a class="headerlink" href="#set-text" title="Permalink to this headline">¶</a></h4>
+<p>Sets text to the controller LCD screen.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Controller text setting is currently in beta, so continuous, fast updates will
+not work well.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-36 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-37 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-36 active docutils container">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="n">set_text</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">line</span><span class="p">,</span>
+                                     <span class="kt">uint8_t</span> <span class="n">col</span><span class="p">,</span>
+                                     <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">str</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-37 docutils container">
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">count</span> <span class="o">%</span> <span class="mi">25</span><span class="p">))</span> <span class="p">{</span>
+      <span class="c1">// Only print every 50ms, the controller text update rate is slow</span>
+      <span class="n">master</span><span class="p">.</span><span class="n">set_text</span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Example text&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>line</td>
+<td>The line number at which the text will be displayed [0-2]</td>
+</tr>
+<tr class="row-odd"><td>col</td>
+<td>The column number at which the text will be displayed. The width of the screen is 15 characters.</td>
+</tr>
+<tr class="row-even"><td>str</td>
+<td>The pre-formatted string to print to the controller.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if the operation was successful, <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> otherwise.</p>
 </div>
 </div>
 </div>
@@ -998,7 +1347,7 @@ the last time this function was called, 0 otherwise.</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.7)
+      v: V5 (3.0.8)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -1019,7 +1368,7 @@ the last time this function was called, 0 otherwise.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'3.0.7',
+            VERSION:'3.0.8',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

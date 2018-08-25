@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Extended API &mdash; PROS for V5 3.0.7 documentation</title>
+  <title>Extended API &mdash; PROS for V5 3.0.8 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.8 documentation" href="../index.html"/>
         <link rel="up" title="Extended API Topics" href="index.html"/>
         <link rel="next" title="Multitasking (Extended API)" href="multitasking.html"/>
         <link rel="prev" title="Extended API Topics" href="index.html"/>
@@ -87,7 +87,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.7)
+                  V5 (3.0.8)
                 
               </div>
             
@@ -149,6 +149,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Extended API Topics</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Extended API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fdctl">fdctl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mutex-get-owner">mutex_get_owner</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mutex-recursive-create">mutex_recursive_create</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mutex-recursive-give">mutex_recursive_give</a></li>
@@ -162,16 +163,32 @@
 <li class="toctree-l4"><a class="reference internal" href="#queue-prepend">queue_prepend</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#queue-recv">queue_recv</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#queue-reset">queue_reset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registry-bind-port">registry_bind_port</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registry-unbind-port">registry_unbind_port</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sem-binary-create">sem_binary_create</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sem-create">sem_create</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sem-get-count">sem_get_count</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sem-post">sem_post</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sem-wait">sem_wait</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#serctl">serctl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#task-abort-delay">task_abort_delay</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#macros">Macros</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#enumerated-values">Enumerated Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#macros">Macros</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#serctl-activate">SERCTL_ACTIVATE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#serctl-deactivate">SERCTL_DEACTIVATE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#serctl-blkwrite">SERCTL_BLKWRITE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#serctl-noblkwrite">SERCTL_NOBLKWRITE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#serctl-enable-cobs">SERCTL_ENABLE_COBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#serctl-disable-cobs">SERCTL_DISABLE_COBS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#devctl-fionread">DEVCTL_FIONREAD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#devctl-set-baudrate">DEVCTL_SET_BAUDRATE</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#enumerated-values">Enumerated Values</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#v5-device-e-t">v5_device_e_t</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#typedefs">Typedefs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#queue-t">queue_t</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sem-t">sem_t</a></li>
@@ -180,7 +197,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="multitasking.html">Multitasking (Extended API)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tmei.html">Touch Management Engine Interface (TMEI) API</a></li>
 </ul>
 </li>
 </ul>
@@ -254,11 +270,44 @@
 <h1>Extended API<a class="headerlink" href="#extended-api" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Also included in the Extended API is <a class="reference external" href="https://littlevgl.com/">LVGL</a>.
-LVGL will be replacing TMEI for the display functionality.</p>
+<p class="last">Also included in the Extended API is <a class="reference external" href="https://littlevgl.com/">LVGL</a>.</p>
 </div>
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fdctl">
+<h3>fdctl<a class="headerlink" href="#fdctl" title="Permalink to this headline">¶</a></h3>
+<p>Control settings of the way the file’s driver treats the file.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">fdctl</span> <span class="p">(</span> <span class="kt">int</span> <span class="n">file</span><span class="p">,</span>
+                <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">action</span><span class="p">,</span>
+                <span class="kt">void</span><span class="o">*</span> <span class="k">const</span> <span class="n">extra_arg</span> <span class="p">)</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>file</td>
+<td>A valid file descriptor number</td>
+</tr>
+<tr class="row-odd"><td>action</td>
+<td>An action to perform on the file’s driver. See the <em>CTL_</em> macros for details on the different actions.
+Note that the action passed in must match the correct driver (e.g. don’t perform a SERCTL_* action on
+a microSD card file).</td>
+</tr>
+<tr class="row-even"><td>extra_arg</td>
+<td>An argument to pass in based on the action.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
 <div class="section" id="mutex-get-owner">
 <h3>mutex_get_owner<a class="headerlink" href="#mutex-get-owner" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">task_t</span> <span class="n">mutex_get_owner</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span> <span class="p">)</span>
@@ -268,8 +317,8 @@ LVGL will be replacing TMEI for the display functionality.</p>
 <p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col width="37%" />
+<col width="63%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameters</th>
@@ -278,12 +327,13 @@ LVGL will be replacing TMEI for the display functionality.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>mutex</td>
-<td>The mutex to unlock</td>
+<td>The mutex to check</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Returns:</strong> A handle to the current task that owns the mutex, or NULL if the mutex isn’t owned.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="mutex-recursive-create">
 <h3>mutex_recursive_create<a class="headerlink" href="#mutex-recursive-create" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">mutex_t</span> <span class="n">mutex_recursive_create</span> <span class="p">(</span> <span class="p">)</span>
@@ -293,17 +343,18 @@ LVGL will be replacing TMEI for the display functionality.</p>
 <p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
 <p><strong>Returns:</strong> A newly created recursive mutex.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="mutex-recursive-give">
 <h3>mutex_recursive_give<a class="headerlink" href="#mutex-recursive-give" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutex_recursive_give</span><span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutex_recursive_give</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Gives a recursive mutex.</p>
 <p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col width="37%" />
+<col width="63%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameters</th>
@@ -317,10 +368,11 @@ LVGL will be replacing TMEI for the display functionality.</p>
 </tbody>
 </table>
 </div>
+<hr class="docutils" />
 <div class="section" id="mutex-recursive-take">
 <h3>mutex_recursive_take<a class="headerlink" href="#mutex-recursive-take" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">mutex_recursive_take</span> <span class="p">(</span> <span class="n">mutex_t</span> <span class="n">mutex</span><span class="p">,</span>
-                              <span class="kt">uint32_t</span> <span class="n">wait_time</span> <span class="p">)</span>
+                            <span class="kt">uint32_t</span> <span class="n">wait_time</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Takes a recursive mutex.</p>
@@ -348,11 +400,12 @@ LVGL will be replacing TMEI for the display functionality.</p>
 </table>
 <p><strong>Returns:</strong> 1 if the mutex was obtained, 0 otherwise</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="queue-append">
 <h3>queue_append<a class="headerlink" href="#queue-append" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_append</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
-                      <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">item</span><span class="p">,</span>
-                      <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
+                    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">item</span><span class="p">,</span>
+                    <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Posts an item to the end of a queue. The item is queued by copy, not by reference.</p>
@@ -382,6 +435,7 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </table>
 <p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the item was preprended, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="queue-create">
 <h3>queue_create<a class="headerlink" href="#queue-create" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">queue_t</span> <span class="n">queue_create</span> <span class="p">(</span> <span class="kt">uint32_t</span> <span class="n">length</span><span class="p">,</span>
@@ -411,6 +465,7 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </table>
 <p><strong>Returns:</strong> A handle to a newly created queue, or NULL if the queue cannot be created.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="queue-delete">
 <h3>queue_delete<a class="headerlink" href="#queue-delete" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">queue_delete</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
@@ -435,6 +490,7 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </tbody>
 </table>
 </div>
+<hr class="docutils" />
 <div class="section" id="queue-get-available">
 <h3>queue_get_available<a class="headerlink" href="#queue-get-available" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">queue_get_available</span> <span class="p">(</span> <span class="k">const</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
@@ -460,6 +516,7 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </table>
 <p><strong>Returns:</strong> the number of spaces left in a queue.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="queue-get-waiting">
 <h3>queue_get_waiting<a class="headerlink" href="#queue-get-waiting" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">queue_get_waiting</span> <span class="p">(</span> <span class="k">const</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
@@ -485,6 +542,7 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </table>
 <p><strong>Returns:</strong> The number of messages available in the queue.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="queue-peek">
 <h3>queue_peek<a class="headerlink" href="#queue-peek" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_peek</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
@@ -519,11 +577,12 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </table>
 <p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if an item was copied into the buffer, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="queue-prepend">
 <h3>queue_prepend<a class="headerlink" href="#queue-prepend" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_prepend</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
-                       <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">item</span><span class="p">,</span>
-                       <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
+                     <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">item</span><span class="p">,</span>
+                     <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Posts an item to the front of a queue. The item is queued by copy, not by reference.</p>
@@ -553,11 +612,12 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </table>
 <p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if the item was preprended, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="queue-recv">
 <h3>queue_recv<a class="headerlink" href="#queue-recv" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">queue_recv</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span><span class="p">,</span>
-                    <span class="kt">void</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span>
-                    <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
+                  <span class="kt">void</span><span class="o">*</span> <span class="n">buffer</span><span class="p">,</span>
+                  <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Receive an item from the queue.</p>
@@ -587,6 +647,7 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </table>
 <p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> if an item was copied into the buffer, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="queue-reset">
 <h3>queue_reset<a class="headerlink" href="#queue-reset" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">queue_reset</span> <span class="p">(</span> <span class="n">queue_t</span> <span class="n">queue</span> <span class="p">)</span>
@@ -611,6 +672,72 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 </tbody>
 </table>
 </div>
+<hr class="docutils" />
+<div class="section" id="registry-bind-port">
+<h3>registry_bind_port<a class="headerlink" href="#registry-bind-port" title="Permalink to this headline">¶</a></h3>
+<p>Registers a device of the given type in the given port into the registry, if
+that type of device is detected to be plugged in to that port.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>     - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>     - A different device than specified is plugged in</li>
+<li><code class="docutils literal notranslate"><span class="pre">EADDRINUSE</span></code> - The port is already registered to another device</li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">registry_bind_port</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                         <span class="n">v5_device_e_t</span> <span class="n">device_type</span> <span class="p">)</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>the port number to register the device</td>
+</tr>
+<tr class="row-odd"><td>device</td>
+<td>the type of device to register</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 upon success, PROS_ERR upon failure</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="registry-unbind-port">
+<h3>registry_unbind_port<a class="headerlink" href="#registry-unbind-port" title="Permalink to this headline">¶</a></h3>
+<p>Removes the device registed in the given port, if there is one.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>     - The given value is not within the range of V5 ports (1-21).</li>
+</ul>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">registry_unbind_port</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>the port number to deregister</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 upon success, PROS_ERR upon failure</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="sem-binary-create">
 <h3>sem_binary_create<a class="headerlink" href="#sem-binary-create" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sem_t</span> <span class="n">sem_binary_create</span> <span class="p">(</span> <span class="p">)</span>
@@ -620,6 +747,7 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 <p>See <a class="reference internal" href="multitasking.html"><span class="doc">Multitasking (Extended API)</span></a> for details.</p>
 <p><strong>Returns:</strong> A newly created semaphore.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="sem-create">
 <h3>sem_create<a class="headerlink" href="#sem-create" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">sem_t</span> <span class="n">sem_create</span> <span class="p">(</span> <span class="kt">uint32_t</span> <span class="n">max_count</span><span class="p">,</span>
@@ -650,9 +778,10 @@ post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
 <p><strong>Returns:</strong> A newly created semaphore. If an error occurred, NULL will be
 returned and <code class="docutils literal notranslate"><span class="pre">errno</span></code> can be checked for hints as to why <a class="reference internal" href="#sem-create">sem_create</a> failed.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="sem-get-count">
 <h3>sem_get_count<a class="headerlink" href="#sem-get-count" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="nf">sem_get_count</span><span class="p">(</span><span class="n">sem_t</span> <span class="n">sem</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">sem_get_count</span> <span class="p">(</span> <span class="n">sem_t</span> <span class="n">sem</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Returns the current value of the semaphore.</p>
@@ -674,6 +803,7 @@ returned and <code class="docutils literal notranslate"><span class="pre">errno<
 </table>
 <p><strong>Returns:</strong> The current value of the semaphore (e.g. the number of resources available)</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="sem-post">
 <h3>sem_post<a class="headerlink" href="#sem-post" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">sem_post</span> <span class="p">(</span> <span class="n">sem_t</span> <span class="n">sem</span> <span class="p">)</span>
@@ -701,10 +831,11 @@ returned and <code class="docutils literal notranslate"><span class="pre">errno<
 returned, then <code class="docutils literal notranslate"><span class="pre">errno</span></code> is set with a hint about why the semaphore
 couldn’t be taken.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="sem-wait">
 <h3>sem_wait<a class="headerlink" href="#sem-wait" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">sem_wait</span> <span class="p">(</span> <span class="n">sem_t</span> <span class="n">sem</span><span class="p">,</span>
-                  <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
+                <span class="kt">uint32_t</span> <span class="n">timeout</span> <span class="p">)</span>
 </pre></div>
 </div>
 <p>Waits for the semaphore’s value to be greater than 0. If the value is already
@@ -712,8 +843,8 @@ greater than 0, this function immediately returns.</p>
 <p>See <a class="reference internal" href="../tutorials/topical/multitasking.html"><span class="doc">Multitasking</span></a> for details.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="8%" />
-<col width="92%" />
+<col width="11%" />
+<col width="89%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameters</th>
@@ -725,7 +856,8 @@ greater than 0, this function immediately returns.</p>
 <td>The semaphore to wait on.</td>
 </tr>
 <tr class="row-odd"><td>timeout</td>
-<td>Time to wait before the semaphore’s becomes available. A timeout of 0 can be used to poll the sempahore. TIMEOUT_MAX can be used to block indefinitely.</td>
+<td>Time to wait before the semaphore’s becomes available. A timeout of 0 can be used to poll the semaphore.
+TIMEOUT_MAX can be used to block indefinitely.</td>
 </tr>
 </tbody>
 </table>
@@ -733,6 +865,35 @@ greater than 0, this function immediately returns.</p>
 If false is returned, then errno is set with a hint about why the
 sempahore couldn’t be taken.</p>
 </div>
+<hr class="docutils" />
+<div class="section" id="serctl">
+<h3>serctl<a class="headerlink" href="#serctl" title="Permalink to this headline">¶</a></h3>
+<p>Control settings of the serial driver.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">serctl</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">action</span><span class="p">,</span>
+                 <span class="kt">void</span><span class="o">*</span> <span class="k">const</span> <span class="n">extra_arg</span> <span class="p">)</span>
+</pre></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>action</td>
+<td>An action to perform on the serial driver. See the SERCTL_* macros for details on the different actions.</td>
+</tr>
+<tr class="row-odd"><td>extra_arg</td>
+<td>An argument to pass in based on the action.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
 <div class="section" id="task-abort-delay">
 <h3>task_abort_delay<a class="headerlink" href="#task-abort-delay" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">task_abort_delay</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
@@ -761,9 +922,102 @@ sempahore couldn’t be taken.</p>
 </div>
 <div class="section" id="macros">
 <h2>Macros<a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="serctl-activate">
+<h3>SERCTL_ACTIVATE<a class="headerlink" href="#serctl-activate" title="Permalink to this headline">¶</a></h3>
+<p>Action macro to pass into <a class="reference internal" href="#serctl">serctl</a> or <a class="reference internal" href="#fdctl">fdctl</a> that activates the stream identifier.</p>
+<p>When used with <a class="reference internal" href="#serctl">serctl</a>, the extra argument must be the little endian
+representation of the stream identifier (e.g. “sout” -&gt; 0x74756f73)</p>
+<p>Visit <a class="reference external" href="../tutorials/topical/filesystem.html#serial">the serial tutorial</a>
+to learn more.</p>
+<p><strong>Value:</strong> 10</p>
 </div>
+<hr class="docutils" />
+<div class="section" id="serctl-deactivate">
+<h3>SERCTL_DEACTIVATE<a class="headerlink" href="#serctl-deactivate" title="Permalink to this headline">¶</a></h3>
+<p>Action macro to pass into <a class="reference internal" href="#serctl">serctl</a> or <a class="reference internal" href="#fdctl">fdctl</a> that deactivates the stream
+identifier.</p>
+<p>When used with <a class="reference internal" href="#serctl">serctl</a>, the extra argument must be the little endian
+representation of the stream identifier (e.g. “sout” -&gt; 0x74756f73)</p>
+<p>Visit <a class="reference external" href="../tutorials/topical/filesystem.html#serial">the serial tutorial</a>
+to learn more.</p>
+<p><strong>Value:</strong> 11</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="serctl-blkwrite">
+<h3>SERCTL_BLKWRITE<a class="headerlink" href="#serctl-blkwrite" title="Permalink to this headline">¶</a></h3>
+<p>Action macro to pass into <a class="reference internal" href="#fdctl">fdctl</a> that enables blocking writes for the file.</p>
+<p>The extra argument is not used with this action, provide any value (e.g.
+NULL) instead.</p>
+<p>Visit <a class="reference external" href="../tutorials/topical/filesystem.html#serial">the serial tutorial</a>
+to learn more.</p>
+<p><strong>Value:</strong> 12</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="serctl-noblkwrite">
+<h3>SERCTL_NOBLKWRITE<a class="headerlink" href="#serctl-noblkwrite" title="Permalink to this headline">¶</a></h3>
+<p>Action macro to pass into <a class="reference internal" href="#fdctl">fdctl</a> that makes writes non-blocking for the file.</p>
+<p>The extra argument is not used with this action, provide any value (e.g.
+NULL) instead.</p>
+<p>Visit <a class="reference external" href="../tutorials/topical/filesystem.html#serial">the serial tutorial</a>
+to learn more.</p>
+<p><strong>Value:</strong> 13</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="serctl-enable-cobs">
+<h3>SERCTL_ENABLE_COBS<a class="headerlink" href="#serctl-enable-cobs" title="Permalink to this headline">¶</a></h3>
+<p>Action macro to pass into <a class="reference internal" href="#serctl">serctl</a> that enables advanced stream multiplexing
+capabilities.</p>
+<p>The extra argument is not used with this action, provide any value (e.g.
+NULL) instead.</p>
+<p>Visit <a class="reference external" href="../tutorials/topical/filesystem.html#serial">the serial tutorial</a>
+to learn more.</p>
+<p><strong>Value:</strong> 14</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="serctl-disable-cobs">
+<h3>SERCTL_DISABLE_COBS<a class="headerlink" href="#serctl-disable-cobs" title="Permalink to this headline">¶</a></h3>
+<p>Action macro to pass into <a class="reference internal" href="#serctl">serctl</a> that disables advanced stream multiplexing
+capabilities.</p>
+<p>The extra argument is not used with this action, provide any value (e.g.
+NULL) instead.</p>
+<p>Visit <a class="reference external" href="../tutorials/topical/filesystem.html#serial">the serial tutorial</a>
+to learn more.</p>
+<p><strong>Value:</strong> 15</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="devctl-fionread">
+<h3>DEVCTL_FIONREAD<a class="headerlink" href="#devctl-fionread" title="Permalink to this headline">¶</a></h3>
+<p>Action macro to check if there is data available from the Generic Serial Device.</p>
+<p>The extra argument is not used with this action, provide any value (e.g.
+NULL) instead.</p>
+<p><strong>Value:</strong> 16</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="devctl-set-baudrate">
+<h3>DEVCTL_SET_BAUDRATE<a class="headerlink" href="#devctl-set-baudrate" title="Permalink to this headline">¶</a></h3>
+<p>Action macro to set the Generic Serial Device’s baudrate.</p>
+<p>The extra argument is the baudrate.</p>
+<p><strong>Value:</strong> 17</p>
+</div>
+</div>
+<hr class="docutils" />
 <div class="section" id="enumerated-values">
 <h2>Enumerated Values<a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="v5-device-e-t">
+<h3>v5_device_e_t<a class="headerlink" href="#v5-device-e-t" title="Permalink to this headline">¶</a></h3>
+<p>Denotes the kind of device that is being communicated with.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="n">v5_device_e</span> <span class="p">{</span>
+        <span class="n">E_DEVICE_NONE</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">E_DEVICE_MOTOR</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">E_DEVICE_RADIO</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="n">E_DEVICE_VISION</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span>
+      <span class="n">E_DEVICE_ADI</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+      <span class="n">E_DEVICE_GENERIC</span> <span class="o">=</span> <span class="mi">129</span><span class="p">,</span>
+      <span class="n">E_DEVICE_UNDEFINED</span> <span class="o">=</span> <span class="mi">255</span>
+<span class="p">}</span> <span class="n">v5_device_e_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="typedefs">
 <h2>Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
@@ -775,10 +1029,10 @@ sempahore couldn’t be taken.</p>
 </div>
 <div class="section" id="sem-t">
 <h3>sem_t<a class="headerlink" href="#sem-t" title="Permalink to this headline">¶</a></h3>
+<p>A <a class="reference external" href="../tutorials/topical/multitasking">semaphore</a>.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">void</span><span class="o">*</span> <span class="n">sem_t</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>A <a class="reference external" href="../tutorials/topical/multitasking">semaphore</a>.</p>
 </div>
 </div>
 </div>
@@ -827,7 +1081,7 @@ sempahore couldn’t be taken.</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.7)
+      v: V5 (3.0.8)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -848,7 +1102,7 @@ sempahore couldn’t be taken.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'3.0.7',
+            VERSION:'3.0.8',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

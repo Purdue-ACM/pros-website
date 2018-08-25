@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Motors C API &mdash; PROS for V5 3.0.7 documentation</title>
+  <title>Motors C API &mdash; PROS for V5 3.0.8 documentation</title>
   
 
   
@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.8 documentation" href="../../index.html"/>
         <link rel="up" title="API Home" href="../index.html"/>
         <link rel="next" title="RTOS Facilities C API" href="rtos.html"/>
         <link rel="prev" title="Miscellaneous C API" href="misc.html"/>
@@ -95,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.7)
+                  V5 (3.0.8)
                 
               </div>
             
@@ -150,6 +150,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#motor-move-relative">motor_move_relative</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-move-velocity">motor_move_velocity</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-move-voltage">motor_move_voltage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motor-modify-profiled-velocity">motor_modify_profiled_velocity</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-get-target-position">motor_get_target_position</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-get-target-velocity">motor_get_target_velocity</a></li>
 </ul>
@@ -174,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration-functions">Configuration Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#motor-convert-pid">motor_convert_pid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motor-convert-pid-full">motor_convert_pid_full</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-get-brake-mode">motor_get_brake_mode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-get-current-limit">motor_get_current_limit</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-get-encoder-units">motor_get_encoder_units</a></li>
@@ -184,7 +187,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#motor-set-current-limit">motor_set_current_limit</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-set-encoder-units">motor_set_encoder_units</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-set-gearing">motor_set_gearing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motor-set-pos-pid">motor_set_pos_pid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motor-set-pos-pid-full">motor_set_pos_pid_full</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-set-reversed">motor_set_reversed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motor-set-vel-pid">motor_set_vel_pid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motor-set-vel-pid-full">motor_set_vel_pid_full</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-set-voltage-limit">motor_set_voltage_limit</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-set-zero-position">motor_set_zero_position</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-tare-position">motor_tare_position</a></li>
@@ -197,7 +204,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#motor-gearset-e-t">motor_gearset_e_t</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#typedefs">Typedefs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typedefs">Typedefs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#motor-pid-full-s-t">motor_pid_full_s_t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motor-pid-s-t">motor_pid_s_t</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="rtos.html">RTOS Facilities C API</a></li>
@@ -301,54 +312,65 @@
 <li><a class="reference internal" href="#motor-move-relative" id="id4">motor_move_relative</a></li>
 <li><a class="reference internal" href="#motor-move-velocity" id="id5">motor_move_velocity</a></li>
 <li><a class="reference internal" href="#motor-move-voltage" id="id6">motor_move_voltage</a></li>
-<li><a class="reference internal" href="#motor-get-target-position" id="id7">motor_get_target_position</a></li>
-<li><a class="reference internal" href="#motor-get-target-velocity" id="id8">motor_get_target_velocity</a></li>
+<li><a class="reference internal" href="#motor-modify-profiled-velocity" id="id7">motor_modify_profiled_velocity</a></li>
+<li><a class="reference internal" href="#motor-get-target-position" id="id8">motor_get_target_position</a></li>
+<li><a class="reference internal" href="#motor-get-target-velocity" id="id9">motor_get_target_velocity</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#telemetry-functions" id="id9">Telemetry Functions</a><ul>
-<li><a class="reference internal" href="#motor-get-actual-velocity" id="id10">motor_get_actual_velocity</a></li>
-<li><a class="reference internal" href="#motor-get-current-draw" id="id11">motor_get_current_draw</a></li>
-<li><a class="reference internal" href="#motor-get-direction" id="id12">motor_get_direction</a></li>
-<li><a class="reference internal" href="#motor-get-efficiency" id="id13">motor_get_efficiency</a></li>
-<li><a class="reference internal" href="#motor-get-faults" id="id14">motor_get_faults</a></li>
-<li><a class="reference internal" href="#motor-get-flags" id="id15">motor_get_flags</a></li>
-<li><a class="reference internal" href="#motor-get-position" id="id16">motor_get_position</a></li>
-<li><a class="reference internal" href="#motor-get-power" id="id17">motor_get_power</a></li>
-<li><a class="reference internal" href="#motor-get-raw-position" id="id18">motor_get_raw_position</a></li>
-<li><a class="reference internal" href="#motor-get-temperature" id="id19">motor_get_temperature</a></li>
-<li><a class="reference internal" href="#motor-get-torque" id="id20">motor_get_torque</a></li>
-<li><a class="reference internal" href="#motor-get-voltage" id="id21">motor_get_voltage</a></li>
-<li><a class="reference internal" href="#motor-get-zero-position-flag" id="id22">motor_get_zero_position_flag</a></li>
-<li><a class="reference internal" href="#motor-is-stopped" id="id23">motor_is_stopped</a></li>
-<li><a class="reference internal" href="#motor-is-over-current" id="id24">motor_is_over_current</a></li>
-<li><a class="reference internal" href="#motor-is-over-temp" id="id25">motor_is_over_temp</a></li>
+<li><a class="reference internal" href="#telemetry-functions" id="id10">Telemetry Functions</a><ul>
+<li><a class="reference internal" href="#motor-get-actual-velocity" id="id11">motor_get_actual_velocity</a></li>
+<li><a class="reference internal" href="#motor-get-current-draw" id="id12">motor_get_current_draw</a></li>
+<li><a class="reference internal" href="#motor-get-direction" id="id13">motor_get_direction</a></li>
+<li><a class="reference internal" href="#motor-get-efficiency" id="id14">motor_get_efficiency</a></li>
+<li><a class="reference internal" href="#motor-get-faults" id="id15">motor_get_faults</a></li>
+<li><a class="reference internal" href="#motor-get-flags" id="id16">motor_get_flags</a></li>
+<li><a class="reference internal" href="#motor-get-position" id="id17">motor_get_position</a></li>
+<li><a class="reference internal" href="#motor-get-power" id="id18">motor_get_power</a></li>
+<li><a class="reference internal" href="#motor-get-raw-position" id="id19">motor_get_raw_position</a></li>
+<li><a class="reference internal" href="#motor-get-temperature" id="id20">motor_get_temperature</a></li>
+<li><a class="reference internal" href="#motor-get-torque" id="id21">motor_get_torque</a></li>
+<li><a class="reference internal" href="#motor-get-voltage" id="id22">motor_get_voltage</a></li>
+<li><a class="reference internal" href="#motor-get-zero-position-flag" id="id23">motor_get_zero_position_flag</a></li>
+<li><a class="reference internal" href="#motor-is-stopped" id="id24">motor_is_stopped</a></li>
+<li><a class="reference internal" href="#motor-is-over-current" id="id25">motor_is_over_current</a></li>
+<li><a class="reference internal" href="#motor-is-over-temp" id="id26">motor_is_over_temp</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#configuration-functions" id="id26">Configuration Functions</a><ul>
-<li><a class="reference internal" href="#motor-get-brake-mode" id="id27">motor_get_brake_mode</a></li>
-<li><a class="reference internal" href="#motor-get-current-limit" id="id28">motor_get_current_limit</a></li>
-<li><a class="reference internal" href="#motor-get-encoder-units" id="id29">motor_get_encoder_units</a></li>
-<li><a class="reference internal" href="#motor-get-gearing" id="id30">motor_get_gearing</a></li>
-<li><a class="reference internal" href="#motor-get-voltage-limit" id="id31">motor_get_voltage_limit</a></li>
-<li><a class="reference internal" href="#motor-is-reversed" id="id32">motor_is_reversed</a></li>
-<li><a class="reference internal" href="#motor-set-brake-mode" id="id33">motor_set_brake_mode</a></li>
-<li><a class="reference internal" href="#motor-set-current-limit" id="id34">motor_set_current_limit</a></li>
-<li><a class="reference internal" href="#motor-set-encoder-units" id="id35">motor_set_encoder_units</a></li>
-<li><a class="reference internal" href="#motor-set-gearing" id="id36">motor_set_gearing</a></li>
-<li><a class="reference internal" href="#motor-set-reversed" id="id37">motor_set_reversed</a></li>
-<li><a class="reference internal" href="#motor-set-voltage-limit" id="id38">motor_set_voltage_limit</a></li>
-<li><a class="reference internal" href="#motor-set-zero-position" id="id39">motor_set_zero_position</a></li>
-<li><a class="reference internal" href="#motor-tare-position" id="id40">motor_tare_position</a></li>
+<li><a class="reference internal" href="#configuration-functions" id="id27">Configuration Functions</a><ul>
+<li><a class="reference internal" href="#motor-convert-pid" id="id28">motor_convert_pid</a></li>
+<li><a class="reference internal" href="#motor-convert-pid-full" id="id29">motor_convert_pid_full</a></li>
+<li><a class="reference internal" href="#motor-get-brake-mode" id="id30">motor_get_brake_mode</a></li>
+<li><a class="reference internal" href="#motor-get-current-limit" id="id31">motor_get_current_limit</a></li>
+<li><a class="reference internal" href="#motor-get-encoder-units" id="id32">motor_get_encoder_units</a></li>
+<li><a class="reference internal" href="#motor-get-gearing" id="id33">motor_get_gearing</a></li>
+<li><a class="reference internal" href="#motor-get-voltage-limit" id="id34">motor_get_voltage_limit</a></li>
+<li><a class="reference internal" href="#motor-is-reversed" id="id35">motor_is_reversed</a></li>
+<li><a class="reference internal" href="#motor-set-brake-mode" id="id36">motor_set_brake_mode</a></li>
+<li><a class="reference internal" href="#motor-set-current-limit" id="id37">motor_set_current_limit</a></li>
+<li><a class="reference internal" href="#motor-set-encoder-units" id="id38">motor_set_encoder_units</a></li>
+<li><a class="reference internal" href="#motor-set-gearing" id="id39">motor_set_gearing</a></li>
+<li><a class="reference internal" href="#motor-set-pos-pid" id="id40">motor_set_pos_pid</a></li>
+<li><a class="reference internal" href="#motor-set-pos-pid-full" id="id41">motor_set_pos_pid_full</a></li>
+<li><a class="reference internal" href="#motor-set-reversed" id="id42">motor_set_reversed</a></li>
+<li><a class="reference internal" href="#motor-set-vel-pid" id="id43">motor_set_vel_pid</a></li>
+<li><a class="reference internal" href="#motor-set-vel-pid-full" id="id44">motor_set_vel_pid_full</a></li>
+<li><a class="reference internal" href="#motor-set-voltage-limit" id="id45">motor_set_voltage_limit</a></li>
+<li><a class="reference internal" href="#motor-set-zero-position" id="id46">motor_set_zero_position</a></li>
+<li><a class="reference internal" href="#motor-tare-position" id="id47">motor_tare_position</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#macros" id="id41">Macros</a></li>
-<li><a class="reference internal" href="#enumerated-values" id="id42">Enumerated Values</a><ul>
-<li><a class="reference internal" href="#motor-brake-mode-e-t" id="id43">motor_brake_mode_e_t</a></li>
-<li><a class="reference internal" href="#motor-encoder-units-e-t" id="id44">motor_encoder_units_e_t</a></li>
-<li><a class="reference internal" href="#motor-gearset-e-t" id="id45">motor_gearset_e_t</a></li>
+<li><a class="reference internal" href="#macros" id="id48">Macros</a></li>
+<li><a class="reference internal" href="#enumerated-values" id="id49">Enumerated Values</a><ul>
+<li><a class="reference internal" href="#motor-brake-mode-e-t" id="id50">motor_brake_mode_e_t</a></li>
+<li><a class="reference internal" href="#motor-encoder-units-e-t" id="id51">motor_encoder_units_e_t</a></li>
+<li><a class="reference internal" href="#motor-gearset-e-t" id="id52">motor_gearset_e_t</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#typedefs" id="id46">Typedefs</a></li>
+<li><a class="reference internal" href="#typedefs" id="id53">Typedefs</a><ul>
+<li><a class="reference internal" href="#motor-pid-full-s-t" id="id54">motor_pid_full_s_t</a></li>
+<li><a class="reference internal" href="#motor-pid-s-t" id="id55">motor_pid_s_t</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="movement-functions">
@@ -427,6 +449,12 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Sets the target absolute position for the motor to move to.</p>
 <p>This movement is relative to the position of the motor when initialized or
 the position when it was most recently reset with <a class="reference internal" href="#motor-tare-position">motor_tare_position</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This function simply sets the target for the motor, it does not block program
+execution until the movement finishes. The example code shows how to block
+until a movement is finished.</p>
+</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
@@ -452,18 +480,38 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
-<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">motor_move_absolute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// Moves 100 units forward</span>
-  <span class="n">motor_move_absolute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// This does not cause a movement</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">105</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">95</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="c1">// Continue running this loop as long as the motor is not within +-5 units of its goal</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">motor_move_absolute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// This will not cause a movement</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">105</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">95</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
 
   <span class="n">motor_tare_position</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
   <span class="n">motor_move_absolute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// Moves 100 units forward</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">105</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">95</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -500,6 +548,12 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Sets the relative target position for the motor to move to.</p>
 <p>This movement is relative to the current position of the motor as given in
 <a class="reference internal" href="#motor-get-position">motor_get_position</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This function simply sets the target for the motor, it does not block program
+execution until the movement finishes. The example code shows how to block
+until a movement is finished.</p>
+</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
@@ -525,12 +579,31 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">motor_move_relative</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// Moves 100 units forward</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">105</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">95</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="c1">// Continue running this loop as long as the motor is not within +-5 units of its goal</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+
   <span class="n">motor_move_relative</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// Also moves 100 units forward</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">205</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">195</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </div>
 </div>
 <table border="1" class="docutils">
@@ -693,15 +766,17 @@ Example</div>
 setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="motor-get-target-position">
-<h3><a class="toc-backref" href="#id7">motor_get_target_position</a><a class="headerlink" href="#motor-get-target-position" title="Permalink to this headline">¶</a></h3>
-<p>Gets the target position set for the motor by the user.</p>
+<div class="section" id="motor-modify-profiled-velocity">
+<h3><a class="toc-backref" href="#id7">motor_modify_profiled_velocity</a><a class="headerlink" href="#motor-modify-profiled-velocity" title="Permalink to this headline">¶</a></h3>
+<p>Changes the output velocity for a profiled movement (<a class="reference internal" href="#motor-move-absolute">motor_move_absolute</a> or
+<a class="reference internal" href="#motor-move-relative">motor_move_relative</a>). This will have no effect if the motor is not following
+a profiled movement.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
 <li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
 </ul>
-<p>Analogous to <a class="reference external" href="../cpp/motors.html#get-target-position">pros::Motor::get_target_position</a>.</p>
+<p>Analogous to <a class="reference external" href="../cpp/motors.html#modify-profiled-velocity">pros::Motor::modify_profiled_velocity</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-10 docutils container">
@@ -714,11 +789,74 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">motor_get_target_position</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_modify_profiled_velocity</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                                         <span class="k">const</span> <span class="kt">int32_t</span> <span class="n">velocity</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_move_absolute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+  <span class="n">motor_modify_profiled_velocity</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// Stop the motor early</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The V5 port number from 1-21</td>
+</tr>
+<tr class="row-odd"><td>velocity</td>
+<td>The new motor velocity from +-100, +-200, or +-600 depending on the motor’s gearset</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="motor-get-target-position">
+<h3><a class="toc-backref" href="#id8">motor_get_target_position</a><a class="headerlink" href="#motor-get-target-position" title="Permalink to this headline">¶</a></h3>
+<p>Gets the target position set for the motor by the user.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../cpp/motors.html#get-target-position">pros::Motor::get_target_position</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-12 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-13 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">motor_get_target_position</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -753,7 +891,7 @@ operation failed, setting <code class="docutils literal notranslate"><span class
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-target-velocity">
-<h3><a class="toc-backref" href="#id8">motor_get_target_velocity</a><a class="headerlink" href="#motor-get-target-velocity" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">motor_get_target_velocity</a><a class="headerlink" href="#motor-get-target-velocity" title="Permalink to this headline">¶</a></h3>
 <p>Gets the velocity commanded to the motor by the user.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -763,21 +901,21 @@ operation failed, setting <code class="docutils literal notranslate"><span class
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-target-velocity">pros::Motor::get_target_velocity</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-12 docutils container">
+<div class="active item sphinx-data-tab-14 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-13 docutils container">
+<div class="item sphinx-data-tab-15 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_get_target_velocity</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -817,9 +955,9 @@ operation failed, setting <code class="docutils literal notranslate"><span class
 </div>
 <hr class="docutils" />
 <div class="section" id="telemetry-functions">
-<h2><a class="toc-backref" href="#id9">Telemetry Functions</a><a class="headerlink" href="#telemetry-functions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id10">Telemetry Functions</a><a class="headerlink" href="#telemetry-functions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="motor-get-actual-velocity">
-<h3><a class="toc-backref" href="#id10">motor_get_actual_velocity</a><a class="headerlink" href="#motor-get-actual-velocity" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">motor_get_actual_velocity</a><a class="headerlink" href="#motor-get-actual-velocity" title="Permalink to this headline">¶</a></h3>
 <p>Gets the actual velocity of the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -829,21 +967,21 @@ operation failed, setting <code class="docutils literal notranslate"><span class
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-actual-velocity">pros::Motor::get_actual_velocity</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-14 docutils container">
+<div class="active item sphinx-data-tab-16 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-15 docutils container">
+<div class="item sphinx-data-tab-17 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">motor_get_actual_velocity</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -882,7 +1020,7 @@ or <code class="docutils literal notranslate"><span class="pre">PROS_ERR_F</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-current-draw">
-<h3><a class="toc-backref" href="#id11">motor_get_current_draw</a><a class="headerlink" href="#motor-get-current-draw" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id12">motor_get_current_draw</a><a class="headerlink" href="#motor-get-current-draw" title="Permalink to this headline">¶</a></h3>
 <p>Gets the current drawn by the motor in mA.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -892,21 +1030,21 @@ or <code class="docutils literal notranslate"><span class="pre">PROS_ERR_F</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-current-draw">pros::Motor::get_current_draw</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-16 docutils container">
+<div class="active item sphinx-data-tab-18 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-17 docutils container">
+<div class="item sphinx-data-tab-19 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_get_current_draw</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -945,7 +1083,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-direction">
-<h3><a class="toc-backref" href="#id12">motor_get_direction</a><a class="headerlink" href="#motor-get-direction" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id13">motor_get_direction</a><a class="headerlink" href="#motor-get-direction" title="Permalink to this headline">¶</a></h3>
 <p>Gets the direction of movement for the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -955,21 +1093,21 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-direction">pros::Motor::get_direction</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-18 docutils container">
+<div class="active item sphinx-data-tab-20 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-19 docutils container">
+<div class="item sphinx-data-tab-21 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_get_direction</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1009,7 +1147,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-efficiency">
-<h3><a class="toc-backref" href="#id13">motor_get_efficiency</a><a class="headerlink" href="#motor-get-efficiency" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id14">motor_get_efficiency</a><a class="headerlink" href="#motor-get-efficiency" title="Permalink to this headline">¶</a></h3>
 <p>Gets the efficiency of the motor in percent.</p>
 <p>An efficiency of 100% means that the motor is moving electrically while
 drawing no electrical power, and an efficiency of 0% means that the motor
@@ -1022,21 +1160,21 @@ is drawing power but not moving.</p>
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-efficiency">pros::Motor::get_efficiency</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-20 docutils container">
+<div class="active item sphinx-data-tab-22 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-21 docutils container">
+<div class="item sphinx-data-tab-23 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_get_efficiency</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1075,7 +1213,7 @@ failed, setting <code class="docutils literal notranslate"><span class="pre">err
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-faults">
-<h3><a class="toc-backref" href="#id14">motor_get_faults</a><a class="headerlink" href="#motor-get-faults" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id15">motor_get_faults</a><a class="headerlink" href="#motor-get-faults" title="Permalink to this headline">¶</a></h3>
 <p>Gets the faults experienced by the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1085,21 +1223,21 @@ failed, setting <code class="docutils literal notranslate"><span class="pre">err
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-faults">pros::Motor::get_faults</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-22 docutils container">
+<div class="active item sphinx-data-tab-24 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-23 docutils container">
+<div class="item sphinx-data-tab-25 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">motor_get_faults</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1137,7 +1275,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-flags">
-<h3><a class="toc-backref" href="#id15">motor_get_flags</a><a class="headerlink" href="#motor-get-flags" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id16">motor_get_flags</a><a class="headerlink" href="#motor-get-flags" title="Permalink to this headline">¶</a></h3>
 <p>Gets the flags set by the motor’s operation.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1147,21 +1285,21 @@ Example</div>
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-flags">pros::Motor::get_flags</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-24 docutils container">
+<div class="active item sphinx-data-tab-26 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-25 docutils container">
+<div class="item sphinx-data-tab-27 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-26 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">motor_get_flags</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-27 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1199,7 +1337,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-position">
-<h3><a class="toc-backref" href="#id16">motor_get_position</a><a class="headerlink" href="#motor-get-position" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id17">motor_get_position</a><a class="headerlink" href="#motor-get-position" title="Permalink to this headline">¶</a></h3>
 <p>Gets the absolute position of the motor in its encoder units.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1209,21 +1347,21 @@ Example</div>
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-position">pros::Motor::get_position</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-26 docutils container">
+<div class="active item sphinx-data-tab-28 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-27 docutils container">
+<div class="item sphinx-data-tab-29 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-26 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-28 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">motor_get_position</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-27 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-29 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1262,7 +1400,7 @@ if the operation failed, setting <code class="docutils literal notranslate"><spa
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-power">
-<h3><a class="toc-backref" href="#id17">motor_get_power</a><a class="headerlink" href="#motor-get-power" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id18">motor_get_power</a><a class="headerlink" href="#motor-get-power" title="Permalink to this headline">¶</a></h3>
 <p>Gets the power drawn by the motor in Watts.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1272,21 +1410,21 @@ if the operation failed, setting <code class="docutils literal notranslate"><spa
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-power">pros::Motor::get_power</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-28 docutils container">
+<div class="active item sphinx-data-tab-30 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-29 docutils container">
+<div class="item sphinx-data-tab-31 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-28 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-30 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">motor_get_power</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-29 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-31 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1327,7 +1465,7 @@ failed, setting <code class="docutils literal notranslate"><span class="pre">err
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-raw-position">
-<h3><a class="toc-backref" href="#id18">motor_get_raw_position</a><a class="headerlink" href="#motor-get-raw-position" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id19">motor_get_raw_position</a><a class="headerlink" href="#motor-get-raw-position" title="Permalink to this headline">¶</a></h3>
 <p>Gets the raw encoder count of the motor at a given timestamp.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1337,22 +1475,22 @@ failed, setting <code class="docutils literal notranslate"><span class="pre">err
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-raw-position">pros::Motor::get_raw_position</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-30 docutils container">
+<div class="active item sphinx-data-tab-32 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-31 docutils container">
+<div class="item sphinx-data-tab-33 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-30 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-32 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_get_raw_position</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                  <span class="kt">uint32_t</span><span class="o">*</span> <span class="n">timestamp</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-31 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-33 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1397,7 +1535,7 @@ operation failed, setting <code class="docutils literal notranslate"><span class
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-temperature">
-<h3><a class="toc-backref" href="#id19">motor_get_temperature</a><a class="headerlink" href="#motor-get-temperature" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id20">motor_get_temperature</a><a class="headerlink" href="#motor-get-temperature" title="Permalink to this headline">¶</a></h3>
 <p>Gets the temperature of the motor in degrees Celsius. The resolution of this
 eading is 5 degrees Celsius. The motor will start to reduce its power when the
 temperature reading is greater than or equal to 55 C.</p>
@@ -1409,21 +1547,21 @@ temperature reading is greater than or equal to 55 C.</p>
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-temperature">pros::Motor::get_temperature</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-32 docutils container">
+<div class="active item sphinx-data-tab-34 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-33 docutils container">
+<div class="item sphinx-data-tab-35 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-32 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-34 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">motor_get_temperature</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-33 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-35 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1462,7 +1600,7 @@ operation failed, setting <code class="docutils literal notranslate"><span class
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-torque">
-<h3><a class="toc-backref" href="#id20">motor_get_torque</a><a class="headerlink" href="#motor-get-torque" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id21">motor_get_torque</a><a class="headerlink" href="#motor-get-torque" title="Permalink to this headline">¶</a></h3>
 <p>Gets the torque generated by the motor in Nm.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1472,21 +1610,21 @@ operation failed, setting <code class="docutils literal notranslate"><span class
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-torque">pros::Motor::get_torque</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-34 docutils container">
+<div class="active item sphinx-data-tab-36 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-35 docutils container">
+<div class="item sphinx-data-tab-37 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-34 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-36 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">motor_get_torque</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-35 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-37 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1525,7 +1663,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-voltage">
-<h3><a class="toc-backref" href="#id21">motor_get_voltage</a><a class="headerlink" href="#motor-get-voltage" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id22">motor_get_voltage</a><a class="headerlink" href="#motor-get-voltage" title="Permalink to this headline">¶</a></h3>
 <p>Gets the voltage delivered to the motor in mV.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1535,21 +1673,21 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-voltage">pros::Motor::get_voltage</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-36 docutils container">
+<div class="active item sphinx-data-tab-38 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-37 docutils container">
+<div class="item sphinx-data-tab-39 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-36 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-38 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">motor_get_voltage</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-37 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-39 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1588,7 +1726,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-zero-position-flag">
-<h3><a class="toc-backref" href="#id22">motor_get_zero_position_flag</a><a class="headerlink" href="#motor-get-zero-position-flag" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id23">motor_get_zero_position_flag</a><a class="headerlink" href="#motor-get-zero-position-flag" title="Permalink to this headline">¶</a></h3>
 <p>Gets the zero position flag for the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1598,21 +1736,21 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-zero-position-flag">pros::Motor::get_zero_position_flag</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-38 docutils container">
+<div class="active item sphinx-data-tab-40 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-39 docutils container">
+<div class="item sphinx-data-tab-41 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-38 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-40 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_get_zero_position_flag</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-39 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-41 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1652,7 +1790,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-is-stopped">
-<h3><a class="toc-backref" href="#id23">motor_is_stopped</a><a class="headerlink" href="#motor-is-stopped" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id24">motor_is_stopped</a><a class="headerlink" href="#motor-is-stopped" title="Permalink to this headline">¶</a></h3>
 <p>Gets the zero velocity flag for the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1662,21 +1800,21 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#is-stopped">pros::Motor::is_stopped</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-40 docutils container">
+<div class="active item sphinx-data-tab-42 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-41 docutils container">
+<div class="item sphinx-data-tab-43 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-40 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-42 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_is_stopped</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-41 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-43 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1715,7 +1853,7 @@ or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span><
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-is-over-current">
-<h3><a class="toc-backref" href="#id24">motor_is_over_current</a><a class="headerlink" href="#motor-is-over-current" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id25">motor_is_over_current</a><a class="headerlink" href="#motor-is-over-current" title="Permalink to this headline">¶</a></h3>
 <p>Detects if the motor is drawing over its current limit.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1725,21 +1863,21 @@ or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span><
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#is-over-current">pros::Motor::is_over_current</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-42 docutils container">
+<div class="active item sphinx-data-tab-44 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-43 docutils container">
+<div class="item sphinx-data-tab-45 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-42 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-44 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_is_over_current</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-43 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-45 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1779,7 +1917,7 @@ limit is not exceeded, or <code class="docutils literal notranslate"><span class
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-is-over-temp">
-<h3><a class="toc-backref" href="#id25">motor_is_over_temp</a><a class="headerlink" href="#motor-is-over-temp" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id26">motor_is_over_temp</a><a class="headerlink" href="#motor-is-over-temp" title="Permalink to this headline">¶</a></h3>
 <p>Gets the temperature limit flag for the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1789,21 +1927,21 @@ limit is not exceeded, or <code class="docutils literal notranslate"><span class
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#is-over-temp">pros::Motor::is_over_temp</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-44 docutils container">
+<div class="active item sphinx-data-tab-46 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-45 docutils container">
+<div class="item sphinx-data-tab-47 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-44 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-46 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_is_over_temp</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-45 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-47 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1844,9 +1982,206 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="configuration-functions">
-<h2><a class="toc-backref" href="#id26">Configuration Functions</a><a class="headerlink" href="#configuration-functions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id27">Configuration Functions</a><a class="headerlink" href="#configuration-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="motor-convert-pid">
+<h3><a class="toc-backref" href="#id28">motor_convert_pid</a><a class="headerlink" href="#motor-convert-pid" title="Permalink to this headline">¶</a></h3>
+<p>Takes in floating point values and returns a properly formatted pid struct.
+The <a class="reference internal" href="#motor-pid-s-t">motor_pid_s_t</a> struct is in 4.4 format, i.e. 0x20 is 2.0, 0x21 is 2.0625,
+etc.</p>
+<p>This function will convert the floating point values to the nearest 4.4
+value.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-48 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-49 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-48 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">motor_pid_s_t</span> <span class="n">motor_convert_pid</span> <span class="p">(</span> <span class="kt">double</span> <span class="n">kf</span><span class="p">,</span>
+                                  <span class="kt">double</span> <span class="n">kp</span><span class="p">,</span>
+                                  <span class="kt">double</span> <span class="n">ki</span><span class="p">,</span>
+                                  <span class="kt">double</span> <span class="n">kd</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-49 docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define KF 0</span>
+<span class="cp">#define KP 1.0f</span>
+<span class="cp">#define KI 0.001f</span>
+<span class="cp">#define KD 0.1f</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_pid_s_t</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">motor_convert_pid</span><span class="p">(</span><span class="n">KF</span><span class="p">,</span> <span class="n">KP</span><span class="p">,</span> <span class="n">KI</span><span class="p">,</span> <span class="n">KD</span><span class="p">);</span>
+  <span class="n">motor_set_pos_pid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>kf</td>
+<td>The feedforward constant</td>
+</tr>
+<tr class="row-odd"><td>kp</td>
+<td>The proportional constant</td>
+</tr>
+<tr class="row-even"><td>ki</td>
+<td>The integral constant</td>
+</tr>
+<tr class="row-odd"><td>kd</td>
+<td>The derivative constant</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> A <a class="reference internal" href="#motor-pid-s-t">motor_pid_s_t</a> struct formatted properly in 4.4.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="motor-convert-pid-full">
+<h3><a class="toc-backref" href="#id29">motor_convert_pid_full</a><a class="headerlink" href="#motor-convert-pid-full" title="Permalink to this headline">¶</a></h3>
+<p>Takes in floating point values and returns a properly formatted pid struct.
+The <a class="reference internal" href="#motor-pid-full-s-t">motor_pid_full_s_t</a> struct is in 4.4 format, i.e. 0x20 is 2.0, 0x21 is 2.0625,
+etc.</p>
+<p>This function will convert the floating point values to the nearest 4.4
+value.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-50 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-51 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-50 active docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">motor_pid_full_s_t</span> <span class="n">motor_convert_pid_full</span> <span class="p">(</span> <span class="kt">double</span> <span class="n">kf</span><span class="p">,</span>
+                                            <span class="kt">double</span> <span class="n">kp</span><span class="p">,</span>
+                                            <span class="kt">double</span> <span class="n">ki</span><span class="p">,</span>
+                                            <span class="kt">double</span> <span class="n">kd</span><span class="p">,</span>
+                                            <span class="kt">double</span> <span class="n">filter</span><span class="p">,</span>
+                                            <span class="kt">double</span> <span class="n">limit</span><span class="p">,</span>
+                                            <span class="kt">double</span> <span class="n">threshold</span><span class="p">,</span>
+                                            <span class="kt">double</span> <span class="n">loopspeed</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-51 docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define KF 0</span>
+<span class="cp">#define KP 1.0f</span>
+<span class="cp">#define KI 0.001f</span>
+<span class="cp">#define KD 0.1f</span>
+<span class="cp">#define FILTER 1.0f</span>
+<span class="cp">#define LIMIT 1.0f</span>
+<span class="cp">#define THRESHOLD 1.0f</span>
+<span class="cp">#define LOOPSPEED 10</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_pid_full_s_t</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">motor_convert_pid_full</span><span class="p">(</span><span class="n">KF</span><span class="p">,</span> <span class="n">KP</span><span class="p">,</span> <span class="n">KI</span><span class="p">,</span> <span class="n">KD</span><span class="p">,</span>
+                           <span class="n">FILTER</span><span class="p">,</span> <span class="n">LIMIT</span><span class="p">,</span> <span class="n">THRESHOLD</span><span class="p">,</span> <span class="n">LOOPSPEED</span><span class="p">);</span>
+  <span class="n">motor_set_pos_pid_full</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>kf</td>
+<td>The feedforward constant</td>
+</tr>
+<tr class="row-odd"><td>kp</td>
+<td>The proportional constant</td>
+</tr>
+<tr class="row-even"><td>ki</td>
+<td>The integral constant</td>
+</tr>
+<tr class="row-odd"><td>kd</td>
+<td>The derivative constant</td>
+</tr>
+<tr class="row-even"><td>filter</td>
+<td>A constant used for filtering the profile acceleration</td>
+</tr>
+<tr class="row-odd"><td>limit</td>
+<td>The integral limit</td>
+</tr>
+<tr class="row-even"><td>threshold</td>
+<td><p class="first">The threshold for determining if a position movement has reached its goal.</p>
+<p class="last">This has no effect for velocity PID controllers.</p>
+</td>
+</tr>
+<tr class="row-odd"><td>loopspeed</td>
+<td>The rate at which the PID computation is run (in ms)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> A motor_pid_s_t struct formatted properly in 4.4.</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="motor-get-brake-mode">
-<h3><a class="toc-backref" href="#id27">motor_get_brake_mode</a><a class="headerlink" href="#motor-get-brake-mode" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id30">motor_get_brake_mode</a><a class="headerlink" href="#motor-get-brake-mode" title="Permalink to this headline">¶</a></h3>
 <p>Gets the brake mode of the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1856,21 +2191,21 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-brake-mode">pros::Motor::get_brake_mode</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-46 docutils container">
+<div class="active item sphinx-data-tab-52 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-47 docutils container">
+<div class="item sphinx-data-tab-53 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-46 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-52 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">motor_brake_mode_e_t</span> <span class="n">motor_get_brake_mode</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-47 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-53 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">motor_set_brake_mode</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">E_MOTOR_BRAKE_HOLD</span><span class="p">);</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Brake Mode: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">motor_get_brake_mode</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
@@ -1900,7 +2235,7 @@ or <code class="docutils literal notranslate"><span class="pre">E_MOTOR_BRAKE_IN
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-current-limit">
-<h3><a class="toc-backref" href="#id28">motor_get_current_limit</a><a class="headerlink" href="#motor-get-current-limit" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id31">motor_get_current_limit</a><a class="headerlink" href="#motor-get-current-limit" title="Permalink to this headline">¶</a></h3>
 <p>Gets the current limit for the motor in mA. The default limit is 2500 mA.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1910,21 +2245,21 @@ or <code class="docutils literal notranslate"><span class="pre">E_MOTOR_BRAKE_IN
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-current-limit">pros::Motor::get_current_limit</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-48 docutils container">
+<div class="active item sphinx-data-tab-54 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-49 docutils container">
+<div class="item sphinx-data-tab-55 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-48 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-54 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_get_current_limit</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-49 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-55 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Motor Current Limit: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">motor_get_current_limit</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
   <span class="c1">// Prints &quot;Motor Current Limit: 2500&quot;</span>
@@ -1954,7 +2289,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-encoder-units">
-<h3><a class="toc-backref" href="#id29">motor_get_encoder_units</a><a class="headerlink" href="#motor-get-encoder-units" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id32">motor_get_encoder_units</a><a class="headerlink" href="#motor-get-encoder-units" title="Permalink to this headline">¶</a></h3>
 <p>Gets the <a class="reference external" href="motors.html#motor-encoder-units-e-t">encoder units</a> set for the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1964,21 +2299,21 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-encoder-units">pros::Motor::get_encoder_units</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-50 docutils container">
+<div class="active item sphinx-data-tab-56 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-51 docutils container">
+<div class="item sphinx-data-tab-57 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-50 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-56 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">motor_encoder_units_e_t</span> <span class="n">motor_get_encoder_units</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-51 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-57 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Motor Encoder Units: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">motor_get_encoder_units</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
   <span class="c1">// Prints E_MOTOR_ENCODER_DEGREES by default</span>
@@ -2008,7 +2343,7 @@ or <code class="docutils literal notranslate"><span class="pre">E_MOTOR_ENCODER_
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-gearing">
-<h3><a class="toc-backref" href="#id30">motor_get_gearing</a><a class="headerlink" href="#motor-get-gearing" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id33">motor_get_gearing</a><a class="headerlink" href="#motor-get-gearing" title="Permalink to this headline">¶</a></h3>
 <p>Gets the <cite>gearset &lt;motors.html#motor-gearset-e-t&gt;`_</cite> that was set for the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2018,21 +2353,21 @@ or <code class="docutils literal notranslate"><span class="pre">E_MOTOR_ENCODER_
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-gearing">pros::Motor::get_gearing</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-52 docutils container">
+<div class="active item sphinx-data-tab-58 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-53 docutils container">
+<div class="item sphinx-data-tab-59 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-52 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-58 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">motor_gearset_e_t</span> <span class="n">motor_get_gearing</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-53 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-59 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Motor Gearing Number: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">motor_get_gearing</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
   <span class="c1">// Prints E_MOTOR_GEARSET_36 by default</span>
@@ -2062,7 +2397,7 @@ or <code class="docutils literal notranslate"><span class="pre">E_GEARSET_INVALI
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-get-voltage-limit">
-<h3><a class="toc-backref" href="#id31">motor_get_voltage_limit</a><a class="headerlink" href="#motor-get-voltage-limit" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id34">motor_get_voltage_limit</a><a class="headerlink" href="#motor-get-voltage-limit" title="Permalink to this headline">¶</a></h3>
 <p>Gets the voltage limit set by the user.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2072,21 +2407,21 @@ or <code class="docutils literal notranslate"><span class="pre">E_GEARSET_INVALI
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#get-voltage-limit">pros::Motor::get_voltage_limit</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-54 docutils container">
+<div class="active item sphinx-data-tab-60 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-55 docutils container">
+<div class="item sphinx-data-tab-61 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-54 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-60 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_get_voltage_limit</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-55 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-61 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Motor Voltage Limit: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">motor_get_voltage_limit</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
   <span class="c1">// Prints 0 by default, indicating no limit</span>
@@ -2116,7 +2451,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-is-reversed">
-<h3><a class="toc-backref" href="#id32">motor_is_reversed</a><a class="headerlink" href="#motor-is-reversed" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id35">motor_is_reversed</a><a class="headerlink" href="#motor-is-reversed" title="Permalink to this headline">¶</a></h3>
 <p>Gets the operation direction of the motor as set by the user.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2126,21 +2461,21 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#is-reversed">pros::Motor::is_reversed</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-56 docutils container">
+<div class="active item sphinx-data-tab-62 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-57 docutils container">
+<div class="item sphinx-data-tab-63 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-56 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-62 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_is_reversed</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-57 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-63 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Is the motor reversed? %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">motor_is_reversed</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
   <span class="c1">// Prints &quot;Is the motor reversed? 0&quot;</span>
@@ -2170,7 +2505,7 @@ or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span><
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-set-brake-mode">
-<h3><a class="toc-backref" href="#id33">motor_set_brake_mode</a><a class="headerlink" href="#motor-set-brake-mode" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id36">motor_set_brake_mode</a><a class="headerlink" href="#motor-set-brake-mode" title="Permalink to this headline">¶</a></h3>
 <p>Sets one of <a class="reference internal" href="#motor-brake-mode-e-t">motor_brake_mode_e_t</a> to the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2180,22 +2515,22 @@ or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span><
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#set-brake-mode">pros::Motor::set_brake_mode</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-58 docutils container">
+<div class="active item sphinx-data-tab-64 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-59 docutils container">
+<div class="item sphinx-data-tab-65 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-58 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-64 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_set_brake_mode</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                <span class="n">motor_brake_mode_e_t</span> <span class="n">mode</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-59 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-65 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">motor_set_brake_mode</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">E_MOTOR_BRAKE_HOLD</span><span class="p">);</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Brake Mode: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">motor_get_brake_mode</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
@@ -2228,7 +2563,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-set-current-limit">
-<h3><a class="toc-backref" href="#id34">motor_set_current_limit</a><a class="headerlink" href="#motor-set-current-limit" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id37">motor_set_current_limit</a><a class="headerlink" href="#motor-set-current-limit" title="Permalink to this headline">¶</a></h3>
 <p>Sets the current limit for the motor in mA.</p>
 <p>The default limit is 2500 mA.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
@@ -2239,22 +2574,22 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#set-current-limit">pros::Motor::set_current_limit</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-60 docutils container">
+<div class="active item sphinx-data-tab-66 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-61 docutils container">
+<div class="item sphinx-data-tab-67 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-60 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-66 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_set_current_limit</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                   <span class="kt">int32_t</span> <span class="n">limit</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-61 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-67 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -2298,7 +2633,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-set-encoder-units">
-<h3><a class="toc-backref" href="#id35">motor_set_encoder_units</a><a class="headerlink" href="#motor-set-encoder-units" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id38">motor_set_encoder_units</a><a class="headerlink" href="#motor-set-encoder-units" title="Permalink to this headline">¶</a></h3>
 <p>Sets one of <a class="reference internal" href="#motor-encoder-units-e-t">motor_encoder_units_e_t</a> for the motor encoder.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2308,22 +2643,22 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#set-encoder-units">pros::Motor::set_encoder_units</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-62 docutils container">
+<div class="active item sphinx-data-tab-68 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-63 docutils container">
+<div class="item sphinx-data-tab-69 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-62 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-68 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_set_encoder_units</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                   <span class="n">motor_encoder_units_e_t</span> <span class="n">units</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-63 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-69 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">motor_set_encoder_units</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">E_MOTOR_ENCODER_DEGREES</span><span class="p">);</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Encoder Units: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">motor_get_encoder_units</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
@@ -2356,7 +2691,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-set-gearing">
-<h3><a class="toc-backref" href="#id36">motor_set_gearing</a><a class="headerlink" href="#motor-set-gearing" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id39">motor_set_gearing</a><a class="headerlink" href="#motor-set-gearing" title="Permalink to this headline">¶</a></h3>
 <p>Sets one of <a class="reference internal" href="#motor-gearset-e-t">motor_gearset_e_t</a> for the motor.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2366,22 +2701,22 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#set-gearing">pros::Motor::set_gearing</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-64 docutils container">
+<div class="active item sphinx-data-tab-70 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-65 docutils container">
+<div class="item sphinx-data-tab-71 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-64 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-70 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_set_gearing</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                             <span class="n">motor_gearset_e_t</span> <span class="n">gearset</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-65 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-71 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">motor_set_gearing</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">E_MOTOR_GEARSET_06</span><span class="p">);</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Brake Mode: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">motor_get_gearing</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
@@ -2413,8 +2748,164 @@ Example</div>
 setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
+<div class="section" id="motor-set-pos-pid">
+<h3><a class="toc-backref" href="#id40">motor_set_pos_pid</a><a class="headerlink" href="#motor-set-pos-pid" title="Permalink to this headline">¶</a></h3>
+<p>Sets one of <a class="reference internal" href="#motor-pid-s-t">motor_pid_s_t</a> for the motor. This intended to just modify the
+main PID constants.</p>
+<p>Only non-zero values of the struct will change the existing motor constants.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This feature is in beta, it is advised to use caution when modifying
+the PID values. The motor could be damaged by particularly large constants.</p>
+</div>
+<p>Analogous to <a class="reference external" href="../cpp/motors.html#set-pos-pid">pros::Motor::set_pos_pid</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-72 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-73 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-72 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_set_pos_pid</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="n">motor_pid_s_t</span> <span class="n">pid</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-73 docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define KF 0</span>
+<span class="cp">#define KP 1.0f</span>
+<span class="cp">#define KI 0.001f</span>
+<span class="cp">#define KD 0.1f</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_pid_s_t</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">motor_convert_pid</span><span class="p">(</span><span class="n">KF</span><span class="p">,</span> <span class="n">KP</span><span class="p">,</span> <span class="n">KI</span><span class="p">,</span> <span class="n">KD</span><span class="p">);</span>
+  <span class="n">motor_set_pos_pid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The V5 port number from 1-21</td>
+</tr>
+<tr class="row-odd"><td>pid</td>
+<td>The new motor PID constants</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="motor-set-pos-pid-full">
+<h3><a class="toc-backref" href="#id41">motor_set_pos_pid_full</a><a class="headerlink" href="#motor-set-pos-pid-full" title="Permalink to this headline">¶</a></h3>
+<p>Sets one of <a class="reference internal" href="#motor-pid-full-s-t">motor_pid_full_s_t</a> for the motor. This intended to just modify the
+main PID constants.</p>
+<p>Only non-zero values of the struct will change the existing motor constants.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This feature is in beta, it is advised to use caution when modifying
+the PID values. The motor could be damaged by particularly large constants.</p>
+</div>
+<p>Analogous to <a class="reference external" href="../cpp/motors.html#set-pos-pid-full">pros::Motor::set_pos_pid_full</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-74 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-75 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-74 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_set_pos_pid_full</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                                 <span class="k">const</span> <span class="n">motor_pid_full_s_t</span> <span class="n">pid</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-75 docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define KF 0</span>
+<span class="cp">#define KP 1.0f</span>
+<span class="cp">#define KI 0.001f</span>
+<span class="cp">#define KD 0.1f</span>
+<span class="cp">#define FILTER 1.0f</span>
+<span class="cp">#define LIMIT 1.0f</span>
+<span class="cp">#define THRESHOLD 1.0f</span>
+<span class="cp">#define LOOPSPEED 10</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_pid_full_s_t</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">motor_convert_pid_full</span><span class="p">(</span><span class="n">KF</span><span class="p">,</span> <span class="n">KP</span><span class="p">,</span> <span class="n">KI</span><span class="p">,</span> <span class="n">KD</span><span class="p">,</span>
+                           <span class="n">FILTER</span><span class="p">,</span> <span class="n">LIMIT</span><span class="p">,</span> <span class="n">THRESHOLD</span><span class="p">,</span> <span class="n">LOOPSPEED</span><span class="p">);</span>
+  <span class="n">motor_set_pos_pid_full</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The V5 port number from 1-21</td>
+</tr>
+<tr class="row-odd"><td>pid</td>
+<td>The new motor PID constants</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="motor-set-reversed">
-<h3><a class="toc-backref" href="#id37">motor_set_reversed</a><a class="headerlink" href="#motor-set-reversed" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id42">motor_set_reversed</a><a class="headerlink" href="#motor-set-reversed" title="Permalink to this headline">¶</a></h3>
 <p>Sets the reverse flag for the motor.</p>
 <p>This will invert its movements and the values returned for its position.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
@@ -2425,22 +2916,22 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#set-reversed">pros::Motor::set_reversed</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-66 docutils container">
+<div class="active item sphinx-data-tab-76 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-67 docutils container">
+<div class="item sphinx-data-tab-77 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-66 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-76 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_set_reversed</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                              <span class="kt">bool</span> <span class="n">reverse</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-67 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-77 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">motor_set_reversed</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Is this motor reversed? %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">motor_is_reversed</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
@@ -2472,8 +2963,164 @@ Example</div>
 setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
 </div>
 <hr class="docutils" />
+<div class="section" id="motor-set-vel-pid">
+<h3><a class="toc-backref" href="#id43">motor_set_vel_pid</a><a class="headerlink" href="#motor-set-vel-pid" title="Permalink to this headline">¶</a></h3>
+<p>Sets one of <a class="reference internal" href="#motor-pid-s-t">motor_pid_s_t</a> for the motor. This intended to just modify the
+main PID constants.</p>
+<p>Only non-zero values of the struct will change the existing motor constants.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This feature is in beta, it is advised to use caution when modifying
+the PID values. The motor could be damaged by particularly large constants.</p>
+</div>
+<p>Analogous to <a class="reference external" href="../cpp/motors.html#set-vel-pid">pros::Motor::set_vel_pid</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-78 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-79 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-78 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_set_vel_pid</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                            <span class="k">const</span> <span class="n">motor_pid_s_t</span> <span class="n">pid</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-79 docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define KF 0</span>
+<span class="cp">#define KP 1.0f</span>
+<span class="cp">#define KI 0.001f</span>
+<span class="cp">#define KD 0.1f</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_pid_s_t</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">motor_convert_pid</span><span class="p">(</span><span class="n">KF</span><span class="p">,</span> <span class="n">KP</span><span class="p">,</span> <span class="n">KI</span><span class="p">,</span> <span class="n">KD</span><span class="p">);</span>
+  <span class="n">motor_set_vel_pid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The V5 port number from 1-21</td>
+</tr>
+<tr class="row-odd"><td>pid</td>
+<td>The new motor PID constants</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="motor-set-vel-pid-full">
+<h3><a class="toc-backref" href="#id44">motor_set_vel_pid_full</a><a class="headerlink" href="#motor-set-vel-pid-full" title="Permalink to this headline">¶</a></h3>
+<p>Sets one of <a class="reference internal" href="#motor-pid-full-s-t">motor_pid_full_s_t</a> for the motor. This intended to just modify the
+main PID constants.</p>
+<p>Only non-zero values of the struct will change the existing motor constants.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This feature is in beta, it is advised to use caution when modifying
+the PID values. The motor could be damaged by particularly large constants.</p>
+</div>
+<p>Analogous to <a class="reference external" href="../cpp/motors.html#set-vel-pid-full">pros::Motor::set_vel_pid_full</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-80 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-81 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-80 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_set_vel_pid_full</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                                 <span class="k">const</span> <span class="n">motor_pid_full_s_t</span> <span class="n">pid</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-81 docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define KF 0</span>
+<span class="cp">#define KP 1.0f</span>
+<span class="cp">#define KI 0.001f</span>
+<span class="cp">#define KD 0.1f</span>
+<span class="cp">#define FILTER 1.0f</span>
+<span class="cp">#define LIMIT 1.0f</span>
+<span class="cp">#define THRESHOLD 1.0f</span>
+<span class="cp">#define LOOPSPEED 10</span>
+
+<span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_pid_full_s_t</span> <span class="n">pid</span> <span class="o">=</span> <span class="n">motor_convert_pid_full</span><span class="p">(</span><span class="n">KF</span><span class="p">,</span> <span class="n">KP</span><span class="p">,</span> <span class="n">KI</span><span class="p">,</span> <span class="n">KD</span><span class="p">,</span>
+                           <span class="n">FILTER</span><span class="p">,</span> <span class="n">LIMIT</span><span class="p">,</span> <span class="n">THRESHOLD</span><span class="p">,</span> <span class="n">LOOPSPEED</span><span class="p">);</span>
+  <span class="n">motor_set_vel_pid_full</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The V5 port number from 1-21</td>
+</tr>
+<tr class="row-odd"><td>pid</td>
+<td>The new motor PID constants</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> if the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting <code class="docutils literal notranslate"><span class="pre">errno</span></code>.</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="motor-set-voltage-limit">
-<h3><a class="toc-backref" href="#id38">motor_set_voltage_limit</a><a class="headerlink" href="#motor-set-voltage-limit" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id45">motor_set_voltage_limit</a><a class="headerlink" href="#motor-set-voltage-limit" title="Permalink to this headline">¶</a></h3>
 <p>Sets the voltage limit for the motor in mV.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2483,22 +3130,22 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#set-voltage-limit">pros::Motor::set_voltage_limit</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-68 docutils container">
+<div class="active item sphinx-data-tab-82 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-69 docutils container">
+<div class="item sphinx-data-tab-83 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-68 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-82 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_set_voltage_limit</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                   <span class="kt">int32_t</span> <span class="n">limit</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-69 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-83 docutils container">
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -2542,7 +3189,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-set-zero-position">
-<h3><a class="toc-backref" href="#id39">motor_set_zero_position</a><a class="headerlink" href="#motor-set-zero-position" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id46">motor_set_zero_position</a><a class="headerlink" href="#motor-set-zero-position" title="Permalink to this headline">¶</a></h3>
 <p>Sets the zero position for the motor in its encoder units.</p>
 <p>This will be the future reference point for the motor’s “absolute” position.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
@@ -2553,34 +3200,54 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#set-zero-position">pros::Motor::set_zero_position</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-70 docutils container">
+<div class="active item sphinx-data-tab-84 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-71 docutils container">
+<div class="item sphinx-data-tab-85 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-70 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-84 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_set_zero_position</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                   <span class="kt">double</span> <span class="n">position</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-71 docutils container">
-<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-85 docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">motor_move_absolute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// Moves 100 units forward</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&lt;</span> <span class="mi">105</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&gt;</span> <span class="mi">95</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="c1">// Continue running this loop as long as the motor is not within +-5 units of its goal</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
   <span class="n">motor_move_absolute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// This does not cause a movement</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&lt;</span> <span class="mi">105</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&gt;</span> <span class="mi">95</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
 
   <span class="n">motor_set_zero_position</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">80</span><span class="p">);</span>
   <span class="n">motor_move_absolute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// Moves 120 units forward</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&lt;</span> <span class="mi">105</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&gt;</span> <span class="mi">95</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -2610,7 +3277,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-tare-position">
-<h3><a class="toc-backref" href="#id40">motor_tare_position</a><a class="headerlink" href="#motor-tare-position" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id47">motor_tare_position</a><a class="headerlink" href="#motor-tare-position" title="Permalink to this headline">¶</a></h3>
 <p>Sets the “absolute” zero position of the motor to its current position.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -2620,33 +3287,53 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#tare-position">pros::Motor::tare_position</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-72 docutils container">
+<div class="active item sphinx-data-tab-86 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-73 docutils container">
+<div class="item sphinx-data-tab-87 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-72 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-86 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">motor_tare_position</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-73 docutils container">
-<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-87 docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">motor_move_absolute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// Moves 100 units forward</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&lt;</span> <span class="mi">105</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&gt;</span> <span class="mi">95</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="c1">// Continue running this loop as long as the motor is not within +-5 units of its goal</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
   <span class="n">motor_move_absolute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// This does not cause a movement</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&lt;</span> <span class="mi">105</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&gt;</span> <span class="mi">95</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
 
   <span class="n">motor_tare_position</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
   <span class="n">motor_move_absolute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// Moves 100 units forward</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&lt;</span> <span class="mi">105</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">motor_get_position</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">&gt;</span> <span class="mi">95</span><span class="p">)))</span> <span class="p">{</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -2674,13 +3361,13 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="macros">
-<h2><a class="toc-backref" href="#id41">Macros</a><a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id48">Macros</a><a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
 <p>None.</p>
 </div>
 <div class="section" id="enumerated-values">
-<h2><a class="toc-backref" href="#id42">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id49">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="motor-brake-mode-e-t">
-<h3><a class="toc-backref" href="#id43">motor_brake_mode_e_t</a><a class="headerlink" href="#motor-brake-mode-e-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id50">motor_brake_mode_e_t</a><a class="headerlink" href="#motor-brake-mode-e-t" title="Permalink to this headline">¶</a></h3>
 <p>Indicates the current ‘brake mode’ of the motor.</p>
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -2696,8 +3383,9 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </pre></div>
 </td></tr></table></div>
 </div>
+<hr class="docutils" />
 <div class="section" id="motor-encoder-units-e-t">
-<h3><a class="toc-backref" href="#id44">motor_encoder_units_e_t</a><a class="headerlink" href="#motor-encoder-units-e-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id51">motor_encoder_units_e_t</a><a class="headerlink" href="#motor-encoder-units-e-t" title="Permalink to this headline">¶</a></h3>
 <p>Indicates the units used by the motor’s encoder.</p>
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -2713,8 +3401,9 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </pre></div>
 </td></tr></table></div>
 </div>
+<hr class="docutils" />
 <div class="section" id="motor-gearset-e-t">
-<h3><a class="toc-backref" href="#id45">motor_gearset_e_t</a><a class="headerlink" href="#motor-gearset-e-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id52">motor_gearset_e_t</a><a class="headerlink" href="#motor-gearset-e-t" title="Permalink to this headline">¶</a></h3>
 <p>Indicates the internal gearing used by the motor.</p>
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -2732,8 +3421,54 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 </div>
 <div class="section" id="typedefs">
-<h2><a class="toc-backref" href="#id46">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
-<p>None.</p>
+<h2><a class="toc-backref" href="#id53">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="motor-pid-full-s-t">
+<h3><a class="toc-backref" href="#id54">motor_pid_full_s_t</a><a class="headerlink" href="#motor-pid-full-s-t" title="Permalink to this headline">¶</a></h3>
+<p>Holds the information about a Motor’s position or velocity PID controls.</p>
+<p>These values are in 4.4 format, meaning that a value of 0x20 represents 2.0,
+0x21 represents 2.0625, 0x22 represents 2.125, etc.</p>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">motor_pid_full_s</span> <span class="p">{</span>
+  <span class="kt">uint8_t</span> <span class="n">kf</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">kp</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">ki</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">kd</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">filter</span><span class="p">;</span>
+  <span class="kt">uint16_t</span> <span class="n">limit</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">threshold</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">loopspeed</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">motor_pid_full_s_t</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<hr class="docutils" />
+<div class="section" id="motor-pid-s-t">
+<h3><a class="toc-backref" href="#id55">motor_pid_s_t</a><a class="headerlink" href="#motor-pid-s-t" title="Permalink to this headline">¶</a></h3>
+<p>Holds just the constants for a Motor’s position or velocity PID controls.</p>
+<p>These values are in 4.4 format, meaning that a value of 0x20 represents 2.0,
+0x21 represents 2.0625, 0x22 represents 2.125, etc.</p>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">motor_pid_s</span> <span class="p">{</span>
+  <span class="kt">uint8_t</span> <span class="n">kf</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">kp</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">ki</span><span class="p">;</span>
+  <span class="kt">uint8_t</span> <span class="n">kd</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">motor_pid_s_t</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
 </div>
 </div>
 
@@ -2781,7 +3516,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.7)
+      v: V5 (3.0.8)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -2802,7 +3537,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'3.0.7',
+            VERSION:'3.0.8',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

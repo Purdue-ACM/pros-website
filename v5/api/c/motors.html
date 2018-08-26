@@ -1990,11 +1990,6 @@ The <a class="reference internal" href="#motor-pid-s-t">motor_pid_s_t</a> struct
 etc.</p>
 <p>This function will convert the floating point values to the nearest 4.4
 value.</p>
-<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
-<ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
-</ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-48 docutils container">
@@ -2071,11 +2066,6 @@ The <a class="reference internal" href="#motor-pid-full-s-t">motor_pid_full_s_t<
 etc.</p>
 <p>This function will convert the floating point values to the nearest 4.4
 value.</p>
-<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
-<ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
-</ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-50 docutils container">
@@ -2758,6 +2748,11 @@ main PID constants.</p>
 <p class="last">This feature is in beta, it is advised to use caution when modifying
 the PID values. The motor could be damaged by particularly large constants.</p>
 </div>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#set-pos-pid">pros::Motor::set_pos_pid</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -2823,14 +2818,18 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <hr class="docutils" />
 <div class="section" id="motor-set-pos-pid-full">
 <h3><a class="toc-backref" href="#id41">motor_set_pos_pid_full</a><a class="headerlink" href="#motor-set-pos-pid-full" title="Permalink to this headline">¶</a></h3>
-<p>Sets one of <a class="reference internal" href="#motor-pid-full-s-t">motor_pid_full_s_t</a> for the motor. This intended to just modify the
-main PID constants.</p>
+<p>Sets one of <a class="reference internal" href="#motor-pid-full-s-t">motor_pid_full_s_t</a> for the motor.</p>
 <p>Only non-zero values of the struct will change the existing motor constants.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This feature is in beta, it is advised to use caution when modifying
 the PID values. The motor could be damaged by particularly large constants.</p>
 </div>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#set-pos-pid-full">pros::Motor::set_pos_pid_full</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -2973,6 +2972,11 @@ main PID constants.</p>
 <p class="last">This feature is in beta, it is advised to use caution when modifying
 the PID values. The motor could be damaged by particularly large constants.</p>
 </div>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#set-vel-pid">pros::Motor::set_vel_pid</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -3038,14 +3042,18 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <hr class="docutils" />
 <div class="section" id="motor-set-vel-pid-full">
 <h3><a class="toc-backref" href="#id44">motor_set_vel_pid_full</a><a class="headerlink" href="#motor-set-vel-pid-full" title="Permalink to this headline">¶</a></h3>
-<p>Sets one of <a class="reference internal" href="#motor-pid-full-s-t">motor_pid_full_s_t</a> for the motor. This intended to just modify the
-main PID constants.</p>
+<p>Sets one of <a class="reference internal" href="#motor-pid-full-s-t">motor_pid_full_s_t</a> for the motor.</p>
 <p>Only non-zero values of the struct will change the existing motor constants.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This feature is in beta, it is advised to use caution when modifying
 the PID values. The motor could be damaged by particularly large constants.</p>
 </div>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../cpp/motors.html#set-vel-pid-full">pros::Motor::set_vel_pid_full</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">

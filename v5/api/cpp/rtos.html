@@ -375,7 +375,7 @@ Example</div>
 2
 3
 4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">Task</span> <span class="p">(</span> <span class="n">task_fn_t</span> <span class="n">function</span><span class="p">,</span>
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">Task</span> <span class="p">(</span> <span class="n">pros</span><span class="o">::</span><span class="n">task_fn_t</span> <span class="n">function</span><span class="p">,</span>
                    <span class="kt">void</span><span class="o">*</span> <span class="n">parameters</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">,</span>
                    <span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">prio</span> <span class="o">=</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
                    <span class="n">std</span><span class="o">::</span><span class="kt">uint16_t</span> <span class="n">stack_depth</span> <span class="o">=</span> <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span>
@@ -445,7 +445,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">Task</span> <span class="p">(</span> <span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">Task</span> <span class="p">(</span> <span class="n">pros</span><span class="o">::</span><span class="n">task_t</span> <span class="n">task</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -463,7 +463,7 @@ Example</div>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
                                <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
   <span class="n">pros</span><span class="o">::</span><span class="n">Task</span> <span class="n">my_cpp_task</span> <span class="p">(</span><span class="n">my_task</span><span class="p">);</span>
 <span class="p">}</span>
@@ -504,7 +504,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="k">operator</span> <span class="o">=</span> <span class="p">(</span> <span class="k">const</span> <span class="n">task_t</span> <span class="n">in</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="k">operator</span> <span class="o">=</span> <span class="p">(</span> <span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">task_t</span> <span class="n">in</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -522,7 +522,7 @@ Example</div>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
                                <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
   <span class="n">Task</span> <span class="n">my_cpp_task</span> <span class="o">=</span> <span class="n">my_task</span><span class="p">;</span>
 <span class="p">}</span>

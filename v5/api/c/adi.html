@@ -416,6 +416,7 @@ The meaning of the returned value varies depending on the sensor attached.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#get-value">pros::ADIAnalogIn::get_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -483,6 +484,7 @@ causing drift over time. Use <a class="reference internal" href="#adi-analog-rea
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#get-value-calibrated">pros::ADIAnalogIn::get_value_calibrated</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -552,6 +554,7 @@ in the wash when integrated over time. Think of the value as the true value time
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be an analog input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#get-value-calibrated-HR">pros::ADIAnalogIn::get_value_calibrated_HR</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -624,6 +627,7 @@ presses, and not in any other tasks.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be a digital input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#get-new-press">pros::ADIDigitalIn::get_new_press</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -695,6 +699,7 @@ return value is undefined for pins configured as Analog inputs.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be a digital input.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id5">pros::ADIDigitalIn::get_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -758,6 +763,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured to be a digital output.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id8">pros::ADIDigitalOut::set_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -831,6 +837,7 @@ respectively, or the constants HIGH or LOW themselves</td>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id11">pros::ADIEncoder::get_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -898,6 +905,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the criteria in the parameter list below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id9">pros::ADIEncoder::ADIEncoder</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -975,6 +983,7 @@ method before stopping or starting an encoder.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#reset">pros::ADIEncoder::reset</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1038,6 +1047,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The encoder port number is out of range or the port is not configured to be an encoder.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1100,6 +1110,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id14">pros::ADIMotor::get_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1163,6 +1174,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id15">pros::ADIMotor::set_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1228,6 +1240,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range or the port is not configured as a motor.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id16">pros::ADIMotor::stop</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1291,6 +1304,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1351,6 +1365,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#get-config">pros::ADIPort::get_config</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1412,6 +1427,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id18">pros::ADIPort::get_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1471,6 +1487,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#set-config">pros::ADIPort::set_config</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1534,6 +1551,7 @@ depending on the configuration of the port.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The port number is out of range.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id20">pros::ADIPort::set_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1600,6 +1618,7 @@ returned.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The ultrasonic port number is out of range or the ultrasonic port is not properly configured.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id24">pros::ADIUltrasonic::get_value</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1669,6 +1688,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <p>Analogous to <a class="reference external" href="../cpp/adi.html#id22">pros::ADIUltrasonic::ADIUltrasonic</a>.</p>
 <div class="sphinx-tabs docutils container">
@@ -1742,6 +1762,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The ultrasonic port number is out of range or the ultrasonic port is not properly configured.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">

@@ -403,6 +403,7 @@ are all <a class="reference internal" href="#pros-adianalogin">pros::ADIAnalogIn
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -477,6 +478,10 @@ the difference between this value and the current sensor value when called.</p>
 2, and increasing the sample rate would not have a tangible difference in the
 function’s performance.</p>
 </div>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-analog-calibrate">adi_analog_calibrate</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -523,6 +528,10 @@ Example</div>
 <p>The value returned is undefined if the analog pin has been switched to a different mode.
 The meaning of the returned value varies depending on the sensor attached.</p>
 <p>Inherited from <a class="reference internal" href="#id18">ADIPort::get_value</a>.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-analog-read">adi_analog_read</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -566,6 +575,10 @@ and a value of 4095 reflects an input voltage of nearly 5 V</p>
 <p>The <a class="reference external" href="../c/adi.html#adi-analog-calibrate">adi_analog_calibrate</a> function must be run first on that channel. This function is
 inappropriate for sensor values intended for integration, as round-off error can accumulate
 causing drift over time. Use <a class="reference external" href="../c/adi.html#adi_analog_read_calibrated_HR">adi_analog_read_calibrated_HR</a> instead.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi_analog_read_calibrated">adi_analog_read_calibrated</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -615,6 +628,10 @@ used on a sensor such as a line tracker or potentiometer.</p>
 <p>The value returned actually has 16 bits of “precision”, even though the ADC only reads
 12 bits, so that errors induced by the average value being between two values come out
 in the wash when integrated over time. Think of the value as the true value times 16.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi_analog_read_calibrated_HR">adi_analog_read_calibrated_HR</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -664,6 +681,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -721,6 +739,10 @@ Example</div>
 <h4><a class="toc-backref" href="#id36">set_value</a><a class="headerlink" href="#set-value" title="Permalink to this headline">¶</a></h4>
 <p>Sets the output for the Analog Output from 0 (0V) to 4095 (5V).</p>
 <p>Inherited from <a class="reference internal" href="#id21">ADIPort::set_value</a>.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-12 docutils container">
@@ -781,6 +803,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -844,6 +867,10 @@ button. E.g., Task A calls this function for buttons 1 and 2. Task B may call
 this function for button 3, but should not for buttons 1 or 2. A typical
 use-case for this function is to call inside opcontrol to detect new button
 presses, and not in any other tasks.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-digital-get-new-press">adi_digital_get_new_press</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -895,6 +922,10 @@ the last time this function was called, 0 otherwise.</p>
 <h4><a class="toc-backref" href="#id41">get_value</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>Gets the digital value (1 or 0) of a pin.</p>
 <p>Inherited from <a class="reference internal" href="#id18">ADIPort::get_value</a>.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-digital-read">adi_digital_read</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -946,6 +977,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1017,6 +1049,10 @@ Example</div>
 <h4><a class="toc-backref" href="#id45">set_value</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
 <p>Sets the digital value (1 or 0) of a pin.</p>
 <p>Inherited from <a class="reference internal" href="#id21">ADIPort::set_value</a>.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-digital-write">adi_digital_write</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1089,6 +1125,7 @@ respectively, or the constants HIGH or LOW themselves</td>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1102,9 +1139,9 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ADIEncoder</span><span class="o">::</span><span class="n">ADIEncoder</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_top</span><span class="p">,</span>
-                         <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_bottom</span><span class="p">,</span>
-                         <span class="k">const</span> <span class="kt">bool</span> <span class="n">reverse</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">)</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">ADIEncoder</span><span class="o">::</span><span class="n">ADIEncoder</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_top</span><span class="p">,</span>
+                               <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port_bottom</span><span class="p">,</span>
+                               <span class="k">const</span> <span class="kt">bool</span> <span class="n">reverse</span> <span class="o">=</span> <span class="nb">false</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1156,6 +1193,10 @@ Example</div>
 <h4><a class="toc-backref" href="#id49">get_value</a><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <p>Gets the number of ticks recorded by the encoder.</p>
 <p>There are 360 ticks in one revolution.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-encoder-get">adi_encoder_get</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1204,6 +1245,10 @@ Example</div>
 <p>Resets the encoder to zero.</p>
 <p>It is safe to use this method while an encoder is enabled. It is not necessary to call this
 method before stopping or starting an encoder.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-encoder-reset">adi_encoder_reset</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1253,6 +1298,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1316,6 +1362,10 @@ Example</div>
 <h4><a class="toc-backref" href="#id54">get_value</a><a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
 <p>Returns the last set speed of the motor on the given port.</p>
 <p>Inherited from <a class="reference internal" href="#id18">ADIPort::get_value</a>.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-motor-get">adi_motor_get</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1362,6 +1412,10 @@ Example</div>
 <h4><a class="toc-backref" href="#id55">set_value</a><a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
 <p>Sets the speed of the given motor.</p>
 <p>Inherited from <a class="reference internal" href="#id21">ADIPort::set_value</a>.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-motor-set">adi_motor_set</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1423,6 +1477,10 @@ Example</div>
 <div class="section" id="stop">
 <h4><a class="toc-backref" href="#id56">stop</a><a class="headerlink" href="#stop" title="Permalink to this headline">¶</a></h4>
 <p>Stops the given motor.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-motor-stop">adi_motor_stop</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1474,6 +1532,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1536,6 +1595,10 @@ Example</div>
 <div class="section" id="get-config">
 <h4><a class="toc-backref" href="#id60">get_config</a><a class="headerlink" href="#get-config" title="Permalink to this headline">¶</a></h4>
 <p>Returns the configuration for the given ADI port.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-port-config-get">adi_port_get_config</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1576,6 +1639,10 @@ Example</div>
 <div class="section" id="id18">
 <span id="id19"></span><h4><a class="toc-backref" href="#id61">get_value</a><a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
 <p>Returns the value for the given ADI port.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-port-value-get">adi_port_get_value</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1615,6 +1682,10 @@ Example</div>
 <div class="section" id="set-config">
 <h4><a class="toc-backref" href="#id62">set_config</a><a class="headerlink" href="#set-config" title="Permalink to this headline">¶</a></h4>
 <p>Configures an ADI port to act as a given sensor type.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-port-config-set">adi_port_set_config</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1676,6 +1747,10 @@ Example</div>
 <p>Sets the value for the given ADI port</p>
 <p>This only works on ports configured as outputs, and the behavior will change
 depending on the configuration of the port.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-port-value-set">adi_port_set_value</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1737,6 +1812,7 @@ Example</div>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -1811,6 +1887,10 @@ Example</div>
 return value is PROS_ERR. Round and fluffy objects can cause inaccurate values to be
 returned.</p>
 <p>Inherited from <a class="reference internal" href="#id18">ADIPort::get_value</a>.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
 <p>Analogous to <a class="reference external" href="../c/adi.html#adi-ultrasonic-get">adi_ultrasonic_get</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">

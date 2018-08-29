@@ -149,9 +149,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/c/index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/cpp/index.html">C++ API</a></li>
 </ul>
-<p class="caption"><span class="caption-text">CLI</span></p>
+<p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul>
@@ -265,6 +266,12 @@ the standard method for troubleshooting issues in most languages and
 can be used for viewing sensor values or your own variables’ values.
 The output from these <code class="docutils literal notranslate"><span class="pre">printf()</span></code> statements can be viewed in the
 terminal by running <code class="docutils literal notranslate"><span class="pre">pros</span> <span class="pre">terminal</span></code>.</li>
+<li><a class="reference external" href="../tutorials/topical/multitasking.html">Tasks</a>. One common mistake that new
+PROS users make is forgetting to include a <code class="docutils literal notranslate"><span class="pre">delay()</span></code> statement in their tasks
+(this includes <code class="docutils literal notranslate"><span class="pre">opcontrol()</span></code> too), starving the processor of resources and
+preventing the PROS kernel from running properly. Every infinite loop, like
+the one in <code class="docutils literal notranslate"><span class="pre">opcontrol()</span></code>, needs to have a delay statement. We recommend at least
+2ms.</li>
 </ul>
 <p>And then for additional C tutorial topics, visit
 <a class="reference external" href="https://www.cprogramming.com/tutorial/c-tutorial.html">CProgramming.com</a>

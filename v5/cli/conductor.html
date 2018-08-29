@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Conductor (CLI) &mdash; PROS for V5 3.0.8 documentation</title>
+  <title>Conductor User Guide &mdash; PROS for V5 3.0.8 documentation</title>
   
 
   
@@ -34,6 +34,14 @@
 <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
 
   
+    <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
@@ -41,7 +49,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PROS for V5 3.0.8 documentation" href="../index.html"/>
         <link rel="up" title="CLI" href="index.html"/>
-        <link rel="next" title="OkapiLib Documentation Home" href="../okapi/index.html"/>
+        <link rel="next" title="Editor" href="../editor/index.html"/>
         <link rel="prev" title="CLI" href="index.html"/>
    
   
@@ -134,12 +142,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/c/index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/cpp/index.html">C++ API</a></li>
 </ul>
-<p class="caption"><span class="caption-text">CLI</span></p>
+<p class="caption"><span class="caption-text">Tools</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">CLI</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Conductor (CLI)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Conductor User Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-tasks">Common Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-templates">Creating Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul>
@@ -196,7 +211,7 @@
         
           <li><a href="index.html">CLI</a> &raquo;</li>
         
-      <li>Conductor (CLI)</li>
+      <li>Conductor User Guide</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -217,8 +232,155 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="conductor-cli">
-<h1>Conductor (CLI)<a class="headerlink" href="#conductor-cli" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="conductor-user-guide">
+<h1>Conductor User Guide<a class="headerlink" href="#conductor-user-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Conductor is PROS’s templating and project management facility. It is
+responsible for resolving versions of the PROS kernel and user libraries. It
+also provides information about a PROS project to other PROS facilities, like
+providing the target platform (e.g. V5 or Cortex) to the upload utility.</p>
+<p>There are a few concepts central to Conductor’s functionality:</p>
+<ul class="simple">
+<li>Templates: Templates are a description of a set of files. They have a name,
+version, supported target, and possibly other metadata. Templates typically
+come in one of 3 forms: remote, local, and installed. A remote template is
+a template that can be downloaded. A local template is a downloaded template
+that can be installed to a project, even when you’re offline. An installed
+template is a template which has been copied into a PROS project.</li>
+<li>Depots: A depot is a connector to a remote template storage. Conductor doesn’t
+require any particular access method to these remote templates, but they are
+typically available from a download link via HTTP. It is possible to implement
+an SCP, FTP, or other sorts of file transfer depots. The default depot is
+called pros-mainline and is the official repository of templates.</li>
+<li>Projects: A project is a set of user files and template files. They don’t
+contain much information on their own - just a target platform and a list of
+installed templates. PROS Conductor maintains two lists of files originating
+from templates: user files and system files. User files are never replaced
+when upgrading a project and system files are always replaced when upgrading a
+project.</li>
+</ul>
+</div>
+<div class="section" id="common-tasks">
+<h2>Common Tasks<a class="headerlink" href="#common-tasks" title="Permalink to this headline">¶</a></h2>
+<p>Creating a new project</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0 docutils container">
+<div class="docutils container">
+Terminal</div>
+</div>
+<div class="item sphinx-data-tab-1 docutils container">
+<div class="docutils container">
+PROS Editor</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span> pros conduct new-project ./Top-5-At-Worlds v5
+<span class="go">Updating pros-mainline... Done</span>
+<span class="go">Downloading kernel@3.0.7 (https://www.cs.purdue.edu/~brookea/kernel@3.0.7.zip) [####################################] 100%</span>
+<span class="go">Extracting kernel@3.0.7 [####################################] 100%</span>
+<span class="go">Fetched kernel@3.0.7 from pros-mainline depot</span>
+<span class="go">Adding kernel@3.0.7 to registry...Done</span>
+<span class="go">Applying kernel@3.0.7 [####################################] 100%</span>
+<span class="go">Finished applying kernel@3.0.7 to ./Top-5-At-Worlds</span>
+<span class="go">Downloading okapilib@3.0.1 (https://www.cs.purdue.edu/~berman5/okapilib@3.0.1.zip) [####################################] 100%</span>
+<span class="go">Extracting okapilib@3.0.1 [####################################] 100%</span>
+<span class="go">Fetched okapilib@3.0.1 from pros-mainline depot</span>
+<span class="go">Adding okapilib@3.0.1 to registry...Done</span>
+<span class="go">Applying okapilib@3.0.1 [####################################] 100%</span>
+<span class="go">Finished applying okapilib@3.0.1 to ./Top-5-At-Worlds</span>
+<span class="go">New PROS Project was created:</span>
+<span class="go">PROS Project for v5 at: /home/me/Top-5-At-Worlds (Top-5-At-Worlds)</span>
+<span class="go">Name      Version    Origin</span>
+<span class="go">--------  ---------  -------------</span>
+<span class="go">kernel    3.0.7      pros-mainline</span>
+<span class="go">okapilib  3.0.1      pros-mainline</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
+Coming soon!</div>
+</div>
+<p>Installing/upgrading a new template</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2 docutils container">
+<div class="docutils container">
+Terminal</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span> pros conduct apply okapilib
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fetching a remote template</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-3 docutils container">
+<div class="docutils container">
+Terminal</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span> pros conduct fetch kernel <span class="m">3</span>.1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fetching a local template archive</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
+<div class="docutils container">
+Terminal</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span> pros conduct fetch mylibrary@1.0.0.zip
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-templates">
+<h2>Creating Templates<a class="headerlink" href="#creating-templates" title="Permalink to this headline">¶</a></h2>
+<p>A template is a description of a set of files. All PROS
+projects are readily capable of creating a template. Change the following
+section in your project’s Makefile. Then, to compile and create the template,
+run <code class="docutils literal notranslate"><span class="pre">pros</span> <span class="pre">make</span> <span class="pre">template</span></code>.</p>
+<p>You should:</p>
+<ul class="simple">
+<li>Change <code class="docutils literal notranslate"><span class="pre">IS_LIBRARY:=0</span></code> to <code class="docutils literal notranslate"><span class="pre">IS_LIBRARY:=1</span></code></li>
+<li>Change <code class="docutils literal notranslate"><span class="pre">LIBNAME</span></code> to a name for your library.</li>
+<li>Change <code class="docutils literal notranslate"><span class="pre">VERSION</span></code> to a version for your library.</li>
+</ul>
+<p>The default behavior of <code class="docutils literal notranslate"><span class="pre">pros</span> <span class="pre">make</span> <span class="pre">template</span></code> is to compile/package all source
+files in your project, except for those listed in <code class="docutils literal notranslate"><span class="pre">EXCLUDE_SRC_FROM_LIB</span></code>.
+Additionally, any header files which you have created will be bundled. More
+concisely, any header files which weren’t added by a template are included.</p>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="c"># Set this to 1 to add additional rules to compile your project as a PROS library template</span>
+<span class="nv">IS_LIBRARY</span><span class="o">:=</span><span class="m">0</span>
+<span class="c"># TODO: CHANGE THIS!</span>
+<span class="nv">LIBNAME</span><span class="o">:=</span>libbest
+<span class="nv">VERSION</span><span class="o">:=</span><span class="m">1</span>.0.0
+<span class="c"># EXCLUDE_SRC_FROM_LIB= $(SRCDIR)/unpublishedfile.c</span>
+<span class="c"># this line excludes opcontrol.c and similar files</span>
+<span class="nv">EXCLUDE_SRC_FROM_LIB</span><span class="o">+=</span><span class="k">$(</span>foreach file, <span class="k">$(</span>SRCDIR<span class="k">)</span>/opcontrol <span class="k">$(</span>SRCDIR<span class="k">)</span>/initialize <span class="k">$(</span>SRCDIR<span class="k">)</span>/autonomous,<span class="k">$(</span>foreach cext,<span class="k">$(</span>CEXTS<span class="k">)</span>,<span class="k">$(</span>file<span class="k">)</span>.<span class="k">$(</span>cext<span class="k">))</span> <span class="k">$(</span>foreach cxxext,<span class="k">$(</span>CXXEXTS<span class="k">)</span>,<span class="k">$(</span>file<span class="k">)</span>.<span class="k">$(</span>cxxext<span class="k">)))</span>
+<span class="c"># files that get distributed to every user (beyond your source archive) - add</span>
+<span class="c"># whatever files you want here. This line is configured to add all header files</span>
+<span class="c"># that are in the the include directory get exported</span>
+<span class="nv">TEMPLATE_FILES</span><span class="o">=</span><span class="k">$(</span>INCDIR<span class="k">)</span>/**/*.h <span class="k">$(</span>INCDIR<span class="k">)</span>/**/*.hpp
+</pre></div>
+</div>
+<p>For advanced usage of creating templates, you can modify the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> with
+your own custom arguments to <code class="docutils literal notranslate"><span class="pre">pros</span> <span class="pre">conduct</span> <span class="pre">create-template</span></code></p>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
   <div class="section">
@@ -235,7 +397,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../okapi/index.html" class="btn btn-neutral float-right" title="OkapiLib Documentation Home" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../editor/index.html" class="btn btn-neutral float-right" title="Editor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="CLI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -297,6 +459,8 @@
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
 
   
 

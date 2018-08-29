@@ -203,6 +203,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#enumerated-values">Enumerated Values</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#motor-brake-mode-e-t">motor_brake_mode_e_t</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-encoder-units-e-t">motor_encoder_units_e_t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motor-fault-e-t">motor_fault_e_t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motor-flag-e-t">motor_flag_e_t</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#motor-gearset-e-t">motor_gearset_e_t</a></li>
 </ul>
 </li>
@@ -219,9 +221,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../cpp/index.html">C++ API</a></li>
 </ul>
-<p class="caption"><span class="caption-text">CLI</span></p>
+<p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul>
@@ -367,12 +370,14 @@
 <li><a class="reference internal" href="#enumerated-values" id="id51">Enumerated Values</a><ul>
 <li><a class="reference internal" href="#motor-brake-mode-e-t" id="id52">motor_brake_mode_e_t</a></li>
 <li><a class="reference internal" href="#motor-encoder-units-e-t" id="id53">motor_encoder_units_e_t</a></li>
-<li><a class="reference internal" href="#motor-gearset-e-t" id="id54">motor_gearset_e_t</a></li>
+<li><a class="reference internal" href="#motor-fault-e-t" id="id54">motor_fault_e_t</a></li>
+<li><a class="reference internal" href="#motor-flag-e-t" id="id55">motor_flag_e_t</a></li>
+<li><a class="reference internal" href="#motor-gearset-e-t" id="id56">motor_gearset_e_t</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#typedefs" id="id55">Typedefs</a><ul>
-<li><a class="reference internal" href="#motor-pid-full-s-t" id="id56">motor_pid_full_s_t</a></li>
-<li><a class="reference internal" href="#motor-pid-s-t" id="id57">motor_pid_s_t</a></li>
+<li><a class="reference internal" href="#typedefs" id="id57">Typedefs</a><ul>
+<li><a class="reference internal" href="#motor-pid-full-s-t" id="id58">motor_pid_full_s_t</a></li>
+<li><a class="reference internal" href="#motor-pid-s-t" id="id59">motor_pid_s_t</a></li>
 </ul>
 </li>
 </ul>
@@ -1219,6 +1224,7 @@ failed, setting <code class="docutils literal notranslate"><span class="pre">err
 <div class="section" id="motor-get-faults">
 <h3><a class="toc-backref" href="#id15">motor_get_faults</a><a class="headerlink" href="#motor-get-faults" title="Permalink to this headline">¶</a></h3>
 <p>Gets the faults experienced by the motor.</p>
+<p>Compare this bitfield to the bitmasks in <a class="reference internal" href="#motor-fault-e-t">motor_fault_e_t</a>.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
@@ -1281,6 +1287,7 @@ Example</div>
 <div class="section" id="motor-get-flags">
 <h3><a class="toc-backref" href="#id16">motor_get_flags</a><a class="headerlink" href="#motor-get-flags" title="Permalink to this headline">¶</a></h3>
 <p>Gets the flags set by the motor’s operation.</p>
+<p>Compare this bitfield to the bitmasks in <a class="reference internal" href="#motor-flag-e-t">motor_flag_e_t</a>.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given value is not within the range of V5 ports (1-21).</li>
@@ -3584,8 +3591,44 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </td></tr></table></div>
 </div>
 <hr class="docutils" />
+<div class="section" id="motor-fault-e-t">
+<h3><a class="toc-backref" href="#id54">motor_fault_e_t</a><a class="headerlink" href="#motor-fault-e-t" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="n">motor_fault_e</span> <span class="p">{</span>
+      <span class="n">E_MOTOR_FAULT_NO_FAULTS</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+      <span class="n">E_MOTOR_FAULT_MOTOR_OVER_TEMP</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">,</span>  <span class="c1">// Analogous to motor_is_over_temp()</span>
+      <span class="n">E_MOTOR_FAULT_DRIVER_FAULT</span> <span class="o">=</span> <span class="mh">0x02</span><span class="p">,</span>     <span class="c1">// Indicates a motor h-bridge fault</span>
+      <span class="n">E_MOTOR_FAULT_OVER_CURRENT</span> <span class="o">=</span> <span class="mh">0x04</span><span class="p">,</span>     <span class="c1">// Analogous to motor_is_over_current()</span>
+      <span class="n">E_MOTOR_FAULT_DRV_OVER_CURRENT</span> <span class="o">=</span> <span class="mh">0x08</span>  <span class="c1">// Indicates an h-bridge over current</span>
+<span class="p">}</span> <span class="n">motor_fault_e_t</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<hr class="docutils" />
+<div class="section" id="motor-flag-e-t">
+<h3><a class="toc-backref" href="#id55">motor_flag_e_t</a><a class="headerlink" href="#motor-flag-e-t" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="n">motor_flag_e</span> <span class="p">{</span>
+  <span class="n">E_MOTOR_FLAGS_NONE</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+  <span class="n">E_MOTOR_FLAGS_BUSY</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">,</span>           <span class="c1">// Cannot currently communicate to the motor</span>
+  <span class="n">E_MOTOR_FLAGS_ZERO_VELOCITY</span> <span class="o">=</span> <span class="mh">0x02</span><span class="p">,</span>  <span class="c1">// Analogous to motor_is_stopped()</span>
+  <span class="n">E_MOTOR_FLAGS_ZERO_POSITION</span> <span class="o">=</span> <span class="mh">0x04</span>   <span class="c1">// Analogous to motor_get_zero_position_flag()</span>
+<span class="p">}</span> <span class="n">motor_flag_e_t</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<hr class="docutils" />
 <div class="section" id="motor-gearset-e-t">
-<h3><a class="toc-backref" href="#id54">motor_gearset_e_t</a><a class="headerlink" href="#motor-gearset-e-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id56">motor_gearset_e_t</a><a class="headerlink" href="#motor-gearset-e-t" title="Permalink to this headline">¶</a></h3>
 <p>Indicates the internal gearing used by the motor.</p>
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -3603,9 +3646,9 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 </div>
 <div class="section" id="typedefs">
-<h2><a class="toc-backref" href="#id55">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id57">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="motor-pid-full-s-t">
-<h3><a class="toc-backref" href="#id56">motor_pid_full_s_t</a><a class="headerlink" href="#motor-pid-full-s-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id58">motor_pid_full_s_t</a><a class="headerlink" href="#motor-pid-full-s-t" title="Permalink to this headline">¶</a></h3>
 <p>Holds the information about a Motor’s position or velocity PID controls.</p>
 <p>These values are in 4.4 format, meaning that a value of 0x20 represents 2.0,
 0x21 represents 2.0625, 0x22 represents 2.125, etc.</p>
@@ -3637,7 +3680,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-pid-s-t">
-<h3><a class="toc-backref" href="#id57">motor_pid_s_t</a><a class="headerlink" href="#motor-pid-s-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id59">motor_pid_s_t</a><a class="headerlink" href="#motor-pid-s-t" title="Permalink to this headline">¶</a></h3>
 <p>Holds just the constants for a Motor’s position or velocity PID controls.</p>
 <p>These values are in 4.4 format, meaning that a value of 0x20 represents 2.0,
 0x21 represents 2.0625, 0x22 represents 2.125, etc.</p>

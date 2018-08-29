@@ -171,9 +171,10 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">CLI</span></p>
+<p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul>
@@ -297,7 +298,8 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="o">::</span><span class="n">Vision</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="o">::</span><span class="n">Vision</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                       <span class="n">vision_zero_e_t</span> <span class="n">zero_point</span> <span class="o">=</span> <span class="n">E_VISION_ZERO_TOPLEFT</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -314,8 +316,8 @@ Example</div>
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="29%" />
-<col width="71%" />
+<col width="14%" />
+<col width="86%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameters</th>
@@ -325,6 +327,9 @@ Example</div>
 <tbody valign="top">
 <tr class="row-even"><td>port</td>
 <td>The V5 port number from 1-21</td>
+</tr>
+<tr class="row-odd"><td>zero_point</td>
+<td>One of <code class="docutils literal notranslate"><span class="pre">pros::vision_zero_e_t</span></code> to set the (0,0) coordinate for the FOV</td>
 </tr>
 </tbody>
 </table>
@@ -701,7 +706,11 @@ largest, etc.)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> Returns PROS_ERR if the port was invalid or an error occurred.</p>
+<p><strong>Returns:</strong> The number of object signatures copied. This number will be less than
+object_count if there are fewer objects detected by the vision sensor.
+Returns PROS_ERR if the port was invalid, an error occurred, or fewer objects
+than size_id were found. All objects in object_arr that were not found are
+given VISION_OBJECT_ERR_SIG as their signature.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="read-by-size">
@@ -773,7 +782,11 @@ largest, etc.)</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Returns:</strong> Returns PROS_ERR if the port was invalid or an error occurred.</p>
+<p><strong>Returns:</strong> The number of object signatures copied. This number will be less than
+object_count if there are fewer objects detected by the vision sensor.
+Returns PROS_ERR if the port was invalid, an error occurred, or fewer objects
+than size_id were found. All objects in object_arr that were not found are
+given VISION_OBJECT_ERR_SIG as their signature.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="set-auto-white-balance">

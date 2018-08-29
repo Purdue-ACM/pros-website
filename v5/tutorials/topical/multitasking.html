@@ -140,6 +140,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#topical-tutorials">Topical Tutorials</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="adi.html">ADI (3 Wire Ports)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="controller.html">Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filesystem.html">Filesystem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="jinx.html">JINX Graphical Debugger</a></li>
 <li class="toctree-l3"><a class="reference internal" href="llemu.html">LLEMU (Legacy LCD Emulator)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="motors.html">Motors</a></li>
@@ -166,9 +167,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../api/c/index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api/cpp/index.html">C++ API</a></li>
 </ul>
-<p class="caption"><span class="caption-text">CLI</span></p>
+<p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul>
@@ -254,7 +256,12 @@
 <a class="reference external" href="../../api/c/rtos.html">C API</a> and <a class="reference external" href="../../api/cpp/rtos.html">C++ API</a>.</p>
 </div>
 <p>Tasks are a great tool to do multiple things at once, but they can be difficult
-to use properly. The PROS task scheduler is a preemptive, priority-based, round-robin scheduler.
+to use properly. The most important thing to remember when using tasks is that
+every task should include an infinite loop (<code class="docutils literal notranslate"><span class="pre">while(true)</span></code>), and every infinite loop
+needs to include a <code class="docutils literal notranslate"><span class="pre">delay()</span></code> or <code class="docutils literal notranslate"><span class="pre">task_delay_until()</span></code> statement. Without a
+<code class="docutils literal notranslate"><span class="pre">delay()</span></code> statement, your task could starve the processor of resources and
+prevent the kernel from running properly.</p>
+<p>The PROS task scheduler is a preemptive, priority-based, round-robin scheduler.
 This means that tasks are preempted (interrupted) every millisecond to determine if another task
 ought to run. PROS decides which task to run next based on all of the ready tasks’ priorities.</p>
 <blockquote>
@@ -282,6 +289,8 @@ such behavior.</li>
 <li>“Task functions” are not special, except that their signature needs to be correct. In other
 programming environments for VEX, tasks must be marked with a special keyword. With most modern
 programming environments, tasks are just functions that get executed asynchronously.</li>
+<li>It was mentioned above, but it’s important enough for a second mention: every tasks’
+infinite loop requires a <code class="docutils literal notranslate"><span class="pre">delay()</span></code> statement.</li>
 </ul>
 </div></blockquote>
 <div class="section" id="task-management">

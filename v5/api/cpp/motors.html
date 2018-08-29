@@ -215,9 +215,10 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">CLI</span></p>
+<p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul>
@@ -1516,6 +1517,7 @@ failed, setting <code class="docutils literal notranslate"><span class="pre">err
 <div class="section" id="get-faults">
 <h4><a class="toc-backref" href="#id22">get_faults</a><a class="headerlink" href="#get-faults" title="Permalink to this headline">¶</a></h4>
 <p>Gets the faults experienced by the motor.</p>
+<p>Compare this bitfield to the bitmasks in <code class="docutils literal notranslate"><span class="pre">pros::motor_fault_e_t</span></code>.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>
@@ -1565,6 +1567,7 @@ Example</div>
 <div class="section" id="get-flags">
 <h4><a class="toc-backref" href="#id23">get_flags</a><a class="headerlink" href="#get-flags" title="Permalink to this headline">¶</a></h4>
 <p>Gets the flags set by the motor’s operation.</p>
+<p>Compare this bitfield to the bitmasks in <code class="docutils literal notranslate"><span class="pre">pros::motor_flag_e_t</span></code>.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the port.</li>

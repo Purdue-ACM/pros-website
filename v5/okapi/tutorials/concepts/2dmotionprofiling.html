@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2D Motion Profiling &mdash; PROS for V5 3.0.7 documentation</title>
+  <title>2D Motion Profiling &mdash; PROS for V5 3.0.8 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.8 documentation" href="../../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
         <link rel="next" title="What is a ChassisController, and why is it important?" href="chassiscontroller.html"/>
         <link rel="prev" title="Lift Movement" href="../walkthrough/lift-movement.html"/>
@@ -87,7 +87,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.7)
+                  V5 (3.0.8)
                 
               </div>
             
@@ -134,9 +134,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/c/index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/cpp/index.html">C++ API</a></li>
 </ul>
-<p class="caption"><span class="caption-text">CLI</span></p>
+<p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul class="current">
@@ -253,35 +254,58 @@ you can learn about in examples like these:</p>
 <p>OkapiLib, through <a class="reference external" href="https://github.com/JacisNonsense/Pathfinder">Pathfinder</a>, does
 this math for you and ties both the motion profiling and profile following actions
 to the same <a class="reference external" href="../walkthrough/autonomous-movement-async.html">async controllers</a> that
-are used for other simpler movements. Creating and following a 2D Motion Profile is a simple
-three step process.</p>
-<p>First, before creating any profiles, we need to create a motion profile Async Controller.
-This requires first initializing a Chassis Controller (or Chassis Model) to pass into the
-constructor for the controller.</p>
+are used for other simpler movements. Because OkapiLib’s motion profile generation uses
+<a class="reference external" href="https://github.com/JacisNonsense/Pathfinder">Pathfinder</a>, there are a few open issues you should
+know about:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Pathfinder cannot generate negative velocities, so backward movements and very tight turns do not work</dt>
+<dd><ul class="first last">
+<li>Moving backwards: <a class="reference external" href="https://github.com/JacisNonsense/Pathfinder/issues/39">https://github.com/JacisNonsense/Pathfinder/issues/39</a></li>
+<li>Tight turns: <a class="reference external" href="https://github.com/JacisNonsense/Pathfinder/issues/38">https://github.com/JacisNonsense/Pathfinder/issues/38</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Very long movements (typically movements much longer than a VEX field) can potentially never reach maximum speed</dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://github.com/JacisNonsense/Pathfinder/issues/43">https://github.com/JacisNonsense/Pathfinder/issues/43</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>First, let’s initialize a Chassis Controller (or Chassis Model) to pass into the
+constructor for the profile Async controller. Following that, you can create a
+profile Async Controller.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The “linear” properties of the chassis given to <code class="docutils literal notranslate"><span class="pre">AsyncControllerFactory::motionProfile</span></code>
 are for its forward/backwards movements, not the maximum properties for turning or other
 movements.</p>
 </div>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">},</span> <span class="c1">// Left motors</span>
   <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">},</span>   <span class="c1">// Right motors</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">red</span><span class="p">,</span> <span class="c1">// Torque gearset</span>
   <span class="p">{</span><span class="mi">4</span><span class="n">_in</span><span class="p">,</span> <span class="mf">12.5</span><span class="n">_in</span><span class="p">}</span> <span class="c1">// 4 inch wheels, 12.5 inch wheelbase width</span>
 <span class="p">);</span>
+
 <span class="k">auto</span> <span class="n">profileController</span> <span class="o">=</span> <span class="n">AsyncControllerFactory</span><span class="o">::</span><span class="n">motionProfile</span><span class="p">(</span>
   <span class="mf">1.0</span><span class="p">,</span>  <span class="c1">// Maximum linear velocity of the Chassis in m/s</span>
   <span class="mf">2.0</span><span class="p">,</span>  <span class="c1">// Maximum linear acceleration of the Chassis in m/s/s</span>
   <span class="mf">10.0</span><span class="p">,</span> <span class="c1">// Maximum linear jerk of the Chassis in m/s/s/s</span>
-  <span class="n">myChassis</span><span class="p">,</span> <span class="c1">// Chassis Controller</span>
-  <span class="mf">12.5</span><span class="n">_in</span> <span class="c1">// Wheelbase width</span>
+  <span class="n">myChassis</span> <span class="c1">// Chassis Controller</span>
 <span class="p">);</span>
 </pre></div>
 </div>
 <p>Next, let’s create a motion profile. A profile is created with a list of points and a name.
-Each of the points contains the desired x and y coordinates and heading. The points given to the
-controller form a path from the first given point to the last. The path will be generated
+Each of the points contains the desired (x, y) coordinates and heading. The points given to the
+controller form a path from the first given point to the last, with the first point assumed to be
+the current position of the robot. The path will be generated
 assuming that all of the points are relative to the first, so if you pass in
 an x value of <code class="docutils literal notranslate"><span class="pre">-4_ft</span></code> for the first point, then passing an x value of <code class="docutils literal notranslate"><span class="pre">0_ft</span></code> for the second
 point will result in a forward movement of 4 feet.</p>
@@ -294,7 +318,7 @@ may take some time.</p>
   <span class="n">Point</span><span class="p">{</span><span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_deg</span><span class="p">},</span>  <span class="c1">// Profile starting position, this will normally be (0, 0, 0)</span>
   <span class="n">Point</span><span class="p">{</span><span class="mi">3</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_deg</span><span class="p">}},</span> <span class="c1">// The next point in the profile, 3 feet forward</span>
   <span class="s">&quot;A&quot;</span> <span class="c1">// Profile name</span>
-  <span class="p">);</span>
+<span class="p">);</span>
 </pre></div>
 </div>
 <p>After the profile is created, it is added to a map of available profiles stored in the controller.
@@ -302,7 +326,8 @@ You can then set a target using the name you gave the profile.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">profileController</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>And then as with any Async Controller movement, you can call <code class="docutils literal notranslate"><span class="pre">waitUntilSettled()</span></code>
+<p>And then as with any <a class="reference external" href="../../api/control/async/abstract-async-controller.html">AsyncController</a>,
+you can call <code class="docutils literal notranslate"><span class="pre">waitUntilSettled()</span></code>
 to block program execution until the movement is finished and the robot reaches the
 desired end point.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">profileController</span><span class="p">.</span><span class="n">waitUntilSettled</span><span class="p">();</span>
@@ -328,7 +353,10 @@ desired end point.</p>
 15
 16
 17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">},</span> <span class="c1">// Left motors</span>
   <span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">},</span>   <span class="c1">// Right motors</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">red</span><span class="p">,</span> <span class="c1">// Torque gearset</span>
@@ -339,8 +367,7 @@ desired end point.</p>
   <span class="mf">1.0</span><span class="p">,</span>  <span class="c1">// Maximum linear velocity of the Chassis in m/s</span>
   <span class="mf">2.0</span><span class="p">,</span>  <span class="c1">// Maximum linear acceleration of the Chassis in m/s/s</span>
   <span class="mf">10.0</span><span class="p">,</span> <span class="c1">// Maximum linear jerk of the Chassis in m/s/s/s</span>
-  <span class="n">myChassis</span><span class="p">,</span> <span class="c1">// Chassis Controller</span>
-  <span class="mf">12.5</span><span class="n">_in</span> <span class="c1">// Wheelbase width</span>
+  <span class="n">myChassis</span> <span class="c1">// Chassis Controller</span>
 <span class="p">);</span>
 
 <span class="n">profileController</span><span class="p">.</span><span class="n">generatePath</span><span class="p">({</span><span class="n">Point</span><span class="p">{</span><span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_deg</span><span class="p">},</span> <span class="n">Point</span><span class="p">{</span><span class="mi">3</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_deg</span><span class="p">}},</span> <span class="s">&quot;A&quot;</span><span class="p">);</span>
@@ -395,16 +422,16 @@ desired end point.</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.7)
+      v: V5 (3.0.8)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
-        
           <dd><a href="../../../index.html">V5</a></dd>
+        
+          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
         
       </dl>
     </div>
@@ -416,7 +443,7 @@ desired end point.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3.0.7',
+            VERSION:'3.0.8',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

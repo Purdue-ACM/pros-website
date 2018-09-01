@@ -164,19 +164,12 @@
 <li class="toctree-l3"><a class="reference internal" href="filtered-controller-input.html">Filtered Controller Input</a></li>
 <li class="toctree-l3"><a class="reference internal" href="median-filter.html">Median Filter</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Passthrough Filter</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#okapi-passthroughfilterargs">okapi::PassthroughFilterArgs</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#constructor-s">Constructor(s)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#okapi-passthroughfilter">okapi::PassthroughFilter</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#okapi-passthroughfilter">okapi::PassthroughFilter</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id1">Constructor(s)</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#methods">Methods</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#id2">filter</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#getoutput">getOutput</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Constructor(s)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="vel-math.html">Velocity Math</a></li>
@@ -266,26 +259,16 @@
 <h1>Passthrough Filter<a class="headerlink" href="#passthrough-filter" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#okapi-passthroughfilterargs" id="id3">okapi::PassthroughFilterArgs</a><ul>
-<li><a class="reference internal" href="#constructor-s" id="id4">Constructor(s)</a></li>
+<li><a class="reference internal" href="#constructor-s" id="id2">Constructor(s)</a><ul>
+<li><a class="reference internal" href="#okapi-passthroughfilter" id="id3">okapi::PassthroughFilter</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#okapi-passthroughfilter" id="id5">okapi::PassthroughFilter</a><ul>
-<li><a class="reference internal" href="#id1" id="id6">Constructor(s)</a></li>
-<li><a class="reference internal" href="#methods" id="id7">Methods</a><ul>
-<li><a class="reference internal" href="#id2" id="id8">filter</a></li>
-<li><a class="reference internal" href="#getoutput" id="id9">getOutput</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a class="reference internal" href="#id1" id="id4">Constructor(s)</a></li>
+<li><a class="reference internal" href="#methods" id="id5">Methods</a></li>
 </ul>
 </div>
-<div class="section" id="okapi-passthroughfilterargs">
-<h2><a class="toc-backref" href="#id3">okapi::PassthroughFilterArgs</a><a class="headerlink" href="#okapi-passthroughfilterargs" title="Permalink to this headline">¶</a></h2>
-<p>Data class for the arguments to <code class="docutils literal notranslate"><span class="pre">PassthroughFilter</span></code>.</p>
 <div class="section" id="constructor-s">
-<h3><a class="toc-backref" href="#id4">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
+<h2><a class="toc-backref" href="#id2">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h2>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-0 docutils container">
@@ -299,13 +282,13 @@ Prototype</div>
 </div>
 </div>
 </div>
-</div>
-</div>
 <div class="section" id="okapi-passthroughfilter">
-<h2><a class="toc-backref" href="#id5">okapi::PassthroughFilter</a><a class="headerlink" href="#okapi-passthroughfilter" title="Permalink to this headline">¶</a></h2>
+<h3><a class="toc-backref" href="#id3">okapi::PassthroughFilter</a><a class="headerlink" href="#okapi-passthroughfilter" title="Permalink to this headline">¶</a></h3>
 <p>A simple <a class="reference external" href="abstract-filter.html">Filter</a> that does no filtering and just passes the input through.</p>
+</div>
+</div>
 <div class="section" id="id1">
-<h3><a class="toc-backref" href="#id6">Constructor(s)</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h2><a class="toc-backref" href="#id4">Constructor(s)</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-1 docutils container">
@@ -322,9 +305,7 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="methods">
-<h3><a class="toc-backref" href="#id7">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id2">
-<h4><a class="toc-backref" href="#id8">filter</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<h2><a class="toc-backref" href="#id5">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
 <p>Filters a value, like a sensor reading.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -356,10 +337,7 @@ Prototype</div>
 </tbody>
 </table>
 <p><strong>Returns:</strong> The filtered result.</p>
-</div>
 <hr class="docutils" />
-<div class="section" id="getoutput">
-<h4><a class="toc-backref" href="#id9">getOutput</a><a class="headerlink" href="#getoutput" title="Permalink to this headline">¶</a></h4>
 <p>Returns the previous output from the filter.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -375,8 +353,6 @@ Prototype</div>
 </div>
 </div>
 <p><strong>Returns:</strong> The previous output from the filter.</p>
-</div>
-</div>
 </div>
 </div>
 

@@ -177,6 +177,17 @@
 <li class="toctree-l6"><a class="reference internal" href="#getanalog">getAnalog</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#getdigital">getDigital</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#operator">operator[]</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#settext">setText</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#clear">clear</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#clearline">clearLine</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getbatterycapacity">getBatteryCapacity</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getbatterylevel">getBatteryLevel</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#enumerated-values">Enumerated Values</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#controllerid">ControllerId</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#controlleranalog">ControllerAnalog</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#controllerdigital">ControllerDigital</a></li>
 </ul>
 </li>
 </ul>
@@ -278,6 +289,17 @@
 <li><a class="reference internal" href="#getanalog" id="id7">getAnalog</a></li>
 <li><a class="reference internal" href="#getdigital" id="id8">getDigital</a></li>
 <li><a class="reference internal" href="#operator" id="id9">operator[]</a></li>
+<li><a class="reference internal" href="#settext" id="id10">setText</a></li>
+<li><a class="reference internal" href="#clear" id="id11">clear</a></li>
+<li><a class="reference internal" href="#clearline" id="id12">clearLine</a></li>
+<li><a class="reference internal" href="#getbatterycapacity" id="id13">getBatteryCapacity</a></li>
+<li><a class="reference internal" href="#getbatterylevel" id="id14">getBatteryLevel</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#enumerated-values" id="id15">Enumerated Values</a><ul>
+<li><a class="reference internal" href="#controllerid" id="id16">ControllerId</a></li>
+<li><a class="reference internal" href="#controlleranalog" id="id17">ControllerAnalog</a></li>
+<li><a class="reference internal" href="#controllerdigital" id="id18">ControllerDigital</a></li>
 </ul>
 </li>
 </ul>
@@ -296,7 +318,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Controller</span><span class="p">(</span><span class="k">const</span> <span class="n">controller_id_e_t</span> <span class="n">iid</span> <span class="o">=</span> <span class="n">E_CONTROLLER_MASTER</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Controller</span><span class="p">(</span><span class="n">ControllerId</span> <span class="n">iid</span> <span class="o">=</span> <span class="n">ControllerId</span><span class="o">::</span><span class="n">master</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -377,7 +399,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">float</span> <span class="n">getAnalog</span><span class="p">(</span><span class="k">const</span> <span class="n">controller_analog_e_t</span> <span class="n">ichannel</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">float</span> <span class="n">getAnalog</span><span class="p">(</span><span class="n">ControllerAnalog</span> <span class="n">ichannel</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -413,7 +435,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">bool</span> <span class="n">getDigital</span><span class="p">(</span><span class="k">const</span> <span class="n">controller_digital_e_t</span> <span class="n">ibutton</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">bool</span> <span class="n">getDigital</span><span class="p">(</span><span class="n">ControllerDigital</span> <span class="n">ibutton</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -453,13 +475,13 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">ControllerButton</span> <span class="n">operator</span><span class="p">[](</span><span class="k">const</span> <span class="n">controller_digital_e_t</span> <span class="n">ibtn</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">ControllerButton</span> <span class="n">operator</span><span class="p">[](</span><span class="n">ControllerDigital</span> <span class="n">ibtn</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">okapi</span><span class="o">::</span><span class="n">Controller</span> <span class="n">myController</span><span class="p">;</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">ControllerButton</span> <span class="n">myButton</span> <span class="o">=</span> <span class="n">myController</span><span class="p">[</span><span class="n">E_CONTROLLER_DIGITAL_A</span><span class="p">]</span>
+<span class="n">okapi</span><span class="o">::</span><span class="n">ControllerButton</span> <span class="n">myButton</span> <span class="o">=</span> <span class="n">myController</span><span class="p">[</span><span class="n">ControllerDigital</span><span class="o">::</span><span class="n">A</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -482,6 +504,185 @@ Example</div>
 </table>
 <p><strong>Returns:</strong> A <a class="reference external" href="button/controller-button.html">ControllerButton</a> that matches the given button on
 this controller.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="settext">
+<h4><a class="toc-backref" href="#id10">setText</a><a class="headerlink" href="#settext" title="Permalink to this headline">¶</a></h4>
+<p>Sets text to the controller LCD screen.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-7 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">setText</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">iline</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">icol</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">itext</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>iline</td>
+<td>The lin number at which the text will be displayed <code class="docutils literal notranslate"><span class="pre">[0-2]</span></code>.</td>
+</tr>
+<tr class="row-odd"><td>icol</td>
+<td>The column number at which the text will be displayed <code class="docutils literal notranslate"><span class="pre">[0-14]</span></code>.</td>
+</tr>
+<tr class="row-even"><td>itext</td>
+<td>The string to display.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> is the operation was successful, <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> otherwise.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="clear">
+<h4><a class="toc-backref" href="#id11">clear</a><a class="headerlink" href="#clear" title="Permalink to this headline">¶</a></h4>
+<p>Clears all of the lines of the controller screen.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-8 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> is the operation was successful, <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> otherwise.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="clearline">
+<h4><a class="toc-backref" href="#id12">clearLine</a><a class="headerlink" href="#clearline" title="Permalink to this headline">¶</a></h4>
+<p>Clears an individual line of the controller screen.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-9 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">clearLine</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">iline</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="89%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>iline</td>
+<td>The lin number to clear.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> is the operation was successful, <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> otherwise.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="getbatterycapacity">
+<h4><a class="toc-backref" href="#id13">getBatteryCapacity</a><a class="headerlink" href="#getbatterycapacity" title="Permalink to this headline">¶</a></h4>
+<p>Gets the battery capacity of the given controller.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-10 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">getBatteryCapacity</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The controller’s battery capacity.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="getbatterylevel">
+<h4><a class="toc-backref" href="#id14">getBatteryLevel</a><a class="headerlink" href="#getbatterylevel" title="Permalink to this headline">¶</a></h4>
+<p>Gets the battery level of the given controller.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-11 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">getBatteryLevel</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The controller’s battery level.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="enumerated-values">
+<h3><a class="toc-backref" href="#id15">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="controllerid">
+<h4><a class="toc-backref" href="#id16">ControllerId</a><a class="headerlink" href="#controllerid" title="Permalink to this headline">¶</a></h4>
+<p>The ID of the controller (e.g. master or partner).</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">class</span> <span class="n">ControllerId</span> <span class="p">{</span>
+  <span class="n">master</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="n">partner</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="controlleranalog">
+<h4><a class="toc-backref" href="#id17">ControllerAnalog</a><a class="headerlink" href="#controlleranalog" title="Permalink to this headline">¶</a></h4>
+<p>An analog stick.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">class</span> <span class="n">ControllerAnalog</span> <span class="p">{</span>
+  <span class="n">leftX</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="n">leftY</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="n">rightX</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="n">rightY</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="controllerdigital">
+<h4><a class="toc-backref" href="#id18">ControllerDigital</a><a class="headerlink" href="#controllerdigital" title="Permalink to this headline">¶</a></h4>
+<p>Various buttons.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">class</span> <span class="n">ControllerDigital</span> <span class="p">{</span>
+  <span class="n">L1</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+  <span class="n">L2</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+  <span class="n">R1</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+  <span class="n">R2</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+  <span class="n">up</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="n">down</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span>
+  <span class="n">left</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+  <span class="n">right</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span>
+  <span class="n">X</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span>
+  <span class="n">B</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+  <span class="n">Y</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+  <span class="n">A</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="p">};</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

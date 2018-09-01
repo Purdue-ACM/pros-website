@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Factory Object Creation Pattern &mdash; PROS for V5 3.0.7 documentation</title>
+  <title>Factory Object Creation Pattern &mdash; PROS for V5 3.0.8 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.8 documentation" href="../../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
         <link rel="next" title="Filtering" href="filtering.html"/>
         <link rel="prev" title="Controller Inputs and Outputs" href="controller-io.html"/>
@@ -87,7 +87,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.7)
+                  V5 (3.0.8)
                 
               </div>
             
@@ -134,9 +134,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/c/index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/cpp/index.html">C++ API</a></li>
 </ul>
-<p class="caption"><span class="caption-text">CLI</span></p>
+<p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul class="current">
@@ -237,9 +238,9 @@
   <div class="section" id="factory-object-creation-pattern">
 <h1>Factory Object Creation Pattern<a class="headerlink" href="#factory-object-creation-pattern" title="Permalink to this headline">¶</a></h1>
 <p>OkapiLib uses a pattern of <strong>Factories</strong> to create objects. This means that while you can find constructors
-for any classes you may want to use in <code class="docutils literal notranslate"><span class="pre">/okapi/api</span></code>, creating these classes is best done with
-a method from the class’s related factory in <code class="docutils literal notranslate"><span class="pre">/okapi/impl</span></code>. These factories are designed to make it as easy as possible
-to create objects, you won’t have to worry about smart pointers and other more complex concepts that Okapilib relies on.</p>
+for any classes you may want to use in <code class="docutils literal notranslate"><span class="pre">okapi/api</span></code>, creating these classes is best done with
+a method from the class’s related factory in <code class="docutils literal notranslate"><span class="pre">okapi/impl</span></code>. These factories are designed to make it as easy as possible
+to create objects, you won’t have to worry about smart pointers and other more complex concepts that OkapiLib relies on.</p>
 <p>Creating an object with a factory is quite simple, as shown in the below example:</p>
 <div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
@@ -247,13 +248,15 @@ to create objects, you won’t have to worry about smart pointers and other more
 4
 5
 6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">double</span> <span class="n">kP</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">double</span> <span class="n">kP</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">double</span> <span class="n">kI</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">double</span> <span class="n">kD</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">MOTOR_PORT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 
-<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">exampleMotor</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
-<span class="k">auto</span> <span class="n">exampleController</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">AsyncControllerFactory</span><span class="o">::</span><span class="n">posPID</span><span class="p">(</span><span class="n">exampleMotor</span><span class="p">,</span> <span class="n">kP</span><span class="p">,</span> <span class="n">kI</span><span class="p">,</span> <span class="n">kD</span><span class="p">);</span>
+<span class="k">auto</span> <span class="n">exampleController</span> <span class="o">=</span> <span class="n">AsyncControllerFactory</span><span class="o">::</span><span class="n">posPID</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="n">kP</span><span class="p">,</span> <span class="n">kI</span><span class="p">,</span> <span class="n">kD</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
 <p>As opposed to creating the same object without factories:</p>
@@ -270,20 +273,26 @@ to create objects, you won’t have to worry about smart pointers and other more
 11
 12
 13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">double</span> <span class="n">kP</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">double</span> <span class="n">kP</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">double</span> <span class="n">kI</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">double</span> <span class="n">kD</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">MOTOR_PORT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 
-<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">exampleMotor</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+<span class="n">Motor</span> <span class="nf">exampleMotor</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
 
-<span class="n">okapi</span><span class="o">::</span><span class="n">SettledUtil</span> <span class="n">exampleSettledUtil</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">Timer</span><span class="o">&gt;</span><span class="p">());</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">TimeUtil</span> <span class="n">timeUtil</span> <span class="p">(</span>
+<span class="n">TimeUtil</span> <span class="nf">timeUtil</span><span class="p">(</span>
   <span class="n">Supplier</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">AbstractTimer</span><span class="o">&gt;&gt;</span><span class="p">([]()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">Timer</span><span class="o">&gt;</span><span class="p">();</span> <span class="p">}),</span>
   <span class="n">Supplier</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">AbstractRate</span><span class="o">&gt;&gt;</span><span class="p">([]()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">Rate</span><span class="o">&gt;</span><span class="p">();</span> <span class="p">}),</span>
-  <span class="n">Supplier</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">SettledUtil</span><span class="o">&gt;&gt;</span><span class="p">([]()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">SettledUtil</span><span class="o">&gt;</span><span class="p">(</span><span class="n">exampleSettledUtil</span><span class="p">);</span> <span class="p">}));</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">AsyncPosPIDController</span> <span class="n">exampleController</span> <span class="p">(</span><span class="n">exampleMotor</span><span class="p">.</span><span class="n">getEncoder</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Motor</span><span class="o">&gt;</span><span class="p">(</span><span class="n">exampleMotor</span><span class="p">),</span>
-                                                <span class="n">timeUtil</span><span class="p">,</span> <span class="n">kP</span><span class="p">,</span> <span class="n">kI</span><span class="p">,</span> <span class="n">kD</span><span class="p">);</span>
+  <span class="n">Supplier</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">SettledUtil</span><span class="o">&gt;&gt;</span><span class="p">([]()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">SettledUtil</span><span class="o">&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">Timer</span><span class="o">&gt;</span><span class="p">());</span> <span class="p">})</span>
+<span class="p">);</span>
+
+<span class="n">AsyncPosPIDController</span> <span class="nf">exampleController</span><span class="p">(</span><span class="n">exampleMotor</span><span class="p">.</span><span class="n">getEncoder</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Motor</span><span class="o">&gt;</span><span class="p">(</span><span class="n">exampleMotor</span><span class="p">),</span>
+                                        <span class="n">timeUtil</span><span class="p">,</span> <span class="n">kP</span><span class="p">,</span> <span class="n">kI</span><span class="p">,</span> <span class="n">kD</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
 </div>
@@ -332,16 +341,16 @@ to create objects, you won’t have to worry about smart pointers and other more
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.7)
+      v: V5 (3.0.8)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
-        
           <dd><a href="../../../index.html">V5</a></dd>
+        
+          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
         
       </dl>
     </div>
@@ -353,7 +362,7 @@ to create objects, you won’t have to worry about smart pointers and other more
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3.0.7',
+            VERSION:'3.0.8',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

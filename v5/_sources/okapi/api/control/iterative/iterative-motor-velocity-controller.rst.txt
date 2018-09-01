@@ -17,7 +17,8 @@ Constructor(s)
       .. highlight:: cpp
       ::
 
-        IterativeMotorVelocityControllerArgs(std::shared_ptr<AbstractMotor> imotor, std::shared_ptr<IterativeVelocityController> icontroller)
+        IterativeMotorVelocityControllerArgs(std::shared_ptr<AbstractMotor> imotor,
+                                             std::shared_ptr<IterativeVelocityController<double, double>> icontroller)
 
 =============== ===================================================================
  Parameters
@@ -91,6 +92,22 @@ Do one iteration of the controller. Outputs in the range ``[-1, 1]``.
 
 ----
 
+getTarget
+~~~~~~~~~
+
+Gets the last set target, or the default target if none was set.
+
+.. tabs ::
+   .. tab :: Prototype
+      .. highlight:: cpp
+      ::
+
+        double getTarget() override
+
+**Returns:** The last target.
+
+----
+
 setTarget
 ~~~~~~~~~
 
@@ -140,22 +157,6 @@ Returns the last error of the controller.
         double getError() const override
 
 **Returns:** The last error of the controller.
-
-----
-
-getDerivative
-~~~~~~~~~~~~~
-
-Returns the last derivative (change in error) of the controller.
-
-.. tabs ::
-   .. tab :: Prototype
-      .. highlight:: cpp
-      ::
-
-        double getDerivative() const override
-
-**Returns:** The last derivative (change in error) of the controller.
 
 ----
 

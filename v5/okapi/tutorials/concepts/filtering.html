@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Filtering &mdash; PROS for V5 3.0.7 documentation</title>
+  <title>Filtering &mdash; PROS for V5 3.0.8 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.8 documentation" href="../../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
         <link rel="next" title="Iterative and Async Controllers" href="iterative-async-controllers.html"/>
         <link rel="prev" title="Factory Object Creation Pattern" href="factories.html"/>
@@ -87,7 +87,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.7)
+                  V5 (3.0.8)
                 
               </div>
             
@@ -134,9 +134,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/c/index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/cpp/index.html">C++ API</a></li>
 </ul>
-<p class="caption"><span class="caption-text">CLI</span></p>
+<p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul class="current">
@@ -248,22 +249,28 @@ filtering functionality.</p>
 <h2>Filtering Generic Sensor Input<a class="headerlink" href="#filtering-generic-sensor-input" title="Permalink to this headline">¶</a></h2>
 <p>It’s possible with OkapiLib to filter any value that you want, which makes it easy to filter sensors.
 The example below gives an example of filtering a sensor value.</p>
-<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">int</span> <span class="n">POTENTIOMETER_PORT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">POTENTIOMETER_PORT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">NUM_AVE_POINTS</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 
-<span class="n">okapi</span><span class="o">::</span><span class="n">Potentiometer</span> <span class="n">exampleSensor</span> <span class="p">(</span><span class="n">POTENTIOMETER_PORT</span><span class="p">);</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">AverageFilter</span><span class="o">&lt;</span><span class="n">NUM_AVE_POINTS</span><span class="o">&gt;</span> <span class="n">exampleFilter</span>
+<span class="n">Potentiometer</span> <span class="nf">exampleSensor</span><span class="p">(</span><span class="n">POTENTIOMETER_PORT</span><span class="p">);</span>
+<span class="n">AverageFilter</span><span class="o">&lt;</span><span class="n">NUM_AVE_POINTS</span><span class="o">&gt;</span> <span class="n">exampleFilter</span><span class="p">;</span>
+
 <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Current Sensor Reading: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">exampleFilter</span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">exampleSensor</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
-  <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -275,29 +282,35 @@ The example below gives an example of filtering a sensor value.</p>
 to pass in a filter as an argument to the constructor for a Velocity PID Controller. Note – filtering
 will not have a positive impact on Position PID movements, and is not supported as a result.</p>
 <p>Using a filter with a Velocity PID Controller can be done in the following manner:</p>
-<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">double</span> <span class="n">kP</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">double</span> <span class="n">kP</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">double</span> <span class="n">kD</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">double</span> <span class="n">kF</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">double</span> <span class="n">kSF</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">NUM_AVE_POINTS</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
 
-<span class="k">auto</span> <span class="n">exampleVelMath</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">VelMathFactory</span><span class="o">::</span><span class="n">createPtr</span><span class="p">(</span><span class="n">imeV5TPR</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">AverageFilter</span><span class="o">&lt;</span><span class="n">NUM_AVE_POINTS</span><span class="o">&gt;&gt;</span><span class="p">());</span>
-<span class="k">auto</span> <span class="n">exampleController</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">IterativeControllerFactory</span><span class="o">::</span><span class="n">VelPID</span><span class="p">(</span><span class="n">kP</span><span class="p">,</span> <span class="n">kD</span><span class="p">,</span> <span class="n">kF</span><span class="p">,</span> <span class="n">exampleVelMath</span><span class="p">);</span>
+<span class="k">auto</span> <span class="n">velMathArgs</span> <span class="o">=</span> <span class="n">VelMathArgs</span><span class="p">(</span><span class="n">imev5TPR</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">AverageFilter</span><span class="o">&lt;</span><span class="n">NUM_AVE_POINTS</span><span class="o">&gt;&gt;</span><span class="p">());</span>
+<span class="k">auto</span> <span class="n">exampleController</span> <span class="o">=</span> <span class="n">IterativeControllerFactory</span><span class="o">::</span><span class="n">velPID</span><span class="p">(</span><span class="n">kP</span><span class="p">,</span> <span class="n">kD</span><span class="p">,</span> <span class="n">kF</span><span class="p">,</span> <span class="n">kSF</span><span class="p">,</span> <span class="n">velMathArgs</span><span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
 <p>To clarify step by step:</p>
 <p>First a <code class="docutils literal notranslate"><span class="pre">VelMath</span></code> object needs to be created. This is used to calculate the motor’s velocity for
 use by the controller. The <code class="docutils literal notranslate"><span class="pre">imeV5TPR</span></code> value is the number of Ticks Per Revolution of the motor’s
 internal encoder, and is defined by OkapiLib. The <code class="docutils literal notranslate"><span class="pre">std::make_shared&lt;AverageFilter&lt;5&gt;&gt;()</span></code> portion
-create a Smart Pointer to an <code class="docutils literal notranslate"><span class="pre">AverageFilter</span></code> object that averages the last 5 values. Note that
+creates a Smart Pointer to an <code class="docutils literal notranslate"><span class="pre">AverageFilter</span></code> object that averages the last 5 values. Note that
 the <code class="docutils literal notranslate"><span class="pre">AverageFilter&lt;NUM_AVE_POINTS&gt;</span></code> portion is identical to the first code example.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">VelMath</span></code> pointer, along with the PID constants, are then passed to the <code class="docutils literal notranslate"><span class="pre">IterativeControllerFactory</span></code>
-to create a <code class="docutils literal notranslate"><span class="pre">IterativeVelPID</span></code> object.</p>
+to create a <code class="docutils literal notranslate"><span class="pre">IterativeVelPIDController</span></code> object.</p>
 </div>
 </div>
 
@@ -345,16 +358,16 @@ to create a <code class="docutils literal notranslate"><span class="pre">Iterati
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.7)
+      v: V5 (3.0.8)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
-        
           <dd><a href="../../../index.html">V5</a></dd>
+        
+          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
         
       </dl>
     </div>
@@ -366,7 +379,7 @@ to create a <code class="docutils literal notranslate"><span class="pre">Iterati
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3.0.7',
+            VERSION:'3.0.8',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

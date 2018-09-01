@@ -158,6 +158,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../async/abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-controller-factory.html">Async Controller Factory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../async/async-motion-profile-controller.html">Async Motion Profile Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-pos-pid-controller.html">Async Pos PID Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-vel-integrated-controller.html">Async Vel Integrated Controller</a></li>
@@ -325,10 +326,10 @@ Prototype</div>
 <td>The <code class="docutils literal notranslate"><span class="pre">AbstractTimer</span></code> to use.</td>
 </tr>
 <tr class="row-odd"><td>iatTargetError</td>
-<td>Minimum error to be considered settled.</td>
+<td>Maximum error to be considered settled.</td>
 </tr>
 <tr class="row-even"><td>iatTargetDerivative</td>
-<td>Minimum error derivative to be considered settled.</td>
+<td>Maximum error derivative to be considered settled.</td>
 </tr>
 <tr class="row-odd"><td>iatTargetTime</td>
 <td>Minimum time within <code class="docutils literal notranslate"><span class="pre">atTargetError</span></code> to be considered settled.</td>

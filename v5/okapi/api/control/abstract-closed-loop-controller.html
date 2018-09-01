@@ -158,6 +158,7 @@
 <li class="toctree-l3"><a class="reference internal" href="async/abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async/abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async/async-controller-factory.html">Async Controller Factory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="async/async-motion-profile-controller.html">Async Motion Profile Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async/async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async/async-pos-pid-controller.html">Async Pos PID Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async/async-vel-integrated-controller.html">Async Vel Integrated Controller</a></li>
@@ -181,8 +182,10 @@
 <li class="toctree-l5"><a class="reference internal" href="#template-parameter-s">Template Parameter(s)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#methods">Methods</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#settarget">setTarget</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#gettarget">getTarget</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#geterror">getError</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#issettled">isSettled</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#reset">reset</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#flipdisable">flipDisable</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#id1">flipDisable</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#isdisabled">isDisabled</a></li>
@@ -285,11 +288,13 @@
 <li><a class="reference internal" href="#template-parameter-s" id="id3">Template Parameter(s)</a></li>
 <li><a class="reference internal" href="#methods" id="id4">Methods</a><ul>
 <li><a class="reference internal" href="#settarget" id="id5">setTarget</a></li>
-<li><a class="reference internal" href="#geterror" id="id6">getError</a></li>
-<li><a class="reference internal" href="#issettled" id="id7">isSettled</a></li>
-<li><a class="reference internal" href="#flipdisable" id="id8">flipDisable</a></li>
-<li><a class="reference internal" href="#id1" id="id9">flipDisable</a></li>
-<li><a class="reference internal" href="#isdisabled" id="id10">isDisabled</a></li>
+<li><a class="reference internal" href="#gettarget" id="id6">getTarget</a></li>
+<li><a class="reference internal" href="#geterror" id="id7">getError</a></li>
+<li><a class="reference internal" href="#issettled" id="id8">isSettled</a></li>
+<li><a class="reference internal" href="#reset" id="id9">reset</a></li>
+<li><a class="reference internal" href="#flipdisable" id="id10">flipDisable</a></li>
+<li><a class="reference internal" href="#id1" id="id11">flipDisable</a></li>
+<li><a class="reference internal" href="#isdisabled" id="id12">isDisabled</a></li>
 </ul>
 </li>
 </ul>
@@ -308,7 +313,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">INPUT</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">ERROR</span><span class="o">&gt;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">Input</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">Output</span><span class="o">&gt;</span>
 <span class="n">class</span> <span class="n">ClosedLoopController</span>
 </pre></div>
 </div>
@@ -325,10 +330,10 @@ Prototype</div>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>INPUT</td>
+<tr class="row-even"><td>Input</td>
 <td>The target/input type.</td>
 </tr>
-<tr class="row-odd"><td>ERROR</td>
+<tr class="row-odd"><td>Output</td>
 <td>The error type.</td>
 </tr>
 </tbody>
@@ -347,7 +352,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setTarget</span><span class="p">(</span><span class="n">INPUT</span> <span class="n">itarget</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setTarget</span><span class="p">(</span><span class="n">Input</span> <span class="n">itarget</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -370,9 +375,9 @@ Prototype</div>
 </table>
 </div>
 <hr class="docutils" />
-<div class="section" id="geterror">
-<h4><a class="toc-backref" href="#id6">getError</a><a class="headerlink" href="#geterror" title="Permalink to this headline">¶</a></h4>
-<p>Returns the last error of the controller.</p>
+<div class="section" id="gettarget">
+<h4><a class="toc-backref" href="#id6">getTarget</a><a class="headerlink" href="#gettarget" title="Permalink to this headline">¶</a></h4>
+<p>Gets the last set target, or the default target if none was set.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-2 docutils container">
@@ -381,18 +386,17 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">ERROR</span> <span class="n">getError</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">Input</span> <span class="n">getTarget</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Returns:</strong> The last error of the controller.</p>
+<p><strong>Returns:</strong> The last target.</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="issettled">
-<h4><a class="toc-backref" href="#id7">isSettled</a><a class="headerlink" href="#issettled" title="Permalink to this headline">¶</a></h4>
-<p>Returns whether the controller has settled at the target. Determining what settling means is
-implementation-dependent.</p>
+<div class="section" id="geterror">
+<h4><a class="toc-backref" href="#id7">getError</a><a class="headerlink" href="#geterror" title="Permalink to this headline">¶</a></h4>
+<p>Returns the last error of the controller.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-3 docutils container">
@@ -401,6 +405,63 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">Output</span> <span class="n">getError</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The last error of the controller.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="issettled">
+<h4><a class="toc-backref" href="#id8">isSettled</a><a class="headerlink" href="#issettled" title="Permalink to this headline">¶</a></h4>
+<p>Returns whether the controller has settled at the target. Determining what settling means is
+implementation-dependent.</p>
+<p>If the controller is disabled, this method must return true.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">bool</span> <span class="n">isSettled</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> Whether the controller is settled.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="reset">
+<h4><a class="toc-backref" href="#id9">reset</a><a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
+<p>Resets the controller so it can start from 0 again properly. Keeps configuration from before.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-5 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">reset</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>Returns whether the controller has settled at the target. Determining what settling means is
+implementation-dependent.</p>
+<p>If the controller is disabled, this method must return true.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-6 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">bool</span> <span class="n">isSettled</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
@@ -410,17 +471,17 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="flipdisable">
-<h4><a class="toc-backref" href="#id8">flipDisable</a><a class="headerlink" href="#flipdisable" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id10">flipDisable</a><a class="headerlink" href="#flipdisable" title="Permalink to this headline">¶</a></h4>
 <p>Changes whether the controller is off or on. Turning the controller on after it was off will cause
 the controller to move to its last set target, unless it was reset in that time.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-4 docutils container">
+<div class="active item sphinx-data-tab-7 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">flipDisable</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
@@ -429,17 +490,17 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="id1">
-<h4><a class="toc-backref" href="#id9">flipDisable</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id11">flipDisable</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <p>Sets whether the controller is off or on. Turning the controller on after it was off will cause the
 controller to move to its last set target, unless it was reset in that time.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-5 docutils container">
+<div class="active item sphinx-data-tab-8 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">flipDisable</span><span class="p">(</span><span class="kt">bool</span> <span class="n">iisDisabled</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
@@ -464,16 +525,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="isdisabled">
-<h4><a class="toc-backref" href="#id10">isDisabled</a><a class="headerlink" href="#isdisabled" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id12">isDisabled</a><a class="headerlink" href="#isdisabled" title="Permalink to this headline">¶</a></h4>
 <p>Returns whether the controller is currently disabled.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-6 docutils container">
+<div class="active item sphinx-data-tab-9 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">bool</span> <span class="n">isDisabled</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>

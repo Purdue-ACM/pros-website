@@ -318,7 +318,8 @@ Prototype</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">SkidSteerModel</span> <span class="n">create</span><span class="p">(</span><span class="n">Motor</span> <span class="n">ileftSideMotor</span><span class="p">,</span> <span class="n">Motor</span> <span class="n">irightSideMotor</span><span class="p">,</span>
-                             <span class="k">const</span> <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
+                             <span class="kt">double</span> <span class="n">imaxVelocity</span> <span class="o">=</span> <span class="mi">127</span><span class="p">,</span>
+                             <span class="kt">double</span> <span class="n">imaxVoltage</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -335,13 +336,16 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>ileftSideMotor</td>
-<td>The left side motor.</td>
+<td>The left side motor (also used for controller input).</td>
 </tr>
 <tr class="row-odd"><td>irightSideMotor</td>
-<td>The right side motor.</td>
+<td>The right side motor (also used for controller input).</td>
 </tr>
-<tr class="row-even"><td>imaxOutput</td>
-<td>The maximum output value sent to the motors.</td>
+<tr class="row-even"><td>imaxVelocity</td>
+<td>The maximum velocity output value to the motors.</td>
+</tr>
+<tr class="row-odd"><td>imaxVoltage</td>
+<td>The maximum voltage output value to the motors.</td>
 </tr>
 </tbody>
 </table>
@@ -361,7 +365,8 @@ Prototype</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">SkidSteerModel</span> <span class="n">create</span><span class="p">(</span><span class="n">MotorGroup</span> <span class="n">ileftSideMotor</span><span class="p">,</span> <span class="n">MotorGroup</span> <span class="n">irightSideMotor</span><span class="p">,</span>
-                             <span class="k">const</span> <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
+                             <span class="kt">double</span> <span class="n">imaxVelocity</span> <span class="o">=</span> <span class="mi">127</span><span class="p">,</span>
+                             <span class="kt">double</span> <span class="n">imaxVoltage</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -378,13 +383,16 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>ileftSideMotor</td>
-<td>The left side motor.</td>
+<td>The left side motor (also used for controller input).</td>
 </tr>
 <tr class="row-odd"><td>irightSideMotor</td>
-<td>The right side motor.</td>
+<td>The right side motor (also used for controller input).</td>
 </tr>
-<tr class="row-even"><td>imaxOutput</td>
-<td>The maximum output value sent to the motors.</td>
+<tr class="row-even"><td>imaxVelocity</td>
+<td>The maximum velocity output value to the motors.</td>
+</tr>
+<tr class="row-odd"><td>imaxVoltage</td>
+<td>The maximum voltage output value to the motors.</td>
 </tr>
 </tbody>
 </table>
@@ -403,7 +411,8 @@ Prototype</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">SkidSteerModel</span> <span class="n">create</span><span class="p">(</span><span class="n">MotorGroup</span> <span class="n">ileftSideMotor</span><span class="p">,</span> <span class="n">MotorGroup</span> <span class="n">irightSideMotor</span><span class="p">,</span>
                              <span class="n">ADIEncoder</span> <span class="n">ileftEnc</span><span class="p">,</span> <span class="n">ADIEncoder</span> <span class="n">irightEnc</span><span class="p">,</span>
-                             <span class="k">const</span> <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
+                             <span class="kt">double</span> <span class="n">imaxVelocity</span> <span class="o">=</span> <span class="mi">127</span><span class="p">,</span>
+                             <span class="kt">double</span> <span class="n">imaxVoltage</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -433,6 +442,12 @@ Prototype</div>
 </tr>
 <tr class="row-even"><td>imaxOutput</td>
 <td>The maximum output value sent to the motors.</td>
+</tr>
+<tr class="row-odd"><td>imaxVelocity</td>
+<td>The maximum velocity output value to the motors.</td>
+</tr>
+<tr class="row-even"><td>imaxVoltage</td>
+<td>The maximum voltage output value to the motors.</td>
 </tr>
 </tbody>
 </table>
@@ -455,7 +470,8 @@ Prototype</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">XDriveModel</span> <span class="n">create</span><span class="p">(</span><span class="n">Motor</span> <span class="n">itopLeftMotor</span><span class="p">,</span> <span class="n">Motor</span> <span class="n">itopRightMotor</span><span class="p">,</span> <span class="n">Motor</span> <span class="n">ibottomRightMotor</span><span class="p">,</span> <span class="n">Motor</span> <span class="n">ibottomLeftMotor</span><span class="p">,</span>
-                          <span class="k">const</span> <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
+                          <span class="kt">double</span> <span class="n">imaxVelocity</span> <span class="o">=</span> <span class="mi">127</span><span class="p">,</span>
+                          <span class="kt">double</span> <span class="n">imaxVoltage</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -472,10 +488,10 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>itopLeftMotor</td>
-<td>The top left motor.</td>
+<td>The top left motor (also used for controller input).</td>
 </tr>
 <tr class="row-odd"><td>itopRightMotor</td>
-<td>The top right motor.</td>
+<td>The top right motor (also used for controller input).</td>
 </tr>
 <tr class="row-even"><td>ibottomRightMotor</td>
 <td>The bottom right motor.</td>
@@ -483,8 +499,11 @@ Prototype</div>
 <tr class="row-odd"><td>ibottomLeftMotor</td>
 <td>The bottom left motor.</td>
 </tr>
-<tr class="row-even"><td>imaxOutput</td>
-<td>The maximum output value sent to the motors.</td>
+<tr class="row-even"><td>imaxVelocity</td>
+<td>The maximum velocity output value to the motors.</td>
+</tr>
+<tr class="row-odd"><td>imaxVoltage</td>
+<td>The maximum voltage output value to the motors.</td>
 </tr>
 </tbody>
 </table>
@@ -505,7 +524,8 @@ Prototype</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">XDriveModel</span> <span class="n">create</span><span class="p">(</span><span class="n">Motor</span> <span class="n">itopLeftMotor</span><span class="p">,</span> <span class="n">Motor</span> <span class="n">itopRightMotor</span><span class="p">,</span> <span class="n">Motor</span> <span class="n">ibottomRightMotor</span><span class="p">,</span> <span class="n">Motor</span> <span class="n">ibottomLeftMotor</span><span class="p">,</span>
                           <span class="n">ADIEncoder</span> <span class="n">ileftEnc</span><span class="p">,</span> <span class="n">ADIEncoder</span> <span class="n">irightEnc</span><span class="p">,</span>
-                          <span class="k">const</span> <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
+                          <span class="kt">double</span> <span class="n">imaxVelocity</span> <span class="o">=</span> <span class="mi">127</span><span class="p">,</span>
+                          <span class="kt">double</span> <span class="n">imaxVoltage</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -539,8 +559,11 @@ Prototype</div>
 <tr class="row-odd"><td>irightEnc</td>
 <td>The right side encoder.</td>
 </tr>
-<tr class="row-even"><td>imaxOutput</td>
-<td>The maximum output value sent to the motors.</td>
+<tr class="row-even"><td>imaxVelocity</td>
+<td>The maximum velocity output value to the motors.</td>
+</tr>
+<tr class="row-odd"><td>imaxVoltage</td>
+<td>The maximum voltage output value to the motors.</td>
 </tr>
 </tbody>
 </table>
@@ -562,7 +585,8 @@ Prototype</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">ThreeEncoderSkidSteerModel</span> <span class="n">create</span><span class="p">(</span><span class="n">Motor</span> <span class="n">ileftSideMotor</span><span class="p">,</span> <span class="n">Motor</span> <span class="n">irightSideMotor</span><span class="p">,</span>
                                          <span class="n">ADIEncoder</span> <span class="n">ileftEnc</span><span class="p">,</span> <span class="n">ADIEncoder</span> <span class="n">imiddleEnc</span><span class="p">,</span> <span class="n">ADIEncoder</span> <span class="n">irightEnc</span><span class="p">,</span>
-                                         <span class="k">const</span> <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
+                                         <span class="kt">double</span> <span class="n">imaxVelocity</span> <span class="o">=</span> <span class="mi">127</span><span class="p">,</span>
+                                         <span class="kt">double</span> <span class="n">imaxVoltage</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -593,8 +617,11 @@ Prototype</div>
 <tr class="row-even"><td>irightEnc</td>
 <td>The right side encoder.</td>
 </tr>
-<tr class="row-odd"><td>imaxOutput</td>
-<td>The maximum output value sent to the motors.</td>
+<tr class="row-odd"><td>imaxVelocity</td>
+<td>The maximum velocity output value to the motors.</td>
+</tr>
+<tr class="row-even"><td>imaxVoltage</td>
+<td>The maximum voltage output value to the motors.</td>
 </tr>
 </tbody>
 </table>
@@ -613,7 +640,8 @@ Prototype</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">ThreeEncoderSkidSteerModel</span> <span class="n">create</span><span class="p">(</span><span class="n">MotorGroup</span> <span class="n">ileftSideMotor</span><span class="p">,</span> <span class="n">MotorGroup</span> <span class="n">irightSideMotor</span><span class="p">,</span>
                                          <span class="n">ADIEncoder</span> <span class="n">ileftEnc</span><span class="p">,</span> <span class="n">ADIEncoder</span> <span class="n">imiddleEnc</span><span class="p">,</span> <span class="n">ADIEncoder</span> <span class="n">irightEnc</span><span class="p">,</span>
-                                         <span class="k">const</span> <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
+                                         <span class="kt">double</span> <span class="n">imaxVelocity</span> <span class="o">=</span> <span class="mi">127</span><span class="p">,</span>
+                                         <span class="kt">double</span> <span class="n">imaxVoltage</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -644,8 +672,11 @@ Prototype</div>
 <tr class="row-even"><td>irightEnc</td>
 <td>The right side encoder.</td>
 </tr>
-<tr class="row-odd"><td>imaxOutput</td>
-<td>The maximum output value sent to the motors.</td>
+<tr class="row-odd"><td>imaxVelocity</td>
+<td>The maximum velocity output value to the motors.</td>
+</tr>
+<tr class="row-even"><td>imaxVoltage</td>
+<td>The maximum voltage output value to the motors.</td>
 </tr>
 </tbody>
 </table>

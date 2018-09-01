@@ -284,22 +284,11 @@ controller, where the controller automatically reads from the control input.</p>
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-1 docutils container">
-<div class="docutils container">
-Example</div>
-</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">InputType</span><span class="p">,</span> <span class="kr">typename</span> <span class="n">FilterType</span><span class="o">&gt;</span>
-<span class="n">FilteredControllerInput</span><span class="p">(</span><span class="n">InputType</span> <span class="n">iinput</span><span class="p">,</span> <span class="n">FilterType</span> <span class="n">ifilter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">FilteredControllerInput</span><span class="o">&lt;</span><span class="n">ADIEncoder</span><span class="p">,</span> <span class="n">EmaFilter</span><span class="o">&gt;&gt;</span> <span class="n">myInput</span><span class="p">(</span><span class="n">okapi</span><span class="o">::</span><span class="n">ADIEncoder</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-                                                                 <span class="n">okapi</span><span class="o">::</span><span class="n">EmaFilter</span><span class="p">(</span><span class="mf">0.2</span><span class="p">));</span>
-<span class="p">}</span>
+<span class="n">FilteredControllerInput</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ControllerInput</span><span class="o">&lt;</span><span class="n">InputType</span><span class="o">&gt;&gt;</span> <span class="n">iinput</span><span class="p">,</span>
+                        <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">FilterType</span><span class="o">&gt;</span> <span class="n">ifilter</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -333,12 +322,12 @@ Example</div>
 another thread by the controller.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-2 docutils container">
+<div class="active item sphinx-data-tab-1 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">controllerGet</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>

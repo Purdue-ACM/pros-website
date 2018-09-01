@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Moving Autonomously &mdash; PROS for V5 3.0.7 documentation</title>
+  <title>Moving Autonomously &mdash; PROS for V5 3.0.8 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.8 documentation" href="../../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
         <link rel="next" title="Programming the Clawbot" href="clawbot.html"/>
         <link rel="prev" title="Asynchronous Autonomous Movement" href="autonomous-movement-async.html"/>
@@ -87,7 +87,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.7)
+                  V5 (3.0.8)
                 
               </div>
             
@@ -134,9 +134,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/c/index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/cpp/index.html">C++ API</a></li>
 </ul>
-<p class="caption"><span class="caption-text">CLI</span></p>
+<p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul class="current">
@@ -244,11 +245,88 @@ task. OkapiLib makes it easy to get reasonably accurate autonomous movements.</p
 <p>We’ll use a <code class="docutils literal notranslate"><span class="pre">ChassisControllerIntegrated</span></code> for this tutorial, using the V5 motors’ onboard
 PID makes setup a much quicker and easier process (No PID tuning needed!).</p>
 <p>Let’s start by creating the <code class="docutils literal notranslate"><span class="pre">ChassisControllerIntegrated</span></code> with drive motors in ports 1 and 2:</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_MOTOR_LEFT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_MOTOR_RIGHT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="k">auto</span> <span class="n">chassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">DRIVE_MOTOR_LEFT</span><span class="p">,</span> <span class="n">DRIVE_MOTOR_RIGHT</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
 <p>Now that we’ve created a ChassisController, let’s start moving around. There are two fundamental movement types -
 <code class="docutils literal notranslate"><span class="pre">moveDistance()</span></code> and <code class="docutils literal notranslate"><span class="pre">turnAngle()</span></code>, for moving forward/backward and turning on a point.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_MOTOR_LEFT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_MOTOR_RIGHT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">chassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">DRIVE_MOTOR_LEFT</span><span class="p">,</span> <span class="n">DRIVE_MOTOR_RIGHT</span><span class="p">);</span>
+
+  <span class="c1">// Move to first goal</span>
+  <span class="n">chassis</span><span class="p">.</span><span class="n">moveDistance</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="c1">// Turn to face second goal</span>
+  <span class="n">chassis</span><span class="p">.</span><span class="n">turnAngle</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+  <span class="c1">// Drive toward second goal</span>
+  <span class="n">chassis</span><span class="p">.</span><span class="n">moveDistance</span><span class="p">(</span><span class="mi">1500</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
 <p>If you’d like to set movements in real life units, that’s possible as well. Just pass in the
 drive’s gearset and dimensions, and then use the appropriate suffix
 for the units that you would like the movement to occur in.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_MOTOR_LEFT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_MOTOR_RIGHT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">WHEEL_DIAMETER</span> <span class="o">=</span> <span class="mi">4</span><span class="n">_in</span><span class="p">;</span>
+<span class="k">const</span> <span class="k">auto</span> <span class="n">CHASSIS_WIDTH</span> <span class="o">=</span> <span class="mf">13.5</span><span class="n">_in</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">chassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">DRIVE_MOTOR_LEFT</span><span class="p">,</span> <span class="n">DRIVE_MOTOR_RIGHT</span><span class="p">,</span>
+                 <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">red</span><span class="p">,</span> <span class="p">{</span><span class="n">WHEEL_DIAMETER</span><span class="p">,</span> <span class="n">CHASSIS_WIDTH</span><span class="p">});</span>
+
+  <span class="c1">// Move 1 meter to the first goal</span>
+  <span class="n">chassis</span><span class="p">.</span><span class="n">moveDistance</span><span class="p">(</span><span class="mi">1</span><span class="n">_m</span><span class="p">);</span>
+  <span class="c1">// Turn 90 degrees to face second goal</span>
+  <span class="n">chassis</span><span class="p">.</span><span class="n">turnAngle</span><span class="p">(</span><span class="mi">90</span><span class="n">_deg</span><span class="p">);</span>
+  <span class="c1">// Drive 1 and a half feet toward second goal</span>
+  <span class="n">chassis</span><span class="p">.</span><span class="n">moveDistance</span><span class="p">(</span><span class="mf">1.5</span><span class="n">_ft</span><span class="p">);</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 
   <div class="section">
@@ -295,16 +373,16 @@ for the units that you would like the movement to occur in.</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.7)
+      v: V5 (3.0.8)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
-        
           <dd><a href="../../../index.html">V5</a></dd>
+        
+          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
         
       </dl>
     </div>
@@ -316,7 +394,7 @@ for the units that you would like the movement to occur in.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3.0.7',
+            VERSION:'3.0.8',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

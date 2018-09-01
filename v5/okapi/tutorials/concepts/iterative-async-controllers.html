@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Iterative and Async Controllers &mdash; PROS for V5 3.0.7 documentation</title>
+  <title>Iterative and Async Controllers &mdash; PROS for V5 3.0.8 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.8 documentation" href="../../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
         <link rel="next" title="SettledUtils" href="settled-util.html"/>
         <link rel="prev" title="Filtering" href="filtering.html"/>
@@ -87,7 +87,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.7)
+                  V5 (3.0.8)
                 
               </div>
             
@@ -134,9 +134,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/c/index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/cpp/index.html">C++ API</a></li>
 </ul>
-<p class="caption"><span class="caption-text">CLI</span></p>
+<p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul class="current">
@@ -248,7 +249,7 @@ but one will likely be better than the other for your particular preference with
 <div class="section" id="iterative-controllers">
 <h2>Iterative Controllers<a class="headerlink" href="#iterative-controllers" title="Permalink to this headline">¶</a></h2>
 <p><strong>Iterative Controllers</strong> operate <strong>discretely</strong>, meaning that an Iterative Controller will produce an output for the
-given input <em>at a single instance in time</em>
+given input <em>at a single point in time</em>
 (see <a class="reference external" href="../../api/control/iterative/abstract-iterative-controller.html#step">IterativeController::step()</a>).
 If you want to execute a full movement for a system with an Iterative Controller,
 you will need to write a loop that runs <code class="docutils literal notranslate"><span class="pre">IterativeController::step()</span></code> repeatedly until the movement is finished.</p>
@@ -270,14 +271,18 @@ you will need to write a loop that runs <code class="docutils literal notranslat
 15
 16
 17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">double</span> <span class="n">kP</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+18
+19
+20</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">double</span> <span class="n">kP</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">double</span> <span class="n">kI</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">double</span> <span class="n">kD</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">MOTOR_PORT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">double</span> <span class="n">TARGET</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">;</span>
 
-<span class="k">auto</span> <span class="n">exampleController</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">IterativeControllerFactory</span><span class="o">::</span><span class="n">posPID</span><span class="p">(</span><span class="n">kP</span><span class="p">,</span> <span class="n">kI</span><span class="p">,</span> <span class="n">kD</span><span class="p">);</span>
-<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">exampleMotor</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+<span class="k">auto</span> <span class="n">exampleController</span> <span class="o">=</span> <span class="n">IterativeControllerFactory</span><span class="o">::</span><span class="n">posPID</span><span class="p">(</span><span class="n">kP</span><span class="p">,</span> <span class="n">kI</span><span class="p">,</span> <span class="n">kD</span><span class="p">);</span>
+<span class="n">Motor</span> <span class="nf">exampleMotor</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
 
 <span class="c1">// Execute the movement</span>
 <span class="n">exampleController</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="n">TARGET</span><span class="p">);</span>
@@ -286,7 +291,7 @@ you will need to write a loop that runs <code class="docutils literal notranslat
   <span class="kt">double</span> <span class="n">newOutput</span> <span class="o">=</span> <span class="n">exampleController</span><span class="p">.</span><span class="n">step</span><span class="p">(</span><span class="n">newInput</span><span class="p">);</span>
   <span class="n">exampleMotor</span><span class="p">.</span><span class="n">controllerSet</span><span class="p">(</span><span class="n">newOutput</span><span class="p">);</span>
 
-  <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// run the control loop at 10ms intervals</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span> <span class="c1">// Run the control loop at 10ms intervals</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -298,7 +303,7 @@ which means practically that you can have multiple movements by multiple control
 Each Async Controller operates in its own task, so starting a movement for one Async Controller won’t prevent another
 Async Controller (or Iterative Controller) from running immediately thereafter.</p>
 <p>You don’t need to run a loop to generate and set the controller output like with an Iterative Controller, and blocking further
-movements until an Async Controller’s movement is done is as simple as a call to <code class="docutils literal notranslate"><span class="pre">okapi::AsyncController::waitUntilSettled()</span></code>.</p>
+movements until an Async Controller’s movement is done is as simple as a call to <code class="docutils literal notranslate"><span class="pre">AsyncController::waitUntilSettled()</span></code>.</p>
 <p>An example movement:</p>
 <div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -311,14 +316,16 @@ movements until an Async Controller’s movement is done is as simple as a call 
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="kt">double</span> <span class="n">kP</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">double</span> <span class="n">kP</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">double</span> <span class="n">kI</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">double</span> <span class="n">kD</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">MOTOR_PORT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">double</span> <span class="n">TARGET</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">;</span>
 
-<span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="n">exampleMotor</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
-<span class="k">auto</span> <span class="n">exampleController</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">AsyncControllerFactory</span><span class="o">::</span><span class="n">posPID</span><span class="p">(</span><span class="n">exampleMotor</span><span class="p">,</span> <span class="n">kP</span><span class="p">,</span> <span class="n">kI</span><span class="p">,</span> <span class="n">kD</span><span class="p">);</span>
+<span class="k">auto</span> <span class="n">exampleController</span> <span class="o">=</span> <span class="n">AsyncControllerFactory</span><span class="o">::</span><span class="n">posPID</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span> <span class="n">kP</span><span class="p">,</span> <span class="n">kI</span><span class="p">,</span> <span class="n">kD</span><span class="p">);</span>
 
 <span class="c1">// Execute the movement</span>
 <span class="n">exampleController</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="n">TARGET</span><span class="p">);</span>
@@ -383,16 +390,16 @@ an Iterative Controller.</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.7)
+      v: V5 (3.0.8)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
-        
           <dd><a href="../../../index.html">V5</a></dd>
+        
+          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
         
       </dl>
     </div>
@@ -404,7 +411,7 @@ an Iterative Controller.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3.0.7',
+            VERSION:'3.0.8',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

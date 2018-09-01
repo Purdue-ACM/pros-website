@@ -162,12 +162,8 @@
 <li class="toctree-l3"><a class="reference internal" href="abstract-read-only-chassis-model.html">(Abstract) Read-Only Chassis Model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="chassis-model-factory.html">Chassis Model Factory</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Skid-Steer Model</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#okapi-skidsteermodelargs">okapi::SkidSteerModelArgs</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
-</ul>
-</li>
 <li class="toctree-l4"><a class="reference internal" href="#okapi-skidsteermodel">okapi::SkidSteerModel</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id1">Constructor(s)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#methods">Methods</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#forward">forward</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#drivevector">driveVector</a></li>
@@ -182,6 +178,10 @@
 <li class="toctree-l6"><a class="reference internal" href="#setbrakemode">setBrakeMode</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setencoderunits">setEncoderUnits</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setgearing">setGearing</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#setpospid">setPosPID</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#setpospidfull">setPosPIDFull</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#setvelpid">setVelPID</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#setvelpidfull">setVelPIDFull</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#getleftsidemotor">getLeftSideMotor</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#getrightsidemotor">getRightSideMotor</a></li>
 </ul>
@@ -280,40 +280,45 @@
 <h1>Skid-Steer Model<a class="headerlink" href="#skid-steer-model" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#okapi-skidsteermodelargs" id="id2">okapi::SkidSteerModelArgs</a><ul>
-<li><a class="reference internal" href="#constructor-s" id="id3">Constructor(s)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#okapi-skidsteermodel" id="id4">okapi::SkidSteerModel</a><ul>
-<li><a class="reference internal" href="#id1" id="id5">Constructor(s)</a></li>
-<li><a class="reference internal" href="#methods" id="id6">Methods</a><ul>
-<li><a class="reference internal" href="#forward" id="id7">forward</a></li>
-<li><a class="reference internal" href="#drivevector" id="id8">driveVector</a></li>
-<li><a class="reference internal" href="#rotate" id="id9">rotate</a></li>
-<li><a class="reference internal" href="#stop" id="id10">stop</a></li>
-<li><a class="reference internal" href="#tank" id="id11">tank</a></li>
-<li><a class="reference internal" href="#arcade" id="id12">arcade</a></li>
-<li><a class="reference internal" href="#left" id="id13">left</a></li>
-<li><a class="reference internal" href="#right" id="id14">right</a></li>
-<li><a class="reference internal" href="#getsensorvals" id="id15">getSensorVals</a></li>
-<li><a class="reference internal" href="#resetsensors" id="id16">resetSensors</a></li>
-<li><a class="reference internal" href="#setbrakemode" id="id17">setBrakeMode</a></li>
-<li><a class="reference internal" href="#setencoderunits" id="id18">setEncoderUnits</a></li>
-<li><a class="reference internal" href="#setgearing" id="id19">setGearing</a></li>
-<li><a class="reference internal" href="#getleftsidemotor" id="id20">getLeftSideMotor</a></li>
-<li><a class="reference internal" href="#getrightsidemotor" id="id21">getRightSideMotor</a></li>
+<li><a class="reference internal" href="#okapi-skidsteermodel" id="id1">okapi::SkidSteerModel</a><ul>
+<li><a class="reference internal" href="#constructor-s" id="id2">Constructor(s)</a></li>
+<li><a class="reference internal" href="#methods" id="id3">Methods</a><ul>
+<li><a class="reference internal" href="#forward" id="id4">forward</a></li>
+<li><a class="reference internal" href="#drivevector" id="id5">driveVector</a></li>
+<li><a class="reference internal" href="#rotate" id="id6">rotate</a></li>
+<li><a class="reference internal" href="#stop" id="id7">stop</a></li>
+<li><a class="reference internal" href="#tank" id="id8">tank</a></li>
+<li><a class="reference internal" href="#arcade" id="id9">arcade</a></li>
+<li><a class="reference internal" href="#left" id="id10">left</a></li>
+<li><a class="reference internal" href="#right" id="id11">right</a></li>
+<li><a class="reference internal" href="#getsensorvals" id="id12">getSensorVals</a></li>
+<li><a class="reference internal" href="#resetsensors" id="id13">resetSensors</a></li>
+<li><a class="reference internal" href="#setbrakemode" id="id14">setBrakeMode</a></li>
+<li><a class="reference internal" href="#setencoderunits" id="id15">setEncoderUnits</a></li>
+<li><a class="reference internal" href="#setgearing" id="id16">setGearing</a></li>
+<li><a class="reference internal" href="#setpospid" id="id17">setPosPID</a></li>
+<li><a class="reference internal" href="#setpospidfull" id="id18">setPosPIDFull</a></li>
+<li><a class="reference internal" href="#setvelpid" id="id19">setVelPID</a></li>
+<li><a class="reference internal" href="#setvelpidfull" id="id20">setVelPIDFull</a></li>
+<li><a class="reference internal" href="#getleftsidemotor" id="id21">getLeftSideMotor</a></li>
+<li><a class="reference internal" href="#getrightsidemotor" id="id22">getRightSideMotor</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="okapi-skidsteermodelargs">
-<h2><a class="toc-backref" href="#id2">okapi::SkidSteerModelArgs</a><a class="headerlink" href="#okapi-skidsteermodelargs" title="Permalink to this headline">¶</a></h2>
-<p>Data class for the arguments to <code class="docutils literal notranslate"><span class="pre">SkidSteerModel</span></code>.</p>
+<div class="section" id="okapi-skidsteermodel">
+<h2><a class="toc-backref" href="#id1">okapi::SkidSteerModel</a><a class="headerlink" href="#okapi-skidsteermodel" title="Permalink to this headline">¶</a></h2>
+<p>The model for a skid-steer chassis. If you are trying to make an instance of this class, you should
+most likely be creating a type of
+<a class="reference external" href="../controller/abstract-chassis-controller.html">ChassisController</a> instead. If you really do
+mean to make an instance of a
+<a class="reference external" href="abstract-chassis-model.html">ChassisModel</a>, then you should probably be using the
+<a class="reference external" href="chassis-model-factory.html">ChassisModelFactory</a> instead of a constructor from this class.</p>
 <div class="section" id="constructor-s">
-<h3><a class="toc-backref" href="#id3">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
-<p>This constructor infers the encoders from the left side and right side motors.</p>
+<h3><a class="toc-backref" href="#id2">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
+<p>This constructor infers the encoders from the motors.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-0 docutils container">
@@ -322,9 +327,10 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">SkidSteerModelArgs</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">ileftSideMotor</span><span class="p">,</span>
-                   <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">irightSideMotor</span><span class="p">,</span>
-                   <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">SkidSteerModel</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">ileftSideMotor</span><span class="p">,</span>
+               <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">irightSideMotor</span><span class="p">,</span>
+               <span class="kt">double</span> <span class="n">imaxVelocity</span> <span class="o">=</span> <span class="mi">127</span><span class="p">,</span>
+               <span class="kt">double</span> <span class="n">imaxVoltage</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -346,8 +352,11 @@ Prototype</div>
 <tr class="row-odd"><td>irightSideMotor</td>
 <td>The right side motor.</td>
 </tr>
-<tr class="row-even"><td>imaxOutput</td>
-<td>The maximum output value to the motors.</td>
+<tr class="row-even"><td>imaxVelocity</td>
+<td>The maximum velocity output value to the motors.</td>
+</tr>
+<tr class="row-odd"><td>imaxVoltage</td>
+<td>The maximum voltage output value to the motors.</td>
 </tr>
 </tbody>
 </table>
@@ -360,11 +369,12 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">SkidSteerModelArgs</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">ileftSideMotor</span><span class="p">,</span>
-                   <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">irightSideMotor</span><span class="p">,</span>
-                   <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ContinuousRotarySensor</span><span class="o">&gt;</span> <span class="n">ileftEnc</span><span class="p">,</span>
-                   <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ContinuousRotarySensor</span><span class="o">&gt;</span> <span class="n">irightEnc</span><span class="p">,</span>
-                   <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">SkidSteerModel</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">ileftSideMotor</span><span class="p">,</span>
+               <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">irightSideMotor</span><span class="p">,</span>
+               <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ContinuousRotarySensor</span><span class="o">&gt;</span> <span class="n">ileftEnc</span><span class="p">,</span>
+               <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ContinuousRotarySensor</span><span class="o">&gt;</span> <span class="n">irightEnc</span><span class="p">,</span>
+               <span class="kt">double</span> <span class="n">imaxVelocity</span> <span class="o">=</span> <span class="mi">127</span><span class="p">,</span>
+               <span class="kt">double</span> <span class="n">imaxVoltage</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -392,25 +402,14 @@ Prototype</div>
 <tr class="row-odd"><td>irightEnc</td>
 <td>The right side encoder.</td>
 </tr>
-<tr class="row-even"><td>imaxOutput</td>
-<td>The maximum output value to the motors.</td>
+<tr class="row-even"><td>imaxVelocity</td>
+<td>The maximum velocity output value to the motors.</td>
+</tr>
+<tr class="row-odd"><td>imaxVoltage</td>
+<td>The maximum voltage output value to the motors.</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="okapi-skidsteermodel">
-<h2><a class="toc-backref" href="#id4">okapi::SkidSteerModel</a><a class="headerlink" href="#okapi-skidsteermodel" title="Permalink to this headline">¶</a></h2>
-<p>The model for a skid-steer chassis. If you are trying to make an instance of this class, you should
-most likely be creating a type of
-<a class="reference external" href="../controller/abstract-chassis-controller.html">ChassisController</a> instead. If you really do
-mean to make an instance of a
-<a class="reference external" href="abstract-chassis-model.html">ChassisModel</a>, then you should probably be using the
-<a class="reference external" href="chassis-model-factory.html">ChassisModelFactory</a> instead of a constructor from this class.</p>
-<div class="section" id="id1">
-<h3><a class="toc-backref" href="#id5">Constructor(s)</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>This constructor infers the encoders from the motors.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-2 docutils container">
@@ -419,118 +418,6 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">SkidSteerModel</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">ileftSideMotor</span><span class="p">,</span>
-               <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">irightSideMotor</span><span class="p">,</span>
-               <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>ileftSideMotor</td>
-<td>The left side motor.</td>
-</tr>
-<tr class="row-odd"><td>irightSideMotor</td>
-<td>The right side motor.</td>
-</tr>
-<tr class="row-even"><td>imaxOutput</td>
-<td>The maximum output value to the motors.</td>
-</tr>
-</tbody>
-</table>
-<p>This constructor does not infer the encoders from the motors, and instead takes explicitly specified encoders.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-3 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">SkidSteerModel</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">ileftSideMotor</span><span class="p">,</span>
-               <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">irightSideMotor</span><span class="p">,</span>
-               <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ContinuousRotarySensor</span><span class="o">&gt;</span> <span class="n">ileftEnc</span><span class="p">,</span>
-               <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ContinuousRotarySensor</span><span class="o">&gt;</span> <span class="n">irightEnc</span><span class="p">,</span>
-               <span class="kt">double</span> <span class="n">imaxOutput</span> <span class="o">=</span> <span class="mi">127</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>ileftSideMotor</td>
-<td>The left side motor.</td>
-</tr>
-<tr class="row-odd"><td>irightSideMotor</td>
-<td>The right side motor.</td>
-</tr>
-<tr class="row-even"><td>ileftEnc</td>
-<td>The left side encoder.</td>
-</tr>
-<tr class="row-odd"><td>irightEnc</td>
-<td>The right side encoder.</td>
-</tr>
-<tr class="row-even"><td>imaxOutput</td>
-<td>The maximum output value to the motors.</td>
-</tr>
-</tbody>
-</table>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-4 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">explicit</span> <span class="n">SkidSteerModel</span><span class="p">(</span><span class="k">const</span> <span class="n">SkidSteerModelArgs</span> <span class="o">&amp;</span><span class="n">iparams</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>iparams</td>
-<td>The <code class="docutils literal notranslate"><span class="pre">SkidSteerModel</span></code> arguments.</td>
-</tr>
-</tbody>
-</table>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-5 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">SkidSteerModel</span><span class="p">(</span><span class="k">const</span> <span class="n">SkidSteerModel</span> <span class="o">&amp;</span><span class="n">other</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -554,18 +441,18 @@ Prototype</div>
 </table>
 </div>
 <div class="section" id="methods">
-<h3><a class="toc-backref" href="#id6">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id3">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="forward">
-<h4><a class="toc-backref" href="#id7">forward</a><a class="headerlink" href="#forward" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id4">forward</a><a class="headerlink" href="#forward" title="Permalink to this headline">¶</a></h4>
 <p>Drives the robot forwards (using open-loop control).</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-6 docutils container">
+<div class="active item sphinx-data-tab-3 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">forward</span><span class="p">(</span><span class="kt">double</span> <span class="n">ispeed</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -590,7 +477,7 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="drivevector">
-<h4><a class="toc-backref" href="#id8">driveVector</a><a class="headerlink" href="#drivevector" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id5">driveVector</a><a class="headerlink" href="#drivevector" title="Permalink to this headline">¶</a></h4>
 <p>Drives the robot in an arc (using open-loop control).</p>
 <p>The algorithm is (approximately):</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">leftPower</span> <span class="o">=</span> <span class="n">ySpeed</span> <span class="o">+</span> <span class="n">zRotation</span>
@@ -599,12 +486,12 @@ Prototype</div>
 </div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-7 docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">driveVector</span><span class="p">(</span><span class="kt">double</span> <span class="n">iySpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">izRotation</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -632,16 +519,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="rotate">
-<h4><a class="toc-backref" href="#id9">rotate</a><a class="headerlink" href="#rotate" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id6">rotate</a><a class="headerlink" href="#rotate" title="Permalink to this headline">¶</a></h4>
 <p>Turns the robot clockwise (using open-loop control).</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-8 docutils container">
+<div class="active item sphinx-data-tab-5 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">rotate</span><span class="p">(</span><span class="kt">double</span> <span class="n">ispeed</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -666,17 +553,17 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="stop">
-<h4><a class="toc-backref" href="#id10">stop</a><a class="headerlink" href="#stop" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id7">stop</a><a class="headerlink" href="#stop" title="Permalink to this headline">¶</a></h4>
 <p>Stops the robot (set all the motors to <code class="docutils literal notranslate"><span class="pre">0</span></code>).</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-9 docutils container">
+<div class="active item sphinx-data-tab-6 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">stop</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">stop</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
@@ -684,16 +571,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="tank">
-<h4><a class="toc-backref" href="#id11">tank</a><a class="headerlink" href="#tank" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id8">tank</a><a class="headerlink" href="#tank" title="Permalink to this headline">¶</a></h4>
 <p>Drives the robot with a tank drive layout. Uses voltage mode.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-10 docutils container">
+<div class="active item sphinx-data-tab-7 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">tank</span><span class="p">(</span><span class="kt">double</span> <span class="n">ileftSpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">irightSpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ithreshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span>
 </pre></div>
 </div>
@@ -724,16 +611,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="arcade">
-<h4><a class="toc-backref" href="#id12">arcade</a><a class="headerlink" href="#arcade" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id9">arcade</a><a class="headerlink" href="#arcade" title="Permalink to this headline">¶</a></h4>
 <p>Drives the robot with an arcade drive layout. Uses voltage mode.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-11 docutils container">
+<div class="active item sphinx-data-tab-8 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">arcade</span><span class="p">(</span><span class="kt">double</span> <span class="n">iySpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">izRotation</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ithreshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -764,16 +651,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="left">
-<h4><a class="toc-backref" href="#id13">left</a><a class="headerlink" href="#left" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id10">left</a><a class="headerlink" href="#left" title="Permalink to this headline">¶</a></h4>
 <p>Powers the left side motors.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-12 docutils container">
+<div class="active item sphinx-data-tab-9 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">left</span><span class="p">(</span><span class="kt">double</span> <span class="n">ispeed</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -798,16 +685,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="right">
-<h4><a class="toc-backref" href="#id14">right</a><a class="headerlink" href="#right" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id11">right</a><a class="headerlink" href="#right" title="Permalink to this headline">¶</a></h4>
 <p>Powers the right side motors.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-13 docutils container">
+<div class="active item sphinx-data-tab-10 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">right</span><span class="p">(</span><span class="kt">double</span> <span class="n">ispeed</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -832,16 +719,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="getsensorvals">
-<h4><a class="toc-backref" href="#id15">getSensorVals</a><a class="headerlink" href="#getsensorvals" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id12">getSensorVals</a><a class="headerlink" href="#getsensorvals" title="Permalink to this headline">¶</a></h4>
 <p>Returns the current sensor values. Ideally, return the values in the format <code class="docutils literal notranslate"><span class="pre">{left,</span> <span class="pre">right,</span> <span class="pre">...}</span></code>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-14 docutils container">
+<div class="active item sphinx-data-tab-11 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">valarray</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span><span class="o">&gt;</span> <span class="n">getSensorVals</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -851,16 +738,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="resetsensors">
-<h4><a class="toc-backref" href="#id16">resetSensors</a><a class="headerlink" href="#resetsensors" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id13">resetSensors</a><a class="headerlink" href="#resetsensors" title="Permalink to this headline">¶</a></h4>
 <p>Resets the sensors to their zero point.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-15 docutils container">
+<div class="active item sphinx-data-tab-12 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">resetSensors</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -869,16 +756,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="setbrakemode">
-<h4><a class="toc-backref" href="#id17">setBrakeMode</a><a class="headerlink" href="#setbrakemode" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id14">setBrakeMode</a><a class="headerlink" href="#setbrakemode" title="Permalink to this headline">¶</a></h4>
 <p>Sets the brake mode for each motor.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-16 docutils container">
+<div class="active item sphinx-data-tab-13 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">setBrakeMode</span><span class="p">(</span><span class="k">const</span> <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">brakeMode</span> <span class="n">mode</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -903,16 +790,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="setencoderunits">
-<h4><a class="toc-backref" href="#id18">setEncoderUnits</a><a class="headerlink" href="#setencoderunits" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id15">setEncoderUnits</a><a class="headerlink" href="#setencoderunits" title="Permalink to this headline">¶</a></h4>
 <p>Sets the encoder units for each motor.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-17 docutils container">
+<div class="active item sphinx-data-tab-14 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">setEncoderUnits</span><span class="p">(</span><span class="n">AbstractMotor</span><span class="o">::</span><span class="n">encoderUnits</span> <span class="n">units</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -937,16 +824,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="setgearing">
-<h4><a class="toc-backref" href="#id19">setGearing</a><a class="headerlink" href="#setgearing" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id16">setGearing</a><a class="headerlink" href="#setgearing" title="Permalink to this headline">¶</a></h4>
 <p>Sets the gearset for each motor.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-18 docutils container">
+<div class="active item sphinx-data-tab-15 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">setGearing</span><span class="p">(</span><span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span> <span class="n">gearset</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -970,9 +857,151 @@ Prototype</div>
 </table>
 </div>
 <hr class="docutils" />
-<div class="section" id="getleftsidemotor">
-<h4><a class="toc-backref" href="#id20">getLeftSideMotor</a><a class="headerlink" href="#getleftsidemotor" title="Permalink to this headline">¶</a></h4>
-<p>Returns the left side motor.</p>
+<div class="section" id="setpospid">
+<h4><a class="toc-backref" href="#id17">setPosPID</a><a class="headerlink" href="#setpospid" title="Permalink to this headline">¶</a></h4>
+<p>Sets new PID constants.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-16 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">setPosPID</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikF</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikI</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ikF</td>
+<td>The feed-forward constant.</td>
+</tr>
+<tr class="row-odd"><td>ikP</td>
+<td>The proportional constant.</td>
+</tr>
+<tr class="row-even"><td>ikI</td>
+<td>The integral constant.</td>
+</tr>
+<tr class="row-odd"><td>ikD</td>
+<td>The derivative constant.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="setpospidfull">
+<h4><a class="toc-backref" href="#id18">setPosPIDFull</a><a class="headerlink" href="#setpospidfull" title="Permalink to this headline">¶</a></h4>
+<p>Sets new PID constants.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-17 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">setPosPID</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikF</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikI</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span>
+               <span class="kt">double</span> <span class="n">ifilter</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ilimit</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ithreshold</span><span class="p">,</span> <span class="kt">double</span> <span class="n">iloopSpeed</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ikF</td>
+<td>The feed-forward constant.</td>
+</tr>
+<tr class="row-odd"><td>ikP</td>
+<td>The proportional constant.</td>
+</tr>
+<tr class="row-even"><td>ikI</td>
+<td>The integral constant.</td>
+</tr>
+<tr class="row-odd"><td>ikD</td>
+<td>The derivative constant.</td>
+</tr>
+<tr class="row-even"><td>ifilter</td>
+<td>A constant used for filtering the profile acceleration.</td>
+</tr>
+<tr class="row-odd"><td>ilimit</td>
+<td>The integral limit.</td>
+</tr>
+<tr class="row-even"><td>ithreshold</td>
+<td>The threshold for determining if a position movement has reached its goal.</td>
+</tr>
+<tr class="row-odd"><td>iloopSpeed</td>
+<td>The rate at which the PID computation is run (in ms).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="setvelpid">
+<h4><a class="toc-backref" href="#id19">setVelPID</a><a class="headerlink" href="#setvelpid" title="Permalink to this headline">¶</a></h4>
+<p>Sets new PID constants.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-18 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">setPosPID</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikF</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikI</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ikF</td>
+<td>The feed-forward constant.</td>
+</tr>
+<tr class="row-odd"><td>ikP</td>
+<td>The proportional constant.</td>
+</tr>
+<tr class="row-even"><td>ikI</td>
+<td>The integral constant.</td>
+</tr>
+<tr class="row-odd"><td>ikD</td>
+<td>The derivative constant.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="setvelpidfull">
+<h4><a class="toc-backref" href="#id20">setVelPIDFull</a><a class="headerlink" href="#setvelpidfull" title="Permalink to this headline">¶</a></h4>
+<p>Sets new PID constants.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-19 docutils container">
@@ -981,16 +1010,54 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">getLeftSideMotor</span><span class="p">()</span> <span class="k">const</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">setPosPID</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikF</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikI</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span>
+               <span class="kt">double</span> <span class="n">ifilter</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ilimit</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ithreshold</span><span class="p">,</span> <span class="kt">double</span> <span class="n">iloopSpeed</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
 </div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ikF</td>
+<td>The feed-forward constant.</td>
+</tr>
+<tr class="row-odd"><td>ikP</td>
+<td>The proportional constant.</td>
+</tr>
+<tr class="row-even"><td>ikI</td>
+<td>The integral constant.</td>
+</tr>
+<tr class="row-odd"><td>ikD</td>
+<td>The derivative constant.</td>
+</tr>
+<tr class="row-even"><td>ifilter</td>
+<td>A constant used for filtering the profile acceleration.</td>
+</tr>
+<tr class="row-odd"><td>ilimit</td>
+<td>The integral limit.</td>
+</tr>
+<tr class="row-even"><td>ithreshold</td>
+<td>The threshold for determining if a position movement has reached its goal.</td>
+</tr>
+<tr class="row-odd"><td>iloopSpeed</td>
+<td>The rate at which the PID computation is run (in ms).</td>
+</tr>
+</tbody>
+</table>
 </div>
 <hr class="docutils" />
-<div class="section" id="getrightsidemotor">
-<h4><a class="toc-backref" href="#id21">getRightSideMotor</a><a class="headerlink" href="#getrightsidemotor" title="Permalink to this headline">¶</a></h4>
-<p>Returns the right side motor.</p>
+<div class="section" id="getleftsidemotor">
+<h4><a class="toc-backref" href="#id21">getLeftSideMotor</a><a class="headerlink" href="#getleftsidemotor" title="Permalink to this headline">¶</a></h4>
+<p>Returns the left side motor.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-20 docutils container">
@@ -999,6 +1066,24 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">getLeftSideMotor</span><span class="p">()</span> <span class="k">const</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="getrightsidemotor">
+<h4><a class="toc-backref" href="#id22">getRightSideMotor</a><a class="headerlink" href="#getrightsidemotor" title="Permalink to this headline">¶</a></h4>
+<p>Returns the right side motor.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-21 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">AbstractMotor</span><span class="o">&gt;</span> <span class="n">getRightSideMotor</span><span class="p">()</span> <span class="k">const</span>
 </pre></div>
 </div>

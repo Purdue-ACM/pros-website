@@ -160,6 +160,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Utility API</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="abstract-abstract-rate.html">(Abstract) Abstract Rate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="abstract-abstract-timer.html">(Abstract) Abstract Timer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging.html">Logging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="math-util.html">Math Utilities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rate.html">Rate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="supplier.html">Supplier</a></li>
@@ -170,16 +171,6 @@
 <li class="toctree-l5"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#methods">Methods</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#millis">millis</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#getdt">getDt</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#getstartingtime">getStartingTime</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#getdtfromstart">getDtFromStart</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#placemark">placeMark</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#placehardmark">placeHardMark</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#clearhardmark">clearHardMark</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#getdtfrommark">getDtFromMark</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#getdtfromhardmark">getDtFromHardMark</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#repeat">repeat</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id1">repeat</a></li>
 </ul>
 </li>
 </ul>
@@ -269,20 +260,10 @@
 <h1>Timer<a class="headerlink" href="#timer" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#okapi-timer" id="id2">okapi::Timer</a><ul>
-<li><a class="reference internal" href="#constructor-s" id="id3">Constructor(s)</a></li>
-<li><a class="reference internal" href="#methods" id="id4">Methods</a><ul>
-<li><a class="reference internal" href="#millis" id="id5">millis</a></li>
-<li><a class="reference internal" href="#getdt" id="id6">getDt</a></li>
-<li><a class="reference internal" href="#getstartingtime" id="id7">getStartingTime</a></li>
-<li><a class="reference internal" href="#getdtfromstart" id="id8">getDtFromStart</a></li>
-<li><a class="reference internal" href="#placemark" id="id9">placeMark</a></li>
-<li><a class="reference internal" href="#placehardmark" id="id10">placeHardMark</a></li>
-<li><a class="reference internal" href="#clearhardmark" id="id11">clearHardMark</a></li>
-<li><a class="reference internal" href="#getdtfrommark" id="id12">getDtFromMark</a></li>
-<li><a class="reference internal" href="#getdtfromhardmark" id="id13">getDtFromHardMark</a></li>
-<li><a class="reference internal" href="#repeat" id="id14">repeat</a></li>
-<li><a class="reference internal" href="#id1" id="id15">repeat</a></li>
+<li><a class="reference internal" href="#okapi-timer" id="id1">okapi::Timer</a><ul>
+<li><a class="reference internal" href="#constructor-s" id="id2">Constructor(s)</a></li>
+<li><a class="reference internal" href="#methods" id="id3">Methods</a><ul>
+<li><a class="reference internal" href="#millis" id="id4">millis</a></li>
 </ul>
 </li>
 </ul>
@@ -290,11 +271,11 @@
 </ul>
 </div>
 <div class="section" id="okapi-timer">
-<h2><a class="toc-backref" href="#id2">okapi::Timer</a><a class="headerlink" href="#okapi-timer" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id1">okapi::Timer</a><a class="headerlink" href="#okapi-timer" title="Permalink to this headline">¶</a></h2>
 <p>An <a class="reference external" href="abstract-abstract-timer.html">AbstractTimer</a> which uses the PROS kernel for its
 implementation.</p>
 <div class="section" id="constructor-s">
-<h3><a class="toc-backref" href="#id3">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id2">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-0 docutils container">
@@ -311,9 +292,9 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="methods">
-<h3><a class="toc-backref" href="#id4">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id3">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="millis">
-<h4><a class="toc-backref" href="#id5">millis</a><a class="headerlink" href="#millis" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id4">millis</a><a class="headerlink" href="#millis" title="Permalink to this headline">¶</a></h4>
 <p>Returns the current time in units of <code class="docutils literal notranslate"><span class="pre">QTime</span></code>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -329,263 +310,6 @@ Prototype</div>
 </div>
 </div>
 <p><strong>Returns:</strong> The current time in units of <code class="docutils literal notranslate"><span class="pre">QTime</span></code>.</p>
-</div>
-<div class="section" id="getdt">
-<h4><a class="toc-backref" href="#id6">getDt</a><a class="headerlink" href="#getdt" title="Permalink to this headline">¶</a></h4>
-<p>Returns the time passed in ms since the previous call of this function.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-2 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QTime</span> <span class="n">getDt</span><span class="p">()</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Returns:</strong> The time passed in ms since the previous call of this function.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="getstartingtime">
-<h4><a class="toc-backref" href="#id7">getStartingTime</a><a class="headerlink" href="#getstartingtime" title="Permalink to this headline">¶</a></h4>
-<p>Returns the time the timer was first constructed.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-3 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QTime</span> <span class="n">getStartingTime</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Returns:</strong> The time the timer was first constructed.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="getdtfromstart">
-<h4><a class="toc-backref" href="#id8">getDtFromStart</a><a class="headerlink" href="#getdtfromstart" title="Permalink to this headline">¶</a></h4>
-<p>Returns the time since the timer was first constructed.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-4 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QTime</span> <span class="n">getDtFromStart</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Returns:</strong> The time since the timer was first constructed.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="placemark">
-<h4><a class="toc-backref" href="#id9">placeMark</a><a class="headerlink" href="#placemark" title="Permalink to this headline">¶</a></h4>
-<p>Place a time marker. Placing another marker will overwrite the previous one.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-5 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">placeMark</span><span class="p">()</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="placehardmark">
-<h4><a class="toc-backref" href="#id10">placeHardMark</a><a class="headerlink" href="#placehardmark" title="Permalink to this headline">¶</a></h4>
-<p>Place a hard time marker. Placing another hard marker will not overwrite the previous one; instead, call <code class="docutils literal notranslate"><span class="pre">clearHardMark()</span></code> and then place another.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-6 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">placeHardMark</span><span class="p">()</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="clearhardmark">
-<h4><a class="toc-backref" href="#id11">clearHardMark</a><a class="headerlink" href="#clearhardmark" title="Permalink to this headline">¶</a></h4>
-<p>Clears the hard marker.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-7 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QTime</span> <span class="n">clearHardMark</span><span class="p">()</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Returns:</strong> The old hard marker.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="getdtfrommark">
-<h4><a class="toc-backref" href="#id12">getDtFromMark</a><a class="headerlink" href="#getdtfrommark" title="Permalink to this headline">¶</a></h4>
-<p>Returns the time since the time marker.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-8 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QTime</span> <span class="n">getDtFromMark</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Returns:</strong> The time since the time marker.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="getdtfromhardmark">
-<h4><a class="toc-backref" href="#id13">getDtFromHardMark</a><a class="headerlink" href="#getdtfromhardmark" title="Permalink to this headline">¶</a></h4>
-<p>Returns the time since the hard time marker.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-9 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">QTime</span> <span class="n">getDtFromHardMark</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Returns:</strong> The time since the hard time marker.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="repeat">
-<h4><a class="toc-backref" href="#id14">repeat</a><a class="headerlink" href="#repeat" title="Permalink to this headline">¶</a></h4>
-<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the input time period has passed, then resets. Meant to be used in loops to
-run an action every time period without blocking.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-10 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-<div class="item sphinx-data-tab-11 docutils container">
-<div class="docutils container">
-Example</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">bool</span> <span class="n">repeat</span><span class="p">(</span><span class="k">const</span> <span class="n">QTime</span> <span class="n">time</span><span class="p">)</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">Timer</span> <span class="n">timer</span><span class="p">;</span>
-  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">timer</span><span class="p">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">100</span><span class="n">_ms</span><span class="p">))</span> <span class="p">{</span>
-      <span class="c1">// Do something every 100 ms</span>
-    <span class="p">}</span>
-    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="16%" />
-<col width="84%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>time</td>
-<td>The time period.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> when the input time period has passed, <code class="docutils literal notranslate"><span class="pre">false</span></code> after reading <code class="docutils literal notranslate"><span class="pre">true</span></code> until
-the period has passed again</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="id1">
-<h4><a class="toc-backref" href="#id15">repeat</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> when the input time period has passed, then resets. Meant to be used in loops to
-run an action every time period without blocking.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-12 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-<div class="item sphinx-data-tab-13 docutils container">
-<div class="docutils container">
-Example</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">bool</span> <span class="n">repeat</span><span class="p">(</span><span class="k">const</span> <span class="n">QFrequency</span> <span class="n">time</span><span class="p">)</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">Timer</span> <span class="n">timer</span><span class="p">;</span>
-  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">timer</span><span class="p">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">10</span><span class="n">_Hz</span><span class="p">))</span> <span class="p">{</span>
-      <span class="c1">// Do something 10 times per second</span>
-    <span class="p">}</span>
-    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="16%" />
-<col width="84%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>frequency</td>
-<td>The repeat frequency.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">true</span></code> when the input time period has passed, <code class="docutils literal notranslate"><span class="pre">false</span></code> after reading <code class="docutils literal notranslate"><span class="pre">true</span></code> until
-the period has passed again</p>
 </div>
 </div>
 </div>

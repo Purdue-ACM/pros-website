@@ -4,59 +4,6 @@ Skid-Steer Model
 
 .. contents:: :local:
 
-
-okapi::SkidSteerModelArgs
-=========================
-
-Data class for the arguments to ``SkidSteerModel``.
-
-Constructor(s)
---------------
-
-This constructor infers the encoders from the left side and right side motors.
-
-.. tabs ::
-   .. tab :: Prototype
-      .. highlight:: cpp
-      ::
-
-        SkidSteerModelArgs(std::shared_ptr<AbstractMotor> ileftSideMotor,
-                           std::shared_ptr<AbstractMotor> irightSideMotor,
-                           double imaxOutput = 127)
-
-=================   ===================================================================
- Parameters
-=================   ===================================================================
- ileftSideMotor      The left side motor.
- irightSideMotor     The right side motor.
- imaxOutput          The maximum output value to the motors.
-=================   ===================================================================
-
-This constructor does not infer the encoders from the motors, and instead takes explicitly specified encoders.
-
-.. tabs ::
-   .. tab :: Prototype
-      .. highlight:: cpp
-      ::
-
-        SkidSteerModelArgs(std::shared_ptr<AbstractMotor> ileftSideMotor,
-                           std::shared_ptr<AbstractMotor> irightSideMotor,
-                           std::shared_ptr<ContinuousRotarySensor> ileftEnc,
-                           std::shared_ptr<ContinuousRotarySensor> irightEnc,
-                           double imaxOutput = 127)
-
-=================   ===================================================================
- Parameters
-=================   ===================================================================
- ileftSideMotor      The left side motor.
- irightSideMotor     The right side motor.
- ileftEnc            The left side encoder.
- irightEnc           The right side encoder.
- imaxOutput          The maximum output value to the motors.
-=================   ===================================================================
-
-----
-
 okapi::SkidSteerModel
 =====================
 
@@ -79,14 +26,16 @@ This constructor infers the encoders from the motors.
 
         SkidSteerModel(std::shared_ptr<AbstractMotor> ileftSideMotor,
                        std::shared_ptr<AbstractMotor> irightSideMotor,
-                       double imaxOutput = 127)
+                       double imaxVelocity = 127,
+                       double imaxVoltage = 12000)
 
 =================   ===================================================================
  Parameters
 =================   ===================================================================
  ileftSideMotor      The left side motor.
  irightSideMotor     The right side motor.
- imaxOutput          The maximum output value to the motors.
+ imaxVelocity        The maximum velocity output value to the motors.
+ imaxVoltage         The maximum voltage output value to the motors.
 =================   ===================================================================
 
 This constructor does not infer the encoders from the motors, and instead takes explicitly specified encoders.
@@ -100,7 +49,8 @@ This constructor does not infer the encoders from the motors, and instead takes 
                        std::shared_ptr<AbstractMotor> irightSideMotor,
                        std::shared_ptr<ContinuousRotarySensor> ileftEnc,
                        std::shared_ptr<ContinuousRotarySensor> irightEnc,
-                       double imaxOutput = 127)
+                       double imaxVelocity = 127,
+                       double imaxVoltage = 12000)
 
 =================   ===================================================================
  Parameters
@@ -109,20 +59,8 @@ This constructor does not infer the encoders from the motors, and instead takes 
  irightSideMotor     The right side motor.
  ileftEnc            The left side encoder.
  irightEnc           The right side encoder.
- imaxOutput          The maximum output value to the motors.
-=================   ===================================================================
-
-.. tabs ::
-   .. tab :: Prototype
-      .. highlight:: cpp
-      ::
-
-        explicit SkidSteerModel(const SkidSteerModelArgs &iparams)
-
-=================   ===================================================================
- Parameters
-=================   ===================================================================
- iparams             The ``SkidSteerModel`` arguments.
+ imaxVelocity        The maximum velocity output value to the motors.
+ imaxVoltage         The maximum voltage output value to the motors.
 =================   ===================================================================
 
 .. tabs ::
@@ -218,7 +156,7 @@ Stops the robot (set all the motors to ``0``).
       .. highlight:: cpp
       ::
 
-        void stop() const override
+        void stop() override
 
 ----
 
@@ -392,6 +330,108 @@ Sets the gearset for each motor.
 Parameters
 =============== ===================================================================
  gearset         The new gearset.
+=============== ===================================================================
+
+----
+
+setPosPID
+~~~~~~~~~
+
+Sets new PID constants.
+
+.. tabs ::
+   .. tab :: Prototype
+      .. highlight:: cpp
+      ::
+
+        void setPosPID(double ikF, double ikP, double ikI, double ikD) const override
+
+=============== ===================================================================
+Parameters
+=============== ===================================================================
+ ikF             The feed-forward constant.
+ ikP             The proportional constant.
+ ikI             The integral constant.
+ ikD             The derivative constant.
+=============== ===================================================================
+
+----
+
+setPosPIDFull
+~~~~~~~~~~~~~
+
+Sets new PID constants.
+
+.. tabs ::
+   .. tab :: Prototype
+      .. highlight:: cpp
+      ::
+
+        void setPosPID(double ikF, double ikP, double ikI, double ikD,
+                       double ifilter, double ilimit, double ithreshold, double iloopSpeed) const override
+
+=============== ===================================================================
+Parameters
+=============== ===================================================================
+ ikF             The feed-forward constant.
+ ikP             The proportional constant.
+ ikI             The integral constant.
+ ikD             The derivative constant.
+ ifilter         A constant used for filtering the profile acceleration.
+ ilimit          The integral limit.
+ ithreshold      The threshold for determining if a position movement has reached its goal.
+ iloopSpeed      The rate at which the PID computation is run (in ms).
+=============== ===================================================================
+
+----
+
+setVelPID
+~~~~~~~~~
+
+Sets new PID constants.
+
+.. tabs ::
+   .. tab :: Prototype
+      .. highlight:: cpp
+      ::
+
+        void setPosPID(double ikF, double ikP, double ikI, double ikD) const override
+
+=============== ===================================================================
+Parameters
+=============== ===================================================================
+ ikF             The feed-forward constant.
+ ikP             The proportional constant.
+ ikI             The integral constant.
+ ikD             The derivative constant.
+=============== ===================================================================
+
+----
+
+setVelPIDFull
+~~~~~~~~~~~~~
+
+Sets new PID constants.
+
+.. tabs ::
+   .. tab :: Prototype
+      .. highlight:: cpp
+      ::
+
+        void setPosPID(double ikF, double ikP, double ikI, double ikD,
+                       double ifilter, double ilimit, double ithreshold, double iloopSpeed) const override
+
+=============== ===================================================================
+Parameters
+=============== ===================================================================
+ ikF             The feed-forward constant.
+ ikP             The proportional constant.
+ ikI             The integral constant.
+ ikD             The derivative constant.
+ ifilter         A constant used for filtering the profile acceleration.
+ ilimit          The integral limit.
+ ithreshold      The threshold for determining if a position movement has reached its goal.
+ iloopSpeed      The rate at which the PID computation is run (in ms).
 =============== ===================================================================
 
 ----

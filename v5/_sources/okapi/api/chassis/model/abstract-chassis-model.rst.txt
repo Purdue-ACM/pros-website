@@ -7,7 +7,7 @@
 okapi::ChassisModel
 ===================
 
-A version of the `ReadOnlyChassisModel <abstract-chassis-model.html>`_ that also supports write
+A version of the `ReadOnlyChassisModel <abstract-read-only-chassis-model.html>`_ that also supports write
 methods, such as setting motor speed. Because this class can write to motors, there can only be one
 owner and as such copying is disabled.
 
@@ -91,7 +91,7 @@ Stops the robot (set all the motors to ``0``).
       .. highlight:: cpp
       ::
 
-        virtual void stop() const = 0
+        virtual void stop() = 0
 
 ----
 
@@ -249,4 +249,106 @@ Sets the gearset for each motor.
 Parameters
 =============== ===================================================================
  gearset         The new gearset.
+=============== ===================================================================
+
+----
+
+setPosPID
+~~~~~~~~~
+
+Sets new PID constants.
+
+.. tabs ::
+   .. tab :: Prototype
+      .. highlight:: cpp
+      ::
+
+        virtual void setPosPID(double ikF, double ikP, double ikI, double ikD) const = 0
+
+=============== ===================================================================
+Parameters
+=============== ===================================================================
+ ikF             The feed-forward constant.
+ ikP             The proportional constant.
+ ikI             The integral constant.
+ ikD             The derivative constant.
+=============== ===================================================================
+
+----
+
+setPosPIDFull
+~~~~~~~~~~~~~
+
+Sets new PID constants.
+
+.. tabs ::
+   .. tab :: Prototype
+      .. highlight:: cpp
+      ::
+
+        virtual void setPosPID(double ikF, double ikP, double ikI, double ikD,
+                               double ifilter, double ilimit, double ithreshold, double iloopSpeed) const = 0
+
+=============== ===================================================================
+Parameters
+=============== ===================================================================
+ ikF             The feed-forward constant.
+ ikP             The proportional constant.
+ ikI             The integral constant.
+ ikD             The derivative constant.
+ ifilter         A constant used for filtering the profile acceleration.
+ ilimit          The integral limit.
+ ithreshold      The threshold for determining if a position movement has reached its goal.
+ iloopSpeed      The rate at which the PID computation is run (in ms).
+=============== ===================================================================
+
+----
+
+setVelPID
+~~~~~~~~~
+
+Sets new PID constants.
+
+.. tabs ::
+   .. tab :: Prototype
+      .. highlight:: cpp
+      ::
+
+        virtual void setPosPID(double ikF, double ikP, double ikI, double ikD) const = 0
+
+=============== ===================================================================
+Parameters
+=============== ===================================================================
+ ikF             The feed-forward constant.
+ ikP             The proportional constant.
+ ikI             The integral constant.
+ ikD             The derivative constant.
+=============== ===================================================================
+
+----
+
+setVelPIDFull
+~~~~~~~~~~~~~
+
+Sets new PID constants.
+
+.. tabs ::
+   .. tab :: Prototype
+      .. highlight:: cpp
+      ::
+
+        virtual void setPosPID(double ikF, double ikP, double ikI, double ikD,
+                               double ifilter, double ilimit, double ithreshold, double iloopSpeed) const = 0
+
+=============== ===================================================================
+Parameters
+=============== ===================================================================
+ ikF             The feed-forward constant.
+ ikP             The proportional constant.
+ ikI             The integral constant.
+ ikD             The derivative constant.
+ ifilter         A constant used for filtering the profile acceleration.
+ ilimit          The integral limit.
+ ithreshold      The threshold for determining if a position movement has reached its goal.
+ iloopSpeed      The rate at which the PID computation is run (in ms).
 =============== ===================================================================

@@ -158,6 +158,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../async/abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-controller-factory.html">Async Controller Factory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../async/async-motion-profile-controller.html">Async Motion Profile Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-pos-pid-controller.html">Async Pos PID Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-vel-integrated-controller.html">Async Vel Integrated Controller</a></li>
@@ -181,6 +182,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="#okapi-pidtuner-output">okapi::PIDTuner::Output</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="pid-tuner-factory.html">PID Tuner Factory</a></li>
@@ -284,6 +286,7 @@
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#okapi-pidtuner-output" id="id5">okapi::PIDTuner::Output</a></li>
 </ul>
 </div>
 <div class="section" id="okapi-pidtuner">
@@ -304,13 +307,13 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PIDTuner</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ControllerInput</span><span class="o">&gt;</span> <span class="n">iinput</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ControllerOutput</span><span class="o">&gt;</span> <span class="n">ioutput</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PIDTuner</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ControllerInput</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span> <span class="n">iinput</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ControllerOutput</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span> <span class="n">ioutput</span><span class="p">,</span>
          <span class="k">const</span> <span class="n">TimeUtil</span> <span class="o">&amp;</span><span class="n">itimeUtil</span><span class="p">,</span>
          <span class="n">QTime</span> <span class="n">itimeout</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">igoal</span><span class="p">,</span>
          <span class="kt">double</span> <span class="n">ikPMin</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikPMax</span><span class="p">,</span>
          <span class="kt">double</span> <span class="n">ikIMin</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikIMax</span><span class="p">,</span>
          <span class="kt">double</span> <span class="n">ikDMin</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikDMax</span><span class="p">,</span>
-         <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">inumIterations</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">inumParticles</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">inumIterations</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">inumParticles</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
          <span class="kt">double</span> <span class="n">ikSettle</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikITAE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -390,12 +393,30 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">IterativePosPIDControllerArgs</span> <span class="n">autotune</span><span class="p">()</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">Output</span> <span class="n">autotune</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>Returns:</strong> The PID controller gains.</p>
+</div>
+</div>
+</div>
+<div class="section" id="okapi-pidtuner-output">
+<h2><a class="toc-backref" href="#id5">okapi::PIDTuner::Output</a><a class="headerlink" href="#okapi-pidtuner-output" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Output</span> <span class="p">{</span>
+  <span class="kt">double</span> <span class="n">kP</span><span class="p">,</span> <span class="n">kI</span><span class="p">,</span> <span class="n">kD</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

@@ -4,29 +4,6 @@ Async Pos Integrated Controller
 
 .. contents:: :local:
 
-okapi::AsyncPosIntegratedControllerArgs
-=======================================
-
-Data class for the arguments to ``AsyncPosIntegratedController``.
-
-Constructor(s)
---------------
-
-.. tabs ::
-   .. tab :: Prototype
-      .. highlight:: cpp
-      ::
-
-        explicit AsyncPosIntegratedControllerArgs(std::shared_ptr<AbstractMotor> imotor)
-
-=============== ===================================================================
- Parameters
-=============== ===================================================================
- imotor          The motor to control.
-=============== ===================================================================
-
-----
-
 okapi::AsyncPosIntegratedController
 ===================================
 
@@ -53,21 +30,6 @@ Constructor(s)
  itimeUtil       See ``TimeUtil`` docs.
 =============== ===================================================================
 
-.. tabs ::
-   .. tab :: Prototype
-      .. highlight:: cpp
-      ::
-
-        AsyncPosIntegratedController(const AsyncPosIntegratedControllerArgs &iparams,
-                                     const TimeUtil &itimeUtil)
-
-=============== ===================================================================
- Parameters
-=============== ===================================================================
- iparams         The ``AsyncPosIntegratedController`` arguments.
- itimeUtil       See ``TimeUtil`` docs.
-=============== ===================================================================
-
 Methods
 -------
 
@@ -88,6 +50,22 @@ Sets the target for the controller.
 ============ ===============================================================
  itarget      The new target.
 ============ ===============================================================
+
+----
+
+getTarget
+~~~~~~~~~
+
+Gets the last set target, or the default target if none was set.
+
+.. tabs ::
+   .. tab :: Prototype
+      .. highlight:: cpp
+      ::
+
+        double getTarget() override
+
+**Returns:** The last target.
 
 ----
 
@@ -112,6 +90,8 @@ isSettled
 
 Returns whether the controller has settled at the target. Setting is when the error or derivative
 of error has been small enough for a long enough period.
+
+If the controller is disabled, this method must return true.
 
 .. tabs ::
    .. tab :: Prototype

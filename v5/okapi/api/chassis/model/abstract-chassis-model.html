@@ -173,6 +173,10 @@
 <li class="toctree-l6"><a class="reference internal" href="#setbrakemode">setBrakeMode</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setencoderunits">setEncoderUnits</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setgearing">setGearing</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#setpospid">setPosPID</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#setpospidfull">setPosPIDFull</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#setvelpid">setVelPID</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#setvelpidfull">setVelPIDFull</a></li>
 </ul>
 </li>
 </ul>
@@ -286,6 +290,10 @@
 <li><a class="reference internal" href="#setbrakemode" id="id12">setBrakeMode</a></li>
 <li><a class="reference internal" href="#setencoderunits" id="id13">setEncoderUnits</a></li>
 <li><a class="reference internal" href="#setgearing" id="id14">setGearing</a></li>
+<li><a class="reference internal" href="#setpospid" id="id15">setPosPID</a></li>
+<li><a class="reference internal" href="#setpospidfull" id="id16">setPosPIDFull</a></li>
+<li><a class="reference internal" href="#setvelpid" id="id17">setVelPID</a></li>
+<li><a class="reference internal" href="#setvelpidfull" id="id18">setVelPIDFull</a></li>
 </ul>
 </li>
 </ul>
@@ -294,7 +302,7 @@
 </div>
 <div class="section" id="okapi-chassismodel">
 <h2><a class="toc-backref" href="#id1">okapi::ChassisModel</a><a class="headerlink" href="#okapi-chassismodel" title="Permalink to this headline">¶</a></h2>
-<p>A version of the <a class="reference external" href="abstract-chassis-model.html">ReadOnlyChassisModel</a> that also supports write
+<p>A version of the <a class="reference external" href="abstract-read-only-chassis-model.html">ReadOnlyChassisModel</a> that also supports write
 methods, such as setting motor speed. Because this class can write to motors, there can only be one
 owner and as such copying is disabled.</p>
 <div class="section" id="methods">
@@ -420,7 +428,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">stop</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">stop</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -690,6 +698,204 @@ Prototype</div>
 <tbody valign="top">
 <tr class="row-even"><td>gearset</td>
 <td>The new gearset.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="setpospid">
+<h4><a class="toc-backref" href="#id15">setPosPID</a><a class="headerlink" href="#setpospid" title="Permalink to this headline">¶</a></h4>
+<p>Sets new PID constants.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-12 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setPosPID</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikF</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikI</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ikF</td>
+<td>The feed-forward constant.</td>
+</tr>
+<tr class="row-odd"><td>ikP</td>
+<td>The proportional constant.</td>
+</tr>
+<tr class="row-even"><td>ikI</td>
+<td>The integral constant.</td>
+</tr>
+<tr class="row-odd"><td>ikD</td>
+<td>The derivative constant.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="setpospidfull">
+<h4><a class="toc-backref" href="#id16">setPosPIDFull</a><a class="headerlink" href="#setpospidfull" title="Permalink to this headline">¶</a></h4>
+<p>Sets new PID constants.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-13 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setPosPID</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikF</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikI</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span>
+                       <span class="kt">double</span> <span class="n">ifilter</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ilimit</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ithreshold</span><span class="p">,</span> <span class="kt">double</span> <span class="n">iloopSpeed</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ikF</td>
+<td>The feed-forward constant.</td>
+</tr>
+<tr class="row-odd"><td>ikP</td>
+<td>The proportional constant.</td>
+</tr>
+<tr class="row-even"><td>ikI</td>
+<td>The integral constant.</td>
+</tr>
+<tr class="row-odd"><td>ikD</td>
+<td>The derivative constant.</td>
+</tr>
+<tr class="row-even"><td>ifilter</td>
+<td>A constant used for filtering the profile acceleration.</td>
+</tr>
+<tr class="row-odd"><td>ilimit</td>
+<td>The integral limit.</td>
+</tr>
+<tr class="row-even"><td>ithreshold</td>
+<td>The threshold for determining if a position movement has reached its goal.</td>
+</tr>
+<tr class="row-odd"><td>iloopSpeed</td>
+<td>The rate at which the PID computation is run (in ms).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="setvelpid">
+<h4><a class="toc-backref" href="#id17">setVelPID</a><a class="headerlink" href="#setvelpid" title="Permalink to this headline">¶</a></h4>
+<p>Sets new PID constants.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-14 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setPosPID</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikF</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikI</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ikF</td>
+<td>The feed-forward constant.</td>
+</tr>
+<tr class="row-odd"><td>ikP</td>
+<td>The proportional constant.</td>
+</tr>
+<tr class="row-even"><td>ikI</td>
+<td>The integral constant.</td>
+</tr>
+<tr class="row-odd"><td>ikD</td>
+<td>The derivative constant.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="setvelpidfull">
+<h4><a class="toc-backref" href="#id18">setVelPIDFull</a><a class="headerlink" href="#setvelpidfull" title="Permalink to this headline">¶</a></h4>
+<p>Sets new PID constants.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-15 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setPosPID</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikF</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikI</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span>
+                       <span class="kt">double</span> <span class="n">ifilter</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ilimit</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ithreshold</span><span class="p">,</span> <span class="kt">double</span> <span class="n">iloopSpeed</span><span class="p">)</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="83%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ikF</td>
+<td>The feed-forward constant.</td>
+</tr>
+<tr class="row-odd"><td>ikP</td>
+<td>The proportional constant.</td>
+</tr>
+<tr class="row-even"><td>ikI</td>
+<td>The integral constant.</td>
+</tr>
+<tr class="row-odd"><td>ikD</td>
+<td>The derivative constant.</td>
+</tr>
+<tr class="row-even"><td>ifilter</td>
+<td>A constant used for filtering the profile acceleration.</td>
+</tr>
+<tr class="row-odd"><td>ilimit</td>
+<td>The integral limit.</td>
+</tr>
+<tr class="row-even"><td>ithreshold</td>
+<td>The threshold for determining if a position movement has reached its goal.</td>
+</tr>
+<tr class="row-odd"><td>iloopSpeed</td>
+<td>The rate at which the PID computation is run (in ms).</td>
 </tr>
 </tbody>
 </table>

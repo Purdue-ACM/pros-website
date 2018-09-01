@@ -158,6 +158,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../async/abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-controller-factory.html">Async Controller Factory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../async/async-motion-profile-controller.html">Async Motion Profile Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-pos-pid-controller.html">Async Pos PID Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-vel-integrated-controller.html">Async Vel Integrated Controller</a></li>
@@ -175,9 +176,9 @@
 <li class="toctree-l5"><a class="reference internal" href="#methods">Methods</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#step">step</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#settarget">setTarget</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#gettarget">getTarget</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#getoutput">getOutput</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#geterror">getError</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#getderivative">getDerivative</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#issettled">isSettled</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setsampletime">setSampleTime</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setoutputlimits">setOutputLimits</a></li>
@@ -297,9 +298,9 @@
 <li><a class="reference internal" href="#methods" id="id4">Methods</a><ul>
 <li><a class="reference internal" href="#step" id="id5">step</a></li>
 <li><a class="reference internal" href="#settarget" id="id6">setTarget</a></li>
-<li><a class="reference internal" href="#getoutput" id="id7">getOutput</a></li>
-<li><a class="reference internal" href="#geterror" id="id8">getError</a></li>
-<li><a class="reference internal" href="#getderivative" id="id9">getDerivative</a></li>
+<li><a class="reference internal" href="#gettarget" id="id7">getTarget</a></li>
+<li><a class="reference internal" href="#getoutput" id="id8">getOutput</a></li>
+<li><a class="reference internal" href="#geterror" id="id9">getError</a></li>
 <li><a class="reference internal" href="#issettled" id="id10">isSettled</a></li>
 <li><a class="reference internal" href="#setsampletime" id="id11">setSampleTime</a></li>
 <li><a class="reference internal" href="#setoutputlimits" id="id12">setOutputLimits</a></li>
@@ -334,17 +335,18 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">IterativeVelPIDController</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikF</span><span class="p">,</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">IterativeVelPIDController</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikF</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikSF</span><span class="p">,</span>
                           <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">VelMath</span><span class="o">&gt;</span> <span class="n">ivelMath</span><span class="p">,</span>
-                          <span class="k">const</span> <span class="n">TimeUtil</span> <span class="o">&amp;</span><span class="n">itimeUtil</span><span class="p">)</span>
+                          <span class="k">const</span> <span class="n">TimeUtil</span> <span class="o">&amp;</span><span class="n">itimeUtil</span><span class="p">,</span>
+                          <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Filter</span><span class="o">&gt;</span> <span class="n">iderivativeFilter</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">PassthroughFilter</span><span class="o">&gt;</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="15%" />
-<col width="85%" />
+<col width="19%" />
+<col width="81%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Parameters</th>
@@ -361,11 +363,17 @@ Prototype</div>
 <tr class="row-even"><td>ikF</td>
 <td>The Feed-Forward gain.</td>
 </tr>
-<tr class="row-odd"><td>ivelMath</td>
+<tr class="row-odd"><td>ikSF</td>
+<td>A Feed-Forward gain to counteract static friction.</td>
+</tr>
+<tr class="row-even"><td>ivelMath</td>
 <td>The <a class="reference external" href="../../filters/vel-math.html">VelMath</a> used for calculating plant velocity.</td>
 </tr>
-<tr class="row-even"><td>itimeUtil</td>
+<tr class="row-odd"><td>itimeUtil</td>
 <td>See <code class="docutils literal notranslate"><span class="pre">TimeUtil</span></code> docs.</td>
+</tr>
+<tr class="row-even"><td>iderivativeFilter</td>
+<td>The filter to use for filtering the derivative term.</td>
 </tr>
 </tbody>
 </table>
@@ -441,9 +449,9 @@ Prototype</div>
 </table>
 </div>
 <hr class="docutils" />
-<div class="section" id="getoutput">
-<h4><a class="toc-backref" href="#id7">getOutput</a><a class="headerlink" href="#getoutput" title="Permalink to this headline">¶</a></h4>
-<p>Returns the last calculated output of the controller. Default is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<div class="section" id="gettarget">
+<h4><a class="toc-backref" href="#id7">getTarget</a><a class="headerlink" href="#gettarget" title="Permalink to this headline">¶</a></h4>
+<p>Gets the last set target, or the default target if none was set.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-3 docutils container">
@@ -452,6 +460,25 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">getTarget</span><span class="p">()</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The last target.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="getoutput">
+<h4><a class="toc-backref" href="#id8">getOutput</a><a class="headerlink" href="#getoutput" title="Permalink to this headline">¶</a></h4>
+<p>Returns the last calculated output of the controller. Default is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">getOutput</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -461,27 +488,8 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="geterror">
-<h4><a class="toc-backref" href="#id8">getError</a><a class="headerlink" href="#geterror" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id9">getError</a><a class="headerlink" href="#geterror" title="Permalink to this headline">¶</a></h4>
 <p>Returns the last error of the controller.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-4 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">getError</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Returns:</strong> The last error of the controller.</p>
-</div>
-<hr class="docutils" />
-<div class="section" id="getderivative">
-<h4><a class="toc-backref" href="#id9">getDerivative</a><a class="headerlink" href="#getderivative" title="Permalink to this headline">¶</a></h4>
-<p>Returns the last derivative (change in error) of the controller.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-5 docutils container">
@@ -490,18 +498,19 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">getDerivative</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">getError</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Returns:</strong> The last derivative (change in error) of the controller.</p>
+<p><strong>Returns:</strong> The last error of the controller.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="issettled">
 <h4><a class="toc-backref" href="#id10">isSettled</a><a class="headerlink" href="#issettled" title="Permalink to this headline">¶</a></h4>
 <p>Returns whether the controller has settled at the target. Setting is when the error or derivative
 of error has been small enough for a long enough period.</p>
+<p>If the controller is disabled, this method must return true.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-6 docutils container">
@@ -745,7 +754,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setGains</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikF</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setGains</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikF</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikSF</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -769,6 +778,9 @@ Prototype</div>
 </tr>
 <tr class="row-even"><td>ikF</td>
 <td>The Feed-Forward gain.</td>
+</tr>
+<tr class="row-odd"><td>ikSF</td>
+<td>A Feed-Forward gain to counteract static friction.</td>
 </tr>
 </tbody>
 </table>

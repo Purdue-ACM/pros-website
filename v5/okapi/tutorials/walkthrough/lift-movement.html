@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Lift Movement &mdash; PROS for V5 3.0.7 documentation</title>
+  <title>Lift Movement &mdash; PROS for V5 3.0.8 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.8 documentation" href="../../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
         <link rel="next" title="2D Motion Profiling" href="../concepts/2dmotionprofiling.html"/>
         <link rel="prev" title="Programming the Clawbot" href="clawbot.html"/>
@@ -87,7 +87,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.7)
+                  V5 (3.0.8)
                 
               </div>
             
@@ -134,9 +134,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/c/index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/cpp/index.html">C++ API</a></li>
 </ul>
-<p class="caption"><span class="caption-text">CLI</span></p>
+<p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul class="current">
@@ -233,8 +234,106 @@
 non-chassis systems.</p>
 <p>The easiest place to start with controlling a lift is having it move with joystick buttons,
 as is common in a lot of op control code for the subject. The following code snippet shows how to do this:</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">LIFT_MOTOR</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Controlling a lift with a single motor on port 1</span>
+
+<span class="n">ControllerButton</span> <span class="nf">btnUp</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_R1</span><span class="p">);</span>
+<span class="n">ControllerButton</span> <span class="nf">btnDown</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_R2</span><span class="p">);</span>
+<span class="n">Motor</span> <span class="nf">lift</span><span class="p">(</span><span class="n">LIFT_MOTOR</span><span class="p">);</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">btnUp</span><span class="p">.</span><span class="n">isPressed</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">lift</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">btnDown</span><span class="p">.</span><span class="n">isPressed</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">lift</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="o">-</span><span class="mi">127</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">lift</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
 <p>One improvement that can be made to this lift code would be a switch to using set heights and a PID controller.
 This is a common approach used for stacking games where movement to precise heights is important.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">LIFT_MOTOR</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Controlling a lift with a single motor on port 1</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">NUM_HEIGHTS</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">height1</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">height2</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">height3</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">height4</span> <span class="o">=</span> <span class="mi">140</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">heights</span><span class="p">[</span><span class="n">NUM_HEIGHTS</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">height1</span><span class="p">,</span> <span class="n">height2</span><span class="p">,</span> <span class="n">height3</span><span class="p">,</span> <span class="n">height4</span><span class="p">};</span>
+
+<span class="n">ControllerButton</span> <span class="nf">btnUp</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_R1</span><span class="p">);</span>
+<span class="n">ControllerButton</span> <span class="nf">btnDown</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_R2</span><span class="p">);</span>
+<span class="k">auto</span> <span class="n">liftControl</span> <span class="o">=</span> <span class="n">AsyncControllerFactory</span><span class="o">::</span><span class="n">posIntegrated</span><span class="p">(</span><span class="n">LIFT_MOTOR</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">goalHeight</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">btnUp</span><span class="p">.</span><span class="n">changedToPressed</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">goalHeight</span> <span class="o">&lt;</span> <span class="n">NUM_HEIGHTS</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// If the goal height is not at maximum and the up button is pressed, increase the setpoint</span>
+    <span class="n">goalHeight</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">liftControl</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="n">heights</span><span class="p">[</span><span class="n">goalHeight</span><span class="p">]);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">btnDown</span><span class="p">.</span><span class="n">changedToPressed</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">goalHeight</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">goalHeight</span><span class="o">--</span><span class="p">;</span>
+    <span class="n">liftControl</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="n">heights</span><span class="p">[</span><span class="n">goalHeight</span><span class="p">]);</span>
+  <span class="p">}</span>
+
+  <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 
   <div class="section">
@@ -281,16 +380,16 @@ This is a common approach used for stacking games where movement to precise heig
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.7)
+      v: V5 (3.0.8)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
-        
           <dd><a href="../../../index.html">V5</a></dd>
+        
+          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
         
       </dl>
     </div>
@@ -302,7 +401,7 @@ This is a common approach used for stacking games where movement to precise heig
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3.0.7',
+            VERSION:'3.0.8',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

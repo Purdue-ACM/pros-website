@@ -158,6 +158,7 @@
 <li class="toctree-l3"><a class="reference internal" href="async/abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async/abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async/async-controller-factory.html">Async Controller Factory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="async/async-motion-profile-controller.html">Async Motion Profile Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async/async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async/async-pos-pid-controller.html">Async Pos PID Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async/async-vel-integrated-controller.html">Async Vel Integrated Controller</a></li>
@@ -283,7 +284,7 @@
 <div class="section" id="controllerset">
 <h3><a class="toc-backref" href="#id2">controllerSet</a><a class="headerlink" href="#controllerset" title="Permalink to this headline">¶</a></h3>
 <p>Writes the value of the controller output. This method might be automatically called in another
-thread by the controller. The range of input values is expected to be [-1, 1].</p>
+thread by the controller. The range of input values is expected to be <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-0 docutils container">
@@ -292,7 +293,8 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">controllerSet</span><span class="p">(</span><span class="kt">double</span> <span class="n">ivalue</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">T</span><span class="o">&gt;</span>
+<span class="n">virtual</span> <span class="kt">void</span> <span class="n">controllerSet</span><span class="p">(</span><span class="n">T</span> <span class="n">ivalue</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -309,7 +311,7 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>ivalue</td>
-<td>The controller’s output in the range [-1, 1].</td>
+<td>The controller’s output in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 </tbody>
 </table>

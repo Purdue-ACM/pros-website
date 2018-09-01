@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SettledUtils &mdash; PROS for V5 3.0.7 documentation</title>
+  <title>SettledUtils &mdash; PROS for V5 3.0.8 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.7 documentation" href="../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.0.8 documentation" href="../../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
         <link rel="next" title="Smart Pointers" href="smart-pointers.html"/>
         <link rel="prev" title="Iterative and Async Controllers" href="iterative-async-controllers.html"/>
@@ -87,7 +87,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.7)
+                  V5 (3.0.8)
                 
               </div>
             
@@ -134,9 +134,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../api/c/index.html">C API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/cpp/index.html">C++ API</a></li>
 </ul>
-<p class="caption"><span class="caption-text">CLI</span></p>
+<p class="caption"><span class="caption-text">Tools</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../cli/index.html">CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul class="current">
@@ -245,7 +246,7 @@
 exit conditions. If a feedback controller decides that it has reached its target and exits too early,
 then the target will never be met. Alternatively, if the controller takes too long to realize that it’s
 at its goal, the best case scenario is that the movement is just a bit slower, but in the worst case
-the movement may never be considered complete, leaving the motors humming infinitely.</p>
+the movement may never be considered complete, leaving the motors humming indefinitely.</p>
 <p>OkapiLib’s <a class="reference external" href="../../api/control/util/settled-util.html">SettledUtil</a> provides three different parameters
 for tuning this exit condition: <code class="docutils literal notranslate"><span class="pre">atTargetError</span></code>, <code class="docutils literal notranslate"><span class="pre">atTargetDerivative</span></code>, and <code class="docutils literal notranslate"><span class="pre">atTargetTime</span></code>. We’ll
 take a further look at tuning these three parameters.</p>
@@ -257,7 +258,7 @@ movement; if a controller with an <code class="docutils literal notranslate"><sp
 then the movement could be considered done at any value between 90 and 110.</p>
 <p>It would be ideal to be able to set 0 for this value and theoretically ensure that the controller
 ends up exactly at its target with every movement, but this is a very good way to end up in the
-infinite motor humming scenario detailed at the top of the tutorial. At the very least this value
+indefinite motor humming scenario detailed at the top of the tutorial. At the very least this value
 needs to be greater than the mechanical slop in the system (the amount that the sensor can move
 without encountering resistance from the motors), but typically this value will be closer to the
 default of 50.</p>
@@ -323,16 +324,16 @@ scenario when oscillating around the target.</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.7)
+      v: V5 (3.0.8)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       <dl>
         <dt>Versions</dt>
         
-          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
-        
           <dd><a href="../../../index.html">V5</a></dd>
+        
+          <dd><a href="../../../../cortex/index.html">Cortex</a></dd>
         
       </dl>
     </div>
@@ -344,7 +345,7 @@ scenario when oscillating around the target.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3.0.7',
+            VERSION:'3.0.8',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

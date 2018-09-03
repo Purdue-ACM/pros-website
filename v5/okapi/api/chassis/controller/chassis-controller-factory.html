@@ -149,7 +149,60 @@
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../index.html">OkapiLib Documentation Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">OkapiLib Documentation Home</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">Chassis API</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="abstract-chassis-controller.html">(Abstract) Chassis Controller</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Chassis Controller Factory</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#okapi-chassiscontrollerfactory">okapi::ChassisControllerFactory</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#chassiscontrollerintegrated">ChassisControllerIntegrated</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#create">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id3">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id7">create</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#chassiscontrollerpid">ChassisControllerPID</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#id11">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id15">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id19">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id23">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id27">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id31">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id35">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id39">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id43">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id47">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id51">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id55">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id59">create</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id63">create</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="chassis-controller-integrated.html">Chassis Controller Integrated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="chassis-controller-pid.html">Chassis Controller PID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="chassis-scales.html">Chassis Scales</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../model/abstract-chassis-model.html">(Abstract) Chassis Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../model/abstract-read-only-chassis-model.html">(Abstract) Read-Only Chassis Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../model/chassis-model-factory.html">Chassis Model Factory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../model/skid-steer-model.html">Skid-Steer Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../model/three-encoder-skid-steer-model.html">Three Encoder Skid-Steer Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../model/xdrive-model.html">X-Drive Model</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../control/index.html">Control API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../device/index.html">Devices API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filters/index.html">Filters API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../units/index.html">Units API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../util/index.html">Utility API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Chassis API</a><ul class="current">
@@ -343,15 +396,15 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can use the default gearset and scales if you have a very simple robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span>
 <span class="p">);</span>
 
 <span class="c1">// Otherwise, you should specify the gearset and scales for your robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisScales</span><span class="p">({</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">})</span>
+  <span class="p">{</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">}</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -403,22 +456,22 @@ Example</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">ChassisControllerIntegrated</span> <span class="n">create</span><span class="p">(</span>
   <span class="n">MotorGroup</span> <span class="n">ileftSideMotor</span><span class="p">,</span> <span class="n">MotorGroup</span> <span class="n">irightSideMotor</span><span class="p">,</span>
-   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">GearsetRatioPair</span> <span class="n">igearset</span> <span class="o">=</span> <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">red</span><span class="p">,</span>
+  <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">GearsetRatioPair</span> <span class="n">igearset</span> <span class="o">=</span> <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">red</span><span class="p">,</span>
   <span class="k">const</span> <span class="n">ChassisScales</span> <span class="o">&amp;</span><span class="n">iscales</span> <span class="o">=</span> <span class="n">ChassisScales</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">}))</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can use the default gearset and scales if you have a very simple robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">}</span>
 <span class="p">);</span>
 
 <span class="c1">// Otherwise, you should specify the gearset and scales for your robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">},</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisScales</span><span class="p">({</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">})</span>
+  <span class="p">{</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">}</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -477,15 +530,15 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can use the default gearset and scales if you have a very simple robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span>
 <span class="p">);</span>
 
 <span class="c1">// Otherwise, you should specify the gearset and scales for your robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisScales</span><span class="p">({</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">})</span>
+  <span class="p">{</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">}</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -554,19 +607,19 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can use the default gearset and scales if you have a very simple robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
 <span class="p">);</span>
 
 <span class="c1">// Otherwise, you should specify the gearset and scales for your robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisScales</span><span class="p">({</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">})</span>
+  <span class="p">{</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">}</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -634,21 +687,21 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can use the default gearset and scales if you have a very simple robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
 <span class="p">);</span>
 
 <span class="c1">// Otherwise, you should specify the gearset and scales for your robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisScales</span><span class="p">({</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">})</span>
+  <span class="p">{</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">}</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -718,19 +771,19 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can use the default gearset and scales if you have a very simple robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
 <span class="p">);</span>
 
 <span class="c1">// Otherwise, you should specify the gearset and scales for your robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisScales</span><span class="p">({</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">})</span>
+  <span class="p">{</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">}</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -798,21 +851,21 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can use the default gearset and scales if you have a very simple robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
 <span class="p">);</span>
 
 <span class="c1">// Otherwise, you should specify the gearset and scales for your robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisScales</span><span class="p">({</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">})</span>
+  <span class="p">{</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">}</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -883,21 +936,21 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can use the default gearset and scales if you have a very simple robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">},</span>
   <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;A&#39;</span><span class="p">,</span> <span class="sc">&#39;B&#39;</span><span class="p">,</span> <span class="nb">true</span><span class="p">),</span> <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;C&#39;</span><span class="p">,</span> <span class="sc">&#39;D&#39;</span><span class="p">),</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
 <span class="p">);</span>
 
 <span class="c1">// Otherwise, you should specify the gearset and scales for your robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">},</span>
   <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;A&#39;</span><span class="p">,</span> <span class="sc">&#39;B&#39;</span><span class="p">,</span> <span class="nb">true</span><span class="p">),</span> <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;C&#39;</span><span class="p">,</span> <span class="sc">&#39;D&#39;</span><span class="p">),</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisScales</span><span class="p">({</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">})</span>
+  <span class="p">{</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">}</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -972,23 +1025,23 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can use the default gearset and scales if you have a very simple robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">},</span>
   <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;A&#39;</span><span class="p">,</span> <span class="sc">&#39;B&#39;</span><span class="p">,</span> <span class="nb">true</span><span class="p">),</span> <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;C&#39;</span><span class="p">,</span> <span class="sc">&#39;D&#39;</span><span class="p">),</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
 <span class="p">);</span>
 
 <span class="c1">// Otherwise, you should specify the gearset and scales for your robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">},</span>
   <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;A&#39;</span><span class="p">,</span> <span class="sc">&#39;B&#39;</span><span class="p">,</span> <span class="nb">true</span><span class="p">),</span> <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;C&#39;</span><span class="p">,</span> <span class="sc">&#39;D&#39;</span><span class="p">),</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisScales</span><span class="p">({</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">})</span>
+  <span class="p">{</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">}</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -1198,19 +1251,19 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can use the default gearset and scales if you have a very simple robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
 <span class="p">);</span>
 
 <span class="c1">// Otherwise, you should specify the gearset and scales for your robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisScales</span><span class="p">({</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">})</span>
+  <span class="p">{</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">}</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -1284,21 +1337,21 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can use the default gearset and scales if you have a very simple robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
 <span class="p">);</span>
 
 <span class="c1">// Otherwise, you should specify the gearset and scales for your robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisScales</span><span class="p">({</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">})</span>
+  <span class="p">{</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">}</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -1375,21 +1428,21 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can use the default gearset and scales if you have a very simple robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>
   <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;A&#39;</span><span class="p">,</span> <span class="sc">&#39;B&#39;</span><span class="p">,</span> <span class="nb">true</span><span class="p">),</span> <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;C&#39;</span><span class="p">,</span> <span class="sc">&#39;D&#39;</span><span class="p">),</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
 <span class="p">);</span>
 
 <span class="c1">// Otherwise, you should specify the gearset and scales for your robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>
   <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;A&#39;</span><span class="p">,</span> <span class="sc">&#39;B&#39;</span><span class="p">,</span> <span class="nb">true</span><span class="p">),</span> <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;C&#39;</span><span class="p">,</span> <span class="sc">&#39;D&#39;</span><span class="p">),</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisScales</span><span class="p">({</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">})</span>
+  <span class="p">{</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">}</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -1470,23 +1523,23 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-27 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can use the default gearset and scales if you have a very simple robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>
   <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;A&#39;</span><span class="p">,</span> <span class="sc">&#39;B&#39;</span><span class="p">,</span> <span class="nb">true</span><span class="p">),</span> <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;C&#39;</span><span class="p">,</span> <span class="sc">&#39;D&#39;</span><span class="p">),</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}</span>
 <span class="p">);</span>
 
 <span class="c1">// Otherwise, you should specify the gearset and scales for your robot</span>
-<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+<span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span>
   <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;A&#39;</span><span class="p">,</span> <span class="sc">&#39;B&#39;</span><span class="p">,</span> <span class="nb">true</span><span class="p">),</span> <span class="n">ADIEncoder</span><span class="p">(</span><span class="sc">&#39;C&#39;</span><span class="p">,</span> <span class="sc">&#39;D&#39;</span><span class="p">),</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
+  <span class="n">IterativePosPIDController</span><span class="o">::</span><span class="n">Gains</span><span class="p">{</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span>
   <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ChassisScales</span><span class="p">({</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">})</span>
+  <span class="p">{</span><span class="mf">2.75</span><span class="n">_in</span><span class="p">,</span> <span class="mf">10.5</span><span class="n">_in</span><span class="p">}</span>
 <span class="p">);</span>
 </pre></div>
 </div>

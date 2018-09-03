@@ -149,7 +149,56 @@
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../index.html">OkapiLib Documentation Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">OkapiLib Documentation Home</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">Chassis API</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../controller/abstract-chassis-controller.html">(Abstract) Chassis Controller</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../controller/chassis-controller-factory.html">Chassis Controller Factory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../controller/chassis-controller-integrated.html">Chassis Controller Integrated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../controller/chassis-controller-pid.html">Chassis Controller PID</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../controller/chassis-scales.html">Chassis Scales</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">(Abstract) Chassis Model</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#okapi-chassismodel">okapi::ChassisModel</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#forward">forward</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#drivevector">driveVector</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#rotate">rotate</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#stop">stop</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#tank">tank</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#arcade">arcade</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#left">left</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#right">right</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#resetsensors">resetSensors</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#setbrakemode">setBrakeMode</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#setencoderunits">setEncoderUnits</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#setgearing">setGearing</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#setpospid">setPosPID</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#setpospidfull">setPosPIDFull</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#setvelpid">setVelPID</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#setvelpidfull">setVelPIDFull</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="abstract-read-only-chassis-model.html">(Abstract) Read-Only Chassis Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="chassis-model-factory.html">Chassis Model Factory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="skid-steer-model.html">Skid-Steer Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="three-encoder-skid-steer-model.html">Three Encoder Skid-Steer Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="xdrive-model.html">X-Drive Model</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../control/index.html">Control API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../device/index.html">Devices API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../filters/index.html">Filters API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../units/index.html">Units API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../util/index.html">Utility API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">OkapiLib API</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Chassis API</a><ul class="current">
@@ -335,7 +384,7 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>ispeed</td>
-<td>The motor power.</td>
+<td>The motor power in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -374,10 +423,10 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>iySpeed</td>
-<td>The speed on the y axis (forward).</td>
+<td>The speed on the y axis (forward) in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 <tr class="row-odd"><td>izRotation</td>
-<td>The speed around the z axis (up).</td>
+<td>The speed around the z axis (up) in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -411,7 +460,7 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>ispeed</td>
-<td>The motor power.</td>
+<td>The motor power in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -463,13 +512,13 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>ileftSpeed</td>
-<td>The left side speed.</td>
+<td>The left side speed in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 <tr class="row-odd"><td>irightSpeed</td>
-<td>The right side speed.</td>
+<td>The right side speed in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 <tr class="row-even"><td>ithreshold</td>
-<td>The joystick deadband.</td>
+<td>The joystick deadband in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -503,13 +552,13 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>iySpeed</td>
-<td>The speed on the y axis (forward).</td>
+<td>The speed on the y axis (forward) in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 <tr class="row-odd"><td>izRotation</td>
-<td>The speed around the z axis (up).</td>
+<td>The speed around the z axis (up) in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 <tr class="row-even"><td>ithreshold</td>
-<td>The joystick deadband.</td>
+<td>The joystick deadband in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -543,7 +592,7 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>ispeed</td>
-<td>The new speed.</td>
+<td>The new speed in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -577,7 +626,7 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>ispeed</td>
-<td>The new speed.</td>
+<td>The new speed in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 </tbody>
 </table>

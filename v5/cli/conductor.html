@@ -149,7 +149,21 @@
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#common-tasks">Common Tasks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#creating-templates">Creating Templates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference">Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pros-conduct">pros conduct</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#pros-conduct-apply">apply</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pros-conduct-fetch">fetch</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pros-conduct-info-project">info-project</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pros-conduct-install">install</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pros-conduct-new-project">new-project</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pros-conduct-query-templates">query-templates</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pros-conduct-uninstall">uninstall</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pros-conduct-upgrade">upgrade</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#pros-conduct-create-template">pros conduct create-template</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -380,6 +394,689 @@ your own custom arguments to <code class="docutils literal notranslate"><span cl
 </div>
 <div class="section" id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pros-conduct">
+<h3>pros conduct<a class="headerlink" href="#pros-conduct" title="Permalink to this headline">¶</a></h3>
+<p>Conductor is PROS’s project management facility. It is responsible for obtaining
+templates for which to create projects from.</p>
+<p>Visit <a class="reference external" href="https://pros.cs.purdue.edu/v5/cli/conductor">https://pros.cs.purdue.edu/v5/cli/conductor</a> to learn more</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pros conduct <span class="o">[</span>OPTIONS<span class="o">]</span> COMMAND <span class="o">[</span>ARGS<span class="o">]</span>...
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-debug">
+<code class="descname">--debug</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable debugging output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-verbose">
+<code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable verbose output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-l">
+<code class="descname">-l</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--log</code><code class="descclassname"> &lt;log&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logging level</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-logfile">
+<code class="descname">--logfile</code><code class="descclassname"> &lt;logfile&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log messages to a file</p>
+</dd></dl>
+
+<div class="section" id="pros-conduct-apply">
+<h4>apply<a class="headerlink" href="#pros-conduct-apply" title="Permalink to this headline">¶</a></h4>
+<p>Upgrade or install a template to a PROS project</p>
+<p>Visit <a class="reference external" href="https://pros.cs.purdue.edu/v5/cli/conductor">https://pros.cs.purdue.edu/v5/cli/conductor</a> to learn more</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pros conduct apply <span class="o">[</span>OPTIONS<span class="o">]</span> QUERY...
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-apply-upgrade">
+<code class="descname">--upgrade</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-upgrade</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-apply-upgrade" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allow upgrading templates in a project</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-apply-install">
+<code class="descname">--install</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-install</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-apply-install" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allow installing templates in a project</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-apply-download">
+<code class="descname">--download</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-download</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-apply-download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allow downloading templates or only allow local templates</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-apply-upgrade-user-files">
+<code class="descname">--upgrade-user-files</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-upgrade-user-files</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-apply-upgrade-user-files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace all user files in a template</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-apply-force">
+<code class="descname">--force</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-apply-force" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force all system files to be inserted into the project</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-apply-force-apply">
+<code class="descname">--force-apply</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-apply-force-apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force apply the template, disregarding if the template is already installed.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-apply-remove-empty-dirs">
+<code class="descname">--remove-empty-dirs</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-remove-empty-dirs</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-apply-remove-empty-dirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove empty directories when removing files</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-apply-project">
+<code class="descname">--project</code><code class="descclassname"> &lt;project&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-apply-project" title="Permalink to this definition">¶</a></dt>
+<dd><p>PROS Project directory or file  [default: .; required]</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-apply-debug">
+<code class="descname">--debug</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-apply-debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable debugging output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-apply-verbose">
+<code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-apply-verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable verbose output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-apply-l">
+<code class="descname">-l</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--log</code><code class="descclassname"> &lt;log&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-apply-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logging level</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-apply-logfile">
+<code class="descname">--logfile</code><code class="descclassname"> &lt;logfile&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-apply-logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log messages to a file</p>
+</dd></dl>
+
+<p class="rubric">Arguments</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-apply-arg-query">
+<code class="descname">QUERY</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-apply-arg-query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Required argument(s)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="pros-conduct-fetch">
+<h4>fetch<a class="headerlink" href="#pros-conduct-fetch" title="Permalink to this headline">¶</a></h4>
+<p>Fetch/download a template from a depot.</p>
+<p>Only a template spec is required. A template spec is the name and version
+of the template formatted as <a class="reference external" href="mailto:name&#37;&#52;&#48;version">name<span>&#64;</span>version</a> (<a class="reference external" href="mailto:libblrs&#37;&#52;&#48;1&#46;0&#46;0">libblrs<span>&#64;</span>1<span>&#46;</span>0<span>&#46;</span>0</a>). Semantic version
+ranges are accepted (e.g., <a class="reference external" href="mailto:libblrs&#37;&#52;&#48;^1&#46;0&#46;0">libblrs<span>&#64;</span>^1<span>&#46;</span>0<span>&#46;</span>0</a>). The version parameter is also
+optional (e.g., libblrs)</p>
+<p>Additional parameters are available according to the depot.</p>
+<p>Visit <a class="reference external" href="https://pros.cs.purdue.edu/v5/cli/conductor">https://pros.cs.purdue.edu/v5/cli/conductor</a> to learn more</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pros conduct fetch <span class="o">[</span>OPTIONS<span class="o">]</span> QUERY...
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-fetch-debug">
+<code class="descname">--debug</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-fetch-debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable debugging output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-fetch-verbose">
+<code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-fetch-verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable verbose output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-fetch-l">
+<code class="descname">-l</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--log</code><code class="descclassname"> &lt;log&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-fetch-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logging level</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-fetch-logfile">
+<code class="descname">--logfile</code><code class="descclassname"> &lt;logfile&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-fetch-logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log messages to a file</p>
+</dd></dl>
+
+<p class="rubric">Arguments</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-fetch-arg-query">
+<code class="descname">QUERY</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-fetch-arg-query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Required argument(s)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="pros-conduct-info-project">
+<h4>info-project<a class="headerlink" href="#pros-conduct-info-project" title="Permalink to this headline">¶</a></h4>
+<p>Display information about a PROS project</p>
+<p>Visit <a class="reference external" href="https://pros.cs.purdue.edu/v5/cli/conductor">https://pros.cs.purdue.edu/v5/cli/conductor</a> to learn more</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pros conduct info-project <span class="o">[</span>OPTIONS<span class="o">]</span>
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-info-project-ls-upgrades">
+<code class="descname">--ls-upgrades</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-ls-upgrades</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-info-project-ls-upgrades" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-info-project-project">
+<code class="descname">--project</code><code class="descclassname"> &lt;project&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-info-project-project" title="Permalink to this definition">¶</a></dt>
+<dd><p>PROS Project directory or file  [default: .; required]</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-info-project-debug">
+<code class="descname">--debug</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-info-project-debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable debugging output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-info-project-verbose">
+<code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-info-project-verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable verbose output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-info-project-l">
+<code class="descname">-l</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--log</code><code class="descclassname"> &lt;log&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-info-project-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logging level</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-info-project-logfile">
+<code class="descname">--logfile</code><code class="descclassname"> &lt;logfile&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-info-project-logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log messages to a file</p>
+</dd></dl>
+
+</div>
+<div class="section" id="pros-conduct-install">
+<h4>install<a class="headerlink" href="#pros-conduct-install" title="Permalink to this headline">¶</a></h4>
+<p>Install a library into a PROS project</p>
+<p>Visit <a class="reference external" href="https://pros.cs.purdue.edu/v5/cli/conductor">https://pros.cs.purdue.edu/v5/cli/conductor</a> to learn more</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pros conduct install <span class="o">[</span>OPTIONS<span class="o">]</span> QUERY...
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-install-upgrade">
+<code class="descname">--upgrade</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-upgrade</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-install-upgrade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-install-download">
+<code class="descname">--download</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-download</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-install-download" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-install-force-user">
+<code class="descname">--force-user</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-install-force-user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace all user files in a template</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-install-f">
+<code class="descname">-f</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--force-system</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-install-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force all system files to be inserted into the project</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-install-force-apply">
+<code class="descname">--force-apply</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-install-force-apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force apply the template, disregarding if the template is already installed.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-install-remove-empty-dirs">
+<code class="descname">--remove-empty-dirs</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-remove-empty-dirs</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-install-remove-empty-dirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove empty directories when removing files</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-install-project">
+<code class="descname">--project</code><code class="descclassname"> &lt;project&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-install-project" title="Permalink to this definition">¶</a></dt>
+<dd><p>PROS Project directory or file  [default: .; required]</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-install-debug">
+<code class="descname">--debug</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-install-debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable debugging output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-install-verbose">
+<code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-install-verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable verbose output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-install-l">
+<code class="descname">-l</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--log</code><code class="descclassname"> &lt;log&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-install-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logging level</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-install-logfile">
+<code class="descname">--logfile</code><code class="descclassname"> &lt;logfile&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-install-logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log messages to a file</p>
+</dd></dl>
+
+<p class="rubric">Arguments</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-install-arg-query">
+<code class="descname">QUERY</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-install-arg-query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Required argument(s)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="pros-conduct-new-project">
+<h4>new-project<a class="headerlink" href="#pros-conduct-new-project" title="Permalink to this headline">¶</a></h4>
+<p>Create a new PROS project</p>
+<p>Visit <a class="reference external" href="https://pros.cs.purdue.edu/v5/cli/conductor">https://pros.cs.purdue.edu/v5/cli/conductor</a> to learn more</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pros conduct new-project <span class="o">[</span>OPTIONS<span class="o">]</span> PATH <span class="o">[</span>TARGET<span class="o">]</span> <span class="o">[</span>VERSION<span class="o">]</span>
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-new-project-force-user">
+<code class="descname">--force-user</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-new-project-force-user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace all user files in a template</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-new-project-f">
+<code class="descname">-f</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--force-system</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-new-project-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force all system files to be inserted into the project</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-new-project-force-refresh">
+<code class="descname">--force-refresh</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-new-project-force-refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force update all remote depots, ignoring automatic update checks  [default: False]</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-new-project-no-default-libs">
+<code class="descname">--no-default-libs</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-new-project-no-default-libs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do not install any default libraries after creating the project.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-new-project-compile-after">
+<code class="descname">--compile-after</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-new-project-compile-after" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compile the project after creation  [default: False]</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-new-project-build-cache">
+<code class="descname">--build-cache</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-new-project-build-cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build compile commands cache after creation. Overrides –compile-after if both are specified.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-new-project-debug">
+<code class="descname">--debug</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-new-project-debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable debugging output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-new-project-verbose">
+<code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-new-project-verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable verbose output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-new-project-l">
+<code class="descname">-l</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--log</code><code class="descclassname"> &lt;log&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-new-project-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logging level</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-new-project-logfile">
+<code class="descname">--logfile</code><code class="descclassname"> &lt;logfile&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-new-project-logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log messages to a file</p>
+</dd></dl>
+
+<p class="rubric">Arguments</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-new-project-arg-path">
+<code class="descname">PATH</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-new-project-arg-path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Required argument</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-new-project-arg-target">
+<code class="descname">TARGET</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-new-project-arg-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optional argument</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-new-project-arg-version">
+<code class="descname">VERSION</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-new-project-arg-version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optional argument</p>
+</dd></dl>
+
+</div>
+<div class="section" id="pros-conduct-query-templates">
+<h4>query-templates<a class="headerlink" href="#pros-conduct-query-templates" title="Permalink to this headline">¶</a></h4>
+<p>Query local and remote templates based on a spec</p>
+<p>Visit <a class="reference external" href="https://pros.cs.purdue.edu/v5/cli/conductor">https://pros.cs.purdue.edu/v5/cli/conductor</a> to learn more</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pros conduct query-templates <span class="o">[</span>OPTIONS<span class="o">]</span> <span class="o">[</span>QUERY<span class="o">]</span>...
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-query-templates-allow-offline">
+<code class="descname">--allow-offline</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-offline</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-query-templates-allow-offline" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Dis)allow offline templates in the listing  [default: True]</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-query-templates-allow-online">
+<code class="descname">--allow-online</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-online</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-query-templates-allow-online" title="Permalink to this definition">¶</a></dt>
+<dd><p>(Dis)allow online templates in the listing  [default: True]</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-query-templates-force-refresh">
+<code class="descname">--force-refresh</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-query-templates-force-refresh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force update all remote depots, ignoring automatic update checks  [default: False]</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-query-templates-limit">
+<code class="descname">--limit</code><code class="descclassname"> &lt;limit&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-query-templates-limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Limit displayed results.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-query-templates-debug">
+<code class="descname">--debug</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-query-templates-debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable debugging output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-query-templates-verbose">
+<code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-query-templates-verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable verbose output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-query-templates-l">
+<code class="descname">-l</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--log</code><code class="descclassname"> &lt;log&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-query-templates-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logging level</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-query-templates-logfile">
+<code class="descname">--logfile</code><code class="descclassname"> &lt;logfile&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-query-templates-logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log messages to a file</p>
+</dd></dl>
+
+<p class="rubric">Arguments</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-query-templates-arg-query">
+<code class="descname">QUERY</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-query-templates-arg-query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optional argument(s)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="pros-conduct-uninstall">
+<h4>uninstall<a class="headerlink" href="#pros-conduct-uninstall" title="Permalink to this headline">¶</a></h4>
+<p>Uninstall a template from a PROS project</p>
+<p>Visit <a class="reference external" href="https://pros.cs.purdue.edu/v5/cli/conductor">https://pros.cs.purdue.edu/v5/cli/conductor</a> to learn more</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pros conduct uninstall <span class="o">[</span>OPTIONS<span class="o">]</span> <span class="o">[</span>QUERY<span class="o">]</span>...
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-uninstall-remove-user">
+<code class="descname">--remove-user</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-uninstall-remove-user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Also remove user files</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-uninstall-remove-empty-dirs">
+<code class="descname">--remove-empty-dirs</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-remove-empty-dirs</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-uninstall-remove-empty-dirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove empty directories when removing files</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-uninstall-project">
+<code class="descname">--project</code><code class="descclassname"> &lt;project&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-uninstall-project" title="Permalink to this definition">¶</a></dt>
+<dd><p>PROS Project directory or file  [default: .; required]</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-uninstall-debug">
+<code class="descname">--debug</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-uninstall-debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable debugging output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-uninstall-verbose">
+<code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-uninstall-verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable verbose output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-uninstall-l">
+<code class="descname">-l</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--log</code><code class="descclassname"> &lt;log&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-uninstall-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logging level</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-uninstall-logfile">
+<code class="descname">--logfile</code><code class="descclassname"> &lt;logfile&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-uninstall-logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log messages to a file</p>
+</dd></dl>
+
+<p class="rubric">Arguments</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-uninstall-arg-query">
+<code class="descname">QUERY</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-uninstall-arg-query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optional argument(s)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="pros-conduct-upgrade">
+<h4>upgrade<a class="headerlink" href="#pros-conduct-upgrade" title="Permalink to this headline">¶</a></h4>
+<p>Upgrade a PROS project or one of its libraries</p>
+<p>Visit <a class="reference external" href="https://pros.cs.purdue.edu/v5/cli/conductor">https://pros.cs.purdue.edu/v5/cli/conductor</a> to learn more</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pros conduct upgrade <span class="o">[</span>OPTIONS<span class="o">]</span> <span class="o">[</span>QUERY<span class="o">]</span>...
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-upgrade-install">
+<code class="descname">--install</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-install</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-upgrade-install" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-upgrade-download">
+<code class="descname">--download</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-download</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-upgrade-download" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-upgrade-force-user">
+<code class="descname">--force-user</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-upgrade-force-user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace all user files in a template</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-upgrade-f">
+<code class="descname">-f</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--force-system</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-upgrade-f" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force all system files to be inserted into the project</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-upgrade-force-apply">
+<code class="descname">--force-apply</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-upgrade-force-apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Force apply the template, disregarding if the template is already installed.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-upgrade-remove-empty-dirs">
+<code class="descname">--remove-empty-dirs</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-remove-empty-dirs</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-upgrade-remove-empty-dirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove empty directories when removing files</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-upgrade-project">
+<code class="descname">--project</code><code class="descclassname"> &lt;project&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-upgrade-project" title="Permalink to this definition">¶</a></dt>
+<dd><p>PROS Project directory or file  [default: .; required]</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-upgrade-debug">
+<code class="descname">--debug</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-upgrade-debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable debugging output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-upgrade-verbose">
+<code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-upgrade-verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable verbose output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-upgrade-l">
+<code class="descname">-l</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--log</code><code class="descclassname"> &lt;log&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-upgrade-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logging level</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-upgrade-logfile">
+<code class="descname">--logfile</code><code class="descclassname"> &lt;logfile&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-upgrade-logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log messages to a file</p>
+</dd></dl>
+
+<p class="rubric">Arguments</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-upgrade-arg-query">
+<code class="descname">QUERY</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-upgrade-arg-query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optional argument(s)</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="pros-conduct-create-template">
+<h3>pros conduct create-template<a class="headerlink" href="#pros-conduct-create-template" title="Permalink to this headline">¶</a></h3>
+<p>Create a template to be used in other projects</p>
+<p>Templates primarily consist of the following fields: name, version, and
+files to install.</p>
+<p>Templates have two types of files: system files and user files. User files
+are files in a template intended to be modified by users - they are not
+replaced during upgrades or removed by default when a library is uninstalled.
+System files are files that are for the “system.” They get replaced every
+time the template is upgraded. The default PROS project is a template. The user
+files are files like src/opcontrol.c and src/initialize.c, and the system files
+are files like firmware/libpros.a and include/api.h.</p>
+<p>You should specify the –system and –user options multiple times to include
+more than one file. Both flags also accept glob patterns. When a glob pattern is
+provided and inside a PROS project, then all files that match the pattern that
+are NOT supplied by another template are included.</p>
+<p>Example usage:</p>
+<p>pros conduct create-template . libblrs 2.0.1 –system “firmware/<em>.a” –system “include/</em>.h”</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pros conduct create-template <span class="o">[</span>OPTIONS<span class="o">]</span> PATH NAME VERSION
+</pre></div>
+</div>
+<p class="rubric">Options</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-create-template-system">
+<code class="descname">--system</code><code class="descclassname"> &lt;system_files&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-create-template-system" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify “system” files required by the template</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-create-template-user">
+<code class="descname">--user</code><code class="descclassname"> &lt;user_files&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-create-template-user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify files that are intended to be modified by users</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-create-template-kernels">
+<code class="descname">--kernels</code><code class="descclassname"> &lt;supported_kernels&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-create-template-kernels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify supported kernels</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-create-template-target">
+<code class="descname">--target</code><code class="descclassname"> &lt;target&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-create-template-target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify the target platform (cortex or v5)</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-create-template-destination">
+<code class="descname">--destination</code><code class="descclassname"> &lt;destination&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-create-template-destination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specify an alternate destination for the created ZIP file or template descriptor</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-create-template-zip">
+<code class="descname">--zip</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--no-zip</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-create-template-zip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a ZIP file or create a template descriptor.</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-create-template-debug">
+<code class="descname">--debug</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-create-template-debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable debugging output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-create-template-verbose">
+<code class="descname">--verbose</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-create-template-verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable verbose output</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-create-template-l">
+<code class="descname">-l</code><code class="descclassname"></code><code class="descclassname">, </code><code class="descname">--log</code><code class="descclassname"> &lt;log&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-create-template-l" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logging level</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-create-template-logfile">
+<code class="descname">--logfile</code><code class="descclassname"> &lt;logfile&gt;</code><a class="headerlink" href="#cmdoption-pros-conduct-create-template-logfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log messages to a file</p>
+</dd></dl>
+
+<p class="rubric">Arguments</p>
+<dl class="option">
+<dt id="cmdoption-pros-conduct-create-template-arg-path">
+<code class="descname">PATH</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-create-template-arg-path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Required argument</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-create-template-arg-name">
+<code class="descname">NAME</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-create-template-arg-name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Required argument</p>
+</dd></dl>
+
+<dl class="option">
+<dt id="cmdoption-pros-conduct-create-template-arg-version">
+<code class="descname">VERSION</code><code class="descclassname"></code><a class="headerlink" href="#cmdoption-pros-conduct-create-template-arg-version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Required argument</p>
+</dd></dl>
+
+</div>
 </div>
 </div>
 

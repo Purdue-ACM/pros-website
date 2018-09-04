@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>What is a ChassisController, and why is it important? &mdash; PROS for V5 3.0.8 documentation</title>
+  <title>What is a ChassisController, and why is it important? &mdash; PROS for V5 3.1.0 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="PROS for V5 3.0.8 documentation" href="../../../index.html"/>
+    <link rel="top" title="PROS for V5 3.1.0 documentation" href="../../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
         <link rel="next" title="Controller Inputs and Outputs" href="controller-io.html"/>
         <link rel="prev" title="2D Motion Profiling" href="2dmotionprofiling.html"/>
@@ -87,7 +87,7 @@
             
               <div class="version">
                 
-                  V5 (3.0.8)
+                  V5 (3.1.0)
                 
               </div>
             
@@ -144,36 +144,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">OkapiLib Documentation Home</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../api/index.html">OkapiLib API</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../index.html#general-tutorials">General Tutorials</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../index.html#walkthrough-tutorials">Walkthrough Tutorials</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../index.html#topical-tutorials">Topical Tutorials</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="../index.html#concepts">Concepts</a><ul class="current">
-<li class="toctree-l5"><a class="reference internal" href="2dmotionprofiling.html">2D Motion Profiling</a></li>
-<li class="toctree-l5 current"><a class="current reference internal" href="#">What is a ChassisController, and why is it important?</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#why-should-i-use-a-chassiscontroller">Why should I use a ChassisController?</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#what-types-of-chassiscontrollers-does-okapilib-come-with">What types of ChassisControllers does OkapiLib come with?</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#how-can-i-make-a-chassiscontroller">How can I make a ChassisController?</a></li>
-</ul>
-</li>
-<li class="toctree-l5"><a class="reference internal" href="controller-io.html">Controller Inputs and Outputs</a></li>
-<li class="toctree-l5"><a class="reference internal" href="factories.html">Factory Object Creation Pattern</a></li>
-<li class="toctree-l5"><a class="reference internal" href="filtering.html">Filtering</a></li>
-<li class="toctree-l5"><a class="reference internal" href="iterative-async-controllers.html">Iterative and Async Controllers</a></li>
-<li class="toctree-l5"><a class="reference internal" href="settled-util.html">SettledUtils</a></li>
-<li class="toctree-l5"><a class="reference internal" href="smart-pointers.html">Smart Pointers</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../index.html#general-tutorials">General Tutorials</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#walkthrough-tutorials">Walkthrough Tutorials</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html#topical-tutorials">Topical Tutorials</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../index.html#concepts">Concepts</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="2dmotionprofiling.html">2D Motion Profiling</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">What is a ChassisController, and why is it important?</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#why-should-i-use-a-chassiscontroller">Why should I use a ChassisController?</a></li>
@@ -189,6 +161,26 @@
 <li class="toctree-l4"><a class="reference internal" href="smart-pointers.html">Smart Pointers</a></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#walkthrough-tutorials">Walkthrough Tutorials</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#topical-tutorials">Topical Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="2dmotionprofiling.html">2D Motion Profiling</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">What is a ChassisController, and why is it important?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#why-should-i-use-a-chassiscontroller">Why should I use a ChassisController?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-types-of-chassiscontrollers-does-okapilib-come-with">What types of ChassisControllers does OkapiLib come with?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-i-make-a-chassiscontroller">How can I make a ChassisController?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="controller-io.html">Controller Inputs and Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factories.html">Factory Object Creation Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filtering.html">Filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iterative-async-controllers.html">Iterative and Async Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settled-util.html">SettledUtils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smart-pointers.html">Smart Pointers</a></li>
 </ul>
 </li>
 </ul>
@@ -372,7 +364,7 @@ ports 1 and 2 and reverses them, and the second contains two motors in ports 3 a
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.0.8)
+      v: V5 (3.1.0)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -393,7 +385,7 @@ ports 1 and 2 and reverses them, and the second contains two motors in ports 3 a
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'3.0.8',
+            VERSION:'3.1.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Uploading &mdash; PROS for V5 3.1.0 documentation</title>
+  <title>Creating a C Project &mdash; PROS for V5 3.1.0 documentation</title>
   
 
   
@@ -41,8 +41,8 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="PROS for V5 3.1.0 documentation" href="../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
-        <link rel="next" title="ADI (3 Wire Ports)" href="../topical/adi.html"/>
-        <link rel="prev" title="Creating a C Project" href="creating-c-project.html"/>
+        <link rel="next" title="Uploading" href="uploading.html"/>
+        <link rel="prev" title="Programming the Clawbot" href="clawbot.html"/>
    
   
   
@@ -130,8 +130,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../index.html#general-tutorials">General Tutorials</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#walkthrough-tutorials">Walkthrough Tutorials</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="clawbot.html">Programming the Clawbot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="creating-c-project.html">Creating a C Project</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Uploading</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Creating a C Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="uploading.html">Uploading</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index.html#topical-tutorials">Topical Tutorials</a></li>
@@ -204,14 +204,14 @@
         
           <li><a href="../index.html">Tutorials</a> &raquo;</li>
         
-      <li>Uploading</li>
+      <li>Creating a C Project</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/tutorials/walkthrough/uploading.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/tutorials/walkthrough/creating-c-project.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -225,12 +225,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="uploading">
-<h1>Uploading<a class="headerlink" href="#uploading" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="creating-a-c-project">
+<h1>Creating a C Project<a class="headerlink" href="#creating-a-c-project" title="Permalink to this headline">¶</a></h1>
+<p>By default, a new PROS project contains C++ source files and the C++ API. If you would prefer to program in C
+instead, change the extension of the source files (<code class="docutils literal notranslate"><span class="pre">initialize.cpp</span></code>, <code class="docutils literal notranslate"><span class="pre">autonomous.cpp</span></code>, and <code class="docutils literal notranslate"><span class="pre">opcontrol.cpp</span></code>)
+to <code class="docutils literal notranslate"><span class="pre">.c</span></code>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This section will not be completed until the PROS CLI is finalized.</p>
+<p class="last">Do not change any of the PROS header files in this process. That will cause the wrong files to be
+included in your project, and will likely prevent compilation. Only modify the extensions of the <code class="docutils literal notranslate"><span class="pre">.cpp</span></code> files.</p>
 </div>
+<p>This will compile your PROS project as C code, and will give you access to the <a class="reference external" href="../../api/c/index.html">C API</a>.</p>
+<p>If you’re interested in combining C and C++, you should read through the <a class="reference external" href="../general/combining-c-cpp.html">Combining C and C++ tutorial</a>.
+Please note that it is typically a complicated matter to combine the two, and rarely a good idea.</p>
 </div>
 
   <div class="section">
@@ -247,10 +254,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../topical/adi.html" class="btn btn-neutral float-right" title="ADI (3 Wire Ports)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="uploading.html" class="btn btn-neutral float-right" title="Uploading" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="creating-c-project.html" class="btn btn-neutral" title="Creating a C Project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="clawbot.html" class="btn btn-neutral" title="Programming the Clawbot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

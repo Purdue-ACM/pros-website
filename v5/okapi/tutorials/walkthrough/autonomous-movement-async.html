@@ -259,12 +259,16 @@ For a more basic tutorial on sequential movements, see <a class="reference exter
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
 
 <span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_LEFT_MOTOR_PORT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_RIGHT_MOTOR_PORT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
-<span class="k">auto</span> <span class="n">driveController</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">DRIVE_LEFT_MOTOR_PORT</span><span class="p">,</span> <span class="n">DRIVE_RIGHT_MOTOR_PORT</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">driveController</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">DRIVE_LEFT_MOTOR_PORT</span><span class="p">,</span> <span class="n">DRIVE_RIGHT_MOTOR_PORT</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
 <p>And then we’ll add a lift subsystem as an Async Controller:</p>
@@ -280,7 +284,9 @@ For a more basic tutorial on sequential movements, see <a class="reference exter
 10
 11
 12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
 
 <span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_LEFT_MOTOR_PORT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_RIGHT_MOTOR_PORT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
@@ -290,9 +296,11 @@ For a more basic tutorial on sequential movements, see <a class="reference exter
 <span class="k">const</span> <span class="kt">double</span> <span class="n">liftkD</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">LIFT_MOTOR_PORT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
-<span class="k">auto</span> <span class="n">driveController</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">DRIVE_LEFT_MOTOR_PORT</span><span class="p">,</span> <span class="n">DRIVE_RIGHT_MOTOR_PORT</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">auto</span> <span class="n">driveController</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">DRIVE_LEFT_MOTOR_PORT</span><span class="p">,</span> <span class="n">DRIVE_RIGHT_MOTOR_PORT</span><span class="p">);</span>
 
-<span class="k">auto</span> <span class="n">liftController</span> <span class="o">=</span> <span class="n">AsyncControllerFactory</span><span class="o">::</span><span class="n">posPID</span><span class="p">(</span><span class="n">LIFT_MOTOR_PORT</span><span class="p">,</span> <span class="n">liftkP</span><span class="p">,</span> <span class="n">liftkI</span><span class="p">,</span> <span class="n">liftkD</span><span class="p">);</span>
+  <span class="k">auto</span> <span class="n">liftController</span> <span class="o">=</span> <span class="n">AsyncControllerFactory</span><span class="o">::</span><span class="n">posPID</span><span class="p">(</span><span class="n">LIFT_MOTOR_PORT</span><span class="p">,</span> <span class="n">liftkP</span><span class="p">,</span> <span class="n">liftkI</span><span class="p">,</span> <span class="n">liftkD</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
 <p>Now that we have two subsystems to run, let’s execute a few different movements.</p>
@@ -337,7 +345,7 @@ with just the drive controller.</p>
 
   <span class="c1">// Begin movements</span>
   <span class="n">driveController</span><span class="p">.</span><span class="n">moveDistanceAsync</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// Move 1000 motor degrees forward</span>
-  <span class="n">liftController</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span> <span class="c1">// Move 100 motor degrees upward</span>
+  <span class="n">liftController</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span> <span class="c1">// Move 200 motor degrees upward</span>
   <span class="n">driveController</span><span class="p">.</span><span class="n">waitUntilSettled</span><span class="p">();</span>
 
   <span class="c1">// Then the next movement will execute after the drive movement finishes</span>
@@ -387,10 +395,10 @@ on both controllers.</p>
 
   <span class="c1">// Begin movements</span>
   <span class="n">driveController</span><span class="p">.</span><span class="n">moveDistanceAsync</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// Move 1000 motor degrees forward</span>
-  <span class="n">liftController</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span> <span class="c1">// Move 100 motor degrees upward</span>
-<span class="hll">  <span class="n">driveController</span><span class="p">.</span><span class="n">waitUntilSettled</span><span class="p">();</span>
-</span><span class="hll">  <span class="n">liftController</span><span class="p">.</span><span class="n">waitUntilSettled</span><span class="p">();</span>
-</span>
+  <span class="n">liftController</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span> <span class="c1">// Move 200 motor degrees upward</span>
+  <span class="n">driveController</span><span class="p">.</span><span class="n">waitUntilSettled</span><span class="p">();</span>
+  <span class="n">liftController</span><span class="p">.</span><span class="n">waitUntilSettled</span><span class="p">();</span>
+
   <span class="c1">// Then the next movement will execute after both movements finish</span>
 <span class="p">}</span>
 </pre></div>

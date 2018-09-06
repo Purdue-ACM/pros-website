@@ -132,6 +132,7 @@
 <li class="toctree-l3"><a class="reference internal" href="combining-c-cpp.html">Combining C and C++</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Debugging</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#viewing-printf-output">Viewing printf output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#further-debug-info-with-errno">Further debug info with <code class="docutils literal notranslate"><span class="pre">errno</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#jinx-graphical-debugger">JINX Graphical Debugger</a></li>
 </ul>
 </li>
@@ -258,6 +259,15 @@ stream from a robot connected over direct USB connection, VEXnet, or
 <p>A terminal panel will open at the bottom of the screen containing the
 output of a connected robot.</p>
 <img alt="../../_images/terminal-platformio.png" src="../../_images/terminal-platformio.png" />
+</div>
+<div class="section" id="further-debug-info-with-errno">
+<h2>Further debug info with <code class="docutils literal notranslate"><span class="pre">errno</span></code><a class="headerlink" href="#further-debug-info-with-errno" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">errno</span></code> is a global value that is set when any part of the PROS kernel encounters an error. The value of
+<code class="docutils literal notranslate"><span class="pre">errno</span></code> is specific to each function, so check the function headers or the <a class="reference external" href="../../api/index.html">API docs</a>
+for possible values and their meaning. If you think you’re encountering an error in the kernel code, check the
+value of <code class="docutils literal notranslate"><span class="pre">errno</span></code> to see what’s causing the issue.</p>
+<p>Debugging in this manner is standard to other environments besides PROS. For further information on using
+<code class="docutils literal notranslate"><span class="pre">errno</span></code>, see the following tutorial: <a class="reference external" href="https://www.tutorialspoint.com/cprogramming/c_error_handling.htm">https://www.tutorialspoint.com/cprogramming/c_error_handling.htm</a></p>
 </div>
 <div class="section" id="jinx-graphical-debugger">
 <h2>JINX Graphical Debugger<a class="headerlink" href="#jinx-graphical-debugger" title="Permalink to this headline">¶</a></h2>

@@ -324,43 +324,30 @@ the last filter.</p>
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-1 docutils container">
-<div class="docutils container">
-Example</div>
-</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ComposableFilter</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">okapi</span><span class="o">::</span><span class="n">ComposableFilter</span> <span class="n">filter</span><span class="p">;</span>
-  <span class="n">filter</span><span class="p">.</span><span class="n">addFilter</span><span class="p">([]</span> <span class="p">{</span> <span class="k">return</span> <span class="n">new</span> <span class="n">okapi</span><span class="o">::</span><span class="n">MedianFilter</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;</span><span class="p">();</span> <span class="p">});</span>  <span class="c1">// First filter in the list</span>
-  <span class="n">filter</span><span class="p">.</span><span class="n">addFilter</span><span class="p">([]</span> <span class="p">{</span> <span class="k">return</span> <span class="n">new</span> <span class="n">okapi</span><span class="o">::</span><span class="n">AverageFilter</span><span class="o">&lt;</span><span class="mi">5</span><span class="o">&gt;</span><span class="p">();</span> <span class="p">});</span> <span class="c1">// Second filter in the list</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
 </div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-2 docutils container">
+<div class="active item sphinx-data-tab-1 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-3 docutils container">
+<div class="item sphinx-data-tab-2 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ComposableFilter</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">initializer_list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Filter</span><span class="o">&gt;&gt;</span> <span class="n">ilist</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">okapi</span><span class="o">::</span><span class="n">ComposableFilter</span> <span class="n">filter</span><span class="p">({</span>
     <span class="p">[]</span> <span class="p">{</span> <span class="k">return</span> <span class="n">new</span> <span class="n">MedianFilter</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;</span><span class="p">();</span> <span class="p">},</span> <span class="c1">// First filter in the list</span>
@@ -396,12 +383,12 @@ Example</div>
 <p>Filters a value, like a sensor reading.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-4 docutils container">
+<div class="active item sphinx-data-tab-3 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">filter</span><span class="p">(</span><span class="k">const</span> <span class="kt">double</span> <span class="n">ireading</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -431,12 +418,12 @@ Prototype</div>
 <p>Returns the previous output from the filter.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-5 docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">getOutput</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -450,12 +437,12 @@ Prototype</div>
 <p>Adds a filter to the end of the sequence.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-6 docutils container">
+<div class="active item sphinx-data-tab-5 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">addFilter</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Filter</span><span class="o">&gt;</span> <span class="n">ifilter</span><span class="p">)</span>
 </pre></div>
 </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>JINX Graphical Debugger &mdash; PROS for V5 3.1.0 documentation</title>
+  <title>V5 Brain Display (LVGL) &mdash; PROS for V5 3.1.0 documentation</title>
   
 
   
@@ -41,8 +41,8 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="PROS for V5 3.1.0 documentation" href="../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
-        <link rel="next" title="LLEMU (Legacy LCD Emulator)" href="llemu.html"/>
-        <link rel="prev" title="Filesystem" href="filesystem.html"/>
+        <link rel="next" title="Filesystem" href="filesystem.html"/>
+        <link rel="prev" title="Controller" href="controller.html"/>
    
   
   
@@ -132,9 +132,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#topical-tutorials">Topical Tutorials</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="adi.html">ADI (3 Wire Ports)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="controller.html">Controller</a></li>
-<li class="toctree-l3"><a class="reference internal" href="display.html">V5 Brain Display (LVGL)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">V5 Brain Display (LVGL)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="filesystem.html">Filesystem</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">JINX Graphical Debugger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jinx.html">JINX Graphical Debugger</a></li>
 <li class="toctree-l3"><a class="reference internal" href="llemu.html">LLEMU (Legacy LCD Emulator)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="motors.html">Motors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="multitasking.html">Multitasking</a></li>
@@ -211,14 +211,14 @@
         
           <li><a href="../index.html">Tutorials</a> &raquo;</li>
         
-      <li>JINX Graphical Debugger</li>
+      <li>V5 Brain Display (LVGL)</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/tutorials/topical/jinx.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/tutorials/topical/display.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -232,11 +232,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="jinx-graphical-debugger">
-<h1>JINX Graphical Debugger<a class="headerlink" href="#jinx-graphical-debugger" title="Permalink to this headline">¶</a></h1>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This will be completed when JINX is finalized for an upcoming minor version increment.</p>
+  <div class="section" id="v5-brain-display-lvgl">
+<h1>V5 Brain Display (LVGL)<a class="headerlink" href="#v5-brain-display-lvgl" title="Permalink to this headline">¶</a></h1>
+<p>Interacting with the touchscreen on the V5 Brain is made possible through <a class="reference external" href="https://littlevgl.com">LVGL</a>.
+LVGL is a full-featured C graphics library (it’s accessible in C++ projects too under the same API).</p>
+<p>The first step to getting started with LVGL is to include <code class="docutils literal notranslate"><span class="pre">apix.h</span></code> in your <code class="docutils literal notranslate"><span class="pre">main.h</span></code> file or other header files.
+This includes the full LVGL feature set as described in their documentation: <a class="reference external" href="https://littlevgl.com/basics">https://littlevgl.com/basics</a></p>
+<p>From there, you can follow along with any of the LVGL tutorials (such as the one linked above). There is no need
+to initialize LVGL, you can simply start creating objects.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Custom LVGL code cannot be displayed at the same time as the <a class="reference external" href="./llemu.html">LLEMU</a>.
+As a result, you must remove the LLEMU code that is present in <code class="docutils literal notranslate"><span class="pre">initialize.cpp</span></code> by default in a
+new project.</p>
 </div>
 </div>
 
@@ -254,10 +262,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="llemu.html" class="btn btn-neutral float-right" title="LLEMU (Legacy LCD Emulator)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="filesystem.html" class="btn btn-neutral float-right" title="Filesystem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="filesystem.html" class="btn btn-neutral" title="Filesystem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="controller.html" class="btn btn-neutral" title="Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

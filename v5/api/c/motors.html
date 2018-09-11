@@ -3588,10 +3588,16 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 3
 4
 5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="n">motor_encoder_units_e</span> <span class="p">{</span>
-  <span class="n">E_MOTOR_ENCODER_DEGREES</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-  <span class="n">E_MOTOR_ENCODER_ROTATIONS</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="n">E_MOTOR_ENCODER_COUNTS</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="n">motor_encoder_units_e</span> <span class="p">{</span>
+  <span class="n">E_MOTOR_ENCODER_DEGREES</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>   <span class="c1">// Position is recorded as angle in degrees</span>
+                                 <span class="c1">// as a floating point number</span>
+  <span class="n">E_MOTOR_ENCODER_ROTATIONS</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// Position is recorded as angle in rotations</span>
+                                 <span class="c1">// as a floating point number</span>
+  <span class="n">E_MOTOR_ENCODER_COUNTS</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>    <span class="c1">// Position is recorded as raw encoder ticks</span>
+                                 <span class="c1">// as a whole number</span>
   <span class="n">E_MOTOR_ENCODER_INVALID</span> <span class="o">=</span> <span class="n">INT32_MAX</span>
 <span class="p">}</span> <span class="n">motor_encoder_units_e_t</span><span class="p">;</span>
 </pre></div>

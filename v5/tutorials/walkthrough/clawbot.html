@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Programming the Clawbot &mdash; PROS for V5 3.1.0 documentation</title>
+  <title>Programming the Clawbot &mdash; PROS for V5 3.1.1 documentation</title>
   
 
   
@@ -34,12 +34,20 @@
 <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
 
   
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PROS for V5 3.1.0 documentation" href="../../index.html"/>
+    <link rel="top" title="PROS for V5 3.1.1 documentation" href="../../index.html"/>
         <link rel="up" title="Tutorials" href="../index.html"/>
         <link rel="next" title="Creating a C Project" href="creating-c-project.html"/>
         <link rel="prev" title="General Usage FAQ" href="../general/usage-faq.html"/>
@@ -87,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.1.0)
+                  V5 (3.1.1)
                 
               </div>
             
@@ -133,6 +141,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#objective">Objective:</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intended-audience">Intended Audience:</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#goals">Goals:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-clawbot">The Clawbot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-the-project">Creating the Project</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pros-project-structure">PROS Project Structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#drive-control">Drive Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arcade-control">Arcade Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arm-control">Arm Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#claw-control">Claw Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reading-the-switches">Reading the Switches</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="creating-c-project.html">Creating a C Project</a></li>
@@ -232,18 +248,28 @@
             
   <div class="section" id="programming-the-clawbot">
 <h1>Programming the Clawbot<a class="headerlink" href="#programming-the-clawbot" title="Permalink to this headline">¶</a></h1>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This tutorial is very much incomplete. This tutorial will guide you through
-creating and uploading code in the PROS 3 CLI environment.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#objective" id="id13">Objective:</a></li>
+<li><a class="reference internal" href="#intended-audience" id="id14">Intended Audience:</a></li>
+<li><a class="reference internal" href="#goals" id="id15">Goals:</a></li>
+<li><a class="reference internal" href="#the-clawbot" id="id16">The Clawbot</a></li>
+<li><a class="reference internal" href="#creating-the-project" id="id17">Creating the Project</a></li>
+<li><a class="reference internal" href="#pros-project-structure" id="id18">PROS Project Structure</a></li>
+<li><a class="reference internal" href="#drive-control" id="id19">Drive Control</a></li>
+<li><a class="reference internal" href="#arcade-control" id="id20">Arcade Control</a></li>
+<li><a class="reference internal" href="#arm-control" id="id21">Arm Control</a></li>
+<li><a class="reference internal" href="#claw-control" id="id22">Claw Control</a></li>
+<li><a class="reference internal" href="#reading-the-switches" id="id23">Reading the Switches</a></li>
+</ul>
 </div>
 <div class="section" id="objective">
-<h2>Objective:<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">Objective:</a><a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h2>
 <p>This tutorial will guide you through basic programming of the VEX
 Clawbot.</p>
 </div>
 <div class="section" id="intended-audience">
-<h2>Intended Audience:<a class="headerlink" href="#intended-audience" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id14">Intended Audience:</a><a class="headerlink" href="#intended-audience" title="Permalink to this headline">¶</a></h2>
 <p>This tutorial is intended for developers with some programming
 experience, but with little to no experience with the PROS library. If
 you haven’t programmed before, we recommend checking out all the
@@ -253,7 +279,7 @@ benefit from the “Pointers, Arrays and Strings” sections as well
 (although they aren’t as pertinent).</p>
 </div>
 <div class="section" id="goals">
-<h2>Goals:<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">Goals:</a><a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
 <p>At the end of this tutorial you will have:</p>
 <ul class="simple">
 <li>Understood the basic project structure of PROS</li>
@@ -263,6 +289,9 @@ benefit from the “Pointers, Arrays and Strings” sections as well
 <li>Understood the standard subsystem module methodology</li>
 <li>Programmed a dead-reckoned autonomous routine</li>
 </ul>
+</div>
+<div class="section" id="the-clawbot">
+<h2><a class="toc-backref" href="#id16">The Clawbot</a><a class="headerlink" href="#the-clawbot" title="Permalink to this headline">¶</a></h2>
 <p>Here’s the robot we’ll be programming:</p>
 <img alt="../../_images/clawbot1.jpg" src="../../_images/clawbot1.jpg" />
 <p>You can follow VEX’s tutorial for building this robot <a class="reference external" href="https://v5beta.vex.com/parent-wrapper.php?id=v5-with-clawbot">here</a>.</p>
@@ -374,14 +403,1247 @@ following ports:</p>
 </tr>
 </tbody>
 </table>
-<p>To create, build, and upload a new project in PROS 3, run</p>
-<div class="code bash highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">prosv5</span> <span class="n">conduct</span> <span class="n">new</span> <span class="o">&lt;</span><span class="n">path_to_project</span><span class="o">&gt;</span>
-<span class="n">prosv5</span> <span class="n">make</span>
-<span class="n">prosv5</span> <span class="n">upload</span>
-<span class="n">prosv5</span> <span class="n">terminal</span>
+</div>
+<div class="section" id="creating-the-project">
+<h2><a class="toc-backref" href="#id17">Creating the Project</a><a class="headerlink" href="#creating-the-project" title="Permalink to this headline">¶</a></h2>
+<p>With Atom started, you can create a new PROS project by clicking the
+<code class="docutils literal notranslate"><span class="pre">PROS</span></code> menu, then click <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">new</span> <span class="pre">Project</span></code>.</p>
+<p>Create a directory that you’d like to keep the source files for your
+Clawbot project.</p>
+<p>Pick a directory to create the new project in and click Create. The PROS
+CLI will now copy the latest kernel template into the specified
+directory and Atom will open it.</p>
+</div>
+<div class="section" id="pros-project-structure">
+<h2><a class="toc-backref" href="#id18">PROS Project Structure</a><a class="headerlink" href="#pros-project-structure" title="Permalink to this headline">¶</a></h2>
+<p>When you create your project, PROS will copy all of the files necessary
+to build your project. The structure of the project looks like:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>project
+│   project.pros        (used by PROS CLI to know kernel version and other metadata)
+│   Makefile            (instructs make how to compile your project)
+|   common.mk           (helper file for Makefile)
+│
+└───src                 (source files should go here)
+│   │   autonomous.cpp  (source for autonomous function)
+│   │   initialize.cpp  (source for initialization)
+│   │   opcontrol.cpp   (source for operator control)
+|
+└───include             (Header files should go in here)
+│   │   api.h           (Lets source files know PROS API functions)
+│   │   main.h          (Includes api.h and anything else you want to include project-wide)
+|   └───pros            (Contains all of the specific header files for the PROS API functions)
+|   └───okapi           (Contains all of the header files for OkapiLib)
+|   └───display         (Contains all of the header files for LVGL, the graphics library for the V5 screen)
+│
+└───firmware
+    │   libpros.a       (Pre-compiled PROS library)
+    │   okapilib.a      (Pre-compiled OkapiLib library)
+    |   v5.ld           (Instructs the linker how to construct binaries for the V5)
 </pre></div>
 </div>
-<p>The last 3 commands can be simplified to <code class="code docutils literal notranslate"><span class="pre">prosv5</span> <span class="pre">mut</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">By convention, the <code class="docutils literal notranslate"><span class="pre">opcontrol()</span></code>, <code class="docutils literal notranslate"><span class="pre">autonomous()</span></code>, and initialize functions are separated into separate
+files (opcontrol.c, auto.c, and init.c). They could be all in the same file, but it can be helpful to
+organize your functions into multiple files to keep things from becoming messy.</p>
+</div>
+</div>
+<div class="section" id="drive-control">
+<h2><a class="toc-backref" href="#id19">Drive Control</a><a class="headerlink" href="#drive-control" title="Permalink to this headline">¶</a></h2>
+<p>Let’s start with the simplest operator control setup for the clawbot - tank drive control. We’ll map
+the controller’s left joystick to the left drive motor and the controller’s right joystick
+to the right drive motor.</p>
+<p>The controller joystick can be read with the following function:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+<div class="item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr active docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>std::int32_t pros::Controller::get_analog ( pros::controller_analog_e_t channel )
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int32_t controller_get_analog ( controller_id_e_t id,
+                                 controller_analog_e_t channel )
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we’ll set the motors with the following function:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+<div class="item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr active docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>std::int32_t motor_move ( const std::int8_t voltage )
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int32_t motor_move ( uint8_t port,
+                       const int8_t voltage )
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we get started with the tank drive control, it’s important to note that in C++, smart devices have
+<cite>constructors</cite> that create the smart device object. Constructors are a standard C++ concept, and they’re
+very important because a constructor is necessary to define a <cite>class</cite> for objects like the motors and
+controllers.</p>
+<p>We’ll be calling the constructors for the motors and controller at the beginning of <code class="docutils literal notranslate"><span class="pre">opcontrol()</span></code>,
+and then we’ll run the tank drive code.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+<div class="item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr active docutils container">
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">opcontrol.cpp</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LEFT_WHEELS_PORT 1</span>
+<span class="cp">#define RIGHT_WHEELS_PORT 10</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">left_wheels</span> <span class="p">(</span><span class="n">LEFT_WHEELS_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">right_wheels</span> <span class="p">(</span><span class="n">RIGHT_WHEELS_PORT</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span> <span class="c1">// This reverses the motor</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">left_wheels</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">ANALOG_LEFT_Y</span><span class="p">));</span>
+    <span class="n">right_wheels</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">ANALOG_RIGHT_Y</span><span class="p">));</span>
+
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== docutils container">
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">opcontrol.c</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LEFT_WHEELS_PORT 1</span>
+<span class="cp">#define RIGHT_WHEELS_PORT 10</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">controller_get_analog</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">ANALOG_LEFT_Y</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">controller_get_analog</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">ANALOG_RIGHT_Y</span><span class="p">);</span>
+    <span class="n">right</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// This will reverse the right motor</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">LEFT_WHEELS_PORT</span><span class="p">,</span> <span class="n">left</span><span class="p">);</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">RIGHT_WHEELS_PORT</span><span class="p">,</span> <span class="n">right</span><span class="p">);</span>
+
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<p>To test this code, run the following commands in the terminal window to create, build, and upload the code.</p>
+<div class="code bash highlight-none notranslate"><div class="highlight"><pre><span></span>prosv5 make
+prosv5 upload
+</pre></div>
+</div>
+<p>These 2 commands can be simplified to <code class="docutils literal notranslate"><span class="pre">`prosv5</span> <span class="pre">mu</span></code>.</p>
+</div>
+<div class="section" id="arcade-control">
+<h2><a class="toc-backref" href="#id20">Arcade Control</a><a class="headerlink" href="#arcade-control" title="Permalink to this headline">¶</a></h2>
+<p>While tank drive control is perfectly suitable for the driving style of some individuals, it is worth
+covering the arcade control method as well. This is similar to the movement style of many video games,
+where one joystick axis covers forward/backward movement and the other joystick covers turning.</p>
+<p>We will take the previous tank drive control code and modify it slightly to become arcade control.
+The sum or difference of the power and turn joysticks will be the power values sent to the left and right
+wheels.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+<div class="item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr active docutils container">
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">opcontrol.cpp</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LEFT_WHEELS_PORT 1</span>
+<span class="cp">#define RIGHT_WHEELS_PORT 10</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">left_wheels</span> <span class="p">(</span><span class="n">LEFT_WHEELS_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">right_wheels</span> <span class="p">(</span><span class="n">RIGHT_WHEELS_PORT</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">power</span> <span class="o">=</span> <span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">ANALOG_LEFT_Y</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">turn</span> <span class="o">=</span> <span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">ANALOG_RIGHT_X</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="n">left_wheels</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">left</span><span class="p">);</span>
+    <span class="n">right_wheels</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">right</span><span class="p">);</span>
+
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== docutils container">
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">opcontrol.c</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LEFT_WHEELS_PORT 1</span>
+<span class="cp">#define RIGHT_WHEELS_PORT 10</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">power</span> <span class="o">=</span> <span class="n">controller_get_analog</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">ANALOG_LEFT_Y</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">turn</span> <span class="o">=</span> <span class="n">controller_get_analog</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">ANALOG_RIGHT_X</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="n">right</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// This reverses the right motor</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">LEFT_WHEELS_PORT</span><span class="p">,</span> <span class="n">left</span><span class="p">);</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">RIGHT_WHEELS_PORT</span><span class="p">,</span> <span class="n">right</span><span class="p">);</span>
+
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<p>As with the tank drive code, this can be uploaded with the <code class="docutils literal notranslate"><span class="pre">prosv5</span> <span class="pre">mu</span></code> command.</p>
+</div>
+<div class="section" id="arm-control">
+<h2><a class="toc-backref" href="#id21">Arm Control</a><a class="headerlink" href="#arm-control" title="Permalink to this headline">¶</a></h2>
+<p>Next let’s control the clawbot’s arm. This will not require the use of a joystick, but instead
+we will use the controller’s buttons.</p>
+<p>We will use the following function to read the button press from the controller:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+<div class="item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr active docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>std::int32_t pros::Controller::get_digital ( pros::controller_digital_e_t button )
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int32_t controller_get_digital ( controller_id_e_t id,
+                                 controller_digital_e_t button )
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will use a different motor movement function than on the drivetrain. By using the velocity-controlled
+movement functions, we can ensure that the lift moves at a constant speed regardless of the weight that
+the lift is holding.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+<div class="item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr active docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>std::int32_t pros::Motor::move_velocity ( const std::int32_t velocity )
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int32_t motor_move_velocity ( uint8_t port,
+                              const int32_t velocity )
+</pre></div>
+</div>
+</div>
+</div>
+<p>To actuate the lift, we will check if the upmost right trigger is pressed or if the bottommost right trigger
+is pressed on the controller, and move the lift in that direction if so.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+<div class="item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr active docutils container">
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">opcontrol.cpp</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LEFT_WHEELS_PORT 1</span>
+<span class="cp">#define RIGHT_WHEELS_PORT 10</span>
+<span class="cp">#define ARM_PORT 8</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">left_wheels</span> <span class="p">(</span><span class="n">LEFT_WHEELS_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">right_wheels</span> <span class="p">(</span><span class="n">RIGHT_WHEELS_PORT</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">arm</span> <span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="n">MOTOR_GEARSET_36</span><span class="p">);</span> <span class="c1">// The arm motor has the 100rpm (red) gearset</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">power</span> <span class="o">=</span> <span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">ANALOG_LEFT_Y</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">turn</span> <span class="o">=</span> <span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">ANALOG_RIGHT_X</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="n">left_wheels</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">left</span><span class="p">);</span>
+    <span class="n">right_wheels</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">right</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">arm</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="c1">// This is 100 because it&#39;s a 100rpm motor</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R2</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">arm</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">arm</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== docutils container">
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">opcontrol.c</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LEFT_WHEELS_PORT 1</span>
+<span class="cp">#define RIGHT_WHEELS_PORT 10</span>
+<span class="cp">#define ARM_PORT 8</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_set_gearing</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="n">MOTOR_GEARSET_36</span><span class="p">);</span> <span class="c1">// Establish that there is a 100rpm (red) gearset in the arm motor</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">power</span> <span class="o">=</span> <span class="n">controller_get_analog</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">ANALOG_LEFT_Y</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">turn</span> <span class="o">=</span> <span class="n">controller_get_analog</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">ANALOG_RIGHT_X</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="n">right</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// This reverses the right motor</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">LEFT_WHEELS_PORT</span><span class="p">,</span> <span class="n">left</span><span class="p">);</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">RIGHT_WHEELS_PORT</span><span class="p">,</span> <span class="n">right</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// This is 100 because it&#39;s a 100rpm motor</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R2</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="claw-control">
+<h2><a class="toc-backref" href="#id22">Claw Control</a><a class="headerlink" href="#claw-control" title="Permalink to this headline">¶</a></h2>
+<p>We will control the claw in the same manner as the lift, by toggling its movement with a controller button.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+<div class="item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr active docutils container">
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">opcontrol.cpp</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LEFT_WHEELS_PORT 1</span>
+<span class="cp">#define RIGHT_WHEELS_PORT 10</span>
+<span class="cp">#define ARM_PORT 8</span>
+<span class="cp">#define CLAW_PORT 3</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">left_wheels</span> <span class="p">(</span><span class="n">LEFT_WHEELS_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">right_wheels</span> <span class="p">(</span><span class="n">RIGHT_WHEELS_PORT</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">arm</span> <span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="n">GEARSET_36</span><span class="p">);</span> <span class="c1">// The arm motor has the 100rpm (red) gearset</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">claw</span> <span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="n">GEARSET_36</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">power</span> <span class="o">=</span> <span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">ANALOG_LEFT_Y</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">turn</span> <span class="o">=</span> <span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">ANALOG_RIGHT_X</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="n">left_wheels</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">left</span><span class="p">);</span>
+    <span class="n">right_wheels</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">right</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">arm</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="c1">// This is 100 because it&#39;s a 100rpm motor</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R2</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">arm</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">arm</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_L1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">claw</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_L2</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">claw</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">claw</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== docutils container">
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">opcontrol.c</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LEFT_WHEELS_PORT 1</span>
+<span class="cp">#define RIGHT_WHEELS_PORT 10</span>
+<span class="cp">#define ARM_PORT 8</span>
+<span class="cp">#define CLAW_PORT 3</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_set_gearing</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="n">MOTOR_GEARSET_36</span><span class="p">);</span> <span class="c1">// Establish that there is a 100rpm (red) gearset in the arm motor</span>
+  <span class="n">motor_set_gearing</span><span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="n">MOTOR_GEARSET_36</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">power</span> <span class="o">=</span> <span class="n">controller_get_analog</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">ANALOG_LEFT_Y</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">turn</span> <span class="o">=</span> <span class="n">controller_get_analog</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">ANALOG_RIGHT_X</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="n">right</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// This reverses the right motor</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">LEFT_WHEELS_PORT</span><span class="p">,</span> <span class="n">left</span><span class="p">);</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">RIGHT_WHEELS_PORT</span><span class="p">,</span> <span class="n">right</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// This is 100 because it&#39;s a 100rpm motor</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R2</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// This is 100 because it&#39;s a 100rpm motor</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R2</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reading-the-switches">
+<h2><a class="toc-backref" href="#id23">Reading the Switches</a><a class="headerlink" href="#reading-the-switches" title="Permalink to this headline">¶</a></h2>
+<p>The bump switches, or buttons, are plugged into the ADI and attached to the rear of the robot. We’ll
+monitor the status of the bump switches, and prevent the robot from driving backwards if the switches are
+pressed.</p>
+<p>We will be using the digital reading functionality of the ADI for this.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+<div class="item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr active docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>std::int32_t pros::ADIDigitalIn::get_value ( ) const
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>int32_t adi_get_value (uint8_t port )
+</pre></div>
+</div>
+</div>
+</div>
+<p>And here is the updated code:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+<div class="item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr active docutils container">
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">opcontrol.cpp</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LEFT_WHEELS_PORT 1</span>
+<span class="cp">#define RIGHT_WHEELS_PORT 10</span>
+<span class="cp">#define ARM_PORT 8</span>
+<span class="cp">#define CLAW_PORT 3</span>
+
+<span class="cp">#define LEFT_BUMPER_PORT &#39;a&#39;</span>
+<span class="cp">#define RIGHT_BUMPER_PORT &#39;b&#39;</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">left_wheels</span> <span class="p">(</span><span class="n">LEFT_WHEELS_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">right_wheels</span> <span class="p">(</span><span class="n">RIGHT_WHEELS_PORT</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">arm</span> <span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="n">MOTOR_GEARSET_36</span><span class="p">);</span> <span class="c1">// The arm motor has the 100rpm (red) gearset</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">claw</span> <span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="n">MOTOR_GEARSET_36</span><span class="p">);</span>
+
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="n">left_bumper</span> <span class="p">(</span><span class="n">LEFT_BUMPER_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="n">right_bumper</span> <span class="p">(</span><span class="n">RIGHT_BUMPER_PORT</span><span class="p">);</span>
+
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">power</span> <span class="o">=</span> <span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">ANALOG_LEFT_Y</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">turn</span> <span class="o">=</span> <span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">ANALOG_RIGHT_X</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">left_bumper</span><span class="p">.</span><span class="n">get_value</span><span class="p">()</span> <span class="o">||</span> <span class="n">right_bumper</span><span class="p">.</span><span class="n">get_value</span><span class="p">())</span> <span class="p">{</span>
+      <span class="c1">// One of the bump switches is currently pressed</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">right</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">left_wheels</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">left</span><span class="p">);</span>
+    <span class="n">right_wheels</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">right</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">arm</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="c1">// This is 100 because it&#39;s a 100rpm motor</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R2</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">arm</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">arm</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_L1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">claw</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_L2</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">claw</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">claw</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== docutils container">
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">opcontrol.c</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LEFT_WHEELS_PORT 1</span>
+<span class="cp">#define RIGHT_WHEELS_PORT 10</span>
+<span class="cp">#define ARM_PORT 8</span>
+<span class="cp">#define CLAW_PORT 3</span>
+
+<span class="cp">#define LEFT_BUMPER_PORT &#39;a&#39;</span>
+<span class="cp">#define RIGHT_BUMPER_PORT &#39;b&#39;</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_set_gearing</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="n">MOTOR_GEARSET_36</span><span class="p">);</span> <span class="c1">// Establish that there is a 100rpm (red) gearset in the arm motor</span>
+  <span class="n">motor_set_gearing</span><span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="n">MOTOR_GEARSET_36</span><span class="p">);</span>
+
+  <span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">LEFT_BUMPER_PORT</span><span class="p">,</span> <span class="n">ADI_DIGITAL_IN</span><span class="p">);</span>
+  <span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">RIGHT_BUMPER_PORT</span><span class="p">,</span> <span class="n">ADI_DIGITAL_IN</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">power</span> <span class="o">=</span> <span class="n">controller_get_analog</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">ANALOG_LEFT_Y</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">turn</span> <span class="o">=</span> <span class="n">controller_get_analog</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">ANALOG_RIGHT_X</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">adi_port_get_value</span><span class="p">(</span><span class="n">LEFT_BUMPER_PORT</span><span class="p">)</span> <span class="o">||</span> <span class="n">adi_port_get_value</span><span class="p">(</span><span class="n">RIGHT_BUMPER_PORT</span><span class="p">))</span> <span class="p">{</span>
+      <span class="c1">// One of the bump switches is currently pressed</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">right</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">right</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// This reverses the right motor</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">LEFT_WHEELS_PORT</span><span class="p">,</span> <span class="n">left</span><span class="p">);</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">RIGHT_WHEELS_PORT</span><span class="p">,</span> <span class="n">right</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// This is 100 because it&#39;s a 100rpm motor</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R2</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// This is 100 because it&#39;s a 100rpm motor</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R2</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<p>We will use a similar technique for reading the limit switch. If the limit switch is pressed, then
+we will prevent the lift from being driven down further.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+C++</div>
+</div>
+<div class="item sphinx-data-tab-Qw== docutils container">
+<div class="docutils container">
+C</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qysr active docutils container">
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">opcontrol.cpp</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LEFT_WHEELS_PORT 1</span>
+<span class="cp">#define RIGHT_WHEELS_PORT 10</span>
+<span class="cp">#define ARM_PORT 8</span>
+<span class="cp">#define CLAW_PORT 3</span>
+
+<span class="cp">#define LEFT_BUMPER_PORT &#39;a&#39;</span>
+<span class="cp">#define RIGHT_BUMPER_PORT &#39;b&#39;</span>
+<span class="cp">#define ARM_LIMIT_SWITCH_PORT &#39;h&#39;</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">left_wheels</span> <span class="p">(</span><span class="n">LEFT_WHEELS_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">right_wheels</span> <span class="p">(</span><span class="n">RIGHT_WHEELS_PORT</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">arm</span> <span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="n">MOTOR_GEARSET_36</span><span class="p">);</span> <span class="c1">// The arm motor has the 100rpm (red) gearset</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">claw</span> <span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="n">MOTOR_GEARSET_36</span><span class="p">);</span>
+
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="n">left_bumper</span> <span class="p">(</span><span class="n">LEFT_BUMPER_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="n">right_bumper</span> <span class="p">(</span><span class="n">RIGHT_BUMPER_PORT</span><span class="p">);</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="n">arm_limit</span> <span class="p">(</span><span class="n">ARM_LIMIT_SWITCH_PORT</span><span class="p">);</span>
+
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">);</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">power</span> <span class="o">=</span> <span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">ANALOG_LEFT_Y</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">turn</span> <span class="o">=</span> <span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">ANALOG_RIGHT_X</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">left_bumper</span><span class="p">.</span><span class="n">get_value</span><span class="p">()</span> <span class="o">||</span> <span class="n">right_bumper</span><span class="p">.</span><span class="n">get_value</span><span class="p">())</span> <span class="p">{</span>
+      <span class="c1">// One of the bump switches is currently pressed</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">right</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">left_wheels</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">left</span><span class="p">);</span>
+    <span class="n">right_wheels</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">right</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">arm</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="c1">// This is 100 because it&#39;s a 100rpm motor</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_R2</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">arm_limit</span><span class="p">.</span><span class="n">get_value</span><span class="p">())</span> <span class="p">{</span>
+      <span class="n">arm</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">arm</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_L1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">claw</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_L2</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">claw</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">claw</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-Qw== docutils container">
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">opcontrol.c</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define LEFT_WHEELS_PORT 1</span>
+<span class="cp">#define RIGHT_WHEELS_PORT 10</span>
+<span class="cp">#define ARM_PORT 8</span>
+<span class="cp">#define CLAW_PORT 3</span>
+
+<span class="cp">#define LEFT_BUMPER_PORT &#39;a&#39;</span>
+<span class="cp">#define RIGHT_BUMPER_PORT &#39;b&#39;</span>
+<span class="cp">#define ARM_LIMIT_SWITCH_PORT &#39;h&#39;</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">motor_set_gearing</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="n">GEARSET_36</span><span class="p">);</span> <span class="c1">// Establish that there is a 100rpm (red) gearset in the arm motor</span>
+  <span class="n">motor_set_gearing</span><span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="n">GEARSET_36</span><span class="p">);</span>
+
+  <span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">LEFT_BUMPER_PORT</span><span class="p">,</span> <span class="n">ADI_DIGITAL_IN</span><span class="p">);</span>
+  <span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">RIGHT_BUMPER_PORT</span><span class="p">,</span> <span class="n">ADI_DIGITAL_IN</span><span class="p">);</span>
+  <span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">ARM_LIMIT_SWITCH_PORT</span><span class="p">,</span> <span class="n">ADI_DIGITAL_IN</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">power</span> <span class="o">=</span> <span class="n">controller_get_analog</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">CONTROLLER_ANALOG_LEFT_Y</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">turn</span> <span class="o">=</span> <span class="n">controller_get_analog</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span> <span class="n">CONTROLLER_ANALOG_RIGHT_X</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">power</span> <span class="o">+</span> <span class="n">turn</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">power</span> <span class="o">-</span> <span class="n">turn</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">adi_port_get_value</span><span class="p">(</span><span class="n">LEFT_BUMPER_PORT</span><span class="p">)</span> <span class="o">||</span> <span class="n">adi_port_get_value</span><span class="p">(</span><span class="n">RIGHT_BUMPER_PORT</span><span class="p">))</span> <span class="p">{</span>
+      <span class="c1">// One of the bump switches is currently pressed</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">right</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">right</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// This reverses the right motor</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">LEFT_WHEELS_PORT</span><span class="p">,</span> <span class="n">left</span><span class="p">);</span>
+    <span class="n">motor_move</span><span class="p">(</span><span class="n">RIGHT_WHEELS_PORT</span><span class="p">,</span> <span class="n">right</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">CONTROLLER_DIGITAL_R1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// This is 100 because it&#39;s a 100rpm motor</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">CONTROLLER_DIGITAL_R2</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">adi_port_get_value</span><span class="p">(</span><span class="n">ARM_LIMIT_SWITCH_PORT</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">ARM_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">CONTROLLER_DIGITAL_R1</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span> <span class="c1">// This is 100 because it&#39;s a 100rpm motor</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">CONTROLLER_DIGITAL_R2</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">motor_move_velocity</span><span class="p">(</span><span class="n">CLAW_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -429,7 +1691,7 @@ following ports:</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.1.0)
+      v: V5 (3.1.1)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -450,7 +1712,7 @@ following ports:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'3.1.0',
+            VERSION:'3.1.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -461,6 +1723,8 @@ following ports:</p>
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   

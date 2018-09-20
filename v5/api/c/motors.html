@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Motors C API &mdash; PROS for V5 3.1.0 documentation</title>
+  <title>Motors C API &mdash; PROS for V5 3.1.1 documentation</title>
   
 
   
@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PROS for V5 3.1.0 documentation" href="../../index.html"/>
+    <link rel="top" title="PROS for V5 3.1.1 documentation" href="../../index.html"/>
         <link rel="up" title="API Home" href="../index.html"/>
         <link rel="next" title="RTOS Facilities C API" href="rtos.html"/>
         <link rel="prev" title="Miscellaneous C API" href="misc.html"/>
@@ -95,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.1.0)
+                  V5 (3.1.1)
                 
               </div>
             
@@ -3578,6 +3578,31 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <span class="p">}</span> <span class="n">motor_brake_mode_e_t</span><span class="p">;</span>
 </pre></div>
 </td></tr></table></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>E_MOTOR_BRAKE_COAST</td>
+<td>Motor coasts when stopped, traditional behavior</td>
+</tr>
+<tr class="row-odd"><td>E_MOTOR_BRAKE_BRAKE</td>
+<td>Motor brakes when stopped</td>
+</tr>
+<tr class="row-even"><td>E_MOTOR_BRAKE_HOLD</td>
+<td>Motor actively holds position when stopped</td>
+</tr>
+<tr class="row-odd"><td>E_MOTOR_BRAKE_INVALID</td>
+<td>Invalid brake mode</td>
+</tr>
+</tbody>
+</table>
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-encoder-units-e-t">
@@ -3602,6 +3627,31 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <span class="p">}</span> <span class="n">motor_encoder_units_e_t</span><span class="p">;</span>
 </pre></div>
 </td></tr></table></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>E_MOTOR_ENCODER_DEGREES</td>
+<td>Position is recorded as angle in degrees as a floating point number</td>
+</tr>
+<tr class="row-odd"><td>E_MOTOR_ENCODER_ROTATIONS</td>
+<td>Position is recorded as angle in rotations as a floating point number</td>
+</tr>
+<tr class="row-even"><td>E_MOTOR_ENCODER_COUNTS</td>
+<td>Position is recorded as raw encoder ticks as a whole number</td>
+</tr>
+<tr class="row-odd"><td>E_MOTOR_BRAKE_INVALID</td>
+<td>Invalid motor encoder units</td>
+</tr>
+</tbody>
+</table>
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-fault-e-t">
@@ -3621,6 +3671,31 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <span class="p">}</span> <span class="n">motor_fault_e_t</span><span class="p">;</span>
 </pre></div>
 </td></tr></table></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>E_MOTOR_FAULT_NO_FAULTS</td>
+<td>No faults</td>
+</tr>
+<tr class="row-odd"><td>E_MOTOR_BRAKE_BRAKE</td>
+<td>Motor brakes when stopped</td>
+</tr>
+<tr class="row-even"><td>E_MOTOR_BRAKE_HOLD</td>
+<td>Motor actively holds position when stopped</td>
+</tr>
+<tr class="row-odd"><td>E_MOTOR_BRAKE_INVALID</td>
+<td>Invalid brake mode</td>
+</tr>
+</tbody>
+</table>
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-flag-e-t">
@@ -3638,6 +3713,31 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <span class="p">}</span> <span class="n">motor_flag_e_t</span><span class="p">;</span>
 </pre></div>
 </td></tr></table></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>E_MOTOR_FLAGS_NONE</td>
+<td>There are no flags raised</td>
+</tr>
+<tr class="row-odd"><td>E_MOTOR_FLAGS_BUSY</td>
+<td>Cannot currently communicate to the motor</td>
+</tr>
+<tr class="row-even"><td>E_MOTOR_FLAGS_ZERO_VELOCITY</td>
+<td>Analogous to motor_is_stopped()</td>
+</tr>
+<tr class="row-odd"><td>E_MOTOR_FLAGS_ZERO_POSITION</td>
+<td>Analogous to motor_get_zero_position_flag()</td>
+</tr>
+</tbody>
+</table>
 </div>
 <hr class="docutils" />
 <div class="section" id="motor-gearset-e-t">
@@ -3656,6 +3756,31 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 <span class="p">}</span> <span class="n">motor_gearset_e_t</span><span class="p">;</span>
 </pre></div>
 </td></tr></table></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>E_MOTOR_GEARSET_36</td>
+<td>36:1, 100 RPM, Red gear set</td>
+</tr>
+<tr class="row-odd"><td>E_MOTOR_GEARSET_18</td>
+<td>18:1, 200 RPM, Green gear set</td>
+</tr>
+<tr class="row-even"><td>E_MOTOR_GEARSET_06</td>
+<td>6:1, 600 RPM, Blue Gear Set</td>
+</tr>
+<tr class="row-odd"><td>E_MOTOR_GEARSET_INVALID</td>
+<td>Error return code</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="section" id="typedefs">
@@ -3758,7 +3883,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.1.0)
+      v: V5 (3.1.1)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -3779,7 +3904,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'3.1.0',
+            VERSION:'3.1.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

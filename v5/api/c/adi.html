@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ADI (TriPort) C API &mdash; PROS for V5 3.1.0 documentation</title>
+  <title>ADI (TriPort) C API &mdash; PROS for V5 3.1.1 documentation</title>
   
 
   
@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PROS for V5 3.1.0 documentation" href="../../index.html"/>
+    <link rel="top" title="PROS for V5 3.1.1 documentation" href="../../index.html"/>
         <link rel="up" title="API Home" href="../index.html"/>
         <link rel="next" title="LLEMU (Legacy LCD Emulator) C API" href="llemu.html"/>
         <link rel="prev" title="API Home" href="../index.html"/>
@@ -95,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.1.0)
+                  V5 (3.1.1)
                 
               </div>
             
@@ -163,6 +163,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#adi-ultrasonic-get">adi_ultrasonic_get</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adi-ultrasonic-init">adi_ultrasonic_init</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adi-ultrasonic-shutdown">adi_ultrasonic_shutdown</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adi-gyro-init">adi_gyro_init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adi-gyro-get">adi_gyro_get</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adi-gyro-reset">adi_gyro_reset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adi-gyro-shutdown">adi_gyro_shutdown</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#macros">Macros</a><ul>
@@ -181,6 +185,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#typedefs">Typedefs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#adi-encoder-t">adi_encoder_t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adi-gyro-t">adi_gyro_t</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adi-ultrasonic-t">adi_ultrasonic_t</a></li>
 </ul>
 </li>
@@ -316,25 +321,30 @@
 <li><a class="reference internal" href="#adi-ultrasonic-get" id="id21">adi_ultrasonic_get</a></li>
 <li><a class="reference internal" href="#adi-ultrasonic-init" id="id22">adi_ultrasonic_init</a></li>
 <li><a class="reference internal" href="#adi-ultrasonic-shutdown" id="id23">adi_ultrasonic_shutdown</a></li>
+<li><a class="reference internal" href="#adi-gyro-init" id="id24">adi_gyro_init</a></li>
+<li><a class="reference internal" href="#adi-gyro-get" id="id25">adi_gyro_get</a></li>
+<li><a class="reference internal" href="#adi-gyro-reset" id="id26">adi_gyro_reset</a></li>
+<li><a class="reference internal" href="#adi-gyro-shutdown" id="id27">adi_gyro_shutdown</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#macros" id="id24">Macros</a><ul>
-<li><a class="reference internal" href="#high" id="id25">HIGH</a></li>
-<li><a class="reference internal" href="#input" id="id26">INPUT</a></li>
-<li><a class="reference internal" href="#input-analog" id="id27">INPUT_ANALOG</a></li>
-<li><a class="reference internal" href="#low" id="id28">LOW</a></li>
-<li><a class="reference internal" href="#num-adi-ports" id="id29">NUM_ADI_PORTS</a></li>
-<li><a class="reference internal" href="#output" id="id30">OUTPUT</a></li>
-<li><a class="reference internal" href="#output-analog" id="id31">OUTPUT_ANALOG</a></li>
+<li><a class="reference internal" href="#macros" id="id28">Macros</a><ul>
+<li><a class="reference internal" href="#high" id="id29">HIGH</a></li>
+<li><a class="reference internal" href="#input" id="id30">INPUT</a></li>
+<li><a class="reference internal" href="#input-analog" id="id31">INPUT_ANALOG</a></li>
+<li><a class="reference internal" href="#low" id="id32">LOW</a></li>
+<li><a class="reference internal" href="#num-adi-ports" id="id33">NUM_ADI_PORTS</a></li>
+<li><a class="reference internal" href="#output" id="id34">OUTPUT</a></li>
+<li><a class="reference internal" href="#output-analog" id="id35">OUTPUT_ANALOG</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#enumerated-values" id="id32">Enumerated Values</a><ul>
-<li><a class="reference internal" href="#adi-port-config-e-t" id="id33">adi_port_config_e_t</a></li>
+<li><a class="reference internal" href="#enumerated-values" id="id36">Enumerated Values</a><ul>
+<li><a class="reference internal" href="#adi-port-config-e-t" id="id37">adi_port_config_e_t</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#typedefs" id="id34">Typedefs</a><ul>
-<li><a class="reference internal" href="#adi-encoder-t" id="id35">adi_encoder_t</a></li>
-<li><a class="reference internal" href="#adi-ultrasonic-t" id="id36">adi_ultrasonic_t</a></li>
+<li><a class="reference internal" href="#typedefs" id="id38">Typedefs</a><ul>
+<li><a class="reference internal" href="#adi-encoder-t" id="id39">adi_encoder_t</a></li>
+<li><a class="reference internal" href="#adi-gyro-t" id="id40">adi_gyro_t</a></li>
+<li><a class="reference internal" href="#adi-ultrasonic-t" id="id41">adi_ultrasonic_t</a></li>
 </ul>
 </li>
 </ul>
@@ -456,7 +466,7 @@ Example</div>
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Reading: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_analog_read</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">));</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -524,7 +534,7 @@ Example</div>
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Reading: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_analog_read_calibrated</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">));</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -596,7 +606,7 @@ Example</div>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">adi_analog_calibrate</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Reading: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_analog_read_calibrated_HR</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">));</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -671,7 +681,7 @@ Example</div>
     <span class="k">if</span> <span class="p">(</span><span class="n">adi_digital_get_new_press</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">))</span> <span class="p">{</span>
       <span class="c1">// Toggle pneumatics or other state operations</span>
     <span class="p">}</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -739,7 +749,7 @@ Example</div>
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Value: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_digital_read</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">));</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -808,7 +818,7 @@ Example</div>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">state</span> <span class="o">!=</span> <span class="n">state</span><span class="p">;</span>
     <span class="n">adi_digital_write</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">,</span> <span class="n">state</span><span class="p">);</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span> <span class="c1">// toggle the sensor value every 50ms</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// toggle the sensor value every 50ms</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -881,7 +891,7 @@ Example</div>
   <span class="n">adi_encoder_t</span> <span class="n">enc</span> <span class="o">=</span> <span class="n">adi_encoder_init</span><span class="p">(</span><span class="n">PORT_TOP</span><span class="p">,</span> <span class="n">PORT_BOTTOM</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Encoder Value: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_encoder_get</span><span class="p">(</span><span class="n">enc</span><span class="p">));</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -951,7 +961,7 @@ Example</div>
   <span class="n">adi_encoder_t</span> <span class="n">enc</span> <span class="o">=</span> <span class="n">adi_encoder_init</span><span class="p">(</span><span class="n">PORT_TOP</span><span class="p">,</span> <span class="n">PORT_BOTTOM</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Encoder Value: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_encoder_get</span><span class="p">(</span><span class="n">enc</span><span class="p">));</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1450,7 +1460,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-32 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_get_value</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_get_value</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1664,7 +1674,7 @@ Example</div>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Print the distance read by the ultrasonic</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_ultrasonic_get</span><span class="p">(</span><span class="n">ult</span><span class="p">));</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1735,7 +1745,7 @@ Example</div>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Print the distance read by the ultrasonic</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_ultrasonic_get</span><span class="p">(</span><span class="n">ult</span><span class="p">));</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1808,7 +1818,7 @@ Example</div>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// Print the distance read by the ultrasonic</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_ultrasonic_get</span><span class="p">(</span><span class="n">ult</span><span class="p">));</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
   <span class="p">}</span>
   <span class="n">adi_ultrasonic_shutdown</span><span class="p">(</span><span class="n">ult</span><span class="p">);</span>
 <span class="p">}</span>
@@ -1834,52 +1844,374 @@ Example</div>
 </table>
 <p><strong>Returns:</strong> 1 if the operation was successful, PROS_ERR otherwise.</p>
 </div>
+<hr class="docutils" />
+<div class="section" id="adi-gyro-init">
+<h3><a class="toc-backref" href="#id24">adi_gyro_init</a><a class="headerlink" href="#adi-gyro-init" title="Permalink to this headline">¶</a></h3>
+<p>Initializes a gyroscope on the given port. If the given port has not
+previously been configured as a gyro, then this function starts a 1 second
+calibration period.</p>
+<p>If calibration is required, it is highly recommended that this function be
+called from initialize when the robot is stationary.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../cpp/adi.html#">pros::ADIGyro::ADIGyro</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-44 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-45 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-44 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">adi_gyro_t</span> <span class="n">adi_gyro_init</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                           <span class="kt">double</span> <span class="n">multiplier</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-45 docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define GYRO_PORT 1</span>
+<span class="cp">#define GYRO_MULTIPLIER 1 </span><span class="c1">// Standard behavior</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">adi_gyro_t</span> <span class="n">gyro</span> <span class="o">=</span> <span class="n">adi_gyro_init</span><span class="p">(</span><span class="n">GYRO_PORT</span><span class="p">,</span> <span class="n">GYRO_MULTIPLIER</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Print the gyro&#39;s heading</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Heading: %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_gyro_get</span><span class="p">(</span><span class="n">gyro</span><span class="p">));</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The ADI port number (from 1-8, ‘a’-‘h’, ‘A’-‘H’) to initialize as a gyro</td>
+</tr>
+<tr class="row-odd"><td>multiplier</td>
+<td>A scalar value that will be mutliplied by the gyro heading value</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> An <a class="reference internal" href="#adi-gyro-t">adi_gyro_t</a> object to be stored and used for later calls to gyro functions.</p>
 </div>
 <hr class="docutils" />
+<div class="section" id="adi-gyro-get">
+<h3><a class="toc-backref" href="#id25">adi_gyro_get</a><a class="headerlink" href="#adi-gyro-get" title="Permalink to this headline">¶</a></h3>
+<p>Gets the current gyro angle in tenths of a degree. Unless a multiplier is
+applied to the gyro, the return value will be a whole number representing
+the number of degrees of rotation times 10.</p>
+<p>There are 360 degrees in a circle, thus the gyro will return 3600 for one
+whole rotation.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../cpp/adi.html#">pros::ADIGyro::get_value</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-46 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-47 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-46 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">adi_gyro_get</span> <span class="p">(</span> <span class="n">adi_gyro_t</span> <span class="n">gyro</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-47 docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define GYRO_PORT 1</span>
+<span class="cp">#define GYRO_MULTIPLIER 1 </span><span class="c1">// Standard behavior</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">adi_gyro_t</span> <span class="n">gyro</span> <span class="o">=</span> <span class="n">adi_gyro_init</span><span class="p">(</span><span class="n">GYRO_PORT</span><span class="p">,</span> <span class="n">GYRO_MULTIPLIER</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Print the gyro&#39;s heading</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Heading: %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_gyro_get</span><span class="p">(</span><span class="n">gyro</span><span class="p">));</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>gyro</td>
+<td>The <cite>adi_gyro_t</cite> object for which the heading will be returned</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> The gyro angle in tenths of a degree.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="adi-gyro-reset">
+<h3><a class="toc-backref" href="#id26">adi_gyro_reset</a><a class="headerlink" href="#adi-gyro-reset" title="Permalink to this headline">¶</a></h3>
+<p>Resets the gyro value to zero.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../cpp/adi.html#">pros::ADIGyro::reset</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-48 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-49 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-48 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_gyro_reset</span> <span class="p">(</span> <span class="n">adi_gyro_t</span> <span class="n">gyro</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-49 docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define GYRO_PORT 1</span>
+<span class="cp">#define GYRO_MULTIPLIER 1 </span><span class="c1">// Standard behavior</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">adi_gyro_t</span> <span class="n">gyro</span> <span class="o">=</span> <span class="n">adi_gyro_init</span><span class="p">(</span><span class="n">GYRO_PORT</span><span class="p">,</span> <span class="n">GYRO_MULTIPLIER</span><span class="p">);</span>
+  <span class="kt">uint32_t</span> <span class="n">now</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Print the gyro&#39;s heading</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Heading: %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_gyro_get</span><span class="p">(</span><span class="n">gyro</span><span class="p">));</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">millis</span><span class="p">()</span> <span class="o">-</span> <span class="n">now</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Reset the gyro every 2 seconds</span>
+      <span class="n">adi_gyro_reset</span><span class="p">(</span><span class="n">gyro</span><span class="p">);</span>
+      <span class="n">now</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>gyro</td>
+<td>The <cite>adi_gyro_t</cite> object to reset</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if the operation was successful, PROS_ERR otherwise.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="adi-gyro-shutdown">
+<h3><a class="toc-backref" href="#id27">adi_gyro_shutdown</a><a class="headerlink" href="#adi-gyro-shutdown" title="Permalink to this headline">¶</a></h3>
+<p>Disables the gyro and voids the configuration on its port.</p>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - The given ports do not match the parameter criteria given below.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the ADI.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-50 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-51 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-50 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">adi_gyro_shutdown</span> <span class="p">(</span> <span class="n">adi_gyro_t</span> <span class="n">gyro</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-51 docutils container">
+<div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#define GYRO_PORT 1</span>
+<span class="cp">#define GYRO_MULTIPLIER 1 </span><span class="c1">// Standard behavior</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">adi_gyro_t</span> <span class="n">gyro</span> <span class="o">=</span> <span class="n">adi_gyro_init</span><span class="p">(</span><span class="n">GYRO_PORT</span><span class="p">,</span> <span class="n">GYRO_MULTIPLIER</span><span class="p">);</span>
+  <span class="kt">uint32_t</span> <span class="n">now</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Print the gyro&#39;s heading</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Heading: %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">adi_gyro_get</span><span class="p">(</span><span class="n">gyro</span><span class="p">));</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">millis</span><span class="p">()</span> <span class="o">-</span> <span class="n">now</span> <span class="o">&gt;</span> <span class="mi">2000</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">adi_gyro_shutdown</span><span class="p">(</span><span class="n">gyro</span><span class="p">);</span>
+      <span class="c1">// Shut down the gyro after two seconds</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>gyro</td>
+<td>The <cite>adi_gyro_t</cite> object to shut down</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if the operation was successful, PROS_ERR otherwise.</p>
+</div>
+</div>
 <div class="section" id="macros">
-<h2><a class="toc-backref" href="#id24">Macros</a><a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id28">Macros</a><a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="high">
-<h3><a class="toc-backref" href="#id25">HIGH</a><a class="headerlink" href="#high" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id29">HIGH</a><a class="headerlink" href="#high" title="Permalink to this headline">¶</a></h3>
 <p>Used for <a class="reference internal" href="#adi-digital-write">adi_digital_write</a> to specify a logic HIGH state to output.</p>
 <p>In reality, using any non-zero expression or “true” will work to set a pin to HIGH.</p>
 <p><strong>Value:</strong> 1</p>
 </div>
 <div class="section" id="input">
-<h3><a class="toc-backref" href="#id26">INPUT</a><a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id30">INPUT</a><a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="#adi-pin-mode">adi_pin_mode</a> state for a digital input.</p>
 <p><strong>Value:</strong> 0x00</p>
 </div>
 <div class="section" id="input-analog">
-<h3><a class="toc-backref" href="#id27">INPUT_ANALOG</a><a class="headerlink" href="#input-analog" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id31">INPUT_ANALOG</a><a class="headerlink" href="#input-analog" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="#adi-pin-mode">adi_pin_mode</a> state for an analog input.</p>
 <p><strong>Value:</strong> 0x02</p>
 </div>
 <div class="section" id="low">
-<h3><a class="toc-backref" href="#id28">LOW</a><a class="headerlink" href="#low" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id32">LOW</a><a class="headerlink" href="#low" title="Permalink to this headline">¶</a></h3>
 <p>Used for <a class="reference internal" href="#adi-digital-write">adi_digital_write</a> to specify a logic LOW state to output.</p>
 <p>In reality, using a zero expression or “false” will work to set a pin to LOW.</p>
 <p><strong>Value:</strong> 0</p>
 </div>
 <div class="section" id="num-adi-ports">
-<h3><a class="toc-backref" href="#id29">NUM_ADI_PORTS</a><a class="headerlink" href="#num-adi-ports" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id33">NUM_ADI_PORTS</a><a class="headerlink" href="#num-adi-ports" title="Permalink to this headline">¶</a></h3>
 <p>The number of ADI ports available on the V5 Brain (from 1-8, ‘a’-‘h’, ‘A’-‘H’).</p>
 <p><strong>Value:</strong> 8</p>
 </div>
 <div class="section" id="output">
-<h3><a class="toc-backref" href="#id30">OUTPUT</a><a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id34">OUTPUT</a><a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="#adi-pin-mode">adi_pin_mode</a> state for a digital output.</p>
 <p><strong>Value:</strong> 0x01</p>
 </div>
 <div class="section" id="output-analog">
-<h3><a class="toc-backref" href="#id31">OUTPUT_ANALOG</a><a class="headerlink" href="#output-analog" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id35">OUTPUT_ANALOG</a><a class="headerlink" href="#output-analog" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="#adi-pin-mode">adi_pin_mode</a> state for an analog output.</p>
 <p><strong>Value:</strong> 0x03</p>
 </div>
 </div>
 <div class="section" id="enumerated-values">
-<h2><a class="toc-backref" href="#id32">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id36">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="adi-port-config-e-t">
-<h3><a class="toc-backref" href="#id33">adi_port_config_e_t</a><a class="headerlink" href="#adi-port-config-e-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id37">adi_port_config_e_t</a><a class="headerlink" href="#adi-port-config-e-t" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-c notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -2003,9 +2335,9 @@ for use with a Cortex-Era Ultrasonic</td>
 </div>
 </div>
 <div class="section" id="typedefs">
-<h2><a class="toc-backref" href="#id34">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id38">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="adi-encoder-t">
-<h3><a class="toc-backref" href="#id35">adi_encoder_t</a><a class="headerlink" href="#adi-encoder-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id39">adi_encoder_t</a><a class="headerlink" href="#adi-encoder-t" title="Permalink to this headline">¶</a></h3>
 <p>Reference type for an initialized encoder.</p>
 <p>This merely contains the port number for the encoder, unlike its use as an
 object to store encoder data in PROS 2.</p>
@@ -2013,11 +2345,20 @@ object to store encoder data in PROS 2.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="adi-gyro-t">
+<h3><a class="toc-backref" href="#id40">adi_gyro_t</a><a class="headerlink" href="#adi-gyro-t" title="Permalink to this headline">¶</a></h3>
+<p>Reference type for an initialized gyro.</p>
+<p>This merely contains the port number for the gyro, unlike its use as an
+object to store gyro data in PROS 2.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">int32_t</span> <span class="n">adi_gyro_t</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="adi-ultrasonic-t">
-<h3><a class="toc-backref" href="#id36">adi_ultrasonic_t</a><a class="headerlink" href="#adi-ultrasonic-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id41">adi_ultrasonic_t</a><a class="headerlink" href="#adi-ultrasonic-t" title="Permalink to this headline">¶</a></h3>
 <p>Reference type for an initialized ultrasonic.</p>
 <p>This merely contains the port number for the ultrasonic, unlike its use as an
-object to store encoder data in PROS 2.</p>
+object to store ultrasonic data in PROS 2.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">int32_t</span> <span class="n">adi_ultrasonic_t</span><span class="p">;</span>
 </pre></div>
 </div>
@@ -2069,7 +2410,7 @@ object to store encoder data in PROS 2.</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.1.0)
+      v: V5 (3.1.1)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -2090,7 +2431,7 @@ object to store encoder data in PROS 2.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'3.1.0',
+            VERSION:'3.1.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

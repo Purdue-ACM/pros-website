@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Motors C++ API &mdash; PROS for V5 3.1.0 documentation</title>
+  <title>Motors C++ API &mdash; PROS for V5 3.1.1 documentation</title>
   
 
   
@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PROS for V5 3.1.0 documentation" href="../../index.html"/>
+    <link rel="top" title="PROS for V5 3.1.1 documentation" href="../../index.html"/>
         <link rel="up" title="API Home" href="../index.html"/>
         <link rel="next" title="RTOS Facilities C++ API" href="rtos.html"/>
         <link rel="prev" title="Miscellaneous C++ API" href="misc.html"/>
@@ -95,7 +95,7 @@
             
               <div class="version">
                 
-                  V5 (3.1.0)
+                  V5 (3.1.1)
                 
               </div>
             
@@ -210,6 +210,20 @@
 <li class="toctree-l5"><a class="reference internal" href="#tare-position">tare_position</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#macros">Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enumerated-values">Enumerated Values</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pros-motor-brake-mode-e-t">pros::motor_brake_mode_e_t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pros-motor-encoder-units-e-t">pros::motor_encoder_units_e_t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pros-motor-fault-e-t">pros::motor_fault_e_t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pros-motor-flag-e-t">pros::motor_flag_e_t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pros-motor-gearset-e-t">pros::motor_gearset_e_t</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#typedefs">Typedefs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#motor-pid-full-s-t">motor_pid_full_s_t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motor-pid-s-t">motor_pid_s_t</a></li>
 </ul>
 </li>
 </ul>
@@ -373,6 +387,20 @@
 <li><a class="reference internal" href="#tare-position" id="id56">tare_position</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a class="reference internal" href="#macros" id="id57">Macros</a></li>
+<li><a class="reference internal" href="#enumerated-values" id="id58">Enumerated Values</a><ul>
+<li><a class="reference internal" href="#pros-motor-brake-mode-e-t" id="id59">pros::motor_brake_mode_e_t</a></li>
+<li><a class="reference internal" href="#pros-motor-encoder-units-e-t" id="id60">pros::motor_encoder_units_e_t</a></li>
+<li><a class="reference internal" href="#pros-motor-fault-e-t" id="id61">pros::motor_fault_e_t</a></li>
+<li><a class="reference internal" href="#pros-motor-flag-e-t" id="id62">pros::motor_flag_e_t</a></li>
+<li><a class="reference internal" href="#pros-motor-gearset-e-t" id="id63">pros::motor_gearset_e_t</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#typedefs" id="id64">Typedefs</a><ul>
+<li><a class="reference internal" href="#motor-pid-full-s-t" id="id65">motor_pid_full_s_t</a></li>
+<li><a class="reference internal" href="#motor-pid-s-t" id="id66">motor_pid_s_t</a></li>
 </ul>
 </li>
 </ul>
@@ -3545,6 +3573,288 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
 </div>
 </div>
 </div>
+<hr class="docutils" />
+<div class="section" id="macros">
+<h2><a class="toc-backref" href="#id57">Macros</a><a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<p>None.</p>
+</div>
+<div class="section" id="enumerated-values">
+<h2><a class="toc-backref" href="#id58">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pros-motor-brake-mode-e-t">
+<h3><a class="toc-backref" href="#id59">pros::motor_brake_mode_e_t</a><a class="headerlink" href="#pros-motor-brake-mode-e-t" title="Permalink to this headline">¶</a></h3>
+<p>Indicates the current ‘brake mode’ of the motor.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="n">motor_brake_mode_e</span> <span class="p">{</span>
+  <span class="n">E_MOTOR_BRAKE_COAST</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">// Motor coasts when stopped, traditional behavior</span>
+  <span class="n">E_MOTOR_BRAKE_BRAKE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// Motor brakes when stopped</span>
+  <span class="n">E_MOTOR_BRAKE_HOLD</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="c1">// Motor actively holds position when stopped</span>
+  <span class="n">E_MOTOR_BRAKE_INVALID</span> <span class="o">=</span> <span class="n">INT32_MAX</span>
+<span class="p">}</span> <span class="n">motor_brake_mode_e_t</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pros::E_MOTOR_BRAKE_COAST</td>
+<td>Motor coasts when stopped, traditional behavior</td>
+</tr>
+<tr class="row-odd"><td>pros::E_MOTOR_BRAKE_BRAKE</td>
+<td>Motor brakes when stopped</td>
+</tr>
+<tr class="row-even"><td>pros::E_MOTOR_BRAKE_HOLD</td>
+<td>Motor actively holds position when stopped</td>
+</tr>
+<tr class="row-odd"><td>pros::E_MOTOR_BRAKE_INVALID</td>
+<td>Invalid brake mode</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="pros-motor-encoder-units-e-t">
+<h3><a class="toc-backref" href="#id60">pros::motor_encoder_units_e_t</a><a class="headerlink" href="#pros-motor-encoder-units-e-t" title="Permalink to this headline">¶</a></h3>
+<p>Indicates the units used by the motor’s encoder.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="n">motor_encoder_units_e</span> <span class="p">{</span>
+  <span class="n">E_MOTOR_ENCODER_DEGREES</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>   <span class="c1">// Position is recorded as angle in degrees</span>
+                                 <span class="c1">// as a floating point number</span>
+  <span class="n">E_MOTOR_ENCODER_ROTATIONS</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// Position is recorded as angle in rotations</span>
+                                 <span class="c1">// as a floating point number</span>
+  <span class="n">E_MOTOR_ENCODER_COUNTS</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>    <span class="c1">// Position is recorded as raw encoder ticks</span>
+                                 <span class="c1">// as a whole number</span>
+  <span class="n">E_MOTOR_ENCODER_INVALID</span> <span class="o">=</span> <span class="n">INT32_MAX</span>
+<span class="p">}</span> <span class="n">motor_encoder_units_e_t</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pros::E_MOTOR_ENCODER_DEGREES</td>
+<td>Position is recorded as angle in degrees as a floating point number</td>
+</tr>
+<tr class="row-odd"><td>pros::E_MOTOR_ENCODER_ROTATIONS</td>
+<td>Position is recorded as angle in rotations as a floating point number</td>
+</tr>
+<tr class="row-even"><td>pros::E_MOTOR_ENCODER_COUNTS</td>
+<td>Position is recorded as raw encoder ticks as a whole number</td>
+</tr>
+<tr class="row-odd"><td>pros::E_MOTOR_BRAKE_INVALID</td>
+<td>Invalid motor encoder units</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="pros-motor-fault-e-t">
+<h3><a class="toc-backref" href="#id61">pros::motor_fault_e_t</a><a class="headerlink" href="#pros-motor-fault-e-t" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="n">motor_fault_e</span> <span class="p">{</span>
+      <span class="n">E_MOTOR_FAULT_NO_FAULTS</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+      <span class="n">E_MOTOR_FAULT_MOTOR_OVER_TEMP</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">,</span>  <span class="c1">// Analogous to motor_is_over_temp()</span>
+      <span class="n">E_MOTOR_FAULT_DRIVER_FAULT</span> <span class="o">=</span> <span class="mh">0x02</span><span class="p">,</span>     <span class="c1">// Indicates a motor h-bridge fault</span>
+      <span class="n">E_MOTOR_FAULT_OVER_CURRENT</span> <span class="o">=</span> <span class="mh">0x04</span><span class="p">,</span>     <span class="c1">// Analogous to motor_is_over_current()</span>
+      <span class="n">E_MOTOR_FAULT_DRV_OVER_CURRENT</span> <span class="o">=</span> <span class="mh">0x08</span>  <span class="c1">// Indicates an h-bridge over current</span>
+<span class="p">}</span> <span class="n">motor_fault_e_t</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pros::E_MOTOR_FAULT_NO_FAULTS</td>
+<td>No faults</td>
+</tr>
+<tr class="row-odd"><td>pros::E_MOTOR_BRAKE_BRAKE</td>
+<td>Motor brakes when stopped</td>
+</tr>
+<tr class="row-even"><td>pros::E_MOTOR_BRAKE_HOLD</td>
+<td>Motor actively holds position when stopped</td>
+</tr>
+<tr class="row-odd"><td>pros::E_MOTOR_BRAKE_INVALID</td>
+<td>Invalid brake mode</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="pros-motor-flag-e-t">
+<h3><a class="toc-backref" href="#id62">pros::motor_flag_e_t</a><a class="headerlink" href="#pros-motor-flag-e-t" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="n">motor_flag_e</span> <span class="p">{</span>
+  <span class="n">E_MOTOR_FLAGS_NONE</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+  <span class="n">E_MOTOR_FLAGS_BUSY</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">,</span>           <span class="c1">// Cannot currently communicate to the motor</span>
+  <span class="n">E_MOTOR_FLAGS_ZERO_VELOCITY</span> <span class="o">=</span> <span class="mh">0x02</span><span class="p">,</span>  <span class="c1">// Analogous to motor_is_stopped()</span>
+  <span class="n">E_MOTOR_FLAGS_ZERO_POSITION</span> <span class="o">=</span> <span class="mh">0x04</span>   <span class="c1">// Analogous to motor_get_zero_position_flag()</span>
+<span class="p">}</span> <span class="n">motor_flag_e_t</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pros::E_MOTOR_FLAGS_NONE</td>
+<td>There are no flags raised</td>
+</tr>
+<tr class="row-odd"><td>pros::E_MOTOR_FLAGS_BUSY</td>
+<td>Cannot currently communicate to the motor</td>
+</tr>
+<tr class="row-even"><td>pros::E_MOTOR_FLAGS_ZERO_VELOCITY</td>
+<td>Analogous to pros::Motor::is_stopped()</td>
+</tr>
+<tr class="row-odd"><td>pros::E_MOTOR_FLAGS_ZERO_POSITION</td>
+<td>Analogous to pros::Motor::get_zero_position_flag()</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="pros-motor-gearset-e-t">
+<h3><a class="toc-backref" href="#id63">pros::motor_gearset_e_t</a><a class="headerlink" href="#pros-motor-gearset-e-t" title="Permalink to this headline">¶</a></h3>
+<p>Indicates the internal gearing used by the motor.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="n">motor_gearset_e</span> <span class="p">{</span>
+      <span class="n">E_MOTOR_GEARSET_36</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">// 36:1, 100 RPM, Red gear set</span>
+      <span class="n">E_MOTOR_GEARSET_18</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">// 18:1, 200 RPM, Green gear set</span>
+      <span class="n">E_MOTOR_GEARSET_06</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="c1">// 6:1, 600 RPM, Blue gear set</span>
+      <span class="n">E_MOTOR_GEARSET_INVALID</span> <span class="o">=</span> <span class="n">INT32_MAX</span>
+<span class="p">}</span> <span class="n">motor_gearset_e_t</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>pros::E_MOTOR_GEARSET_36</td>
+<td>36:1, 100 RPM, Red gear set</td>
+</tr>
+<tr class="row-odd"><td>pros::E_MOTOR_GEARSET_18</td>
+<td>18:1, 200 RPM, Green gear set</td>
+</tr>
+<tr class="row-even"><td>pros::E_MOTOR_GEARSET_06</td>
+<td>6:1, 600 RPM, Blue Gear Set</td>
+</tr>
+<tr class="row-odd"><td>pros::E_MOTOR_GEARSET_INVALID</td>
+<td>Error return code</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="typedefs">
+<h2><a class="toc-backref" href="#id64">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="motor-pid-full-s-t">
+<h3><a class="toc-backref" href="#id65">motor_pid_full_s_t</a><a class="headerlink" href="#motor-pid-full-s-t" title="Permalink to this headline">¶</a></h3>
+<p>Holds the information about a Motor’s position or velocity PID controls.</p>
+<p>These values are in 4.4 format, meaning that a value of 0x20 represents 2.0,
+0x21 represents 2.0625, 0x22 represents 2.125, etc.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">motor_pid_full_s</span> <span class="p">{</span>
+  <span class="kt">uint8_t</span> <span class="n">kf</span><span class="p">;</span>        <span class="c1">// The feedforward constant</span>
+  <span class="kt">uint8_t</span> <span class="n">kp</span><span class="p">;</span>        <span class="c1">// The proportional constant</span>
+  <span class="kt">uint8_t</span> <span class="n">ki</span><span class="p">;</span>        <span class="c1">// The integral constants</span>
+  <span class="kt">uint8_t</span> <span class="n">kd</span><span class="p">;</span>        <span class="c1">// The derivative constant</span>
+  <span class="kt">uint8_t</span> <span class="n">filter</span><span class="p">;</span>    <span class="c1">// A constant used for filtering the profile acceleration</span>
+  <span class="kt">uint16_t</span> <span class="n">limit</span><span class="p">;</span>    <span class="c1">// The integral limit</span>
+  <span class="kt">uint8_t</span> <span class="n">threshold</span><span class="p">;</span> <span class="c1">// The threshold for determining if a position movement has</span>
+                     <span class="c1">// reached its goal. This has no effect for velocity PID</span>
+                     <span class="c1">// calculations.</span>
+  <span class="kt">uint8_t</span> <span class="n">loopspeed</span><span class="p">;</span> <span class="c1">// The rate at which the PID computation is run in ms</span>
+<span class="p">}</span> <span class="n">motor_pid_full_s_t</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<hr class="docutils" />
+<div class="section" id="motor-pid-s-t">
+<h3><a class="toc-backref" href="#id66">motor_pid_s_t</a><a class="headerlink" href="#motor-pid-s-t" title="Permalink to this headline">¶</a></h3>
+<p>Holds just the constants for a Motor’s position or velocity PID controls.</p>
+<p>These values are in 4.4 format, meaning that a value of 0x20 represents 2.0,
+0x21 represents 2.0625, 0x22 represents 2.125, etc.</p>
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">motor_pid_s</span> <span class="p">{</span>
+  <span class="kt">uint8_t</span> <span class="n">kf</span><span class="p">;</span>        <span class="c1">// The feedforward constant</span>
+  <span class="kt">uint8_t</span> <span class="n">kp</span><span class="p">;</span>        <span class="c1">// The proportional constant</span>
+  <span class="kt">uint8_t</span> <span class="n">ki</span><span class="p">;</span>        <span class="c1">// The integral constants</span>
+  <span class="kt">uint8_t</span> <span class="n">kd</span><span class="p">;</span>        <span class="c1">// The derivative constant</span>
+<span class="p">}</span> <span class="n">motor_pid_s_t</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
 </div>
 
   <div class="section">
@@ -3591,7 +3901,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.1.0)
+      v: V5 (3.1.1)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -3612,7 +3922,7 @@ setting <code class="docutils literal notranslate"><span class="pre">errno</span
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'3.1.0',
+            VERSION:'3.1.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

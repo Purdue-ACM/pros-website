@@ -324,7 +324,7 @@ Each of the points contains the desired (x, y) coordinates and heading. The poin
 controller form a path from the first given point to the last, with the first point assumed to be
 the current position of the robot. The path will be generated
 assuming that all of the points are relative to the first, so if you pass in
-an x value of <code class="docutils literal notranslate"><span class="pre">-4_ft</span></code> for the first point, then passing an x value of <code class="docutils literal notranslate"><span class="pre">0_ft</span></code> for the second
+an x value of <code class="docutils literal notranslate"><span class="pre">-1</span> <span class="pre">*</span> <span class="pre">4_ft</span></code> for the first point, then passing an x value of <code class="docutils literal notranslate"><span class="pre">0_ft</span></code> for the second
 point will result in a forward movement of 4 feet.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -471,6 +471,7 @@ desired end point.</p>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

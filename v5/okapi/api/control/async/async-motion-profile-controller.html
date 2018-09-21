@@ -50,7 +50,7 @@
     <link rel="top" title="PROS for V5 3.1.1 documentation" href="../../../../index.html"/>
         <link rel="up" title="Control API" href="../index.html"/>
         <link rel="next" title="Async Pos Integrated Controller" href="async-pos-integrated-controller.html"/>
-        <link rel="prev" title="Async Controller Factory" href="async-controller-factory.html"/>
+        <link rel="prev" title="Async Linear Motion Profile Controller" href="async-linear-motion-profile-controller.html"/>
    
   
   
@@ -157,6 +157,7 @@
 <li class="toctree-l4"><a class="reference internal" href="abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="async-controller-factory.html">Async Controller Factory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="async-linear-motion-profile-controller.html">Async Linear Motion Profile Controller</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Async Motion Profile Controller</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#okapi-asyncmotionprofilecontroller">okapi::AsyncMotionProfileController</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
@@ -165,6 +166,7 @@
 <li class="toctree-l7"><a class="reference internal" href="#removepath">removePath</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#getpaths">getPaths</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#settarget">setTarget</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#controllerset">controllerSet</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#gettarget">getTarget</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#waituntilsettled">waitUntilSettled</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#geterror">getError</a></li>
@@ -221,6 +223,7 @@
 <li class="toctree-l3"><a class="reference internal" href="abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async-controller-factory.html">Async Controller Factory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="async-linear-motion-profile-controller.html">Async Linear Motion Profile Controller</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Async Motion Profile Controller</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#okapi-asyncmotionprofilecontroller">okapi::AsyncMotionProfileController</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#constructor-s">Constructor(s)</a></li>
@@ -229,6 +232,7 @@
 <li class="toctree-l6"><a class="reference internal" href="#removepath">removePath</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#getpaths">getPaths</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#settarget">setTarget</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#controllerset">controllerSet</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#gettarget">getTarget</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#waituntilsettled">waitUntilSettled</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#geterror">getError</a></li>
@@ -360,20 +364,21 @@
 <li><a class="reference internal" href="#removepath" id="id6">removePath</a></li>
 <li><a class="reference internal" href="#getpaths" id="id7">getPaths</a></li>
 <li><a class="reference internal" href="#settarget" id="id8">setTarget</a></li>
-<li><a class="reference internal" href="#gettarget" id="id9">getTarget</a></li>
-<li><a class="reference internal" href="#waituntilsettled" id="id10">waitUntilSettled</a></li>
-<li><a class="reference internal" href="#geterror" id="id11">getError</a></li>
-<li><a class="reference internal" href="#issettled" id="id12">isSettled</a></li>
-<li><a class="reference internal" href="#reset" id="id13">reset</a></li>
-<li><a class="reference internal" href="#flipdisable" id="id14">flipDisable</a></li>
-<li><a class="reference internal" href="#id1" id="id15">flipDisable</a></li>
-<li><a class="reference internal" href="#isdisabled" id="id16">isDisabled</a></li>
-<li><a class="reference internal" href="#startthread" id="id17">startThread</a></li>
+<li><a class="reference internal" href="#controllerset" id="id9">controllerSet</a></li>
+<li><a class="reference internal" href="#gettarget" id="id10">getTarget</a></li>
+<li><a class="reference internal" href="#waituntilsettled" id="id11">waitUntilSettled</a></li>
+<li><a class="reference internal" href="#geterror" id="id12">getError</a></li>
+<li><a class="reference internal" href="#issettled" id="id13">isSettled</a></li>
+<li><a class="reference internal" href="#reset" id="id14">reset</a></li>
+<li><a class="reference internal" href="#flipdisable" id="id15">flipDisable</a></li>
+<li><a class="reference internal" href="#id1" id="id16">flipDisable</a></li>
+<li><a class="reference internal" href="#isdisabled" id="id17">isDisabled</a></li>
+<li><a class="reference internal" href="#startthread" id="id18">startThread</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#okapi-point" id="id18">okapi::Point</a></li>
+<li><a class="reference internal" href="#okapi-point" id="id19">okapi::Point</a></li>
 </ul>
 </div>
 <div class="section" id="okapi-asyncmotionprofilecontroller">
@@ -579,9 +584,10 @@ Prototype</div>
 </table>
 </div>
 <hr class="docutils" />
-<div class="section" id="gettarget">
-<h4><a class="toc-backref" href="#id9">getTarget</a><a class="headerlink" href="#gettarget" title="Permalink to this headline">¶</a></h4>
-<p>Gets the last set target, or the default target if none was set.</p>
+<div class="section" id="controllerset">
+<h4><a class="toc-backref" href="#id9">controllerSet</a><a class="headerlink" href="#controllerset" title="Permalink to this headline">¶</a></h4>
+<p>Writes the value of the controller output. This method might be automatically called in another
+thread by the controller. This just calls <code class="docutils literal notranslate"><span class="pre">setTarget()</span></code>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-5 docutils container">
@@ -590,6 +596,40 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">controllerSet</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">ivalue</span><span class="p">)</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ivalue</td>
+<td>The controller’s output.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="gettarget">
+<h4><a class="toc-backref" href="#id10">getTarget</a><a class="headerlink" href="#gettarget" title="Permalink to this headline">¶</a></h4>
+<p>Gets the last set target, or the default target if none was set.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-6 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">getTarget</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -599,29 +639,9 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="waituntilsettled">
-<h4><a class="toc-backref" href="#id10">waitUntilSettled</a><a class="headerlink" href="#waituntilsettled" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id11">waitUntilSettled</a><a class="headerlink" href="#waituntilsettled" title="Permalink to this headline">¶</a></h4>
 <p>Blocks the current task until the controller has settled. This controller is settled when it has
 finished following a path. If no path is being followed, it is settled.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-6 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">waitUntilSettled</span><span class="p">()</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="geterror">
-<h4><a class="toc-backref" href="#id11">getError</a><a class="headerlink" href="#geterror" title="Permalink to this headline">¶</a></h4>
-<p>Returns the last error of the controller. This implementation always returns zero since the robot
-is assumed to perfectly follow the path. Subclasses can override this to be more accurate using
-odometry information.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-7 docutils container">
@@ -630,6 +650,26 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">waitUntilSettled</span><span class="p">()</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="geterror">
+<h4><a class="toc-backref" href="#id12">getError</a><a class="headerlink" href="#geterror" title="Permalink to this headline">¶</a></h4>
+<p>Returns the last error of the controller. This implementation always returns zero since the robot
+is assumed to perfectly follow the path. Subclasses can override this to be more accurate using
+odometry information.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-8 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Point</span> <span class="n">getError</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -639,18 +679,18 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="issettled">
-<h4><a class="toc-backref" href="#id12">isSettled</a><a class="headerlink" href="#issettled" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id13">isSettled</a><a class="headerlink" href="#issettled" title="Permalink to this headline">¶</a></h4>
 <p>Returns whether the controller has settled at the target. Setting is when the error or derivative
 of error has been small enough for a long enough period.</p>
 <p>If the controller is disabled, this method must return true.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-8 docutils container">
+<div class="active item sphinx-data-tab-9 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isSettled</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -660,28 +700,9 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="reset">
-<h4><a class="toc-backref" href="#id13">reset</a><a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id14">reset</a><a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
 <p>Resets the controller so it can start from 0 again properly. Keeps configuration from before.</p>
 <p>This implementation does nothing.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-9 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">reset</span><span class="p">()</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="flipdisable">
-<h4><a class="toc-backref" href="#id14">flipDisable</a><a class="headerlink" href="#flipdisable" title="Permalink to this headline">¶</a></h4>
-<p>Changes whether the controller is off or on. Turning the controller on after it was off will NOT
-cause the controller to move to its last set target, unless it was reset in that time.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-10 docutils container">
@@ -690,16 +711,16 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">flipDisable</span><span class="p">()</span> <span class="n">override</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">reset</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <hr class="docutils" />
-<div class="section" id="id1">
-<h4><a class="toc-backref" href="#id15">flipDisable</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<p>Sets whether the controller is off or on. Turning the controller on after it was off will NOT
+<div class="section" id="flipdisable">
+<h4><a class="toc-backref" href="#id15">flipDisable</a><a class="headerlink" href="#flipdisable" title="Permalink to this headline">¶</a></h4>
+<p>Changes whether the controller is off or on. Turning the controller on after it was off will NOT
 cause the controller to move to its last set target, unless it was reset in that time.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -709,6 +730,25 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">flipDisable</span><span class="p">()</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id1">
+<h4><a class="toc-backref" href="#id16">flipDisable</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>Sets whether the controller is off or on. Turning the controller on after it was off will NOT
+cause the controller to move to its last set target, unless it was reset in that time.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-12 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">flipDisable</span><span class="p">(</span><span class="kt">bool</span> <span class="n">iisDisabled</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -733,16 +773,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="isdisabled">
-<h4><a class="toc-backref" href="#id16">isDisabled</a><a class="headerlink" href="#isdisabled" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id17">isDisabled</a><a class="headerlink" href="#isdisabled" title="Permalink to this headline">¶</a></h4>
 <p>Returns whether the controller is currently disabled.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-12 docutils container">
+<div class="active item sphinx-data-tab-13 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isDisabled</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -752,17 +792,17 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="startthread">
-<h4><a class="toc-backref" href="#id17">startThread</a><a class="headerlink" href="#startthread" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id18">startThread</a><a class="headerlink" href="#startthread" title="Permalink to this headline">¶</a></h4>
 <p>Starts the internal thread. This should not be called by normal users. This method is called by the
 <code class="docutils literal notranslate"><span class="pre">AsyncControllerFactory</span></code> when making a new instance of this class.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-13 docutils container">
+<div class="active item sphinx-data-tab-14 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">startThread</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -773,15 +813,15 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="okapi-point">
-<h2><a class="toc-backref" href="#id18">okapi::Point</a><a class="headerlink" href="#okapi-point" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id19">okapi::Point</a><a class="headerlink" href="#okapi-point" title="Permalink to this headline">¶</a></h2>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-14 docutils container">
+<div class="active item sphinx-data-tab-15 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Point</span> <span class="p">{</span>
     <span class="n">QLength</span> <span class="n">x</span><span class="p">;</span>    <span class="c1">// X coordinate relative to the start of the movement</span>
     <span class="n">QLength</span> <span class="n">y</span><span class="p">;</span>    <span class="c1">// Y coordinate relative to the start of the movement</span>
@@ -811,7 +851,7 @@ Prototype</div>
         <a href="async-pos-integrated-controller.html" class="btn btn-neutral float-right" title="Async Pos Integrated Controller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="async-controller-factory.html" class="btn btn-neutral" title="Async Controller Factory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="async-linear-motion-profile-controller.html" class="btn btn-neutral" title="Async Linear Motion Profile Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

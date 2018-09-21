@@ -157,6 +157,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../async/abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../async/abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../async/async-controller-factory.html">Async Controller Factory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/async-linear-motion-profile-controller.html">Async Linear Motion Profile Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../async/async-motion-profile-controller.html">Async Motion Profile Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../async/async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../async/async-pos-pid-controller.html">Async Pos PID Controller</a></li>
@@ -178,11 +179,14 @@
 <li class="toctree-l7"><a class="reference internal" href="#step">step</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#gettarget">getTarget</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#settarget">setTarget</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#controllerset">controllerSet</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#getoutput">getOutput</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#geterror">getError</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#issettled">isSettled</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#setsampletime">setSampleTime</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#setoutputlimits">setOutputLimits</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#getmaxoutput">getMaxOutput</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#getminoutput">getMinOutput</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#reset">reset</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#flipdisable">flipDisable</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#id5">flipDisable</a></li>
@@ -224,6 +228,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../async/abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-controller-factory.html">Async Controller Factory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../async/async-linear-motion-profile-controller.html">Async Linear Motion Profile Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-motion-profile-controller.html">Async Motion Profile Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-pos-pid-controller.html">Async Pos PID Controller</a></li>
@@ -245,11 +250,14 @@
 <li class="toctree-l6"><a class="reference internal" href="#step">step</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#gettarget">getTarget</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#settarget">setTarget</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#controllerset">controllerSet</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#getoutput">getOutput</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#geterror">getError</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#issettled">isSettled</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setsampletime">setSampleTime</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setoutputlimits">setOutputLimits</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getmaxoutput">getMaxOutput</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getminoutput">getMinOutput</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#reset">reset</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#flipdisable">flipDisable</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#id5">flipDisable</a></li>
@@ -369,16 +377,19 @@
 <li><a class="reference internal" href="#step" id="id11">step</a></li>
 <li><a class="reference internal" href="#gettarget" id="id12">getTarget</a></li>
 <li><a class="reference internal" href="#settarget" id="id13">setTarget</a></li>
-<li><a class="reference internal" href="#getoutput" id="id14">getOutput</a></li>
-<li><a class="reference internal" href="#geterror" id="id15">getError</a></li>
-<li><a class="reference internal" href="#issettled" id="id16">isSettled</a></li>
-<li><a class="reference internal" href="#setsampletime" id="id17">setSampleTime</a></li>
-<li><a class="reference internal" href="#setoutputlimits" id="id18">setOutputLimits</a></li>
-<li><a class="reference internal" href="#reset" id="id19">reset</a></li>
-<li><a class="reference internal" href="#flipdisable" id="id20">flipDisable</a></li>
-<li><a class="reference internal" href="#id5" id="id21">flipDisable</a></li>
-<li><a class="reference internal" href="#isdisabled" id="id22">isDisabled</a></li>
-<li><a class="reference internal" href="#getsampletime" id="id23">getSampleTime</a></li>
+<li><a class="reference internal" href="#controllerset" id="id14">controllerSet</a></li>
+<li><a class="reference internal" href="#getoutput" id="id15">getOutput</a></li>
+<li><a class="reference internal" href="#geterror" id="id16">getError</a></li>
+<li><a class="reference internal" href="#issettled" id="id17">isSettled</a></li>
+<li><a class="reference internal" href="#setsampletime" id="id18">setSampleTime</a></li>
+<li><a class="reference internal" href="#setoutputlimits" id="id19">setOutputLimits</a></li>
+<li><a class="reference internal" href="#getmaxoutput" id="id20">getMaxOutput</a></li>
+<li><a class="reference internal" href="#getminoutput" id="id21">getMinOutput</a></li>
+<li><a class="reference internal" href="#reset" id="id22">reset</a></li>
+<li><a class="reference internal" href="#flipdisable" id="id23">flipDisable</a></li>
+<li><a class="reference internal" href="#id5" id="id24">flipDisable</a></li>
+<li><a class="reference internal" href="#isdisabled" id="id25">isDisabled</a></li>
+<li><a class="reference internal" href="#getsampletime" id="id26">getSampleTime</a></li>
 </ul>
 </li>
 </ul>
@@ -587,9 +598,10 @@ Prototype</div>
 </table>
 </div>
 <hr class="docutils" />
-<div class="section" id="getoutput">
-<h4><a class="toc-backref" href="#id14">getOutput</a><a class="headerlink" href="#getoutput" title="Permalink to this headline">¶</a></h4>
-<p>Returns the last calculated output of the controller.</p>
+<div class="section" id="controllerset">
+<h4><a class="toc-backref" href="#id14">controllerSet</a><a class="headerlink" href="#controllerset" title="Permalink to this headline">¶</a></h4>
+<p>Writes the value of the controller output. This method might be automatically called in another
+thread by the controller. The range of input values is expected to be <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-6 docutils container">
@@ -598,6 +610,40 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">controllerSet</span><span class="p">(</span><span class="kt">double</span> <span class="n">ivalue</span><span class="p">)</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ivalue</td>
+<td>The controller’s output in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="getoutput">
+<h4><a class="toc-backref" href="#id15">getOutput</a><a class="headerlink" href="#getoutput" title="Permalink to this headline">¶</a></h4>
+<p>Returns the last calculated output of the controller.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-7 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">getOutput</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -607,16 +653,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="geterror">
-<h4><a class="toc-backref" href="#id15">getError</a><a class="headerlink" href="#geterror" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id16">getError</a><a class="headerlink" href="#geterror" title="Permalink to this headline">¶</a></h4>
 <p>Returns the last error of the controller.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-7 docutils container">
+<div class="active item sphinx-data-tab-8 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">getError</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -626,17 +672,17 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="issettled">
-<h4><a class="toc-backref" href="#id16">isSettled</a><a class="headerlink" href="#issettled" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id17">isSettled</a><a class="headerlink" href="#issettled" title="Permalink to this headline">¶</a></h4>
 <p>Returns whether the controller has settled at the target. Setting is when the error or derivative
 of error has been small enough for a long enough period.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-8 docutils container">
+<div class="active item sphinx-data-tab-9 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isSettled</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -646,16 +692,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="setsampletime">
-<h4><a class="toc-backref" href="#id17">setSampleTime</a><a class="headerlink" href="#setsampletime" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id18">setSampleTime</a><a class="headerlink" href="#setsampletime" title="Permalink to this headline">¶</a></h4>
 <p>Sets time between loops in ms.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-9 docutils container">
+<div class="active item sphinx-data-tab-10 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">setSampleTime</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">isampleTime</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -680,16 +726,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="setoutputlimits">
-<h4><a class="toc-backref" href="#id18">setOutputLimits</a><a class="headerlink" href="#setoutputlimits" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id19">setOutputLimits</a><a class="headerlink" href="#setoutputlimits" title="Permalink to this headline">¶</a></h4>
 <p>Sets controller output bounds.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-10 docutils container">
+<div class="active item sphinx-data-tab-11 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">setOutputLimits</span><span class="p">(</span><span class="kt">double</span> <span class="n">imax</span><span class="p">,</span> <span class="kt">double</span> <span class="n">imin</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -716,28 +762,9 @@ Prototype</div>
 </table>
 </div>
 <hr class="docutils" />
-<div class="section" id="reset">
-<h4><a class="toc-backref" href="#id19">reset</a><a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
-<p>Resets the controller so it can start from 0 again properly. Keeps configuration from before.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-11 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">reset</span><span class="p">()</span> <span class="n">override</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-<div class="section" id="flipdisable">
-<h4><a class="toc-backref" href="#id20">flipDisable</a><a class="headerlink" href="#flipdisable" title="Permalink to this headline">¶</a></h4>
-<p>Changes whether the controller is off or on. Turning the controller on after it was off will cause
-the controller to move to its last set target, unless it was reset in that time.</p>
+<div class="section" id="getmaxoutput">
+<h4><a class="toc-backref" href="#id20">getMaxOutput</a><a class="headerlink" href="#getmaxoutput" title="Permalink to this headline">¶</a></h4>
+<p>Get the upper output bound.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-12 docutils container">
@@ -746,17 +773,17 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">flipDisable</span><span class="p">()</span> <span class="n">override</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span> <span class="n">getMaxOutput</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>Returns:</strong> The upper output bound.</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="id5">
-<h4><a class="toc-backref" href="#id21">flipDisable</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
-<p>Sets whether the controller is off or on. Turning the controller on after it was off will cause the
-controller to move to its last set target, unless it was reset in that time.</p>
+<div class="section" id="getminoutput">
+<h4><a class="toc-backref" href="#id21">getMinOutput</a><a class="headerlink" href="#getminoutput" title="Permalink to this headline">¶</a></h4>
+<p>Get the lower output bound.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-13 docutils container">
@@ -765,6 +792,63 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span> <span class="n">getMinOutput</span><span class="p">()</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The lower output bound.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="reset">
+<h4><a class="toc-backref" href="#id22">reset</a><a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
+<p>Resets the controller so it can start from 0 again properly. Keeps configuration from before.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-14 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">reset</span><span class="p">()</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="flipdisable">
+<h4><a class="toc-backref" href="#id23">flipDisable</a><a class="headerlink" href="#flipdisable" title="Permalink to this headline">¶</a></h4>
+<p>Changes whether the controller is off or on. Turning the controller on after it was off will cause
+the controller to move to its last set target, unless it was reset in that time.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-15 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">flipDisable</span><span class="p">()</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id5">
+<h4><a class="toc-backref" href="#id24">flipDisable</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>Sets whether the controller is off or on. Turning the controller on after it was off will cause the
+controller to move to its last set target, unless it was reset in that time.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-16 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">flipDisable</span><span class="p">(</span><span class="kt">bool</span> <span class="n">iisDisabled</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -789,16 +873,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="isdisabled">
-<h4><a class="toc-backref" href="#id22">isDisabled</a><a class="headerlink" href="#isdisabled" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id25">isDisabled</a><a class="headerlink" href="#isdisabled" title="Permalink to this headline">¶</a></h4>
 <p>Returns whether the controller is currently disabled.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-14 docutils container">
+<div class="active item sphinx-data-tab-17 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isDisabled</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -808,16 +892,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="getsampletime">
-<h4><a class="toc-backref" href="#id23">getSampleTime</a><a class="headerlink" href="#getsampletime" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id26">getSampleTime</a><a class="headerlink" href="#getsampletime" title="Permalink to this headline">¶</a></h4>
 <p>Returns the last set sample time. Default is <code class="docutils literal notranslate"><span class="pre">10</span></code>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-15 docutils container">
+<div class="active item sphinx-data-tab-18 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span> <span class="n">getSampleTime</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>

@@ -126,6 +126,27 @@ Any targets set while a path is being followed will be ignored.
 
 ----
 
+controllerSet
+~~~~~~~~~~~~~
+
+Writes the value of the controller output. This method might be automatically called in another
+thread by the controller. This just calls ``setTarget()``.
+
+.. tabs ::
+   .. tab :: Prototype
+      .. highlight:: cpp
+      ::
+
+        void controllerSet(std::string ivalue) override
+
+============ ===============================================================
+ Parameters
+============ ===============================================================
+ ivalue       The controller's output.
+============ ===============================================================
+
+----
+
 getTarget
 ~~~~~~~~~
 

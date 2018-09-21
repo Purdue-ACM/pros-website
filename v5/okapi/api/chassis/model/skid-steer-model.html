@@ -533,8 +533,8 @@ Prototype</div>
 <h4><a class="toc-backref" href="#id5">driveVector</a><a class="headerlink" href="#drivevector" title="Permalink to this headline">¶</a></h4>
 <p>Drives the robot in an arc (using open-loop control).</p>
 <p>The algorithm is (approximately):</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">leftPower</span> <span class="o">=</span> <span class="n">ySpeed</span> <span class="o">+</span> <span class="n">zRotation</span>
-<span class="n">rightPower</span> <span class="o">=</span> <span class="n">ySpeed</span> <span class="o">-</span> <span class="n">zRotation</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">leftPower</span> <span class="o">=</span> <span class="n">forwardSpeed</span> <span class="o">+</span> <span class="n">yaw</span>
+<span class="n">rightPower</span> <span class="o">=</span> <span class="n">forwardSpeed</span> <span class="o">-</span> <span class="n">yaw</span>
 </pre></div>
 </div>
 <div class="sphinx-tabs docutils container">
@@ -545,7 +545,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">driveVector</span><span class="p">(</span><span class="kt">double</span> <span class="n">iySpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">izRotation</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">driveVector</span><span class="p">(</span><span class="kt">double</span> <span class="n">iforwardSpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">iyaw</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
@@ -561,11 +561,11 @@ Prototype</div>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>iySpeed</td>
-<td>The speed on the y axis (forward) in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
+<tr class="row-even"><td>iforwardSpeed</td>
+<td>The speed in the forward direction in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
-<tr class="row-odd"><td>izRotation</td>
-<td>The speed around the z axis (up) in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
+<tr class="row-odd"><td>iyaw</td>
+<td>The speed around the vertical axis in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -674,7 +674,7 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">arcade</span><span class="p">(</span><span class="kt">double</span> <span class="n">iySpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">izRotation</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ithreshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">arcade</span><span class="p">(</span><span class="kt">double</span> <span class="n">iforwardSpeed</span><span class="p">,</span> <span class="kt">double</span> <span class="n">iyaw</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ithreshold</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
@@ -690,11 +690,11 @@ Prototype</div>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>iySpeed</td>
-<td>The speed on the y axis (forward) in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
+<tr class="row-even"><td>iforwardSpeed</td>
+<td>The speed in the forward direction in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
-<tr class="row-odd"><td>izRotation</td>
-<td>The speed around the z axis (up) in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
+<tr class="row-odd"><td>iyaw</td>
+<td>The speed around the vertical axis in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
 </tr>
 <tr class="row-even"><td>ithreshold</td>
 <td>The joystick deadband in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>

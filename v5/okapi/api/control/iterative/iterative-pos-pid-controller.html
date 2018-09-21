@@ -157,6 +157,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../async/abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../async/abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../async/async-controller-factory.html">Async Controller Factory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../async/async-linear-motion-profile-controller.html">Async Linear Motion Profile Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../async/async-motion-profile-controller.html">Async Motion Profile Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../async/async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../async/async-pos-pid-controller.html">Async Pos PID Controller</a></li>
@@ -174,6 +175,7 @@
 <li class="toctree-l6"><a class="reference internal" href="#methods">Methods</a><ul>
 <li class="toctree-l7"><a class="reference internal" href="#step">step</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#settarget">setTarget</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#controllerset">controllerSet</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#gettarget">getTarget</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#getoutput">getOutput</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#geterror">getError</a></li>
@@ -181,6 +183,8 @@
 <li class="toctree-l7"><a class="reference internal" href="#setgains">setGains</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#setsampletime">setSampleTime</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#setoutputlimits">setOutputLimits</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#getmaxoutput">getMaxOutput</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#getminoutput">getMinOutput</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#setintegrallimits">setIntegralLimits</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#seterrorsumlimits">setErrorSumLimits</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#reset">reset</a></li>
@@ -225,6 +229,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../async/abstract-async-position-controller.html">(Abstract) Async Position Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/abstract-async-velocity-controller.html">(Abstract) Async Velocity Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-controller-factory.html">Async Controller Factory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../async/async-linear-motion-profile-controller.html">Async Linear Motion Profile Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-motion-profile-controller.html">Async Motion Profile Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../async/async-pos-pid-controller.html">Async Pos PID Controller</a></li>
@@ -242,6 +247,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#methods">Methods</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#step">step</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#settarget">setTarget</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#controllerset">controllerSet</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#gettarget">getTarget</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#getoutput">getOutput</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#geterror">getError</a></li>
@@ -249,6 +255,8 @@
 <li class="toctree-l6"><a class="reference internal" href="#setgains">setGains</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setsampletime">setSampleTime</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setoutputlimits">setOutputLimits</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getmaxoutput">getMaxOutput</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getminoutput">getMinOutput</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#setintegrallimits">setIntegralLimits</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#seterrorsumlimits">setErrorSumLimits</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#reset">reset</a></li>
@@ -366,26 +374,29 @@
 <li><a class="reference internal" href="#methods" id="id4">Methods</a><ul>
 <li><a class="reference internal" href="#step" id="id5">step</a></li>
 <li><a class="reference internal" href="#settarget" id="id6">setTarget</a></li>
-<li><a class="reference internal" href="#gettarget" id="id7">getTarget</a></li>
-<li><a class="reference internal" href="#getoutput" id="id8">getOutput</a></li>
-<li><a class="reference internal" href="#geterror" id="id9">getError</a></li>
-<li><a class="reference internal" href="#issettled" id="id10">isSettled</a></li>
-<li><a class="reference internal" href="#setgains" id="id11">setGains</a></li>
-<li><a class="reference internal" href="#setsampletime" id="id12">setSampleTime</a></li>
-<li><a class="reference internal" href="#setoutputlimits" id="id13">setOutputLimits</a></li>
-<li><a class="reference internal" href="#setintegrallimits" id="id14">setIntegralLimits</a></li>
-<li><a class="reference internal" href="#seterrorsumlimits" id="id15">setErrorSumLimits</a></li>
-<li><a class="reference internal" href="#reset" id="id16">reset</a></li>
-<li><a class="reference internal" href="#setintegratorreset" id="id17">setIntegratorReset</a></li>
-<li><a class="reference internal" href="#flipdisable" id="id18">flipDisable</a></li>
-<li><a class="reference internal" href="#id1" id="id19">flipDisable</a></li>
-<li><a class="reference internal" href="#isdisabled" id="id20">isDisabled</a></li>
-<li><a class="reference internal" href="#getsampletime" id="id21">getSampleTime</a></li>
+<li><a class="reference internal" href="#controllerset" id="id7">controllerSet</a></li>
+<li><a class="reference internal" href="#gettarget" id="id8">getTarget</a></li>
+<li><a class="reference internal" href="#getoutput" id="id9">getOutput</a></li>
+<li><a class="reference internal" href="#geterror" id="id10">getError</a></li>
+<li><a class="reference internal" href="#issettled" id="id11">isSettled</a></li>
+<li><a class="reference internal" href="#setgains" id="id12">setGains</a></li>
+<li><a class="reference internal" href="#setsampletime" id="id13">setSampleTime</a></li>
+<li><a class="reference internal" href="#setoutputlimits" id="id14">setOutputLimits</a></li>
+<li><a class="reference internal" href="#getmaxoutput" id="id15">getMaxOutput</a></li>
+<li><a class="reference internal" href="#getminoutput" id="id16">getMinOutput</a></li>
+<li><a class="reference internal" href="#setintegrallimits" id="id17">setIntegralLimits</a></li>
+<li><a class="reference internal" href="#seterrorsumlimits" id="id18">setErrorSumLimits</a></li>
+<li><a class="reference internal" href="#reset" id="id19">reset</a></li>
+<li><a class="reference internal" href="#setintegratorreset" id="id20">setIntegratorReset</a></li>
+<li><a class="reference internal" href="#flipdisable" id="id21">flipDisable</a></li>
+<li><a class="reference internal" href="#id1" id="id22">flipDisable</a></li>
+<li><a class="reference internal" href="#isdisabled" id="id23">isDisabled</a></li>
+<li><a class="reference internal" href="#getsampletime" id="id24">getSampleTime</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#okapi-iterativepospidcontroller-gains" id="id22">okapi::IterativePosPIDController::Gains</a></li>
+<li><a class="reference internal" href="#okapi-iterativepospidcontroller-gains" id="id25">okapi::IterativePosPIDController::Gains</a></li>
 </ul>
 </div>
 <div class="section" id="okapi-iterativepospidcontroller">
@@ -550,9 +561,10 @@ Prototype</div>
 </table>
 </div>
 <hr class="docutils" />
-<div class="section" id="gettarget">
-<h4><a class="toc-backref" href="#id7">getTarget</a><a class="headerlink" href="#gettarget" title="Permalink to this headline">¶</a></h4>
-<p>Gets the last set target, or the default target if none was set.</p>
+<div class="section" id="controllerset">
+<h4><a class="toc-backref" href="#id7">controllerSet</a><a class="headerlink" href="#controllerset" title="Permalink to this headline">¶</a></h4>
+<p>Writes the value of the controller output. This method might be automatically called in another
+thread by the controller. The range of input values is expected to be <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-4 docutils container">
@@ -561,6 +573,40 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">controllerSet</span><span class="p">(</span><span class="kt">double</span> <span class="n">ivalue</span><span class="p">)</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ivalue</td>
+<td>The controller’s output in the range <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="gettarget">
+<h4><a class="toc-backref" href="#id8">getTarget</a><a class="headerlink" href="#gettarget" title="Permalink to this headline">¶</a></h4>
+<p>Gets the last set target, or the default target if none was set.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-5 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">getTarget</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -570,17 +616,17 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="getoutput">
-<h4><a class="toc-backref" href="#id8">getOutput</a><a class="headerlink" href="#getoutput" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id9">getOutput</a><a class="headerlink" href="#getoutput" title="Permalink to this headline">¶</a></h4>
 <p>Returns the last calculated output of the controller. Default is <code class="docutils literal notranslate"><span class="pre">0</span></code>. Output is in the range
 <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code> by default.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-5 docutils container">
+<div class="active item sphinx-data-tab-6 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">getOutput</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -590,16 +636,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="geterror">
-<h4><a class="toc-backref" href="#id9">getError</a><a class="headerlink" href="#geterror" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id10">getError</a><a class="headerlink" href="#geterror" title="Permalink to this headline">¶</a></h4>
 <p>Returns the last error of the controller.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-6 docutils container">
+<div class="active item sphinx-data-tab-7 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="n">getError</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -609,18 +655,18 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="issettled">
-<h4><a class="toc-backref" href="#id10">isSettled</a><a class="headerlink" href="#issettled" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id11">isSettled</a><a class="headerlink" href="#issettled" title="Permalink to this headline">¶</a></h4>
 <p>Returns whether the controller has settled at the target. Setting is when the error or derivative
 of error has been small enough for a long enough period.</p>
 <p>If the controller is disabled, this method must return true.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-7 docutils container">
+<div class="active item sphinx-data-tab-8 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isSettled</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -630,16 +676,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="setgains">
-<h4><a class="toc-backref" href="#id11">setGains</a><a class="headerlink" href="#setgains" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id12">setGains</a><a class="headerlink" href="#setgains" title="Permalink to this headline">¶</a></h4>
 <p>Sets controller gains.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-8 docutils container">
+<div class="active item sphinx-data-tab-9 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setGains</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikI</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikBias</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -673,16 +719,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="setsampletime">
-<h4><a class="toc-backref" href="#id12">setSampleTime</a><a class="headerlink" href="#setsampletime" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id13">setSampleTime</a><a class="headerlink" href="#setsampletime" title="Permalink to this headline">¶</a></h4>
 <p>Sets time between loops.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-9 docutils container">
+<div class="active item sphinx-data-tab-10 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">setSampleTime</span><span class="p">(</span><span class="n">QTime</span> <span class="n">isampleTime</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -707,16 +753,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="setoutputlimits">
-<h4><a class="toc-backref" href="#id13">setOutputLimits</a><a class="headerlink" href="#setoutputlimits" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id14">setOutputLimits</a><a class="headerlink" href="#setoutputlimits" title="Permalink to this headline">¶</a></h4>
 <p>Sets controller output bounds. Default bounds are <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-10 docutils container">
+<div class="active item sphinx-data-tab-11 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">setOutputLimits</span><span class="p">(</span><span class="kt">double</span> <span class="n">imax</span><span class="p">,</span> <span class="kt">double</span> <span class="n">imin</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -743,17 +789,55 @@ Prototype</div>
 </table>
 </div>
 <hr class="docutils" />
-<div class="section" id="setintegrallimits">
-<h4><a class="toc-backref" href="#id14">setIntegralLimits</a><a class="headerlink" href="#setintegrallimits" title="Permalink to this headline">¶</a></h4>
-<p>Sets integrator bounds. Default bounds are <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</p>
+<div class="section" id="getmaxoutput">
+<h4><a class="toc-backref" href="#id15">getMaxOutput</a><a class="headerlink" href="#getmaxoutput" title="Permalink to this headline">¶</a></h4>
+<p>Get the upper output bound.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-11 docutils container">
+<div class="active item sphinx-data-tab-12 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span> <span class="n">getMaxOutput</span><span class="p">()</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The upper output bound.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="getminoutput">
+<h4><a class="toc-backref" href="#id16">getMinOutput</a><a class="headerlink" href="#getminoutput" title="Permalink to this headline">¶</a></h4>
+<p>Get the lower output bound.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-13 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span> <span class="n">getMinOutput</span><span class="p">()</span> <span class="n">override</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The lower output bound.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="setintegrallimits">
+<h4><a class="toc-backref" href="#id17">setIntegralLimits</a><a class="headerlink" href="#setintegrallimits" title="Permalink to this headline">¶</a></h4>
+<p>Sets integrator bounds. Default bounds are <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-14 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setIntegralLimits</span><span class="p">(</span><span class="kt">double</span> <span class="n">imax</span><span class="p">,</span> <span class="kt">double</span> <span class="n">imin</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -781,18 +865,18 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="seterrorsumlimits">
-<h4><a class="toc-backref" href="#id15">setErrorSumLimits</a><a class="headerlink" href="#seterrorsumlimits" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id18">setErrorSumLimits</a><a class="headerlink" href="#seterrorsumlimits" title="Permalink to this headline">¶</a></h4>
 <p>Sets the error sum bounds. Default bounds are <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">std::numeric_limits&lt;double&gt;::max()]</span></code>.
 Error will only be added to the integral term when its absolute value between these bounds
 of either side of the target.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-12 docutils container">
+<div class="active item sphinx-data-tab-15 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setErrorSumLimits</span><span class="p">(</span><span class="kt">double</span> <span class="n">imax</span><span class="p">,</span> <span class="kt">double</span> <span class="n">imin</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -820,16 +904,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="reset">
-<h4><a class="toc-backref" href="#id16">reset</a><a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id19">reset</a><a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
 <p>Resets the controller so it can start from 0 again properly. Keeps configuration from before.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-13 docutils container">
+<div class="active item sphinx-data-tab-16 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">reset</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -838,16 +922,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="setintegratorreset">
-<h4><a class="toc-backref" href="#id17">setIntegratorReset</a><a class="headerlink" href="#setintegratorreset" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id20">setIntegratorReset</a><a class="headerlink" href="#setintegratorreset" title="Permalink to this headline">¶</a></h4>
 <p>Sets whether the integrator should be reset when error is <code class="docutils literal notranslate"><span class="pre">0</span></code> or changes sign.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-14 docutils container">
+<div class="active item sphinx-data-tab-17 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">void</span> <span class="n">setIntegratorReset</span><span class="p">(</span><span class="kt">bool</span> <span class="n">iresetOnZero</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -872,17 +956,17 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="flipdisable">
-<h4><a class="toc-backref" href="#id18">flipDisable</a><a class="headerlink" href="#flipdisable" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id21">flipDisable</a><a class="headerlink" href="#flipdisable" title="Permalink to this headline">¶</a></h4>
 <p>Changes whether the controller is off or on. Turning the controller on after it was off will cause
 the controller to move to its last set target, unless it was reset in that time.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-15 docutils container">
+<div class="active item sphinx-data-tab-18 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">flipDisable</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -891,17 +975,17 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="id1">
-<h4><a class="toc-backref" href="#id19">flipDisable</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id22">flipDisable</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <p>Sets whether the controller is off or on. Turning the controller on after it was off will cause the
 controller to move to its last set target, unless it was reset in that time.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-16 docutils container">
+<div class="active item sphinx-data-tab-19 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">flipDisable</span><span class="p">(</span><span class="kt">bool</span> <span class="n">iisDisabled</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -926,16 +1010,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="isdisabled">
-<h4><a class="toc-backref" href="#id20">isDisabled</a><a class="headerlink" href="#isdisabled" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id23">isDisabled</a><a class="headerlink" href="#isdisabled" title="Permalink to this headline">¶</a></h4>
 <p>Returns whether the controller is currently disabled.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-17 docutils container">
+<div class="active item sphinx-data-tab-20 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">isDisabled</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -945,16 +1029,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="getsampletime">
-<h4><a class="toc-backref" href="#id21">getSampleTime</a><a class="headerlink" href="#getsampletime" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id24">getSampleTime</a><a class="headerlink" href="#getsampletime" title="Permalink to this headline">¶</a></h4>
 <p>Returns the last set sample time. Default is <code class="docutils literal notranslate"><span class="pre">10_ms</span></code>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-18 docutils container">
+<div class="active item sphinx-data-tab-21 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">QTime</span> <span class="n">getSampleTime</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -965,15 +1049,15 @@ Prototype</div>
 </div>
 </div>
 <div class="section" id="okapi-iterativepospidcontroller-gains">
-<h2><a class="toc-backref" href="#id22">okapi::IterativePosPIDController::Gains</a><a class="headerlink" href="#okapi-iterativepospidcontroller-gains" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id25">okapi::IterativePosPIDController::Gains</a><a class="headerlink" href="#okapi-iterativepospidcontroller-gains" title="Permalink to this headline">¶</a></h2>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-19 docutils container">
+<div class="active item sphinx-data-tab-22 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">Gains</span> <span class="p">{</span>
   <span class="kt">double</span> <span class="n">kP</span><span class="p">;</span>
   <span class="kt">double</span> <span class="n">kI</span><span class="p">;</span>

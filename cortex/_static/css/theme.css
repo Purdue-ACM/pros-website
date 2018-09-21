@@ -5489,9 +5489,6 @@ footer span.commit code, footer span.commit .rst-content tt, .rst-content footer
 .rst-content .note .last, .rst-content .attention .last, .rst-content .caution .last, .rst-content .danger .last, .rst-content .error .last, .rst-content .hint .last, .rst-content .important .last, .rst-content .tip .last, .rst-content .warning .last, .rst-content .seealso .last, .rst-content .admonition-todo .last, .rst-content .admonition .last {
   margin-bottom: 0;
 }
-.rst-content .admonition:not(.note):not(.attention):not(.caution):not(.danger):not(.error):not(.important):not(.tip):not(.warning):not(.seealso):not(.admonition-todo) .admonition-title {
-  background: #E6B85C;
-}
 .rst-content .admonition-title {
   color: #222;
 }

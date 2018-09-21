@@ -49,7 +49,7 @@
         <link rel="search" title="Search" href="../../../../search.html"/>
     <link rel="top" title="PROS for V5 3.1.1 documentation" href="../../../../index.html"/>
         <link rel="up" title="Control API" href="../index.html"/>
-        <link rel="next" title="Async Motion Profile Controller" href="async-motion-profile-controller.html"/>
+        <link rel="next" title="Async Linear Motion Profile Controller" href="async-linear-motion-profile-controller.html"/>
         <link rel="prev" title="(Abstract) Async Velocity Controller" href="abstract-async-velocity-controller.html"/>
    
   
@@ -179,12 +179,14 @@
 <li class="toctree-l7"><a class="reference internal" href="#id14">velPID</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#motionprofile">motionProfile</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#id15">motionProfile</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#linearmotionprofile">linearMotionProfile</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="async-linear-motion-profile-controller.html">Async Linear Motion Profile Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="async-motion-profile-controller.html">Async Motion Profile Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="async-pos-pid-controller.html">Async Pos PID Controller</a></li>
@@ -248,12 +250,14 @@
 <li class="toctree-l6"><a class="reference internal" href="#id14">velPID</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#motionprofile">motionProfile</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#id15">motionProfile</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#linearmotionprofile">linearMotionProfile</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="async-linear-motion-profile-controller.html">Async Linear Motion Profile Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async-motion-profile-controller.html">Async Motion Profile Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async-pos-integrated-controller.html">Async Pos Integrated Controller</a></li>
 <li class="toctree-l3"><a class="reference internal" href="async-pos-pid-controller.html">Async Pos PID Controller</a></li>
@@ -385,6 +389,7 @@
 <li><a class="reference internal" href="#id14" id="id35">velPID</a></li>
 <li><a class="reference internal" href="#motionprofile" id="id36">motionProfile</a></li>
 <li><a class="reference internal" href="#id15" id="id37">motionProfile</a></li>
+<li><a class="reference internal" href="#linearmotionprofile" id="id38">linearMotionProfile</a></li>
 </ul>
 </li>
 </ul>
@@ -414,7 +419,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">AsyncPosIntegratedController</span> <span class="n">posIntegrated</span><span class="p">(</span><span class="n">Motor</span> <span class="n">imotor</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">AsyncPosIntegratedController</span> <span class="n">posIntegrated</span><span class="p">(</span><span class="n">Motor</span> <span class="n">imotor</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">imaxVelocity</span> <span class="o">=</span> <span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -439,6 +444,9 @@ Example</div>
 <tr class="row-even"><td>imotor</td>
 <td>The controller input (from the integrated encoder) and output.</td>
 </tr>
+<tr class="row-odd"><td>imaxVelocity</td>
+<td>The maximum velocity during a profiled movement.</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -458,7 +466,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">AsyncPosIntegratedController</span> <span class="n">posIntegrated</span><span class="p">(</span><span class="n">MotorGroup</span> <span class="n">imotor</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">AsyncPosIntegratedController</span> <span class="n">posIntegrated</span><span class="p">(</span><span class="n">MotorGroup</span> <span class="n">imotor</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">imaxVelocity</span> <span class="o">=</span> <span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -482,6 +490,9 @@ Example</div>
 <tbody valign="top">
 <tr class="row-even"><td>imotor</td>
 <td>The controller input (from the integrated encoder) and output.</td>
+</tr>
+<tr class="row-odd"><td>imaxVelocity</td>
+<td>The maximum velocity during a profiled movement.</td>
 </tr>
 </tbody>
 </table>
@@ -1573,6 +1584,51 @@ Prototype</div>
 </tbody>
 </table>
 </div>
+<hr class="docutils" />
+<div class="section" id="linearmotionprofile">
+<h4><a class="toc-backref" href="#id38">linearMotionProfile</a><a class="headerlink" href="#linearmotionprofile" title="Permalink to this headline">¶</a></h4>
+<p>A controller which generates and follows 2D motion profiles.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-37 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-37 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">AsyncLinearMotionProfileController</span> <span class="n">linearMotionProfile</span><span class="p">(</span>
+  <span class="kt">double</span> <span class="n">imaxVel</span><span class="p">,</span> <span class="kt">double</span> <span class="n">imaxAccel</span><span class="p">,</span> <span class="kt">double</span> <span class="n">imaxJerk</span><span class="p">,</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ControllerOutput</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span> <span class="n">ioutput</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>imaxVel</td>
+<td>The maximum possible velocity in m/s.</td>
+</tr>
+<tr class="row-odd"><td>imaxAccel</td>
+<td>The maximum possible acceleration in m/s/s.</td>
+</tr>
+<tr class="row-even"><td>imaxJerk</td>
+<td>The maxiumm possible jerk in m/s/s/s.</td>
+</tr>
+<tr class="row-odd"><td>ioutput</td>
+<td>The output to write velocity targets to.</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -1591,7 +1647,7 @@ Prototype</div>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="async-motion-profile-controller.html" class="btn btn-neutral float-right" title="Async Motion Profile Controller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="async-linear-motion-profile-controller.html" class="btn btn-neutral float-right" title="Async Linear Motion Profile Controller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="abstract-async-velocity-controller.html" class="btn btn-neutral" title="(Abstract) Async Velocity Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

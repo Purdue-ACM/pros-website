@@ -665,7 +665,7 @@ Example</div>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
                               <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -862,7 +862,7 @@ Example</div>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
                               <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
   <span class="c1">// Do other things</span>
   <span class="n">task_delete</span><span class="p">(</span><span class="n">my_task</span><span class="p">);</span>
@@ -924,7 +924,7 @@ Example</div>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
                               <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
   <span class="c1">// Do other things</span>
   <span class="n">task_delete</span><span class="p">(</span><span class="n">task_get_by_name</span><span class="p">(</span><span class="s">&quot;My Task&quot;</span><span class="p">));</span>
@@ -989,7 +989,7 @@ Example</div>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
                               <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Number of Running Tasks: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">task_get_count</span><span class="p">());</span>
 <span class="p">}</span>
@@ -1034,7 +1034,7 @@ Example</div>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
                               <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Task Name: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">task_get_name</span><span class="p">(</span><span class="n">my_task</span><span class="p">));</span>
 <span class="p">}</span>
@@ -1095,7 +1095,7 @@ Example</div>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
                               <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Task Priority: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">task_get_priority</span><span class="p">(</span><span class="n">my_task</span><span class="p">));</span>
 <span class="p">}</span>
@@ -1156,7 +1156,7 @@ Example</div>
   <span class="c1">// ...</span>
 <span class="p">}</span>
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+  <span class="n">task_t</span> <span class="n">my_task</span> <span class="o">=</span> <span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span> <span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
                               <span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span> <span class="s">&quot;My Task&quot;</span><span class="p">);</span>
   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Task&#39;s State: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">task_get_state</span><span class="p">(</span><span class="n">my_task</span><span class="p">));</span>
 <span class="p">}</span>

@@ -485,7 +485,7 @@ Example</div>
 </div>
 <div class="section" id="id2">
 <h3><a class="toc-backref" href="#id9">delayUntil</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>Delay the current task until <code class="docutils literal notranslate"><span class="pre">itime</span></code> has passed. This method can be used by periodic tasks to
+<p>Delay the current task until <code class="docutils literal notranslate"><span class="pre">ims</span></code> has passed. This method can be used by periodic tasks to
 ensure a consistent execution frequency.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -499,7 +499,7 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">delayUntil</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">itime</span><span class="p">)</span> <span class="n">override</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">delayUntil</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">ims</span><span class="p">)</span> <span class="n">override</span>
 </pre></div>
 </div>
 </div>
@@ -526,7 +526,7 @@ Example</div>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>itime</td>
+<tr class="row-even"><td>ims</td>
 <td>The time period in milliseconds.</td>
 </tr>
 </tbody>

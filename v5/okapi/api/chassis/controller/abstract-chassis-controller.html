@@ -184,6 +184,7 @@
 <li class="toctree-l7"><a class="reference internal" href="#setvelpidfull">setVelPIDFull</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#getchassismodel">getChassisModel</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#getchassisscales">getChassisScales</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#getgearsetratiopair">getGearsetRatioPair</a></li>
 </ul>
 </li>
 </ul>
@@ -247,6 +248,7 @@
 <li class="toctree-l6"><a class="reference internal" href="#setvelpidfull">setVelPIDFull</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#getchassismodel">getChassisModel</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#getchassisscales">getChassisScales</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#getgearsetratiopair">getGearsetRatioPair</a></li>
 </ul>
 </li>
 </ul>
@@ -382,6 +384,7 @@
 <li><a class="reference internal" href="#setvelpidfull" id="id33">setVelPIDFull</a></li>
 <li><a class="reference internal" href="#getchassismodel" id="id34">getChassisModel</a></li>
 <li><a class="reference internal" href="#getchassisscales" id="id35">getChassisScales</a></li>
+<li><a class="reference internal" href="#getgearsetratiopair" id="id36">getGearsetRatioPair</a></li>
 </ul>
 </li>
 </ul>
@@ -400,7 +403,8 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">explicit</span> <span class="n">ChassisController</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ChassisModel</span><span class="o">&gt;</span> <span class="n">imodel</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">explicit</span> <span class="n">ChassisController</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ChassisModel</span><span class="o">&gt;</span> <span class="n">imodel</span><span class="p">,</span>
+                           <span class="kt">double</span> <span class="n">imaxVelocity</span><span class="p">,</span> <span class="kt">double</span> <span class="n">imaxVoltage</span> <span class="o">=</span> <span class="mi">12000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -418,6 +422,12 @@ Prototype</div>
 <tbody valign="top">
 <tr class="row-even"><td>imodel</td>
 <td>The underlying <a class="reference external" href="../model/abstract-chassis-model.html">ChassisModel</a> to control.</td>
+</tr>
+<tr class="row-odd"><td>imaxVelocity</td>
+<td>The maximum velocity.</td>
+</tr>
+<tr class="row-even"><td>imaxVoltage</td>
+<td>The maximum voltage.</td>
 </tr>
 </tbody>
 </table>
@@ -1371,6 +1381,25 @@ Prototype</div>
 </div>
 </div>
 <p><strong>Returns:</strong> The <code class="docutils literal notranslate"><span class="pre">ChassisScales</span></code>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="getgearsetratiopair">
+<h4><a class="toc-backref" href="#id36">getGearsetRatioPair</a><a class="headerlink" href="#getgearsetratiopair" title="Permalink to this headline">¶</a></h4>
+<p>Get the <code class="docutils literal notranslate"><span class="pre">GearsetRatioPair</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-29 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-29 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">GearsetRatioPair</span> <span class="n">getGearsetRatioPair</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> The <code class="docutils literal notranslate"><span class="pre">GearsetRatioPair</span></code>.</p>
 </div>
 </div>
 </div>

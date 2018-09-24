@@ -416,7 +416,8 @@ Prototype</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">AsyncMotionProfileController</span><span class="p">(</span><span class="k">const</span> <span class="n">TimeUtil</span> <span class="o">&amp;</span><span class="n">itimeUtil</span><span class="p">,</span>
                              <span class="kt">double</span> <span class="n">imaxVel</span><span class="p">,</span> <span class="kt">double</span> <span class="n">imaxAccel</span><span class="p">,</span> <span class="kt">double</span> <span class="n">imaxJerk</span><span class="p">,</span>
-                             <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ChassisModel</span><span class="o">&gt;</span> <span class="n">imodel</span><span class="p">,</span> <span class="n">Length</span> <span class="n">iwidth</span><span class="p">)</span>
+                             <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ChassisModel</span><span class="o">&gt;</span> <span class="n">imodel</span><span class="p">,</span>
+                             <span class="k">const</span> <span class="n">ChassisScales</span> <span class="o">&amp;</span><span class="n">iscales</span><span class="p">,</span> <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">GearsetRatioPair</span> <span class="n">ipair</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -447,8 +448,11 @@ Prototype</div>
 <tr class="row-even"><td>imodel</td>
 <td>The <code class="docutils literal notranslate"><span class="pre">ChassisModel</span></code> to control.</td>
 </tr>
-<tr class="row-odd"><td>iwidth</td>
-<td>The chassis’ wheelbase width.</td>
+<tr class="row-odd"><td>iscales</td>
+<td>The <code class="docutils literal notranslate"><span class="pre">ChassisScales</span></code>.</td>
+</tr>
+<tr class="row-even"><td>ipair</td>
+<td>The <code class="docutils literal notranslate"><span class="pre">AbstractMotor::GearsetRatioPair</span></code>.</td>
 </tr>
 </tbody>
 </table>

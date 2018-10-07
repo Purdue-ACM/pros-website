@@ -106,7 +106,7 @@ ul.fas li .fa-large:before {
   width: 300px;
   color: #ccc;
   background: #1f1d1d;
-  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+  font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif;
   z-index: 400;
 }
 .rst-versions a {
@@ -149,6 +149,10 @@ ul.fas li .fa-large:before {
 .rst-versions .rst-current-version.rst-active-old-version {
   background-color: #F1C40F;
   color: #000;
+}
+.rst-versions.shift-up {
+  height: auto;
+  max-height: 100%;
 }
 .rst-versions.shift-up .rst-other-versions {
   display: block;

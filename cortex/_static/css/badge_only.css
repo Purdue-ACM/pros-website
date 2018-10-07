@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500);
+@import url(https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500);
 .fa:before {
   -webkit-font-smoothing: antialiased;
 }
@@ -106,7 +107,7 @@ ul.fas li .fa-large:before {
   width: 300px;
   color: #ccc;
   background: #1f1d1d;
-  font-family: "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif;
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
   z-index: 400;
 }
 .rst-versions a {

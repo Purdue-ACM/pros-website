@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CLI &mdash; PROS for V5 3.1.2 documentation</title>
+  <title>PROS Kernel 3.1.2 Release &mdash; PROS for V5 3.1.2 documentation</title>
   
 
   
@@ -40,8 +40,6 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PROS for V5 3.1.2 documentation" href="../index.html"/>
-        <link rel="next" title="Conductor User Guide" href="conductor.html"/>
-        <link rel="prev" title="C++ API" href="../api/cpp/index.html"/>
   
    
   
@@ -115,7 +113,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../index.html">PROS: Documentation Home</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../blog/index.html">Blog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../releases/index.html">Version Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Version Release Notes</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
@@ -134,11 +132,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../api/cpp/index.html">C++ API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tools</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">CLI</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="conductor.html">Conductor User Guide</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../editor/index.html">Editor</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OkapiLib</span></p>
@@ -193,14 +188,14 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>CLI</li>
+      <li>PROS Kernel 3.1.2 Release</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/cli/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/purduesigbots/pros-docs/blob/master/v5/releases/kernel3.1.2.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -214,19 +209,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="cli">
-<h1>CLI<a class="headerlink" href="#cli" title="Permalink to this headline">¶</a></h1>
-<p>During the PROS 3 beta phase, the CLI is available by running the command <cite>prosv5</cite>. Once we fully release
-PROS CLI 3, we will rename it to the traditional <cite>pros</cite> command. We’ve done this so that you can continue
-to use the PROS 2 with the Cortex while we backport the VEX Cortex functionality.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="conductor.html">Conductor User Guide</a></li>
+  <div class="section" id="pros-kernel-3-1-2-release">
+<h1>PROS Kernel 3.1.2 Release<a class="headerlink" href="#pros-kernel-3-1-2-release" title="Permalink to this headline">¶</a></h1>
+<p>New Features:</p>
+<ul class="simple">
+<li>Controller rumble motor functionality</li>
 </ul>
-</div>
+<p>Bugfixes:</p>
+<ul class="simple">
+<li>Global <code class="docutils literal notranslate"><span class="pre">ADIGyro</span></code> constructors now work</li>
+<li>Fix the port names for the <code class="docutils literal notranslate"><span class="pre">ADIUltrasonic</span></code> constructor</li>
+<li>Fix the bug where <code class="docutils literal notranslate"><span class="pre">get_digital_new_press()</span></code> would always return <code class="docutils literal notranslate"><span class="pre">true</span></code></li>
+<li>Implement <code class="docutils literal notranslate"><span class="pre">pros::Task::remove()</span></code>, which is analogous to <code class="docutils literal notranslate"><span class="pre">task_delete()</span></code></li>
+<li>Change VDML initialization process to fix global initialization for user-defined objects that use VDML functionality in a task immediately upon startup</li>
+</ul>
+<p>Deprecated:</p>
+<ul class="simple">
+<li>Deprecated any of the ADI port configuration enum values that were identical to generic I/O types (e.g. the <code class="docutils literal notranslate"><span class="pre">E_ADI_SMART_POT</span></code> is deprecated in favor of <code class="docutils literal notranslate"><span class="pre">E_ADI_ANALOG_IN</span></code>). Projects will still compile and be functionally equivalent to the new preferred value, but will raise a warning to use the new value.</li>
+</ul>
+<p>Header Docs:</p>
+<ul class="simple">
+<li>Clarify parameter initialization for <code class="docutils literal notranslate"><span class="pre">task_delay_until()</span></code></li>
+<li>Describe <code class="docutils literal notranslate"><span class="pre">errno</span></code> meanings for controller text setting</li>
+<li>Typo fix in <code class="docutils literal notranslate"><span class="pre">Motor::get_current_limit()</span></code> docs</li>
+<li>Fix return units for <code class="docutils literal notranslate"><span class="pre">motor_get_actual_velocity()</span></code></li>
+</ul>
 </div>
 
   <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  Previous: 
+  <a href="okapilib3.3.0.html">
+    
+    OkapiLib 3.3.0 Release
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+</div>
+
   
   
   </div>
@@ -237,15 +266,6 @@ to use the PROS 2 with the Cortex while we backport the VEX Cortex functionality
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="conductor.html" class="btn btn-neutral float-right" title="Conductor User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../api/cpp/index.html" class="btn btn-neutral" title="C++ API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

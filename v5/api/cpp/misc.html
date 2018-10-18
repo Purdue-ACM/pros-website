@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Miscellaneous C++ API &mdash; PROS for V5 3.1.1 documentation</title>
+  <title>Miscellaneous C++ API &mdash; PROS for V5 3.1.2 documentation</title>
   
 
   
@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PROS for V5 3.1.1 documentation" href="../../index.html"/>
+    <link rel="top" title="PROS for V5 3.1.2 documentation" href="../../index.html"/>
         <link rel="up" title="API Home" href="../index.html"/>
         <link rel="next" title="Motors C++ API" href="motors.html"/>
         <link rel="prev" title="LLEMU (Legacy LCD Emulator) C++ API" href="llemu.html"/>
@@ -96,7 +96,7 @@
             
               <div class="version">
                 
-                  V5 (3.1.1)
+                  V5 (3.1.2)
                 
               </div>
             
@@ -174,6 +174,9 @@
 <li class="toctree-l5"><a class="reference internal" href="#get-digital">get_digital</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#get-digital-new-press">get_digital_new_press</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#print">print</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#controller-rumble">controller_rumble</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#set-text">set_text</a></li>
 </ul>
 </li>
@@ -311,75 +314,78 @@
 </div>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#pros-battery" id="id3">pros::battery</a><ul>
-<li><a class="reference internal" href="#get-capacity" id="id4">get_capacity</a></li>
-<li><a class="reference internal" href="#get-current" id="id5">get_current</a></li>
-<li><a class="reference internal" href="#get-temperature" id="id6">get_temperature</a></li>
-<li><a class="reference internal" href="#get-voltage" id="id7">get_voltage</a></li>
+<li><a class="reference internal" href="#pros-battery" id="id4">pros::battery</a><ul>
+<li><a class="reference internal" href="#get-capacity" id="id5">get_capacity</a></li>
+<li><a class="reference internal" href="#get-current" id="id6">get_current</a></li>
+<li><a class="reference internal" href="#get-temperature" id="id7">get_temperature</a></li>
+<li><a class="reference internal" href="#get-voltage" id="id8">get_voltage</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#pros-competition" id="id8">pros::competition</a><ul>
-<li><a class="reference internal" href="#get-status" id="id9">get_status</a></li>
-<li><a class="reference internal" href="#is-autonomous" id="id10">is_autonomous</a></li>
-<li><a class="reference internal" href="#is-connected" id="id11">is_connected</a></li>
-<li><a class="reference internal" href="#is-disabled" id="id12">is_disabled</a></li>
+<li><a class="reference internal" href="#pros-competition" id="id9">pros::competition</a><ul>
+<li><a class="reference internal" href="#get-status" id="id10">get_status</a></li>
+<li><a class="reference internal" href="#is-autonomous" id="id11">is_autonomous</a></li>
+<li><a class="reference internal" href="#is-connected" id="id12">is_connected</a></li>
+<li><a class="reference internal" href="#is-disabled" id="id13">is_disabled</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#pros-controller" id="id13">pros::Controller</a><ul>
-<li><a class="reference internal" href="#constructor-s" id="id14">Constructor(s)</a></li>
-<li><a class="reference internal" href="#methods" id="id15">Methods</a><ul>
-<li><a class="reference internal" href="#clear" id="id16">clear</a></li>
-<li><a class="reference internal" href="#clear-line" id="id17">clear_line</a></li>
-<li><a class="reference internal" href="#id1" id="id18">is_connected</a></li>
-<li><a class="reference internal" href="#get-analog" id="id19">get_analog</a></li>
-<li><a class="reference internal" href="#get-battery-capacity" id="id20">get_battery_capacity</a></li>
-<li><a class="reference internal" href="#get-battery-level" id="id21">get_battery_level</a></li>
-<li><a class="reference internal" href="#get-digital" id="id22">get_digital</a></li>
-<li><a class="reference internal" href="#get-digital-new-press" id="id23">get_digital_new_press</a></li>
-<li><a class="reference internal" href="#print" id="id24">print</a></li>
-<li><a class="reference internal" href="#set-text" id="id25">set_text</a></li>
+<li><a class="reference internal" href="#pros-controller" id="id14">pros::Controller</a><ul>
+<li><a class="reference internal" href="#constructor-s" id="id15">Constructor(s)</a></li>
+<li><a class="reference internal" href="#methods" id="id16">Methods</a><ul>
+<li><a class="reference internal" href="#clear" id="id17">clear</a></li>
+<li><a class="reference internal" href="#clear-line" id="id18">clear_line</a></li>
+<li><a class="reference internal" href="#id1" id="id19">is_connected</a></li>
+<li><a class="reference internal" href="#get-analog" id="id20">get_analog</a></li>
+<li><a class="reference internal" href="#get-battery-capacity" id="id21">get_battery_capacity</a></li>
+<li><a class="reference internal" href="#get-battery-level" id="id22">get_battery_level</a></li>
+<li><a class="reference internal" href="#get-digital" id="id23">get_digital</a></li>
+<li><a class="reference internal" href="#get-digital-new-press" id="id24">get_digital_new_press</a></li>
+<li><a class="reference internal" href="#print" id="id25">print</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#controller-rumble" id="id26">controller_rumble</a><ul>
+<li><a class="reference internal" href="#set-text" id="id27">set_text</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#macros" id="id26">Macros</a><ul>
-<li><a class="reference internal" href="#analog-left-x" id="id27">ANALOG_LEFT_X</a></li>
-<li><a class="reference internal" href="#analog-left-y" id="id28">ANALOG_LEFT_Y</a></li>
-<li><a class="reference internal" href="#analog-right-x" id="id29">ANALOG_RIGHT_X</a></li>
-<li><a class="reference internal" href="#analog-right-y" id="id30">ANALOG_RIGHT_Y</a></li>
-<li><a class="reference internal" href="#competition-autonomous" id="id31">COMPETITION_AUTONOMOUS</a></li>
-<li><a class="reference internal" href="#competition-disabled" id="id32">COMPETITION_DISABLED</a></li>
-<li><a class="reference internal" href="#competition-connected" id="id33">COMPETITION_CONNECTED</a></li>
-<li><a class="reference internal" href="#controller-master" id="id34">CONTROLLER_MASTER</a></li>
-<li><a class="reference internal" href="#controller-partner" id="id35">CONTROLLER_PARTNER</a></li>
-<li><a class="reference internal" href="#digital-l1" id="id36">DIGITAL_L1</a></li>
-<li><a class="reference internal" href="#digital-l2" id="id37">DIGITAL_L2</a></li>
-<li><a class="reference internal" href="#digital-r1" id="id38">DIGITAL_R1</a></li>
-<li><a class="reference internal" href="#digital-r2" id="id39">DIGITAL_R2</a></li>
-<li><a class="reference internal" href="#digital-up" id="id40">DIGITAL_UP</a></li>
-<li><a class="reference internal" href="#digital-down" id="id41">DIGITAL_DOWN</a></li>
-<li><a class="reference internal" href="#digital-left" id="id42">DIGITAL_LEFT</a></li>
-<li><a class="reference internal" href="#digital-right" id="id43">DIGITAL_RIGHT</a></li>
-<li><a class="reference internal" href="#digital-x" id="id44">DIGITAL_X</a></li>
-<li><a class="reference internal" href="#digital-b" id="id45">DIGITAL_B</a></li>
-<li><a class="reference internal" href="#digital-y" id="id46">DIGITAL_Y</a></li>
-<li><a class="reference internal" href="#digital-a" id="id47">DIGITAL_A</a></li>
-<li><a class="reference internal" href="#num-v5-ports" id="id48">NUM_V5_PORTS</a></li>
+<li><a class="reference internal" href="#macros" id="id28">Macros</a><ul>
+<li><a class="reference internal" href="#analog-left-x" id="id29">ANALOG_LEFT_X</a></li>
+<li><a class="reference internal" href="#analog-left-y" id="id30">ANALOG_LEFT_Y</a></li>
+<li><a class="reference internal" href="#analog-right-x" id="id31">ANALOG_RIGHT_X</a></li>
+<li><a class="reference internal" href="#analog-right-y" id="id32">ANALOG_RIGHT_Y</a></li>
+<li><a class="reference internal" href="#competition-autonomous" id="id33">COMPETITION_AUTONOMOUS</a></li>
+<li><a class="reference internal" href="#competition-disabled" id="id34">COMPETITION_DISABLED</a></li>
+<li><a class="reference internal" href="#competition-connected" id="id35">COMPETITION_CONNECTED</a></li>
+<li><a class="reference internal" href="#controller-master" id="id36">CONTROLLER_MASTER</a></li>
+<li><a class="reference internal" href="#controller-partner" id="id37">CONTROLLER_PARTNER</a></li>
+<li><a class="reference internal" href="#digital-l1" id="id38">DIGITAL_L1</a></li>
+<li><a class="reference internal" href="#digital-l2" id="id39">DIGITAL_L2</a></li>
+<li><a class="reference internal" href="#digital-r1" id="id40">DIGITAL_R1</a></li>
+<li><a class="reference internal" href="#digital-r2" id="id41">DIGITAL_R2</a></li>
+<li><a class="reference internal" href="#digital-up" id="id42">DIGITAL_UP</a></li>
+<li><a class="reference internal" href="#digital-down" id="id43">DIGITAL_DOWN</a></li>
+<li><a class="reference internal" href="#digital-left" id="id44">DIGITAL_LEFT</a></li>
+<li><a class="reference internal" href="#digital-right" id="id45">DIGITAL_RIGHT</a></li>
+<li><a class="reference internal" href="#digital-x" id="id46">DIGITAL_X</a></li>
+<li><a class="reference internal" href="#digital-b" id="id47">DIGITAL_B</a></li>
+<li><a class="reference internal" href="#digital-y" id="id48">DIGITAL_Y</a></li>
+<li><a class="reference internal" href="#digital-a" id="id49">DIGITAL_A</a></li>
+<li><a class="reference internal" href="#num-v5-ports" id="id50">NUM_V5_PORTS</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#enumerated-values" id="id49">Enumerated Values</a><ul>
-<li><a class="reference internal" href="#pros-controller-analog-e-t" id="id50">pros::controller_analog_e_t</a></li>
-<li><a class="reference internal" href="#pros-controller-digital-e-t" id="id51">pros::controller_digital_e_t</a></li>
-<li><a class="reference internal" href="#pros-controller-id-e-t" id="id52">pros::controller_id_e_t</a></li>
+<li><a class="reference internal" href="#enumerated-values" id="id51">Enumerated Values</a><ul>
+<li><a class="reference internal" href="#pros-controller-analog-e-t" id="id52">pros::controller_analog_e_t</a></li>
+<li><a class="reference internal" href="#pros-controller-digital-e-t" id="id53">pros::controller_digital_e_t</a></li>
+<li><a class="reference internal" href="#pros-controller-id-e-t" id="id54">pros::controller_id_e_t</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#typedefs" id="id53">Typedefs</a></li>
+<li><a class="reference internal" href="#typedefs" id="id55">Typedefs</a></li>
 </ul>
 </div>
 <div class="section" id="pros-battery">
-<h2><a class="toc-backref" href="#id3">pros::battery</a><a class="headerlink" href="#pros-battery" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">pros::battery</a><a class="headerlink" href="#pros-battery" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="get-capacity">
-<h3><a class="toc-backref" href="#id4">get_capacity</a><a class="headerlink" href="#get-capacity" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id5">get_capacity</a><a class="headerlink" href="#get-capacity" title="Permalink to this headline">¶</a></h3>
 <p>Gets the current capacity of the battery, as reported by VEXos.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -414,7 +420,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-current">
-<h3><a class="toc-backref" href="#id5">get_current</a><a class="headerlink" href="#get-current" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id6">get_current</a><a class="headerlink" href="#get-current" title="Permalink to this headline">¶</a></h3>
 <p>Gets the current current of the battery, as reported by VEXos.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -449,7 +455,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-temperature">
-<h3><a class="toc-backref" href="#id6">get_temperature</a><a class="headerlink" href="#get-temperature" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id7">get_temperature</a><a class="headerlink" href="#get-temperature" title="Permalink to this headline">¶</a></h3>
 <p>Gets the current temperature of the battery, as reported by VEXos.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -484,7 +490,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-voltage">
-<h3><a class="toc-backref" href="#id7">get_voltage</a><a class="headerlink" href="#get-voltage" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id8">get_voltage</a><a class="headerlink" href="#get-voltage" title="Permalink to this headline">¶</a></h3>
 <p>Gets the current voltage of the battery, as reported by VEXos.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -520,9 +526,9 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="pros-competition">
-<h2><a class="toc-backref" href="#id8">pros::competition</a><a class="headerlink" href="#pros-competition" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id9">pros::competition</a><a class="headerlink" href="#pros-competition" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="get-status">
-<h3><a class="toc-backref" href="#id9">get_status</a><a class="headerlink" href="#get-status" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">get_status</a><a class="headerlink" href="#get-status" title="Permalink to this headline">¶</a></h3>
 <p>Analogous to <a class="reference external" href="../c/misc.html#competition-get-status">competition_get_status</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -561,7 +567,7 @@ COMPETITION_{ENABLED,AUTONOMOUS,CONNECTED}.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="is-autonomous">
-<h3><a class="toc-backref" href="#id10">is_autonomous</a><a class="headerlink" href="#is-autonomous" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">is_autonomous</a><a class="headerlink" href="#is-autonomous" title="Permalink to this headline">¶</a></h3>
 <p>Analogous to <a class="reference external" href="../c/misc.html#competition-is-autonomous">competition_is_autonomous</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -613,7 +619,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="is-connected">
-<h3><a class="toc-backref" href="#id11">is_connected</a><a class="headerlink" href="#is-connected" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id12">is_connected</a><a class="headerlink" href="#is-connected" title="Permalink to this headline">¶</a></h3>
 <p>Analogous to <a class="reference external" href="../c/misc.html#competition-is-connected">competition_is_connected</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -651,7 +657,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="is-disabled">
-<h3><a class="toc-backref" href="#id12">is_disabled</a><a class="headerlink" href="#is-disabled" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id13">is_disabled</a><a class="headerlink" href="#is-disabled" title="Permalink to this headline">¶</a></h3>
 <p>Analogous to <a class="reference external" href="../c/misc.html#competition-is-disabled">competition_is_disabled</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -696,9 +702,9 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="pros-controller">
-<h2><a class="toc-backref" href="#id13">pros::Controller</a><a class="headerlink" href="#pros-controller" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id14">pros::Controller</a><a class="headerlink" href="#pros-controller" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="constructor-s">
-<h3><a class="toc-backref" href="#id14">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id15">Constructor(s)</a><a class="headerlink" href="#constructor-s" title="Permalink to this headline">¶</a></h3>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code>  - A value other than <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_MASTER</span></code> or <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_PARTNER</span></code> is given.</li>
@@ -759,15 +765,20 @@ Must be one of <a class="reference external" href="../c/misc.html#controller-id-
 </div>
 <hr class="docutils" />
 <div class="section" id="methods">
-<h3><a class="toc-backref" href="#id15">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id16">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="clear">
-<h4><a class="toc-backref" href="#id16">clear</a><a class="headerlink" href="#clear" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id17">clear</a><a class="headerlink" href="#clear" title="Permalink to this headline">¶</a></h4>
 <p>Clears all of the lines of the controller screen.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Controller text setting is a slow process, so updates faster than 10ms when on
 a wired connection or 50ms over Vexnet will not be applied to the controller.</p>
 </div>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../c/misc.html#controller-clear">controller_clear</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-18 docutils container">
@@ -804,13 +815,18 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="clear-line">
-<h4><a class="toc-backref" href="#id17">clear_line</a><a class="headerlink" href="#clear-line" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id18">clear_line</a><a class="headerlink" href="#clear-line" title="Permalink to this headline">¶</a></h4>
 <p>Clears an individual line of the controller screen.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Controller text setting is a slow process, so updates faster than 10ms when on
 a wired connection or 50ms over Vexnet will not be applied to the controller.</p>
 </div>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../c/misc.html#controller-clear-line">controller_clear_line</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-20 docutils container">
@@ -863,7 +879,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="id1">
-<h4><a class="toc-backref" href="#id18">is_connected</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id19">is_connected</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <p>Return 0 or 1 if the controller is connected.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -920,7 +936,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-analog">
-<h4><a class="toc-backref" href="#id19">get_analog</a><a class="headerlink" href="#get-analog" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id20">get_analog</a><a class="headerlink" href="#get-analog" title="Permalink to this headline">¶</a></h4>
 <p>Gets the value of an analog channel (joystick) on a controller.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -986,7 +1002,7 @@ If the controller was not connected, then 0 is returned</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-battery-capacity">
-<h4><a class="toc-backref" href="#id20">get_battery_capacity</a><a class="headerlink" href="#get-battery-capacity" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id21">get_battery_capacity</a><a class="headerlink" href="#get-battery-capacity" title="Permalink to this headline">¶</a></h4>
 <p>Gets the battery capacity of the given controller.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1022,7 +1038,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-battery-level">
-<h4><a class="toc-backref" href="#id21">get_battery_level</a><a class="headerlink" href="#get-battery-level" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id22">get_battery_level</a><a class="headerlink" href="#get-battery-level" title="Permalink to this headline">¶</a></h4>
 <p>Gets the battery level of the given controller.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1058,7 +1074,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-digital">
-<h4><a class="toc-backref" href="#id22">get_digital</a><a class="headerlink" href="#get-digital" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id23">get_digital</a><a class="headerlink" href="#get-digital" title="Permalink to this headline">¶</a></h4>
 <p>Gets the value of an digital channel (button) on a controller.</p>
 <p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
 <ul class="simple">
@@ -1134,7 +1150,7 @@ If the controller was not connected, then 0 is returned</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="get-digital-new-press">
-<h4><a class="toc-backref" href="#id23">get_digital_new_press</a><a class="headerlink" href="#get-digital-new-press" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id24">get_digital_new_press</a><a class="headerlink" href="#get-digital-new-press" title="Permalink to this headline">¶</a></h4>
 <p>Returns a rising-edge case for a controller button press.</p>
 <p>This function is not thread-safe.
 Multiple tasks polling a single button may return different results under the
@@ -1209,13 +1225,18 @@ the last time this function was called, 0 otherwise.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="print">
-<h4><a class="toc-backref" href="#id24">print</a><a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id25">print</a><a class="headerlink" href="#print" title="Permalink to this headline">¶</a></h4>
 <p>Sets text to the controller LCD screen.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Controller text setting is a slow process, so updates faster than 10ms when on
 a wired connection or 50ms over Vexnet will not be applied to the controller.</p>
 </div>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../c/misc.html#controller-print">controller_print</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-34 docutils container">
@@ -1290,15 +1311,21 @@ Example</div>
 </table>
 <p><strong>Returns:</strong> 1 if the operation was successful, <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> otherwise.</p>
 </div>
+</div>
 <hr class="docutils" />
-<div class="section" id="set-text">
-<h4><a class="toc-backref" href="#id25">set_text</a><a class="headerlink" href="#set-text" title="Permalink to this headline">¶</a></h4>
-<p>Sets text to the controller LCD screen.</p>
+<div class="section" id="controller-rumble">
+<h3><a class="toc-backref" href="#id26">controller_rumble</a><a class="headerlink" href="#controller-rumble" title="Permalink to this headline">¶</a></h3>
+<p>Rumble the controller.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Controller text setting is a slow process, so updates faster than 10ms when on
 a wired connection or 50ms over Vexnet will not be applied to the controller.</p>
 </div>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../c/misc.html#controller-rumble">controller_rumble</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-36 docutils container">
@@ -1311,13 +1338,90 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-36 active docutils container">
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">controller_rumble</span> <span class="p">(</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">rumble_pattern</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-37 docutils container">
+<div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span> <span class="n">master</span> <span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">count</span> <span class="o">%</span> <span class="mi">25</span><span class="p">))</span> <span class="p">{</span>
+      <span class="c1">// Only print every 50ms, the controller text update rate is slow</span>
+      <span class="n">master</span><span class="p">.</span><span class="n">rumble</span><span class="p">(</span><span class="s">&quot;. - . -&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="86%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>rumble_pattern</td>
+<td>A string consisting of the characters ‘.’, ‘-‘, and ‘ ‘, where dots
+are short rumbles, dashes are long rumbles, and spaces are pauses.
+Maximum supported length is 8 characters.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if the operation was successful, <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> otherwise.</p>
+<hr class="docutils" />
+<div class="section" id="set-text">
+<h4><a class="toc-backref" href="#id27">set_text</a><a class="headerlink" href="#set-text" title="Permalink to this headline">¶</a></h4>
+<p>Sets text to the controller LCD screen.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Controller text setting is a slow process, so updates faster than 10ms when on
+a wired connection or 50ms over Vexnet will not be applied to the controller.</p>
+</div>
+<p>This function uses the following values of <code class="docutils literal notranslate"><span class="pre">errno</span></code> when an error state is reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code>  - Another resource is currently trying to access the controller port.</li>
+</ul>
+<p>Analogous to <a class="reference external" href="../c/misc.html#controller-set-text">controller_set_text</a>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-38 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-39 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-38 active docutils container">
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="o">::</span><span class="n">set_text</span> <span class="p">(</span> <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">line</span><span class="p">,</span>
                                           <span class="n">std</span><span class="o">::</span><span class="kt">uint8_t</span> <span class="n">col</span><span class="p">,</span>
                                           <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">str</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-37 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-39 docutils container">
 <div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -1373,123 +1477,123 @@ Example</div>
 </div>
 </div>
 <div class="section" id="macros">
-<h2><a class="toc-backref" href="#id26">Macros</a><a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id28">Macros</a><a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="analog-left-x">
-<h3><a class="toc-backref" href="#id27">ANALOG_LEFT_X</a><a class="headerlink" href="#analog-left-x" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id29">ANALOG_LEFT_X</a><a class="headerlink" href="#analog-left-x" title="Permalink to this headline">¶</a></h3>
 <p>The horizontal axis of the controller’s left analog stick.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_ANALOG_LEFT_X</span></code></p>
 </div>
 <div class="section" id="analog-left-y">
-<h3><a class="toc-backref" href="#id28">ANALOG_LEFT_Y</a><a class="headerlink" href="#analog-left-y" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id30">ANALOG_LEFT_Y</a><a class="headerlink" href="#analog-left-y" title="Permalink to this headline">¶</a></h3>
 <p>The vertical axis of the controller’s left analog stick.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_ANALOG_LEFT_Y</span></code></p>
 </div>
 <div class="section" id="analog-right-x">
-<h3><a class="toc-backref" href="#id29">ANALOG_RIGHT_X</a><a class="headerlink" href="#analog-right-x" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id31">ANALOG_RIGHT_X</a><a class="headerlink" href="#analog-right-x" title="Permalink to this headline">¶</a></h3>
 <p>The horizontal axis of the controller’s right analog stick.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_ANALOG_RIGHT_X</span></code></p>
 </div>
 <div class="section" id="analog-right-y">
-<h3><a class="toc-backref" href="#id30">ANALOG_RIGHT_Y</a><a class="headerlink" href="#analog-right-y" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id32">ANALOG_RIGHT_Y</a><a class="headerlink" href="#analog-right-y" title="Permalink to this headline">¶</a></h3>
 <p>The vertical axis of the controller’s right analog stick.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_ANALOG_RIGHT_Y</span></code></p>
 </div>
 <div class="section" id="competition-autonomous">
-<h3><a class="toc-backref" href="#id31">COMPETITION_AUTONOMOUS</a><a class="headerlink" href="#competition-autonomous" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id33">COMPETITION_AUTONOMOUS</a><a class="headerlink" href="#competition-autonomous" title="Permalink to this headline">¶</a></h3>
 <p>Use COMPETITION_AUTONOMOUS as a bitmask for checking whether the brain is in autonomous mode
 with <a class="reference internal" href="#get-status">get_status</a>.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">0)</span></code></p>
 </div>
 <div class="section" id="competition-disabled">
-<h3><a class="toc-backref" href="#id32">COMPETITION_DISABLED</a><a class="headerlink" href="#competition-disabled" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id34">COMPETITION_DISABLED</a><a class="headerlink" href="#competition-disabled" title="Permalink to this headline">¶</a></h3>
 <p>Use COMPETITION_DISABLED as a bitmask for checking whether the brain is disabled with <a class="reference internal" href="#get-status">get_status</a>.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">1)</span></code></p>
 </div>
 <div class="section" id="competition-connected">
-<h3><a class="toc-backref" href="#id33">COMPETITION_CONNECTED</a><a class="headerlink" href="#competition-connected" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id35">COMPETITION_CONNECTED</a><a class="headerlink" href="#competition-connected" title="Permalink to this headline">¶</a></h3>
 <p>Use COMPETITION_CONNECTED as a bitmask for checking whether the brain is connected to competition control with <a class="reference internal" href="#get-status">get_status</a>.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">2)</span></code></p>
 </div>
 <div class="section" id="controller-master">
-<h3><a class="toc-backref" href="#id34">CONTROLLER_MASTER</a><a class="headerlink" href="#controller-master" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id36">CONTROLLER_MASTER</a><a class="headerlink" href="#controller-master" title="Permalink to this headline">¶</a></h3>
 <p>The master controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_MASTER</span></code></p>
 </div>
 <div class="section" id="controller-partner">
-<h3><a class="toc-backref" href="#id35">CONTROLLER_PARTNER</a><a class="headerlink" href="#controller-partner" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id37">CONTROLLER_PARTNER</a><a class="headerlink" href="#controller-partner" title="Permalink to this headline">¶</a></h3>
 <p>The partner controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_PARTNER</span></code></p>
 </div>
 <div class="section" id="digital-l1">
-<h3><a class="toc-backref" href="#id36">DIGITAL_L1</a><a class="headerlink" href="#digital-l1" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id38">DIGITAL_L1</a><a class="headerlink" href="#digital-l1" title="Permalink to this headline">¶</a></h3>
 <p>The first trigger on the left side of the controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_L1</span></code></p>
 </div>
 <div class="section" id="digital-l2">
-<h3><a class="toc-backref" href="#id37">DIGITAL_L2</a><a class="headerlink" href="#digital-l2" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id39">DIGITAL_L2</a><a class="headerlink" href="#digital-l2" title="Permalink to this headline">¶</a></h3>
 <p>The second trigger on the left side of the controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_L2</span></code></p>
 </div>
 <div class="section" id="digital-r1">
-<h3><a class="toc-backref" href="#id38">DIGITAL_R1</a><a class="headerlink" href="#digital-r1" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id40">DIGITAL_R1</a><a class="headerlink" href="#digital-r1" title="Permalink to this headline">¶</a></h3>
 <p>The first trigger on the right side of the controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_R1</span></code></p>
 </div>
 <div class="section" id="digital-r2">
-<h3><a class="toc-backref" href="#id39">DIGITAL_R2</a><a class="headerlink" href="#digital-r2" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id41">DIGITAL_R2</a><a class="headerlink" href="#digital-r2" title="Permalink to this headline">¶</a></h3>
 <p>The second trigger on the right side of the controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_R2</span></code></p>
 </div>
 <div class="section" id="digital-up">
-<h3><a class="toc-backref" href="#id40">DIGITAL_UP</a><a class="headerlink" href="#digital-up" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id42">DIGITAL_UP</a><a class="headerlink" href="#digital-up" title="Permalink to this headline">¶</a></h3>
 <p>The up arrow on the left arrow pad of the controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_UP</span></code></p>
 </div>
 <div class="section" id="digital-down">
-<h3><a class="toc-backref" href="#id41">DIGITAL_DOWN</a><a class="headerlink" href="#digital-down" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id43">DIGITAL_DOWN</a><a class="headerlink" href="#digital-down" title="Permalink to this headline">¶</a></h3>
 <p>The down arrow on the left arrow pad of the controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_DOWN</span></code></p>
 </div>
 <div class="section" id="digital-left">
-<h3><a class="toc-backref" href="#id42">DIGITAL_LEFT</a><a class="headerlink" href="#digital-left" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id44">DIGITAL_LEFT</a><a class="headerlink" href="#digital-left" title="Permalink to this headline">¶</a></h3>
 <p>The left arrow on the left arrow pad of the controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_LEFT</span></code></p>
 </div>
 <div class="section" id="digital-right">
-<h3><a class="toc-backref" href="#id43">DIGITAL_RIGHT</a><a class="headerlink" href="#digital-right" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id45">DIGITAL_RIGHT</a><a class="headerlink" href="#digital-right" title="Permalink to this headline">¶</a></h3>
 <p>The right arrow on the left arrow pad of the controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_RIGHT</span></code></p>
 </div>
 <div class="section" id="digital-x">
-<h3><a class="toc-backref" href="#id44">DIGITAL_X</a><a class="headerlink" href="#digital-x" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id46">DIGITAL_X</a><a class="headerlink" href="#digital-x" title="Permalink to this headline">¶</a></h3>
 <p>The ‘X’ button on the right button pad of the controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_X</span></code></p>
 </div>
 <div class="section" id="digital-b">
-<h3><a class="toc-backref" href="#id45">DIGITAL_B</a><a class="headerlink" href="#digital-b" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id47">DIGITAL_B</a><a class="headerlink" href="#digital-b" title="Permalink to this headline">¶</a></h3>
 <p>The ‘B’ button on the right button pad of the controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_B</span></code></p>
 </div>
 <div class="section" id="digital-y">
-<h3><a class="toc-backref" href="#id46">DIGITAL_Y</a><a class="headerlink" href="#digital-y" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id48">DIGITAL_Y</a><a class="headerlink" href="#digital-y" title="Permalink to this headline">¶</a></h3>
 <p>The ‘Y’ button on the right button pad of the controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_Y</span></code></p>
 </div>
 <div class="section" id="digital-a">
-<h3><a class="toc-backref" href="#id47">DIGITAL_A</a><a class="headerlink" href="#digital-a" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id49">DIGITAL_A</a><a class="headerlink" href="#digital-a" title="Permalink to this headline">¶</a></h3>
 <p>The ‘A’ button on the right button pad of the controller.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">E_CONTROLLER_DIGITAL_A</span></code></p>
 </div>
 <div class="section" id="num-v5-ports">
-<h3><a class="toc-backref" href="#id48">NUM_V5_PORTS</a><a class="headerlink" href="#num-v5-ports" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id50">NUM_V5_PORTS</a><a class="headerlink" href="#num-v5-ports" title="Permalink to this headline">¶</a></h3>
 <p>The number of RJ11 ports available on the V5 brain.</p>
 <p><strong>Value:</strong> <code class="docutils literal notranslate"><span class="pre">(22)</span></code></p>
 </div>
 </div>
 <div class="section" id="enumerated-values">
-<h2><a class="toc-backref" href="#id49">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id51">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="pros-controller-analog-e-t">
-<h3><a class="toc-backref" href="#id50">pros::controller_analog_e_t</a><a class="headerlink" href="#pros-controller-analog-e-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id52">pros::controller_analog_e_t</a><a class="headerlink" href="#pros-controller-analog-e-t" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2
 3
@@ -1530,7 +1634,7 @@ with <a class="reference internal" href="#get-status">get_status</a>.</p>
 </table>
 </div>
 <div class="section" id="pros-controller-digital-e-t">
-<h3><a class="toc-backref" href="#id51">pros::controller_digital_e_t</a><a class="headerlink" href="#pros-controller-digital-e-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id53">pros::controller_digital_e_t</a><a class="headerlink" href="#pros-controller-digital-e-t" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -1611,7 +1715,7 @@ with <a class="reference internal" href="#get-status">get_status</a>.</p>
 </table>
 </div>
 <div class="section" id="pros-controller-id-e-t">
-<h3><a class="toc-backref" href="#id52">pros::controller_id_e_t</a><a class="headerlink" href="#pros-controller-id-e-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id54">pros::controller_id_e_t</a><a class="headerlink" href="#pros-controller-id-e-t" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span>
   <span class="n">E_CONTROLLER_MASTER</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
   <span class="n">E_CONTROLLER_PARTNER</span>
@@ -1640,7 +1744,7 @@ with <a class="reference internal" href="#get-status">get_status</a>.</p>
 </div>
 </div>
 <div class="section" id="typedefs">
-<h2><a class="toc-backref" href="#id53">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id55">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -1688,7 +1792,7 @@ with <a class="reference internal" href="#get-status">get_status</a>.</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.1.1)
+      v: V5 (3.1.2)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">

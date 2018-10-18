@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>PROS Kernel 3.1.1 Release &mdash; PROS for V5 3.1.1 documentation</title>
+  <title>PROS Kernel 3.1.1 Release &mdash; PROS for V5 3.1.2 documentation</title>
   
 
   
@@ -39,7 +39,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="PROS for V5 3.1.1 documentation" href="../index.html"/>
+    <link rel="top" title="PROS for V5 3.1.2 documentation" href="../index.html"/>
   
    
   
@@ -85,7 +85,7 @@
             
               <div class="version">
                 
-                  V5 (3.1.1)
+                  V5 (3.1.2)
                 
               </div>
             
@@ -212,17 +212,23 @@
   <div class="section" id="pros-kernel-3-1-1-release">
 <h1>PROS Kernel 3.1.1 Release<a class="headerlink" href="#pros-kernel-3-1-1-release" title="Permalink to this headline">¶</a></h1>
 <p>A variety of bugfixes and usability improvements over 3.1.0.</p>
-<p>Bugfixes:
-- Competition control now works properly with running matches from the brain/controller (as opposed to just a competition switch/field controller before)
-- Global constructors now work for Smart Devices (Motors, Vision Sensors, etc.)
-- <code class="docutils literal notranslate"><span class="pre">pros::Controller::print()</span></code> will now compile and work properly
-- Okapilib now works with the template operator control file by default, no more need to remove the <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">pros::literals</span></code> line first</p>
-<p>New Features:
-- A proper Gyro Driver in C and C++. No more need to manually configure the ADI port to be a gyroscope.</p>
-<p>Usability Improvements:
-- All of the competition control functions (<code class="docutils literal notranslate"><span class="pre">autonomous()</span></code>, <code class="docutils literal notranslate"><span class="pre">opcontrol()</span></code>, etc.) are now prototyped in <code class="docutils literal notranslate"><span class="pre">main.h</span></code> and can be called from user code
-- <code class="docutils literal notranslate"><span class="pre">PROS_USE_SIMPLE_NAMES</span></code> is implemented for all of the API headers in both C and C++
-- <code class="docutils literal notranslate"><span class="pre">motor_move()</span></code> and its C++ equivalent properly clamp inputs to <code class="docutils literal notranslate"><span class="pre">[-127,127]</span></code>, so arcade control code will work properly with no clamping of the controller values in user code</p>
+<p>Bugfixes:</p>
+<ul class="simple">
+<li>Competition control now works properly with running matches from the brain/controller (as opposed to just a competition switch/field controller before)</li>
+<li>Global constructors now work for Smart Devices (Motors, Vision Sensors, etc.)</li>
+<li><code class="docutils literal notranslate"><span class="pre">pros::Controller::print()</span></code> will now compile and work properly</li>
+<li>Okapilib now works with the template operator control file by default, no more need to remove the <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">pros::literals</span></code> line first</li>
+</ul>
+<p>New Features:</p>
+<ul class="simple">
+<li>A proper Gyro Driver in C and C++. No more need to manually configure the ADI port to be a gyroscope.</li>
+</ul>
+<p>Usability Improvements:</p>
+<ul class="simple">
+<li>All of the competition control functions (<code class="docutils literal notranslate"><span class="pre">autonomous()</span></code>, <code class="docutils literal notranslate"><span class="pre">opcontrol()</span></code>, etc.) are now prototyped in <code class="docutils literal notranslate"><span class="pre">main.h</span></code> and can be called from user code</li>
+<li><code class="docutils literal notranslate"><span class="pre">PROS_USE_SIMPLE_NAMES</span></code> is implemented for all of the API headers in both C and C++</li>
+<li><code class="docutils literal notranslate"><span class="pre">motor_move()</span></code> and its C++ equivalent properly clamp inputs to <code class="docutils literal notranslate"><span class="pre">[-127,127]</span></code>, so arcade control code will work properly with no clamping of the controller values in user code</li>
+</ul>
 </div>
 
   <div class="section">
@@ -286,7 +292,7 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.1.1)
+      v: V5 (3.1.2)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">

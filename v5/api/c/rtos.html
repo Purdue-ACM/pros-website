@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>RTOS Facilities C API &mdash; PROS for V5 3.1.1 documentation</title>
+  <title>RTOS Facilities C API &mdash; PROS for V5 3.1.2 documentation</title>
   
 
   
@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PROS for V5 3.1.1 documentation" href="../../index.html"/>
+    <link rel="top" title="PROS for V5 3.1.2 documentation" href="../../index.html"/>
         <link rel="up" title="API Home" href="../index.html"/>
         <link rel="next" title="Vision Sensor C API" href="vision.html"/>
         <link rel="prev" title="Motors C API" href="motors.html"/>
@@ -96,7 +96,7 @@
             
               <div class="version">
                 
-                  V5 (3.1.1)
+                  V5 (3.1.2)
                 
               </div>
             
@@ -816,7 +816,8 @@ Example</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>prev_time</td>
-<td>A pointer to the location storing the setpoint time</td>
+<td>A pointer to the location storing the setpoint time. This should
+typically be initialized to the return value of millis().</td>
 </tr>
 <tr class="row-odd"><td>delta</td>
 <td>The number of milliseconds to wait (1000 milliseconds per second)</td>
@@ -831,6 +832,7 @@ Example</div>
 deleted will be removed from all ready, blocked, suspended and event lists.</p>
 <p>Memory dynamically allocated by the task is not automatically freed, and
 should be freed before the task is deleted.</p>
+<p>Analogous to <a class="reference external" href="../cpp/rtos.html#remove">pros::Task::remove</a>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-16 docutils container">
@@ -1861,7 +1863,7 @@ default stack size for a task in PROS 2.</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.1.1)
+      v: V5 (3.1.2)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">

@@ -5672,7 +5672,7 @@ footer span.commit code, footer span.commit .rst-content tt, .rst-content footer
   text-align: left;
 }
 .rst-content tt, .rst-content tt, .rst-content code {
-  color: #5fcde2;
+  color: #000;
   font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
   padding: 2px 5px;
   border: #E6B85C;
@@ -5758,7 +5758,7 @@ footer span.commit code, footer span.commit .rst-content tt, .rst-content footer
 .rst-content dl:not(.docutils) .optional {
   display: inline-block;
   padding: 0 4px;
-  color: #26b4cf;
+  color: #000;
   font-weight: bold;
 }
 .rst-content dl:not(.docutils) .property {

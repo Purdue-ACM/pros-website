@@ -180,6 +180,7 @@
 <li class="toctree-l7"><a class="reference internal" href="#settext">setText</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#clear">clear</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#clearline">clearLine</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#rumble">rumble</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#getbatterycapacity">getBatteryCapacity</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#getbatterylevel">getBatteryLevel</a></li>
 </ul>
@@ -236,6 +237,7 @@
 <li class="toctree-l6"><a class="reference internal" href="#settext">setText</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#clear">clear</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#clearline">clearLine</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#rumble">rumble</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#getbatterycapacity">getBatteryCapacity</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#getbatterylevel">getBatteryLevel</a></li>
 </ul>
@@ -347,14 +349,15 @@
 <li><a class="reference internal" href="#settext" id="id10">setText</a></li>
 <li><a class="reference internal" href="#clear" id="id11">clear</a></li>
 <li><a class="reference internal" href="#clearline" id="id12">clearLine</a></li>
-<li><a class="reference internal" href="#getbatterycapacity" id="id13">getBatteryCapacity</a></li>
-<li><a class="reference internal" href="#getbatterylevel" id="id14">getBatteryLevel</a></li>
+<li><a class="reference internal" href="#rumble" id="id13">rumble</a></li>
+<li><a class="reference internal" href="#getbatterycapacity" id="id14">getBatteryCapacity</a></li>
+<li><a class="reference internal" href="#getbatterylevel" id="id15">getBatteryLevel</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#enumerated-values" id="id15">Enumerated Values</a><ul>
-<li><a class="reference internal" href="#controllerid" id="id16">ControllerId</a></li>
-<li><a class="reference internal" href="#controlleranalog" id="id17">ControllerAnalog</a></li>
-<li><a class="reference internal" href="#controllerdigital" id="id18">ControllerDigital</a></li>
+<li><a class="reference internal" href="#enumerated-values" id="id16">Enumerated Values</a><ul>
+<li><a class="reference internal" href="#controllerid" id="id17">ControllerId</a></li>
+<li><a class="reference internal" href="#controlleranalog" id="id18">ControllerAnalog</a></li>
+<li><a class="reference internal" href="#controllerdigital" id="id19">ControllerDigital</a></li>
 </ul>
 </li>
 </ul>
@@ -589,7 +592,7 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>iline</td>
-<td>The lin number at which the text will be displayed <code class="docutils literal notranslate"><span class="pre">[0-2]</span></code>.</td>
+<td>The line number at which the text will be displayed <code class="docutils literal notranslate"><span class="pre">[0-2]</span></code>.</td>
 </tr>
 <tr class="row-odd"><td>icol</td>
 <td>The column number at which the text will be displayed <code class="docutils literal notranslate"><span class="pre">[0-14]</span></code>.</td>
@@ -649,16 +652,17 @@ Prototype</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>iline</td>
-<td>The lin number to clear.</td>
+<td>The line number to clear.</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> is the operation was successful, <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> otherwise.</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="getbatterycapacity">
-<h4><a class="toc-backref" href="#id13">getBatteryCapacity</a><a class="headerlink" href="#getbatterycapacity" title="Permalink to this headline">¶</a></h4>
-<p>Gets the battery capacity of the given controller.</p>
+<div class="section" id="rumble">
+<h4><a class="toc-backref" href="#id13">rumble</a><a class="headerlink" href="#rumble" title="Permalink to this headline">¶</a></h4>
+<p>Rumble the controller.</p>
+<p>Controller rumble activation is currently in beta, so continuous, fast updates will not work well.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-10 docutils container">
@@ -667,6 +671,42 @@ Prototype</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">rumble</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">irumblePattern</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="92%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>irumblePattern</td>
+<td>A string consisting of the characters period, hyphen, and space, where periods are short rumbles, hyphens are long rumbles, and spaces are pauses. Maximum supported length is 8 characters.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">1</span></code> is the operation was successful or <code class="docutils literal notranslate"><span class="pre">PROS_ERR</span></code> if the operation failed,
+setting errno.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="getbatterycapacity">
+<h4><a class="toc-backref" href="#id14">getBatteryCapacity</a><a class="headerlink" href="#getbatterycapacity" title="Permalink to this headline">¶</a></h4>
+<p>Gets the battery capacity of the given controller.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-11 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">getBatteryCapacity</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -676,16 +716,16 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="getbatterylevel">
-<h4><a class="toc-backref" href="#id14">getBatteryLevel</a><a class="headerlink" href="#getbatterylevel" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id15">getBatteryLevel</a><a class="headerlink" href="#getbatterylevel" title="Permalink to this headline">¶</a></h4>
 <p>Gets the battery level of the given controller.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-11 docutils container">
+<div class="active item sphinx-data-tab-12 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">getBatteryLevel</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -696,9 +736,9 @@ Prototype</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="enumerated-values">
-<h3><a class="toc-backref" href="#id15">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id16">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="controllerid">
-<h4><a class="toc-backref" href="#id16">ControllerId</a><a class="headerlink" href="#controllerid" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id17">ControllerId</a><a class="headerlink" href="#controllerid" title="Permalink to this headline">¶</a></h4>
 <p>The ID of the controller (e.g. master or partner).</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">class</span> <span class="n">ControllerId</span> <span class="p">{</span>
   <span class="n">master</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
@@ -708,7 +748,7 @@ Prototype</div>
 </div>
 </div>
 <div class="section" id="controlleranalog">
-<h4><a class="toc-backref" href="#id17">ControllerAnalog</a><a class="headerlink" href="#controlleranalog" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id18">ControllerAnalog</a><a class="headerlink" href="#controlleranalog" title="Permalink to this headline">¶</a></h4>
 <p>An analog stick.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">class</span> <span class="n">ControllerAnalog</span> <span class="p">{</span>
   <span class="n">leftX</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
@@ -720,7 +760,7 @@ Prototype</div>
 </div>
 </div>
 <div class="section" id="controllerdigital">
-<h4><a class="toc-backref" href="#id18">ControllerDigital</a><a class="headerlink" href="#controllerdigital" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id19">ControllerDigital</a><a class="headerlink" href="#controllerdigital" title="Permalink to this headline">¶</a></h4>
 <p>Various buttons.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">class</span> <span class="n">ControllerDigital</span> <span class="p">{</span>
   <span class="n">L1</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>

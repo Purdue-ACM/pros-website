@@ -41,7 +41,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PROS for V5 3.1.3 documentation" href="../index.html"/>
         <link rel="up" title="Getting Started" href="index.html"/>
-        <link rel="next" title="Installing on Linux" href="debian-linux.html"/>
+        <link rel="next" title="Installing on Linux" href="linux.html"/>
         <link rel="prev" title="Installing on Windows" href="windows.html"/>
   
    
@@ -123,8 +123,19 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting Started</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="new-users.html">PROS First Time Users Guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="windows.html">Installing on Windows</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Installing on macOS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="debian-linux.html">Installing on Linux</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installing on macOS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recommended-method-homebrew">Recommended Method (Homebrew)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-methods">Other Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-the-toolchain">Install the toolchain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-the-cli">Install the CLI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-the-editor">Install the Editor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="linux.html">Installing on Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">PROS FAQ</a></li>
 </ul>
 </li>
@@ -223,33 +234,97 @@
             
   <div class="section" id="installing-on-macos">
 <h1>Installing on macOS<a class="headerlink" href="#installing-on-macos" title="Permalink to this headline">¶</a></h1>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">During the initial beta phase of PROS 3, we want to focus on developing the
-CLI and kernel - the bread and butter of developing with PROS. To this end,
-we won’t be creating complete Windows installers until closer to full release
-in order to help reduce the delay between us developing features and pushing
-them out to you.</p>
+<p>There are currently two ways to install PROS 3 on macOS. The recommended method uses <a class="reference external" href="https://brew.sh/">Homebrew</a>, and the other method involves installing components manually.</p>
+<div class="section" id="recommended-method-homebrew">
+<h2>Recommended Method (Homebrew)<a class="headerlink" href="#recommended-method-homebrew" title="Permalink to this headline">¶</a></h2>
+<p>The recommended method of installing PROS 3 for macOS involves using <a class="reference external" href="https://brew.sh/">Homebrew</a>.</p>
+<ol class="arabic simple">
+<li>If you do not already have Homebrew installed, install it by following the instructions on <a class="reference external" href="https://brew.sh">their site</a>. This will take a while, and may prompt you to follow some additional instructions.</li>
+<li>Once you have Homebrew installed, run <code class="code docutils literal notranslate"><span class="pre">brew</span> <span class="pre">tap</span> <span class="pre">purduesigbots/pros</span></code> to register the PROS Homebrew repository with Homebrew.</li>
+<li>Run <code class="code docutils literal notranslate"><span class="pre">brew</span> <span class="pre">cask</span> <span class="pre">install</span> <span class="pre">gcc-arm-embedded</span> <span class="pre">pros-editor</span></code> to install the toolchain and the PROS Editor. This may also take a while.</li>
+<li>That’s it! You can now start using PROS 3.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you do not want to use the PROS Editor, and instead intend to use only the PROS CLI, substitute the command in step 3 with the following: <code class="code docutils literal notranslate"><span class="pre">brew</span> <span class="pre">cask</span> <span class="pre">install</span> <span class="pre">gcc-arm-embedded</span> <span class="pre">&amp;&amp;</span> <span class="pre">brew</span> <span class="pre">install</span> <span class="pre">pros-cli</span></code>.</p>
 </div>
-<p>To install PROS 3 beta, you need to do the following:</p>
-<ul>
-<li><p class="first">Acquire the PROS toolchain. This can be done simply by installing PROS 2 today, or by visiting the GNU Arm Embedded Toolchain website. GCC 6+ is recommended, older versions of GCC may work but will be unsupported.</p>
+</div>
+<div class="section" id="other-methods">
+<h2>Other Methods<a class="headerlink" href="#other-methods" title="Permalink to this headline">¶</a></h2>
+<p>If you don’t want to use Homebrew to install PROS 3, you can install all the components manually.</p>
+<div class="section" id="install-the-toolchain">
+<h3>Install the toolchain<a class="headerlink" href="#install-the-toolchain" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Download the latest version of the GNU Arm Embedded Toolchain for macOS from <a class="reference external" href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads">their site</a>.</li>
+<li>Once you have downloaded the toolchain, double click the file to extract its contents.</li>
+<li>Copy the contents of the <code class="code docutils literal notranslate"><span class="pre">gcc-arm-none-eabi-X-20XX-qX-update</span></code> folder (where the Xs are numbers specific to the version you downloaded) to another folder, for example <code class="code docutils literal notranslate"><span class="pre">/usr/local/lib/pros-toolchain</span></code>.</li>
+<li>Now you will need to link the toolchain binaries to somewhere that the system will be able to find them. There are two ways to do this:<ol class="lowerroman">
+<li>(recommended, easy to update) run <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/usr/local/bin/pros-toolchain</span> <span class="pre">&amp;&amp;</span> <span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">/usr/local/lib/pros-toolchain/bin/*</span> <span class="pre">/usr/local/bin/pros-toolchain</span></code> (replacing <code class="docutils literal notranslate"><span class="pre">/usr/local/lib/pros-toolchain</span></code> with the path to the folder you made in step 4 above). Finally, add <code class="docutils literal notranslate"><span class="pre">/usr/local/bin/pros-toolchain</span></code> to the end of your <code class="docutils literal notranslate"><span class="pre">/etc/paths</span></code> file.</li>
+<li>(easier, less easy to update) simply run <code class="docutils literal notranslate"><span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">/usr/local/lib/pros-toolchain/bin/*</span> <span class="pre">/usr/local/bin</span></code>.</li>
+</ol>
 </li>
-<li><p class="first">Download Python 3.6+.</p>
-</li>
-<li><p class="first">Download the PROS CLI wheel. Please check the VEX Forum or the PROS Development V5 Beta Channel for the latest link.</p>
-</li>
-<li><dl class="first docutils">
-<dt>Run</dt>
-<dd><div class="first last highlight-batch notranslate"><div class="highlight"><pre><span></span>python -m pip install <span class="p">&lt;</span>path_to_file_downloaded&gt;
+</ol>
+</div>
+<div class="section" id="install-the-cli">
+<h3>Install the CLI<a class="headerlink" href="#install-the-cli" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Install Python 3.6 or higher from <a class="reference external" href="http://python.org">the Python website</a>.</li>
+<li>Install the CLI by downloading the latest version of the Python Wheel file (.whl) from <a class="reference external" href="https://github.com/purduesigbots/pros-cli3/releases/latest">here</a>. Once downloaded, run <code class="code docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">~/Downloads/pros-cli-v5_3.X.X-py3-none-any.whl</span></code> (replacing that path with the path to which you downloaded the file).</li>
+</ol>
+</div>
+<div class="section" id="install-the-editor">
+<h3>Install the Editor<a class="headerlink" href="#install-the-editor" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">this section is optional if you intend to use an editor other than the PROS Editor</p>
+</div>
+<ol class="arabic simple">
+<li>Build and install cquery by following the instructions on <a class="reference external" href="https://github.com/cquery-project/cquery/wiki/Building-cquery">their wiki page</a>.</li>
+<li>Download the <code class="code docutils literal notranslate"><span class="pre">pros-editor-mac.zip</span></code> file from <a class="reference external" href="https://github.com/purduesigbots/atom/releases/latest">our releases page</a>. Once downloaded, double click to extract the application, then drag the <code class="code docutils literal notranslate"><span class="pre">PROS</span> <span class="pre">Editor.app</span></code> file to your <code class="code docutils literal notranslate"><span class="pre">/Applications</span></code> folder.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Minimum macOS version: 10.8
+Minimum Python version: 3.6</p>
+</div>
+<div class="section" id="known-issues">
+<h2>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+<p><code class="code docutils literal notranslate"><span class="pre">RuntimeError:</span> <span class="pre">Click</span> <span class="pre">will</span> <span class="pre">abort</span> <span class="pre">further</span> <span class="pre">execution</span> <span class="pre">because</span> <span class="pre">Python</span> <span class="pre">3</span> <span class="pre">was</span> <span class="pre">configured</span>
+<span class="pre">to</span> <span class="pre">use</span> <span class="pre">ASCII</span> <span class="pre">as</span> <span class="pre">encoding</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">environment.</span></code></p>
+<p>If you are using the PROS Editor, open up your init script (File &gt; Init Script) and add the following two lines:</p>
+<div class="highlight-coffee notranslate"><div class="highlight"><pre><span></span><span class="nv">process.env.LANG = </span><span class="s">&#39;en_US.utf-8&#39;</span>
+<span class="nv">process.env.LC_ALL = </span><span class="s">&#39;en_US.utf-8&#39;</span>
 </pre></div>
 </div>
-</dd>
-</dl>
-</li>
-</ul>
-<p>Depending on if you have other Python interpreters installed, you may need to run <code class="code docutils literal notranslate"><span class="pre">python3</span></code> or <code class="code docutils literal notranslate"><span class="pre">python3.6</span></code>
-instead of simply <code class="code docutils literal notranslate"><span class="pre">python</span></code>.</p>
+<p>If you are just using the CLI at the Terminal:</p>
+<ol class="arabic simple">
+<li>Open up your Terminal.</li>
+<li>Run <code class="code docutils literal notranslate"><span class="pre">cd</span></code> to make sure you’re in your home directory.</li>
+<li>Run <code class="code docutils literal notranslate"><span class="pre">touch</span> <span class="pre">.bash_profile</span></code> to make sure you have a shell login configuration file.</li>
+<li>Edit the <code class="code docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> file in your preferred editor (you can also run <code class="code docutils literal notranslate"><span class="pre">open</span> <span class="pre">-e</span> <span class="pre">.bash_profile</span></code> to edit it in TextEdit), adding the following two lines at the end:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span><span class="s2">&quot;en_US.utf-8&quot;</span>
+<span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span><span class="s2">&quot;en_US.utf-8&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Run <code class="code docutils literal notranslate"><span class="pre">.</span> <span class="pre">.bash_profile</span></code> to reload the file for the current session.</li>
+</ol>
+<p><code class="code docutils literal notranslate"><span class="pre">/bin/sh:</span> <span class="pre">intercept-c++:</span> <span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This issue should be fixed for PROS CLI versions &gt; 3.1.2</p>
+</div>
+<ol class="arabic simple">
+<li>Check your PROS CLI version by running <code class="code docutils literal notranslate"><span class="pre">prosv5</span> <span class="pre">--version</span></code>. If your version is &lt;= 3.1.2, try updating first to check if that solves your problem. If not, continue with step 2.</li>
+<li>Follow steps 1-4 listed above for those using the CLI only. In step 4, however, add the following line instead (replacing the Xs with the numbers found in step 1):</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/Cellar/pros-cli/3.X.X/libexec/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
 </div>
 
   <div class="section">
@@ -266,7 +341,7 @@ instead of simply <code class="code docutils literal notranslate"><span class="p
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="debian-linux.html" class="btn btn-neutral float-right" title="Installing on Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="linux.html" class="btn btn-neutral float-right" title="Installing on Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="windows.html" class="btn btn-neutral" title="Installing on Windows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

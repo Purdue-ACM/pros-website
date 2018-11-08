@@ -167,6 +167,8 @@
 <li class="toctree-l6"><a class="reference internal" href="#cutrange">cutRange</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#deadband">deadband</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#remaprange">remapRange</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tounderlyingtype">toUnderlyingType</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#booltosign">boolToSign</a></li>
 </ul>
 </li>
 </ul>
@@ -201,6 +203,8 @@
 <li class="toctree-l5"><a class="reference internal" href="#cutrange">cutRange</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#deadband">deadband</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#remaprange">remapRange</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#tounderlyingtype">toUnderlyingType</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#booltosign">boolToSign</a></li>
 </ul>
 </li>
 </ul>
@@ -298,6 +302,8 @@
 <li><a class="reference internal" href="#cutrange" id="id4">cutRange</a></li>
 <li><a class="reference internal" href="#deadband" id="id5">deadband</a></li>
 <li><a class="reference internal" href="#remaprange" id="id6">remapRange</a></li>
+<li><a class="reference internal" href="#tounderlyingtype" id="id7">toUnderlyingType</a></li>
+<li><a class="reference internal" href="#booltosign" id="id8">boolToSign</a></li>
 </ul>
 </li>
 </ul>
@@ -605,6 +611,76 @@ Example</div>
 </tbody>
 </table>
 <p><strong>Returns:</strong> The remapped value in the new range <code class="docutils literal notranslate"><span class="pre">[newMin,</span> <span class="pre">newMax]</span></code>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="tounderlyingtype">
+<h3><a class="toc-backref" href="#id7">toUnderlyingType</a><a class="headerlink" href="#tounderlyingtype" title="Permalink to this headline">¶</a></h3>
+<p>Converts an enum to its value type.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-8 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">template</span> <span class="o">&lt;</span><span class="kr">typename</span> <span class="n">E</span><span class="o">&gt;</span> <span class="n">constexpr</span> <span class="k">auto</span> <span class="n">toUnderlyingType</span><span class="p">(</span><span class="k">const</span> <span class="n">E</span> <span class="n">e</span><span class="p">)</span> <span class="n">noexcept</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>e</td>
+<td>The enum to convert.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> The value type for the enum.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="booltosign">
+<h3><a class="toc-backref" href="#id8">boolToSign</a><a class="headerlink" href="#booltosign" title="Permalink to this headline">¶</a></h3>
+<p>Converts a bool to a sign. <code class="docutils literal notranslate"><span class="pre">true</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">false</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-9 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">constexpr</span> <span class="k">auto</span> <span class="n">boolToSign</span><span class="p">(</span><span class="k">const</span> <span class="kt">bool</span> <span class="n">b</span><span class="p">)</span> <span class="n">noexcept</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>b</td>
+<td>The bool to convert.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> The sign value of the bool.</p>
 </div>
 </div>
 </div>

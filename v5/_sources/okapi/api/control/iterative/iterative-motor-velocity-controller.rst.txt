@@ -17,8 +17,8 @@ Constructor(s)
       .. highlight:: cpp
       ::
 
-        IterativeMotorVelocityControllerArgs(std::shared_ptr<AbstractMotor> imotor,
-                                             std::shared_ptr<IterativeVelocityController<double, double>> icontroller)
+        IterativeMotorVelocityControllerArgs(const std::shared_ptr<AbstractMotor> &imotor,
+                                             const std::shared_ptr<IterativeVelocityController<double, double>> &icontroller)
 
 =============== ===================================================================
  Parameters
@@ -274,7 +274,8 @@ Get the lower output bound.
 reset
 ~~~~~
 
-Resets the controller so it can start from 0 again properly. Keeps configuration from before.
+Resets the controller's internal state so it is similar to when it was first initialized, while
+keeping any user-configured information. This implementation also stops movement.
 
 .. tabs ::
    .. tab :: Prototype

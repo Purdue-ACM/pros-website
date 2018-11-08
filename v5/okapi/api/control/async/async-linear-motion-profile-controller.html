@@ -417,7 +417,7 @@ Prototype</div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">AsyncLinearMotionProfileController</span><span class="p">(</span><span class="k">const</span> <span class="n">TimeUtil</span> <span class="o">&amp;</span><span class="n">itimeUtil</span><span class="p">,</span>
                                    <span class="kt">double</span> <span class="n">imaxVel</span><span class="p">,</span> <span class="kt">double</span> <span class="n">imaxAccel</span><span class="p">,</span> <span class="kt">double</span> <span class="n">imaxJerk</span><span class="p">,</span>
-                                   <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ControllerOutput</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span> <span class="n">ioutput</span><span class="p">)</span>
+                                   <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">ControllerOutput</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span> <span class="o">&amp;</span><span class="n">ioutput</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -755,8 +755,9 @@ Prototype</div>
 <hr class="docutils" />
 <div class="section" id="reset">
 <h4><a class="toc-backref" href="#id17">reset</a><a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h4>
-<p>Resets the controller so it can start from 0 again properly. Keeps configuration from before.</p>
-<p>This implementation does nothing.</p>
+<p>Resets the controller’s internal state so it is similar to when it was first initialized, while
+keeping any user-configured information. This implementation also stops movement. This
+implementation also stops movement.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-12 docutils container">

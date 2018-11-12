@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Vision Sensor C API &mdash; PROS for V5 3.1.3 documentation</title>
+  <title>Vision Sensor C API &mdash; PROS for V5 3.1.4 documentation</title>
   
 
   
@@ -47,7 +47,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="PROS for V5 3.1.3 documentation" href="../../index.html"/>
+    <link rel="top" title="PROS for V5 3.1.4 documentation" href="../../index.html"/>
         <link rel="up" title="API Home" href="../index.html"/>
         <link rel="next" title="ADI (TriPort) C++ API" href="../cpp/adi.html"/>
         <link rel="prev" title="RTOS Facilities C API" href="rtos.html"/>
@@ -96,7 +96,7 @@
             
               <div class="version">
                 
-                  V5 (3.1.3)
+                  V5 (3.1.4)
                 
               </div>
             
@@ -147,16 +147,22 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Vision Sensor C API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#vision-clear-led">vision_clear_led</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vision-create-color-code">vision_create_color_code</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vision-get-by-sig">vision_get_by_sig</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vision-get-by-size">vision_get_by_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vision-get-by-code">vision_get_by_code</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vision-get-exposure">vision_get_exposure</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vision-get-object-count">vision_get_object_count</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vision-get-signature">vision_get_signature</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vision-get-white-balance">vision_get_white_balance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vision-print-signature">vision_print_signature</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vision-read-by-sig">vision_read_by_sig</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vision-read-by-size">vision_read_by_size</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vision-read-by-code">vision_read_by_code</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vision-set-auto-white-balance">vision_set_auto_white_balance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vision-set-exposure">vision_set_exposure</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vision-set-led">vision_set_led</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vision-set-signature">vision_set_signature</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#vision-set-white-balance">vision_set_white_balance</a></li>
 </ul>
 </li>
@@ -170,7 +176,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#vision-object-type-e-t">vision_object_type_e_t</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#typedefs">Typedefs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typedefs">Typedefs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#vision-color-code-t">vision_color_code_t</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../cpp/adi.html">ADI (TriPort) C++ API</a></li>
@@ -276,30 +285,39 @@
 <ul class="simple">
 <li><a class="reference internal" href="#functions" id="id1">Functions</a><ul>
 <li><a class="reference internal" href="#vision-clear-led" id="id2">vision_clear_led</a></li>
-<li><a class="reference internal" href="#vision-get-by-sig" id="id3">vision_get_by_sig</a></li>
-<li><a class="reference internal" href="#vision-get-by-size" id="id4">vision_get_by_size</a></li>
-<li><a class="reference internal" href="#vision-get-exposure" id="id5">vision_get_exposure</a></li>
-<li><a class="reference internal" href="#vision-get-object-count" id="id6">vision_get_object_count</a></li>
-<li><a class="reference internal" href="#vision-get-white-balance" id="id7">vision_get_white_balance</a></li>
-<li><a class="reference internal" href="#vision-read-by-sig" id="id8">vision_read_by_sig</a></li>
-<li><a class="reference internal" href="#vision-read-by-size" id="id9">vision_read_by_size</a></li>
-<li><a class="reference internal" href="#vision-set-auto-white-balance" id="id10">vision_set_auto_white_balance</a></li>
-<li><a class="reference internal" href="#vision-set-exposure" id="id11">vision_set_exposure</a></li>
-<li><a class="reference internal" href="#vision-set-led" id="id12">vision_set_led</a></li>
-<li><a class="reference internal" href="#vision-set-white-balance" id="id13">vision_set_white_balance</a></li>
+<li><a class="reference internal" href="#vision-create-color-code" id="id3">vision_create_color_code</a></li>
+<li><a class="reference internal" href="#vision-get-by-sig" id="id4">vision_get_by_sig</a></li>
+<li><a class="reference internal" href="#vision-get-by-size" id="id5">vision_get_by_size</a></li>
+<li><a class="reference internal" href="#vision-get-by-code" id="id6">vision_get_by_code</a></li>
+<li><a class="reference internal" href="#vision-get-exposure" id="id7">vision_get_exposure</a></li>
+<li><a class="reference internal" href="#vision-get-object-count" id="id8">vision_get_object_count</a></li>
+<li><a class="reference internal" href="#vision-get-signature" id="id9">vision_get_signature</a></li>
+<li><a class="reference internal" href="#vision-get-white-balance" id="id10">vision_get_white_balance</a></li>
+<li><a class="reference internal" href="#vision-print-signature" id="id11">vision_print_signature</a></li>
+<li><a class="reference internal" href="#vision-read-by-sig" id="id12">vision_read_by_sig</a></li>
+<li><a class="reference internal" href="#vision-read-by-size" id="id13">vision_read_by_size</a></li>
+<li><a class="reference internal" href="#vision-read-by-code" id="id14">vision_read_by_code</a></li>
+<li><a class="reference internal" href="#vision-set-auto-white-balance" id="id15">vision_set_auto_white_balance</a></li>
+<li><a class="reference internal" href="#vision-set-exposure" id="id16">vision_set_exposure</a></li>
+<li><a class="reference internal" href="#vision-set-led" id="id17">vision_set_led</a></li>
+<li><a class="reference internal" href="#vision-set-signature" id="id18">vision_set_signature</a></li>
+<li><a class="reference internal" href="#vision-set-white-balance" id="id19">vision_set_white_balance</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#macros" id="id14">Macros</a></li>
-<li><a class="reference internal" href="#data-structures" id="id15">Data Structures</a><ul>
-<li><a class="reference internal" href="#vision-signature-s-t" id="id16">vision_signature_s_t</a></li>
-<li><a class="reference internal" href="#vision-object-s-t" id="id17">vision_object_s_t</a></li>
+<li><a class="reference internal" href="#macros" id="id20">Macros</a></li>
+<li><a class="reference internal" href="#data-structures" id="id21">Data Structures</a><ul>
+<li><a class="reference internal" href="#vision-signature-s-t" id="id22">vision_signature_s_t</a></li>
+<li><a class="reference internal" href="#vision-object-s-t" id="id23">vision_object_s_t</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#enumerated-values" id="id18">Enumerated Values</a><ul>
-<li><a class="reference internal" href="#vision-object-type-e-t" id="id19">vision_object_type_e_t</a></li>
+<li><a class="reference internal" href="#enumerated-values" id="id24">Enumerated Values</a><ul>
+<li><a class="reference internal" href="#vision-object-type-e-t" id="id25">vision_object_type_e_t</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#typedefs" id="id20">Typedefs</a></li>
+<li><a class="reference internal" href="#typedefs" id="id26">Typedefs</a><ul>
+<li><a class="reference internal" href="#vision-color-code-t" id="id27">vision_color_code_t</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="functions">
@@ -359,16 +377,22 @@ Example</div>
 <p><strong>Returns:</strong> 0 if no errors occurred, PROS_ERR otherwise</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="vision-get-by-sig">
-<h3><a class="toc-backref" href="#id3">vision_get_by_sig</a><a class="headerlink" href="#vision-get-by-sig" title="Permalink to this headline">¶</a></h3>
-<p>Gets the nth largest object of the given signature according to size_id.</p>
+<div class="section" id="vision-create-color-code">
+<h3><a class="toc-backref" href="#id3">vision_create_color_code</a><a class="headerlink" href="#vision-create-color-code" title="Permalink to this headline">¶</a></h3>
+<p>Creates a color code that represents a combination of the given signature
+IDs. If fewer than 5 signatures are to be a part of the color code, pass 0
+for the additional function parameters.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
-<ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
-<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
-<li><code class="docutils literal notranslate"><span class="pre">EAGAIN</span></code> - Reading the Vision Sensor failed for an unknown reason.</li>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - Fewer than two signatures have been provided, or one of the</dt>
+<dd>signatures is out of its [1-7] range.</dd>
+</dl>
+</li>
 </ul>
+</div></blockquote>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-2 docutils container">
@@ -381,13 +405,91 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">vision_color_code_t</span> <span class="n">vision_create_color_code</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                                               <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">sig_id1</span><span class="p">,</span>
+                                                                                                                                                                                         <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">sig_id2</span><span class="p">,</span>
+                                                                                                                                                                             <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">sig_id3</span><span class="p">,</span>
+                                                                                                                                                                                         <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">sig_id4</span><span class="p">,</span>
+                                                                                                                                                                                         <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">sig_id5</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+                        <span class="cp">#define OTHER_SIG 2</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">vision_color_code_t</span> <span class="n">code1</span> <span class="o">=</span> <span class="n">vision_create_color_code</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">EXAMPLE_SIG</span><span class="p">,</span> <span class="n">OTHER_SIG</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The V5 port number from 1-21</td>
+</tr>
+<tr class="row-odd"><td>sig_id1</td>
+<td>The first signature id [1-7] to add to the color code</td>
+</tr>
+<tr class="row-even"><td>sig_id2</td>
+<td>The second signature id [1-7] to add to the color code</td>
+</tr>
+<tr class="row-odd"><td>sig_id3</td>
+<td>The third signature id [1-7] to add to the color code</td>
+</tr>
+<tr class="row-even"><td>sig_id4</td>
+<td>The fourth signature id [1-7] to add to the color code</td>
+</tr>
+<tr class="row-odd"><td>sig_id5</td>
+<td>The fifth signature id [1-7] to add to the color code</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> A <code class="docutils literal notranslate"><span class="pre">vision_color_code_t</span></code> object containing the color code information.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="vision-get-by-sig">
+<h3><a class="toc-backref" href="#id4">vision_get_by_sig</a><a class="headerlink" href="#vision-get-by-sig" title="Permalink to this headline">¶</a></h3>
+<p>Gets the nth largest object of the given signature according to size_id.</p>
+<p>This function uses the following values of errno when an error state is
+reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EDOM</span></code> - size_id is greater than the number of available objects.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EHOSTDOWN</span></code> - Reading the vision sensor failed for an unknown reason.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-5 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">vision_object_s_t</span> <span class="n">vision_get_by_sig</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                       <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span><span class="p">,</span>
                                       <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">sig_id</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 <span class="cp">#define EXAMPLE_SIG 1</span>
 
@@ -432,32 +534,34 @@ size_id, or PROS_ERR if an error occurred.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="vision-get-by-size">
-<h3><a class="toc-backref" href="#id4">vision_get_by_size</a><a class="headerlink" href="#vision-get-by-size" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id5">vision_get_by_size</a><a class="headerlink" href="#vision-get-by-size" title="Permalink to this headline">¶</a></h3>
 <p>Gets the nth largest object according to size_id.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
 <li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EDOM</span></code> - size_id is greater than the number of available objects.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EHOSTDOWN</span></code> - Reading the vision sensor failed for an unknown reason.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-4 docutils container">
+<div class="active item sphinx-data-tab-6 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-5 docutils container">
+<div class="item sphinx-data-tab-7 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">vision_object_s_t</span> <span class="n">vision_get_by_size</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                        <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -496,8 +600,82 @@ Example</div>
 PROS_ERR if an error occurred.</p>
 </div>
 <hr class="docutils" />
+<div class="section" id="vision-get-by-code">
+<h3><a class="toc-backref" href="#id6">vision_get_by_code</a><a class="headerlink" href="#vision-get-by-code" title="Permalink to this headline">¶</a></h3>
+<p>Gets the nth largest object of the given color code according to size_id.</p>
+<p>This function uses the following values of errno when an error state is
+reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EDOM</span></code> - size_id is greater than the number of available objects.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EHOSTDOWN</span></code> - Reading the vision sensor failed for an unknown reason.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-8 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-9 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">vision_object_s_t</span> <span class="n">vision_get_by_code</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                                                               <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span><span class="p">,</span>
+                                                                                                                                                                                       <span class="k">const</span> <span class="n">vision_color_code_t</span> <span class="n">color_code</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+                        <span class="cp">#define EXAMPLE_SIG 1</span>
+                        <span class="cp">#define OTHER_SIG 2</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+                                <span class="n">vision_color_code_t</span> <span class="n">code1</span> <span class="o">=</span> <span class="n">vision_create_color_code</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">EXAMPLE_SIG</span><span class="p">,</span> <span class="n">OTHER_SIG</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vision_object_s_t</span> <span class="n">rtn</span> <span class="o">=</span> <span class="n">vision_get_by_code</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">code1</span><span class="p">);</span>
+    <span class="c1">// Gets the largest object</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;sig: %d&quot;</span><span class="p">,</span> <span class="n">rtn</span><span class="p">.</span><span class="n">signature</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The V5 port number from 1-21</td>
+</tr>
+<tr class="row-odd"><td>size_id</td>
+<td>The object to read from a list roughly ordered by object size
+(0 is the largest item, 1 is the second largest, etc.)</td>
+</tr>
+<tr class="row-even"><td>color_code</td>
+<td>The vision_color_code_t for which an object will be returned</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> The vision_object_s_t object corresponding to the given color code
+and size_id, or PROS_ERR if an error occurred.</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="vision-get-exposure">
-<h3><a class="toc-backref" href="#id5">vision_get_exposure</a><a class="headerlink" href="#vision-get-exposure" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id7">vision_get_exposure</a><a class="headerlink" href="#vision-get-exposure" title="Permalink to this headline">¶</a></h3>
 <p>Gets the exposure parameter of the Vision Sensor.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
@@ -507,21 +685,21 @@ reached:</p>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-6 docutils container">
+<div class="active item sphinx-data-tab-10 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-7 docutils container">
+<div class="item sphinx-data-tab-11 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_get_exposure</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
@@ -553,7 +731,7 @@ PROS_ERR if an error occurred</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="vision-get-object-count">
-<h3><a class="toc-backref" href="#id6">vision_get_object_count</a><a class="headerlink" href="#vision-get-object-count" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id8">vision_get_object_count</a><a class="headerlink" href="#vision-get-object-count" title="Permalink to this headline">¶</a></h3>
 <p>Returns the number of objects currently detected by the Vision Sensor.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
@@ -563,21 +741,21 @@ reached:</p>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-8 docutils container">
+<div class="active item sphinx-data-tab-12 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-9 docutils container">
+<div class="item sphinx-data-tab-13 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_get_object_count</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
@@ -610,8 +788,49 @@ Example</div>
 Returns PROS_ERR if the port was invalid or an error occurred.</p>
 </div>
 <hr class="docutils" />
+<div class="section" id="vision-get-signature">
+<h3><a class="toc-backref" href="#id9">vision_get_signature</a><a class="headerlink" href="#vision-get-signature" title="Permalink to this headline">¶</a></h3>
+<p>Gets the object detection signature with the given id number.</p>
+<p>This function uses the following values of errno when an error state is
+reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-14 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-15 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">vision_signature_s_t</span> <span class="n">vision_get_signature</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                                                                    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">signature_id</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">vision_signature_s_t</span> <span class="n">sig</span> <span class="o">=</span> <span class="n">vision_get_signature</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">EXAMPLE_SIG</span><span class="p">);</span>
+        <span class="n">vision_print_signature</span><span class="p">(</span><span class="n">sig</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Returns:</strong> A <code class="docutils literal notranslate"><span class="pre">vision_signature_s_t</span></code> containing information about the signature.</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="vision-get-white-balance">
-<h3><a class="toc-backref" href="#id7">vision_get_white_balance</a><a class="headerlink" href="#vision-get-white-balance" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id10">vision_get_white_balance</a><a class="headerlink" href="#vision-get-white-balance" title="Permalink to this headline">¶</a></h3>
 <p>Gets the white balance parameter of the Vision Sensor.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
@@ -621,21 +840,21 @@ reached:</p>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-10 docutils container">
+<div class="active item sphinx-data-tab-16 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-11 docutils container">
+<div class="item sphinx-data-tab-17 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-10 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_get_white_balance</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-11 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 <span class="cp">#define VISION_WHITE 0xff</span>
 
@@ -666,27 +885,78 @@ Example</div>
 <p><strong>Returns:</strong> Returns the current RGB white balance setting of the sensor</p>
 </div>
 <hr class="docutils" />
+<div class="section" id="vision-print-signature">
+<h3><a class="toc-backref" href="#id11">vision_print_signature</a><a class="headerlink" href="#vision-print-signature" title="Permalink to this headline">¶</a></h3>
+<p>Prints the contents of the signature as an initializer list to the terminal.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-18 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-19 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_print_signature</span> <span class="p">(</span> <span class="k">const</span> <span class="n">vision_signature_s_t</span> <span class="n">sig</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+                                <span class="n">vision_signature_s_t</span> <span class="n">sig</span> <span class="o">=</span> <span class="n">vision_get_signature</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">EXAMPLE_SIG</span><span class="p">);</span>
+  <span class="n">vision_print_signature</span><span class="p">(</span><span class="n">sig</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sig</td>
+<td>The signature for which the contents will be printed</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if no errors occured, PROS_ERR otherwise</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="vision-read-by-sig">
-<h3><a class="toc-backref" href="#id8">vision_read_by_sig</a><a class="headerlink" href="#vision-read-by-sig" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id12">vision_read_by_sig</a><a class="headerlink" href="#vision-read-by-sig" title="Permalink to this headline">¶</a></h3>
 <p>Reads up to object_count object descriptors into object_arr.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
 <li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EDOM</span></code> - size_id is greater than the number of available objects.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-12 docutils container">
+<div class="active item sphinx-data-tab-20 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-13 docutils container">
+<div class="item sphinx-data-tab-21 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-12 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_read_by_sig</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                              <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span><span class="p">,</span>
                              <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">sig_id</span><span class="p">,</span>
@@ -695,7 +965,7 @@ Example</div>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-13 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 <span class="cp">#define EXAMPLE_SIG 1</span>
 <span class="cp">#define NUM_VISION_OBJECTS 4</span>
@@ -751,26 +1021,27 @@ given VISION_OBJECT_ERR_SIG as their signature.</p>
 </div>
 <hr class="docutils" />
 <div class="section" id="vision-read-by-size">
-<h3><a class="toc-backref" href="#id9">vision_read_by_size</a><a class="headerlink" href="#vision-read-by-size" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id13">vision_read_by_size</a><a class="headerlink" href="#vision-read-by-size" title="Permalink to this headline">¶</a></h3>
 <p>Reads up to object_count object descriptors into object_arr.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
 <li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EDOM</span></code> - size_id is greater than the number of available objects.</li>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-14 docutils container">
+<div class="active item sphinx-data-tab-22 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-15 docutils container">
+<div class="item sphinx-data-tab-23 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_read_by_size</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                               <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span><span class="p">,</span>
                               <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">object_count</span><span class="p">,</span>
@@ -778,7 +1049,7 @@ Example</div>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 <span class="cp">#define NUM_VISION_OBJECTS 4</span>
 
@@ -829,8 +1100,96 @@ than size_id were found. All objects in object_arr that were not found are
 given VISION_OBJECT_ERR_SIG as their signature.</p>
 </div>
 <hr class="docutils" />
+<div class="section" id="vision-read-by-code">
+<h3><a class="toc-backref" href="#id14">vision_read_by_code</a><a class="headerlink" href="#vision-read-by-code" title="Permalink to this headline">¶</a></h3>
+<p>Reads up to object_count object descriptors into object_arr.</p>
+<p>This function uses the following values of errno when an error state is
+reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+<li><code class="docutils literal notranslate"><span class="pre">EDOM</span></code> - size_id is greater than the number of available objects.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-24 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-25 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_read_by_code</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                              <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span><span class="p">,</span>
+                                                                                                                        <span class="k">const</span> <span class="n">vision_color_code_t</span> <span class="n">color_code</span><span class="p">,</span>
+                                                                                                            <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">object_count</span><span class="p">,</span>
+                                                                                                                        <span class="n">vision_object_s_t</span><span class="o">*</span> <span class="k">const</span> <span class="n">object_arr</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+                        <span class="cp">#define EXAMPLE_SIG 1</span>
+                        <span class="cp">#define OTHER_SIG 2</span>
+<span class="cp">#define NUM_VISION_OBJECTS 4</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">vision_object_s_t</span> <span class="n">object_arr</span><span class="p">[</span><span class="n">NUM_VISION_OBJECTS</span><span class="p">];</span>
+                                <span class="n">vision_color_code_t</span> <span class="n">code1</span> <span class="o">=</span> <span class="n">vision_create_color_code</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">EXAMPLE_SIG</span><span class="p">,</span> <span class="n">OTHER_SIG</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vision_read_by_code</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">code1</span><span class="p">,</span> <span class="n">NUM_VISION_OBJECTS</span><span class="p">,</span> <span class="n">object_arr</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;sig: %d&quot;</span><span class="p">,</span> <span class="n">object_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">signature</span><span class="p">);</span>
+    <span class="c1">// Prints the signature of the largest object found</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The V5 port number from 1-21</td>
+</tr>
+<tr class="row-odd"><td>size_id</td>
+<td>The first object to read from a list roughly ordered
+by object size (0 is the largest item, 1 is the second
+largest, etc.)</td>
+</tr>
+<tr class="row-even"><td>color_code</td>
+<td>The vision_color_code_t for which objects will be
+returned</td>
+</tr>
+<tr class="row-odd"><td>object_count</td>
+<td>How many objects to read</td>
+</tr>
+<tr class="row-even"><td>object_arr</td>
+<td>A pointer to copy the data into</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> The number of object signatures copied. This number will be less than
+object_count if there are fewer objects detected by the vision sensor.
+Returns PROS_ERR if the port was invalid, an error occurred, or fewer objects
+than size_id were found. All objects in object_arr that were not found are
+given VISION_OBJECT_ERR_SIG as their signature.</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="vision-set-auto-white-balance">
-<h3><a class="toc-backref" href="#id10">vision_set_auto_white_balance</a><a class="headerlink" href="#vision-set-auto-white-balance" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id15">vision_set_auto_white_balance</a><a class="headerlink" href="#vision-set-auto-white-balance" title="Permalink to this headline">¶</a></h3>
 <p>Set the white balance parameter manually on the Vision Sensor.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
@@ -840,22 +1199,22 @@ reached:</p>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-16 docutils container">
+<div class="active item sphinx-data-tab-26 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-17 docutils container">
+<div class="item sphinx-data-tab-27 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-16 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-26 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_set_auto_white_balance</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                         <span class="k">const</span> <span class="kt">int32_t</span> <span class="n">rgb</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-17 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-27 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
@@ -888,7 +1247,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="vision-set-exposure">
-<h3><a class="toc-backref" href="#id11">vision_set_exposure</a><a class="headerlink" href="#vision-set-exposure" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id16">vision_set_exposure</a><a class="headerlink" href="#vision-set-exposure" title="Permalink to this headline">¶</a></h3>
 <p>Sets the exposure parameter of the Vision Sensor.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
@@ -898,22 +1257,22 @@ reached:</p>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-18 docutils container">
+<div class="active item sphinx-data-tab-28 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-19 docutils container">
+<div class="item sphinx-data-tab-29 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-18 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-28 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_set_exposure</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                               <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">percent</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-19 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-29 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
@@ -948,7 +1307,7 @@ from [0,100]</td>
 </div>
 <hr class="docutils" />
 <div class="section" id="vision-set-led">
-<h3><a class="toc-backref" href="#id12">vision_set_led</a><a class="headerlink" href="#vision-set-led" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id17">vision_set_led</a><a class="headerlink" href="#vision-set-led" title="Permalink to this headline">¶</a></h3>
 <p>Sets the vision sensor LED color, overriding the automatic behavior.</p>
 <p>This function uses the following values of errno when an error state is
 reached:</p>
@@ -958,22 +1317,22 @@ reached:</p>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-20 docutils container">
+<div class="active item sphinx-data-tab-30 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-21 docutils container">
+<div class="item sphinx-data-tab-31 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-20 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-30 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_set_led</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                          <span class="k">const</span> <span class="kt">int32_t</span> <span class="n">rgb</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-21 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-31 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 
 <span class="kt">void</span> <span class="nf">initialize</span><span class="p">()</span> <span class="p">{</span>
@@ -1005,8 +1364,78 @@ Example</div>
 <p><strong>Returns:</strong> 0 if no errors occured, PROS_ERR otherwise</p>
 </div>
 <hr class="docutils" />
+<div class="section" id="vision-set-signature">
+<h3><a class="toc-backref" href="#id18">vision_set_signature</a><a class="headerlink" href="#vision-set-signature" title="Permalink to this headline">¶</a></h3>
+<p>Stores the supplied object detection signature onto the vision sensor.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This saves the signature in volatile memory, and the signature will be
+lost as soon as the sensor is powered down.</p>
+</div>
+<p>This function uses the following values of errno when an error state is
+reached:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">EINVAL</span></code> - The given value is not within the range of V5 ports (1-21).</li>
+<li><code class="docutils literal notranslate"><span class="pre">EACCES</span></code> - Another resource is currently trying to access the port.</li>
+</ul>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-32 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-33 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-32 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_set_signature</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
+                                                       <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">signature_id</span><span class="p">,</span>
+                                                                                                                                                 <span class="n">vision_signature_s_t</span><span class="o">*</span> <span class="k">const</span> <span class="n">signature_ptr</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-33 docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+                        <span class="cp">#define EXAMPLE_SIG 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">vision_signature_s_t</span> <span class="n">sig</span> <span class="o">=</span> <span class="n">vision_get_signature</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">EXAMPLE_SIG</span><span class="p">);</span>
+                                <span class="n">sig</span><span class="p">.</span><span class="n">range</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span>
+                                <span class="n">vision_set_signature</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">EXAMPLE_SIG</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">sig</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>port</td>
+<td>The V5 port number from 1-21</td>
+</tr>
+<tr class="row-odd"><td>signature_id</td>
+<td>The signature id to store into</td>
+</tr>
+<tr class="row-even"><td>signature_ptr</td>
+<td>A pointer to the signature to save</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> 1 if no errors, occurred, PROS_ERR otherwise</p>
+</div>
+<hr class="docutils" />
 <div class="section" id="vision-set-white-balance">
-<h3><a class="toc-backref" href="#id13">vision_set_white_balance</a><a class="headerlink" href="#vision-set-white-balance" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id19">vision_set_white_balance</a><a class="headerlink" href="#vision-set-white-balance" title="Permalink to this headline">¶</a></h3>
 <p>Set the white balance parameter manually on the Vision Sensor.</p>
 <p>This function will disable auto white-balancing.</p>
 <p>This function uses the following values of errno when an error state is
@@ -1017,22 +1446,22 @@ reached:</p>
 </ul>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-22 docutils container">
+<div class="active item sphinx-data-tab-34 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-23 docutils container">
+<div class="item sphinx-data-tab-35 docutils container">
 <div class="docutils container">
 Example</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-22 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-34 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_set_white_balance</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
                                    <span class="k">const</span> <span class="kt">int32_t</span> <span class="n">rgb</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-23 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-35 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
 <span class="cp">#define VISION_WHITE 0xff</span>
 
@@ -1067,13 +1496,13 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="macros">
-<h2><a class="toc-backref" href="#id14">Macros</a><a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">Macros</a><a class="headerlink" href="#macros" title="Permalink to this headline">¶</a></h2>
 <p>None.</p>
 </div>
 <div class="section" id="data-structures">
-<h2><a class="toc-backref" href="#id15">Data Structures</a><a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id21">Data Structures</a><a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="vision-signature-s-t">
-<h3><a class="toc-backref" href="#id16">vision_signature_s_t</a><a class="headerlink" href="#vision-signature-s-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id22">vision_signature_s_t</a><a class="headerlink" href="#vision-signature-s-t" title="Permalink to this headline">¶</a></h3>
 <p>This structure contains the parameters used by the Vision Sensor
 to detect objects.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">))</span> <span class="n">vision_signature</span> <span class="p">{</span>
@@ -1093,7 +1522,7 @@ to detect objects.</p>
 </div>
 </div>
 <div class="section" id="vision-object-s-t">
-<h3><a class="toc-backref" href="#id17">vision_object_s_t</a><a class="headerlink" href="#vision-object-s-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id23">vision_object_s_t</a><a class="headerlink" href="#vision-object-s-t" title="Permalink to this headline">¶</a></h3>
 <p>This structure contains a descriptor of an object detected
 by the Vision Sensor</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="nf">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">))</span> <span class="n">vision_object</span> <span class="p">{</span>
@@ -1163,9 +1592,9 @@ e.g. normal, color code, or line detection</td>
 </div>
 </div>
 <div class="section" id="enumerated-values">
-<h2><a class="toc-backref" href="#id18">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id24">Enumerated Values</a><a class="headerlink" href="#enumerated-values" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="vision-object-type-e-t">
-<h3><a class="toc-backref" href="#id19">vision_object_type_e_t</a><a class="headerlink" href="#vision-object-type-e-t" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id25">vision_object_type_e_t</a><a class="headerlink" href="#vision-object-type-e-t" title="Permalink to this headline">¶</a></h3>
 <p>This enumeration defines the different types of objects
 that can be detected by the Vision Sensor</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="n">vision_object_type</span> <span class="p">{</span>
@@ -1178,8 +1607,15 @@ that can be detected by the Vision Sensor</p>
 </div>
 </div>
 <div class="section" id="typedefs">
-<h2><a class="toc-backref" href="#id20">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
-<p>None.</p>
+<h2><a class="toc-backref" href="#id26">Typedefs</a><a class="headerlink" href="#typedefs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vision-color-code-t">
+<h3><a class="toc-backref" href="#id27">vision_color_code_t</a><a class="headerlink" href="#vision-color-code-t" title="Permalink to this headline">¶</a></h3>
+<p>Color codes are just signatures with multiple IDs and a different type.</p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>typedef uint16_t vision_color_code_t;</dd>
+</dl>
+</div>
 </div>
 </div>
 
@@ -1227,7 +1663,7 @@ that can be detected by the Vision Sensor</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> Versions: </span>
-      v: V5 (3.1.3)
+      v: V5 (3.1.4)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -1253,7 +1689,6 @@ that can be detected by the Vision Sensor</p>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <script type="text/javascript" src="../../_static/sphinx_tabs/tabs.js"></script>
         <script type="text/javascript" src="../../_static/sphinx_tabs/semantic-ui-2.2.10/tab.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
 
   

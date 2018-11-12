@@ -174,8 +174,6 @@
 <li class="toctree-l7"><a class="reference internal" href="#velpid">velPID</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#motorvelocity">motorVelocity</a></li>
 <li class="toctree-l7"><a class="reference internal" href="#id1">motorVelocity</a></li>
-<li class="toctree-l7"><a class="reference internal" href="#id2">motorVelocity</a></li>
-<li class="toctree-l7"><a class="reference internal" href="#id3">motorVelocity</a></li>
 </ul>
 </li>
 </ul>
@@ -230,8 +228,6 @@
 <li class="toctree-l6"><a class="reference internal" href="#velpid">velPID</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#motorvelocity">motorVelocity</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#id1">motorVelocity</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id2">motorVelocity</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id3">motorVelocity</a></li>
 </ul>
 </li>
 </ul>
@@ -336,14 +332,12 @@
 <h1>Iterative Controller Factory<a class="headerlink" href="#iterative-controller-factory" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#okapi-iterativecontrollerfactory" id="id4">okapi::IterativeControllerFactory</a><ul>
-<li><a class="reference internal" href="#methods" id="id5">Methods</a><ul>
-<li><a class="reference internal" href="#pospid" id="id6">posPID</a></li>
-<li><a class="reference internal" href="#velpid" id="id7">velPID</a></li>
-<li><a class="reference internal" href="#motorvelocity" id="id8">motorVelocity</a></li>
-<li><a class="reference internal" href="#id1" id="id9">motorVelocity</a></li>
-<li><a class="reference internal" href="#id2" id="id10">motorVelocity</a></li>
-<li><a class="reference internal" href="#id3" id="id11">motorVelocity</a></li>
+<li><a class="reference internal" href="#okapi-iterativecontrollerfactory" id="id2">okapi::IterativeControllerFactory</a><ul>
+<li><a class="reference internal" href="#methods" id="id3">Methods</a><ul>
+<li><a class="reference internal" href="#pospid" id="id4">posPID</a></li>
+<li><a class="reference internal" href="#velpid" id="id5">velPID</a></li>
+<li><a class="reference internal" href="#motorvelocity" id="id6">motorVelocity</a></li>
+<li><a class="reference internal" href="#id1" id="id7">motorVelocity</a></li>
 </ul>
 </li>
 </ul>
@@ -351,15 +345,15 @@
 </ul>
 </div>
 <div class="section" id="okapi-iterativecontrollerfactory">
-<h2><a class="toc-backref" href="#id4">okapi::IterativeControllerFactory</a><a class="headerlink" href="#okapi-iterativecontrollerfactory" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id2">okapi::IterativeControllerFactory</a><a class="headerlink" href="#okapi-iterativecontrollerfactory" title="Permalink to this headline">¶</a></h2>
 <p>A <a class="reference external" href="https://sourcemaking.com/design_patterns/factory_method">factory</a> which creates instances of
 iterative controllers. This is the preferred way of creating iterative controllers.</p>
 <p>You can read more about the factory pattern
 <a class="reference external" href="https://sourcemaking.com/design_patterns/factory_method">here</a>.</p>
 <div class="section" id="methods">
-<h3><a class="toc-backref" href="#id5">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id3">Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="pospid">
-<h4><a class="toc-backref" href="#id6">posPID</a><a class="headerlink" href="#pospid" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id4">posPID</a><a class="headerlink" href="#pospid" title="Permalink to this headline">¶</a></h4>
 <p>A position controller that uses the PID algorithm.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -373,13 +367,21 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">IterativePosPIDController</span> <span class="n">posPID</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikI</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikBias</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-                                        <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Filter</span><span class="o">&gt;</span> <span class="n">iderivativeFilter</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">PassthroughFilter</span><span class="o">&gt;</span><span class="p">())</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">IterativePosPIDController</span> <span class="n">posPID</span><span class="p">(</span>
+  <span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikI</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikBias</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Filter</span><span class="o">&gt;</span> <span class="n">iderivativeFilter</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">PassthroughFilter</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">IterativeControllerFactory</span><span class="o">::</span><span class="n">posPID</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">IterativeControllerFactory</span><span class="o">::</span><span class="n">posPID</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">);</span>
+
+<span class="c1">// Controller using a custom derivative filter</span>
+<span class="k">auto</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">IterativeControllerFactory</span><span class="o">::</span><span class="n">posPID</span><span class="p">(</span>
+  <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">AverageFilter</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;&gt;</span><span class="p">()</span>
+<span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -415,7 +417,7 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="velpid">
-<h4><a class="toc-backref" href="#id7">velPID</a><a class="headerlink" href="#velpid" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id5">velPID</a><a class="headerlink" href="#velpid" title="Permalink to this headline">¶</a></h4>
 <p>A velocity controller that uses the PD algorithm.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -429,14 +431,23 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">IterativeVelPIDController</span> <span class="n">velPID</span><span class="p">(</span><span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikF</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikSF</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-                                        <span class="k">const</span> <span class="n">VelMathArgs</span> <span class="o">&amp;</span><span class="n">iparams</span> <span class="o">=</span> <span class="n">VelMathArgs</span><span class="p">(</span><span class="n">imev5TPR</span><span class="p">),</span>
-                                        <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Filter</span><span class="o">&gt;</span> <span class="n">iderivativeFilter</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">PassthroughFilter</span><span class="o">&gt;</span><span class="p">())</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">IterativeVelPIDController</span> <span class="n">velPID</span><span class="p">(</span>
+  <span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikF</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikSF</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="k">const</span> <span class="n">VelMathArgs</span> <span class="o">&amp;</span><span class="n">iparams</span> <span class="o">=</span> <span class="n">VelMathArgs</span><span class="p">(</span><span class="n">imev5TPR</span><span class="p">),</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">Filter</span><span class="o">&gt;</span> <span class="n">iderivativeFilter</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">PassthroughFilter</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">IterativeControllerFactory</span><span class="o">::</span><span class="n">velPID</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">);</span>
+
+<span class="c1">// Controller using a custom derivative filter</span>
+<span class="k">auto</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">IterativeControllerFactory</span><span class="o">::</span><span class="n">velPID</span><span class="p">(</span>
+  <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="n">VelMathArgs</span><span class="p">(</span><span class="n">imev5TPR</span><span class="p">),</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">AverageFilter</span><span class="o">&lt;</span><span class="mi">3</span><span class="o">&gt;&gt;</span><span class="p">()</span>
+<span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -475,8 +486,9 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="motorvelocity">
-<h4><a class="toc-backref" href="#id8">motorVelocity</a><a class="headerlink" href="#motorvelocity" title="Permalink to this headline">¶</a></h4>
-<p>A velocity controller that uses the PD algorithm.</p>
+<h4><a class="toc-backref" href="#id6">motorVelocity</a><a class="headerlink" href="#motorvelocity" title="Permalink to this headline">¶</a></h4>
+<p>A velocity controller that uses an <code class="docutils literal notranslate"><span class="pre">IterativeVelPIDController</span></code> and automatically writes to its
+output.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-4 docutils container">
@@ -489,15 +501,20 @@ Example</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">IterativeMotorVelocityController</span> <span class="n">motorVelocity</span><span class="p">(</span><span class="n">Motor</span> <span class="n">imotor</span><span class="p">,</span>
-                                                      <span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikF</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikSF</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-                                                      <span class="k">const</span> <span class="n">VelMathArgs</span> <span class="o">&amp;</span><span class="n">iparams</span> <span class="o">=</span> <span class="n">VelMathArgs</span><span class="p">(</span><span class="n">imev5TPR</span><span class="p">))</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">IterativeMotorVelocityController</span> <span class="n">motorVelocity</span><span class="p">(</span>
+  <span class="n">Motor</span><span class="o">/</span><span class="n">MotorGroup</span> <span class="n">imotor</span><span class="p">,</span>
+  <span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikF</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikSF</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="k">const</span> <span class="n">VelMathArgs</span> <span class="o">&amp;</span><span class="n">iparams</span> <span class="o">=</span> <span class="n">VelMathArgs</span><span class="p">(</span><span class="n">imev5TPR</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Controlling a motor on port 1</span>
 <span class="k">auto</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">IterativeControllerFactory</span><span class="o">::</span><span class="n">motorVelocity</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">);</span>
+
+<span class="c1">// Controlling a motor group on ports 1 and 2</span>
+<span class="k">auto</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">IterativeControllerFactory</span><span class="o">::</span><span class="n">motorVelocity</span><span class="p">({</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -514,7 +531,7 @@ Example</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>imotor</td>
-<td>The output <code class="docutils literal notranslate"><span class="pre">Motor</span></code>.</td>
+<td>The output motor.</td>
 </tr>
 <tr class="row-odd"><td>ikp</td>
 <td>The P term gain.</td>
@@ -536,29 +553,20 @@ Example</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="id1">
-<h4><a class="toc-backref" href="#id9">motorVelocity</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<p>A velocity controller that uses the PD algorithm.</p>
+<h4><a class="toc-backref" href="#id7">motorVelocity</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>A velocity controller that uses the supplied controller and automatically writes to its output.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-6 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
-<div class="item sphinx-data-tab-7 docutils container">
-<div class="docutils container">
-Example</div>
-</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">IterativeMotorVelocityController</span> <span class="n">motorVelocity</span><span class="p">(</span><span class="n">MotorGroup</span> <span class="n">imotor</span><span class="p">,</span>
-                                                      <span class="kt">double</span> <span class="n">ikP</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikD</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikF</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kt">double</span> <span class="n">ikSF</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-                                                      <span class="k">const</span> <span class="n">VelMathArgs</span> <span class="o">&amp;</span><span class="n">iparams</span> <span class="o">=</span> <span class="n">VelMathArgs</span><span class="p">(</span><span class="n">imev5TPR</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-7 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Controlling motors geared together on ports 1 and 2</span>
-<span class="k">auto</span> <span class="n">controller</span> <span class="o">=</span> <span class="n">IterativeControllerFactory</span><span class="o">::</span><span class="n">motorVelocity</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">},</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">);</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">IterativeMotorVelocityController</span> <span class="n">motorVelocity</span><span class="p">(</span>
+  <span class="n">Motor</span><span class="o">/</span><span class="n">MotorGroup</span> <span class="n">imotor</span><span class="p">,</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">IterativeVelocityController</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;&gt;</span> <span class="n">icontroller</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -575,93 +583,7 @@ Example</div>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>imotor</td>
-<td>The output <code class="docutils literal notranslate"><span class="pre">MotorGroup</span></code>.</td>
-</tr>
-<tr class="row-odd"><td>ikp</td>
-<td>The P term gain.</td>
-</tr>
-<tr class="row-even"><td>ikD</td>
-<td>The D term gain.</td>
-</tr>
-<tr class="row-odd"><td>ikF</td>
-<td>The Feed-Forward gain.</td>
-</tr>
-<tr class="row-even"><td>ikSF</td>
-<td>A Feed-Forward gain to counteract static friction.</td>
-</tr>
-<tr class="row-odd"><td>iparams</td>
-<td>The <code class="docutils literal notranslate"><span class="pre">VelMathArgs</span></code> for calculating velocity.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr class="docutils" />
-<div class="section" id="id2">
-<h4><a class="toc-backref" href="#id10">motorVelocity</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<p>A velocity controller that uses the PD algorithm.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-8 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">IterativeMotorVelocityController</span> <span class="n">motorVelocity</span><span class="p">(</span><span class="n">Motor</span> <span class="n">imotor</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">IterativeVelocityController</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;&gt;</span> <span class="n">icontroller</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="18%" />
-<col width="82%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>imotor</td>
-<td>The output <code class="docutils literal notranslate"><span class="pre">Motor</span></code>.</td>
-</tr>
-<tr class="row-odd"><td>icontroller</td>
-<td>The controller to use.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr class="docutils" />
-<div class="section" id="id3">
-<h4><a class="toc-backref" href="#id11">motorVelocity</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
-<p>A velocity controller that uses the PD algorithm.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-9 docutils container">
-<div class="docutils container">
-Prototype</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">IterativeMotorVelocityController</span> <span class="n">motorVelocity</span><span class="p">(</span><span class="n">MotorGroup</span> <span class="n">imotor</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">IterativeVelocityController</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;&gt;</span> <span class="n">icontroller</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="18%" />
-<col width="82%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Parameters</th>
-<th class="head">&#160;</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>imotor</td>
-<td>The output <code class="docutils literal notranslate"><span class="pre">MotorGroup</span></code>.</td>
+<td>The output motor.</td>
 </tr>
 <tr class="row-odd"><td>icontroller</td>
 <td>The controller to use.</td>

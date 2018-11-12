@@ -612,10 +612,10 @@ containing firstly the wheel diameter (4”) and secondly, the width of the chas
 5
 6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">// Chassis Controller - lets us drive the robot around with open- or closed-loop control</span>
 <span class="k">auto</span> <span class="n">drive</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
-               <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
-               <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-               <span class="p">{</span><span class="mi">4</span><span class="n">_in</span><span class="p">,</span> <span class="mf">11.5</span><span class="n">_in</span><span class="p">}</span>
-             <span class="p">);</span>
+  <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
+  <span class="p">{</span><span class="mi">4</span><span class="n">_in</span><span class="p">,</span> <span class="mf">11.5</span><span class="n">_in</span><span class="p">}</span>
+<span class="p">);</span>
 </pre></div>
 </td></tr></table></div>
 <p>After this, you can move the chassis in actual units, such as inches and degrees.</p>
@@ -700,21 +700,17 @@ Arcade drive</div>
 54
 55
 56
-57
-58
-59</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;okapi/api.hpp&quot;</span><span class="cp"></span>
+57</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;okapi/api.hpp&quot;</span><span class="cp"></span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
 
+<span class="c1">// Chassis Controller - lets us drive the robot around with open- or closed-loop control</span>
+<span class="k">auto</span> <span class="n">drive</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+  <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
+  <span class="p">{</span><span class="mi">4</span><span class="n">_in</span><span class="p">,</span> <span class="mf">11.5</span><span class="n">_in</span><span class="p">}</span>
+<span class="p">);</span>
+
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-
-  <span class="c1">// Chassis Controller - lets us drive the robot around with open- or closed-loop control</span>
-  <span class="k">auto</span> <span class="n">drive</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
-                 <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
-                 <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-                 <span class="p">{</span><span class="mi">4</span><span class="n">_in</span><span class="p">,</span> <span class="mf">11.5</span><span class="n">_in</span><span class="p">}</span>
-               <span class="p">);</span>
-
   <span class="c1">// Joystick to read analog values for tank or arcade control</span>
   <span class="c1">// Master controller by default</span>
   <span class="n">Controller</span> <span class="n">controller</span><span class="p">;</span>
@@ -821,21 +817,17 @@ Arcade drive</div>
 54
 55
 56
-57
-58
-59</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;okapi/api.hpp&quot;</span><span class="cp"></span>
+57</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;okapi/api.hpp&quot;</span><span class="cp"></span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
 
+<span class="c1">// Chassis Controller - lets us drive the robot around with open- or closed-loop control</span>
+<span class="k">auto</span> <span class="n">drive</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+  <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
+  <span class="p">{</span><span class="mi">4</span><span class="n">_in</span><span class="p">,</span> <span class="mf">11.5</span><span class="n">_in</span><span class="p">}</span>
+<span class="p">);</span>
+
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-
-  <span class="c1">// Chassis Controller - lets us drive the robot around with open- or closed-loop control</span>
-  <span class="k">auto</span> <span class="n">drive</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
-                 <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
-                 <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">green</span><span class="p">,</span>
-                 <span class="p">{</span><span class="mi">4</span><span class="n">_in</span><span class="p">,</span> <span class="mf">11.5</span><span class="n">_in</span><span class="p">}</span>
-               <span class="p">);</span>
-
   <span class="c1">// Joystick to read analog values for tank or arcade control</span>
   <span class="c1">// Master controller by default</span>
   <span class="n">Controller</span> <span class="n">controller</span><span class="p">;</span>

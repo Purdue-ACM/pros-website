@@ -266,7 +266,9 @@ as is common in a lot of op control code for the subject. The following code sni
 16
 17
 18
-19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
 
 <span class="k">const</span> <span class="kt">int</span> <span class="n">LIFT_MOTOR</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Controlling a lift with a single motor on port 1</span>
 
@@ -274,16 +276,18 @@ as is common in a lot of op control code for the subject. The following code sni
 <span class="n">ControllerButton</span> <span class="nf">btnDown</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_R2</span><span class="p">);</span>
 <span class="n">Motor</span> <span class="nf">lift</span><span class="p">(</span><span class="n">LIFT_MOTOR</span><span class="p">);</span>
 
-<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">btnUp</span><span class="p">.</span><span class="n">isPressed</span><span class="p">())</span> <span class="p">{</span>
-    <span class="n">lift</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">btnDown</span><span class="p">.</span><span class="n">isPressed</span><span class="p">())</span> <span class="p">{</span>
-    <span class="n">lift</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="o">-</span><span class="mi">127</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="n">lift</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">btnUp</span><span class="p">.</span><span class="n">isPressed</span><span class="p">())</span> <span class="p">{</span>
+      <span class="n">lift</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">btnDown</span><span class="p">.</span><span class="n">isPressed</span><span class="p">())</span> <span class="p">{</span>
+      <span class="n">lift</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="o">-</span><span class="mi">127</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="n">lift</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
 
-  <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -317,7 +321,10 @@ This is a common approach used for stacking games where movement to precise heig
 26
 27
 28
-29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
 
 <span class="k">const</span> <span class="kt">int</span> <span class="n">LIFT_MOTOR</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// Controlling a lift with a single motor on port 1</span>
 
@@ -332,19 +339,22 @@ This is a common approach used for stacking games where movement to precise heig
 <span class="n">ControllerButton</span> <span class="nf">btnUp</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_R1</span><span class="p">);</span>
 <span class="n">ControllerButton</span> <span class="nf">btnDown</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_R2</span><span class="p">);</span>
 <span class="k">auto</span> <span class="n">liftControl</span> <span class="o">=</span> <span class="n">AsyncControllerFactory</span><span class="o">::</span><span class="n">posIntegrated</span><span class="p">(</span><span class="n">LIFT_MOTOR</span><span class="p">);</span>
-<span class="kt">int</span> <span class="n">goalHeight</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="n">btnUp</span><span class="p">.</span><span class="n">changedToPressed</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">goalHeight</span> <span class="o">&lt;</span> <span class="n">NUM_HEIGHTS</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// If the goal height is not at maximum and the up button is pressed, increase the setpoint</span>
-    <span class="n">goalHeight</span><span class="o">++</span><span class="p">;</span>
-    <span class="n">liftControl</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="n">heights</span><span class="p">[</span><span class="n">goalHeight</span><span class="p">]);</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">btnDown</span><span class="p">.</span><span class="n">changedToPressed</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">goalHeight</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">goalHeight</span><span class="o">--</span><span class="p">;</span>
-    <span class="n">liftControl</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="n">heights</span><span class="p">[</span><span class="n">goalHeight</span><span class="p">]);</span>
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">goalHeight</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">btnUp</span><span class="p">.</span><span class="n">changedToPressed</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">goalHeight</span> <span class="o">&lt;</span> <span class="n">NUM_HEIGHTS</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// If the goal height is not at maximum and the up button is pressed, increase the setpoint</span>
+      <span class="n">goalHeight</span><span class="o">++</span><span class="p">;</span>
+      <span class="n">liftControl</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="n">heights</span><span class="p">[</span><span class="n">goalHeight</span><span class="p">]);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">btnDown</span><span class="p">.</span><span class="n">changedToPressed</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">goalHeight</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">goalHeight</span><span class="o">--</span><span class="p">;</span>
+      <span class="n">liftControl</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="n">heights</span><span class="p">[</span><span class="n">goalHeight</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
   <span class="p">}</span>
-
-  <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>

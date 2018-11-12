@@ -313,6 +313,9 @@ movements.</p>
   <span class="mf">10.0</span><span class="p">,</span> <span class="c1">// Maximum linear jerk of the Chassis in m/s/s/s</span>
   <span class="n">myChassis</span> <span class="c1">// Chassis Controller</span>
 <span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Next, let’s create a motion profile. A profile is created with a list of points and a name.
@@ -367,7 +370,9 @@ desired end point.</p>
 16
 17
 18
-19</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
 
 <span class="k">auto</span> <span class="n">myChassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
   <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">},</span> <span class="c1">// Left motors</span>
@@ -383,9 +388,11 @@ desired end point.</p>
   <span class="n">myChassis</span> <span class="c1">// Chassis Controller</span>
 <span class="p">);</span>
 
-<span class="n">profileController</span><span class="p">.</span><span class="n">generatePath</span><span class="p">({</span><span class="n">Point</span><span class="p">{</span><span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_deg</span><span class="p">},</span> <span class="n">Point</span><span class="p">{</span><span class="mi">3</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_deg</span><span class="p">}},</span> <span class="s">&quot;A&quot;</span><span class="p">);</span>
-<span class="n">profileController</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">);</span>
-<span class="n">profileController</span><span class="p">.</span><span class="n">waitUntilSettled</span><span class="p">();</span>
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">profileController</span><span class="p">.</span><span class="n">generatePath</span><span class="p">({</span><span class="n">Point</span><span class="p">{</span><span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_deg</span><span class="p">},</span> <span class="n">Point</span><span class="p">{</span><span class="mi">3</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_ft</span><span class="p">,</span> <span class="mi">0</span><span class="n">_deg</span><span class="p">}},</span> <span class="s">&quot;A&quot;</span><span class="p">);</span>
+  <span class="n">profileController</span><span class="p">.</span><span class="n">setTarget</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="p">);</span>
+  <span class="n">profileController</span><span class="p">.</span><span class="n">waitUntilSettled</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
 </div>

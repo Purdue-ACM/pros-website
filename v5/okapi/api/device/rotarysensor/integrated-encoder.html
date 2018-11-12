@@ -334,9 +334,58 @@ inside the V5 motors (not an IME).</p>
 <div class="docutils container">
 Prototype</div>
 </div>
+<div class="item sphinx-data-tab-1 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0 active docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">IntegratedEncoder</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">imotor</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">explicit</span> <span class="n">IntegratedEncoder</span><span class="p">(</span><span class="k">const</span> <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="o">&amp;</span><span class="n">imotor</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">IntegratedEncoder</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameters</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>imotor</td>
+<td>The V5 motor to use the encoder from.</td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-2 docutils container">
+<div class="docutils container">
+Prototype</div>
+</div>
+<div class="item sphinx-data-tab-3 docutils container">
+<div class="docutils container">
+Example</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">explicit</span> <span class="n">IntegratedEncoder</span><span class="p">(</span><span class="k">const</span> <span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span> <span class="o">&amp;</span><span class="n">imotor</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 docutils container">
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">IntegratedEncoder</span><span class="p">(</span><span class="n">okapi</span><span class="o">::</span><span class="n">Motor</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">IntegratedEncoder</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -365,12 +414,12 @@ Prototype</div>
 <p>Returns the current sensor value.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-1 docutils container">
+<div class="active item sphinx-data-tab-4 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">get</span><span class="p">()</span> <span class="k">const</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -384,12 +433,12 @@ Prototype</div>
 <p>Resets the sensor to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-2 docutils container">
+<div class="active item sphinx-data-tab-5 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-5 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="n">std</span><span class="o">::</span><span class="kt">int32_t</span> <span class="n">reset</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>
@@ -404,12 +453,12 @@ Prototype</div>
 another thread by the controller.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-3 docutils container">
+<div class="active item sphinx-data-tab-6 docutils container">
 <div class="docutils container">
 Prototype</div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-6 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">virtual</span> <span class="kt">double</span> <span class="n">controllerGet</span><span class="p">()</span> <span class="n">override</span>
 </pre></div>
 </div>

@@ -275,7 +275,9 @@ The example below gives an example of filtering a sensor value.</p>
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
 
 <span class="k">const</span> <span class="kt">int</span> <span class="n">POTENTIOMETER_PORT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">NUM_AVE_POINTS</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
@@ -283,9 +285,11 @@ The example below gives an example of filtering a sensor value.</p>
 <span class="n">Potentiometer</span> <span class="nf">exampleSensor</span><span class="p">(</span><span class="n">POTENTIOMETER_PORT</span><span class="p">);</span>
 <span class="n">AverageFilter</span><span class="o">&lt;</span><span class="n">NUM_AVE_POINTS</span><span class="o">&gt;</span> <span class="n">exampleFilter</span><span class="p">;</span>
 
-<span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Current Sensor Reading: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">exampleFilter</span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">exampleSensor</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
-  <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Current Sensor Reading: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">exampleFilter</span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="n">exampleSensor</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+    <span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
@@ -306,7 +310,10 @@ will not have a positive impact on Position PID movements, and is not supported 
  7
  8
  9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
 
 <span class="k">const</span> <span class="kt">double</span> <span class="n">kP</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">double</span> <span class="n">kD</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">;</span>
@@ -316,6 +323,9 @@ will not have a positive impact on Position PID movements, and is not supported 
 
 <span class="k">auto</span> <span class="n">velMathArgs</span> <span class="o">=</span> <span class="n">VelMathArgs</span><span class="p">(</span><span class="n">imev5TPR</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">AverageFilter</span><span class="o">&lt;</span><span class="n">NUM_AVE_POINTS</span><span class="o">&gt;&gt;</span><span class="p">());</span>
 <span class="k">auto</span> <span class="n">exampleController</span> <span class="o">=</span> <span class="n">IterativeControllerFactory</span><span class="o">::</span><span class="n">velPID</span><span class="p">(</span><span class="n">kP</span><span class="p">,</span> <span class="n">kD</span><span class="p">,</span> <span class="n">kF</span><span class="p">,</span> <span class="n">kSF</span><span class="p">,</span> <span class="n">velMathArgs</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
 <p>To clarify step by step:</p>

@@ -287,20 +287,22 @@ PID makes setup a much quicker and easier process (No PID tuning needed!).</p>
 11
 12
 13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
 
 <span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_MOTOR_LEFT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_MOTOR_RIGHT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
-<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">auto</span> <span class="n">chassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">DRIVE_MOTOR_LEFT</span><span class="p">,</span> <span class="n">DRIVE_MOTOR_RIGHT</span><span class="p">);</span>
+<span class="k">auto</span> <span class="n">chassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">DRIVE_MOTOR_LEFT</span><span class="p">,</span> <span class="n">DRIVE_MOTOR_RIGHT</span><span class="p">);</span>
 
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// Move to first goal</span>
   <span class="n">chassis</span><span class="p">.</span><span class="n">moveDistance</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
   <span class="c1">// Turn to face second goal</span>
   <span class="n">chassis</span><span class="p">.</span><span class="n">turnAngle</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
   <span class="c1">// Drive toward second goal</span>
   <span class="n">chassis</span><span class="p">.</span><span class="n">moveDistance</span><span class="p">(</span><span class="mi">1500</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
 <p>If you’d like to set movements in real life units, that’s possible as well. Just pass in the
@@ -322,23 +324,31 @@ for the units that you would like the movement to occur in.</p>
 14
 15
 16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="k">namespace</span> <span class="n">okapi</span><span class="p">;</span>
 
 <span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_MOTOR_LEFT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">DRIVE_MOTOR_RIGHT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 <span class="k">const</span> <span class="k">auto</span> <span class="n">WHEEL_DIAMETER</span> <span class="o">=</span> <span class="mi">4</span><span class="n">_in</span><span class="p">;</span>
 <span class="k">const</span> <span class="k">auto</span> <span class="n">CHASSIS_WIDTH</span> <span class="o">=</span> <span class="mf">13.5</span><span class="n">_in</span><span class="p">;</span>
 
-<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">auto</span> <span class="n">chassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span><span class="n">DRIVE_MOTOR_LEFT</span><span class="p">,</span> <span class="n">DRIVE_MOTOR_RIGHT</span><span class="p">,</span>
-                 <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">red</span><span class="p">,</span> <span class="p">{</span><span class="n">WHEEL_DIAMETER</span><span class="p">,</span> <span class="n">CHASSIS_WIDTH</span><span class="p">});</span>
+<span class="k">auto</span> <span class="n">chassis</span> <span class="o">=</span> <span class="n">ChassisControllerFactory</span><span class="o">::</span><span class="n">create</span><span class="p">(</span>
+  <span class="n">DRIVE_MOTOR_LEFT</span><span class="p">,</span> <span class="n">DRIVE_MOTOR_RIGHT</span><span class="p">,</span>
+  <span class="n">AbstractMotor</span><span class="o">::</span><span class="n">gearset</span><span class="o">::</span><span class="n">red</span><span class="p">,</span>
+  <span class="p">{</span><span class="n">WHEEL_DIAMETER</span><span class="p">,</span> <span class="n">CHASSIS_WIDTH</span><span class="p">}</span>
+<span class="p">);</span>
 
+<span class="kt">void</span> <span class="nf">autonomous</span><span class="p">()</span> <span class="p">{</span>
   <span class="c1">// Move 1 meter to the first goal</span>
   <span class="n">chassis</span><span class="p">.</span><span class="n">moveDistance</span><span class="p">(</span><span class="mi">1</span><span class="n">_m</span><span class="p">);</span>
   <span class="c1">// Turn 90 degrees to face second goal</span>
   <span class="n">chassis</span><span class="p">.</span><span class="n">turnAngle</span><span class="p">(</span><span class="mi">90</span><span class="n">_deg</span><span class="p">);</span>
   <span class="c1">// Drive 1 and a half feet toward second goal</span>
   <span class="n">chassis</span><span class="p">.</span><span class="n">moveDistance</span><span class="p">(</span><span class="mf">1.5</span><span class="n">_ft</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table></div>
 </div>

@@ -624,18 +624,18 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-8 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">vision_object_s_t</span> <span class="n">vision_get_by_code</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
-                                                               <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span><span class="p">,</span>
-                                                                                                                                                                                       <span class="k">const</span> <span class="n">vision_color_code_t</span> <span class="n">color_code</span> <span class="p">)</span>
+                                       <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span><span class="p">,</span>
+                                       <span class="k">const</span> <span class="n">vision_color_code_t</span> <span class="n">color_code</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-9 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
-                        <span class="cp">#define EXAMPLE_SIG 1</span>
-                        <span class="cp">#define OTHER_SIG 2</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+<span class="cp">#define OTHER_SIG 2</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
-                                <span class="n">vision_color_code_t</span> <span class="n">code1</span> <span class="o">=</span> <span class="n">vision_create_color_code</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">EXAMPLE_SIG</span><span class="p">,</span> <span class="n">OTHER_SIG</span><span class="p">);</span>
+  <span class="n">vision_color_code_t</span> <span class="n">code1</span> <span class="o">=</span> <span class="n">vision_create_color_code</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">EXAMPLE_SIG</span><span class="p">,</span> <span class="n">OTHER_SIG</span><span class="p">);</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">vision_object_s_t</span> <span class="n">rtn</span> <span class="o">=</span> <span class="n">vision_get_by_code</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">code1</span><span class="p">);</span>
     <span class="c1">// Gets the largest object</span>
@@ -810,18 +810,18 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-14 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">vision_signature_s_t</span> <span class="n">vision_get_signature</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
-                                                                    <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">signature_id</span> <span class="p">)</span>
+                                            <span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">signature_id</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-15 docutils container">
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>                        <span class="cp">#define VISION_PORT 1</span>
 <span class="cp">#define EXAMPLE_SIG 1</span>
 
-<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">vision_signature_s_t</span> <span class="n">sig</span> <span class="o">=</span> <span class="n">vision_get_signature</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">EXAMPLE_SIG</span><span class="p">);</span>
-        <span class="n">vision_print_signature</span><span class="p">(</span><span class="n">sig</span><span class="p">);</span>
-<span class="p">}</span>
+                        <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">vision_signature_s_t</span> <span class="n">sig</span> <span class="o">=</span> <span class="n">vision_get_signature</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">EXAMPLE_SIG</span><span class="p">);</span>
+  <span class="n">vision_print_signature</span><span class="p">(</span><span class="n">sig</span><span class="p">);</span>
+                        <span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -1123,22 +1123,22 @@ Example</div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-24 active docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int32_t</span> <span class="n">vision_read_by_code</span> <span class="p">(</span> <span class="kt">uint8_t</span> <span class="n">port</span><span class="p">,</span>
-                              <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span><span class="p">,</span>
-                                                                                                                        <span class="k">const</span> <span class="n">vision_color_code_t</span> <span class="n">color_code</span><span class="p">,</span>
-                                                                                                            <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">object_count</span><span class="p">,</span>
-                                                                                                                        <span class="n">vision_object_s_t</span><span class="o">*</span> <span class="k">const</span> <span class="n">object_arr</span> <span class="p">)</span>
+      <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">size_id</span><span class="p">,</span>
+      <span class="k">const</span> <span class="n">vision_color_code_t</span> <span class="n">color_code</span><span class="p">,</span>
+      <span class="k">const</span> <span class="kt">uint32_t</span> <span class="n">object_count</span><span class="p">,</span>
+      <span class="n">vision_object_s_t</span><span class="o">*</span> <span class="k">const</span> <span class="n">object_arr</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-25 docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define VISION_PORT 1</span>
-                        <span class="cp">#define EXAMPLE_SIG 1</span>
-                        <span class="cp">#define OTHER_SIG 2</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+<span class="cp">#define OTHER_SIG 2</span>
 <span class="cp">#define NUM_VISION_OBJECTS 4</span>
 
 <span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
   <span class="n">vision_object_s_t</span> <span class="n">object_arr</span><span class="p">[</span><span class="n">NUM_VISION_OBJECTS</span><span class="p">];</span>
-                                <span class="n">vision_color_code_t</span> <span class="n">code1</span> <span class="o">=</span> <span class="n">vision_create_color_code</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">EXAMPLE_SIG</span><span class="p">,</span> <span class="n">OTHER_SIG</span><span class="p">);</span>
+  <span class="n">vision_color_code_t</span> <span class="n">code1</span> <span class="o">=</span> <span class="n">vision_create_color_code</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="n">EXAMPLE_SIG</span><span class="p">,</span> <span class="n">OTHER_SIG</span><span class="p">);</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">vision_read_by_code</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">code1</span><span class="p">,</span> <span class="n">NUM_VISION_OBJECTS</span><span class="p">,</span> <span class="n">object_arr</span><span class="p">);</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">&quot;sig: %d&quot;</span><span class="p">,</span> <span class="n">object_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">signature</span><span class="p">);</span>

@@ -237,12 +237,13 @@
 LVGL is a full-featured C graphics library (it’s accessible in C++ projects too under the same API).</p>
 <p>The first step to getting started with LVGL is to include <code class="docutils literal notranslate"><span class="pre">apix.h</span></code> in your <code class="docutils literal notranslate"><span class="pre">main.h</span></code> file or other header files.
 This includes the full LVGL feature set as described in their documentation: <a class="reference external" href="https://littlevgl.com/basics">https://littlevgl.com/basics</a></p>
-<p>From there, you can follow along with any of the LVGL tutorials (such as the one linked above). There is no need
-to initialize LVGL, you can simply start creating objects.</p>
+<p>You can follow along with any of the LVGL <a class="reference external" href="https://github.com/littlevgl/lv_examples/tree/master/lv_tutorial">tutorials</a>
+or <a class="reference external" href="https://github.com/littlevgl/lvgl/wiki/Objects">wiki</a>. There is no need to port or initialize LVGL, you can simply
+start creating objects.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Custom LVGL code cannot be displayed at the same time as the <a class="reference external" href="./llemu.html">LLEMU</a>.
-As a result, you must remove the LLEMU code that is present in <code class="docutils literal notranslate"><span class="pre">initialize.cpp</span></code> by default in a
+As a result, you must remove the LLEMU code (<code class="docutils literal notranslate"><span class="pre">pros::lcd</span></code>) that is present in <code class="docutils literal notranslate"><span class="pre">initialize.cpp</span></code> by default in a
 new project.</p>
 </div>
 </div>

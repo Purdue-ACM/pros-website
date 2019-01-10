@@ -789,7 +789,7 @@ C++</div>
   <span class="n">pros</span><span class="o">::</span><span class="n">ADIDigitalIn</span> <span class="n">button</span> <span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">);</span>
   <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">drive</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
 
-  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">button</span><span class="p">.</span><span class="n">get_value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">button</span><span class="p">.</span><span class="n">get_value</span><span class="p">())</span> <span class="p">{</span>
     <span class="c1">// Drive forward until the button digital sensor button is pressed</span>
     <span class="n">drive</span> <span class="o">=</span> <span class="mi">127</span><span class="p">;</span>
     <span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
